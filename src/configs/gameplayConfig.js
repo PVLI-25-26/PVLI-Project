@@ -1,7 +1,7 @@
 export const platformConfig = [
   { x: 400, y: 580, width: 800, height: 40, color: 0xaef04a },
-  { x: 400, y: 500, width: 200, height: 20, color: 0x6d797a },
-  { x: 600, y: 400, width: 200, height: 20, color: 0x6d797a },
+  { x: 450, y: 500, width: 200, height: 20, color: 0x6d797a },
+  { x: 650, y: 400, width: 200, height: 20, color: 0x6d797a },
 ];
 
 export const playerConfig = {
