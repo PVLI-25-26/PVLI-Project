@@ -1,3 +1,7 @@
+---
+dg-publish: true
+dg-home: "true"
+---
 **Combat System** – a core system that encompasses all mechanics related to dealing damage to enemies and avoiding damage from them.
 
 ## Description

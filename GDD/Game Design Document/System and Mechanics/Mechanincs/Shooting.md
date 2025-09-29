@@ -1,3 +1,6 @@
+---
+dg-publish: true
+---
 **Shooting** – a mechanic that allows the player to perform ranged attacks using a bow. It is used for engaging enemies from a distance, applying status effects, and interacting with certain elements of the environment.  
 ## Description
 The player aims [[Controls|using his input device]] and presses the [[Controls|shoot button]] to release a projectile in the chosen direction.  

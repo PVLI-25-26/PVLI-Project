@@ -1,3 +1,6 @@
+---
+dg-publish: true
+---
 ## Visual References
 `ref-general-moodboard.png`
 
