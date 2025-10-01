@@ -1,3 +1,6 @@
+---
+dg-publish: true
+---
 **Setting Arrow Path Modifier** – a mechanic that allows the player to alter the trajectory and behavior of projectiles after they are fired. It is used to adjust the area of effect, control coverage, or introduce tactical variety in ranged combat.
 ## Description
 The player can equip two active arrow path modifier before entering the magical realm.  

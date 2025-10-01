@@ -1,3 +1,6 @@
+---
+dg-publish: true
+---
 
 | Action      | Gamepad | Keyboard & Mouse |
 | ----------- | ------- | ---------------- |

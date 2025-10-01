@@ -1,3 +1,6 @@
+---
+dg-publish: true
+---
 **Movement System** – a core system that governs the player’s traversal through the In-game world, including running, dodging, and [[Use Ability|using abilities]].
 
 ## Description

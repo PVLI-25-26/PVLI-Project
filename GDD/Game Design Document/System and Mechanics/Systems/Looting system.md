@@ -1,3 +1,6 @@
+---
+dg-publish: true
+---
 **Looting system** - a placeholder to demonstrate a page that describes the game system.
 
 ## Description
