@@ -13,4 +13,4 @@ The player will have a better view of the appearance of the NPC who is speaking.
 The UI will be over the interactive target, making it more immersive.
 
 ## Included mechanics
-- 
+- [[Interact mechacnic]]
