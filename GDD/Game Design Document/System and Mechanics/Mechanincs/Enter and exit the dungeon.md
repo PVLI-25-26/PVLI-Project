@@ -2,6 +2,6 @@
 ## Description
 Players will enter and exit the dungeon through specific rooms. These rooms will only be used for entering and exiting the dungeon and will not contain any [[Rooms entities]].
 When the player exits the dungeon through the exit room will unload the room and load the HUB, [[Selling objects]].
-*Habrá un numero x de entradas a la dungeon y una de salida. Se elige una de las entradas de manera aleatoria*
+There will be x number of entrances to the dungeon and one exit. One of the entrances is chosen at random.
 ## Related Systems
 - [[Dungeon map system]]
