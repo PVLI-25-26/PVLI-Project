@@ -1,3 +1,6 @@
+---
+dg-publish: True 
+---
 **Inventory system** – This system shows how inventory works throughout its entire life cycle, from when the player enters the dungeon until they exit..
 
 ## Description

@@ -1,3 +1,6 @@
+---
+dg-publish: True 
+---
 **Missions mechanic** –  How missions work and where they appear.
 ## Description
 Missions only appear during a run, and the rewards are consumable items.

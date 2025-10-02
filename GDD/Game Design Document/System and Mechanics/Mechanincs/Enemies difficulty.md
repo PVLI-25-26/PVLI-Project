@@ -1,3 +1,6 @@
+---
+dg-publish: true
+---
 **Enemies difficulty** – How the difficulty of the enemies increases as the difficulty level increases.
 ## Description
 The difficulty increases with each level for all the enemies (bosses and small enemies).

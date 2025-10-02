@@ -1,3 +1,6 @@
+---
+dg-publish: True 
+---
 **Inventory** – A mechanic that explain how the inventory works.
 ## Description
 When a player grabs an [[Item]], it is pushed into their inventory.

@@ -1,3 +1,6 @@
+---
+dg-publish: True 
+---
 **Rooms paths** – A mechanic that allows the player move across rooms.
 ## Description
 

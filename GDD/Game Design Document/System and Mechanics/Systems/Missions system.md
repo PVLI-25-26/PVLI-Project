@@ -1,3 +1,6 @@
+---
+dg-publish: True 
+---
 **Missions system** – This system explains how missions work and how players are rewarded for completing them.
 
 ## Description

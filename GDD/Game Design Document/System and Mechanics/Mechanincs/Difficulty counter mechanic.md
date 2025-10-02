@@ -1,3 +1,6 @@
+---
+dg-publish: true
+---
 **Difficulty counter** –  
 ## Description
 There is a counter that keeps track of how many rooms the player has visited. When the player explores a new room, the counter increases.

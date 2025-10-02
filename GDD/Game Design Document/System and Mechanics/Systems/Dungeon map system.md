@@ -1,3 +1,6 @@
+---
+dg-publish: True 
+---
 **Dungeon map** – The system that defines how the structure of the dungeon works and how the player move across rooms.
 
 ## Description

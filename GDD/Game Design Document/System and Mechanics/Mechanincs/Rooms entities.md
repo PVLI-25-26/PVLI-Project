@@ -1,3 +1,6 @@
+---
+dg-publish: True 
+---
 **Rooms** – A mechanic that describes how entities are displaced in the rooms.
 ## Description
 Each room is hand-crafted; therefore, its entities are defined in the design. 

@@ -1,3 +1,6 @@
+---
+dg-publish: True 
+---
 **Item** – A mechanic that allows players to interact with consumables during a run. .
 ## Description
 The only thing the player can loot in a run is items.

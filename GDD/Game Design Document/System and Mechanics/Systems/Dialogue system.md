@@ -1,3 +1,6 @@
+---
+dg-publish: True 
+---
 **Dialogue system** – This is a system that describes how players can interact with NPCs or objects.
 
 ## Description

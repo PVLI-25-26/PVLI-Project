@@ -1,3 +1,6 @@
+---
+dg-publish: True 
+---
 **Selling objects** – This mechanic describers how the player earn money selling objects.
 
 ## Description

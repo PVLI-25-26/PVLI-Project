@@ -1,3 +1,6 @@
+---
+dg-publish: True 
+---
 **Interact** – How the player interacts with items and NPCs.
 ## Description
 The player will interact with the world through the dialogue system. 

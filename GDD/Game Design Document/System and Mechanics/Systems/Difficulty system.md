@@ -1,3 +1,6 @@
+---
+dg-publish: True 
+---
 **Difficulty system** –  This system shows how the game increases in difficulty throughout the playthrough.
 
 ## Description
