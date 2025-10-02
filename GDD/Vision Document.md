@@ -1,5 +1,6 @@
 ---
 dg-publish: true
+dg-home: true
 ---
 `<concept-preview.png>`
 
