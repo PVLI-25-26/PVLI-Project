@@ -4,6 +4,8 @@ import {
   playerConfig,
   physicsConfig,
 } from "../configs/gameplayConfig.js";
+import  serviceLocator, { SERVICE_KEYS } from "../js/service-locator.js";
+import { LOG_LEVELS } from "../js/logger.js";
 
 export default class Gameplay extends Phaser.Scene {
   constructor() {
@@ -13,6 +15,14 @@ export default class Gameplay extends Phaser.Scene {
   preload() {}
 
   create() {
+
+    // Testing if cached services are actually globaly shared
+    // Also testing the logger
+    const logger = serviceLocator.getService(SERVICE_KEYS.LOGGER);
+    logger.log('module1', LOG_LEVELS.INFO, 'Gameplay scene has been loaded');
+    logger.log('module2', LOG_LEVELS.DEBUG, 'This shouldn\'t show with log level at INFO or module2 disabled');
+
+    
     // Set world gravity
     this.physics.world.gravity.y = physicsConfig.gravityY;
 
