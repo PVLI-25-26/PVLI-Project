@@ -1,4 +1,4 @@
-import Phaser from "phaser";
+import Phaser, { Loader } from "phaser";
 import {
   platformConfig,
   playerConfig,
@@ -6,21 +6,26 @@ import {
 } from "../configs/gameplayConfig.js";
 import  serviceLocator, { SERVICE_KEYS } from "../js/service-locator.js";
 import { LOG_LEVELS } from "../js/logger.js";
+import { LoaderUI } from "../js/LoaderUI.js";
 
 export default class Gameplay extends Phaser.Scene {
   constructor() {
     super("Gameplay");
   }
 
-  preload() {}
+  preload() {
+      // Testing loader UI
+    const logger = serviceLocator.getService(SERVICE_KEYS.LOGGER);
+    for(let i = 0; i < 100; i++){
+      this.load.image('imgRandom'+i, 'src/Space-Invaders.jpg');
+    }
+    this.load.start();
+
+    let lui = new LoaderUI(this, this.load);
+  }
 
   create() {
-
-    // Testing if cached services are actually globaly shared
-    // Also testing the logger
-    const logger = serviceLocator.getService(SERVICE_KEYS.LOGGER);
-    logger.log('module1', LOG_LEVELS.INFO, 'Gameplay scene has been loaded');
-    logger.log('module2', LOG_LEVELS.DEBUG, 'This shouldn\'t show with log level at INFO or module2 disabled');
+  
 
     
     // Set world gravity

@@ -31,7 +31,6 @@ export class Logger{
         this.#enabledModules = new Set(config.modules);
         this.#currentLogLevel = config.level;
     }
-
     /**
      * 
      * @param {string} message Message to log.
@@ -42,8 +41,9 @@ export class Logger{
         if(!this.#enabledModules.has(moduleKey)
            || logLevel < this.#currentLogLevel)
             return;
+        let logLevelText = ['DEBUG', 'INFO', 'WARNING', 'ERROR'];
 
-        let text = `${getCurrentTime()} [${moduleKey}] [${logLevel}]: ${message}`;
+        let text = `${getCurrentTime()} [${moduleKey}] [${logLevelText[logLevel]}]: ${message}`;
         
         console.log(text);
     }

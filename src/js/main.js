@@ -34,8 +34,8 @@ const game = new Phaser.Game(config);
 // Make random placeholders
 
 let logger = new Logger({
-    modules: ['module1'], 
-    level: LOG_LEVELS.INFO
+    modules: ['LOADER'], 
+    level: LOG_LEVELS.DEBUG
 });
 
 let progresionManager = {
