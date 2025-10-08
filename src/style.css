@@ -16,6 +16,16 @@ img.profile-pic{
   margin: 30px;
 }
 
+#game-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 40px auto;
+  width: 800px;
+  height: 600px;
+  background: #000; 
+}
+
 header{
   padding: 0px 16px;
   margin: -10px;
