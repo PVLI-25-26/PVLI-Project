@@ -1,6 +1,6 @@
 import Phaser from "phaser";
-import { LOG_LEVELS, Logger } from "./logger";
-import serviceLocator, { SERVICE_KEYS } from "./service-locator";
+import { LOG_LEVELS, Logger } from "../core/logger.js";
+import serviceLocator, { SERVICE_KEYS } from "../core/service-locator.js";
 
 
 export class LoaderUI {

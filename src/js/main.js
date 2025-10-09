@@ -1,7 +1,7 @@
 import Phaser, { Game } from "phaser";
-import serviceLocator, { SERVICE_KEYS } from "./service-locator";
+import serviceLocator, { SERVICE_KEYS } from "./core/service-locator.js";
 import Gameplay from "../scenes/Gameplay";
-import { LOG_LEVELS, Logger } from "./logger";
+import { LOG_LEVELS, Logger } from "./core/logger";
 
 // ================== GAME ENTRY POINT ==================
 
@@ -20,7 +20,7 @@ const config = {
     physics: {
         default: 'arcade',
         arcade: {
-        gravity: { y: 500 },
+        gravity: { y: 0 },
         debug: false
         }
     },
@@ -45,6 +45,7 @@ let progresionManager = {
 let saveLoadSystem = {
     init: function(){logger.log('module1', LOG_LEVELS.INFO, '[Save/Load System]: Initialized')}
 }
+
 
 
 // Cache the services in the service locator
