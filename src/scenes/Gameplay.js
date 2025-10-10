@@ -1,21 +1,21 @@
-import Player from "../js/entities/Player.js"
+import playerConfig from "../configs/player-config.json";
+import { Player } from '../js/entities/Player.js';
 
-export default class MainScene extends Phaser.Scene {
+
+export default class GameplayScene extends Phaser.Scene {
     constructor() {
-        super("MainScene");
+        super({ key: 'GameplayScene' });
     }
 
     preload() {
-        this.load.image("player", "/PVLI-Project/assets/player-dummy.png");
+        this.load.image('player', 'assets/player-dummy.png');
     }
 
     create() {
-        this.cursors = this.input.keyboard.createCursorKeys();
-
-        this.player = new Player(this, 400, 300, "player", this.cursors, 200);
+        this.player = this.add.player(playerConfig);
     }
 
     update(time, delta) {
-        this.player.update(delta);
     }
 }
+

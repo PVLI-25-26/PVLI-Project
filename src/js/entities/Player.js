@@ -1,47 +1,44 @@
-import Movement from "../components/Movement.js";
-import PlayerController from "../components/PlayerController.js";
+import { withComponents } from "../core/component-extension.js";
+import { MovementComponent } from "../components/Movement.js";
+import { PlayerControllerComponent } from "../components/PlayerController.js";
 
-/**
- * Player entity that aggregates movement and controller components.
- */
-export default class Player {
+export class Player extends Phaser.GameObjects.Sprite {
     /**
-     * @param {Phaser.Scene} scene - The scene to add the player to
-     * @param {number} x - Initial X position
-     * @param {number} y - Initial Y position
-     * @param {string} texture - Key of the sprite texture
-     * @param {Phaser.Types.Input.Keyboard.CursorKeys} keys - Input keys for the player
-     * @param {number} [speed=200] - Movement speed in pixels per second
+     * @param {Phaser.Scene} scene
+     * @param {Object} config - Player configuration object
+     * @param {string} config.texture - Sprite texture key
+     * @param {number} config.frame - Frame index
+     * @param {number} config.x - Initial X position
+     * @param {number} config.y - Initial Y position
+     * @param {number} config.speed - Movement speed
      */
-    // TODO - We should split params like speed into a config object!
-    constructor(scene, x, y, texture, keys, speed = 200) {
-        /**
-         * The Phaser physics-enabled sprite representing the player
-         * @type {Phaser.Physics.Arcade.Sprite}
-         */
-        this.sprite = scene.physics.add.sprite(x, y, texture);
+    constructor(scene, config) {
+        super(scene, config.x, config.y, config.texture, config.frame);
+        this.config = config;
 
-        /**
-         * Movement component
-         * @type {Movement}
-         */
-        this.movement = new Movement(this.sprite, speed);
-
-        /**
-         * Controller component
-         * @type {PlayerController}
-         */
-        this.controller = new PlayerController(this.sprite, this.movement, keys);
+        withComponents(this); // add component system to this GameObject
+        scene.physics.add.existing(this);
+        this.addComponents(); // add components defined in method
     }
 
-    /**
-     * Update method called every frame.
-     * Delegates to the controller and movement components.
-     * @param {number} delta - Time elapsed since last frame in milliseconds
-     * @memberof Player
-     */
-    update(delta) {
-        this.controller.update(delta);
-        this.movement.update(delta);
+    addComponents() {
+        // Add MovementComponent
+        const movement = new MovementComponent(this, this.config.speed || 200);
+        this.addComponent(movement);
+
+        // Add PlayerControllerComponent
+        const controller = new PlayerControllerComponent(this);
+        this.addComponent(controller);
+    }
+
+
+    preUpdate(time, delta) {
+        super.preUpdate(time, delta);
     }
 }
+
+// ----------------- Factory registration -----------------
+Phaser.GameObjects.GameObjectFactory.register('player', function(config) {
+    const player = new Player(this.scene, config);
+    return this.displayList.add(player);
+});

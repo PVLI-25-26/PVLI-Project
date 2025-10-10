@@ -1,25 +1,57 @@
-import BaseComponent from "../core/base-component.js";
-
+import { BaseComponent } from "../core/base-component.js";
+import { MovementComponent } from "./Movement.js";
+import serviceLocator, { SERVICE_KEYS } from '../core/service-locator.js';
+import { LOG_LEVELS } from '../core/logger.js';
 
 /**
- * Base class for all controller components.
- * @class BaseController
+ * Base class for controller components.
+ * Handles automatic linking to a MovementComponent if present.
  * @extends BaseComponent
- * @property {Movement} movement - Reference to the Movement component
  */
-export default class BaseController extends BaseComponent {
+export class BaseControllerComponent extends BaseComponent {
     /**
-     * @param {Phaser.GameObjects.GameObject} entity - The entity this controller is attached to
-     * @param {import("./Movement.js").default} movement - Reference to the Movement component
+     * Creates a new controller component.
+     * @param {Phaser.GameObjects.GameObject} gameObject - The GameObject this controller is attached to.
      */
-    constructor(entity, movement) {
-        super(entity);
-        this.movement = movement;
+    constructor(gameObject) {
+        super(gameObject);
+
+        /**
+         * Reference to the MovementComponent on the same GameObject.
+         * @type {MovementComponent|null}
+         */
+        this.movementComponent = this.findMovementComponent();
+
+        if (!this.movementComponent) {
+            const logger = serviceLocator.getService(SERVICE_KEYS.LOGGER);
+            logger.log(
+                'COMPONENTS',
+                LOG_LEVELS.ERROR,
+                `Requires a MovementComponent on GameObject: ${this.gameObject.constructor.name}`
+            );
+        }
     }
 
     /**
-     * Called every frame. Should be overridden by subclasses.
-     * @param {number} delta - Time elapsed since last frame in milliseconds
+     * Finds a MovementComponent attached to the same GameObject.
+     * @returns {MovementComponent|null} The found MovementComponent, or null if not found.
      */
-    update(delta) {}
+    findMovementComponent() {
+        return this.getComponent(MovementComponent);
+    }
+
+    /**
+     * Returns the linked MovementComponent.
+     * @returns {MovementComponent|null}
+     */
+    getMovement() {
+        return this.movementComponent;
+    }
+
+    /**
+     * Cleans up the component, disabling it.
+     */
+    destroy() {
+        super.destroy();
+    }
 }

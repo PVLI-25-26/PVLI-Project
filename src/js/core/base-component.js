@@ -1,26 +1,62 @@
 /**
- * Base component for ECS-like architecture.
+ * Base class for GameObject components.
+ * Components can add behavior and state to a GameObject using composition.
  * @class BaseComponent
- * @property {Phaser.GameObjects.GameObject} entity - Reference to the Phaser object that owns this component
  */
-export default class BaseComponent {
+export class BaseComponent {
     /**
-     * Creates a new BaseComponent attached to a Phaser entity.
-     * @param {Phaser.GameObjects.GameObject} entity - The Phaser object this component is attached to
+     * Creates a component and registers it on the GameObject.
+     * @param {Phaser.GameObjects.GameObject} gameObject - The GameObject this component is attached to
      */
-    constructor(entity) {
+    constructor(gameObject) {
         /**
-         * Reference to the Phaser object that owns this component
+         * The GameObject this component is attached to
          * @type {Phaser.GameObjects.GameObject}
          */
-        this.entity = entity;
+        this.gameObject = gameObject;
+
+        /**
+         * Whether the component is enabled
+         * @type {boolean}
+         */
+        this.enabled = true;
+        
+        // Register the component on the GameObject
+        this.register();
     }
 
     /**
-     * Update method called every frame.
-     * Should be overridden in child classes.
-     * @param {number} delta - Time elapsed since last frame in milliseconds
-     * @memberof BaseComponent
+     * Registers the component in the GameObject's component array
      */
-    update(delta) {}
+    register() {
+        if (!this.gameObject.components) {
+            this.gameObject.components = [];
+        }
+        this.gameObject.components.push(this);
+    }
+
+    /**
+     * Called every frame.
+     * Should be overridden in child components.
+     * @param {number} time - Current scene time
+     * @param {number} delta - Time elapsed since the last frame in milliseconds
+     */
+    update(time, delta) {}
+
+    /**
+     * Get a component by class type.
+     * @param {Function} ComponentClass - The constructor of the component to search for
+     * @returns {BaseComponent|null} The found component, or null if not found
+     */
+    getComponent(ComponentClass) {
+        return this.gameObject.components?.find(c => c instanceof ComponentClass) || null;
+    }
+
+    /**
+     * Deactivates the component.
+     * After calling this, update() will no longer be executed.
+     */
+    destroy() {
+        this.enabled = false;
+    }
 }

@@ -1,36 +1,44 @@
-import BaseController from "./BaseController.js";
-
+import { BaseControllerComponent } from "./BaseController.js";
+import createPlayerKeys from "../../configs/controls-config.js";
 
 /**
- * Controller for player input, reads keyboard input and updates movement.
- * @class PlayerController
- * @extends BaseController
- * @property {Phaser.Types.Input.Keyboard.CursorKeys} keys - Keyboard input keys
+ * Player input controller component.
+ * Converts keyboard input into a movement vector for MovementComponent.
+ * @extends BaseControllerComponent
  */
-export default class PlayerController extends BaseController {
+export class PlayerControllerComponent extends BaseControllerComponent {
     /**
-     * Creates a new PlayerController.
-     * @param {Phaser.GameObjects.GameObject} entity - The entity this controller is attached to
-     * @param {import("./Movement.js").default} movement - Reference to the Movement component
-     * @param {Phaser.Types.Input.Keyboard.CursorKeys} keys - Keyboard keys for movement input
+     * @param {Phaser.GameObjects.GameObject} gameObject - The GameObject this controller is attached to
      */
-    constructor(entity, movement, keys) {
-        super(entity, movement);
+    constructor(gameObject) {
+        super(gameObject);
+
         /**
-         * Keyboard input keys
+         * Keyboard input keys for movement
          * @type {Phaser.Types.Input.Keyboard.CursorKeys}
          */
-        this.keys = keys;
+        this.keys = createPlayerKeys(gameObject.scene);
     }
 
     /**
-     * Called every frame to update movement based on input.
-     * @param {number} delta - Time elapsed since last frame in milliseconds
+     * Called every frame.
+     * Updates the movement direction based on keyboard input.
+     * @param {number} time
+     * @param {number} delta
      */
-    update(delta) {
+    update(time, delta) {
+        if (!this.enabled || !this.movementComponent) return;
+
         const x = (this.keys.right.isDown ? 1 : 0) - (this.keys.left.isDown ? 1 : 0);
         const y = (this.keys.down.isDown ? 1 : 0) - (this.keys.up.isDown ? 1 : 0);
 
-        this.movement.setDirection(x, y);
+        this.movementComponent.setDirection(x, y);
+    }
+
+    /**
+     * Cleans up the component.
+     */
+    destroy() {
+        super.destroy();
     }
 }
