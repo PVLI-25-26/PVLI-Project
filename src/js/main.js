@@ -2,6 +2,7 @@ import Phaser, { Game } from "phaser";
 import serviceLocator, { SERVICE_KEYS } from "./core/service-locator.js";
 import Gameplay from "../scenes/Gameplay";
 import { LOG_LEVELS, Logger } from "./core/logger";
+import loggerConfig from "../configs/logger-config.json"
 
 // ================== GAME ENTRY POINT ==================
 
@@ -31,13 +32,10 @@ const config = {
 // Make game instance
 const game = new Phaser.Game(config);
 
+// Create logger
+let logger = new Logger(loggerConfig);
+
 // Make random placeholders
-
-let logger = new Logger({
-    modules: ['LOADER', 'COMPONENTS'], 
-    level: LOG_LEVELS.DEBUG
-});
-
 let progresionManager = {
     init: function(){logger.log('module1', LOG_LEVELS.INFO, '[Progresion Manager]: Initialized')}
 }

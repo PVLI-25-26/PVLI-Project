@@ -1,3 +1,8 @@
+/**
+ * Available levels for logging
+ * 
+ * DEBUG < INFO < WARNING < ERROR
+ */
 export const LOG_LEVELS = Object.freeze({
     DEBUG: 0,
     INFO: 1,
@@ -17,12 +22,16 @@ function getCurrentTime() {
     return `${h}:${m}:${s}`;
 }
 
-// TODO - make logger read from an actual config file in the developer computer
+/**
+ * Logs messages to the console with a custom behaviour.
+ * Only messages with a higher log level and in the enabled modules are logged to console.
+ */
 export class Logger{
     #enabledModules;
     #currentLogLevel;
 
     /**
+     * Creates the logger with the configuration given
      * @param {Object} config Configuration object with predefined values for the logger.
      * @param {Array.<string>} config.modules Enabled modules of the logger
      * @param {LOG_LEVELS} config.level Log level of the logger
@@ -32,7 +41,7 @@ export class Logger{
         this.#currentLogLevel = config.level;
     }
     /**
-     * 
+     * Logs a message to the console
      * @param {string} message Message to log.
      * @param {string} moduleKey Module to which the log belongs to.
      * @param {LOG_LEVELS} logLevel Level of the message being logged
@@ -48,17 +57,25 @@ export class Logger{
         console.log(text);
     }
 
+    /**
+     * Enables a module from logging
+     * @param {String} moduleKey The key being enabled
+     */
     enableModule(moduleKey){
         this.#enabledModules.add(moduleKey);
     }
 
+    /**
+     * Disables a module from logging
+     * @param {String} moduleKey The key being disabled
+     */
     disableModule(moduleKey){
         this.#enabledModules.delete(moduleKey);
     }
 
     /**
-     * 
-     * @param {LOG_LEVELS} logLevel 
+     * Changes the current log level
+     * @param {LOG_LEVELS} logLevel New log level to set
      */
     setLogLevel(logLevel){
         this.#currentLogLevel = logLevel;

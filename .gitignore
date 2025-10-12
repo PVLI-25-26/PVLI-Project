@@ -25,3 +25,7 @@ dist-ssr
 
 # Ignore volatile UI-related state
 GDD/.obsidian/*
+
+# Ignore logger configuration
+# Ignored in the first commit so everyone has it
+# logger-config.json 
