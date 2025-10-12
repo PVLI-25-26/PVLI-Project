@@ -15,8 +15,8 @@ dg-publish: true
 #### Small enemies room sketch:
 ![[SmallEnemiesDraw.PNG]]
 
-## In-game navegation
+%%## In-game navegation
 `<In-game navegation description>`
 
 ## In-game actions
-`<Available in-game actions description>`
+`<Available in-game actions description>`%%

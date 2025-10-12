@@ -3,4 +3,4 @@ dg-publish: true
 ---
 `<Progression order in the game>`
 # Game Loop
-![[GameLoop.png]]
+![[Game Design Document/Images/GameLoop.png]]

@@ -14,4 +14,4 @@ Room entities are persistent. When a room is unloaded, the state of all its enti
 - Boss
 - Consumable
 ## Related Systems
-- [[Dungeon map system]]
+- [[Dungeon exploration system]]

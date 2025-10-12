@@ -31,17 +31,34 @@ Dialogue with NPCs reveals the story and provides guidance, while responsive mov
 
 
 ## Game Loop 
-`<Game loop description>`
+The game has a simple yet effective game loop:
+1. Enter the dungeon with an equipment loadout.
+2. Loot, explore and fight to obtain items, and exit alive from the dungeon to obtain gold.
+3. Use the gold to buy better equipment and go to step 1.
 
+The objective of the player is to beat the dungeon's boss and win the game. Depending on the player's skill and knowledge, this could take many runs to achieve.
+
+![[GameLoop.png]]
+
+
+%% 
+TODO - Add game features
 ## Features
 
-### Feature 1
-`...`
+### Dungeon exploration
+Enter the dungeon and explore the many rooms and paths within it.
+Room may have different treasure, monsters or NPCs for you to find.
 
-### Feature 2
-`...`
-
+### Customize your loadout
+Buy different types of weapons and arrows to customize how you play on every run. Try many different possible loadouts to fight in the dungeon, changing the arrow types and trajectories. 
+%%
 
 ## References
 
-`<List of references>`
+[Hades](https://store.steampowered.com/app/1145360/Hades/) by Supergiant Games
+
+[Noita](https://store.steampowered.com/app/881100/Noita/) by Nolla Games
+
+[Dark and Darker](https://www.darkanddarker.com/) by Iron Mace
+
+[Titan Souls](https://store.steampowered.com/app/297130/Titan_Souls/?l=spanish) by Acid Nerve

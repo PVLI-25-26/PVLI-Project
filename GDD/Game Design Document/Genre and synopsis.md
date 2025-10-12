@@ -1,12 +1,17 @@
 ---
 dg-publish: true
 ---
-`...` 
+## Genre
 
-## Terminology
+
+## Synopsis
+
+
+
+%%## Terminology
 
 ### Word 1
 `<meaning>`
 
 ### Word 2
-`<meaning>`
+`<meaning>`%%
