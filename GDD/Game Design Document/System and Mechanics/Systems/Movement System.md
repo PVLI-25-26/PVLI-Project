@@ -9,6 +9,8 @@ When the player traverses one of the room´s paths, they will go to another room
 
 The player will collide with static objects in the room (trees, structures, stones, ...), but will be able to move through enemies and other dynamic entities such as objects or NPCs.
 
+![[SmallEnemiesDraw.PNG]]
+
 Player movement is not accelerated, it is a constant velocity. Due to the keyboard limitations (the most commonly used input in web), the direction in which the player moves is discrete, and only within the values of: UP, UP-LEFT, LEFT, DOWN-LEFT, DOWN, DOWN-RIGHT, RIGHT, UP-RIGHT. (Look at [[Controls]])
 
 Player movement may be altered through the different player [[Use Ability|abilities]].

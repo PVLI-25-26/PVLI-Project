@@ -21,6 +21,6 @@ The risk-reward loop is central: overextending with rare arrows may lead to runn
 - [[Health system]]
 ## Included mechanics
 - [[Shooting]]
-- [[Setting Arrow Path Modifier]]
+- [[Setting Arrow path modifier]]
 - [[Managing Quiver]]
 - [[Use Ability]]

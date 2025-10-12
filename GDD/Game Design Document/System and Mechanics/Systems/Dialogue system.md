@@ -9,6 +9,7 @@ When the player interacts with an NPC, a bubble will appear over the character. 
 Interacting with an object (opening a door, a crate, or entering the dungeon) works the same way, but instead of a portrait, there will be a drawing, and instead of dialogue, there will be a narrative description.
 ![[DialogueSystemExample.png]]
 
+To interact with an entity the player will approach said entity and press the interact button [[Controls]].
 ## Dynamics
 Having a common yet versatile system for all non-combat interactions in the game is a great way to simplify the experience for the player, reducing the amount of systems one has to learn to play the game.
 The player will have a better view of the appearance of the NPC who is speaking. 

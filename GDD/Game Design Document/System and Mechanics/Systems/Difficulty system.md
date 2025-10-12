@@ -14,5 +14,4 @@ This gives the player an interesting risk and reward choices to make, as dying w
 - [[Dungeon exploration system]]
 ## Included mechanics
 - [[Enemies difficulty]]
-- [[Items value specs]]
-- [[Difficulty counter mechanic]]
+- [[Item progression]]
