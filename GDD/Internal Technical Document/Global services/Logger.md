@@ -5,6 +5,14 @@ The use of the logger is important to **maintain clean and organized console mes
 The `modules` property is an array of `Strings`, each `String` being the active modules of the logger.
 The `level` property is a `Number` between `[0 - 3]` which refers to the active log level. Look at [[#Log levels]].
 
+Example of `src/configs/logger-config.json`:
+``` JSON
+{
+    "modules": ["NOTHING"],
+    "level": 0
+}
+```
+
 ## How to use
 The logger has only one method:
 ``` javascript
