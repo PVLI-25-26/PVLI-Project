@@ -1,7 +1,7 @@
 ---
 dg-publish: True 
 ---
-**Difficulty system** –  This system shows how the game increases in difficulty throughout the playthrough.
+**Difficulty System** –  This system shows how the game increases in difficulty throughout the playthrough.
 ## Description
 When the player enters an unexplored room, a number is added to a counter. The game becomes progressively more difficult as the player explores more rooms. Also, the items appearing in the rooms will become more valuable.
 ## Dynamics

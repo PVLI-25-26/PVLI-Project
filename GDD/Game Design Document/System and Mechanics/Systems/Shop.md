@@ -1,7 +1,7 @@
 ---
 dg-publish: True 
 ---
-**Shop** – a system that manages the game’s economy and how the player can earn and spend coins.
+**Shop System** – a system that manages the game’s economy and how the player can earn and spend coins.
 ## Description
  Before a run, the player can buy the equipment he wishes to use with coins. The stronger the equipment, the more coins needed to buy it.
  The player can buy only 2 types of items for the next run:
