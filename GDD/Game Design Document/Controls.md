@@ -4,11 +4,11 @@ dg-publish: true
 
 | Action           | Gamepad (XBox Layout) | Keyboard & Mouse |
 | ---------------- | --------------------- | ---------------- |
-| **Aiming**       | R-stick               | Mouse            |
-| **Movement**     | L-Joystick            | Arrows / WASD    |
-| **Shoot**        | RT                    | LMB              |
-| **Ability**      | RB                    | LShift           |
-| **Interact**     | A                     | E                |
-| **Pause**        | Menu button           | Escape           |
-| **Change arrow** | Y                     | R                |
+| **Aiming**       | Right stick           | Mouse            |
+| **Movement**     | Left stick            | Arrows / WASD    |
+| **Shoot**        | Right Trigger         | LMB              |
+| **Ability**      | Right Shoulder        | LShift           |
+| **Interact**     | Button South          | E                |
+| **Pause**        | Start                 | Escape           |
+| **Change arrow** | Button North          | R                |
 

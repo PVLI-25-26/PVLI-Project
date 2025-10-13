@@ -2,7 +2,6 @@
 dg-publish: True 
 ---
 **Difficulty system** –  This system shows how the game increases in difficulty throughout the playthrough.
-
 ## Description
 When the player enters an unexplored room, a number is added to a counter. The game becomes progressively more difficult as the player explores more rooms. Also, the items appearing in the rooms will become more valuable.
 ## Dynamics
@@ -11,7 +10,8 @@ Players must decide whether if it is worth to explore more rooms and acquire mor
 This gives the player an interesting risk and reward choices to make, as dying would mean loosing all items found during the run, but exploring and fighting would mean getting better items.
 
 ## Related systems
-- [[Dungeon exploration system]]
+- [[Dungeon Exploration]]
+- [[Enemy]]
+- [[Consumables]]
 ## Included mechanics
-- [[Enemies difficulty]]
-- [[Item progression]]
+- [[Enter and exit the dungeon]]

@@ -10,9 +10,7 @@ Abilities modify the player’s movement in a unique way, for example by grantin
 This mechanic encourages strategic planning before entering the magical realm and adds depth to traversal during exploration. Abilities are limited to one active choice per expedition, making the selection meaningful and impactful.
 
 Every ability has a cooldown and a duration of its effect, meaning that the player cannot spam the use of abilities. Also, abilities might have a different duration until their effect disappears, for some abilities this might be instant, but for others it could mean that the effect last a couple of seconds.
-
 ## Available abilities
-#TODO
-
+#TODO `List of abilities`
 ## Related Systems
-- [[Movement System]]
+- [[Movement]]

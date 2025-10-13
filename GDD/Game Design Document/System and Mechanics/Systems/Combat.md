@@ -2,7 +2,6 @@
 dg-publish: true
 ---
 **Combat System** – a core system that encompasses all mechanics related to dealing damage to enemies and avoiding damage from them.
-
 ## Description
 The Combat System governs how the player interacts with hostile entities in the magical realm. It includes aiming and shooting projectiles, managing consumable arrows, modifying arrow trajectories, and strategically selecting projectile types. Combat is entirely ranged, with no melee interactions, and emphasizes positioning, timing, and resource management.
 
@@ -11,16 +10,15 @@ Players must consider their movement, the type of arrows equipped, and active ar
 Combat encounters are designed to be dynamic, with enemy placement, mini-boss behaviors, and environmental traps requiring players to make real-time decisions while balancing offensive output and resource conservation. Strategic exploration and observation of points of interest often provide opportunities to prepare for encounters, such as finding consumables, positioning, and scouting enemy types before engagement.
 
 ![[CombatExample.png]]
-
 ## Dynamics
-From the perspective of the MDA framework, the Combat System shapes the player’s experience by creating meaningful choices and tension. Players feel a sense of **challenge and mastery** as they balance resource management ([[Managing Quiver#Description|arrow quantity]], [[Managing Quiver#Arrow Effects|special arrows]]), spatial awareness (positioning and dodging), and tactical adaptation (choosing the right [[Setting Arrow path modifier#Available Modifiers|path modifiers]] and [[Managing Quiver#Arrow Effects|arrow types]]). The system encourages experimentation with different strategies, such as using [[Setting Arrow path modifier#Ricochet|Ricochet]] arrows to hit hidden targets, or [[Setting Arrow path modifier#Wave Shot|Wave Shot]] to cover multiple enemies simultaneously.
+From the perspective of the MDA framework, the Combat System shapes the player’s experience by creating meaningful choices and tension. Players feel a sense of **challenge and mastery** as they balance resource management ([[Manage Quiver#Description|arrow quantity]], [[Manage Quiver#Arrow Effects|special arrows]]), spatial awareness (positioning and dodging), and tactical adaptation (choosing the right [[Set Arrow path modifier#Available Modifiers|path modifiers]] and [[Manage Quiver#Arrow Effects|arrow types]]). The system encourages experimentation with different strategies, such as using [[Set Arrow path modifier#Ricochet|Ricochet]] arrows to hit hidden targets, or [[Set Arrow path modifier#Wave Shot|Wave Shot]] to cover multiple enemies simultaneously.
 
 The risk-reward loop is central: overextending with rare arrows may lead to running out of resources mid-expedition, forcing retreat to the hub. Conversely, careful planning and effective use of abilities and arrow types reward skillful play and provide a satisfying sense of progression and empowerment.
 
 ## Related systems
-- [[Health system]]
+- [[Health]]
 ## Included mechanics
-- [[Shooting]]
-- [[Setting Arrow path modifier]]
-- [[Managing Quiver]]
+- [[Shoot]]
+- [[Set Arrow path modifier]]
+- [[Manage Quiver]]
 - [[Use Ability]]
