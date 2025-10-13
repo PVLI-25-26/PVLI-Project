@@ -1,7 +1,7 @@
 ---
 dg-publish: True 
 ---
-**Enter and exit the dungeon** – This mechanic  allows the player to enter and exit the dungeon avoiding soft-blocks.
+**Enter and Exit the Dungeon** – a mechanic that allows the player to enter and leave the dungeon freely, avoiding any soft-blocks.
 ## Description
 Players will enter and exit the dungeon through specific entrance and exit rooms. These rooms will only be used for entering and exiting the dungeon and will not contain any [[Genre and synopsis#Terminology#Room entity|room entities]]
 
