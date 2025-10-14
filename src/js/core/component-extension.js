@@ -19,7 +19,7 @@
  *   updateComponents: function(number, number): void
  * }} The same GameObject with component system added.
  */
-export function withComponents(gameObject) {
+export function extendWithComponents(gameObject) {
     /**
      * Array of attached components.
      * @type {Array<BaseComponent>}

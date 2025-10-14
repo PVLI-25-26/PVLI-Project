@@ -36,14 +36,6 @@ export class BaseComponent {
     }
 
     /**
-     * Called every frame.
-     * Should be overridden in child components.
-     * @param {number} time - Current scene time
-     * @param {number} delta - Time elapsed since the last frame in milliseconds
-     */
-    update(time, delta) {}
-
-    /**
      * Get a component by class type.
      * @param {Function} ComponentClass - The constructor of the component to search for
      * @returns {BaseComponent|null} The found component, or null if not found

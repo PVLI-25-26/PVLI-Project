@@ -1,0 +1,43 @@
+[
+    {
+        "x": 150,
+        "y": 300,
+        "texture": "barrel",
+        "frame": 0,
+        "collidable": true,
+        "width": 30,
+        "height": 10,
+        "offsetX": 0,
+        "offsetY": 25
+    },
+    {
+        "x": 300,
+        "y": 300,
+        "texture": "cube",
+        "collidable": true,
+        "width": 30,
+        "height": 20,
+        "offsetX": 2,
+        "offsetY": 15
+    },
+    {
+        "x": 450,
+        "y": 300,
+        "texture": "column",
+        "collidable": true,
+        "width": 30,
+        "height": 25,
+        "offsetX": 1,
+        "offsetY": 50
+    },
+    {
+        "x": 600,
+        "y": 300,
+        "texture": "pointer",
+        "collidable": true,
+        "width": 5,
+        "height": 10,
+        "offsetX": 10,
+        "offsetY": 20
+    }
+]

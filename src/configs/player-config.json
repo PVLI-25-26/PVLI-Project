@@ -1,7 +1,11 @@
 {
-  "texture": "player",
-  "frame": 0,
-  "x": 100,
-  "y": 100,
-  "speed": 200
+    "x": 100,
+    "y": 200,
+    "texture": "player",
+    "frame": 0,
+    "speed": 250,
+    "width": 32,
+    "height": 16,
+    "offsetX": 0,
+    "offsetY": 32
 }

@@ -41,14 +41,6 @@ export class BaseControllerComponent extends BaseComponent {
     }
 
     /**
-     * Returns the linked MovementComponent.
-     * @returns {MovementComponent|null}
-     */
-    getMovement() {
-        return this.movementComponent;
-    }
-
-    /**
      * Cleans up the component, disabling it.
      */
     destroy() {
