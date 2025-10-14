@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>core/service-locator.js - Documentation</title>
+    <title>entities/Obstacle.js - Documentation</title>
     
     
     <script src="scripts/prettify/prettify.js"></script>
@@ -35,7 +35,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">core/service-locator.js</h1>
+    <h1 class="page-title">entities/Obstacle.js</h1>
     
 
     
@@ -45,57 +45,80 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>export const SERVICE_KEYS = Object.freeze({
-    PROGRESION_MANAGER: 'ProgressionManager',
-    SOUND_MANAGER: 'SoundManager',
-    SAVELOADSYSTEM: 'SaveLoadSystem',
-    SETTINGS: 'Settings',
-    LOGGER: 'Logger',
-});
+            <pre class="prettyprint source linenums"><code>import { extendWithComponents } from "../core/component-extension.js";
 
-class ServiceLocator {
-    // cachedServices is private and can't be directly accessed
-    #cachedServices;
+/**
+ * Static obstacle GameObject.
+ * Represents a collidable object (wall, rock, crate, etc.)
+ *
+ * @class
+ * @category Entities
+ * @extends Phaser.GameObjects.Sprite
+ * @param {Phaser.Scene} scene - The scene this obstacle belongs to
+ * @param {Object} config - Configuration object for the obstacle
+ * @param {string} config.texture - Texture key
+ * @param {number} [config.frame] - Frame index (optional)
+ * @param {number} config.x - X position
+ * @param {number} config.y - Y position
+ * @param {boolean} [config.collidable=true] - Whether physics collisions are enabled
+ * @param {number} [config.width] - Width of the physics body (optional)
+ * @param {number} [config.height] - Height of the physics body (optional)
+ * @param {number} [config.offsetX] - X offset of the body from center (optional)
+ * @param {number} [config.offsetY] - Y offset of the body from center (optional)
+ */
+export class Obstacle extends Phaser.GameObjects.Sprite {
+    /**
+     * Configuration object passed to the obstacle.
+     * @type {Object}
+     */
+    config;
 
-    constructor (){
-        // Here we store the services used
-        this.#cachedServices = {};
+    constructor(scene, config) {
+        super(scene, config.x, config.y, config.texture, config.frame);
+        this.config = config;
+
+        // Extend with component system
+        extendWithComponents(this);
+        this.addComponents();
+
+        scene.add.existing(this);
+
+        // Add static physics body
+        scene.physics.add.existing(this, true);
+
+        if (config.width &amp;&amp; config.height) {
+            this.body.setSize(config.width, config.height);
+        }
+
+        if (config.offsetX || config.offsetY) {
+            this.body.setOffset(config.offsetX || 0, config.offsetY || 0);
+        }
+
+        if (this.body &amp;&amp; config.collidable === false) {
+            this.body.checkCollision.none = true;
+        }
     }
 
     /**
-     * @param {SERVICE_KEYS} serviceKey Key of the service to register
-     * @param {Object} service Service being registered
+     * Adds components to the obstacle.
+     * Override this method to attach specific components.
+     * @returns {void}
      */
-    setService(serviceKey, service){
-        // If the service existed it is replaced, if not a new property is made with the new serviceKey
-        this.#cachedServices[serviceKey] = service;
-    }
+    addComponents() {}
 
     /**
-     * @param {SERVICE_KEYS} serviceKey Key of the service to return
+     * Pre-update called every frame by Phaser.
+     * Updates depth based on Y position.
+     * @param {number} time - Current time in milliseconds
+     * @param {number} delta - Time elapsed since last frame in milliseconds
+     * @returns {void}
      */
-    getService(serviceKey){
-        // Returns the service with the key serviceKey. If not return undefined
-        return this.#cachedServices[serviceKey];
-    }
-
-    /**
-     * @param {SERVICE_KEYS} serviceKey Key of the service to remove
-     */
-    removeService(serviceKey){
-        delete this.#cachedServices[serviceKey];
-    }
-
-    /**
-     * Removes all services from the service locator
-     */
-    removeAllServices(){
-        this.#cachedServices = {};
+    preUpdate(time, delta) {
+        super.preUpdate(time, delta);
+        this.setDepth(this.y);
     }
 }
-
-// This is only executed once, therefore all who import it have the same instance
-export default new ServiceLocator();</code></pre>
+</code></pre>
         </article>
     </section>
 

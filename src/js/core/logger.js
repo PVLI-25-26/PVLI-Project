@@ -1,16 +1,4 @@
 /**
- * Available levels for logging
- * 
- * DEBUG < INFO < WARNING < ERROR
- */
-export const LOG_LEVELS = Object.freeze({
-    DEBUG: 0,
-    INFO: 1,
-    WARNING: 2,
-    ERROR: 3,
-})
-
-/**
  * 
  * @returns Returns current time formatted as hh:mm:ss
  */
@@ -27,6 +15,18 @@ function getCurrentTime() {
  * Only messages with a higher log level and in the enabled modules are logged to console.
  */
 export class Logger{
+    /**
+     * Available levels for logging
+     * 
+     * DEBUG < INFO < WARNING < ERROR
+     */
+    static LOG_LEVELS = Object.freeze({
+        DEBUG: 0,
+        INFO: 1,
+        WARNING: 2,
+        ERROR: 3,
+    })
+
     #enabledModules;
     #currentLogLevel;
 

@@ -1,23 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    
     <meta charset="utf-8">
-    <title>JSDoc: Source: UI/LoaderUI.js</title>
-
-    <script src="scripts/prettify/prettify.js"> </script>
-    <script src="scripts/prettify/lang-css.js"> </script>
+    <title>UI/LoaderUI.js - Documentation</title>
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
     <!--[if lt IE 9]>
       <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
-    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
-
 <body>
 
-<div id="main">
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
 
-    <h1 class="page-title">Source: UI/LoaderUI.js</h1>
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    
+    <h2><a href="index.html">Home</a></h2><h3>Entities</h3><ul><li><a href="Obstacle.html">Obstacle</a><ul class='methods'><li data-type='method'><a href="Obstacle.html#addComponents">addComponents</a></li><li data-type='method'><a href="Obstacle.html#preUpdate">preUpdate</a></li></ul></li><li><a href="Player.html">Player</a><ul class='methods'><li data-type='method'><a href="Player.html#addComponents">addComponents</a></li><li data-type='method'><a href="Player.html#preUpdate">preUpdate</a></li></ul></li></ul><h3>Components</h3><ul><li><a href="BaseControllerComponent.html">BaseControllerComponent</a><ul class='methods'><li data-type='method'><a href="BaseControllerComponent.html#destroy">destroy</a></li><li data-type='method'><a href="BaseControllerComponent.html#findMovementComponent">findMovementComponent</a></li><li data-type='method'><a href="BaseControllerComponent.html#getComponent">getComponent</a></li><li data-type='method'><a href="BaseControllerComponent.html#register">register</a></li></ul></li><li><a href="MovementComponent.html">MovementComponent</a><ul class='methods'><li data-type='method'><a href="MovementComponent.html#destroy">destroy</a></li><li data-type='method'><a href="MovementComponent.html#getComponent">getComponent</a></li><li data-type='method'><a href="MovementComponent.html#moveGameObject">moveGameObject</a></li><li data-type='method'><a href="MovementComponent.html#register">register</a></li><li data-type='method'><a href="MovementComponent.html#setDirection">setDirection</a></li><li data-type='method'><a href="MovementComponent.html#setSpeed">setSpeed</a></li><li data-type='method'><a href="MovementComponent.html#update">update</a></li><li data-type='method'><a href="MovementComponent.html#updateVelocity">updateVelocity</a></li></ul></li><li><a href="PlayerControllerComponent.html">PlayerControllerComponent</a><ul class='methods'><li data-type='method'><a href="PlayerControllerComponent.html#destroy">destroy</a></li><li data-type='method'><a href="PlayerControllerComponent.html#findMovementComponent">findMovementComponent</a></li><li data-type='method'><a href="PlayerControllerComponent.html#getComponent">getComponent</a></li><li data-type='method'><a href="PlayerControllerComponent.html#register">register</a></li><li data-type='method'><a href="PlayerControllerComponent.html#update">update</a></li></ul></li></ul><h3>Core</h3><ul><li><a href="BaseComponent.html">BaseComponent</a><ul class='methods'><li data-type='method'><a href="BaseComponent.html#destroy">destroy</a></li><li data-type='method'><a href="BaseComponent.html#getComponent">getComponent</a></li><li data-type='method'><a href="BaseComponent.html#register">register</a></li></ul></li></ul><h3>Classes</h3><ul><li></li><li></li><li><a href="Logger.html">Logger</a><ul class='methods'><li data-type='method'><a href="Logger.html#disableModule">disableModule</a></li><li data-type='method'><a href="Logger.html#enableModule">enableModule</a></li><li data-type='method'><a href="Logger.html#log">log</a></li><li data-type='method'><a href="Logger.html#setLogLevel">setLogLevel</a></li></ul></li><li></li><li></li><li></li><li></li></ul><h3>Global</h3><ul><li><a href="global.html#extendWithComponents">extendWithComponents</a></li><li><a href="global.html#getCurrentTime">getCurrentTime</a></li></ul>
+    
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">UI/LoaderUI.js</h1>
+    
 
     
 
@@ -27,36 +46,94 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>import Phaser from "phaser";
-import { LOG_LEVELS, Logger } from "../core/logger.js";
-import serviceLocator, { SERVICE_KEYS } from "../core/service-locator.js";
 
+/**
+ * Function called before loading assets in a scene. 
+ * It overlays a UI giving the user info about the information being loaded.
+ * @param {Phaser.Scene} scene The scene where the loader shows the loading information
+ */
+export default function showLoaderUI(scene) {
+    // Add progress bar to scene
+    var progressBar = scene.add.graphics();
+    var progressBox = scene.add.graphics();
 
-export class LoaderUI {
-    /**
-     * 
-     * @param {Phaser.Scene} scene The scene where the loader shows the loading information
-     * @param {Phaser.Loader} loader The loader used to load all the assets
-     */
-    constructor(scene){
-        this.scene = scene;
-        let text = scene.add.text(0,0,"Progress ");
-        scene.load.on("progress", function (progress) {
-            text.text = 'Progress [';
-            for(let i = 0; i &lt; progress*50; i++)
-                text.text += '#';
-            for(let i = 0; i &lt; (1-progress)*50; i++)
-                text.text += ' ';
-            text.text += ']';
+    // Set progress bar properties
+    progressBox.fillStyle(0x222222, 0.8);
+    progressBox.fillRect(240, 270, 320, 50);
+    progressBox.setAlpha(0);
+    progressBar.setAlpha(0);
 
-            serviceLocator.getService(SERVICE_KEYS.LOGGER).log("LOADER", LOG_LEVELS.DEBUG, text.text);
-        });
-        scene.load.once("complete", function () {
-            text.text = `Loading Complete`;
-            serviceLocator.getService(SERVICE_KEYS.LOGGER).log("LOADER", LOG_LEVELS.DEBUG, `Loading complete`)
-        });
+    // Add loading text to scene
+    var percentText = scene.make.text({
+        x: scene.game.canvas.width / 2,
+        y: scene.game.canvas.height / 2 - 5,
+        text: '0%',
+        style: {
+            font: '18px monospace',
+            fill: '#ffffff'
+        }
+    });
+    percentText.setOrigin(0.5, 0.5);
+    percentText.setAlpha(0);
+
+    // Add text showing which file is being loaded
+    var assetText = scene.make.text({
+    x: scene.game.canvas.width / 2,
+    y: scene.game.canvas.height / 2 + 50,
+    text: '',
+    style: {
+        font: '18px monospace',
+        fill: '#ffffff'
     }
+    });
+    assetText.setOrigin(0.5, 0.5);
+    assetText.setAlpha(0);
 
-    
+
+    // Update UI when progress is made
+    scene.load.on("progress", function (progress) {
+        // Update progress bar
+        progressBar.clear();
+        progressBar.fillStyle(0xffffff, 1);
+        progressBar.fillRect(250, 280, 300 * progress, 30);
+
+        // Update loading text
+        percentText.setText(parseInt(progress * 100) + '%');
+    });
+
+    // Update UI when a file is loaded
+    scene.load.on("fileprogress", function(file){
+        // Update which file is being loaded
+        assetText.setText('Loading asset: ' + file.key);
+    });
+
+    // Fade in UI elements when loading starts
+    scene.load.on("start", function(){
+        // Create fade-out animation for UI
+        var tween = scene.tweens.add({
+            targets: [assetText, progressBar, progressBox, percentText],
+            alpha: 1,
+            duration: 500,
+        });
+    });
+
+    // Fade out and destroy UI elements when loading ends
+    scene.load.once("complete", function () {
+        // Create fade-out animation for UI
+        var tween = scene.tweens.add({
+            targets: [assetText, progressBar, progressBox, percentText],
+            alpha: 0,
+            duration: 500,
+            onComplete: function (){
+                // Destroy loading UI when fade out is finished to free cache space
+                assetText.destroy();
+                percentText.destroy();
+                progressBar.destroy();
+                progressBox.destroy();
+                tween.remove();
+            },
+        });
+    });
 }</code></pre>
         </article>
     </section>
@@ -64,19 +141,21 @@ export class LoaderUI {
 
 
 
+    
+    
 </div>
-
-<nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="BaseComponent.html">BaseComponent</a></li><li><a href="BaseController.html">BaseController</a></li><li><a href="LoaderUI_LoaderUI.html">LoaderUI</a></li><li><a href="Logger_Logger.html">Logger</a></li><li><a href="Movement.html">Movement</a></li><li><a href="PlayerController.html">PlayerController</a></li><li><a href="module.exports.html">exports</a></li><li><a href="module.exports_module.exports.html">exports</a></li></ul><h3>Global</h3><ul><li><a href="global.html#getCurrentTime">getCurrentTime</a></li><li><a href="global.html#update">update</a></li></ul>
-</nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.5</a> on Thu Oct 09 2025 14:57:44 GMT+0200 (Central European Summer Time)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.5</a> on Tue Oct 14 2025 14:04:39 GMT+0200 (Центральная Европа, летнее время) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
 </footer>
 
-<script> prettyPrint(); </script>
-<script src="scripts/linenumber.js"> </script>
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+
+
 </body>
 </html>

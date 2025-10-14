@@ -1,0 +1,26 @@
+{
+  "source": {
+    "include": ["src/js"],   
+    "includePattern": ".+\\.js$",  
+    "excludePattern": "(node_modules/|docs)"
+  },
+  "opts": {
+    "destination": "./docs",
+    "recurse": true,
+    "template": "node_modules/docdash-extended"
+  },
+  "templates": {
+    "docdash": {
+      "static": true,
+      "sort": true,
+      "search": true,
+      "collapse": true,
+      "wrap": false
+    }
+  },
+  "categoriesFile": "./categories.json",
+
+  "plugins": [
+    "node_modules/docdash-extended/categories"
+  ]
+}

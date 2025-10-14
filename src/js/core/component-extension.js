@@ -1,3 +1,5 @@
+import { BaseComponent } from './base-component.js';
+
 /**
  * Adds a component system to any Phaser GameObject, allowing to attach multiple components,
  * automatically update them each frame, and clean them up on destroy.
@@ -12,17 +14,12 @@
  * components when the GameObject is destroyed.
  * 
  * @param {Phaser.GameObjects.GameObject} gameObject - The GameObject to extend with component functionality.
- * @returns {Phaser.GameObjects.GameObject & {
- *   components: Array<BaseComponent>,
- *   addComponent: function(BaseComponent): BaseComponent,
- *   getComponent: function(Function): BaseComponent|null,
- *   updateComponents: function(number, number): void
- * }} The same GameObject with component system added.
+ * @returns {Phaser.GameObjects.GameObject} The same GameObject with component system added.
  */
 export function extendWithComponents(gameObject) {
     /**
-     * Array of attached components.
-     * @type {Array<BaseComponent>}
+     * Array of attached components. 
+     * @type {BaseComponent[]}
      */
     gameObject.components = [];
 

@@ -1,23 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    
     <meta charset="utf-8">
-    <title>JSDoc: Source: components/Movement.js</title>
-
-    <script src="scripts/prettify/prettify.js"> </script>
-    <script src="scripts/prettify/lang-css.js"> </script>
+    <title>components/Movement.js - Documentation</title>
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
     <!--[if lt IE 9]>
       <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
-    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
-
 <body>
 
-<div id="main">
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
 
-    <h1 class="page-title">Source: components/Movement.js</h1>
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    
+    <h2><a href="index.html">Home</a></h2><h3>Entities</h3><ul><li><a href="Obstacle.html">Obstacle</a><ul class='methods'><li data-type='method'><a href="Obstacle.html#addComponents">addComponents</a></li><li data-type='method'><a href="Obstacle.html#preUpdate">preUpdate</a></li></ul></li><li><a href="Player.html">Player</a><ul class='methods'><li data-type='method'><a href="Player.html#addComponents">addComponents</a></li><li data-type='method'><a href="Player.html#preUpdate">preUpdate</a></li></ul></li></ul><h3>Components</h3><ul><li><a href="BaseControllerComponent.html">BaseControllerComponent</a><ul class='methods'><li data-type='method'><a href="BaseControllerComponent.html#destroy">destroy</a></li><li data-type='method'><a href="BaseControllerComponent.html#findMovementComponent">findMovementComponent</a></li><li data-type='method'><a href="BaseControllerComponent.html#getComponent">getComponent</a></li><li data-type='method'><a href="BaseControllerComponent.html#register">register</a></li></ul></li><li><a href="MovementComponent.html">MovementComponent</a><ul class='methods'><li data-type='method'><a href="MovementComponent.html#destroy">destroy</a></li><li data-type='method'><a href="MovementComponent.html#getComponent">getComponent</a></li><li data-type='method'><a href="MovementComponent.html#moveGameObject">moveGameObject</a></li><li data-type='method'><a href="MovementComponent.html#register">register</a></li><li data-type='method'><a href="MovementComponent.html#setDirection">setDirection</a></li><li data-type='method'><a href="MovementComponent.html#setSpeed">setSpeed</a></li><li data-type='method'><a href="MovementComponent.html#update">update</a></li><li data-type='method'><a href="MovementComponent.html#updateVelocity">updateVelocity</a></li></ul></li><li><a href="PlayerControllerComponent.html">PlayerControllerComponent</a><ul class='methods'><li data-type='method'><a href="PlayerControllerComponent.html#destroy">destroy</a></li><li data-type='method'><a href="PlayerControllerComponent.html#findMovementComponent">findMovementComponent</a></li><li data-type='method'><a href="PlayerControllerComponent.html#getComponent">getComponent</a></li><li data-type='method'><a href="PlayerControllerComponent.html#register">register</a></li><li data-type='method'><a href="PlayerControllerComponent.html#update">update</a></li></ul></li></ul><h3>Core</h3><ul><li><a href="BaseComponent.html">BaseComponent</a><ul class='methods'><li data-type='method'><a href="BaseComponent.html#destroy">destroy</a></li><li data-type='method'><a href="BaseComponent.html#getComponent">getComponent</a></li><li data-type='method'><a href="BaseComponent.html#register">register</a></li></ul></li></ul><h3>Classes</h3><ul><li></li><li></li><li><a href="Logger.html">Logger</a><ul class='methods'><li data-type='method'><a href="Logger.html#disableModule">disableModule</a></li><li data-type='method'><a href="Logger.html#enableModule">enableModule</a></li><li data-type='method'><a href="Logger.html#log">log</a></li><li data-type='method'><a href="Logger.html#setLogLevel">setLogLevel</a></li></ul></li><li></li><li></li><li></li><li></li></ul><h3>Global</h3><ul><li><a href="global.html#extendWithComponents">extendWithComponents</a></li><li><a href="global.html#getCurrentTime">getCurrentTime</a></li></ul>
+    
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">components/Movement.js</h1>
+    
 
     
 
@@ -26,44 +45,51 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import BaseComponent from "../core/base-component.js";
-
+            <pre class="prettyprint source linenums"><code>import { BaseComponent } from "../core/base-component.js";
 
 /**
- * Movement component responsible for setting the velocity of an entity
- * based on direction provided by a controller component.
- * @class Movement
+ * Component that handles top-down movement for a GameObject.
+ * Can be used by player or NPC controllers.
+ *
+ * @class
+ * @category Components
  * @extends BaseComponent
- * @property {number} speed - Movement speed in pixels per second
+ * @param {Phaser.GameObjects.GameObject} gameObject - The GameObject this component is attached to.
+ * @param {number} [speed=200] - Movement speed in pixels per second.
  */
-export default class Movement extends BaseComponent {
+export class MovementComponent extends BaseComponent {
     /**
-     * @param {Phaser.Physics.Arcade.Sprite} entity - The physics-enabled Phaser sprite this component is attached to
-     * @param {number} [speed=200] - Movement speed in pixels per second
+     * Movement speed in pixels per second.
+     * @type {number}
      */
-    constructor(entity, speed = 200) {
-        super(entity);
+    speed;
 
-        /**
-         * Movement speed in pixels per second
-         * @type {number}
-         */
+    /**
+     * Current velocity vector.
+     * @type {{x: number, y: number}}
+     */
+    velocity;
+
+    /**
+     * Desired movement direction, normalized between -1 and 1.
+     * @type {{x: number, y: number}}
+     */
+    direction;
+
+    constructor(gameObject, speed = 200) {
+        super(gameObject);
+
         this.speed = speed;
-
-        /**
-         * Current movement direction set by a controller
-         * @type {{x: number, y: number}}
-         */
+        this.velocity = { x: 0, y: 0 };
         this.direction = { x: 0, y: 0 };
     }
 
     /**
-     * Sets the desired movement direction.
-     * Values should be -1, 0, or 1 depending on input or scripted logic.
-     *
-     * @param {number} x - Horizontal direction (-1, 0, or 1)
-     * @param {number} y - Vertical direction (-1, 0, or 1)
-     * @memberof Movement
+     * Sets the movement direction.
+     * Values should be between -1 and 1.
+     * @param {number} x - Horizontal direction (-1 left, 1 right)
+     * @param {number} y - Vertical direction (-1 up, 1 down)
+     * @returns {void}
      */
     setDirection(x, y) {
         this.direction.x = x;
@@ -71,16 +97,52 @@ export default class Movement extends BaseComponent {
     }
 
     /**
-     * Called every frame. Normalizes the direction vector to prevent
-     * faster diagonal movement, then sets the entity's velocity accordingly.
-     * @param {number} delta - Time elapsed since last frame in milliseconds
+     * Updates the velocity based on the current direction,
+     * normalizing for diagonal movement to prevent faster diagonal speed.
+     * @returns {void}
      */
-    update(delta) {
-        const magnitude = Math.hypot(this.direction.x, this.direction.y) || 1;
-        const vx = (this.direction.x / magnitude) * this.speed;
-        const vy = (this.direction.y / magnitude) * this.speed;
+    updateVelocity() {
+        const { x, y } = this.direction;
+        const magnitude = Math.hypot(x, y);
 
-        this.entity.setVelocity(vx, vy);
+        if (magnitude > 0) {
+            this.velocity.x = (x / magnitude) * this.speed;
+            this.velocity.y = (y / magnitude) * this.speed;
+        } else {
+            this.velocity.x = 0;
+            this.velocity.y = 0;
+        }
+    }
+
+    /**
+     * Applies the current velocity to the GameObject.
+     * Assumes the GameObject has an Arcade Physics body.
+     * @returns {void}
+     */
+    moveGameObject() {
+        if (this.gameObject.body) {
+            this.gameObject.body.setVelocity(this.velocity.x, this.velocity.y);
+        }
+    }
+
+    /**
+     * Called every frame to update the component.
+     * @param {number} time - The current time in milliseconds.
+     * @param {number} delta - Time elapsed since the last frame in milliseconds.
+     * @returns {void}
+     */
+    update(time, delta) {
+        this.updateVelocity();
+        this.moveGameObject();
+    }
+
+    /**
+     * Sets the movement speed.
+     * @param {number} speed - New speed in pixels per second.
+     * @returns {void}
+     */
+    setSpeed(speed) {
+        this.speed = speed;
     }
 }
 </code></pre>
@@ -90,19 +152,21 @@ export default class Movement extends BaseComponent {
 
 
 
+    
+    
 </div>
-
-<nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="BaseComponent.html">BaseComponent</a></li><li><a href="BaseController.html">BaseController</a></li><li><a href="LoaderUI_LoaderUI.html">LoaderUI</a></li><li><a href="Logger_Logger.html">Logger</a></li><li><a href="Movement.html">Movement</a></li><li><a href="PlayerController.html">PlayerController</a></li><li><a href="module.exports.html">exports</a></li><li><a href="module.exports_module.exports.html">exports</a></li></ul><h3>Global</h3><ul><li><a href="global.html#getCurrentTime">getCurrentTime</a></li><li><a href="global.html#update">update</a></li></ul>
-</nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.5</a> on Thu Oct 09 2025 14:57:44 GMT+0200 (Central European Summer Time)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.5</a> on Tue Oct 14 2025 14:04:39 GMT+0200 (Центральная Европа, летнее время) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
 </footer>
 
-<script> prettyPrint(); </script>
-<script src="scripts/linenumber.js"> </script>
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+
+
 </body>
 </html>

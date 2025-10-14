@@ -1,0 +1,11 @@
+{
+    "Entities": {
+        "displayName": "Entities"
+    },
+    "Components": {
+        "displayName": "Components"
+    },
+    "Core": {
+        "displayName": "Core"
+    }
+}

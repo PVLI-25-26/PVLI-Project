@@ -1,38 +1,43 @@
 /**
  * Base class for GameObject components.
  * Components can add behavior and state to a GameObject using composition.
- * @class BaseComponent
+ *
+ * @class
+ * @category Core
+ * @param {Phaser.GameObjects.GameObject} gameObject - The GameObject this component is attached to
  */
 export class BaseComponent {
     /**
-     * Creates a component and registers it on the GameObject.
-     * @param {Phaser.GameObjects.GameObject} gameObject - The GameObject this component is attached to
+     * The GameObject this component is attached to
+     * @type {Phaser.GameObjects.GameObject}
      */
+    gameObject;
+
+    /**
+     * Whether the component is enabled
+     * @type {boolean}
+     */
+    enabled = true;
+
     constructor(gameObject) {
-        /**
-         * The GameObject this component is attached to
-         * @type {Phaser.GameObjects.GameObject}
-         */
         this.gameObject = gameObject;
 
-        /**
-         * Whether the component is enabled
-         * @type {boolean}
-         */
-        this.enabled = true;
-        
         // Register the component on the GameObject
         this.register();
     }
 
     /**
-     * Registers the component in the GameObject's component array
+     * Registers the component in the GameObject's component array.
+     * Initializes the array if it doesn't exist.
+     * @returns {BaseComponent} The registered component
      */
     register() {
         if (!this.gameObject.components) {
+            /** @type {BaseComponent[]} */
             this.gameObject.components = [];
         }
         this.gameObject.components.push(this);
+        return this;
     }
 
     /**
@@ -46,7 +51,8 @@ export class BaseComponent {
 
     /**
      * Deactivates the component.
-     * After calling this, update() will no longer be executed.
+     * After calling this, the component will be considered disabled and update() should not be executed.
+     * @returns {void}
      */
     destroy() {
         this.enabled = false;

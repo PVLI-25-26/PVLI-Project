@@ -1,8 +1,8 @@
 import Phaser, { Game } from "phaser";
 import serviceLocator, { SERVICE_KEYS } from "./core/service-locator.js";
 import Gameplay from "../scenes/Gameplay";
-import { LOG_LEVELS, Logger } from "./core/logger";
 import loggerConfig from "../configs/logger-config.json"
+import { Logger} from "./core/logger.js";
 
 // ================== GAME ENTRY POINT ==================
 

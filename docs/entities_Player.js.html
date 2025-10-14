@@ -1,23 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    
     <meta charset="utf-8">
-    <title>JSDoc: Source: entities/Player.js</title>
-
-    <script src="scripts/prettify/prettify.js"> </script>
-    <script src="scripts/prettify/lang-css.js"> </script>
+    <title>entities/Player.js - Documentation</title>
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
     <!--[if lt IE 9]>
       <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
-    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
-
 <body>
 
-<div id="main">
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
 
-    <h1 class="page-title">Source: entities/Player.js</h1>
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    
+    <h2><a href="index.html">Home</a></h2><h3>Entities</h3><ul><li><a href="Obstacle.html">Obstacle</a><ul class='methods'><li data-type='method'><a href="Obstacle.html#addComponents">addComponents</a></li><li data-type='method'><a href="Obstacle.html#preUpdate">preUpdate</a></li></ul></li><li><a href="Player.html">Player</a><ul class='methods'><li data-type='method'><a href="Player.html#addComponents">addComponents</a></li><li data-type='method'><a href="Player.html#preUpdate">preUpdate</a></li></ul></li></ul><h3>Components</h3><ul><li><a href="BaseControllerComponent.html">BaseControllerComponent</a><ul class='methods'><li data-type='method'><a href="BaseControllerComponent.html#destroy">destroy</a></li><li data-type='method'><a href="BaseControllerComponent.html#findMovementComponent">findMovementComponent</a></li><li data-type='method'><a href="BaseControllerComponent.html#getComponent">getComponent</a></li><li data-type='method'><a href="BaseControllerComponent.html#register">register</a></li></ul></li><li><a href="MovementComponent.html">MovementComponent</a><ul class='methods'><li data-type='method'><a href="MovementComponent.html#destroy">destroy</a></li><li data-type='method'><a href="MovementComponent.html#getComponent">getComponent</a></li><li data-type='method'><a href="MovementComponent.html#moveGameObject">moveGameObject</a></li><li data-type='method'><a href="MovementComponent.html#register">register</a></li><li data-type='method'><a href="MovementComponent.html#setDirection">setDirection</a></li><li data-type='method'><a href="MovementComponent.html#setSpeed">setSpeed</a></li><li data-type='method'><a href="MovementComponent.html#update">update</a></li><li data-type='method'><a href="MovementComponent.html#updateVelocity">updateVelocity</a></li></ul></li><li><a href="PlayerControllerComponent.html">PlayerControllerComponent</a><ul class='methods'><li data-type='method'><a href="PlayerControllerComponent.html#destroy">destroy</a></li><li data-type='method'><a href="PlayerControllerComponent.html#findMovementComponent">findMovementComponent</a></li><li data-type='method'><a href="PlayerControllerComponent.html#getComponent">getComponent</a></li><li data-type='method'><a href="PlayerControllerComponent.html#register">register</a></li><li data-type='method'><a href="PlayerControllerComponent.html#update">update</a></li></ul></li></ul><h3>Core</h3><ul><li><a href="BaseComponent.html">BaseComponent</a><ul class='methods'><li data-type='method'><a href="BaseComponent.html#destroy">destroy</a></li><li data-type='method'><a href="BaseComponent.html#getComponent">getComponent</a></li><li data-type='method'><a href="BaseComponent.html#register">register</a></li></ul></li></ul><h3>Classes</h3><ul><li></li><li></li><li><a href="Logger.html">Logger</a><ul class='methods'><li data-type='method'><a href="Logger.html#disableModule">disableModule</a></li><li data-type='method'><a href="Logger.html#enableModule">enableModule</a></li><li data-type='method'><a href="Logger.html#log">log</a></li><li data-type='method'><a href="Logger.html#setLogLevel">setLogLevel</a></li></ul></li><li></li><li></li><li></li><li></li></ul><h3>Global</h3><ul><li><a href="global.html#extendWithComponents">extendWithComponents</a></li><li><a href="global.html#getCurrentTime">getCurrentTime</a></li></ul>
+    
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">entities/Player.js</h1>
+    
 
     
 
@@ -26,51 +45,82 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import Movement from "../components/Movement.js";
-import PlayerController from "../components/PlayerController.js";
+            <pre class="prettyprint source linenums"><code>import { extendWithComponents } from "../core/component-extension.js";
+import { MovementComponent } from "../components/Movement.js";
+import { PlayerControllerComponent } from "../components/PlayerController.js";
 
 /**
- * Player entity that aggregates movement and controller components.
+ * Player GameObject with movement and player control.
+ * Extends Phaser.Sprite and adds component system.
+ *
+ * @class 
+ * @category Entities
+ * @extends Phaser.GameObjects.Sprite
+ * @param {Phaser.Scene} scene - The scene this player belongs to
+ * @param {Object} config - Player configuration object
+ * @param {string} config.texture - Sprite texture key
+ * @param {number} [config.frame] - Frame index (optional)
+ * @param {number} config.x - Initial X position
+ * @param {number} config.y - Initial Y position
+ * @param {number} config.speed - Movement speed
+ * @param {number} [config.width] - Width of the physics body (optional)
+ * @param {number} [config.height] - Height of the physics body (optional)
+ * @param {number} [config.offsetX] - X offset of the body from center (optional)
+ * @param {number} [config.offsetY] - Y offset of the body from center (optional)
  */
-export default class Player {
+export class Player extends Phaser.GameObjects.Sprite {
     /**
-     * @param {Phaser.Scene} scene - The scene to add the player to
-     * @param {number} x - Initial X position
-     * @param {number} y - Initial Y position
-     * @param {string} texture - Key of the sprite texture
-     * @param {Phaser.Types.Input.Keyboard.CursorKeys} keys - Input keys for the player
-     * @param {number} [speed=200] - Movement speed in pixels per second
+     * Configuration object passed to the player.
+     * @type {Object}
      */
-    // TODO - We should split params like speed into a config object!
-    constructor(scene, x, y, texture, keys, speed = 200) {
-        /**
-         * The Phaser physics-enabled sprite representing the player
-         * @type {Phaser.Physics.Arcade.Sprite}
-         */
-        this.sprite = scene.physics.add.sprite(x, y, texture);
+    config;
 
-        /**
-         * Movement component
-         * @type {Movement}
-         */
-        this.movement = new Movement(this.sprite, speed);
+    constructor(scene, config) {
+        super(scene, config.x, config.y, config.texture, config.frame);
+        this.config = config;
 
-        /**
-         * Controller component
-         * @type {PlayerController}
-         */
-        this.controller = new PlayerController(this.sprite, this.movement, keys);
+        // Add component system to this GameObject
+        extendWithComponents(this);
+
+        // Add to scene and physics
+        scene.add.existing(this);
+        scene.physics.add.existing(this);
+
+        // Configure physics body size and offset
+        if (config.width &amp;&amp; config.height) {
+            this.body.setSize(config.width, config.height);
+        }
+        if (config.offsetX || config.offsetY) {
+            this.body.setOffset(config.offsetX || 0, config.offsetY || 0);
+        }
+
+        this.addComponents();
     }
 
     /**
-     * Update method called every frame.
-     * Delegates to the controller and movement components.
-     * @param {number} delta - Time elapsed since last frame in milliseconds
-     * @memberof Player
+     * Adds MovementComponent and PlayerControllerComponent to the player.
+     * @returns {void}
      */
-    update(delta) {
-        this.controller.update(delta);
-        this.movement.update(delta);
+    addComponents() {
+        // Add MovementComponent
+        const movement = new MovementComponent(this, this.config.speed || 200);
+        this.addComponent(movement);
+
+        // Add PlayerControllerComponent
+        const controller = new PlayerControllerComponent(this);
+        this.addComponent(controller);
+    }
+
+    /**
+     * Pre-update called every frame by Phaser.
+     * Updates depth based on Y position.
+     * @param {number} time - Current time in milliseconds
+     * @param {number} delta - Time elapsed since last frame in milliseconds
+     * @returns {void}
+     */
+    preUpdate(time, delta) {
+        super.preUpdate(time, delta);
+        this.setDepth(this.y);
     }
 }
 </code></pre>
@@ -80,19 +130,21 @@ export default class Player {
 
 
 
+    
+    
 </div>
-
-<nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="BaseComponent.html">BaseComponent</a></li><li><a href="BaseController.html">BaseController</a></li><li><a href="LoaderUI_LoaderUI.html">LoaderUI</a></li><li><a href="Logger_Logger.html">Logger</a></li><li><a href="Movement.html">Movement</a></li><li><a href="PlayerController.html">PlayerController</a></li><li><a href="module.exports.html">exports</a></li><li><a href="module.exports_module.exports.html">exports</a></li></ul><h3>Global</h3><ul><li><a href="global.html#getCurrentTime">getCurrentTime</a></li><li><a href="global.html#update">update</a></li></ul>
-</nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.5</a> on Thu Oct 09 2025 14:57:44 GMT+0200 (Central European Summer Time)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.5</a> on Tue Oct 14 2025 14:04:39 GMT+0200 (Центральная Европа, летнее время) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
 </footer>
 
-<script> prettyPrint(); </script>
-<script src="scripts/linenumber.js"> </script>
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+
+
 </body>
 </html>

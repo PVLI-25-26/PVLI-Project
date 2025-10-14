@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>core/service-locator.js - Documentation</title>
+    <title>core/component-extension.js - Documentation</title>
     
     
     <script src="scripts/prettify/prettify.js"></script>
@@ -35,7 +35,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">core/service-locator.js</h1>
+    <h1 class="page-title">core/component-extension.js</h1>
     
 
     
@@ -45,57 +45,76 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>export const SERVICE_KEYS = Object.freeze({
-    PROGRESION_MANAGER: 'ProgressionManager',
-    SOUND_MANAGER: 'SoundManager',
-    SAVELOADSYSTEM: 'SaveLoadSystem',
-    SETTINGS: 'Settings',
-    LOGGER: 'Logger',
-});
+            <pre class="prettyprint source linenums"><code>import { BaseComponent } from './base-component.js';
 
-class ServiceLocator {
-    // cachedServices is private and can't be directly accessed
-    #cachedServices;
-
-    constructor (){
-        // Here we store the services used
-        this.#cachedServices = {};
-    }
+/**
+ * Adds a component system to any Phaser GameObject, allowing to attach multiple components,
+ * automatically update them each frame, and clean them up on destroy.
+ * 
+ * This mixin extends the GameObject with:
+ * - `components` array
+ * - `addComponent(component)` method
+ * - `getComponent(ComponentClass)` method
+ * - `updateComponents(time, delta)` method
+ * 
+ * It also subscribes to the scene's 'update' event and automatically unsubscribes and destroys
+ * components when the GameObject is destroyed.
+ * 
+ * @param {Phaser.GameObjects.GameObject} gameObject - The GameObject to extend with component functionality.
+ * @returns {Phaser.GameObjects.GameObject} The same GameObject with component system added.
+ */
+export function extendWithComponents(gameObject) {
+    /**
+     * Array of attached components. 
+     * @type {BaseComponent[]}
+     */
+    gameObject.components = [];
 
     /**
-     * @param {SERVICE_KEYS} serviceKey Key of the service to register
-     * @param {Object} service Service being registered
+     * Adds a component to this GameObject.
+     * @param {BaseComponent} component - The component instance to attach.
+     * @returns {BaseComponent} The added component.
      */
-    setService(serviceKey, service){
-        // If the service existed it is replaced, if not a new property is made with the new serviceKey
-        this.#cachedServices[serviceKey] = service;
-    }
+    gameObject.addComponent = function(component) {
+        this.components.push(component);
+        return component;
+    };
 
     /**
-     * @param {SERVICE_KEYS} serviceKey Key of the service to return
+     * Retrieves the first component of the specified class attached to this GameObject.
+     * @param {Function} ComponentClass - The class/type of the component to retrieve.
+     * @returns {BaseComponent|null} The found component or null if not found.
      */
-    getService(serviceKey){
-        // Returns the service with the key serviceKey. If not return undefined
-        return this.#cachedServices[serviceKey];
-    }
+    gameObject.getComponent = function(ComponentClass) {
+        return this.components.find(c => c instanceof ComponentClass) || null;
+    };
 
     /**
-     * @param {SERVICE_KEYS} serviceKey Key of the service to remove
+     * Calls `update` on all enabled components attached to this GameObject.
+     * @param {number} time - Current time.
+     * @param {number} delta - Time elapsed since last frame in ms.
      */
-    removeService(serviceKey){
-        delete this.#cachedServices[serviceKey];
+    gameObject.updateComponents = function(time, delta) {
+        this.components.forEach(c => {
+            if (c.enabled) c.update(time, delta);
+        });
+    };
+
+    // --- Auto subscribe to scene update ---
+    if (gameObject.scene) {
+        gameObject.scene.events.on('update', gameObject.updateComponents, gameObject);
+
+        // Auto cleanup on destroy
+        gameObject.once('destroy', () => {
+            gameObject.scene.events.off('update', gameObject.updateComponents, gameObject);
+            gameObject.components.forEach(c => c.destroy());
+            gameObject.components = [];
+        });
     }
 
-    /**
-     * Removes all services from the service locator
-     */
-    removeAllServices(){
-        this.#cachedServices = {};
-    }
+    return gameObject;
 }
-
-// This is only executed once, therefore all who import it have the same instance
-export default new ServiceLocator();</code></pre>
+</code></pre>
         </article>
     </section>
 
