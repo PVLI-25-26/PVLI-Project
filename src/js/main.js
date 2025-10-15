@@ -1,6 +1,7 @@
 import Phaser, { Game } from "phaser";
 import serviceLocator, { SERVICE_KEYS } from "./core/service-locator.js";
 import Gameplay from "../scenes/Gameplay";
+import MainMenu from "../scenes/MainMenu.js";
 import loggerConfig from "../configs/logger-config.json"
 import { Logger} from "./core/logger.js";
 
@@ -26,7 +27,7 @@ const config = {
         }
     },
 
-    scene: [Gameplay],
+    scene: [MainMenu, Gameplay],
 }
 
 // Make game instance

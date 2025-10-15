@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>UI/elements/slider.js - Documentation</title>
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    
+    <h2><a href="index.html">Home</a></h2><h3>Entities</h3><ul><li><a href="Obstacle.html">Obstacle</a><ul class='methods'><li data-type='method'><a href="Obstacle.html#addComponents">addComponents</a></li><li data-type='method'><a href="Obstacle.html#preUpdate">preUpdate</a></li></ul></li><li><a href="Player.html">Player</a><ul class='methods'><li data-type='method'><a href="Player.html#addComponents">addComponents</a></li><li data-type='method'><a href="Player.html#preUpdate">preUpdate</a></li></ul></li></ul><h3>Components</h3><ul><li><a href="BaseControllerComponent.html">BaseControllerComponent</a><ul class='methods'><li data-type='method'><a href="BaseControllerComponent.html#destroy">destroy</a></li><li data-type='method'><a href="BaseControllerComponent.html#findMovementComponent">findMovementComponent</a></li><li data-type='method'><a href="BaseControllerComponent.html#getComponent">getComponent</a></li><li data-type='method'><a href="BaseControllerComponent.html#register">register</a></li></ul></li><li><a href="MovementComponent.html">MovementComponent</a><ul class='methods'><li data-type='method'><a href="MovementComponent.html#destroy">destroy</a></li><li data-type='method'><a href="MovementComponent.html#getComponent">getComponent</a></li><li data-type='method'><a href="MovementComponent.html#moveGameObject">moveGameObject</a></li><li data-type='method'><a href="MovementComponent.html#register">register</a></li><li data-type='method'><a href="MovementComponent.html#setDirection">setDirection</a></li><li data-type='method'><a href="MovementComponent.html#setSpeed">setSpeed</a></li><li data-type='method'><a href="MovementComponent.html#update">update</a></li><li data-type='method'><a href="MovementComponent.html#updateVelocity">updateVelocity</a></li></ul></li><li><a href="PlayerControllerComponent.html">PlayerControllerComponent</a><ul class='methods'><li data-type='method'><a href="PlayerControllerComponent.html#destroy">destroy</a></li><li data-type='method'><a href="PlayerControllerComponent.html#findMovementComponent">findMovementComponent</a></li><li data-type='method'><a href="PlayerControllerComponent.html#getComponent">getComponent</a></li><li data-type='method'><a href="PlayerControllerComponent.html#register">register</a></li><li data-type='method'><a href="PlayerControllerComponent.html#update">update</a></li></ul></li></ul><h3>Core</h3><ul><li><a href="BaseComponent.html">BaseComponent</a><ul class='methods'><li data-type='method'><a href="BaseComponent.html#destroy">destroy</a></li><li data-type='method'><a href="BaseComponent.html#getComponent">getComponent</a></li><li data-type='method'><a href="BaseComponent.html#register">register</a></li></ul></li><li><a href="Logger.html">Logger</a><ul class='methods'><li data-type='method'><a href="Logger.html#disableModule">disableModule</a></li><li data-type='method'><a href="Logger.html#enableModule">enableModule</a></li><li data-type='method'><a href="Logger.html#log">log</a></li><li data-type='method'><a href="Logger.html#setLogLevel">setLogLevel</a></li></ul></li><li><a href="SoundSceneFacade.html">SoundSceneFacade</a><ul class='methods'><li data-type='method'><a href="SoundSceneFacade.html#destroy">destroy</a></li><li data-type='method'><a href="SoundSceneFacade.html#playMusic">playMusic</a></li><li data-type='method'><a href="SoundSceneFacade.html#playSound">playSound</a></li><li data-type='method'><a href="SoundSceneFacade.html#stopMusic">stopMusic</a></li><li data-type='method'><a href="SoundSceneFacade.html#stopSound">stopSound</a></li><li data-type='method'><a href="SoundSceneFacade.html#subscribeToEvents">subscribeToEvents</a></li></ul></li></ul><h3>UI</h3><ul><li><a href="Button.html">Button</a><ul class='methods'><li data-type='method'><a href="Button.html#addInteraction">addInteraction</a></li><li data-type='method'><a href="Button.html#invokeClick">invokeClick</a></li><li data-type='method'><a href="Button.html#invokeHover">invokeHover</a></li></ul></li><li><a href="Slider.html">Slider</a><ul class='methods'><li data-type='method'><a href="Slider.html#addInteraction">addInteraction</a></li><li data-type='method'><a href="Slider.html#getValue">getValue</a></li><li data-type='method'><a href="Slider.html#onPointerDown">onPointerDown</a></li><li data-type='method'><a href="Slider.html#onPointerMove">onPointerMove</a></li><li data-type='method'><a href="Slider.html#onPointerUp">onPointerUp</a></li><li data-type='method'><a href="Slider.html#setValue">setValue</a></li><li data-type='method'><a href="Slider.html#updateThumbPosition">updateThumbPosition</a></li><li data-type='method'><a href="Slider.html#updateValueFromPointer">updateValueFromPointer</a></li></ul></li></ul><h3>Classes</h3><ul><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li></ul><h3>Events</h3><ul><li><a href="Button.html#event:button-clicked">button-clicked</a></li><li><a href="Button.html#event:button-hovered">button-hovered</a></li><li><a href="Slider.html#event:slider-changed">slider-changed</a></li></ul><h3>Global</h3><ul><li><a href="global.html#EventBus">EventBus</a></li><li><a href="global.html#extendWithComponents">extendWithComponents</a></li><li><a href="global.html#getCurrentTime">getCurrentTime</a></li></ul>
+    
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">UI/elements/slider.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import Phaser from "phaser";
+
+/**
+ * Interactive horizontal slider UI component for adjusting normalized values (0–1).
+ * Can be used for volume, brightness, or other adjustable settings.
+ *
+ * @class
+ * @category UI
+ * @extends Phaser.GameObjects.Container
+ * @param {Phaser.Scene} scene - The Phaser scene this slider belongs to.
+ * @param {number} x - The x-coordinate of the slider's position.
+ * @param {number} y - The y-coordinate of the slider's position.
+ * @param {number} [width=200] - The width of the slider track.
+ * @param {number} [height=20] - The height of the slider.
+ * @param {number} [initialValue=0.5] - The initial value of the slider (from 0 to 1).
+ *
+ * @example
+ * const slider = new Slider(this, 400, 300, 250, 20, 0.3)
+ *     .on("slider-changed", (value) => console.log("Slider value:", value));
+ */
+export class Slider extends Phaser.GameObjects.Container {
+    constructor(scene, x, y, width = 200, height = 20, initialValue = 0.5) {
+        super(scene, x, y);
+
+        /**
+         * Reference to the Phaser scene this slider belongs to.
+         * @type {Phaser.Scene}
+         */
+        this.scene = scene;
+
+        /**
+         * Width of the slider track.
+         * @type {number}
+         */
+        this.width = width;
+
+        /**
+         * Height of the slider track.
+         * @type {number}
+         */
+        this.height = height;
+
+        /**
+         * Current normalized value of the slider (0–1).
+         * @type {number}
+         */
+        this.value = Phaser.Math.Clamp(initialValue, 0, 1);
+
+        /**
+         * Whether the user is currently dragging the thumb.
+         * @type {boolean}
+         */
+        this.isDragging = false;
+
+        scene.add.existing(this);
+
+        /**
+         * Background track of the slider.
+         * @type {Phaser.GameObjects.Rectangle}
+         */
+        this.track = scene.add.rectangle(0, 0, width, height, 0x666666).setOrigin(0.5);
+        this.add(this.track);
+
+        /**
+         * Movable thumb handle of the slider.
+         * @type {Phaser.GameObjects.Rectangle}
+         */
+        this.thumb = scene.add.rectangle(0, 0, height, height, 0xffffff).setOrigin(0.5);
+        this.add(this.thumb);
+
+        // Enable mouse input
+        this.setSize(width, height);
+        this.setInteractive(
+            new Phaser.Geom.Rectangle(0, -height / 2, width, height),
+            Phaser.Geom.Rectangle.Contains
+        );
+
+        this.updateThumbPosition();
+
+        // Pointer events
+        this.scene.input.on("pointerdown", this.onPointerDown, this);
+        this.scene.input.on("pointerup", this.onPointerUp, this);
+        this.scene.input.on("pointermove", this.onPointerMove, this);
+    }
+
+    /**
+     * Adds custom interactive logic to the slider.
+     * Useful for additional event binding or UI customization.
+     * 
+     * @param {Function} setupFunction - A setup function receiving the slider instance.
+     * @returns {Slider} This slider instance (for chaining).
+     */
+    addInteraction(setupFunction) {
+        if (typeof setupFunction === "function") {
+            setupFunction(this);
+        }
+        return this;
+    }
+
+    /**
+     * Handles pointer down event.
+     * Starts dragging if pointer is within slider bounds.
+     * 
+     * @param {Phaser.Input.Pointer} pointer - The pointer event.
+     * @returns {void}
+     */
+    onPointerDown(pointer) {
+        const bounds = this.getBounds();
+        if (bounds.contains(pointer.x, pointer.y)) {
+            this.isDragging = true;
+            this.updateValueFromPointer(pointer);
+        }
+    }
+
+    /**
+     * Handles pointer up event.
+     * Stops dragging.
+     * 
+     * @param {Phaser.Input.Pointer} pointer - The pointer event.
+     * @returns {void}
+     */
+    onPointerUp(pointer) {
+        this.isDragging = false;
+    }
+
+    /**
+     * Handles pointer move event.
+     * Updates slider value while dragging.
+     * 
+     * @param {Phaser.Input.Pointer} pointer - The pointer event.
+     * @returns {void}
+     */
+    onPointerMove(pointer) {
+        if (this.isDragging) {
+            this.updateValueFromPointer(pointer);
+        }
+    }
+
+    /**
+     * Updates slider value based on pointer position.
+     * Emits a "slider-changed" event when the value updates.
+     * 
+     * @param {Phaser.Input.Pointer} pointer - The pointer event.
+     * @returns {void}
+     */
+    updateValueFromPointer(pointer) {
+        const localX = Phaser.Math.Clamp(pointer.x - (this.x - this.width / 2), 0, this.width);
+        this.value = localX / this.width;
+        this.updateThumbPosition();
+        this.invokeChange();
+    }
+
+    /**
+     * Updates thumb position visually according to current value.
+     * @returns {void}
+     */
+    updateThumbPosition() {
+        this.thumb.x = (this.value - 0.5) * this.width;
+    }
+
+    /**
+     * Sets slider value manually and updates thumb position.
+     * @param {number} value - The new slider value (0–1).
+     * @returns {void}
+     */
+    setValue(value) {
+        this.value = Phaser.Math.Clamp(value, 0, 1);
+        this.updateThumbPosition();
+    }
+
+    /**
+     * Returns current slider value.
+     * @returns {number} The current slider value (0–1).
+     */
+    getValue() {
+        return this.value;
+    }
+
+    /**
+     * Emits a "slider-changed" event with the new value.
+     * @event Slider#slider-changed
+     * @type {number}
+     * @returns {void}
+     */
+    invokeChange() {
+        this.emit("slider-changed", this.value);
+    }
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.5</a> on Wed Oct 15 2025 16:38:23 GMT+0200 (Центральная Европа, летнее время) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+
+
+</body>
+</html>

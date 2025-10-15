@@ -1,0 +1,1450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>SoundSceneFacade - Documentation</title>
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    
+    <h2><a href="index.html">Home</a></h2><h3>Entities</h3><ul><li><a href="Obstacle.html">Obstacle</a><ul class='methods'><li data-type='method'><a href="Obstacle.html#addComponents">addComponents</a></li><li data-type='method'><a href="Obstacle.html#preUpdate">preUpdate</a></li></ul></li><li><a href="Player.html">Player</a><ul class='methods'><li data-type='method'><a href="Player.html#addComponents">addComponents</a></li><li data-type='method'><a href="Player.html#preUpdate">preUpdate</a></li></ul></li></ul><h3>Components</h3><ul><li><a href="BaseControllerComponent.html">BaseControllerComponent</a><ul class='methods'><li data-type='method'><a href="BaseControllerComponent.html#destroy">destroy</a></li><li data-type='method'><a href="BaseControllerComponent.html#findMovementComponent">findMovementComponent</a></li><li data-type='method'><a href="BaseControllerComponent.html#getComponent">getComponent</a></li><li data-type='method'><a href="BaseControllerComponent.html#register">register</a></li></ul></li><li><a href="MovementComponent.html">MovementComponent</a><ul class='methods'><li data-type='method'><a href="MovementComponent.html#destroy">destroy</a></li><li data-type='method'><a href="MovementComponent.html#getComponent">getComponent</a></li><li data-type='method'><a href="MovementComponent.html#moveGameObject">moveGameObject</a></li><li data-type='method'><a href="MovementComponent.html#register">register</a></li><li data-type='method'><a href="MovementComponent.html#setDirection">setDirection</a></li><li data-type='method'><a href="MovementComponent.html#setSpeed">setSpeed</a></li><li data-type='method'><a href="MovementComponent.html#update">update</a></li><li data-type='method'><a href="MovementComponent.html#updateVelocity">updateVelocity</a></li></ul></li><li><a href="PlayerControllerComponent.html">PlayerControllerComponent</a><ul class='methods'><li data-type='method'><a href="PlayerControllerComponent.html#destroy">destroy</a></li><li data-type='method'><a href="PlayerControllerComponent.html#findMovementComponent">findMovementComponent</a></li><li data-type='method'><a href="PlayerControllerComponent.html#getComponent">getComponent</a></li><li data-type='method'><a href="PlayerControllerComponent.html#register">register</a></li><li data-type='method'><a href="PlayerControllerComponent.html#update">update</a></li></ul></li></ul><h3>Core</h3><ul><li><a href="BaseComponent.html">BaseComponent</a><ul class='methods'><li data-type='method'><a href="BaseComponent.html#destroy">destroy</a></li><li data-type='method'><a href="BaseComponent.html#getComponent">getComponent</a></li><li data-type='method'><a href="BaseComponent.html#register">register</a></li></ul></li><li><a href="Logger.html">Logger</a><ul class='methods'><li data-type='method'><a href="Logger.html#disableModule">disableModule</a></li><li data-type='method'><a href="Logger.html#enableModule">enableModule</a></li><li data-type='method'><a href="Logger.html#log">log</a></li><li data-type='method'><a href="Logger.html#setLogLevel">setLogLevel</a></li></ul></li><li><a href="SoundSceneFacade.html">SoundSceneFacade</a><ul class='methods'><li data-type='method'><a href="SoundSceneFacade.html#destroy">destroy</a></li><li data-type='method'><a href="SoundSceneFacade.html#playMusic">playMusic</a></li><li data-type='method'><a href="SoundSceneFacade.html#playSound">playSound</a></li><li data-type='method'><a href="SoundSceneFacade.html#stopMusic">stopMusic</a></li><li data-type='method'><a href="SoundSceneFacade.html#stopSound">stopSound</a></li><li data-type='method'><a href="SoundSceneFacade.html#subscribeToEvents">subscribeToEvents</a></li></ul></li></ul><h3>UI</h3><ul><li><a href="Button.html">Button</a><ul class='methods'><li data-type='method'><a href="Button.html#addInteraction">addInteraction</a></li><li data-type='method'><a href="Button.html#invokeClick">invokeClick</a></li><li data-type='method'><a href="Button.html#invokeHover">invokeHover</a></li></ul></li><li><a href="Slider.html">Slider</a><ul class='methods'><li data-type='method'><a href="Slider.html#addInteraction">addInteraction</a></li><li data-type='method'><a href="Slider.html#getValue">getValue</a></li><li data-type='method'><a href="Slider.html#onPointerDown">onPointerDown</a></li><li data-type='method'><a href="Slider.html#onPointerMove">onPointerMove</a></li><li data-type='method'><a href="Slider.html#onPointerUp">onPointerUp</a></li><li data-type='method'><a href="Slider.html#setValue">setValue</a></li><li data-type='method'><a href="Slider.html#updateThumbPosition">updateThumbPosition</a></li><li data-type='method'><a href="Slider.html#updateValueFromPointer">updateValueFromPointer</a></li></ul></li></ul><h3>Classes</h3><ul><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li></ul><h3>Events</h3><ul><li><a href="Button.html#event:button-clicked">button-clicked</a></li><li><a href="Button.html#event:button-hovered">button-hovered</a></li><li><a href="Slider.html#event:slider-changed">slider-changed</a></li></ul><h3>Global</h3><ul><li><a href="global.html#EventBus">EventBus</a></li><li><a href="global.html#extendWithComponents">extendWithComponents</a></li><li><a href="global.html#getCurrentTime">getCurrentTime</a></li></ul>
+    
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">SoundSceneFacade</h1>
+    
+
+    
+
+
+
+
+<section>
+
+<header>
+    
+        <h2>
+        
+            SoundSceneFacade
+        
+        </h2>
+        
+            <div class="class-description usertext">Facade for managing sound and music playback within a Phaser scene.Handles sound effect playback, background music, and dynamic volume adjustments.Listens to global <a href="global.html#EventBus">EventBus</a> events for sound control.</div>
+        
+    
+</header>
+
+<article>
+    
+        <div class="container-overview">
+        
+            
+
+    
+    <h2>Constructor</h2>
+    
+
+    <h4 class="name" id="SoundSceneFacade"><span class="type-signature"></span>new SoundSceneFacade<span class="signature">(scene, config)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li>Creates a new SoundSceneFacade instance</li></ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="core_sound-facade.js.html">core/sound-facade.js</a>, <a href="core_sound-facade.js.html#line11">line 11</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5 class="h5-parameters">Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>scene</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Phaser.Scene</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The Phaser scene this facade belongs to</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>config</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Configuration object for sounds and music
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>sounds</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Array of sound effect configurations</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>music</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Array of music track configurations</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+        </div>
+    
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Classes</h3>
+
+        <dl>
+            <dt><a href="SoundSceneFacade.html">SoundSceneFacade</a></dt>
+            <dd></dd>
+        </dl>
+    
+    
+    
+
+     
+
+    
+
+    
+        <h3 class="subsection-title">Members</h3>
+
+        
+            
+<h4 class="name" id="currentMusic"><span class="type-signature"></span>currentMusic<span class="type-signature"> :Phaser.Sound.BaseSound|null</span></h4>
+
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li>Currently playing music track</li></ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="core_sound-facade.js.html">core/sound-facade.js</a>, <a href="core_sound-facade.js.html#line34">line 34</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    Currently playing music track
+</div>
+
+
+
+    <h5 class="h5-types">Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Phaser.Sound.BaseSound</span>
+|
+
+<span class="param-type">null</span>
+
+
+
+        </li>
+    </ul>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="music"><span class="type-signature"></span>music<span class="type-signature"> :Object.&lt;string, Phaser.Sound.BaseSound></span></h4>
+
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li>Dictionary of music tracks</li></ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="core_sound-facade.js.html">core/sound-facade.js</a>, <a href="core_sound-facade.js.html#line28">line 28</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    Dictionary of music tracks
+</div>
+
+
+
+    <h5 class="h5-types">Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Object.&lt;string, Phaser.Sound.BaseSound></span>
+
+
+
+        </li>
+    </ul>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="scene"><span class="type-signature"></span>scene<span class="type-signature"> :Phaser.Scene</span></h4>
+
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li>The Phaser scene this facade belongs to</li></ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="core_sound-facade.js.html">core/sound-facade.js</a>, <a href="core_sound-facade.js.html#line16">line 16</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    The Phaser scene this facade belongs to
+</div>
+
+
+
+    <h5 class="h5-types">Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Phaser.Scene</span>
+
+
+
+        </li>
+    </ul>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="sounds"><span class="type-signature"></span>sounds<span class="type-signature"> :Object.&lt;string, Phaser.Sound.BaseSound></span></h4>
+
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li>Dictionary of sound effects</li></ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="core_sound-facade.js.html">core/sound-facade.js</a>, <a href="core_sound-facade.js.html#line22">line 22</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    Dictionary of sound effects
+</div>
+
+
+
+    <h5 class="h5-types">Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Object.&lt;string, Phaser.Sound.BaseSound></span>
+
+
+
+        </li>
+    </ul>
+
+
+
+
+
+
+        
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    <h4 class="name" id="destroy"><span class="type-signature"></span>destroy<span class="signature">()</span><span class="type-signature"> &rarr; {void}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li>Unsubscribes all event listeners and performs cleanupShould be called when the scene is destroyed</li></ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="core_sound-facade.js.html">core/sound-facade.js</a>, <a href="core_sound-facade.js.html#line137">line 137</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5 class="h5-returns">Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">void</span>
+
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="playMusic"><span class="type-signature"></span>playMusic<span class="signature">(key)</span><span class="type-signature"> &rarr; {void}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li>Plays background music by keyStops any currently playing track before starting the new one</li></ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="core_sound-facade.js.html">core/sound-facade.js</a>, <a href="core_sound-facade.js.html#line110">line 110</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5 class="h5-parameters">Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>key</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The key of the music track to play</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5 class="h5-returns">Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">void</span>
+
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="playSound"><span class="type-signature"></span>playSound<span class="signature">(key)</span><span class="type-signature"> &rarr; {void}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li>Plays a sound effect by key</li></ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="core_sound-facade.js.html">core/sound-facade.js</a>, <a href="core_sound-facade.js.html#line87">line 87</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5 class="h5-parameters">Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>key</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The key of the sound effect to play</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5 class="h5-returns">Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">void</span>
+
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="stopMusic"><span class="type-signature"></span>stopMusic<span class="signature">()</span><span class="type-signature"> &rarr; {void}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li>Stops the currently playing music, if any</li></ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="core_sound-facade.js.html">core/sound-facade.js</a>, <a href="core_sound-facade.js.html#line125">line 125</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5 class="h5-returns">Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">void</span>
+
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="stopSound"><span class="type-signature"></span>stopSound<span class="signature">(key)</span><span class="type-signature"> &rarr; {void}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li>Stops a specific sound effect by key</li></ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="core_sound-facade.js.html">core/sound-facade.js</a>, <a href="core_sound-facade.js.html#line97">line 97</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5 class="h5-parameters">Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>key</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The key of the sound effect to stop</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5 class="h5-returns">Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">void</span>
+
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="subscribeToEvents"><span class="type-signature"></span>subscribeToEvents<span class="signature">()</span><span class="type-signature"> &rarr; {void}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li>Subscribes the sound facade to relevant global <a href="global.html#EventBus">EventBus</a> events</li></ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="core_sound-facade.js.html">core/sound-facade.js</a>, <a href="core_sound-facade.js.html#line64">line 64</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5 class="h5-returns">Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">void</span>
+
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.5</a> on Wed Oct 15 2025 16:38:23 GMT+0200 (Центральная Европа, летнее время) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+
+
+</body>
+</html>

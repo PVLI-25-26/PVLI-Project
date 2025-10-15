@@ -13,6 +13,8 @@ function getCurrentTime() {
 /**
  * Logs messages to the console with a custom behaviour.
  * Only messages with a higher log level and in the enabled modules are logged to console.
+ * @class 
+ * @category Core
  */
 export class Logger{
     /**
