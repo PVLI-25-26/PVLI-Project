@@ -3,17 +3,28 @@ dg-publish: True
 ---
 **Missions System** – a system that manages mission progression and rewards players upon their completion.
 ## Description
-Inside the dungeon, the player may encounter NPCs who will offer him missions in exchange for some items. The player can accept any number of missions with the [[Interaction]].
-If the player dies or exits the dungeon, all of his currently active missions will disappear.
 
-Missions are randomized and varied. Some missions might ask the player to explore a certain room, pick up an object or defeat several number of enemies. 
-Once a mission is completed, the player can return to the NPC offering said mission to obtain the reward.
+Before entering the dungeon for the first time the player encounters an NPC that will give him a mission: "Enter the dungeon and come back alive".
 
-Missions also have a story behind them, it can be a simple story or a more complex lore related narrative. They help the player learn about the world and it's inhabitants through interactions with NPCs and objects.
+After completing this first mission the Shop will be unlocked.
+
+From this moment onwards the missions will vary depending on the data gathered from the runs with the objective of making the player try different types of gameplays, for example if the player is focused on recollecting items but not engaging in battle, the npc will give the player missions to subjugate monsters. The missions can go from collecting specific items from the dungeon to killing some type/quantity of enemies.
+
+Completing a mission will grant you benefits in the shop, making upgrades and consumables cheaper, and also will unlock the different types of Arrows.
+
 
 #TODO `MissionsExample.png`
 ## Dynamics
-Missions help give players a secondary objective within the run besides killing the boss. They also serve as a way to obtain valuable items, and to learn about the lore of the game. 
-When encountering an NPC, the player must decide whether it is worth completing the mission offered by the NPC or not, or whether the mission goals align somewhat with his own personal goals.
+
+
+## Examples
+
+1. "Enter the dungeon and come back alive" - Unlocks Shop.
+2. "Kill 3 enemies of type (?)" - Unlocks Type of Arrow.
+3. "Collect (?) type of Item" - Unlocks Type of Consumable.
+4. "Collect (?) quantity of (?) Item " - Discounts on the shop.
+5. "Unlock (?) different types of areas in the same run" - Unlocks Abilities.
+
+
 ## Included mechanics
 - [[Interaction]]
