@@ -21,6 +21,7 @@ Explore, gather rare materials, and stay alert — time is limited, and one mist
 | Target Audience   | Fans of tactical combat, exploration, and story-driven topdown games |
 | Target Age Rating | 12+ (fantasy violence)                                               |
 | Developer         | 4Quesos                                                              |
+|                   |                                                                      |
 
 ## Description
 This 2D action-adventure follows a magic-wielding protagonist who ventures from a safe hub into a perilous magical realm. Each expedition begins by stepping through a portal into a shifting, hostile world filled with valuable resources, dangerous creatures, and hidden secrets.
