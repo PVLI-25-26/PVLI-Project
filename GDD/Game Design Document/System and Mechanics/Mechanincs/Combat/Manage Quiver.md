@@ -24,7 +24,7 @@ The slime arrow is has a `param` seconds of cool down per shot.
 
 ### Gas Arrow
 The *gas arrow* explodes into a cloud of a poison when impacting an enemy. All enemies inside the cloud receive `param` damage every `param` seconds, the longer the enemies are under the effect of the poison, the more damage it deals.
-The gas arrow is has a `param` seconds of cool down per shot.
+The gas arrow has a `param` seconds of cool down per shot.
 
 ### Grass Arrow
 The *grass arrow* immobilizes the enemy hit by the arrow (grass grows and traps the enemy). The enemies will not be able to move for `param` seconds. 
@@ -46,7 +46,7 @@ When combining *fire* with *grass*, the fire expands through the grass, setting 
 When combining *slime* with *grass*, the grass effect duration is enhanced by `param`% and the grass effect will affect all enemies in the area of effect of the slime.
 
 #### Slime + Gas
-When combining *slime* with *gas*, the gas effect lasts `param`% longer. 
+When combining *slime* with *gas*, the gas effect will stick to the enemy even if it is outside the cloud for `param` seconds.
 
 #### Gas + Grass
 Does nothing special, their basic effects combined is already powerful enough. 
