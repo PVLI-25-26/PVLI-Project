@@ -1,0 +1,8 @@
+{   
+    "BillBoard": true,
+    "x": 500,
+    "y": 500,
+    "textures": ["base"],
+    "verticalOffset":2,
+    "scale" : 4
+} 
