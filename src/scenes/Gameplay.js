@@ -15,29 +15,25 @@ export default class GameplayScene extends Phaser.Scene {
     preload() {
         showLoaderUI(this);
 
-        // Testing Loading UI
-        for(let i = 0; i < 1000; i++){
-            this.load.image('testImg'+i, 'assets/sprites/player-dummy.png');
-        }
-
         this.load.image('player', 'assets/sprites/player-dummy.png');
         this.load.image('barrel', 'assets/sprites/barrel.png');
         this.load.image('cube', 'assets/sprites/cube.png');
         this.load.image('column', 'assets/sprites/column.png');
         this.load.image('pointer', 'assets/sprites/pointer.png');
+        this.load.image('arrow', 'assets/sprites/arrow.png');
     }
 
     create() {
         this.sound_facade = new SoundSceneFacade(this, audioConfig);
 
         this.player = new Player(this, playerConfig);
-
-        this.obstaclesGroup = this.physics.add.staticGroup();
+        
+        this.obstaclesGroup = this.physics.add.staticGroup({name: 'obstacles'});
         obstaclesConfig.forEach(cfg => {
             const obstacle = new Obstacle(this, cfg);
             this.obstaclesGroup.add(obstacle);
         });
-
+        
         this.physics.add.collider(this.player, this.obstaclesGroup);
     }
 

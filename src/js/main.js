@@ -27,7 +27,7 @@ const config = {
         }
     },
 
-    scene: [SpriteStackingTest,MainMenu, Gameplay],
+    scene: [MainMenu, Gameplay],
 }
 
 // Make game instance

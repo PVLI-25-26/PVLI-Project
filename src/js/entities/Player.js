@@ -1,6 +1,7 @@
 import { extendWithComponents } from "../core/component-extension.js";
 import { MovementComponent } from "../components/Movement.js";
 import { PlayerControllerComponent } from "../components/PlayerController.js";
+import { PlayerShootingComponent } from "../components/PlayerShooting.js";
 
 /**
  * Player GameObject with movement and player control.
@@ -57,11 +58,15 @@ export class Player extends Phaser.GameObjects.Sprite {
     addComponents() {
         // Add MovementComponent
         const movement = new MovementComponent(this, this.config.speed || 200);
-        this.addComponent(movement);
+        //this.addComponent(movement);
 
         // Add PlayerControllerComponent
         const controller = new PlayerControllerComponent(this);
-        this.addComponent(controller);
+        //this.addComponent(controller);
+
+        // Add PlayerShootingComponent
+        const shootController = new PlayerShootingComponent(this);
+        //this.addComponents(shootController);
     }
 
     /**

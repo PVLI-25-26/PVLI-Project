@@ -4,6 +4,6 @@
     { "key": "click", "file": "assets/sounds/click.wav" }
   ],
   "music": [
-    { "key": "mainMenuMusic", "file": "assets/music/main_menu.mp3", "loop": true, "volume": 0.5 }
+    
   ]
 }
