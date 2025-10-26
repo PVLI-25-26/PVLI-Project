@@ -49,6 +49,7 @@ export class PlayerShootingComponent extends BaseComponent{
         }
         if(!pointer.isDown && this.#shootWasPressedLastFrame)
         {
+            this.gameObject.scene.plugins.get('logger').log('PLAYER', 0, `Arrow shoot: strength-${this.#currentPower}`);
             this.#arrowPool[this.#lastArrow].shoot(new BasicTrajectory(500, this.gameObject.scene), {}, this.gameObject.x, this.gameObject.y, pointer.x, pointer.y, this.#currentPower);
             this.#lastArrow = (this.#lastArrow+1)%this.#arrowPool.length;
 

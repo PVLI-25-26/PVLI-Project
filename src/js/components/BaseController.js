@@ -1,6 +1,5 @@
 import { BaseComponent } from "../core/base-component.js";
 import { MovementComponent } from "./Movement.js";
-import serviceLocator, { SERVICE_KEYS } from '../core/service-locator.js';
 import { Logger } from '../core/logger.js';
 
 /**
@@ -25,7 +24,7 @@ export class BaseControllerComponent extends BaseComponent {
         this.movementComponent = this.findMovementComponent();
 
         if (!this.movementComponent) {
-            const logger = serviceLocator.getService(SERVICE_KEYS.LOGGER);
+            const logger = this.gameObject.scene.plugins.get('logger');
             logger.log(
                 'COMPONENTS',
                 Logger.LOG_LEVELS.ERROR,

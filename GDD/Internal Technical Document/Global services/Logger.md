@@ -1,5 +1,12 @@
 The logger must be used when **sending messages to the console** for any use case.
 The use of the logger is important to **maintain clean and organized console messages** while developing. Without it, thousands of messages could be logging to the console, making it impossible to debug or read important information.
+
+The logger can be access as a global plugin in the Plugin Manager. To get a reference to the logger, use:
+``` javascript
+// <this> is a scene
+this.plugins.get('logger');
+```
+
 ## How to setup
 **Each developer must have their own logger configuration**, the file is ignored in the `.gitignore`. This file must be found in: `src/configs/logger-config.json`. This JSON has two properties: `modules` and `level`.
 The `modules` property is an array of `Strings`, each `String` being the active modules of the logger.
@@ -35,7 +42,7 @@ DEBUG (0) < INFO (1) < WARNING (2) < ERROR (3)
 
 ## Example
 ``` Javascript
-// let logger = [Get logger from service locator]
+// let logger = [Get logger from plugin manager]
 logger.log('HUB', LOG_LEVELS.INFO, 'Equipment bought succesfully.');
 ```
 Output

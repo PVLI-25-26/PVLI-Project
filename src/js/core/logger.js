@@ -1,3 +1,5 @@
+import config from '../../configs/logger-config.json'
+
 /**
  * 
  * @returns Returns current time formatted as hh:mm:ss
@@ -16,7 +18,7 @@ function getCurrentTime() {
  * @class 
  * @category Core
  */
-export class Logger{
+export class Logger extends Phaser.Plugins.BasePlugin{
     /**
      * Available levels for logging
      * 
@@ -33,20 +35,26 @@ export class Logger{
     #currentLogLevel;
 
     /**
-     * Creates the logger with the configuration given
-     * @param {Object} config Configuration object with predefined values for the logger.
-     * @param {Array.<string>} config.modules Enabled modules of the logger
-     * @param {LOG_LEVELS} config.level Log level of the logger
+     * Constructor to create the plugin
      */
-    constructor(config){
+    constructor(pluginManager){
+        super('Logger', pluginManager);  
+    }
+
+    /**
+     *  Initializes the plugin using the configuration file
+     */
+    init(){
         this.#enabledModules = new Set(config.modules);
         this.#currentLogLevel = config.level;
+        this.log('LOGGER', Logger.LOG_LEVELS.INFO, 'Logger initialized');
     }
+
     /**
      * Logs a message to the console
-     * @param {string} message Message to log.
-     * @param {string} moduleKey Module to which the log belongs to.
-     * @param {LOG_LEVELS} logLevel Level of the message being logged
+     * @param {string} message - Message to log.
+     * @param {string} moduleKey - Module to which the log belongs to.
+     * @param {LOG_LEVELS} logLevel - Level of the message being logged
      */
     log(moduleKey, logLevel, message){
         if(!this.#enabledModules.has(moduleKey)
