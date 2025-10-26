@@ -1,3 +1,5 @@
+import { EventBus } from "../core/event-bus";
+
 /**
      * Configuration object passed to the SpriteStacking object.
      * @class
@@ -51,24 +53,26 @@ export class SpriteStacking extends Phaser.GameObjects.Sprite{
             this.sprites.push(sprite);
         }
         
+        EventBus.on('cameraRotated', this.onCameraRotated, this);
+    }
+
+    onCameraRotated(R, cosR, sinR){
+        if (this.billBoard){
+            this.sprites[0].rotation = -R;
+        }
+        else{
+            // Corrects the sprite stacking position according to the camera angle and vertical offset
+            for (let i = 0; i<this.sprites.length; i ++){
+                this.sprites[i].x = this.sprites[0].x + -sinR * i *this.verticalOffset;
+                this.sprites[i].y = this.sprites[0].y + -cosR * i *this.verticalOffset;
+            }
+        }
     }
     
     preUpdate(time, delta){
         super.preUpdate(time,delta);
-        if (this.billBoard){
-            this.sprites[0].rotation = -this.camera.rotation;
-        }
-        else{
-            // Calculates the camera rotation.
-            let cameraX = -Math.sin(this.camera.rotation);
-            let cameraY = -Math.cos(this.camera.rotation);
-            
-            // Corrects the sprite stacking position according to the camera angle and vertical offset
-            for (let i = 0; i<this.sprites.length; i ++){
-                this.sprites[i].x = this.sprites[0].x + cameraX * i *this.verticalOffset;
-                this.sprites[i].y = this.sprites[0].y + cameraY * i *this.verticalOffset;
-            }
-        }
-        
+
+        this.sprites[0].x = this.x;
+        this.sprites[0].y = this.y;
     }
 }

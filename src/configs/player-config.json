@@ -1,8 +1,14 @@
 {
-    "x": 100,
-    "y": 200,
-    "texture": "player",
-    "frame": 0,
+    "spriteStackConfig" : 
+    {
+        "BillBoard": true,
+        "x": 100,
+        "y": 200,
+        "textures": ["player"],
+        "verticalOffset": 1,
+        "scale": 1
+    },
+
     "speed": 250,
     "width": 32,
     "height": 16,

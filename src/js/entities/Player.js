@@ -2,6 +2,7 @@ import { extendWithComponents } from "../core/component-extension.js";
 import { MovementComponent } from "../components/Movement.js";
 import { PlayerControllerComponent } from "../components/PlayerController.js";
 import { PlayerShootingComponent } from "../components/PlayerShooting.js";
+import { SpriteStacking } from "./SpriteStacking.js";
 
 /**
  * Player GameObject with movement and player control.
@@ -22,7 +23,7 @@ import { PlayerShootingComponent } from "../components/PlayerShooting.js";
  * @param {number} [config.offsetX] - X offset of the body from center (optional)
  * @param {number} [config.offsetY] - Y offset of the body from center (optional)
  */
-export class Player extends Phaser.GameObjects.Sprite {
+export class Player extends SpriteStacking {
     /**
      * Configuration object passed to the player.
      * @type {Object}
@@ -30,7 +31,7 @@ export class Player extends Phaser.GameObjects.Sprite {
     config;
 
     constructor(scene, config) {
-        super(scene, config.x, config.y, config.texture, config.frame);
+        super(scene, config.spriteStackConfig, scene.cameras.main);
         this.config = config;
 
         // Add component system to this GameObject

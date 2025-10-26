@@ -29,7 +29,7 @@ export class Arrow extends Phaser.GameObjects.Sprite{
         this.setActive(true);
         this.setVisible(true);
 
-        this.trajectory.shoot(this);
+        this.trajectory.shoot(this, this.scene.cameras.main.rotation);
     }
 
     onCollision(arrow, other){

@@ -37,6 +37,8 @@ export default class GameplayScene extends Phaser.Scene {
         this.player = new Player(this, playerConfig);
         
         this.physics.add.collider(this.player, this.obstaclesGroup);
+
+        this.cameras.main.startFollow(this.player, false, 0.1, 0.1, 10, 10);
     }
 
     update(time, delta) {}
