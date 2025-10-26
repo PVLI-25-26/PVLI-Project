@@ -32,6 +32,8 @@ export class SpriteStacking extends Phaser.GameObjects.Sprite{
         var sprites = [];
         var scale = scale;
         this.camera = camera;
+        this.cameraCosR = 1;
+        this.cameraSinR = 0;
         this.config = config;   
 
         scene.add.existing(this);
@@ -59,14 +61,18 @@ export class SpriteStacking extends Phaser.GameObjects.Sprite{
     onCameraRotated(R, cosR, sinR){
         if (this.billBoard){
             this.sprites[0].rotation = -R;
+            this.sprites[0].setDepth(-this.y*cosR-this.x*sinR);
         }
         else{
             // Corrects the sprite stacking position according to the camera angle and vertical offset
             for (let i = 0; i<this.sprites.length; i ++){
                 this.sprites[i].x = this.sprites[0].x + -sinR * i *this.verticalOffset;
                 this.sprites[i].y = this.sprites[0].y + -cosR * i *this.verticalOffset;
+                this.sprites[i].setDepth(this.sprites[i].y*cosR-this.sprites[i].x*sinR);
             }
         }
+        this.cameraCosR = cosR;
+        this.cameraSinR = sinR;
     }
     
     preUpdate(time, delta){
@@ -74,5 +80,7 @@ export class SpriteStacking extends Phaser.GameObjects.Sprite{
 
         this.sprites[0].x = this.x;
         this.sprites[0].y = this.y;
+
+        this.sprites[0].setDepth(this.y*this.cameraCosR-this.x*this.cameraSinR);
     }
 }

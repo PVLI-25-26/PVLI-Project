@@ -1,4 +1,5 @@
 import { extendWithComponents } from "../core/component-extension.js";
+import { SpriteStacking } from "./SpriteStacking.js";
 
 /**
  * Static obstacle GameObject.
@@ -19,7 +20,7 @@ import { extendWithComponents } from "../core/component-extension.js";
  * @param {number} [config.offsetX] - X offset of the body from center (optional)
  * @param {number} [config.offsetY] - Y offset of the body from center (optional)
  */
-export class Obstacle extends Phaser.GameObjects.Sprite {
+export class Obstacle extends SpriteStacking {
     /**
      * Configuration object passed to the obstacle.
      * @type {Object}
@@ -27,7 +28,7 @@ export class Obstacle extends Phaser.GameObjects.Sprite {
     config;
 
     constructor(scene, config) {
-        super(scene, config.x, config.y, config.texture, config.frame);
+        super(scene, config.spriteStackConfig, scene.cameras.main);
         this.config = config;
 
         // Extend with component system
@@ -68,6 +69,5 @@ export class Obstacle extends Phaser.GameObjects.Sprite {
      */
     preUpdate(time, delta) {
         super.preUpdate(time, delta);
-        this.setDepth(this.y);
     }
 }

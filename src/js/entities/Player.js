@@ -76,6 +76,5 @@ export class Player extends SpriteStacking {
      */
     preUpdate(time, delta) {
         super.preUpdate(time, delta);
-        this.setDepth(this.y);
     }
 }

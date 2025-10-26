@@ -1,9 +1,14 @@
 [
     {
-        "x": 150,
-        "y": 300,
-        "texture": "barrel",
-        "frame": 0,
+        "spriteStackConfig": 
+        {
+            "BillBoard": true,
+            "x": 150,
+            "y": 300,
+            "textures": ["barrel"],
+            "verticalOffset": 1,
+            "scale": 1
+        },
         "collidable": true,
         "width": 30,
         "height": 10,
@@ -11,9 +16,15 @@
         "offsetY": 25
     },
     {
-        "x": 300,
-        "y": 300,
-        "texture": "cube",
+        "spriteStackConfig": 
+        {
+            "BillBoard": true,
+            "x": 300,
+            "y": 300,
+            "textures": ["cube"],
+            "verticalOffset": 1,
+            "scale": 1
+        },
         "collidable": true,
         "width": 30,
         "height": 20,
@@ -21,9 +32,15 @@
         "offsetY": 15
     },
     {
-        "x": 450,
-        "y": 300,
-        "texture": "column",
+        "spriteStackConfig": 
+        {
+            "BillBoard": true,
+            "x": 450,
+            "y": 300,
+            "textures": ["column"],
+            "verticalOffset": 1,
+            "scale": 1
+        },
         "collidable": true,
         "width": 30,
         "height": 25,
@@ -31,9 +48,15 @@
         "offsetY": 50
     },
     {
-        "x": 600,
-        "y": 300,
-        "texture": "pointer",
+        "spriteStackConfig": 
+        {
+            "BillBoard": true,
+            "x": 600,
+            "y": 300,
+            "textures": ["pointer"],
+            "verticalOffset": 1,
+            "scale": 1
+        },
         "collidable": true,
         "width": 5,
         "height": 10,
