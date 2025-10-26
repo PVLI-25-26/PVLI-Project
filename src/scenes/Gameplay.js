@@ -26,13 +26,14 @@ export default class GameplayScene extends Phaser.Scene {
     create() {
         this.sound_facade = new SoundSceneFacade(this, audioConfig);
 
-        this.player = new Player(this, playerConfig);
         
         this.obstaclesGroup = this.physics.add.staticGroup({name: 'obstacles'});
         obstaclesConfig.forEach(cfg => {
             const obstacle = new Obstacle(this, cfg);
             this.obstaclesGroup.add(obstacle);
         });
+        
+        this.player = new Player(this, playerConfig);
         
         this.physics.add.collider(this.player, this.obstaclesGroup);
     }

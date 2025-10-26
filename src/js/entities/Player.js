@@ -58,15 +58,12 @@ export class Player extends Phaser.GameObjects.Sprite {
     addComponents() {
         // Add MovementComponent
         const movement = new MovementComponent(this, this.config.speed || 200);
-        //this.addComponent(movement);
 
         // Add PlayerControllerComponent
         const controller = new PlayerControllerComponent(this);
-        //this.addComponent(controller);
 
         // Add PlayerShootingComponent
-        const shootController = new PlayerShootingComponent(this);
-        //this.addComponents(shootController);
+        const shootController = new PlayerShootingComponent(this, this.config.minShootPower, this.config.maxShootPower, this.config.powerIncreaseSpeed);
     }
 
     /**

@@ -29,4 +29,10 @@ export class BasicTrajectory {
         // Todo - the following code will be necessary when the sprite stacking works
         //body.setAcceleration(-Math.sin(-cam.rotation)*1000, Math.cos(-cam.rotation)*1000);
     }
+
+    onCollision(){
+        this.#isFlying = false;
+        this.#arrow.body.setAcceleration(0,0);
+        this.#arrow.body.setVelocity(0,0); 
+    }
 }

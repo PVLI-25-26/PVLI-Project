@@ -1,21 +1,26 @@
 import { BaseComponent } from "../core/base-component";
-import serviceLocator, {SERVICE_KEYS} from "../core/service-locator";
 import { Arrow } from "../entities/Arrow/Arrow";
 import { BasicTrajectory } from "../entities/Arrow/BasicTrajectory";
 
 export class PlayerShootingComponent extends BaseComponent{
     #shootWasPressedLastFrame = false;
-    #minPower = 100;
-    #currentPower = this.#minPower;
-    #maxPower = 1000;
-    #powerIncSpeed = 1;
+    #currentPower;
+    #minPower;
+    #maxPower;
+    #powerIncSpeed;
 
     // For simple arrow pool
     #arrowPool;
     #lastArrow = 0;
 
-    constructor(gameObject){
+    constructor(gameObject, minPower, maxPower, powerIncSpeed){
         super(gameObject);
+
+        // Set config values
+        this.#minPower = minPower;
+        this.#currentPower = this.#minPower;
+        this.#maxPower = maxPower;
+        this.#powerIncSpeed = powerIncSpeed;
 
         // Simple object pool for testing
         this.#arrowPool = Array(30);
@@ -24,8 +29,6 @@ export class PlayerShootingComponent extends BaseComponent{
     }
 
     update(time, delta){
-        let logger = serviceLocator.getService(SERVICE_KEYS.LOGGER);
-
         let pointer = this.gameObject.scene.input.activePointer;
 
         
@@ -48,12 +51,6 @@ export class PlayerShootingComponent extends BaseComponent{
         {
             this.#arrowPool[this.#lastArrow].shoot(new BasicTrajectory(500, this.gameObject.scene), {}, this.gameObject.x, this.gameObject.y, pointer.x, pointer.y, this.#currentPower);
             this.#lastArrow = (this.#lastArrow+1)%this.#arrowPool.length;
-            this.#arrowPool.get(this.gameObject.scene)
-                           .shoot(new BasicTrajectory(500, this.gameObject.scene), 
-                                  {}, 
-                                  this.gameObject.x, this.gameObject.y, 
-                                  pointer.x, pointer.y, 
-                                  this.#currentPower);
 
             this.#shootWasPressedLastFrame = false;
             this.#currentPower = this.#minPower;
