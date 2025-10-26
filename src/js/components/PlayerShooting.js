@@ -26,6 +26,10 @@ export class PlayerShootingComponent extends BaseComponent{
         this.#arrowPool = Array(30);
         for(let i = 0; i < this.#arrowPool.length; i++) 
            this.#arrowPool[i] = new Arrow(this.gameObject.scene);
+
+        // Basic UI for testing
+        this.powerBar = this.gameObject.scene.add.rectangle(this.gameObject.x, this.gameObject.y - 30, 100, 10,0x2200ff,1);
+        this.powerBar.setVisible(false);
     }
 
     update(time, delta){
@@ -36,6 +40,12 @@ export class PlayerShootingComponent extends BaseComponent{
             this.#shootWasPressedLastFrame = true;
             if(this.#currentPower > this.#maxPower) this.#currentPower = this.#maxPower;
             else this.#currentPower += this.#powerIncSpeed * delta;
+
+            // Basic UI for testing (should be implemented in a container with the player)
+            this.powerBar.setVisible(true);
+            this.powerBar.x = this.gameObject.x;
+            this.powerBar.y = this.gameObject.y-30;
+            this.powerBar.width = 100 * (this.#currentPower-this.#minPower)/(this.#maxPower-this.#minPower);
 
             // Code to get mouse world position when sprite stacking works
             // --
@@ -52,6 +62,7 @@ export class PlayerShootingComponent extends BaseComponent{
             this.gameObject.scene.plugins.get('logger').log('PLAYER', 0, `Arrow shoot: strength-${this.#currentPower}`);
             this.#arrowPool[this.#lastArrow].shoot(new BasicTrajectory(500, this.gameObject.scene), {}, this.gameObject.x, this.gameObject.y, pointer.x, pointer.y, this.#currentPower);
             this.#lastArrow = (this.#lastArrow+1)%this.#arrowPool.length;
+            this.powerBar.setVisible(false);
 
             this.#shootWasPressedLastFrame = false;
             this.#currentPower = this.#minPower;

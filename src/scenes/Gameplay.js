@@ -5,6 +5,7 @@ import { Player } from '../js/entities/Player.js';
 import { Obstacle } from '../js/entities/Obstacle.js';
 import showLoaderUI from "../js/UI/LoaderUI.js";
 import { SoundSceneFacade } from "../js/core/sound-facade.js";
+import { EventBus } from "../js/core/event-bus.js";
 
 
 export default class GameplayScene extends Phaser.Scene {

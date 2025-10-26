@@ -1,3 +1,5 @@
+import { EventBus } from "../../core/event-bus";
+
 export class BasicTrajectory {
     #gravityStr;
     #scene;
@@ -21,6 +23,7 @@ export class BasicTrajectory {
             arrow.body.setAcceleration(0,0);
             arrow.body.setVelocity(0,0); 
             this.#isFlying=false;
+            EventBus.emit('arrowLanded', this.#arrow);
         });
     }
 
