@@ -17,6 +17,10 @@ export class PlayerControllerComponent extends BaseControllerComponent {
      * @type {Phaser.Types.Input.Keyboard.CursorKeys}
      */
     keys;
+
+    /**
+     * @type {Phaser.Cameras.Scene2D.Camera} Main camera reference.
+     */
     camera;
 
     constructor(gameObject) {
@@ -41,12 +45,17 @@ export class PlayerControllerComponent extends BaseControllerComponent {
 
         this.movementComponent.setDirection(x, y);
 
-        if(this.keys.rotCamRight.isDown) {
+        // Camera rotation controls
+        // Don't allow both rotation keys at the same time because 
+        //      it is stupid and it will call many events unnecessarily (improves performance)
+        if(this.keys.rotCamRight.isDown && !this.keys.rotCamLeft.isDown) {
             this.camera.rotation -= 0.05;
+            // Emit event with new rotation and precalculated cos/sin for performance
             EventBus.emit('cameraRotated', this.camera.rotation, Math.cos(-this.camera.rotation), Math.sin(-this.camera.rotation));
         }
-        if(this.keys.rotCamLeft.isDown) {
+        if(this.keys.rotCamLeft.isDown && !this.keys.rotCamRight.isDown) {
             this.camera.rotation += 0.05;
+            // Emit event with new rotation and precalculated cos/sin for performance
             EventBus.emit('cameraRotated', this.camera.rotation, Math.cos(-this.camera.rotation), Math.sin(-this.camera.rotation));
         }
     }

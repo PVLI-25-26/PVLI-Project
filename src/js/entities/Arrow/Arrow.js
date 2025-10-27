@@ -1,4 +1,55 @@
+/**
+ * Trajectory controller interface used by Arrow instances.
+ *
+ * A Trajectory is an object that manages an arrow's movement lifecycle.
+ * @typedef {Object} Trajectory
+ * @property {function(Phaser.GameObjects.Sprite, number):void} shoot - Start the trajectory for the arrow. Receives the arrow and the camera/scene rotation if needed.
+ * @property {function(number, number):void} update - Per-frame update called with (time, delta).
+ * @property {function():void} onCollision - Called when the arrow collides with something.
+ */
+
+/**
+ * Arrow entity — a lightweight projectile GameObject used for shooting any type of arrow.
+ *
+ * This class wraps a Phaser Sprite and delegates movement to a provided
+ * "trajectory" controller object.
+ * The class will need ot be injected with a trajectory and an effect, which it will use
+ * to handle shooting and collisions.
+ * @class
+ * @extends Phaser.GameObjects.Sprite
+ * @module entities/Arrow
+ */
 export class Arrow extends Phaser.GameObjects.Sprite{
+    /**
+     * Trajectory controller instance which manages movement and lifecycle.
+     * @type {Trajectory}
+     */
+    trajectory;
+
+    /**
+     * Effect payload to apply when the arrow hits something.
+     * @type {*}
+     */
+    effect;
+
+    /**
+     * Target direction vector calculated on shoot: {x:number, y:number}.
+     * @type {{x:number, y:number}}
+     */
+    target;
+
+    /**
+     * Power/magnitude of the shot (speed scalar).
+     * @type {number}
+     */
+    power;
+
+
+    /**
+     * Create a new Arrow.
+     *
+     * @param {Phaser.Scene} scene - The scene this Arrow belongs to.
+     */
     constructor(scene){
         super(scene, 0, 0, 'arrow');
 
@@ -7,13 +58,32 @@ export class Arrow extends Phaser.GameObjects.Sprite{
         this.scene.physics.add.existing(this);
         this.scene.physics.add.collider(this.body, this.scene.obstaclesGroup, this.onCollision, ()=>{}, this);
         //                                            I don't know what this processCallback is ---^
+        
         this.setActive(false);
         this.setVisible(false);
 
-        // Make the collider smaller to look like the arrow is inside the object
+        // Make the collider smaller to look like the arrow is inside the object it hits
         this.body.setSize(this.width-25, this.height-25);
     }
 
+    /**
+     * Shoot the arrow using a trajectory controller.
+     * 
+     * A trajectory and an effect must be injected to handle movement and collisions.
+     * 
+     * The trajectory controller should handle movement and lifecycle for the
+     * arrow (methods: `shoot(arrow, rotation)`, `update(time, delta)`,
+     * `onCollision()`).
+     *
+     * @param {Trajectory} trajectory - Trajectory controller.
+     * @param {*} effect - Any effect payload to apply on hit (damage, status, etc.).
+     * @param {number} oX - Origin X (start x coordinate).
+     * @param {number} oY - Origin Y (start y coordinate).
+     * @param {number} tX - Target X (mouse/aim x coordinate).
+     * @param {number} tY - Target Y (mouse/aim y coordinate).
+     * @param {number} power - Magnitude of the shot (speed/power scalar).
+     * @returns {void}
+     */
     shoot(trajectory, effect, oX, oY, tX, tY, power){
         this.x = oX;
         this.y = oY;
@@ -29,16 +99,27 @@ export class Arrow extends Phaser.GameObjects.Sprite{
         this.setActive(true);
         this.setVisible(true);
 
-        this.trajectory.shoot(this, this.scene.cameras.main.rotation);
+        this.trajectory.shoot(this);
     }
 
+    /**
+     * Called by the physics collider when the arrow hits another body.
+     *
+     * @param {Phaser.GameObjects.Sprite|Arrow} arrow - The arrow instance/body.
+     * @param {Phaser.GameObjects.GameObject} other - The other object collided with.
+     * @returns {void}
+     */
     onCollision(arrow, other){
+        // Notify the trajectory controller about the collision so it can
+        // handle stopping, pooling or effects.
         this.trajectory.onCollision();
-        // Apply arrow effects to other
-        //if(other.onArrowHit) other.onArrowHit(this.effect);
+        // Apply arrow effects to the hit object if it implements a handler.
+        // if (other && typeof other.onArrowHit === 'function') other.onArrowHit(this.effect);
     }
 
     preUpdate(time, delta){
-        this.trajectory.update(time, delta);
+        if (this.trajectory && typeof this.trajectory.update === 'function') {
+            this.trajectory.update(time, delta);
+        }
     }
 }

@@ -7,7 +7,7 @@ import { SpriteStacking } from "./SpriteStacking.js";
  *
  * @class
  * @category Entities
- * @extends Phaser.GameObjects.Sprite
+ * @extends SpriteStacking
  * @param {Phaser.Scene} scene - The scene this obstacle belongs to
  * @param {Object} config - Configuration object for the obstacle
  * @param {string} config.texture - Texture key

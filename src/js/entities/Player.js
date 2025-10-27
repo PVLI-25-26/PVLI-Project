@@ -10,7 +10,7 @@ import { SpriteStacking } from "./SpriteStacking.js";
  *
  * @class 
  * @category Entities
- * @extends Phaser.GameObjects.Sprite
+ * @extends SpriteStacking
  * @param {Phaser.Scene} scene - The scene this player belongs to
  * @param {Object} config - Player configuration object
  * @param {string} config.texture - Sprite texture key

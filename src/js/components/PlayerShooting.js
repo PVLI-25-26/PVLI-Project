@@ -3,28 +3,71 @@ import { EventBus } from "../core/event-bus";
 import { Arrow } from "../entities/Arrow/Arrow";
 import { BasicTrajectory } from "../entities/Arrow/BasicTrajectory";
 
+/**
+ * Component to handle player shooting mechanics.
+ * 
+ * @class
+ * @category Components
+ * @extends BaseComponent
+ */
 export class PlayerShootingComponent extends BaseComponent{
+    /**
+     * @type {boolean} Whether the shoot button was pressed last frame.
+     */
     #shootWasPressedLastFrame = false;
+
+    /**
+     * @type {number} Current power/magnitude of the shot.
+     */
     #currentPower;
+
+    /**
+     * @type {number} Minimum power/magnitude of the shot.
+     */
     #minPower;
+
+    /**
+     * @type {number} Maximum power/magnitude of the shot.
+     */
     #maxPower;
+
+    /**
+     * @type {number} Speed at which the power increases while holding the shoot button.
+     */
     #powerIncSpeed;
 
-    // For simple arrow pool
+    /**
+     * @type {Arrow[]} Simple object pool for arrows.
+     */
     #arrowPool;
+    /**
+     * @type {number} Index of the last arrow used in the pool.
+     */
     #lastArrow = 0;
+
+    /**
+     * @type {number} Current camera rotation in radians.
+     */
     camRotation = 0;
 
+    /**
+     * Creates a new PlayerShootingComponent to handle player shooting.
+     * 
+     * @param {Object} gameObject Gameobject to which this component is attached.
+     * @param {number} minPower Minimum power/magnitude of the arrows shot.
+     * @param {number} maxPower Maximum power/magnitude of the arrows shot.
+     * @param {number} powerIncSpeed Speed at which the power increases while holding the shoot button.
+     */
     constructor(gameObject, minPower, maxPower, powerIncSpeed){
         super(gameObject);
 
-        // Set config values
+        // Set shooting properties values
         this.#minPower = minPower;
         this.#currentPower = this.#minPower;
         this.#maxPower = maxPower;
         this.#powerIncSpeed = powerIncSpeed;
 
-        // Simple object pool for testing
+        // Initialize object pool for testing
         this.#arrowPool = Array(30);
         for(let i = 0; i < this.#arrowPool.length; i++) 
            this.#arrowPool[i] = new Arrow(this.gameObject.scene);
@@ -33,12 +76,15 @@ export class PlayerShootingComponent extends BaseComponent{
         this.powerBar = this.gameObject.scene.add.rectangle(this.gameObject.x, this.gameObject.y - 30, 100, 10,0x2200ff,1);
         this.powerBar.setVisible(false);
 
+        // Listen to camera rotation updates
         EventBus.on('cameraRotated', (R)=>{this.camRotation=R;}, this);
     }
 
     update(time, delta){
+        // Get mouse data
         let pointer = this.gameObject.scene.input.activePointer;
 
+        // If mouse button is down, increase power
         if(pointer.isDown) {
             this.#shootWasPressedLastFrame = true;
 
@@ -52,30 +98,41 @@ export class PlayerShootingComponent extends BaseComponent{
             this.powerBar.y = this.gameObject.y-30;
             this.powerBar.width = 100 * (this.#currentPower-this.#minPower)/(this.#maxPower-this.#minPower);
         }
+        // When mouse button is released after being pressed, shoot arrow
         if(!pointer.isDown && this.#shootWasPressedLastFrame)
             {
             const logger = this.gameObject.scene.plugins.get('logger');
 
-            // Code to get mouse world position when sprite stacking works
-            const cam = this.gameObject.scene.cameras.main;
-            const mousePosLength = Math.hypot(pointer.x, pointer.y);
-            const mouseNorm01X = pointer.x/cam.width;
-            const mouseNorm01Y = pointer.y/cam.height;
-            const mouseNormX = mouseNorm01X*2-1;
-            const mouseNormY = mouseNorm01Y*2-1;
+            // Get mouse position in world coordinates
+            const cam = this.gameObject.scene.cameras.main; // Get main camera
+            const mousePosLength = Math.hypot(pointer.x, pointer.y); // Distance from center of screen to mouse position
+            const mouseNorm01X = pointer.x/cam.width; // Normalize mouse x to 0-1
+            const mouseNorm01Y = pointer.y/cam.height; // Normalize mouse y to 0-1
+            const mouseNormX = mouseNorm01X*2-1; // Normalize mouse x to -1 to 1
+            const mouseNormY = mouseNorm01Y*2-1; // Normalize mouse y to -1 to 1
+            // Rotate normalized mouse position by -cameraRotation
             let dirX = mouseNormX * Math.cos(-this.camRotation) - mouseNormY * Math.sin(-this.camRotation);
             let dirY = mouseNormX * Math.sin(-this.camRotation) + mouseNormY * Math.cos(-this.camRotation);
+            // Scale by the actual distance from center to mouse position
             dirX *= mousePosLength;
             dirY *= mousePosLength;
+            // Translate to world coordinates
             dirX += cam.scrollX+cam.width/2;
             dirY += cam.scrollY+cam.height/2;
             
             // Get arrow from pool and shoot
-            this.#arrowPool[this.#lastArrow].shoot(new BasicTrajectory(500, this.gameObject.scene), {}, this.gameObject.x, this.gameObject.y, dirX, dirY, this.#currentPower);
+            this.#arrowPool[this.#lastArrow].shoot(
+                new BasicTrajectory(500, this.gameObject.scene), // Create new basic trajectory for now (later we can inject different types)
+                {}, // Give empty effect for now (Upate when we have effects and enemies implemented)
+                this.gameObject.x, this.gameObject.y, // Origin (player position)
+                dirX, dirY, // Target (mouse position in world coordinates)
+                this.#currentPower // Power
+            );
+            // Update last arrow index to get next arrow in pool
             this.#lastArrow = (this.#lastArrow+1)%this.#arrowPool.length;
+            // Remove power bar UI
             this.powerBar.setVisible(false);
-            
-            // Reset values
+            // Reset shooting values
             this.#shootWasPressedLastFrame = false;
             this.#currentPower = this.#minPower;
         }
