@@ -10,10 +10,10 @@
     },
 
     "speed": 250,
-    "width": 32,
+    "width": 16,
     "height": 16,
     "offsetX": 0,
-    "offsetY": 32,
+    "offsetY": 0,
     "minShootPower": 100,
     "maxShootPower": 1000,
     "powerIncreaseSpeed": 2 

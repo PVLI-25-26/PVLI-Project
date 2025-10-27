@@ -2,65 +2,69 @@
     {
         "spriteStackConfig": 
         {
-            "BillBoard": true,
+            "BillBoard": false,
             "x": 150,
             "y": 300,
-            "textures": ["barrel"],
-            "verticalOffset": 1,
-            "scale": 1
+            "textures": "barrel-spritestack",
+            "frameCount": 8,
+            "verticalOffset": 4,
+            "scale": 3
         },
         "collidable": true,
         "width": 30,
-        "height": 10,
+        "height": 30,
         "offsetX": 0,
-        "offsetY": 25
+        "offsetY": 0
     },
     {
         "spriteStackConfig": 
         {
-            "BillBoard": true,
+            "BillBoard": false,
             "x": 300,
             "y": 300,
-            "textures": ["cube"],
-            "verticalOffset": 1,
-            "scale": 1
+            "textures": "wall-spritestack",
+            "frameCount": 16,
+            "verticalOffset": 2,
+            "scale": 3
         },
         "collidable": true,
-        "width": 30,
-        "height": 20,
-        "offsetX": 2,
-        "offsetY": 15
+        "width": 48,
+        "height": 48,
+        "offsetX": 0,
+        "offsetY": 0
     },
     {
         "spriteStackConfig": 
         {
-            "BillBoard": true,
+            "BillBoard": false,
             "x": 450,
             "y": 300,
-            "textures": ["column"],
-            "verticalOffset": 1,
-            "scale": 1
+            "textures": "chest-spritestack",
+            "frameCount": 18,
+            "verticalOffset": 2,
+            "scale": 3
         },
         "collidable": true,
-        "width": 30,
-        "height": 25,
-        "offsetX": 1,
-        "offsetY": 50
+        "width": 48,
+        "height": 48,
+        "offsetX": 0,
+        "offsetY": 0
     },
     {
         "spriteStackConfig": 
         {
-            "BillBoard": true,
+            "BillBoard": false,
             "x": 600,
             "y": 300,
-            "textures": ["pointer"],
-            "verticalOffset": 1,
-            "scale": 1
+            "textures": "crate-spritestack",
+            "frameCount": 8,
+            "verticalOffset": 2,
+            "scale": 3
         },
         "collidable": true,
-        "width": 5,
-        "height": 10,
-        "offsetX": 10,
-        "offsetY": 20
+        "width": 48,
+        "height": 48,
+        "offsetX": 0,
+        "offsetY": 0
     }
 ]
