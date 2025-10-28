@@ -64,7 +64,20 @@ export class Logger extends Phaser.Plugins.BasePlugin{
 
         let text = `${getCurrentTime()} [${moduleKey}] [${logLevelText[logLevel]}]: ${message}`;
         
-        console.log(text);
+        switch(logLevel){
+            case Logger.LOG_LEVELS.DEBUG:
+                console.log(text);
+                break;
+            case Logger.LOG_LEVELS.INFO:
+                console.log(`%c${text}`, 'background: #2774f0; border-radius: 2px;');
+                break;
+            case Logger.LOG_LEVELS.WARNING:
+                console.warn(text);
+                break;
+            case Logger.LOG_LEVELS.ERROR:
+                console.error(text);
+                break;
+        }
     }
 
     /**

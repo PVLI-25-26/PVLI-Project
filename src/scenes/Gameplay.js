@@ -27,6 +27,7 @@ export default class GameplayScene extends Phaser.Scene {
         this.sound_facade = new SoundSceneFacade(this, audioConfig);
 
         
+        
         this.obstaclesGroup = this.physics.add.staticGroup({name: 'obstacles'});
         obstaclesConfig.forEach(cfg => {
             const obstacle = new Obstacle(this, cfg);
