@@ -36,6 +36,9 @@ export class PlayerShootingComponent extends BaseComponent{
      */
     #powerIncSpeed;
 
+    #mouseBeginDragPos;
+    #mouseEndDragPos;
+
     /**
      * @type {Arrow[]} Simple object pool for arrows.
      */
@@ -84,13 +87,29 @@ export class PlayerShootingComponent extends BaseComponent{
         // Get mouse data
         let pointer = this.gameObject.scene.input.activePointer;
 
+        // Begin drag (save first click position in another variable)
+        if(pointer.isDown && !this.#shootWasPressedLastFrame)
+            this.#mouseBeginDragPos = {x: pointer.x, y: pointer.y};
         // If mouse button is down, increase power
         if(pointer.isDown) {
             this.#shootWasPressedLastFrame = true;
 
+            // Update last mouse pos while dragging
+            this.#mouseEndDragPos = {x: pointer.x, y: pointer.y};
+            
+            // Calculate shot power and clamp within values
+            this.#currentPower = Math.hypot(
+                this.#mouseEndDragPos.x - this.#mouseBeginDragPos.x,
+                this.#mouseEndDragPos.y - this.#mouseBeginDragPos.y
+            ) * this.#powerIncSpeed;
+            this.#currentPower = Math.min(this.#currentPower, this.#maxPower);
+            this.#currentPower = Math.max(this.#currentPower, this.#minPower);
+
+            /*  LOGIC FOR click & hold shooting style SAVE IT JUST IN CASE
             // increase power while click held
             if(this.#currentPower > this.#maxPower) this.#currentPower = this.#maxPower;
             else this.#currentPower += this.#powerIncSpeed * delta;
+            */
 
             // Basic UI for testing (should be implemented in a container with the player)
             this.powerBar.setVisible(true);
@@ -103,6 +122,7 @@ export class PlayerShootingComponent extends BaseComponent{
             {
             const logger = this.gameObject.scene.plugins.get('logger');
 
+            /* LOGIC FOR click & hold shooting style SAVE IT JUST IN CASE
             // Get mouse position in world coordinates
             const cam = this.gameObject.scene.cameras.main; // Get main camera
             const mousePosLength = Math.hypot(pointer.x, pointer.y); // Distance from center of screen to mouse position
@@ -119,6 +139,16 @@ export class PlayerShootingComponent extends BaseComponent{
             // Translate to world coordinates
             dirX += cam.scrollX+cam.width/2;
             dirY += cam.scrollY+cam.height/2;
+            */
+            
+            // Calculate direction of shot taking into account camera rotation
+            const noRotDirX = (this.#mouseEndDragPos.x - this.#mouseBeginDragPos.x);
+            const noRotDirY = (this.#mouseEndDragPos.y - this.#mouseBeginDragPos.y);
+            let dirX = noRotDirX * Math.cos(-this.camRotation) - noRotDirY * Math.sin(-this.camRotation);
+            let dirY = noRotDirX * Math.sin(-this.camRotation) + noRotDirY * Math.cos(-this.camRotation);
+            dirX = this.gameObject.x - dirX;
+            dirY = this.gameObject.y - dirY;
+
             
             // Get arrow from pool and shoot
             this.#arrowPool[this.#lastArrow].shoot(

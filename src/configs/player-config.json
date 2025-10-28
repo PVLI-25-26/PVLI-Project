@@ -16,5 +16,5 @@
     "offsetY": 0,
     "minShootPower": 100,
     "maxShootPower": 1000,
-    "powerIncreaseSpeed": 2 
+    "powerIncreaseSpeed": 4 
 }
