@@ -1,7 +1,10 @@
 {
   "sounds": [
     { "key": "hover", "file": "assets/sounds/hover.mp3" },
-    { "key": "click", "file": "assets/sounds/click.wav" }
+    { "key": "click", "file": "assets/sounds/click.wav" },
+    { "key": "bowLoad", "file": "assets/sounds/bowLoading.mp3"},
+    { "key": "arrowLand", "file": "assets/sounds/arrowLand.mp3"},
+    { "key": "arrowSwish", "file": "assets/sounds/arrowSwish.mp3"}
   ],
   "music": [
     

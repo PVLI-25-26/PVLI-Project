@@ -23,6 +23,8 @@ export class BasicTrajectory {
      */
     #airTime = 750;
 
+    #timeSinceLaunch = 0;
+
     /**
      * @type {boolean} Whether the arrow is currently flying.
      */
@@ -32,6 +34,8 @@ export class BasicTrajectory {
      * @type {Phaser.GameObjects.Sprite|Arrow} The arrow instance this trajectory controls.
      */
     #arrow;
+
+    #airDrag = 0.95;
 
     /**
      *  Create a new BasicTrajectory controller.
@@ -51,24 +55,25 @@ export class BasicTrajectory {
         this.#arrow = arrow;
         // Normalize direction
         const targetLength = Math.hypot(arrow.target.x, arrow.target.y);
-        
-        // To make fake "auto aiming" with the parabolic trajectory
-        const offSet = -100;
 
         // Calculate final velocity
         const a = arrow.power/targetLength; // Saving time by doing this for both axes
         const vX = arrow.target.x*a;
-        const vY = arrow.target.y*a + offSet;
+        const vY = arrow.target.y*a;
 
         // apply velocities
         const camRotation = this.#scene.cameras.main.rotation;
         arrow.body.setVelocity(vX, vY);
         this.updateAcceleration(camRotation, Math.cos(-camRotation), Math.sin(-camRotation));
 
+        this.#timeSinceLaunch = 0;
+
         // End arrow flight at after airTime milliseconds
         this.#scene.time.delayedCall(this.#airTime, ()=>{
-            this.stopFlying();
-            EventBus.emit('arrowLanded', this.#arrow);
+            if(this.#isFlying){
+                this.stopFlying();
+                this.#arrow.onLanded();
+            }
         });
 
         EventBus.on('cameraRotated', this.updateAcceleration, this);
@@ -79,7 +84,14 @@ export class BasicTrajectory {
      */
     update(time, delta){
         // While flight is on going, update rotation to the trajectory
-        if(this.#isFlying) this.#arrow.rotation = this.#arrow.body.angle;
+        if(this.#isFlying) {
+            this.#arrow.body.setVelocity(
+                this.#arrow.body.velocity.x*this.#airDrag, 
+                this.#arrow.body.velocity.y*this.#airDrag);
+            this.#timeSinceLaunch += delta;
+            this.#timeSinceLaunch = Math.min(this.#timeSinceLaunch, this.#airTime);
+            this.#arrow.updateArrowVisuals(this.#timeSinceLaunch/this.#airTime);
+        }
     }
 
     /**

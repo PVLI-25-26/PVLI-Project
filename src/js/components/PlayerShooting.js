@@ -49,9 +49,14 @@ export class PlayerShootingComponent extends BaseComponent{
     #lastArrow = 0;
 
     /**
-     * @type {number} Current camera rotation in radians.
+     * @type {number} Current cosine of camera rotation.
      */
-    camRotation = 0;
+    camCosR = 1;
+
+    /**
+     * @type {number} Current sine of camera rotation.
+     */
+    camSinR = 0;
 
     /**
      * Creates a new PlayerShootingComponent to handle player shooting.
@@ -66,7 +71,7 @@ export class PlayerShootingComponent extends BaseComponent{
 
         // Set shooting properties values
         this.#minPower = minPower;
-        this.#currentPower = this.#minPower;
+        this.#currentPower = 0;
         this.#maxPower = maxPower;
         this.#powerIncSpeed = powerIncSpeed;
 
@@ -76,11 +81,12 @@ export class PlayerShootingComponent extends BaseComponent{
            this.#arrowPool[i] = new Arrow(this.gameObject.scene);
 
         // Basic UI for testing
-        this.powerBar = this.gameObject.scene.add.rectangle(this.gameObject.x, this.gameObject.y - 30, 100, 10,0x2200ff,1);
+        this.powerBar = this.gameObject.scene.add.rectangle(this.gameObject.x, this.gameObject.y, 100, 3,0x2200ff,1);
+        this.powerBar.setOrigin(0,0.5);
         this.powerBar.setVisible(false);
 
         // Listen to camera rotation updates
-        EventBus.on('cameraRotated', (R)=>{this.camRotation=R;}, this);
+        EventBus.on('cameraRotated', (R, cR, sR)=>{this.camCosR=cR;this.camSinR=sR;}, this);
     }
 
     update(time, delta){
@@ -88,8 +94,10 @@ export class PlayerShootingComponent extends BaseComponent{
         let pointer = this.gameObject.scene.input.activePointer;
 
         // Begin drag (save first click position in another variable)
-        if(pointer.isDown && !this.#shootWasPressedLastFrame)
+        if(pointer.isDown && !this.#shootWasPressedLastFrame){
             this.#mouseBeginDragPos = {x: pointer.x, y: pointer.y};
+            EventBus.emit('playSound', 'bowLoad');
+        }
         // If mouse button is down, increase power
         if(pointer.isDown) {
             this.#shootWasPressedLastFrame = true;
@@ -103,7 +111,6 @@ export class PlayerShootingComponent extends BaseComponent{
                 this.#mouseEndDragPos.y - this.#mouseBeginDragPos.y
             ) * this.#powerIncSpeed;
             this.#currentPower = Math.min(this.#currentPower, this.#maxPower);
-            this.#currentPower = Math.max(this.#currentPower, this.#minPower);
 
             /*  LOGIC FOR click & hold shooting style SAVE IT JUST IN CASE
             // increase power while click held
@@ -114,11 +121,16 @@ export class PlayerShootingComponent extends BaseComponent{
             // Basic UI for testing (should be implemented in a container with the player)
             this.powerBar.setVisible(true);
             this.powerBar.x = this.gameObject.x;
-            this.powerBar.y = this.gameObject.y-30;
-            this.powerBar.width = 100 * (this.#currentPower-this.#minPower)/(this.#maxPower-this.#minPower);
+            this.powerBar.y = this.gameObject.y;
+            this.powerBar.width = 100 * -(this.#currentPower-this.#minPower)/(this.#maxPower-this.#minPower);
+            const dragDir = this.rotateVector(this.camCosR, this.camSinR,
+                {y: this.#mouseEndDragPos.y - this.#mouseBeginDragPos.y, 
+                x: this.#mouseEndDragPos.x - this.#mouseBeginDragPos.x});
+            
+            this.powerBar.rotation = Math.atan2(dragDir.y, dragDir.x);
         }
         // When mouse button is released after being pressed, shoot arrow
-        if(!pointer.isDown && this.#shootWasPressedLastFrame)
+        if(!pointer.isDown && this.#shootWasPressedLastFrame && this.#currentPower > this.#minPower)
             {
             const logger = this.gameObject.scene.plugins.get('logger');
 
@@ -142,20 +154,14 @@ export class PlayerShootingComponent extends BaseComponent{
             */
             
             // Calculate direction of shot taking into account camera rotation
-            const noRotDirX = (this.#mouseEndDragPos.x - this.#mouseBeginDragPos.x);
-            const noRotDirY = (this.#mouseEndDragPos.y - this.#mouseBeginDragPos.y);
-            let dirX = noRotDirX * Math.cos(-this.camRotation) - noRotDirY * Math.sin(-this.camRotation);
-            let dirY = noRotDirX * Math.sin(-this.camRotation) + noRotDirY * Math.cos(-this.camRotation);
-            dirX = this.gameObject.x - dirX;
-            dirY = this.gameObject.y - dirY;
-
+            const directionShot = this.calculateShotDirection();
             
             // Get arrow from pool and shoot
             this.#arrowPool[this.#lastArrow].shoot(
-                new BasicTrajectory(500, this.gameObject.scene), // Create new basic trajectory for now (later we can inject different types)
+                new BasicTrajectory(1500, this.gameObject.scene), // Create new basic trajectory for now (later we can inject different types)
                 {}, // Give empty effect for now (Upate when we have effects and enemies implemented)
                 this.gameObject.x, this.gameObject.y, // Origin (player position)
-                dirX, dirY, // Target (mouse position in world coordinates)
+                directionShot.x, directionShot.y, // Target (mouse position in world coordinates)
                 this.#currentPower // Power
             );
             // Update last arrow index to get next arrow in pool
@@ -166,5 +172,19 @@ export class PlayerShootingComponent extends BaseComponent{
             this.#shootWasPressedLastFrame = false;
             this.#currentPower = this.#minPower;
         }
+    }
+
+    calculateShotDirection(){
+        const noRotDirX = (this.#mouseEndDragPos.x - this.#mouseBeginDragPos.x);
+        const noRotDirY = (this.#mouseEndDragPos.y - this.#mouseBeginDragPos.y);
+        let dir = this.rotateVector(this.camCosR, this.camSinR, {x: noRotDirX, y: noRotDirY});
+        dir.x = this.gameObject.x - dir.x;
+        dir.y = this.gameObject.y - dir.y;
+        return dir;
+    }
+
+    rotateVector(cR, sR, vec){
+        return {x: vec.x * cR - vec.y * sR,
+                y: vec.x * sR + vec.y * cR};
     }
 } 

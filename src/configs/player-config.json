@@ -14,7 +14,7 @@
     "height": 16,
     "offsetX": 0,
     "offsetY": 0,
-    "minShootPower": 100,
-    "maxShootPower": 1000,
-    "powerIncreaseSpeed": 4 
+    "minShootPower": 300,
+    "maxShootPower": 2000,
+    "powerIncreaseSpeed": 10
 }

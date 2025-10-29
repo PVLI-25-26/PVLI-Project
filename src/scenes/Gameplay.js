@@ -16,7 +16,7 @@ export default class GameplayScene extends Phaser.Scene {
         showLoaderUI(this);
 
         this.load.image('player', 'assets/sprites/player-dummy.png');
-        this.load.image('arrow', 'assets/sprites/arrow.png');
+        this.load.spritesheet('arrow', 'assets/sprites/arrow.png', {frameWidth:32});
         this.load.spritesheet('barrel-spritestack', 'assets/sprites/SpriteStackingPlaceholders/MiscProps/Barrel_strip8.png', {frameWidth: 14});
         this.load.spritesheet('wall-spritestack', 'assets/sprites/SpriteStackingPlaceholders/Walls/WallCornerBrick_strip16.png', {frameWidth: 16});
         this.load.spritesheet('chest-spritestack', 'assets/sprites/SpriteStackingPlaceholders/MiscProps/Chestf0_strip18.png', {frameWidth: 16, spacing: 6});

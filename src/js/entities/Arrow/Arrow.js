@@ -1,3 +1,7 @@
+import { EventBus } from "../../core/event-bus";
+import { DepthSortedSprite } from "../DepthSortedSprite";
+
+
 /**
  * Trajectory controller interface used by Arrow instances.
  *
@@ -7,6 +11,7 @@
  * @property {function(number, number):void} update - Per-frame update called with (time, delta).
  * @property {function():void} onCollision - Called when the arrow collides with something.
  */
+
 
 /**
  * Arrow entity — a lightweight projectile GameObject used for shooting any type of arrow.
@@ -19,7 +24,7 @@
  * @extends Phaser.GameObjects.Sprite
  * @module entities/Arrow
  */
-export class Arrow extends Phaser.GameObjects.Sprite{
+export class Arrow extends DepthSortedSprite{
     /**
      * Trajectory controller instance which manages movement and lifecycle.
      * @type {Trajectory}
@@ -51,12 +56,12 @@ export class Arrow extends Phaser.GameObjects.Sprite{
      * @param {Phaser.Scene} scene - The scene this Arrow belongs to.
      */
     constructor(scene){
-        super(scene, 0, 0, 'arrow');
+        super(scene, 0, 0, 'arrow', 0);
 
         // This should probably be done by the pool
         this.scene.add.existing(this);
         this.scene.physics.add.existing(this);
-        this.scene.physics.add.collider(this.body, this.scene.obstaclesGroup, this.onCollision, ()=>{}, this);
+        this.collider = this.scene.physics.add.collider(this.body, this.scene.obstaclesGroup, this.onCollision, ()=>{}, this);
         //                                            I don't know what this processCallback is ---^
         
         this.setActive(false);
@@ -95,11 +100,18 @@ export class Arrow extends Phaser.GameObjects.Sprite{
         this.target = {x: tX-oX, y: tY-oY};
         this.power = power;
 
+        this.setFrame(0);
+
         // This should be done by the pool
         this.setActive(true);
         this.setVisible(true);
+        this.collider.active = true;
+
+        this.setOrigin(0.5,0.5);
 
         this.trajectory.shoot(this);
+
+        EventBus.emit('playSound', 'arrowSwish');
     }
 
     /**
@@ -113,13 +125,40 @@ export class Arrow extends Phaser.GameObjects.Sprite{
         // Notify the trajectory controller about the collision so it can
         // handle stopping, pooling or effects.
         this.trajectory.onCollision();
+        this.onLanded();
+        
         // Apply arrow effects to the hit object if it implements a handler.
         // if (other && typeof other.onArrowHit === 'function') other.onArrowHit(this.effect);
     }
 
+    onLanded(){
+        this.collider.active = false;
+        EventBus.emit('arrowLanded', this);
+        this.setFrame(1);
+        this.applyBouncyTween();
+        EventBus.emit('playSound', 'arrowLand');
+    }
+
+    updateArrowVisuals(normalizedAirTime01){
+        this.rotation = this.body.angle;
+    }
+
     preUpdate(time, delta){
-        if (this.trajectory && typeof this.trajectory.update === 'function') {
+        super.preUpdate(time, delta);
+        if (this.trajectory) {
             this.trajectory.update(time, delta);
         }
+    }
+
+    applyBouncyTween(){
+        this.setOrigin(0.8,0.5);
+        this.scene.tweens.add({
+            targets: this,
+            rotation: '+=0.15',
+            ease: 'Linear',
+            duration: 50,
+            repeat: 2,
+            yoyo: true,
+        });
     }
 }
