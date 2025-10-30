@@ -26,7 +26,11 @@ export default class GameplayScene extends Phaser.Scene {
     create() {
         this.sound_facade = new SoundSceneFacade(this, audioConfig);
 
-        
+        this.input.keyboard.on("keydown-ESC", () => {
+            if (this.scene.isPaused("GameplayScene")) return;
+            this.scene.launch("PauseMenu");
+            this.scene.pause();
+        });
         
         this.obstaclesGroup = this.physics.add.staticGroup({name: 'obstacles'});
         obstaclesConfig.forEach(cfg => {
