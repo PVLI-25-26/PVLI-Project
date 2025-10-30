@@ -35,12 +35,8 @@ export default class PauseMenu extends Phaser.Scene {
             0.5
         ).setDepth(-1);
 
-        for (var element in view.elements) {
-            view.elements[element].setAlpha(0);
-        }
-
         this.tweens.add({
-            targets: [overlay, view.resumeButton],
+            targets: [overlay, ...view.elements],
             alpha: { from: 0, to: 1 },
             duration: 300,
             ease: "Sine.easeInOut"

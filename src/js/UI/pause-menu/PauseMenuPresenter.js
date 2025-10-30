@@ -9,6 +9,7 @@ export default class PauseMenuPresenter {
     }
 
     subscribeToViewEvents() {
+        // Resume
         this.view.resumeButton.on("button-clicked", () => {
             EventBus.emit("playSound", "click");
             this.view.scene.scene.resume("GameplayScene");
@@ -16,6 +17,19 @@ export default class PauseMenuPresenter {
         });
 
         this.view.resumeButton.on("button-hovered", () => {
+            EventBus.emit("playSound", "hover");
+        });
+
+        // Main Menu 
+        this.view.mainMenuButton.on("button-clicked", () => {
+            EventBus.emit("playSound", "click");
+            // Останавливаем паузу и геймплей, переходим в главное меню
+            this.view.scene.scene.stop("PauseMenu");
+            this.view.scene.scene.stop("GameplayScene");
+            this.view.scene.scene.start("MainMenu");
+        });
+
+        this.view.mainMenuButton.on("button-hovered", () => {
             EventBus.emit("playSound", "hover");
         });
     }
