@@ -21,7 +21,8 @@ export class BasicTrajectory {
     /**
      * @type {number} Time in milliseconds the arrow will be considered "flying".
      */
-    #airTime = 750;
+    #airTime;
+    #maxAirTime = 750;
 
     #timeSinceLaunch = 0;
 
@@ -65,6 +66,8 @@ export class BasicTrajectory {
         const camRotation = this.#scene.cameras.main.rotation;
         arrow.body.setVelocity(vX, vY);
         this.updateAcceleration(camRotation, Math.cos(-camRotation), Math.sin(-camRotation));
+
+        this.#airTime = Math.min(1000*(1.5*arrow.power)/this.#gravityStr, this.#maxAirTime);
 
         this.#timeSinceLaunch = 0;
 
