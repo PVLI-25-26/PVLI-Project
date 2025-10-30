@@ -1,5 +1,6 @@
 import { BaseComponent } from "../core/base-component";
 import { EventBus } from "../core/event-bus";
+import Pool from "../core/pool";
 import { Arrow } from "../entities/Arrow/Arrow";
 import { BasicTrajectory } from "../entities/Arrow/BasicTrajectory";
 
@@ -40,13 +41,9 @@ export class PlayerShootingComponent extends BaseComponent{
     #mouseEndDragPos;
 
     /**
-     * @type {Arrow[]} Simple object pool for arrows.
+     * @type {Pool} Simple object pool for arrows.
      */
     #arrowPool;
-    /**
-     * @type {number} Index of the last arrow used in the pool.
-     */
-    #lastArrow = 0;
 
     /**
      * @type {number} Current cosine of camera rotation.
@@ -75,10 +72,12 @@ export class PlayerShootingComponent extends BaseComponent{
         this.#maxPower = maxPower;
         this.#powerIncSpeed = powerIncSpeed;
 
-        // Initialize object pool for testing
-        this.#arrowPool = Array(30);
-        for(let i = 0; i < this.#arrowPool.length; i++) 
-           this.#arrowPool[i] = new Arrow(this.gameObject.scene);
+        // Initialize object pool
+        this.#arrowPool = new Pool(
+            gameObject.scene,
+            ()=>{return new Arrow(gameObject.scene);},
+            30
+        );
 
         // Basic UI for testing
         this.powerBar = this.gameObject.scene.add.rectangle(this.gameObject.x, this.gameObject.y, 100, 3,0x2200ff,1);
@@ -157,15 +156,14 @@ export class PlayerShootingComponent extends BaseComponent{
             const directionShot = this.calculateShotDirection();
             
             // Get arrow from pool and shoot
-            this.#arrowPool[this.#lastArrow].shoot(
+            this.#arrowPool.spawn().shoot(
                 new BasicTrajectory(1500, this.gameObject.scene), // Create new basic trajectory for now (later we can inject different types)
                 {}, // Give empty effect for now (Upate when we have effects and enemies implemented)
                 this.gameObject.x, this.gameObject.y, // Origin (player position)
                 directionShot.x, directionShot.y, // Target (mouse position in world coordinates)
                 this.#currentPower // Power
             );
-            // Update last arrow index to get next arrow in pool
-            this.#lastArrow = (this.#lastArrow+1)%this.#arrowPool.length;
+
             // Remove power bar UI
             this.powerBar.setVisible(false);
             // Reset shooting values
