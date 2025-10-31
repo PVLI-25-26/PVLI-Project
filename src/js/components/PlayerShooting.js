@@ -75,8 +75,8 @@ export class PlayerShootingComponent extends BaseComponent{
         // Initialize object pool
         this.#arrowPool = new Pool(
             gameObject.scene,
-            ()=>{return new Arrow(gameObject.scene);},
             5,
+            ()=>{return new Arrow(gameObject.scene);},
             (entity)=>{entity.scene.tweens.add({
                 targets: entity,
                 alpha: 0,
@@ -87,7 +87,6 @@ export class PlayerShootingComponent extends BaseComponent{
                     entity.alpha = 1;
                 },
 		    });	},
-            (entity)=>{entity.setVisible(true);}
         );
 
         // Basic UI for testing
