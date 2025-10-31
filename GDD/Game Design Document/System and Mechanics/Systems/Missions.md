@@ -6,7 +6,7 @@ dg-publish: True
 
 Before entering the dungeon for the first time the player encounters an NPC that will give him a mission: "Enter the dungeon and come back alive".
 
-After completing this first mission the Shop will be unlocked.
+After completing this first mission the [[Shop]] will be unlocked.
 
 From this moment onwards the missions will vary depending on the data gathered from the runs with the objective of making the player try different types of gameplays, for example if the player is focused on recollecting items but not engaging in battle, the npc will give the player missions to subjugate monsters. The missions can go from collecting specific items from the dungeon to killing some type/quantity of enemies.
 
@@ -16,6 +16,8 @@ Completing a mission will grant you benefits in the shop, making upgrades and co
 #TODO `MissionsExample.png`
 ## Dynamics
 
+El jugador asocia recompensas positivas al hacer misiones, de esa manera se fomenta hacerlas.
+El jugador es animado con misiones a probar todo lo que puede ofrecer las mecánicas, para que así pueda desarrollar mejores estrategias en la dungeon.
 
 ## Examples
 
