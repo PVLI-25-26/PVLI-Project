@@ -27,8 +27,8 @@ export class Obstacle extends SpriteStacking {
      */
     config;
 
-    constructor(scene, config) {
-        super(scene, config.spriteStackConfig, scene.cameras.main);
+    constructor(scene, x, y, config) {
+        super(scene, x, y, config.spriteStackConfig, scene.cameras.main);
         this.config = config;
 
         // Extend with component system

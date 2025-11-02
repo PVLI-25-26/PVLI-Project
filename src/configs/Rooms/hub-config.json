@@ -1,0 +1,11 @@
+{
+    "obstacles": [
+        {"key": "crate", "x":100, "y":100, "r":45},
+        {"key": "chest", "x":0, "y":50, "r":90},
+        {"key": "door", "x":200, "y":200, "r":180}
+    ],
+
+    "connections":[
+        {"scene": "gameplay", "x":200, "y":200, "spawnX": 120, "spawnY": 200}
+    ]
+}

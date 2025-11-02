@@ -55,8 +55,8 @@ export class SpriteStacking extends Phaser.GameObjects.Sprite{
      * @param {Object} config Configuration object for the SpriteStacking
      * @param {Phaser.Camera} camera Camera being used in the scene
      */
-    constructor(scene, config, camera){
-        super(scene,config.x,config.y);
+    constructor(scene, x, y, config, camera){
+        super(scene, x, y);
 
         // sets initial values
         this.camera = camera;
@@ -77,7 +77,7 @@ export class SpriteStacking extends Phaser.GameObjects.Sprite{
         if (!this.billBoard){
             for (let i = 0; i< config.frameCount; i++ ){
                 // Creates each sprite displaced by the vertical offset
-                const sprite = scene.add.image(config.x,config.y - this.verticalOffset * i, config.textures, i).setOrigin(0.5);
+                const sprite = scene.add.image(x, y - this.verticalOffset * i, config.textures, i).setOrigin(0.5);
                 sprite.scale = this.scale;
                 // Stores sprite in the array  
                 this.sprites.push(sprite);
@@ -85,7 +85,7 @@ export class SpriteStacking extends Phaser.GameObjects.Sprite{
         }
         else {
             // In billBoard mode, only one sprite is created (the first in the array)
-            const sprite = scene.add.image(config.x,config.y,config.textures[0]).setOrigin(0.5);
+            const sprite = scene.add.image(x, y,config.textures[0]).setOrigin(0.5);
             sprite.scale = this.scale;
             this.sprites.push(sprite);
         }
@@ -135,6 +135,7 @@ export class SpriteStacking extends Phaser.GameObjects.Sprite{
         for (let i = 0; i<this.sprites.length; i ++){
             this.sprites[i].x += translationX;
             this.sprites[i].y += translationY;
+            if(!this.billBoard)this.sprites[i].rotation = this.rotation;
         }
 
         // Updates depth of sprites in the stack

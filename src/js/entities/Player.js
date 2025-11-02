@@ -30,8 +30,8 @@ export class Player extends SpriteStacking {
      */
     config;
 
-    constructor(scene, config) {
-        super(scene, config.spriteStackConfig, scene.cameras.main);
+    constructor(scene, x, y, config) {
+        super(scene, x, y, config.spriteStackConfig, scene.cameras.main);
         this.config = config;
 
         // Add component system to this GameObject
@@ -62,7 +62,7 @@ export class Player extends SpriteStacking {
 
         // Add PlayerControllerComponent
         const controller = new PlayerControllerComponent(this);
-
+        
         // Add PlayerShootingComponent
         const shootController = new PlayerShootingComponent(this, this.config.minShootPower, this.config.maxShootPower, this.config.powerIncreaseSpeed);
     }

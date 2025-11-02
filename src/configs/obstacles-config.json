@@ -1,10 +1,9 @@
 [
     {
+        "key": "barrel",
         "spriteStackConfig": 
         {
             "BillBoard": false,
-            "x": 150,
-            "y": 300,
             "textures": "barrel-spritestack",
             "frameCount": 8,
             "verticalOffset": 4,
@@ -17,11 +16,10 @@
         "offsetY": 0
     },
     {
+        "key": "wall",
         "spriteStackConfig": 
         {
             "BillBoard": false,
-            "x": 300,
-            "y": 300,
             "textures": "wall-spritestack",
             "frameCount": 16,
             "verticalOffset": 2,
@@ -34,11 +32,10 @@
         "offsetY": 0
     },
     {
+        "key": "chest",
         "spriteStackConfig": 
         {
             "BillBoard": false,
-            "x": 450,
-            "y": 300,
             "textures": "chest-spritestack",
             "frameCount": 18,
             "verticalOffset": 2,
@@ -51,11 +48,10 @@
         "offsetY": 0
     },
     {
+        "key": "crate",
         "spriteStackConfig": 
         {
             "BillBoard": false,
-            "x": 600,
-            "y": 300,
             "textures": "crate-spritestack",
             "frameCount": 8,
             "verticalOffset": 2,
@@ -64,6 +60,22 @@
         "collidable": true,
         "width": 48,
         "height": 48,
+        "offsetX": 0,
+        "offsetY": 0
+    },
+    {
+        "key": "door",
+        "spriteStackConfig": 
+        {
+            "BillBoard": false,
+            "textures": "door-spritestack",
+            "frameCount": 16,
+            "verticalOffset": 2,
+            "scale": 3
+        },
+        "collidable": true,
+        "width": 44,
+        "height": 12,
         "offsetX": 0,
         "offsetY": 0
     }
