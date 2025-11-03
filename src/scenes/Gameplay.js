@@ -5,7 +5,8 @@ import { Player } from '../js/entities/Player.js';
 import { Obstacle } from '../js/entities/Obstacle.js';
 import showLoaderUI from "../js/UI/LoaderUI.js";
 import { SoundSceneFacade } from "../js/core/sound-facade.js";
-
+import { BillBoard } from "../js/entities/BillBoard.js";
+import BillConfig from "../configs/billboard-config.json"
 
 export default class GameplayScene extends Phaser.Scene {
     constructor() {
@@ -21,6 +22,7 @@ export default class GameplayScene extends Phaser.Scene {
         this.load.spritesheet('wall-spritestack', 'assets/sprites/SpriteStackingPlaceholders/Walls/WallCornerBrick_strip16.png', {frameWidth: 16});
         this.load.spritesheet('chest-spritestack', 'assets/sprites/SpriteStackingPlaceholders/MiscProps/Chestf0_strip18.png', {frameWidth: 16, spacing: 6});
         this.load.spritesheet('crate-spritestack', 'assets/sprites/SpriteStackingPlaceholders/MiscProps/Crate_strip8.png', {frameWidth: 16});
+        this.load.image("billBoard","assets/sprites/SpriteStackingPlaceholders/Billboard/catPlaceholder.jpg");
     }
 
     create() {
@@ -41,8 +43,10 @@ export default class GameplayScene extends Phaser.Scene {
         this.player = new Player(this, playerConfig);
         
         this.physics.add.collider(this.player, this.obstaclesGroup);
-
+        
         this.cameras.main.startFollow(this.player, false, 0.1, 0.1, 10, 10);
+        
+        this.BillboardTest = new BillBoard(this,BillConfig);
     }
 
     update(time, delta) {}

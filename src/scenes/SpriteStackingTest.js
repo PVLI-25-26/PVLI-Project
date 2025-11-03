@@ -1,5 +1,7 @@
 import { SpriteStacking } from "../js/entities/SpriteStacking.js";
+import { BillBoard } from "../js/entities/BillBoard.js";
 import config from "../configs/spritestacking-config.json";
+import BillConfig from "../configs/billboard-config.json";
 
 export default class SpriteStackingTest extends Phaser.Scene {
     constructor() {
@@ -9,6 +11,7 @@ export default class SpriteStackingTest extends Phaser.Scene {
     preload() {
         this.load.image("base", "assets/sprites/SPriteStackingPlaceHolder1.png")
         this.load.image("body", "assets/sprites/SPriteStackingPlaceHolder2.png")
+        this.load.spritesheet("testCube","assets/sprites/TestCube.png")
     }
 
 

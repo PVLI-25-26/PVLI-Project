@@ -1,0 +1,26 @@
+import { EventBus } from "../core/event-bus";
+import { DepthSortedSprite } from "./DepthSortedSprite";
+/**
+ * Configuration object passed to the BillBoard Object
+ * @class
+ * @extends DepthSortedSprite
+ * @param {Phaser.scene} scene - The scene this BillBoard object belongs to
+ * @param {config} config - BillBoard configuration object
+ * 
+ * @param {number} config.x - X position
+ * @param {number} config.y - Y position
+ * @param {number} scale - Scale of the sprite
+ * @param {string} texture - Texture of the sprite
+ */
+export class BillBoard extends DepthSortedSprite{
+    constructor(scene, config){
+        super(scene, config.x,config.y,config.texture);
+        this.sprite = scene.add.image(config.x,config.y, config.texture).setOrigin(0.5);
+        this.sprite.scale = config.scale;
+        console.log(config.x)
+        EventBus.on('cameraRotated', this.onCameraRotated,this);
+    }
+    onCameraRotated(R){
+        this.sprite.rotation = -R;
+    }
+}

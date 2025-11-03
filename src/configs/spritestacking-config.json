@@ -2,7 +2,7 @@
     "BillBoard": true,
     "x": 500,
     "y": 500,
-    "textures": ["base"],
+    "textures": "testCube",
     "verticalOffset":2,
     "scale" : 4
 } 
