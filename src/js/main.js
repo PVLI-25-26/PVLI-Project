@@ -3,7 +3,6 @@ import Gameplay from "../scenes/Gameplay";
 import MainMenu from "../scenes/MainMenu.js";
 import PauseMenu from "../scenes/PauseMenu.js";
 import { Logger } from "./core/logger.js";
-import SpriteStackingTest from "../scenes/SpriteStackingTest.js";
 // ================== GAME ENTRY POINT ==================
 
 // TODO - Read config from JSON file?
@@ -36,7 +35,7 @@ const config = {
 }
 
 // Make game instance
-const game = new Phaser.Game(config);
+new Phaser.Game(config);
 
 
 

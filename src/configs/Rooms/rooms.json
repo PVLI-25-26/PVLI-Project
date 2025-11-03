@@ -1,10 +1,16 @@
 [
     {
         "key": "hub",
-        "path": "hub-config.json"
+        "path": "hub-config.json",
+        "connections":[
+            {"scene": "gameplay", "x":200, "y":200, "spawnX": 120, "spawnY": 200}
+        ]
     },
     {
         "key": "gameplay",
-        "path": "gameplay-config.json"
+        "path": "gameplay-config.json",
+        "connections":[
+            {"scene": "hub", "x":300, "y":300, "spawnX": 100, "spawnY": 200}
+        ]
     }
 ]
