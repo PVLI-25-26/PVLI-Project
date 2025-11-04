@@ -1,8 +1,6 @@
 {
-    "spriteStackConfig": {
-        "BillBoard": true,
-        "textures": ["player"],
-        "verticalOffset": 1,
+    "billboardConfig": {
+        "texture": "player",
         "scale": 1
     },
     "speed": 120,

@@ -1,7 +1,7 @@
 import { extendWithComponents } from "../../core/component-extension.js";
 import { BasicEnemyControllerComponent } from "../../components/BasicEnemyController.js";
 import { MovementComponent } from "../../components/Movement.js";
-import { SpriteStacking } from "../SpriteStacking.js";
+import { BillBoard } from "../../entities/BillBoard.js";
 
 /**
  * BasicEnemy - a simple enemy entity with a visual sprite.
@@ -9,7 +9,7 @@ import { SpriteStacking } from "../SpriteStacking.js";
  *
  * @class
  * @category Entities
- * @extends SpriteStacking
+ * @extends BillBoard
  * @param {Phaser.Scene} scene - The scene this enemy belongs to
  * @param {Object} config - Enemy configuration object
  * @param {string} config.texture - Sprite texture key
@@ -22,7 +22,7 @@ import { SpriteStacking } from "../SpriteStacking.js";
  * @param {number} [config.offsetX] - X offset of the body from center (optional)
  * @param {number} [config.offsetY] - Y offset of the body from center (optional)
  */
-export class BasicEnemy extends SpriteStacking {
+export class BasicEnemy extends BillBoard {
     /**
      * Enemy configuration object.
      * @type {Object}
@@ -30,7 +30,7 @@ export class BasicEnemy extends SpriteStacking {
     config;
 
     constructor(scene, x, y, config) {
-        super(scene, x, y, config.spriteStackConfig, scene.cameras.main);
+        super(scene, x, y, config.billboardConfig, scene.cameras.main);
         this.config = config;
 
         extendWithComponents(this);
