@@ -2,7 +2,7 @@
     "billboardConfig": 
     {
         "texture": "player",
-        "scale": 1
+        "scale": 2
     },
 
     "speed": 250,
