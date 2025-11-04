@@ -9,9 +9,5 @@
         {"key": "barrel", "x":196, "y":100, "r":0},
         {"key": "chest", "x":148, "y":150, "r":270},
         {"key": "door", "x":300, "y":300, "r":-90}
-    ],
-
-    "connections":[
-        {"scene": "hub", "x":300, "y":300, "spawnX": 100, "spawnY": 200}
     ]
 }
