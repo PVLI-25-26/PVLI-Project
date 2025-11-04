@@ -100,6 +100,7 @@ export class PlayerShootingComponent extends BaseComponent{
         this.bow = new DepthSortedSprite(gameObject.scene, this.gameObject.x, this.gameObject.y, 'bow', 0);
         gameObject.scene.add.existing(this.bow);
         this.bow.scale = 2.5;
+        this.bow.setVisible(false);
 
         this.arrowShot = this.#arrowPool.spawn();
 
