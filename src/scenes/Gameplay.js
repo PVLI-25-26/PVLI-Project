@@ -6,7 +6,7 @@ import showLoaderUI from "../js/UI/LoaderUI.js";
 import { SoundSceneFacade } from "../js/core/sound-facade.js";
 import { BillBoard } from "../js/entities/BillBoard.js";
 import BillConfig from "../configs/billboard-config.json"
-import sceneEnemies from "../configs/enemies-config.json" assert { type: "json" };
+import sceneEnemies from "../configs/enemies-config.json";
 import { createEnemy } from "../js/core/enemy-simple-fabric.js";
 
 

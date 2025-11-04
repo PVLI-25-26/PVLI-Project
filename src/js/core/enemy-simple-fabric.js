@@ -1,4 +1,4 @@
-import basicEnemyConfig from "../../configs/Enemies/basic-enemy-config.json" assert { type: "json" };
+import basicEnemyConfig from "../../configs/Enemies/basic-enemy-config.json";
 import { BasicEnemy } from "../entities/Enemies/BasicEnemy.js";
 
 const ENEMY_GLOBAL_CONFIGS = {
