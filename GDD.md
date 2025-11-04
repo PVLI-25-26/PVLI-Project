@@ -1,4 +1,36 @@
-﻿# Vision document
+# GDD
+
+## Table of contents
+- [Vision Document](#vision-document)
+- [Controls](#controls)
+- [Genre and Synopsis](#genre-and-synopsis)
+- [Progression](#progression)
+- [Style](#style)
+  - [Sprite Stacking](#sprite-stacking)
+- [Mechanics](#manage-quiver)
+  - [Manage Quiver](#manage-quiver)
+  - [Set Arrow path modifier](#set-arrow-path-modifier)
+  - [Shoot](#shoot)
+  - [Use Ability](#use-ability)
+  - [Change Room](#change-room)
+  - [Enter and exit the dungeon](#enter-and-exit-the-dungeon)
+  - [Pick up items](#pick-up-items)
+  - [Sell item](#sell-item)
+  - [Use item](#use-item)
+- [Systems](#combat)
+  - [Combat](#combat)
+  - [Consumables](#consumables)
+  - [Difficulty](#difficulty)
+  - [Dungeon Exploration](#dungeon-exploration)
+  - [Enemies](#enemy)
+  - [Health](#health)
+  - [Interaction](#interaction)
+  - [Inventory](#inventory)
+  - [Missions](#missions)
+  - [Movement](#movement)
+  - [Shop](#shop)
+ 
+# Vision document
 In `Project: Queso`, you enter a dangerous world full of creatures and valuable resources. Survive, fight off enemies, and escape with your loot — if you make it out alive, you’ll earn big rewards.
 
 Your trusty bow is your main weapon. Customize it with different arrow types and trajectories to match your playstyle and create your perfect shot.
@@ -53,7 +85,7 @@ The game is set in a **fantasy medieval world**. The protagonist travels through
 # Progression
 ## Player Progression
 
-> [!info] Progression
+> [!NOTE]
 > The progression system defines the sequence of challenges and key milestones the player experiences during a run, from the beginning to the end of the game.
 ### Sequence of a Run
 1. **Entering the Dungeon** – The player begins the run at the dungeon entrance with starting resources, abilities, and equipment. Before each run, the player can also stock up in the shop with all necessary items.
@@ -372,13 +404,6 @@ When the player enters an unexplored room, a number is added to a counter. The g
 The player must hurry before the game becomes very difficult, making it more dynamic.
 Players must decide whether if it is worth to explore more rooms and acquire more resources, which makes the game harder.
 This gives the player an interesting risk and reward choices to make, as dying would mean loosing all items found during the run, but exploring and fighting would mean getting better items.
-
-## Related systems
-- [[Dungeon Exploration]]
-- [[Enemy]]
-- [[Consumables]]
-## Included mechanics
-- [[Enter and exit the dungeon]]
 
 # Dungeon Exploration
 **Dungeon Exploration System** – a system that defines the layout of the dungeon and manages the player’s movement between rooms and it's content.
