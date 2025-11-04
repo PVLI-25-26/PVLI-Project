@@ -1,5 +1,5 @@
 import { extendWithComponents } from "../core/component-extension.js";
-import { SpriteStacking } from "./SpriteStacking.js";
+import { SpriteStack } from "./SpriteStack.js";
 
 /**
  * Static obstacle GameObject.
@@ -7,7 +7,7 @@ import { SpriteStacking } from "./SpriteStacking.js";
  *
  * @class
  * @category Entities
- * @extends SpriteStacking
+ * @extends SpriteStack
  * @param {Phaser.Scene} scene - The scene this obstacle belongs to
  * @param {Object} config - Configuration object for the obstacle
  * @param {string} config.texture - Texture key
@@ -20,15 +20,15 @@ import { SpriteStacking } from "./SpriteStacking.js";
  * @param {number} [config.offsetX] - X offset of the body from center (optional)
  * @param {number} [config.offsetY] - Y offset of the body from center (optional)
  */
-export class Obstacle extends SpriteStacking {
+export class Obstacle extends SpriteStack {
     /**
      * Configuration object passed to the obstacle.
      * @type {Object}
      */
     config;
 
-    constructor(scene, config) {
-        super(scene, config.spriteStackConfig, scene.cameras.main);
+    constructor(scene, x, y, config) {
+        super(scene, x, y, config.spriteStackConfig, scene.cameras.main);
         this.config = config;
 
         // Extend with component system

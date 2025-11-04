@@ -1,0 +1,10 @@
+[
+    {
+        "key": "hub",
+        "path": "hub-config.json"
+    },
+    {
+        "key": "gameplay",
+        "path": "gameplay-config.json"
+    }
+]

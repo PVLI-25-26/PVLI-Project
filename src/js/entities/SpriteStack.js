@@ -12,10 +12,12 @@ import { EventBus } from "../core/event-bus";
      * @param {number} config.y - Y position
      * @param {number} config.verticalOffset - Sprite stacking vertical offset in pixels
      * @param {number} scale - Scale of the sprite
-     * @param {boolean} config.BillBoard - Sets the billBoard mode on
      *
 */
-export class SpriteStacking extends Phaser.GameObjects.Sprite{
+
+
+
+export class SpriteStack extends Phaser.GameObjects.Sprite{
     /**
      * @type {Object} Configuration object passed to the Sprite Stacking object
      */
@@ -37,10 +39,6 @@ export class SpriteStacking extends Phaser.GameObjects.Sprite{
      */
     scale;
     /**
-     * @type {boolean} BillBoard mode flag
-     */
-    billBoard;
-    /**
      * @type {number} Cosine of the camera rotation (saved for performance)
      */
     #cameraCosR;
@@ -55,8 +53,8 @@ export class SpriteStacking extends Phaser.GameObjects.Sprite{
      * @param {Object} config Configuration object for the SpriteStacking
      * @param {Phaser.Camera} camera Camera being used in the scene
      */
-    constructor(scene, config, camera){
-        super(scene,config.x,config.y);
+    constructor(scene, x, y, config, camera){
+        super(scene, x, y);
 
         // sets initial values
         this.camera = camera;
@@ -69,27 +67,16 @@ export class SpriteStacking extends Phaser.GameObjects.Sprite{
         scene.add.existing(this);
         
         // initializes stacking parameters
-        this.billBoard = config.BillBoard;
         this.scale = config.scale;  
         this.verticalOffset = config.verticalOffset;
-
-        // If not in billBoard mode, creates a sprite for each texture in the array
-        if (!this.billBoard){
-            for (let i = 0; i< config.frameCount; i++ ){
-                // Creates each sprite displaced by the vertical offset
-                const sprite = scene.add.image(config.x,config.y - this.verticalOffset * i, config.textures, i).setOrigin(0.5);
-                sprite.scale = this.scale;
-                // Stores sprite in the array  
-                this.sprites.push(sprite);
-            }   
-        }
-        else {
-            // In billBoard mode, only one sprite is created (the first in the array)
-            const sprite = scene.add.image(config.x,config.y,config.textures[0]).setOrigin(0.5);
+        
+        for (let i = 0; i< config.frameCount; i++ ){
+            // Creates each sprite displaced by the vertical offset
+            let sprite = scene.add.image(x, y - this.verticalOffset * i, config.textures, i).setOrigin(0.5);
             sprite.scale = this.scale;
+            // Stores sprite in the array  
             this.sprites.push(sprite);
         }
-        
         // Subscribes to camera rotation events to update sprite stacking positions
         EventBus.on('cameraRotated', this.onCameraRotated, this);
     }
@@ -101,18 +88,13 @@ export class SpriteStacking extends Phaser.GameObjects.Sprite{
      * @param {number} sinR Sine of -R
      */
     onCameraRotated(R, cosR, sinR){
-        // If in billBoard mode, only rotates first sprite to face the camera
-        if (this.billBoard){
-            this.sprites[0].rotation = -R;
-        }
         // Updates the spritestacking offsets according to camera rotation
-        else{
-            // Corrects the sprite stacking position according to the camera angle and vertical offset
-            for (let i = 0; i<this.sprites.length; i ++){
-                this.sprites[i].x = this.sprites[0].x + sinR * i *this.verticalOffset;
-                this.sprites[i].y = this.sprites[0].y - cosR * i *this.verticalOffset;
-            }
+        // Corrects the sprite stacking position according to the camera angle and vertical offset
+        for (let i = 0; i<this.sprites.length; i ++){
+            this.sprites[i].x = this.sprites[0].x + sinR * i *this.verticalOffset;
+            this.sprites[i].y = this.sprites[0].y - cosR * i *this.verticalOffset;
         }
+        
 
         // Saves sine and cosine for depth calculation in preUpdate
         this.#cameraCosR = cosR;
@@ -124,17 +106,16 @@ export class SpriteStacking extends Phaser.GameObjects.Sprite{
     
     preUpdate(time, delta){
         super.preUpdate(time,delta);
-
         // FOR PERFORMANCE IMPROVEMENTS - MAYBE SUBSCRIBE TO DATA CHANGES TO UPDATE DEPTH AND POSITION (instead of in every frame like here)
-
         // Updates position of all sprites in the stack
         // Would be ideal to store the array of sprites in a container so that updating
-        //      the position of the sprite stack can made manually by Phaser.
+        // the position of the sprite stack can made manually by Phaser.
         const translationX = this.x - this.sprites[0].x;
         const translationY = this.y - this.sprites[0].y;
         for (let i = 0; i<this.sprites.length; i ++){
             this.sprites[i].x += translationX;
             this.sprites[i].y += translationY;
+            this.sprites[i].rotation = this.rotation;
         }
 
         // Updates depth of sprites in the stack
@@ -147,22 +128,16 @@ export class SpriteStacking extends Phaser.GameObjects.Sprite{
      * @param {*} sinR Sine of -camera rotation
      */
     updateDepth(cosR, sinR){
-        // If in billBoard mode, only updates depth of first sprite
-        if (this.billBoard){
-            this.sprites[0].setDepth(this.y*cosR-this.x*sinR);
-        }
         // TODO: TEST IF THIS WORKS PROPERLY I THINK IT MIGHT BE WRONG
         // ALSO I DONT THINK WE NEED TO UPDATE DEPTH OF ALL SPRITES IN THE STACK?
-        else{
             // Updates depth of all sprites in the stack
-            for (let i = 0; i<this.sprites.length; i ++){
-                // The reason for '+ Number.MIN_VALUE' is that the sprite stack must internally be depth sorted
-                //      in opposite order of all other sprites, however as a group they must be sorted like the rest
-                //      of sprites in the game. Therefore, we adjust their depth by the smallest value possible so 
-                //      so that internally they are sorted contrary to other sprites but they will be depth sorted
-                //      correctly as a group.
-                this.sprites[i].setDepth((this.y*cosR-this.x*sinR) + Number.MIN_VALUE*i);
-            }
+        for (let i = 0; i<this.sprites.length; i ++){
+            // The reason for '+ Number.MIN_VALUE' is that the sprite stack must internally be depth sorted
+            //      in opposite order of all other sprites, however as a group they must be sorted like the rest
+            //      of sprites in the game. Therefore, we adjust their depth by the smallest value possible so 
+            //      so that internally they are sorted contrary to other sprites but they will be depth sorted
+            //      correctly as a group.
+            this.sprites[i].setDepth((this.y*cosR-this.x*sinR) + Number.MIN_VALUE*i);
         }
     }
 }

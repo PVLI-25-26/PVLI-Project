@@ -13,14 +13,15 @@ import { DepthSortedSprite } from "./DepthSortedSprite";
  * @param {string} texture - Texture of the sprite
  */
 export class BillBoard extends DepthSortedSprite{
-    constructor(scene, config){
-        super(scene, config.x,config.y,config.texture);
-        this.sprite = scene.add.image(config.x,config.y, config.texture).setOrigin(0.5);
-        this.sprite.scale = config.scale;
-        console.log(config.x)
+    constructor(scene, x,y,config){
+        super(scene,x,y,config.texture);
+        this.setOrigin(0.5);
+        this.scale = config.scale;
         EventBus.on('cameraRotated', this.onCameraRotated,this);
+        
     }
+
     onCameraRotated(R){
-        this.sprite.rotation = -R;
+        this.rotation = -R;
     }
 }

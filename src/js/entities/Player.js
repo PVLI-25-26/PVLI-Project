@@ -2,7 +2,7 @@ import { extendWithComponents } from "../core/component-extension.js";
 import { MovementComponent } from "../components/Movement.js";
 import { PlayerControllerComponent } from "../components/PlayerController.js";
 import { PlayerShootingComponent } from "../components/PlayerShooting.js";
-import { SpriteStacking } from "./SpriteStacking.js";
+import  {BillBoard} from "./BillBoard.js";
 
 /**
  * Player GameObject with movement and player control.
@@ -10,7 +10,7 @@ import { SpriteStacking } from "./SpriteStacking.js";
  *
  * @class 
  * @category Entities
- * @extends SpriteStacking
+ * @extends BillBoard
  * @param {Phaser.Scene} scene - The scene this player belongs to
  * @param {Object} config - Player configuration object
  * @param {string} config.texture - Sprite texture key
@@ -23,15 +23,16 @@ import { SpriteStacking } from "./SpriteStacking.js";
  * @param {number} [config.offsetX] - X offset of the body from center (optional)
  * @param {number} [config.offsetY] - Y offset of the body from center (optional)
  */
-export class Player extends SpriteStacking {
+export class Player extends BillBoard {
     /**
      * Configuration object passed to the player.
      * @type {Object}
      */
     config;
 
-    constructor(scene, config) {
-        super(scene, config.spriteStackConfig, scene.cameras.main);
+    constructor(scene, x, y, config) {
+        //super(scene, x, y, config.billboardConfig, scene.cameras.main);
+        super(scene,x,y,config.billboardConfig)
         this.config = config;
 
         // Add component system to this GameObject
@@ -62,7 +63,7 @@ export class Player extends SpriteStacking {
 
         // Add PlayerControllerComponent
         const controller = new PlayerControllerComponent(this);
-
+        
         // Add PlayerShootingComponent
         const shootController = new PlayerShootingComponent(this, this.config.minShootPower, this.config.maxShootPower, this.config.powerIncreaseSpeed);
     }
@@ -76,5 +77,6 @@ export class Player extends SpriteStacking {
      */
     preUpdate(time, delta) {
         super.preUpdate(time, delta);
+        
     }
 }
