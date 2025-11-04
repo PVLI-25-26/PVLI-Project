@@ -1,9 +1,7 @@
 {
-    "spriteStackConfig": 
+    "billboardConfig": 
     {
-        "BillBoard": true,
-        "textures": ["player"],
-        "verticalOffset": 1,
+        "texture": "player",
         "scale": 1
     },
 

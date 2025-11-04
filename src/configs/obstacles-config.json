@@ -3,7 +3,6 @@
         "key": "barrel",
         "spriteStackConfig": 
         {
-            "BillBoard": false,
             "textures": "barrel-spritestack",
             "frameCount": 8,
             "verticalOffset": 4,
@@ -19,7 +18,6 @@
         "key": "wall",
         "spriteStackConfig": 
         {
-            "BillBoard": false,
             "textures": "wall-spritestack",
             "frameCount": 16,
             "verticalOffset": 2,
@@ -35,7 +33,6 @@
         "key": "chest",
         "spriteStackConfig": 
         {
-            "BillBoard": false,
             "textures": "chest-spritestack",
             "frameCount": 18,
             "verticalOffset": 2,
@@ -51,7 +48,6 @@
         "key": "crate",
         "spriteStackConfig": 
         {
-            "BillBoard": false,
             "textures": "crate-spritestack",
             "frameCount": 8,
             "verticalOffset": 2,
@@ -67,7 +63,6 @@
         "key": "door",
         "spriteStackConfig": 
         {
-            "BillBoard": false,
             "textures": "door-spritestack",
             "frameCount": 16,
             "verticalOffset": 2,
