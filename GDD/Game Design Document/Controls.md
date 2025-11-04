@@ -8,7 +8,8 @@ dg-publish: true
 | **Movement**     | Left stick            | Arrows / WASD    |
 | **Shoot**        | Right Trigger         | LMB              |
 | **Ability**      | Right Shoulder        | LShift           |
-| **Interact**     | Button South          | E                |
+| **Interact**     | Button South          | F                |
 | **Pause**        | Start                 | Escape           |
 | **Change arrow** | Button North          | R                |
+| **Rotate cam**   | Directional buttons   | Q/E              |
 
