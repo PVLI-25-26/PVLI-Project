@@ -31,6 +31,7 @@
 import roomsConfig from '../../configs/Rooms/rooms.json'
 import obstaclesConfig from '../../configs/obstacles-config.json'
 import { Obstacle } from '../entities/Obstacle.js';
+import { createEnemy } from "./enemy-simple-fabric.js";
 
 /**
  * Manages dungeon rooms and instantiation of room objects into a Phaser scene.
@@ -90,6 +91,7 @@ class Dungeon {
         // Create all dungeon rooms from the template rooms and their configs in roomsConfig
         roomsConfig.forEach(async (cfg) => {
             const response = await fetch('assets/rooms/'+cfg.path);
+            console.log(response.body);
             // Read JSON with template for the room being created
             const room = await response.json();
             // Give generic room the specific dungeon connections
@@ -108,7 +110,7 @@ class Dungeon {
      * @param {Phaser.GameObjects.Sprite} player - Player object used for overlap checks with connections.
      * @returns {void}
      */
-    loadCurrentRoom(scene, obstaclesGroup, player){
+    loadCurrentRoom(scene, obstaclesGroup, enemiesGroup, player){
         scene.logger.log('DUNGEON', 1, 'Loading scene data...');
         // Create every object from the room config
         const room = this.#rooms.get(this.#currentRoomKey);
@@ -129,6 +131,12 @@ class Dungeon {
                 scene.logger.log('DUNGEON', 1, `Entering room: ${con.scene}`);
                 scene.scene.restart({sceneName: con.scene, playerSpawn: {x:con.spawnX, y:con.spawnY}});
             });
+        });
+        
+        room.enemies.forEach(enemyData => {
+            const enemy = createEnemy(scene, enemyData);
+            scene.physics.add.collider(enemy, enemiesGroup);
+            enemiesGroup.add(enemy);
         });
     }
 }

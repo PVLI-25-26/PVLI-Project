@@ -57,16 +57,10 @@ export default class GameplayScene extends Phaser.Scene {
         this.physics.add.collider(this.player, this.obstaclesGroup);
 
         // Load scene objects from room data
-        dungeon.loadCurrentRoom(this, this.obstaclesGroup, this.player);
+        dungeon.loadCurrentRoom(this, this.obstaclesGroup, this.enemiesGroup, this.player);
 
         // Make camera follow the player
         this.cameras.main.startFollow(this.player, false, 0.1, 0.1, 10, 10);
-
-        this.enemies = sceneEnemies.map(enemyData => {
-            const enemy = createEnemy(this, enemyData);
-            this.physics.add.collider(enemy, this.enemiesGroup);
-            return enemy;
-        });
     }
 }
 
