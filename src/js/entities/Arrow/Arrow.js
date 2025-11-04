@@ -66,6 +66,7 @@ export class Arrow extends DepthSortedSprite{
         
         this.setActive(false);
         this.setVisible(false);
+        this.collider.active = false;
 
         // Make the collider smaller to look like the arrow is inside the object it hits
         this.body.setSize(this.width-25, this.height-25);

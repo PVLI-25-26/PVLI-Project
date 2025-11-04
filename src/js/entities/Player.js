@@ -51,6 +51,14 @@ export class Player extends BillBoard {
         }
 
         this.addComponents();
+
+        this.scene.anims.create({
+            key: "player_walk",
+            frames: scene.anims.generateFrameNumbers("player", {start:13, end: 16}),
+            frameRate: 7,
+            repeat: -1
+        });
+        this.play('player_walk');
     }
 
     /**

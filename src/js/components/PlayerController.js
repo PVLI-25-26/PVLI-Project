@@ -42,6 +42,16 @@ export class PlayerControllerComponent extends BaseControllerComponent {
 
         const x = (this.keys.right.isDown ? 1 : 0) - (this.keys.left.isDown ? 1 : 0);
         const y = (this.keys.down.isDown ? 1 : 0) - (this.keys.up.isDown ? 1 : 0);
+            
+        if(x != 0 || y != 0){
+            this.gameObject.play('player_walk', true);
+        }
+        else{
+            this.gameObject.anims.stop();
+            this.frame = 0;
+        }
+
+        if (x != 0) this.gameObject.flipX = x < 0;
 
         this.movementComponent.setDirection(x, y);
 
