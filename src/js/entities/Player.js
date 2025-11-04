@@ -73,7 +73,7 @@ export class Player extends BillBoard {
         const controller = new PlayerControllerComponent(this);
         
         // Add PlayerShootingComponent
-        const shootController = new PlayerShootingComponent(this, this.config.minShootPower, this.config.maxShootPower, this.config.powerIncreaseSpeed);
+        const shootController = new PlayerShootingComponent(this, this.config.minShootPower, this.config.maxShootPower, this.config.powerIncreaseSpeed); // TODO: Refactor parameters to use separate config object
     }
 
     /**

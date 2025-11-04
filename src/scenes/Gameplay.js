@@ -6,6 +6,9 @@ import showLoaderUI from "../js/UI/LoaderUI.js";
 import { SoundSceneFacade } from "../js/core/sound-facade.js";
 import { BillBoard } from "../js/entities/BillBoard.js";
 import BillConfig from "../configs/billboard-config.json"
+import sceneEnemies from "../configs/enemies-config.json" assert { type: "json" };
+import { createEnemy } from "../js/core/enemy-simple-fabric.js";
+
 
 export default class GameplayScene extends Phaser.Scene {
     constructor() {
@@ -46,6 +49,7 @@ export default class GameplayScene extends Phaser.Scene {
 
         // Create physics groups
         this.obstaclesGroup = this.physics.add.staticGroup();
+        this.enemiesGroup = this.physics.add.group();
 
         // Create player
         this.logger.log('DUNGEON', 1, 'Creating player...');
@@ -59,6 +63,12 @@ export default class GameplayScene extends Phaser.Scene {
 
         // Make camera follow the player
         this.cameras.main.startFollow(this.player, false, 0.1, 0.1, 10, 10);
+
+        this.enemies = sceneEnemies.map(enemyData => {
+            const enemy = createEnemy(this, enemyData);
+            this.physics.add.collider(enemy, this.enemiesGroup);
+            return enemy;
+        });
     }
 }
 

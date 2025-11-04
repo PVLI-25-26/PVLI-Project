@@ -1,6 +1,7 @@
 import Phaser from "phaser";
 import { EventBus } from "../../core/event-bus";
 
+// TODO: add initial volume parameters from saved settings
 export default class MainMenuModel  {
     constructor(initialMusicVolume = 0.3, initialSFXVolume = 0.3) {
         this.musicVolume = initialMusicVolume;

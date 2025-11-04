@@ -1,0 +1,12 @@
+{
+    "billboardConfig": {
+        "texture": "player",
+        "scale": 1
+    },
+    "speed": 120,
+    "width": 16,
+    "height": 16,
+    "offsetX": 0,
+    "offsetY": 0,
+    "defaultState": "idle"
+}
