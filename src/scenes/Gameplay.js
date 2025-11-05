@@ -30,6 +30,9 @@ export default class GameplayScene extends Phaser.Scene {
         this.load.spritesheet('chest-spritestack', 'assets/sprites/SpriteStackingPlaceholders/MiscProps/Chestf0_strip18.png', {frameWidth: 16, spacing: 6});
         this.load.spritesheet('crate-spritestack', 'assets/sprites/SpriteStackingPlaceholders/MiscProps/Crate_strip8.png', {frameWidth: 16});
         this.load.spritesheet('door-spritestack', 'assets/sprites/SpriteStackingPlaceholders/Doors/WoodDoor_strip16.png', {frameWidth: 16, frameHeight: 6});
+        this.load.image("billboard","assets/sprites/SpriteStackingPlaceholders/Billboard/catPlaceholder.jpg");
+        this.load.image("grass","assets/sprites/grass.png");
+        this.load.image("tree","assets/sprites/tree.png");
     }
 
     create(data) {

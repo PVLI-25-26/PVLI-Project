@@ -1,8 +1,12 @@
 {
     "obstacles": [
-        {"key": "crate", "x":100, "y":100, "r":45},
-        {"key": "chest", "x":0, "y":50, "r":90},
-        {"key": "door", "x":200, "y":200, "r":180}
+        {"key": "crate", "x":100, "y":100, "r":45,"type":"spritestack"},
+        {"key": "chest", "x":0, "y":50, "r":90,"type":"spritestack"},
+        {"key": "door", "x":200, "y":200, "r":180, "type":"spritestack"},
+        {"key":"Tree","x":500,"y":500,"type":"billboard"},
+        {"key":"Tree","x":550,"y":500,"type":"billboard"},
+        {"key":"Tree","x":600,"y":500,"type":"billboard"},
+        {"key":"Tree","x":650,"y":500,"type":"billboard"}
     ],
     "enemies": [ ]
 }
