@@ -1,4 +1,5 @@
 {
+    "HOLA": "hola?",
     "obstacles": [
         {"key": "wall", "x":100, "y":50, "r":0},
         {"key": "wall", "x":148, "y":50, "r":0},
@@ -9,5 +10,29 @@
         {"key": "barrel", "x":196, "y":100, "r":0},
         {"key": "chest", "x":148, "y":150, "r":270},
         {"key": "door", "x":300, "y":300, "r":-90}
+    ],
+    "enemies": [
+        {
+            "type": "basic",
+            "pos": { "x": -100, "y": -250 },
+            "state": "patrol",
+            "patrolRoute": {
+                "points": [
+                    { "x": -100, "y": -250, "wait": 500 },
+                    { "x": -200, "y": -250, "wait": 500 },
+                    { "x": -150, "y": -300, "wait": 500 }
+                ]
+            }
+        },
+        {
+            "type": "basic",
+            "pos": { "x": -200, "y": -250 },
+            "state": "idle"
+        },
+        {
+            "type": "basic",
+            "pos": { "x": -200, "y": -350 },
+            "state": "chase"
+        }
     ]
 }
