@@ -124,15 +124,25 @@ class Dungeon {
             }
             else{
                 obstacle = new Obstacle(scene, obj.x, obj.y, this.#obstacles.get(obj.key));
+                obstacle.setRotation(obj.r*Math.PI/180);
             }
-            obstacle.setRotation(obj.r*Math.PI/180);
             obstaclesGroup.add(obstacle);
         });
         
         for(let i = 0; i < 100; ++i){
             const grass = new ObstacleBillboard(scene, Math.random()*700-350, Math.random()*700-350, this.#obstacles.get("Grass"));
             grass.setFlipX(Math.floor(Math.random()*2));
-            obstaclesGroup.add(grass);
+
+        }
+        for (let i = 0; i<600; i++){
+
+            let x = Math.random()*1500-750;
+            let y = Math.random()*1500-750;
+            if ((x < -350 || x>350) || (y <-350 || y> 350) ){
+                const grass = new ObstacleBillboard(scene, x, y, this.#obstacles.get("Tree"));
+                grass.setFlipX(Math.floor(Math.random()*2));
+                obstaclesGroup.add(grass);
+            }
 
         }
 

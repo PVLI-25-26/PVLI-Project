@@ -38,7 +38,9 @@ export class ObstacleBillboard extends BillBoard {
         scene.add.existing(this);
 
         // Add static physics body
-        scene.physics.add.existing(this, true);
+        if (config.collidable){
+            scene.physics.add.existing(this, true);
+        }
 
         if (config.width && config.height) {
             this.body.setSize(config.width, config.height);

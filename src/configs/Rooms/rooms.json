@@ -10,7 +10,7 @@
         "key": "gameplay",
         "path": "gameplay-config.json",
         "connections":[
-            {"scene": "hub", "x":300, "y":300, "spawnX": 100, "spawnY": 200}
+            {"scene": "hub", "x":-100, "y":200, "spawnX": 100, "spawnY": 200}
         ]
     }
 ]
