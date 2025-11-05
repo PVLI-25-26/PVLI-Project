@@ -100,6 +100,9 @@
             "texture":"tree",
             "scale":4
         },
-        "collidable":false
+        "collidable":true,
+        "width":30,
+        "height":30
+
     }
 ]
