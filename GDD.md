@@ -78,10 +78,6 @@ Dialogue with NPCs reveals the story and provides guidance, while responsive mov
 ## Synopsis
 The game is set in a **fantasy medieval world**. The protagonist travels through a portal into a magical dimension in the form of a dungeon inhabited by various hostile creatures. Players must explore rooms, overcome enemies, and gather resources while surviving the dangers of the dungeon.
 
-## Terminology
-### Room entity
-**Room Entity** – an entity placed within a dungeon room. This includes [[Enemy#Enemy types|enemies]], NPCs, and [[Consumables#Consumable types|items]].
-
 # Progression
 ## Player Progression
 
@@ -200,11 +196,11 @@ Does nothing special, their basic effects combined is already powerful enough.
 # Set Arrow path modifier
 **Set Arrow Path Modifier** – a mechanic that allows the player to alter the trajectory and behavior of projectiles after they are fired by selecting special type of bow.
 ## Description
-The player [[Shop|can equip]] one active arrow path modifier (bow type) before entering the magical realm.
+The player [can equip](#shop) one active arrow path modifier (bow type) before entering the magical realm.
 This modifier changes the flight pattern of all fired projectiles, overriding the default arched trajectory and adding unique behavior.  
 Modifiers can alter the number of projectiles, their spread, bounce behavior, and travel distance. It is used to adjust the area of effect, control coverage, or introduce tactical variety in ranged combat.
 
-Only one path modifier can be active before [[Enter and exit the dungeon|enter the dungeon]], encouraging players to adapt their loadout to different enemy types and environments.
+Only one path modifier can be active before [enter the dungeon](#enter-and-exit-the-dungeon), encouraging players to adapt their loadout to different enemy types and environments.
 ## Available Modifiers
 - [[#Hunter’s Bow – Triple Shot]]
 - [[#Falcon Bow – Long Shot]]
@@ -258,7 +254,7 @@ However, the **ammo count is reduced**, so player can't just spam all his arrows
 # Shoot
 **Shoot** – a mechanic that allows the player to perform ranged attacks using a bow. It is used for engaging enemies from a distance, applying status effects, and interacting with certain elements of the environment.  
 ## Description
-The player aims [[Controls|using his input device]] and presses the [[Controls|shoot button]] to release the [[Manage Quiver|equipped projectile]] projectile in the [[Set Arrow path modifier|chosen direction]].  
+The player aims [using his input device](#controls) and presses the [shoot button](#controls) to release the [equipped projectile](#manage-quiver) projectile in the [chosen direction](#set-arrow-path-modifier).  
 To control the projectile’s force, the player must **hold** the shoot button for a certain duration. The longer the button is held, the stronger the shot will be.
 
 Projectiles (arrows) follow an arched trajectory. The curvature of the arch depends on the force applied by the player. If the player barely charges the shot, the arrow travels in a steep arc with limited distance. If the player charges the shot to maximum, the arrow flies in a near-straight line*, covering more distance and having a flatter trajectory.
@@ -272,7 +268,7 @@ When an arrow is shot, it is removed from the player inventory. To recover it, t
 ## Description
 Before each expedition, the player can buy one ability from a set of available abilities in the shop. 
 
-Abilities modify the player’s movement in a unique way, for example by granting temporary invulnerability frames, or boosting speed. During the expedition, the selected ability can be activated by [[Controls|pressing the designated ability]] button. 
+Abilities modify the player’s movement in a unique way, for example by granting temporary invulnerability frames, or boosting speed. During the expedition, the selected ability can be activated by [pressing the designated ability](#controls) button. 
 
 This mechanic encourages strategic planning before entering the magical realm and adds depth to traversal during exploration. Abilities are limited to one active choice per expedition, making the selection meaningful and impactful.
 
@@ -299,25 +295,25 @@ When the player uses force field, all enemies near the player are pushed back wi
 # Change Room
 **Change Room** – a mechanic that allows the player to move between rooms.
 ## Description
-Each room is hand-crafted and contains one or more doors or paths. When the player [[Interaction|interacts with a door]], they are transported to the connected room. The player spawns at the corresponding entry point in the new room, typically the path that leads back to the previous room.
+Each room is hand-crafted and contains one or more doors or paths. When the player [interacts with a door](#interaction), they are transported to the connected room. The player spawns at the corresponding entry point in the new room, typically the path that leads back to the previous room.
 
 # Enter and exit the dungeon
 **Enter and Exit the Dungeon** – a mechanic that allows the player to enter and leave the dungeon freely, avoiding any soft-blocks.
 ## Description
-Players will enter and exit the dungeon through specific entrance and exit rooms. These rooms will only be used for entering and exiting the dungeon and will not contain any [[Genre and synopsis#Terminology#Room entity|room entities]]
+Players will enter and exit the dungeon through specific entrance and exit rooms. These rooms will only be used for entering and exiting the dungeon and will not contain any room entities.
 
-The player can only enter the dungeon from the HUB, and must always have bought a loadout in the [[Shop|equipment shop]] before entering. Once inside, the player will appear in one of the many entrances to the dungeon.
+The player can only enter the dungeon from the HUB, and must always have bought a loadout in the [equipment shop](#shop) before entering. Once inside, the player will appear in one of the many entrances to the dungeon.
 
 ![](GDD/Game%20Design%20Document/Images/Examples/HubDesign.PNG)
 
-When the player exits the dungeon through the exit room, he will return to the HUB and sell all objects in his inventory [[Sell item]].
+When the player exits the dungeon through the exit room, he will return to the HUB and sell all objects in his inventory [Sell item](#sell-item).
 
 There will be x number of entrances and exits. One of the entrances is chosen at random when the player enters the dungeon.  The player can exit the dungeon through any exit.
 
 # Pick up items
 **Pick Up Items** – a mechanic that allows the player to collect items found within the dungeon.
 ## Description
-When the player approaches an [[Use Item]] and presses the [[Controls|interaction button]], the [[Interaction]] will pop up, showing basic information of the item and asking the player if they want to pick it up or not.
+When the player approaches an [Use Item](#use-item) and presses the [interaction button](#controls), the [Interaction](#interaction) will pop up, showing basic information of the item and asking the player if they want to pick it up or not.
 If the player decides to pick it up, the item will get added to the item list inside the player's inventory.
 
 ![](GDD/Game%20Design%20Document/Images/Examples/DialogueSystemExample.png)
@@ -327,14 +323,14 @@ If the player decides to pick it up, the item will get added to the item list in
 **Sell item** – This mechanic describers how the player earns money by selling items.
 
 ## Description
-When the player exits the dungeon, all of their [[Use Item|items]] will be sold and converted into coins. 
-Coins are the only persistent item throughout runs, and can be used in before the run to buy equipment (Look at [[Shop]]).
+When the player exits the dungeon, all of their [items](#use-item) will be sold and converted into coins. 
+Coins are the only persistent item throughout runs, and can be used in before the run to buy equipment (Look at [Shop](#shop)).
 If the player dies, all items in his inventory are lost.
 
 # Use Item
 **Use Item** – a mechanic that allows the player to use a consumable from their inventory.
 ## Description
-The player selects a consumable from the [[Inventory|Inventory]] and activates it. Using the item applies its effect, which can be a temporary buff, a stat increase, or a special action depending on the item type.
+The player selects a consumable from the [Inventory](#inventory) and activates it. Using the item applies its effect, which can be a temporary buff, a stat increase, or a special action depending on the item type.
 
 # Boss Fight
 **Boss Fight System** – a specialized system that manages encounters with powerful enemies, defining their behavior, attack patterns, and the conditions for victory or defeat. It builds on the core combat mechanics to create high-stakes, strategic challenges for the player.
@@ -352,7 +348,7 @@ Combat encounters are designed to be dynamic, with enemy placement, mini-boss be
 
 ![](GDD/Game%20Design%20Document/Images/Examples/CombatExample.png)
 ## Dynamics
-From the perspective of the MDA framework, the Combat System shapes the player’s experience by creating meaningful choices and tension. Players feel a sense of **challenge and mastery** as they balance resource management ([[Manage Quiver#Description|arrow quantity]], [[Manage Quiver#Arrow Effects|special arrows]]), spatial awareness (positioning and dodging), and tactical adaptation (choosing the right [[Set Arrow path modifier#Available Modifiers|path modifiers]] and [[Manage Quiver#Arrow Effects|arrow types]]). The system encourages experimentation with different strategies, such as using [[Set Arrow path modifier#Ricochet|Ricochet]] arrows to hit hidden targets, or [[Set Arrow path modifier#Wave Shot|Wave Shot]] to cover multiple enemies simultaneously.
+From the perspective of the MDA framework, the Combat System shapes the player’s experience by creating meaningful choices and tension. Players feel a sense of **challenge and mastery** as they balance resource management ([arrow quantity](#manage-quiver), [special arrows](#arrow-effects)), spatial awareness (positioning and dodging), and tactical adaptation (choosing the right [path modifiers](#set-arrow-path-modifier) and [arrow types](#arrow-effects). The system encourages experimentation with different strategies, such as using [Ricochet](#ricochet) arrows to hit hidden targets, or [Wave Shot](#wave-shot) to cover multiple enemies simultaneously.
 
 The risk-reward loop is central: overextending with rare arrows may lead to running out of resources mid-expedition, forcing retreat to the hub. Conversely, careful planning and effective use of abilities and arrow types reward skillful play and provide a satisfying sense of progression and empowerment.
 
@@ -364,14 +360,14 @@ This system defines the types of consumables, their effects, durations, and inte
 
 - Buffs applied by consumables (temporary or lasting for the entire run)
 - Stat modifications
-- Rules for lending items to NPCs in [[Missions]]
-- [[Sell item|Conversion]] of unused consumables into currency 
+- Rules for lending items to NPCs in [Missions](#missions)
+- [Conversion](#conversion) of unused consumables into currency 
 - Interaction with inventory and item usage mechanics
 
 The system ensures consistency in how consumables behave and how their effects are applied, providing a central point for balancing and extending consumable functionality.
 
 ## Item progression
-[[Use Item|Use Items]] increase its effect's value as the player [[Difficulty#Description|explores the dungeon]]. This increased value is represented as an increase in the item's statistics and associated gold value.
+[Use Items](#use-items) increase its effect's value as the player [explores the dungeon](#difficulty). This increased value is represented as an increase in the item's statistics and associated gold value.
 This ensures that the player is rewarded if they are capable of surviving for longer. As the enemies also increase in strength, the items will give the player stronger buffs when consumed, making them still worth the consumption even if their value is higher.
 
 The value of items increases in three levels (`I`, `II` and `III`)  with `I` being the lowest and `III` the highest.
@@ -408,8 +404,8 @@ This gives the player an interesting risk and reward choices to make, as dying w
 # Dungeon Exploration
 **Dungeon Exploration System** – a system that defines the layout of the dungeon and manages the player’s movement between rooms and it's content.
 ## Description
-The dungeon is composed by rooms. Each room has a number of [[Change Room|paths]] that connect with other rooms (like Hades or Isaac). As the player traverses new rooms, the game becomes harder (look at [[Difficulty]]).
-Rooms work like isolated scenes and are hand-crafted. Each room has [[Genre and synopsis#Terminology#Room entity|room entities]] that the player can interact with.
+The dungeon is composed by rooms. Each room has a number of [paths](#change-room) that connect with other rooms (like Hades or Isaac). As the player traverses new rooms, the game becomes harder (look at [Difficulty](#difficulty)).
+Rooms work like isolated scenes and are hand-crafted. Each room has room entities that the player can interact with.
 Paths are predefined, although we would like to make a procedurally generated dungeon.
  ![](GDD/Game%20Design%20Document/Images/Examples/SmallEnemiesDraw.PNG)
 
@@ -426,10 +422,6 @@ Room entities are persistent. When a room is unloaded, the state of all its enti
 ## Dynamics
 Each room will have a specialized purpose. For example, one room cannot be both a fighting room and an NPC room. This way, we can separate and encapsulate how the player interacts with each room. This allows the player to choose a path based on their desired strategy.
 The player should be encouraged to clear each room before enter another one. This can be achieved by either blocking the paths or rewarding the player with valuable items after clearing the room.
-
-## Included mechanics
-- [[Change Room]]
-- [[Enter and exit the dungeon]]
 
 # Enemy
 **Enemy System** –  a system responsible for managing enemy types, behaviors, and interactions with the player.
@@ -473,7 +465,7 @@ The driade stands in a middle ground between the golem and the slime. They aren'
 ## Description
 Each enemy executes attacks according to its **behavior pattern** and attack logic. Attacks can be only ranged projectiles, or area-of-effect abilities, depending on the enemy type.
 
-The timing, range, and effect of each attack are defined by the enemy’s AI and may vary based on current [[Difficulty|difficulty level]] or environmental conditions. Attacks require the player to dodge to avoid taking damage.
+The timing, range, and effect of each attack are defined by the enemy’s AI and may vary based on current [difficulty level](#difficulty) or environmental conditions. Attacks require the player to dodge to avoid taking damage.
 
 ## Dynamics
 Players must observe enemy patterns, react to attacks, and prioritize targets based on behavior and threat level. Variety in enemy types encourages experimentation with combat strategies, positioning, and use of abilities. Environmental interactions, such as traps or cover, further influence enemy behavior and encounter dynamics.
@@ -487,7 +479,7 @@ When the player's health reaches 0, the player dies and returns to the HUB, loos
 
 ![](GDD/Game%20Design%20Document/Images/Examples/HealthSystemExample.png)
 
-Health is recovered when the player returns to the HUB, by dying or [[Enter and exit the dungeon|exiting the dungeon]].
+Health is recovered when the player returns to the HUB, by dying or [exiting the dungeon](#enter-and-exit-the-dungeon).
 Health can also be recovered by consuming items which recover the player's health.
 ## Dynamics 
 The health bar must show the player the range of error he has until his run ends because he dies. This means that when the health is full, the player must fill like he can take risks and explore. But as health decreases, the health must very clearly show the player how he can die at any moment.
@@ -501,7 +493,7 @@ When the player interacts with an NPC, a bubble will appear over the character. 
 Interacting with an object (opening a door, a crate, or entering the dungeon) works the same way, but instead of a portrait, there will be a drawing, and instead of dialogue, there will be a narrative description.
 ![](GDD/Game%20Design%20Document/Images/Examples/DialogueSystemExample.png)
 
-To interact with an entity the player will approach said entity and press the [[Controls|interact]] button.
+To interact with an entity the player will approach said entity and press the [interact](#controls) button.
 ## Dynamics
 Having a common yet versatile system for all non-combat interactions in the game is a great way to simplify the experience for the player, reducing the amount of systems one has to learn to play the game.
 The player will have a better view of the appearance of the NPC who is speaking. 
@@ -510,10 +502,10 @@ The UI will be over the interactive target, making it more immersive.
 # Inventory
 **Inventory System** – a system that manages the player’s inventory throughout its entire lifecycle, from entering the dungeon to exiting it.
 ## Description
-Players will be able to collect [[Use Item|items]] during the run through the [[Interaction|interaction system]]. Items collected by the player are stored inside his inventory.
+Players will be able to collect [items](#use-item) during the run through the [interaction system](#interaction). Items collected by the player are stored inside his inventory.
 The inventory is an infinite list of items collected by the player, so the player can take as many items as they want.
 ![](GDD/Game%20Design%20Document/Images/Examples/InventorySystemExample.png)
-All items inside the player's inventory are sold when the player [[Enter and exit the dungeon|exits the dungeon]]. However, if the player dies, all items inside the inventory are lost.
+All items inside the player's inventory are sold when the player [exits the dungeon](#enter-and-exit-the-dungeon). However, if the player dies, all items inside the inventory are lost.
 
 # Missions
 **Missions System** – a system that manages mission progression and rewards players upon their completion.
@@ -521,7 +513,7 @@ All items inside the player's inventory are sold when the player [[Enter and exi
 
 Before entering the dungeon for the first time the player encounters an NPC that will give him a mission: "Enter the dungeon and come back alive".
 
-After completing this first mission the [[Shop]] will be unlocked.
+After completing this first mission the [Shop](#shop) will be unlocked.
 
 From this moment onwards the missions will vary depending on the data gathered from the runs with the objective of making the player try different types of gameplays, for example if the player is focused on recollecting items but not engaging in battle, the npc will give the player missions to subjugate monsters. The missions can go from collecting specific items from the dungeon to killing some type/quantity of enemies.
 
@@ -559,15 +551,15 @@ The player must feel like his character is completely under his control, with pr
 ## Description
  Before a run, the player can buy the equipment he wishes to use with coins. The stronger the equipment, the more coins needed to buy it.
  The player can buy only 2 types of items for the next run:
- - Bows ([[Set Arrow path modifier#Available Modifiers|Arrows trajectories]])
- - Arrows (Two types of [[Manage Quiver#Arrow Effects|arrows with special effect]])
+ - Bows ([Arrows trajectories](#available-modifiers))
+ - Arrows (Two types of [arrows with special effect](#arrow-effects))
 ### Coins
-Coins are persistent between runs, meaning that they are not lost when the player dies or begins a new run. Coins are obtained by selling [[Use Item|items]] when [[Enter and exit the dungeon|exiting the dungeon]].
+Coins are persistent between runs, meaning that they are not lost when the player dies or begins a new run. Coins are obtained by selling [items](#use-item) when [exiting the dungeon](#enter-and-exit-the-dungeon).
 ## Prototype
 Graphical example to understand the concept (Not actual design, not even close):
 ![](GDD/Game%20Design%20Document/Images/Examples/EquipmentShopExample.png)
 ## Dynamics
-As the player obtains items and improves, he will also gain more gold, allowing him to [[Progression|obtain better items]].
+As the player obtains items and improves, he will also gain more gold, allowing him to [obtain better items](#progression).
 If the player runs out of gold, he will always have a basic loadout for free with the most basic items. This ensures that the player can always recover himself from big losses and represents the base point of the equipment progression.
 
 The player is confronted with whether it is worth spending more for better or more custom items, or save gold for another future run.
