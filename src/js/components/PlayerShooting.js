@@ -151,25 +151,6 @@ export class PlayerShootingComponent extends BaseComponent{
         if(!pointer.isDown && this.#shootWasPressedLastFrame && this.#currentPower > this.#minPower)
             {
             const logger = this.gameObject.scene.plugins.get('logger');
-
-            /* LOGIC FOR click & hold shooting style SAVE IT JUST IN CASE
-            // Get mouse position in world coordinates
-            const cam = this.gameObject.scene.cameras.main; // Get main camera
-            const mousePosLength = Math.hypot(pointer.x, pointer.y); // Distance from center of screen to mouse position
-            const mouseNorm01X = pointer.x/cam.width; // Normalize mouse x to 0-1
-            const mouseNorm01Y = pointer.y/cam.height; // Normalize mouse y to 0-1
-            const mouseNormX = mouseNorm01X*2-1; // Normalize mouse x to -1 to 1
-            const mouseNormY = mouseNorm01Y*2-1; // Normalize mouse y to -1 to 1
-            // Rotate normalized mouse position by -cameraRotation
-            let dirX = mouseNormX * Math.cos(-this.camRotation) - mouseNormY * Math.sin(-this.camRotation);
-            let dirY = mouseNormX * Math.sin(-this.camRotation) + mouseNormY * Math.cos(-this.camRotation);
-            // Scale by the actual distance from center to mouse position
-            dirX *= mousePosLength;
-            dirY *= mousePosLength;
-            // Translate to world coordinates
-            dirX += cam.scrollX+cam.width/2;
-            dirY += cam.scrollY+cam.height/2;
-            */
             
             // Calculate direction of shot taking into account camera rotation
             const directionShot = this.calculateShotDirection();

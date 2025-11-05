@@ -1,5 +1,6 @@
 import { EventBus } from "../../core/event-bus";
 import { DepthSortedSprite } from "../DepthSortedSprite";
+import { Obstacle } from "../Obstacle.js";
 
 
 /**
@@ -61,12 +62,33 @@ export class Arrow extends DepthSortedSprite{
         // This should probably be done by the pool
         this.scene.add.existing(this);
         this.scene.physics.add.existing(this);
-        this.collider = this.scene.physics.add.collider(this.body, this.scene.obstaclesGroup, this.onCollision, ()=>{}, this);
-        //                                            I don't know what this processCallback is ---^
+        this.colliders = []; // вот здесь
+
+        // collision with obstacles
+        this.colliders.push(
+            this.scene.physics.add.collider(
+                this,
+                this.scene.obstaclesGroup,
+                this.onCollision,
+                null,
+                this
+            )
+        );
+
+        // collision with enemies
+        this.colliders.push(
+            this.scene.physics.add.collider(
+                this,
+                this.scene.enemiesGroup,
+                this.onCollision,
+                null,
+                this
+            )
+        );
         
         this.setActive(false);
         this.setVisible(false);
-        this.collider.active = false;
+        this.colliders.forEach(collider => collider.active = false);
 
         // Make the collider smaller to look like the arrow is inside the object it hits
         this.body.setSize(this.width-25, this.height-25);
@@ -91,6 +113,7 @@ export class Arrow extends DepthSortedSprite{
      * @returns {void}
      */
     shoot(trajectory, effect, oX, oY, tX, tY, power){
+        this.resetState();
         this.x = oX;
         this.y = oY;
 
@@ -106,13 +129,20 @@ export class Arrow extends DepthSortedSprite{
         // This should be done by the pool
         this.setActive(true);
         this.setVisible(true);
-        this.collider.active = true;
+        this.colliders.forEach(collider => collider.active = true);
 
         this.setOrigin(0.5,0.5);
 
         this.trajectory.shoot(this);
 
         EventBus.emit('playSound', 'arrowSwish');
+
+        EventBus.on('entityDied', (entity) => {
+            if (this.stuckTo === entity) {
+                this.setVisible(false);
+                this.stuckTo = null; 
+            }
+        });
     }
 
     /**
@@ -126,18 +156,39 @@ export class Arrow extends DepthSortedSprite{
         // Notify the trajectory controller about the collision so it can
         // handle stopping, pooling or effects.
         this.trajectory.onCollision();
-        this.onLanded();
         
-        // Apply arrow effects to the hit object if it implements a handler.
-        // if (other && typeof other.onArrowHit === 'function') other.onArrowHit(this.effect);
+        if (other instanceof Obstacle) {
+            this.onLanded();
+        } 
+        this.stickToObject(other);
+        EventBus.emit('arrowHit', { arrow: arrow, target: other });
     }
 
     onLanded(){
-        this.collider.active = false;
+        this.colliders.forEach(collider => collider.active = false);
         EventBus.emit('arrowLanded', this);
         this.setFrame(1);
         this.applyBouncyTween();
         EventBus.emit('playSound', 'arrowLand');
+    }
+
+    stickToObject(target) {
+        this.stuckTo = target;
+
+        this.offsetX = this.x - target.x;
+        this.offsetY = this.y - target.y;
+
+        this.body.enable = false;
+
+        this.setOrigin(0.8, 0.5);
+    }
+
+    resetState() {
+        this.stuckTo = null;
+        this.offsetX = 0;
+        this.offsetY = 0;
+        this.body.enable = true;
+        this.setOrigin(0.5, 0.5);
     }
 
     updateArrowVisuals(normalizedAirTime01){
@@ -146,7 +197,10 @@ export class Arrow extends DepthSortedSprite{
 
     preUpdate(time, delta){
         super.preUpdate(time, delta);
-        if (this.trajectory) {
+        if (this.stuckTo && this.stuckTo.active) {
+            this.x = this.stuckTo.x + this.offsetX;
+            this.y = this.stuckTo.y + this.offsetY;
+        } else if (this.trajectory) {
             this.trajectory.update(time, delta);
         }
     }

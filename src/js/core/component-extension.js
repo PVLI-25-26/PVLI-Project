@@ -49,7 +49,7 @@ export function extendWithComponents(gameObject) {
      */
     gameObject.updateComponents = function(time, delta) {
         this.components.forEach(c => {
-            if (c.enabled) c.update(time, delta);
+            if (c.enabled && c.gameObject.active) c.update(time, delta);
         });
     };
 
