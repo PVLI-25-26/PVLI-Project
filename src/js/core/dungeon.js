@@ -128,6 +128,13 @@ class Dungeon {
             obstacle.setRotation(obj.r*Math.PI/180);
             obstaclesGroup.add(obstacle);
         });
+        
+        for(let i = 0; i < 100; ++i){
+            const grass = new ObstacleBillboard(scene, Math.random()*700-350, Math.random()*700-350, this.#obstacles.get("Grass"));
+            grass.setFlipX(Math.floor(Math.random()*2));
+            obstaclesGroup.add(grass);
+
+        }
 
         // Create every connection from the room config
         room.connections.forEach(con =>{
