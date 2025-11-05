@@ -1,4 +1,6 @@
 {
+    "type":"billboard",
+    "key": "BillBoardTest",
     "texture": "billBoard",
     "scale": 0.1
 }

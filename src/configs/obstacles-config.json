@@ -73,5 +73,33 @@
         "height": 12,
         "offsetX": 0,
         "offsetY": 0
+    },
+    {
+
+        "key": "BillBoardTest",
+        "billboardConfig":
+        {
+            "type":"billboard",
+            "texture":"billboard",
+            "scale":0.1            
+        },
+        "collidable":false
+    },
+    {
+        "key": "Grass",
+        "billboardConfig":{
+            "type":"billboard",
+            "texture":"grass",
+            "scale":4
+        },
+        "collidable":false
+    },
+    {
+        "key":"Tree",
+        "billboardConfig":{
+            "texture":"tree",
+            "scale":4
+        },
+        "collidable":false
     }
 ]

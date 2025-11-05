@@ -30,8 +30,10 @@
 
 import roomsConfig from '../../configs/Rooms/rooms.json'
 import obstaclesConfig from '../../configs/obstacles-config.json'
+import { BillBoard } from '../entities/BillBoard.js';
 import { Obstacle } from '../entities/Obstacle.js';
 import { createEnemy } from "./enemy-simple-fabric.js";
+import { ObstacleBillboard } from '../entities/ObstacleBillboard.js';
 
 /**
  * Manages dungeon rooms and instantiation of room objects into a Phaser scene.
@@ -116,7 +118,13 @@ class Dungeon {
         const room = this.#rooms.get(this.#currentRoomKey);
 
         room.obstacles.forEach(obj =>{
-            const obstacle = new Obstacle(scene, obj.x, obj.y, this.#obstacles.get(obj.key));
+            let obstacle;
+            if (obj.type== "billboard"){
+                obstacle = new ObstacleBillboard(scene,obj.x,obj.y,this.#obstacles.get(obj.key));
+            }
+            else{
+                obstacle = new Obstacle(scene, obj.x, obj.y, this.#obstacles.get(obj.key));
+            }
             obstacle.setRotation(obj.r*Math.PI/180);
             obstaclesGroup.add(obstacle);
         });
