@@ -1,6 +1,7 @@
 import { extendWithComponents } from "../../core/component-extension.js";
 import { BasicEnemyControllerComponent } from "../../components/BasicEnemyController.js";
 import { MovementComponent } from "../../components/Movement.js";
+import { DamageableComponent } from "../../components/DamageableComponent.js";
 import { BillBoard } from "../../entities/BillBoard.js";
 
 /**
@@ -60,6 +61,9 @@ export class BasicEnemy extends BillBoard {
 
         // Add PlayerControllerComponent
         const controller = new BasicEnemyControllerComponent(this, this.config.state, this.config.patrolRoute);
+
+        // Add DamageableComponent
+        const damageable = new DamageableComponent(this, this.config.maxHP, ['arrowHit'], false, { damage: this.config.damageSound, death: this.config.deathSound });
     }
 
     /**

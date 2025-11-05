@@ -4,7 +4,9 @@
     { "key": "click", "file": "assets/sounds/click.wav" },
     { "key": "bowLoad", "file": "assets/sounds/bowLoading.mp3"},
     { "key": "arrowLand", "file": "assets/sounds/arrowLand.mp3"},
-    { "key": "arrowSwish", "file": "assets/sounds/arrowSwish.mp3"}
+    { "key": "arrowSwish", "file": "assets/sounds/arrowSwish.mp3"},
+    { "key": "enemyHurt", "file": "assets/sounds/enemyHurt.mp3"},
+    { "key": "enemyDeath", "file": "assets/sounds/enemyDeath.mp3"}
   ],
   "music": [
     

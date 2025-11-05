@@ -21,6 +21,7 @@ export default class GameplayScene extends Phaser.Scene {
         this.logger.log('DUNGEON', 1, 'Loading assets...');
         // This should be moved to an initial asset loading screen and only load assets once
         this.load.spritesheet('player', 'assets/sprites/CharacterBaseSprites.png', {frameWidth:32});
+        this.load.image('slime', 'assets/sprites/SlimeSprite.png');
         this.load.spritesheet('arrow', 'assets/sprites/arrow.png', {frameWidth:32});
         this.load.spritesheet('bow', 'assets/sprites/Bow.png', {frameWidth:16});
         this.load.image('aiming-arrow', 'assets/sprites/AimingArrow.png', {frameWidth:16})
