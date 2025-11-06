@@ -12,5 +12,8 @@
     "offsetY": 0,
     "minShootPower": 300,
     "maxShootPower": 2000,
-    "powerIncreaseSpeed": 10
+    "powerIncreaseSpeed": 10,
+    "maxHP": 3,
+    "damageSound": "playerHurt",
+    "deathSound": "playerHurt"
 }

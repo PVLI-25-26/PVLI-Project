@@ -43,13 +43,22 @@ export class DamageableComponent extends BaseComponent {
         if (data.target !== this.gameObject) return;
 
         if (event === 'arrowHit') {
-            this.takeDamage(1); // Placeholder damage value, arrow must store its damage
-            const movementComponent = this.getComponent(MovementComponent);
-            if (movementComponent) {
-                movementComponent.setDirection(0, 0);
-                const direction = { x: data.target.x - data.arrow.x, y: data.target.y - data.arrow.y };
-                movementComponent.knockback(direction, 500, 100);
-            }
+            const knockbackParameters = {
+                direction: { x: data.target.x - data.arrow.x, y: data.target.y - data.arrow.y },
+                force: 200,
+                duration: 100
+            };
+            this.takeDamage(1, knockbackParameters); // Placeholder damage value, arrow must store its damage
+
+        }
+
+        if (event === 'enemyMeleeHit') {
+            const knockbackParameters = {
+                direction: { x: data.target.x - data.attacker.x, y: data.target.y - data.attacker.y },
+                force: 1000,
+                duration: 200
+            };
+            this.takeDamage(1, knockbackParameters); // Placeholder damage value, enemy must store its damage
         }
     }
 
@@ -57,12 +66,18 @@ export class DamageableComponent extends BaseComponent {
      * Main damage handling method.
      * @param {number} amount - Damage amount to apply.
      */
-    takeDamage(amount) {
+    takeDamage(amount, knockbackParameters = null) {
         if (this.isInvulnerable) return;
 
         this.currentHP = Math.max(0, this.currentHP - amount);
 
         this.flashRed(300);
+
+        const movementComponent = this.getComponent(MovementComponent);
+            if (movementComponent && !this.isInvulnerable) {
+                movementComponent.setDirection(0, 0);
+                movementComponent.knockback(knockbackParameters.direction, knockbackParameters.force, knockbackParameters.duration);
+            }
 
         if (this.currentHP <= 0) {
             this.onDeath();
