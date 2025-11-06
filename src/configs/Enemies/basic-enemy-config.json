@@ -4,8 +4,8 @@
         "scale": 0.1
     },
     "speed": 120,
-    "width": 256,
-    "height": 256,
+    "width": 300,
+    "height": 200,
     "offsetX": 0,
     "offsetY": 0,
     "maxHP": 3,

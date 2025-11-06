@@ -1,4 +1,5 @@
 import { BaseComponent } from "../core/base-component.js";
+import { MovementComponent } from "../components/Movement.js";
 import { EventBus } from "../core/event-bus.js";
 
 /**
@@ -43,6 +44,12 @@ export class DamageableComponent extends BaseComponent {
 
         if (event === 'arrowHit') {
             this.takeDamage(1); // Placeholder damage value, arrow must store its damage
+            const movementComponent = this.getComponent(MovementComponent);
+            if (movementComponent) {
+                movementComponent.setDirection(0, 0);
+                const direction = { x: data.target.x - data.arrow.x, y: data.target.y - data.arrow.y };
+                movementComponent.knockback(direction, 500, 100);
+            }
         }
     }
 
@@ -55,6 +62,8 @@ export class DamageableComponent extends BaseComponent {
 
         this.currentHP = Math.max(0, this.currentHP - amount);
 
+        this.flashRed(300);
+
         if (this.currentHP <= 0) {
             this.onDeath();
             return;
@@ -66,6 +75,24 @@ export class DamageableComponent extends BaseComponent {
 
         if (this.useInvulnerability) {
             this.startInvulnerability();
+        }
+    }
+
+    /**
+     * Changes the sprite tint to red temporarily to indicate damage.
+     * @param {number} duration - Duration of the effect in milliseconds.
+     */
+    flashRed(duration) {
+        const sprite = this.gameObject;
+        if (!sprite || !sprite.setTint || !sprite.clearTint) return;
+        sprite.setTint(0xf26868);
+        sprite.setBlendMode(Phaser.BlendModes.NORMAL);
+
+        if (sprite.scene && sprite.scene.time) {
+            sprite.scene.time.delayedCall(duration, () => {
+                if (sprite.active) sprite.clearTint();
+                sprite.setBlendMode(Phaser.BlendModes.NORMAL);
+            });
         }
     }
 
