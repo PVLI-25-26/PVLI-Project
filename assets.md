@@ -42,3 +42,11 @@ Assets realizados por el equipo:
   - Path: `public\assets\sprites\arrow.png`
   - Autor: "Adrián Isasi"
   - Licencia: Free to use commercially or not
+- Arbol
+  - Path: `public/assets/sprites/tree.png`
+  - Autor: "Miguel Ángel González"
+  - Licencia: Free to use commercially or not
+- Césped 
+  - Path: `public/assets/sprites/grass.png`
+  - Autor: "Miguel Ángel González"
+  - Licencia: Free to use commercially or not
