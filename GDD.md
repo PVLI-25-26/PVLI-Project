@@ -130,7 +130,8 @@ Each sprite layer represents a “slice” of an object (for example, a part of 
 ## Implementation in Our Project
 In our case, the technique is implemented using custom shaders integrated into the Phaser rendering pipeline.  
 Phaser allows us to attach custom shaders to specific game entities, providing flexibility in controlling the visual style and effects.
-
+# Narrative
+In our game, you will play as Artemis, the daughter of Zeus and Leto. Your objective is to rescue the cow that Leto stole from Zeus. 
 # Manage Quiver
 **Manage Quiver** – a mechanic that allows the player to manage and switch between different types of projectiles.
 ## Description
