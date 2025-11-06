@@ -1,4 +1,5 @@
 import { BaseComponent } from "../core/base-component.js";
+import { MovementComponent } from "../components/Movement.js";
 import { EventBus } from "../core/event-bus.js";
 
 /**
@@ -42,7 +43,22 @@ export class DamageableComponent extends BaseComponent {
         if (data.target !== this.gameObject) return;
 
         if (event === 'arrowHit') {
-            this.takeDamage(1); // Placeholder damage value, arrow must store its damage
+            const knockbackParameters = {
+                direction: { x: data.target.x - data.arrow.x, y: data.target.y - data.arrow.y },
+                force: 200,
+                duration: 100
+            };
+            this.takeDamage(1, knockbackParameters); // Placeholder damage value, arrow must store its damage
+
+        }
+
+        if (event === 'enemyMeleeHit') {
+            const knockbackParameters = {
+                direction: { x: data.target.x - data.attacker.x, y: data.target.y - data.attacker.y },
+                force: 1000,
+                duration: 200
+            };
+            this.takeDamage(1, knockbackParameters); // Placeholder damage value, enemy must store its damage
         }
     }
 
@@ -50,10 +66,18 @@ export class DamageableComponent extends BaseComponent {
      * Main damage handling method.
      * @param {number} amount - Damage amount to apply.
      */
-    takeDamage(amount) {
+    takeDamage(amount, knockbackParameters = null) {
         if (this.isInvulnerable) return;
 
         this.currentHP = Math.max(0, this.currentHP - amount);
+
+        this.flashRed(300);
+
+        const movementComponent = this.getComponent(MovementComponent);
+            if (movementComponent && !this.isInvulnerable) {
+                movementComponent.setDirection(0, 0);
+                movementComponent.knockback(knockbackParameters.direction, knockbackParameters.force, knockbackParameters.duration);
+            }
 
         if (this.currentHP <= 0) {
             this.onDeath();
@@ -66,6 +90,24 @@ export class DamageableComponent extends BaseComponent {
 
         if (this.useInvulnerability) {
             this.startInvulnerability();
+        }
+    }
+
+    /**
+     * Changes the sprite tint to red temporarily to indicate damage.
+     * @param {number} duration - Duration of the effect in milliseconds.
+     */
+    flashRed(duration) {
+        const sprite = this.gameObject;
+        if (!sprite || !sprite.setTint || !sprite.clearTint) return;
+        sprite.setTint(0xf26868);
+        sprite.setBlendMode(Phaser.BlendModes.NORMAL);
+
+        if (sprite.scene && sprite.scene.time) {
+            sprite.scene.time.delayedCall(duration, () => {
+                if (sprite.active) sprite.clearTint();
+                sprite.setBlendMode(Phaser.BlendModes.NORMAL);
+            });
         }
     }
 

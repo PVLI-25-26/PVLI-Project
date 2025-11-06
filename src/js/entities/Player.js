@@ -2,6 +2,7 @@ import { extendWithComponents } from "../core/component-extension.js";
 import { MovementComponent } from "../components/Movement.js";
 import { PlayerControllerComponent } from "../components/PlayerController.js";
 import { PlayerShootingComponent } from "../components/PlayerShooting.js";
+import { DamageableComponent } from "../components/DamageableComponent.js";
 import  {BillBoard} from "./BillBoard.js";
 
 /**
@@ -74,6 +75,9 @@ export class Player extends BillBoard {
         
         // Add PlayerShootingComponent
         const shootController = new PlayerShootingComponent(this, this.config.minShootPower, this.config.maxShootPower, this.config.powerIncreaseSpeed); // TODO: Refactor parameters to use separate config object
+
+        // Add DamageableComponent
+        const damageable = new DamageableComponent(this, this.config.maxHP, ['enemyMeleeHit'], true, { damage: this.config.damageSound, death: this.config.deathSound });
     }
 
     /**

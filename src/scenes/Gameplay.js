@@ -2,6 +2,7 @@ import playerConfig from "../configs/player-config.json";
 import audioConfig from "../configs/audio-config.json";
 import dungeon from "../js/core/dungeon.js";
 import { Player } from '../js/entities/Player.js';
+import { EventBus } from "../js/core/event-bus.js";
 import showLoaderUI from "../js/UI/LoaderUI.js";
 import { SoundSceneFacade } from "../js/core/sound-facade.js";
 import sceneEnemies from "../configs/enemies-config.json";
@@ -57,8 +58,12 @@ export default class GameplayScene extends Phaser.Scene {
         this.logger.log('DUNGEON', 1, 'Creating player...');
         this.player = new Player(this, this.playerSpawn.x, this.playerSpawn.y, playerConfig);
 
-        // Create collider with obstacles
+        // Create colliders
         this.physics.add.collider(this.player, this.obstaclesGroup);
+        this.physics.add.collider(this.player, this.enemiesGroup, 
+            (player, enemy) => {
+                EventBus.emit('enemyMeleeHit', { attacker: enemy, target: player });
+            },null, this);
 
         // Load scene objects from room data
         dungeon.loadCurrentRoom(this, this.obstaclesGroup, this.enemiesGroup, this.player);

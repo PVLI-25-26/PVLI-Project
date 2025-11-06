@@ -98,9 +98,72 @@ export class MovementComponent extends BaseComponent {
      * @returns {void}
      */
     update(time, delta) {
-        this.updateVelocity();
-        this.moveGameObject();
+        if (this.knockbackState) {
+            this._handleKnockback(delta);
+        } else {
+            this.updateVelocity();
+            this.moveGameObject();
+        }
     }
+
+     /**
+     * Handles knockback effect (when entity is knockback state, overrides normal movement).
+     * @param {number} delta 
+     */
+    _handleKnockback(delta) {
+        const state = this.knockbackState;
+        if (!state) return;
+
+        state.elapsed += delta;
+        const remaining = Math.max(state.duration - state.elapsed, 0);
+
+        // Damping factor (from 1 → 0)
+        const t = remaining / state.duration;
+
+        // Linear damping of velocity
+        const vx = state.x * t;
+        const vy = state.y * t;
+
+        if (this.gameObject.body) {
+            this.gameObject.body.setVelocity(vx, vy);
+        }
+
+        // End knockback when duration is over
+        if (remaining <= 0) {
+            this.knockbackState = null;
+            if (this.gameObject.body) {
+                this.gameObject.body.setVelocity(0, 0);
+            }
+        }
+    }
+
+    /**
+     * Public method to apply knockback to the entity.
+     * While knockback is active, movement and direction input are blocked
+     * @param {Object} direction - Direction vector for the knockback
+     * @param {number} force - Initial force of the knockback
+     * @param {number} duration - Duration of the knockback effect in milliseconds
+     */
+    knockback(direction, force = 300, duration = 200) {
+        const magnitude = Math.hypot(direction.x, direction.y);
+        if (magnitude === 0) return;
+
+        const nx = direction.x / magnitude;
+        const ny = direction.y / magnitude;
+
+        this.knockbackState = {
+            x: nx * force,
+            y: ny * force,
+            elapsed: 0,
+            duration,
+            force
+        };
+
+        if (this.gameObject.body) {
+            this.gameObject.body.setVelocity(nx * force, ny * force);
+        } 
+}
+
 
     /**
      * Sets the movement speed.
