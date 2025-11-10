@@ -51,23 +51,26 @@ export default class GameplayScene extends Phaser.Scene {
         });
 
         // Create physics groups
-        this.obstaclesGroup = this.physics.add.staticGroup();
-        this.enemiesGroup = this.physics.add.group();
+        this.obstaclesCategory = 2;
+        this.enemiesCategory = 4;
+        this.playerCategory = 8;
+        this.arrowCategory = 16;
+        this.connectionsCategory = 32;
 
         // Create player
         this.logger.log('DUNGEON', 1, 'Creating player...');
-        this.player = new Player(this, this.playerSpawn.x, this.playerSpawn.y, playerConfig);
-
+        this.player = new Player(this.matter.world, this.playerSpawn.x, this.playerSpawn.y, playerConfig);
+        this.player.setCollisionCategory(this.playerCategory);
         // Create colliders
-        this.physics.add.collider(this.player, this.obstaclesGroup);
-        this.physics.add.collider(this.player, this.enemiesGroup, 
-            (player, enemy) => {
-                EventBus.emit('enemyMeleeHit', { attacker: enemy, target: player });
-            },null, this);
+        this.player.setCollidesWith([this.enemiesCategory, this.obstaclesCategory, this.connectionsCategory]);
+
+        // this.physics.add.collider(this.player, this.enemiesCategory, 
+        //     (player, enemy) => {
+        //         EventBus.emit('enemyMeleeHit', { attacker: enemy, target: player });
+        //     },null, this);
 
         // Load scene objects from room data
-        dungeon.loadCurrentRoom(this, this.obstaclesGroup, this.enemiesGroup, this.player);
-
+        dungeon.loadCurrentRoom(this, this.obstaclesCategory, this.enemiesCategory, this.playerCategory, this.connectionsCategory);
         // Make camera follow the player
         this.cameras.main.startFollow(this.player, false, 0.1, 0.1, 10, 10);
     }

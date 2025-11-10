@@ -3,7 +3,7 @@
         "key": "hub",
         "path": "hub-config.json",
         "connections":[
-            {"scene": "gameplay", "x":200, "y":200, "spawnX": 120, "spawnY": 200}
+            {"scene": "gameplay", "x":0, "y":0, "spawnX": 120, "spawnY": 200}
         ]
     },
     {

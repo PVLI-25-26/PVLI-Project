@@ -22,7 +22,7 @@ export class BasicTrajectory {
      * @type {number} Time in milliseconds the arrow will be considered "flying".
      */
     #airTime;
-    #maxAirTime = 750;
+    #maxAirTime = 400;
 
     #timeSinceLaunch = 0;
 
@@ -36,7 +36,9 @@ export class BasicTrajectory {
      */
     #arrow;
 
-    #airDrag = 0.95;
+    #airDrag = 0.05;
+    #cosR;
+    #sinR;
 
     /**
      *  Create a new BasicTrajectory controller.
@@ -63,11 +65,12 @@ export class BasicTrajectory {
         const vY = arrow.target.y*a;
 
         // apply velocities
-        const camRotation = this.#scene.cameras.main.rotation;
-        arrow.body.setVelocity(vX, vY);
-        this.updateAcceleration(camRotation, Math.cos(-camRotation), Math.sin(-camRotation));
-
-        this.#airTime = Math.min(1000*(1.5*arrow.power)/this.#gravityStr, this.#maxAirTime);
+        arrow.setVelocity(vX, vY);
+        const camRot = this.#scene.cameras.main.rotation;
+        this.#cosR = Math.cos(-camRot);
+        this.#sinR = Math.sin(-camRot);
+        this.#airTime = Math.min(1000*(0.002*arrow.power)/(1.5*this.#gravityStr), this.#maxAirTime);
+        arrow.setFrictionAir(this.#airDrag);
 
         this.#timeSinceLaunch = 0;
 
@@ -79,7 +82,7 @@ export class BasicTrajectory {
             }
         });
 
-        EventBus.on('cameraRotated', this.updateAcceleration, this);
+        EventBus.on('cameraRotated', (R, cosR, sinR)=>{this.#cosR = cosR; this.#sinR = sinR;}, this);
     }
 
     /**
@@ -88,12 +91,11 @@ export class BasicTrajectory {
     update(time, delta){
         // While flight is on going, update rotation to the trajectory
         if(this.#isFlying) {
-            this.#arrow.body.setVelocity(
-                this.#arrow.body.velocity.x*this.#airDrag, 
-                this.#arrow.body.velocity.y*this.#airDrag);
+            const arrowVel = this.#arrow.getVelocity();
             this.#timeSinceLaunch += delta;
             this.#timeSinceLaunch = Math.min(this.#timeSinceLaunch, this.#airTime);
             this.#arrow.updateArrowVisuals(this.#timeSinceLaunch/this.#airTime);
+            this.#arrow.setVelocity(arrowVel.x - this.#sinR*this.#gravityStr*delta, arrowVel.y + this.#cosR*this.#gravityStr*delta);
         }
     }
 
@@ -105,17 +107,6 @@ export class BasicTrajectory {
     }
 
     /**
-     * 
-     * @param {number} R Camera rotation in radians
-     * @param {number} cosR Cosine of -R
-     * @param {number} sinR Sine of -R
-     */
-    updateAcceleration(R, cosR, sinR){
-        // Update acceleration when camera is rotated
-        this.#arrow.body.setAcceleration(-sinR*this.#gravityStr, cosR*this.#gravityStr);
-    }
-
-    /**
      * Stop arrow flight and movement.
      */
     stopFlying(){
@@ -123,10 +114,6 @@ export class BasicTrajectory {
         this.#isFlying = false;
         
         // Stop movement
-        this.#arrow.body.setAcceleration(0,0);
-        this.#arrow.body.setVelocity(0,0); 
-
-        // Stop updating gravity on camera rotation
-        EventBus.off('cameraRotated', this.updateAcceleration);
+        this.#arrow.setVelocity(0,0); 
     }
 }

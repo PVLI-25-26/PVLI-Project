@@ -8,9 +8,15 @@
             "verticalOffset": 4,
             "scale": 3
         },
+        "physicsConfig":{
+            "shape": {
+                "type": "rectangle",
+                "width": 30,
+                "height": 30
+            },
+            "isStatic": true
+        },
         "collidable": true,
-        "width": 30,
-        "height": 30,
         "offsetX": 0,
         "offsetY": 0
     },
@@ -23,9 +29,15 @@
             "verticalOffset": 2,
             "scale": 3
         },
+        "physicsConfig":{
+            "shape": {
+                "type": "rectangle",
+                "width": 48,
+                "height": 48
+            },
+            "isStatic": true
+        },
         "collidable": true,
-        "width": 48,
-        "height": 48,
         "offsetX": 0,
         "offsetY": 0
     },
@@ -38,9 +50,15 @@
             "verticalOffset": 2,
             "scale": 3
         },
+        "physicsConfig":{
+            "shape": {
+                "type": "rectangle",
+                "width": 48,
+                "height": 48
+            },
+            "isStatic": true
+        },
         "collidable": true,
-        "width": 48,
-        "height": 48,
         "offsetX": 0,
         "offsetY": 0
     },
@@ -53,9 +71,15 @@
             "verticalOffset": 2,
             "scale": 3
         },
+        "physicsConfig":{
+            "shape": {
+                "type": "rectangle",
+                "width": 48,
+                "height": 48
+            },
+            "isStatic": true
+        },
         "collidable": true,
-        "width": 48,
-        "height": 48,
         "offsetX": 0,
         "offsetY": 0
     },
@@ -68,9 +92,15 @@
             "verticalOffset": 2,
             "scale": 3
         },
+        "physicsConfig":{
+            "shape": {
+                "type": "rectangle",
+                "width": 44,
+                "height": 12
+            },
+            "isStatic": true
+        },
         "collidable": true,
-        "width": 44,
-        "height": 12,
         "offsetX": 0,
         "offsetY": 0
     },
@@ -100,9 +130,16 @@
             "texture":"tree",
             "scale":4
         },
+        "physicsConfig":{
+            "shape": {
+                "type": "rectangle",
+                "width": 5,
+                "height": 10
+            },
+            "isStatic": true
+        },
         "collidable":true,
-        "width":30,
-        "height":30
-
+        "offsetX": 0,
+        "offsetY": -10
     }
 ]

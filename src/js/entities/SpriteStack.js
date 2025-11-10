@@ -3,7 +3,7 @@ import { EventBus } from "../core/event-bus";
 /**
      * Configuration object passed to the SpriteStacking object.
      * @class
-     * @extends Phaser.GameObjects.Sprite
+     * @extends Phaser.Physics.Matter.Sprite
      * @param {Phaser.Scene} scene - The scene this SpriteStacking object belongs to
      * @param {config} config - SpriteStacking configuration object
      * @param {Array} config.texture - An array of load images passed by key 
@@ -17,7 +17,7 @@ import { EventBus } from "../core/event-bus";
 
 
 
-export class SpriteStack extends Phaser.GameObjects.Sprite{
+export class SpriteStack extends Phaser.Physics.Matter.Sprite{
     /**
      * @type {Object} Configuration object passed to the Sprite Stacking object
      */
@@ -50,29 +50,26 @@ export class SpriteStack extends Phaser.GameObjects.Sprite{
     /**
      * Creates a new instance of SpriteStacking and adds it to the scene.
      * @param {Phaser.Scene} scene Scene in which the SpriteStacking is to be instanced
-     * @param {Object} config Configuration object for the SpriteStacking
+     * @param {Object} spriteStackConfig Configuration object for the SpriteStacking
      * @param {Phaser.Camera} camera Camera being used in the scene
      */
-    constructor(scene, x, y, config, camera){
-        super(scene, x, y);
+    constructor(world, x, y, spriteStackConfig, physicsConfig, camera){
+        super(world, x, y, null, null, physicsConfig);
 
         // sets initial values
         this.camera = camera;
         this.#cameraCosR = 1;
         this.#cameraSinR = 0;
-        this.config = config;   
-        this.scale = config.scale;
-
-        // adds self to scene
-        scene.add.existing(this);
+        this.config = spriteStackConfig;   
+        this.scale = spriteStackConfig.scale;
         
         // initializes stacking parameters
-        this.scale = config.scale;  
-        this.verticalOffset = config.verticalOffset;
+        this.scale = spriteStackConfig.scale;  
+        this.verticalOffset = spriteStackConfig.verticalOffset;
         
-        for (let i = 0; i< config.frameCount; i++ ){
+        for (let i = 0; i< spriteStackConfig.frameCount; i++ ){
             // Creates each sprite displaced by the vertical offset
-            let sprite = scene.add.image(x, y - this.verticalOffset * i, config.textures, i).setOrigin(0.5);
+            let sprite = this.scene.add.image(x, y - this.verticalOffset * i, spriteStackConfig.textures, i).setOrigin(0.5);
             sprite.scale = this.scale;
             // Stores sprite in the array  
             this.sprites.push(sprite);

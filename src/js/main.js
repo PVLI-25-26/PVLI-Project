@@ -19,10 +19,11 @@ const config = {
     backgroundColor: 0x242c16,
 
     physics: {
-        default: 'arcade',
-        arcade: {
+        default: 'matter',
+        matter: {
+        enabled: true,
         gravity: { y: 0 },
-        debug: false,
+        debug: true,
         }
     },
 

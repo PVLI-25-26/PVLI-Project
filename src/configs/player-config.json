@@ -4,15 +4,20 @@
         "texture": "player",
         "scale": 2
     },
+    "physicsConfig":{
+        "shape": {
+            "type": "rectangle",
+            "width": 7,
+            "height": 5
+        }
+    },
 
-    "speed": 250,
-    "width": 16,
-    "height": 16,
     "offsetX": 0,
-    "offsetY": 0,
-    "minShootPower": 300,
-    "maxShootPower": 2000,
-    "powerIncreaseSpeed": 10,
+    "offsetY": -20,
+    "speed": 5,
+    "minShootPower": 5,
+    "maxShootPower": 40,
+    "powerIncreaseSpeed": 0.1,
     "maxHP": 3,
     "damageSound": "playerHurt",
     "deathSound": "playerHurt"

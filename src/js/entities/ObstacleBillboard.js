@@ -27,31 +27,24 @@ export class ObstacleBillboard extends BillBoard {
      */
     config;
 
-    constructor(scene, x, y, config) {
-        super(scene, x, y, config.billboardConfig);
+    constructor(world, x, y, config) {
+        super(world, x, y, config.billboardConfig, config.physicsConfig);
         this.config = config;
-        console.log(config.billboardConfig.texture);
         // Extend with component system
         extendWithComponents(this);
         this.addComponents();
 
-        scene.add.existing(this);
-
-        // Add static physics body
-        if (config.collidable){
-            scene.physics.add.existing(this, true);
-        }
-
-        if (config.width && config.height) {
-            this.body.setSize(config.width, config.height);
-        }
+        this.scene.add.existing(this);
 
         if (config.offsetX || config.offsetY) {
-            this.body.setOffset(config.offsetX || 0, config.offsetY || 0);
+            this.body.position.x += config.offsetX;
+            this.body.position.y += config.offsetY;
+            this.body.positionPrev.x += config.offsetX;
+            this.body.positionPrev.y += config.offsetY;
         }
 
         if (this.body && config.collidable === false) {
-            this.body.checkCollision.none = true;
+            this.body.enable = false;
         }
     }
 

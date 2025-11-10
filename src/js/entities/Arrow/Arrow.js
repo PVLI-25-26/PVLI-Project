@@ -56,42 +56,26 @@ export class Arrow extends DepthSortedSprite{
      *
      * @param {Phaser.Scene} scene - The scene this Arrow belongs to.
      */
-    constructor(scene){
-        super(scene, 0, 0, 'arrow', 0);
+    constructor(world){
+        super(world, 0, 0, 'arrow', 0, {
+            "shape": {
+                "type": "rectangle",
+                "width": 10,
+                "height": 3
+            },
+        });
 
         // This should probably be done by the pool
         this.scene.add.existing(this);
-        this.scene.physics.add.existing(this);
-        this.colliders = []; // вот здесь
 
         // collision with obstacles
-        this.colliders.push(
-            this.scene.physics.add.collider(
-                this,
-                this.scene.obstaclesGroup,
-                this.onCollision,
-                null,
-                this
-            )
-        );
-
-        // collision with enemies
-        this.colliders.push(
-            this.scene.physics.add.collider(
-                this,
-                this.scene.enemiesGroup,
-                this.onCollision,
-                null,
-                this
-            )
-        );
+        this.setCollisionCategory(this.scene.arrowCategory);
+        this.setCollidesWith([this.scene.obstaclesCategory, this.scene.enemiesCategory]);
+        this.setOnCollide(this.onCollision);
         
         this.setActive(false);
         this.setVisible(false);
-        this.colliders.forEach(collider => collider.active = false);
-
-        // Make the collider smaller to look like the arrow is inside the object it hits
-        this.body.setSize(this.width-25, this.height-25);
+        //this.colliders.forEach(collider => collider.active = false);
     }
 
     /**
@@ -126,14 +110,11 @@ export class Arrow extends DepthSortedSprite{
 
         this.setFrame(0);
 
-        // This should be done by the pool
-        this.setActive(true);
-        this.setVisible(true);
-        this.colliders.forEach(collider => collider.active = true);
-
         this.setOrigin(0.5,0.5);
 
         this.trajectory.shoot(this);
+
+        this.setActive(true);
 
         EventBus.emit('playSound', 'arrowSwish');
 
@@ -152,20 +133,21 @@ export class Arrow extends DepthSortedSprite{
      * @param {Phaser.GameObjects.GameObject} other - The other object collided with.
      * @returns {void}
      */
-    onCollision(arrow, other){
+    onCollision(pair){
+        const arrow = pair.bodyA.gameObject;
+        const other = pair.bodyB.gameObject;
         // Notify the trajectory controller about the collision so it can
         // handle stopping, pooling or effects.
-        this.trajectory.onCollision();
+        if(arrow.trajectory) arrow.trajectory.onCollision();
         
         if (other instanceof Obstacle) {
-            this.onLanded();
+            arrow.onLanded();
         } 
-        this.stickToObject(other);
+        if(arrow.stickToObject) arrow.stickToObject(other);
         EventBus.emit('arrowHit', { arrow: arrow, target: other });
     }
 
     onLanded(){
-        this.colliders.forEach(collider => collider.active = false);
         EventBus.emit('arrowLanded', this);
         this.setFrame(1);
         this.applyBouncyTween();
@@ -192,7 +174,8 @@ export class Arrow extends DepthSortedSprite{
     }
 
     updateArrowVisuals(normalizedAirTime01){
-        this.rotation = this.body.angle;
+        const arrowVel = this.getVelocity();
+        this.rotation = Math.atan2(arrowVel.y, arrowVel.x);
     }
 
     preUpdate(time, delta){

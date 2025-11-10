@@ -1,10 +1,10 @@
 import { EventBus } from "../core/event-bus";
 
-export class DepthSortedSprite extends Phaser.GameObjects.Sprite {
+export class DepthSortedSprite extends Phaser.Physics.Matter.Sprite {
     #camCosR = 1;
     #camSinR = 0;
-    constructor(scene, x, y, key, frame){
-        super(scene, x, y, key, frame);
+    constructor(world, x, y, key, frame, physicsConfig){
+        super(world, x, y, key, frame, physicsConfig);
 
         EventBus.on('cameraRotated', this.updateDepth, this);
     }
@@ -15,7 +15,8 @@ export class DepthSortedSprite extends Phaser.GameObjects.Sprite {
     }
 
     updateDepth(R,cosR,sinR){
-        this.setDepth((this.y*cosR-this.x*sinR));
+        if(!this.body) console.log(this.body);
+        this.setDepth(this.y*cosR-this.x*sinR);
         this.#camCosR = cosR;
         this.#camSinR = sinR;
     }

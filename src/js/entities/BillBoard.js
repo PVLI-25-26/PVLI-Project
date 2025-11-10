@@ -13,8 +13,8 @@ import { DepthSortedSprite } from "./DepthSortedSprite";
  * @param {string} texture - Texture of the sprite
  */
 export class BillBoard extends DepthSortedSprite{
-    constructor(scene, x,y,config){
-        super(scene,x,y,config.texture);
+    constructor(world, x, y, config, physicsConfig){
+        super(world, x, y, config.texture, null, physicsConfig);
         this.setOrigin(0.5);
         this.scale = config.scale;
         EventBus.on('cameraRotated', this.onCameraRotated,this);
@@ -22,6 +22,6 @@ export class BillBoard extends DepthSortedSprite{
     }
 
     onCameraRotated(R){
-        this.rotation = -R;
+        this.setRotation(-R);
     }
 }

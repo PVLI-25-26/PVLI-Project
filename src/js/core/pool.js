@@ -71,8 +71,6 @@ export default class Pool {
 		if (entity) {
             this.logger.log('POOL', 1, 'Entity found');
 			if(this.#onSpawn)this.#onSpawn(entity);
-			entity.setActive(true);
-			entity.body.checkCollision.none = false;
 		}
 
 		return entity;
@@ -83,7 +81,6 @@ export default class Pool {
 	 * @param {Object} entity - entidad de la pool que queremos marcar como libre
 	 */
 	release (entity) {
-		entity.body.checkCollision.none = true;
 		this.#group.kill(entity);
 		if(this.#onRelease) this.#onRelease(entity);
 	}

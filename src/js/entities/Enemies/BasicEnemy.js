@@ -30,22 +30,22 @@ export class BasicEnemy extends BillBoard {
      */
     config;
 
-    constructor(scene, x, y, config) {
-        super(scene, x, y, config.billboardConfig, scene.cameras.main);
+    constructor(world, x, y, config) {
+        super(world, x, y, config.billboardConfig, config.physicsConfig, world.scene.cameras.main);
         this.config = config;
 
         extendWithComponents(this);
 
         // Add to scene and physics
-        scene.add.existing(this);
-        scene.physics.add.existing(this);
+        this.scene.add.existing(this);
 
-        // Configure physics body size and offset
-        if (config.width && config.height) {
-            this.body.setSize(config.width, config.height);
-        }
+        this.setFixedRotation();
+
         if (config.offsetX || config.offsetY) {
-            this.body.setOffset(config.offsetX || 0, config.offsetY || 0);
+            this.body.position.x += config.offsetX;
+            this.body.position.y += config.offsetY;
+            this.body.positionPrev.x += config.offsetX;
+            this.body.positionPrev.y += config.offsetY;
         }
 
         this.addComponents();

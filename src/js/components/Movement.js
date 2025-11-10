@@ -86,9 +86,7 @@ export class MovementComponent extends BaseComponent {
      * @returns {void}
      */
     moveGameObject() {
-        if (this.gameObject.body) {
-            this.gameObject.body.setVelocity(this.velocity.x, this.velocity.y);
-        }
+        this.gameObject.setVelocity(this.velocity.x, this.velocity.y);
     }
 
     /**
@@ -125,14 +123,14 @@ export class MovementComponent extends BaseComponent {
         const vy = state.y * t;
 
         if (this.gameObject.body) {
-            this.gameObject.body.setVelocity(vx, vy);
+            this.gameObject.setVelocity(vx, vy);
         }
 
         // End knockback when duration is over
         if (remaining <= 0) {
             this.knockbackState = null;
             if (this.gameObject.body) {
-                this.gameObject.body.setVelocity(0, 0);
+                this.gameObject.setVelocity(0, 0);
             }
         }
     }
@@ -160,7 +158,7 @@ export class MovementComponent extends BaseComponent {
         };
 
         if (this.gameObject.body) {
-            this.gameObject.body.setVelocity(nx * force, ny * force);
+            this.gameObject.setVelocity(nx * force, ny * force);
         } 
 }
 

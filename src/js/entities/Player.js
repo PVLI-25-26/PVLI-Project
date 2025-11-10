@@ -31,31 +31,31 @@ export class Player extends BillBoard {
      */
     config;
 
-    constructor(scene, x, y, config) {
+    constructor(world, x, y, config) {
         //super(scene, x, y, config.billboardConfig, scene.cameras.main);
-        super(scene,x,y,config.billboardConfig)
+        super(world, x, y, config.billboardConfig, config.physicsConfig)
         this.config = config;
 
         // Add component system to this GameObject
         extendWithComponents(this);
 
         // Add to scene and physics
-        scene.add.existing(this);
-        scene.physics.add.existing(this);
+        this.scene.add.existing(this);
 
-        // Configure physics body size and offset
-        if (config.width && config.height) {
-            this.body.setSize(config.width, config.height);
-        }
+        this.setFixedRotation();
+
         if (config.offsetX || config.offsetY) {
-            this.body.setOffset(config.offsetX || 0, config.offsetY || 0);
+            this.body.position.x += config.offsetX;
+            this.body.position.y += config.offsetY;
+            this.body.positionPrev.x += config.offsetX;
+            this.body.positionPrev.y += config.offsetY;
         }
 
         this.addComponents();
 
         this.scene.anims.create({
             key: "player_walk",
-            frames: scene.anims.generateFrameNumbers("player", {start:13, end: 16}),
+            frames: this.scene.anims.generateFrameNumbers("player", {start:13, end: 16}),
             frameRate: 7,
             repeat: -1
         });

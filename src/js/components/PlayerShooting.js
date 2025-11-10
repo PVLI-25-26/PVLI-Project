@@ -77,14 +77,15 @@ export class PlayerShootingComponent extends BaseComponent{
         // Initialize object pool
         this.#arrowPool = new Pool(
             gameObject.scene,
-            5,
-            ()=>{return new Arrow(gameObject.scene);},
+            10,
+            ()=>{return new Arrow(gameObject.scene.matter.world);},
             (entity)=>{entity.scene.tweens.add({
                 targets: entity,
                 alpha: 0,
                 duration: 200,
                 onComplete: (tween)=>{
                     tween.remove();
+                    entity.setActive(false);
                     entity.setVisible(false);
                     entity.alpha = 1;
                 },
@@ -97,7 +98,7 @@ export class PlayerShootingComponent extends BaseComponent{
         this.powerBar.setOrigin(0,0.5);
         this.powerBar.setVisible(false);
 
-        this.bow = new DepthSortedSprite(gameObject.scene, this.gameObject.x, this.gameObject.y, 'bow', 0);
+        this.bow = new DepthSortedSprite(gameObject.scene.matter.world, this.gameObject.x, this.gameObject.y, 'bow', 0);
         gameObject.scene.add.existing(this.bow);
         this.bow.scale = 2.5;
         this.bow.setVisible(false);
@@ -157,7 +158,7 @@ export class PlayerShootingComponent extends BaseComponent{
             
             // Get arrow from pool and shoot
             this.arrowShot.shoot(
-                new BasicTrajectory(1500, this.gameObject.scene), // Create new basic trajectory for now (later we can inject different types)
+                new BasicTrajectory(0.05, this.gameObject.scene), // Create new basic trajectory for now (later we can inject different types)
                 {}, // Give empty effect for now (Upate when we have effects and enemies implemented)
                 this.gameObject.x, this.gameObject.y, // Origin (player position)
                 directionShot.x, directionShot.y, // Target (mouse position in world coordinates)
