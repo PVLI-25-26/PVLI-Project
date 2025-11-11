@@ -5,14 +5,10 @@
     },
     "physicsConfig":{
         "shape": {
-            "type": "rectangle",
-            "width": 10,
-            "height": 10
+            "type": "rectangle"
         }
     },
     "speed": 3,
-    "width": 300,
-    "height": 200,
     "offsetX": 0,
     "offsetY": 0,
     "maxHP": 3,

@@ -45,7 +45,7 @@ export class DamageableComponent extends BaseComponent {
         if (event === 'arrowHit') {
             const knockbackParameters = {
                 direction: { x: data.target.x - data.arrow.x, y: data.target.y - data.arrow.y },
-                force: 200,
+                force: 2,
                 duration: 100
             };
             this.takeDamage(1, knockbackParameters); // Placeholder damage value, arrow must store its damage
@@ -55,7 +55,7 @@ export class DamageableComponent extends BaseComponent {
         if (event === 'enemyMeleeHit') {
             const knockbackParameters = {
                 direction: { x: data.target.x - data.attacker.x, y: data.target.y - data.attacker.y },
-                force: 1000,
+                force: 10,
                 duration: 200
             };
             this.takeDamage(1, knockbackParameters); // Placeholder damage value, enemy must store its damage

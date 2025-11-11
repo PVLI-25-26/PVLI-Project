@@ -50,6 +50,8 @@ export default class GameplayScene extends Phaser.Scene {
             this.scene.pause();
         });
 
+        EventBus.removeAllListeners();
+
         // Create physics groups
         this.obstaclesCategory = 2;
         this.enemiesCategory = 4;
@@ -64,6 +66,15 @@ export default class GameplayScene extends Phaser.Scene {
         // Create colliders
         this.player.setCollidesWith([this.enemiesCategory, this.obstaclesCategory, this.connectionsCategory]);
 
+        // HOW DO I MAKE THIS ONLY WITH ONE CATEGORY
+        this.player.setOnCollide((pair) => {
+                if(pair.bodyB.collisionFilter.category == this.enemiesCategory)
+                {
+                    const player = pair.bodyA.gameObject;
+                    const enemy = pair.bodyB.gameObject;
+                    EventBus.emit('enemyMeleeHit', { attacker: enemy, target: player });
+                }
+            });
         // this.physics.add.collider(this.player, this.enemiesCategory, 
         //     (player, enemy) => {
         //         EventBus.emit('enemyMeleeHit', { attacker: enemy, target: player });
