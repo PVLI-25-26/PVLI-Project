@@ -149,7 +149,7 @@ export class DamageableComponent extends BaseComponent {
         EventBus.emit('playSound', this.sounds.death);
         this.gameObject.setActive(false);
         this.gameObject.setVisible(false);
-        this.gameObject.body.enable = false;
+        this.gameObject.setCollidesWith(0);
     }
 
     /**

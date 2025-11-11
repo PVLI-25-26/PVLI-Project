@@ -68,10 +68,12 @@ export class Arrow extends DepthSortedSprite{
         // This should probably be done by the pool
         this.scene.add.existing(this);
 
+        this.colliders = [this.scene.obstaclesCategory, this.scene.enemiesCategory];
         // collision with obstacles
         this.setCollisionCategory(this.scene.arrowCategory);
-        this.setCollidesWith([this.scene.obstaclesCategory, this.scene.enemiesCategory]);
+        this.setCollidesWith(0);
         this.setOnCollide(this.onCollision);
+        this.setFixedRotation();
         
         this.setActive(false);
         this.setVisible(false);
@@ -136,6 +138,8 @@ export class Arrow extends DepthSortedSprite{
     onCollision(pair){
         const arrow = pair.bodyA.gameObject;
         const other = pair.bodyB.gameObject;
+
+        arrow.setCollidesWith(0);
         // Notify the trajectory controller about the collision so it can
         // handle stopping, pooling or effects.
         if(arrow.trajectory) arrow.trajectory.onCollision();
@@ -149,6 +153,7 @@ export class Arrow extends DepthSortedSprite{
 
     onLanded(){
         EventBus.emit('arrowLanded', this);
+        this.setCollidesWith(0);
         this.setFrame(1);
         this.applyBouncyTween();
         EventBus.emit('playSound', 'arrowLand');
@@ -160,7 +165,7 @@ export class Arrow extends DepthSortedSprite{
         this.offsetX = this.x - target.x;
         this.offsetY = this.y - target.y;
 
-        this.body.enable = false;
+        this.setCollidesWith(0);
 
         this.setOrigin(0.8, 0.5);
     }
@@ -169,7 +174,7 @@ export class Arrow extends DepthSortedSprite{
         this.stuckTo = null;
         this.offsetX = 0;
         this.offsetY = 0;
-        this.body.enable = true;
+        this.setCollidesWith(this.colliders);
         this.setOrigin(0.5, 0.5);
     }
 
