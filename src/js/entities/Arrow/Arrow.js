@@ -56,8 +56,8 @@ export class Arrow extends DepthSortedSprite{
      *
      * @param {Phaser.Scene} scene - The scene this Arrow belongs to.
      */
-    constructor(world){
-        super(world, 0, 0, 'arrow', 0, {
+    constructor(scene){
+        super(scene, 0, 0, 'arrow', 0, {
             "shape": {
                 "type": "rectangle",
                 "width": 10,

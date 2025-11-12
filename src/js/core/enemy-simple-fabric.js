@@ -22,7 +22,7 @@ export function createEnemy(scene, enemyData) {
         ...enemyData
     };
 
-    const enemy = new EnemyClass(scene.matter.world, enemyData.pos.x, enemyData.pos.y, finalConfig);
+    const enemy = new EnemyClass(scene, enemyData.pos.x, enemyData.pos.y, finalConfig);
 
     return enemy;
 }

@@ -30,8 +30,8 @@ export class BasicEnemy extends BillBoard {
      */
     config;
 
-    constructor(world, x, y, config) {
-        super(world, x, y, config.billboardConfig, config.physicsConfig, world.scene.cameras.main);
+    constructor(scene, x, y, config) {
+        super(scene, x, y, config.billboardConfig, config.physicsConfig, scene.cameras.main);
         this.config = config;
 
         extendWithComponents(this);

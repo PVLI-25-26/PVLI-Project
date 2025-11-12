@@ -17,7 +17,7 @@ import { EventBus } from "../core/event-bus";
 
 
 
-export class SpriteStack extends Phaser.Physics.Matter.Sprite{
+export class SpriteStack extends Phaser.GameObjects.Sprite{
     /**
      * @type {Object} Configuration object passed to the Sprite Stacking object
      */
@@ -53,24 +53,27 @@ export class SpriteStack extends Phaser.Physics.Matter.Sprite{
      * @param {Object} spriteStackConfig Configuration object for the SpriteStacking
      * @param {Phaser.Camera} camera Camera being used in the scene
      */
-    constructor(world, x, y, spriteStackConfig, physicsConfig, camera){
-        super(world, x, y, null, null, physicsConfig);
+    constructor(scene, x, y, spriteStackConfig, physicsConfig, camera){
+        super(scene, x, y, null, null);
+
+        // If a physics configuration is provided, set it
+        if(physicsConfig){
+            scene.matter.add.gameObject(this, physicsConfig);
+        }
 
         // sets initial values
         this.camera = camera;
         this.#cameraCosR = 1;
         this.#cameraSinR = 0;
         this.config = spriteStackConfig;   
-        this.scale = spriteStackConfig.scale;
         
-        // initializes stacking parameters
-        this.scale = spriteStackConfig.scale;  
+        // initializes stacking parameters 
         this.verticalOffset = spriteStackConfig.verticalOffset;
         
         for (let i = 0; i< spriteStackConfig.frameCount; i++ ){
             // Creates each sprite displaced by the vertical offset
             let sprite = this.scene.add.image(x, y - this.verticalOffset * i, spriteStackConfig.textures, i).setOrigin(0.5);
-            sprite.scale = this.scale;
+            sprite.scale = spriteStackConfig.scale;
             // Stores sprite in the array  
             this.sprites.push(sprite);
         }

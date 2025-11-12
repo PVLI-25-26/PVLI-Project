@@ -31,9 +31,9 @@ export class Player extends BillBoard {
      */
     config;
 
-    constructor(world, x, y, config) {
+    constructor(scene, x, y, config) {
         //super(scene, x, y, config.billboardConfig, scene.cameras.main);
-        super(world, x, y, config.billboardConfig, config.physicsConfig)
+        super(scene, x, y, config.billboardConfig, config.physicsConfig)
         this.config = config;
 
         // Add component system to this GameObject

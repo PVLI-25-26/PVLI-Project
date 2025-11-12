@@ -119,26 +119,25 @@ class Dungeon {
         room.obstacles.forEach(obj =>{
             let obstacle;
             if (obj.type== "billboard"){
-                obstacle = new ObstacleBillboard(scene.matter.world,obj.x,obj.y,this.#obstacles.get(obj.key));
+                obstacle = new ObstacleBillboard(scene,obj.x,obj.y,this.#obstacles.get(obj.key));
             }
             else{
-                obstacle = new Obstacle(scene.matter.world, obj.x, obj.y, this.#obstacles.get(obj.key));
+                obstacle = new Obstacle(scene, obj.x, obj.y, this.#obstacles.get(obj.key));
                 obstacle.setRotation(obj.r*Math.PI/180);
             }
             obstacle.setCollisionCategory(obstaclesGroup);
         });
         
         for(let i = 0; i < 100; ++i){
-            const grass = new ObstacleBillboard(scene.matter.world, Math.random()*700-350, Math.random()*700-350, this.#obstacles.get("Grass"));
+            const grass = new ObstacleBillboard(scene, Math.random()*700-350, Math.random()*700-350, this.#obstacles.get("Grass"));
             grass.setFlipX(Math.floor(Math.random()*2));
-            grass.setCollidesWith(0);
         }
         for (let i = 0; i<600; i++){
 
             let x = Math.random()*1500-750;
             let y = Math.random()*1500-750;
             if ((x < -350 || x>350) || (y <-350 || y> 350) ){
-                const tree = new ObstacleBillboard(scene.matter.world, x, y, this.#obstacles.get("Tree"));
+                const tree = new ObstacleBillboard(scene, x, y, this.#obstacles.get("Tree"));
                 tree.setFlipX(Math.floor(Math.random()*2));
                 tree.setCollisionCategory(obstaclesGroup);
             }

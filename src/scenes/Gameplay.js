@@ -61,7 +61,7 @@ export default class GameplayScene extends Phaser.Scene {
 
         // Create player
         this.logger.log('DUNGEON', 1, 'Creating player...');
-        this.player = new Player(this.matter.world, this.playerSpawn.x, this.playerSpawn.y, playerConfig);
+        this.player = new Player(this, this.playerSpawn.x, this.playerSpawn.y, playerConfig);
         this.player.setCollisionCategory(this.playerCategory);
         // Create colliders
         this.player.setCollidesWith([this.enemiesCategory, this.obstaclesCategory, this.connectionsCategory]);

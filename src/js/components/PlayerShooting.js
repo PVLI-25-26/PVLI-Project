@@ -78,7 +78,7 @@ export class PlayerShootingComponent extends BaseComponent{
         this.#arrowPool = new Pool(
             gameObject.scene,
             10,
-            ()=>{return new Arrow(gameObject.scene.matter.world);},
+            ()=>{return new Arrow(gameObject.scene);},
             (entity)=>{entity.scene.tweens.add({
                 targets: entity,
                 alpha: 0,
@@ -98,7 +98,7 @@ export class PlayerShootingComponent extends BaseComponent{
         this.powerBar.setOrigin(0,0.5);
         this.powerBar.setVisible(false);
 
-        this.bow = new DepthSortedSprite(gameObject.scene.matter.world, this.gameObject.x, this.gameObject.y, 'bow', 0);
+        this.bow = new DepthSortedSprite(gameObject.scene, this.gameObject.x, this.gameObject.y, 'bow', 0);
         gameObject.scene.add.existing(this.bow);
         this.bow.scale = 2.5;
         this.bow.setVisible(false);
