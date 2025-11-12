@@ -53,11 +53,11 @@ export default class GameplayScene extends Phaser.Scene {
         EventBus.removeAllListeners();
 
         // Create physics groups
-        this.obstaclesCategory = 2;
-        this.enemiesCategory = 4;
-        this.playerCategory = 8;
-        this.arrowCategory = 16;
-        this.connectionsCategory = 32;
+        this.obstaclesCategory = 1 << 0;
+        this.enemiesCategory = 1 << 1;
+        this.playerCategory = 1 << 2;
+        this.arrowCategory = 1 << 3;
+        this.connectionsCategory = 1 << 4;
 
         // Create player
         this.logger.log('DUNGEON', 1, 'Creating player...');
