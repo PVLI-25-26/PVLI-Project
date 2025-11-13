@@ -1,12 +1,12 @@
 export class BaseAbility {
     #isActive;
-    #coolDown;
-    #duration;
+    coolDown;
+    duration;
 
     constructor(scene, coolDown, duration){
         this.scene = scene;
-        this.#coolDown = coolDown;
-        this.#duration = duration;
+        this.coolDown = coolDown;
+        this.duration = duration;
         this.#isActive = false;
     }
 
@@ -14,7 +14,7 @@ export class BaseAbility {
         if(!this.#isActive) {
             this.#isActive = true;
             this.scene.time.addEvent({
-                delay: this.#duration,
+                delay: this.duration,
                 callback: this.abilityEnded,
                 callbackScope: this,
                 loop: false
@@ -25,7 +25,7 @@ export class BaseAbility {
 
     abilityEnded(){
         this.scene.time.addEvent({
-            delay: this.#coolDown,
+            delay: this.coolDown,
             callback: ()=>this.#isActive = false,
             loop: false
         });

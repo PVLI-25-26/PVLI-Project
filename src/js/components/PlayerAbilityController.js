@@ -11,7 +11,8 @@ export class PlayerAbilityControllerComponent extends BaseComponent{
         super(gameObject);
         this.keys = createPlayerKeys(gameObject.scene);
         //this.#ability = new Dash(gameObject.scene, 2000, 100, 20);
-        this.#ability = new ForceField(gameObject.scene, 1000, 100, this.gameObject, 20, 100);
+        //this.#ability = new ForceField(gameObject.scene, 1000, 100, this.gameObject, 20, 100);
+        this.#ability = new Invisibility(gameObject.scene, 1000, 3000, this.gameObject);
         this.logger = gameObject.scene.plugins.get('logger');
     }
 

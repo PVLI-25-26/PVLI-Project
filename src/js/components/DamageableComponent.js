@@ -69,6 +69,10 @@ export class DamageableComponent extends BaseComponent {
             };
             this.takeDamage(0, knockbackParameters);
         }
+
+        if(event == 'invisibilityActivated'){
+            this.startInvulnerability(data.duration);
+        }
     }
 
     /**
@@ -98,7 +102,7 @@ export class DamageableComponent extends BaseComponent {
         }
 
         if (this.useInvulnerability) {
-            this.startInvulnerability();
+            this.startInvulnerability(1000);
         }
     }
 
@@ -123,7 +127,7 @@ export class DamageableComponent extends BaseComponent {
     /**
      * Starts temporary invulnerability with visual feedback.
      */
-    startInvulnerability() {
+    startInvulnerability(duration) {
         this.isInvulnerable = true;
 
         const sprite = this.gameObject;
@@ -133,14 +137,14 @@ export class DamageableComponent extends BaseComponent {
             this._blinkTween = sprite.scene.tweens.add({
                 targets: sprite,
                 alpha: 0.3,
-                duration: 100,
+                duration: duration/10,
                 yoyo: true,
                 repeat: -1,
             });
         }
 
         // Invulnerability duration timer
-        sprite.scene.time.delayedCall(1000, () => {
+        sprite.scene.time.delayedCall(duration, () => {
             this.isInvulnerable = false;
             if (this._blinkTween) {
                 this._blinkTween.stop();

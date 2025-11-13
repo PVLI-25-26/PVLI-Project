@@ -78,7 +78,7 @@ export class Player extends BillBoard {
         const shootController = new PlayerShootingComponent(this, this.config.minShootPower, this.config.maxShootPower, this.config.powerIncreaseSpeed); // TODO: Refactor parameters to use separate config object
 
         // Add DamageableComponent
-        const damageable = new DamageableComponent(this, this.config.maxHP, ['enemyMeleeHit'], true, { damage: this.config.damageSound, death: this.config.deathSound });
+        const damageable = new DamageableComponent(this, this.config.maxHP, ['enemyMeleeHit', 'invisibilityActivated'], true, { damage: this.config.damageSound, death: this.config.deathSound });
 
         // Add PlayerAbilityControllerComponent
         const abilityController = new PlayerAbilityControllerComponent(this);
