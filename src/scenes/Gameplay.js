@@ -58,13 +58,14 @@ export default class GameplayScene extends Phaser.Scene {
         this.playerCategory = 1 << 2;
         this.arrowCategory = 1 << 3;
         this.connectionsCategory = 1 << 4;
+        this.itemsCategory = 1 << 5;
 
         // Create player
         this.logger.log('DUNGEON', 1, 'Creating player...');
         this.player = new Player(this, this.playerSpawn.x, this.playerSpawn.y, playerConfig);
         this.player.setCollisionCategory(this.playerCategory);
         // Create colliders
-        this.player.setCollidesWith([this.enemiesCategory, this.obstaclesCategory, this.connectionsCategory]);
+        this.player.setCollidesWith([this.enemiesCategory, this.obstaclesCategory, this.connectionsCategory, this.itemsCategory]);
 
         // HOW DO I MAKE THIS ONLY WITH ONE CATEGORY
         this.player.setOnCollide((pair) => {
@@ -81,7 +82,7 @@ export default class GameplayScene extends Phaser.Scene {
         //     },null, this);
 
         // Load scene objects from room data
-        dungeon.loadCurrentRoom(this, this.obstaclesCategory, this.enemiesCategory, this.playerCategory, this.connectionsCategory);
+        dungeon.loadCurrentRoom(this, this.obstaclesCategory, this.enemiesCategory, this.playerCategory, this.connectionsCategory, this.itemsCategory);
         // Make camera follow the player
         this.cameras.main.startFollow(this.player, false, 0.1, 0.1, 10, 10);
     }

@@ -11,6 +11,7 @@ export default function createPlayerKeys(scene) {
         right: Phaser.Input.Keyboard.KeyCodes.D,
         rotCamLeft: Phaser.Input.Keyboard.KeyCodes.Q,
         rotCamRight: Phaser.Input.Keyboard.KeyCodes.E,
-        ability: Phaser.Input.Keyboard.KeyCodes.SPACE
+        ability: Phaser.Input.Keyboard.KeyCodes.SPACE,
+        pickItem: Phaser.Input.Keyboard.KeyCodes.F
     });
 }

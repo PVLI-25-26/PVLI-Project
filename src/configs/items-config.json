@@ -1,0 +1,18 @@
+[
+    {
+        "key": "testItem",
+        "billboardConfig":{
+            "texture":"grass",
+            "scale":3
+        },
+        "physicsConfig":{
+            "shape": {
+                "type": "rectangle",
+                "width": 10,
+                "height": 10
+            },
+            "isStatic": true,
+            "isSensor": true
+        }
+    }
+]

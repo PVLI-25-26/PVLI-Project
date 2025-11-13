@@ -42,10 +42,6 @@ export class Obstacle extends SpriteStack {
             this.body.positionPrev.x += config.offsetX;
             this.body.positionPrev.y += config.offsetY;
         }
-
-        if (this.body && config.collidable === false) {
-            this.body.checkCollision.none = true;
-        }
     }
 
     /**

@@ -18,7 +18,6 @@ export class BillBoard extends DepthSortedSprite{
         this.setOrigin(0.5);
         this.scale = config.scale;
         EventBus.on('cameraRotated', this.onCameraRotated,this);
-        
     }
 
     onCameraRotated(R){

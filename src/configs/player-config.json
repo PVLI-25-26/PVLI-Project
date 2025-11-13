@@ -19,6 +19,7 @@
     "maxShootPower": 40,
     "powerIncreaseSpeed": 0.1,
     "maxHP": 3,
+    "pickUpRadius": 30,
     "damageSound": "playerHurt",
     "deathSound": "playerHurt"
 }

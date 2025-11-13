@@ -5,6 +5,7 @@ import { PlayerShootingComponent } from "../components/PlayerShooting.js";
 import { DamageableComponent } from "../components/DamageableComponent.js";
 import  {BillBoard} from "./BillBoard.js";
 import { PlayerAbilityControllerComponent } from "../components/PlayerAbilityController.js";
+import { PlayerPickItemControllerComponent } from "../components/PlayerPickItemController.js";
 
 /**
  * Player GameObject with movement and player control.
@@ -82,6 +83,9 @@ export class Player extends BillBoard {
 
         // Add PlayerAbilityControllerComponent
         const abilityController = new PlayerAbilityControllerComponent(this);
+
+        // Add PlayerPickItemControllerComponent
+        const pickItemController = new PlayerPickItemControllerComponent(this, this.config.pickUpRadius);
     }
 
     /**

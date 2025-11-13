@@ -16,7 +16,6 @@
             },
             "isStatic": true
         },
-        "collidable": true,
         "offsetX": 0,
         "offsetY": 0
     },
@@ -37,7 +36,6 @@
             },
             "isStatic": true
         },
-        "collidable": true,
         "offsetX": 0,
         "offsetY": 0
     },
@@ -58,7 +56,6 @@
             },
             "isStatic": true
         },
-        "collidable": true,
         "offsetX": 0,
         "offsetY": 0
     },
@@ -79,7 +76,6 @@
             },
             "isStatic": true
         },
-        "collidable": true,
         "offsetX": 0,
         "offsetY": 0
     },
@@ -100,7 +96,6 @@
             },
             "isStatic": true
         },
-        "collidable": true,
         "offsetX": 0,
         "offsetY": 0
     },
@@ -112,8 +107,7 @@
             "type":"billboard",
             "texture":"billboard",
             "scale":0.1            
-        },
-        "collidable":false
+        }
     },
     {
         "key": "Grass",
@@ -121,8 +115,7 @@
             "type":"billboard",
             "texture":"grass",
             "scale":4
-        },
-        "collidable":false
+        }
     },
     {
         "key":"Tree",
@@ -138,7 +131,6 @@
             },
             "isStatic": true
         },
-        "collidable":true,
         "offsetX": 0,
         "offsetY": -10
     }

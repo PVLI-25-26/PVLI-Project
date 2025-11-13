@@ -9,5 +9,8 @@
         {"key":"Tree","x":-45,"y":-300,"type":"billboard"}
         
     ],
+    "items": [
+        {"key":"testItem","x":0,"y":-50}
+    ],
     "enemies": [ ]
 }
