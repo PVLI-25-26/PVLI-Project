@@ -27,6 +27,12 @@ export class PlayerControllerComponent extends BaseControllerComponent {
         super(gameObject);
         this.keys = createPlayerKeys(gameObject.scene);
         this.camera = gameObject.scene.cameras.main;
+        EventBus.on('playerDash', (dashSpeed)=>{
+            this.movementComponent.setSpeed(dashSpeed);
+        });
+        EventBus.on('playerDashEnd', ()=>{
+            this.movementComponent.setSpeed(5);
+        });
     }
 
     /**

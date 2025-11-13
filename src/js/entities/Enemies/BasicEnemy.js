@@ -63,7 +63,7 @@ export class BasicEnemy extends BillBoard {
         const controller = new BasicEnemyControllerComponent(this, this.config.state, this.config.patrolRoute);
 
         // Add DamageableComponent
-        const damageable = new DamageableComponent(this, this.config.maxHP, ['arrowHit'], false, { damage: this.config.damageSound, death: this.config.deathSound });
+        const damageable = new DamageableComponent(this, this.config.maxHP, ['arrowHit', 'pushEnemy'], false, { damage: this.config.damageSound, death: this.config.deathSound });
     }
 
     /**

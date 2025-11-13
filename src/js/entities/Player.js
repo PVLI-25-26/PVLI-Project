@@ -4,6 +4,7 @@ import { PlayerControllerComponent } from "../components/PlayerController.js";
 import { PlayerShootingComponent } from "../components/PlayerShooting.js";
 import { DamageableComponent } from "../components/DamageableComponent.js";
 import  {BillBoard} from "./BillBoard.js";
+import { PlayerAbilityControllerComponent } from "../components/PlayerAbilityController.js";
 
 /**
  * Player GameObject with movement and player control.
@@ -78,6 +79,9 @@ export class Player extends BillBoard {
 
         // Add DamageableComponent
         const damageable = new DamageableComponent(this, this.config.maxHP, ['enemyMeleeHit'], true, { damage: this.config.damageSound, death: this.config.deathSound });
+
+        // Add PlayerAbilityControllerComponent
+        const abilityController = new PlayerAbilityControllerComponent(this);
     }
 
     /**

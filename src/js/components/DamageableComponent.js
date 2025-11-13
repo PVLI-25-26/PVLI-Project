@@ -60,6 +60,15 @@ export class DamageableComponent extends BaseComponent {
             };
             this.takeDamage(1, knockbackParameters); // Placeholder damage value, enemy must store its damage
         }
+
+        if(event === 'pushEnemy') {
+            const knockbackParameters = {
+                direction: { x: data.target.x - data.attacker.x, y: data.target.y - data.attacker.y },
+                force: 20,
+                duration: 200
+            };
+            this.takeDamage(0, knockbackParameters);
+        }
     }
 
     /**
