@@ -7,7 +7,8 @@
     { "key": "arrowSwish", "file": "assets/sounds/arrowSwish.mp3"},
     { "key": "enemyHurt", "file": "assets/sounds/enemyHurt.mp3"},
     { "key": "enemyDeath", "file": "assets/sounds/enemyDeath.mp3"},
-    { "key": "playerHurt", "file": "assets/sounds/playerHurt.mp3"}
+    { "key": "playerHurt", "file": "assets/sounds/playerHurt.mp3"},
+    { "key": "itemCollected", "file": "assets/sounds/itemEquip.mp3"}
   ],
   "music": [
     

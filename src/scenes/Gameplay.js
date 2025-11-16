@@ -5,8 +5,6 @@ import { Player } from '../js/entities/Player.js';
 import { EventBus } from "../js/core/event-bus.js";
 import showLoaderUI from "../js/UI/LoaderUI.js";
 import { SoundSceneFacade } from "../js/core/sound-facade.js";
-import sceneEnemies from "../configs/enemies-config.json";
-import { createEnemy } from "../js/core/enemy-simple-fabric.js";
 
 
 export default class GameplayScene extends Phaser.Scene {

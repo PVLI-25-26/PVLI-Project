@@ -104,7 +104,6 @@
         "key": "BillBoardTest",
         "billboardConfig":
         {
-            "type":"billboard",
             "texture":"billboard",
             "scale":0.1            
         }
@@ -112,7 +111,6 @@
     {
         "key": "Grass",
         "billboardConfig":{
-            "type":"billboard",
             "texture":"grass",
             "scale":4
         }
