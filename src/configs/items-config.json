@@ -13,6 +13,7 @@
             },
             "isStatic": true,
             "isSensor": true
-        }
+        },
+        "collectSound": "itemCollected"
     }
 ]

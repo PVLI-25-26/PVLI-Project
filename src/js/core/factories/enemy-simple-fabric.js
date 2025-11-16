@@ -1,5 +1,5 @@
-import basicEnemyConfig from "../../configs/Enemies/basic-enemy-config.json";
-import { BasicEnemy } from "../entities/Enemies/BasicEnemy.js";
+import basicEnemyConfig from "../../../configs/Enemies/basic-enemy-config.json";
+import { BasicEnemy } from "../../entities/Enemies/BasicEnemy.js";
 
 const ENEMY_GLOBAL_CONFIGS = {
     "basic": basicEnemyConfig
@@ -23,6 +23,8 @@ export function createEnemy(scene, enemyData) {
     };
 
     const enemy = new EnemyClass(scene, enemyData.pos.x, enemyData.pos.y, finalConfig);
+
+    enemy.setCollisionCategory(scene.enemiesGroup);
 
     return enemy;
 }

@@ -1,12 +1,4 @@
 /**
- * @typedef {Object} ObstacleInstance
- * @property {string} key - Template key for the obstacle (matches obstacles-config).
- * @property {number} x - X position in the room.
- * @property {number} y - Y position in the room.
- * @property {number} r - Rotation in degrees.
- */
-
-/**
  * @typedef {Object} Connection
  * @property {number} x - X position of the connection trigger.
  * @property {number} y - Y position of the connection trigger.
@@ -22,39 +14,19 @@
  * @property {Array<Connection>} [connections] - Connections to other rooms.
  */
 
-/**
- * @typedef {Object} ObstacleTemplate
- * @property {string} key - Obstacle template key.
- * @property {*} [properties] - Other template-specific properties (sprite, size, etc.).
- */
-
 import roomsConfig from '../../configs/Rooms/rooms.json'
-import obstaclesConfig from '../../configs/obstacles-config.json'
-import itemsConfig from '../../configs/items-config.json'
-import { BillBoard } from '../entities/BillBoard.js';
-import { Obstacle } from '../entities/Obstacle.js';
-import { createEnemy } from "./enemy-simple-fabric.js";
-import { ObstacleBillboard } from '../entities/ObstacleBillboard.js';
-import { Item } from '../entities/Item.js';
+import { createConnection } from './factories/connection-factory.js';
+import { createEnemy } from "./factories/enemy-simple-fabric.js";
+import { createItem } from './factories/item-factory.js';
+import { createObstacle } from './factories/obstacle-factory.js';
 
 /**
  * Manages dungeon rooms and instantiation of room objects into a Phaser scene.
  *
  * Notes:
  * - Room JSONs referenced by configs/Rooms/rooms.json are fetched at initialization.
- * - The fetched room objects should match RoomConfig shape (obstacles, connections).
  */
 class Dungeon {
-    /**
-     * Map of obstacle templates [key -> ObstacleConfig]
-     * @type {Map<string, ObstacleTemplate>}
-     */
-    #obstacles;
-    /**
-     * Map of dungeon items [key -> ItemConfig]
-     * @type {Map<string, RoomInstance>}
-     */
-    #items
     /**
      * Map of dungeon rooms [key -> RoomConfig]
      * @type {Map<string, RoomInstance>}
@@ -64,43 +36,18 @@ class Dungeon {
      * Current active room key.
      * @type {string}
      */
-    #currentRoomKey;
+    currentRoomKey;
 
     /**
      * Create a Dungeon manager.
      * @param {string} initialRoomKey - Key of the initial room to start in.
      */
     constructor(initialRoomKey){
-        // Map object and room configs to keys to reuse them for every room
-        this.#initializeObstacles();
+        // Load and map rooms to their key
         this.#initializeRooms();
-        this.#initializeItems();
-        this.#currentRoomKey = initialRoomKey;
+        this.currentRoomKey = initialRoomKey;
     }
-    /**
-     * Initialize the obstacle templates map from obstacles-config.json.
-     * Populates this.#obstacles with entries keyed by template key.
-     * @private
-     * @returns {void}
-     */
-    #initializeObstacles(){
-        this.#obstacles = new Map();
-        obstaclesConfig.forEach(cfg =>{
-            this.#obstacles.set(cfg.key, cfg);
-        });
-    }
-    /**
-     * Initialize the items templates map from items-config.json.
-     * Populates this.#items with entries keyed by template key.
-     * @private
-     * @returns {void}
-     */
-    #initializeItems(){
-        this.#items = new Map();
-        itemsConfig.forEach(cfg =>{
-            this.#items.set(cfg.key, cfg);
-        });
-    }
+
     /**
      * Initialize all dungeon's rooms by fetching each room's JSON file.
      * Each fetched room object will receive their connections from the roomsConfig entry.
@@ -120,7 +67,6 @@ class Dungeon {
             // Add room to the map of rooms
             this.#rooms.set(cfg.key, room);
         });
-        
     }
 
     /**
@@ -133,67 +79,41 @@ class Dungeon {
      */
     loadCurrentRoom(scene, obstaclesGroup, enemiesGroup, playerCategory, connectionsCategory, itemsCategory){
         scene.logger.log('DUNGEON', 1, 'Loading scene data...');
-        // Create every object from the room config
-        const room = this.#rooms.get(this.#currentRoomKey);
 
-        room.obstacles.forEach(obj =>{
-            let obstacle;
-            if (obj.type == "billboard"){
-                obstacle = new ObstacleBillboard(scene,obj.x,obj.y,this.#obstacles.get(obj.key));
-            }
-            else{
-                obstacle = new Obstacle(scene, obj.x, obj.y, this.#obstacles.get(obj.key));
-                obstacle.setRotation(obj.r*Math.PI/180);
-            }
-            obstacle.setCollisionCategory(obstaclesGroup);
-        });
+        // Get current dungeon room
+        const room = this.#rooms.get(this.currentRoomKey);
 
-        room.items.forEach(itemCfg =>{
-            let item = new Item(scene, itemCfg.x, itemCfg.y, this.#items.get(itemCfg.key));
-            item.setCollisionCategory(itemsCategory);
-        });
+        // Create obstacles in scene
+        room.obstacles.forEach(objSceneData => createObstacle(scene, objSceneData));
+
+        // Create items in scene
+        room.items.forEach(itemSceneData => createItem(scene, itemSceneData));
+
+        // Create every connection in scene
+        room.connections.forEach(connectionSceneData => createConnection(scene, this, connectionSceneData));
         
-        for(let i = 0; i < 100; ++i){
-            const grass = new ObstacleBillboard(scene, Math.random()*700-350, Math.random()*700-350, this.#obstacles.get("Grass"));
-            grass.setFlipX(Math.floor(Math.random()*2));
-        }
-        for (let i = 0; i<600; i++){
+        // Create every enemy in scene
+        room.enemies.forEach(enemyData => createEnemy(scene, enemyData));
 
-            let x = Math.random()*1500-750;
-            let y = Math.random()*1500-750;
-            if ((x < -350 || x>350) || (y <-350 || y> 350) ){
-                const tree = new ObstacleBillboard(scene, x, y, this.#obstacles.get("Tree"));
-                tree.setFlipX(Math.floor(Math.random()*2));
+        // Scatter objects around the scene
+        this.createScatteredObjects(scene, obstaclesGroup);
+    }
+
+    createScatteredObjects(scene, obstaclesGroup) {
+        for (let i = 0; i < 100; ++i) {
+            const grass = createObstacle(scene, { x: Math.random() * 700 - 350, y: Math.random() * 700 - 350, key: "Grass" });
+            grass.setFlipX(Math.floor(Math.random() * 2));
+        }
+        for (let i = 0; i < 600; i++) {
+
+            let x = Math.random() * 1500 - 750;
+            let y = Math.random() * 1500 - 750;
+            if ((x < -350 || x > 350) || (y < -350 || y > 350)) {
+                const tree = createObstacle(scene, { x: x, y: y, key: "Tree" });
+                tree.setFlipX(Math.floor(Math.random() * 2));
                 tree.setCollisionCategory(obstaclesGroup);
             }
-
         }
-
-        // Create every connection from the room config
-        room.connections.forEach(con =>{
-            const connection = scene.matter.add.sprite(con.x, con.y, "player", null, {
-                shape: {
-                    type: "rectangle",
-                    width: 48,
-                    height: 48
-                },
-                isStatic: true,
-                isSensor: true
-            });
-            connection.setCollisionCategory(connectionsCategory);
-            connection.setCollidesWith(playerCategory);
-            // When player overlaps connection change room
-            connection.setOnCollide(()=>{
-                this.#currentRoomKey = con.scene;
-                scene.logger.log('DUNGEON', 1, `Entering room: ${con.scene}`);
-                scene.scene.restart({sceneName: con.scene, playerSpawn: {x:con.spawnX, y:con.spawnY}});
-            });
-        });
-        
-        room.enemies.forEach(enemyData => {
-            const enemy = createEnemy(scene, enemyData);
-            enemy.setCollisionCategory(enemiesGroup);
-        });
     }
 }
 
