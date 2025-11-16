@@ -37,6 +37,7 @@ class Dungeon {
      * @type {string}
      */
     currentRoomKey;
+    playerInventory;
 
     /**
      * Create a Dungeon manager.
@@ -45,6 +46,7 @@ class Dungeon {
     constructor(initialRoomKey){
         // Load and map rooms to their key
         this.#initializeRooms();
+        this.playerInventory = [];
         this.currentRoomKey = initialRoomKey;
     }
 
@@ -77,7 +79,7 @@ class Dungeon {
      * @param {Phaser.GameObjects.Sprite} player - Player object used for overlap checks with connections.
      * @returns {void}
      */
-    loadCurrentRoom(scene, obstaclesGroup, enemiesGroup, playerCategory, connectionsCategory, itemsCategory){
+    loadCurrentRoom(scene, obstaclesGroup){
         scene.logger.log('DUNGEON', 1, 'Loading scene data...');
 
         // Get current dungeon room
@@ -114,6 +116,10 @@ class Dungeon {
                 tree.setCollisionCategory(obstaclesGroup);
             }
         }
+    }
+
+    addItemToInventory(itemKey){
+        this.playerInventory.push(itemKey);
     }
 }
 

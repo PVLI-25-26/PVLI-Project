@@ -4,6 +4,7 @@ import { BillBoard } from "./BillBoard";
 export class Item extends BillBoard{
     constructor(scene, x, y, config){
         super(scene, x, y, config.billboardConfig, config.physicsConfig);
+        this.key = config.key;
         this.scene.add.existing(this);
         this.collectSound = config.collectSound;
     }

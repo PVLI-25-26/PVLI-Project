@@ -1,5 +1,6 @@
 import { BaseComponent } from "../core/base-component";
 import createPlayerKeys from "../../configs/controls-config";
+import dungeon from "../core/dungeon";
 
 export class PlayerPickItemControllerComponent extends BaseComponent{
     #pickUpRadius;
@@ -37,6 +38,7 @@ export class PlayerPickItemControllerComponent extends BaseComponent{
         let zone = pair.bodyA.gameObject;
         let item = pair.bodyB.gameObject;
         item.pickUpItem();
+        dungeon.addItemToInventory(item.key);
     }
 
     /**

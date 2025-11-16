@@ -14,6 +14,10 @@
             "isStatic": true,
             "isSensor": true
         },
+        "displayData":{
+            "name": "Test Item",
+            "description": "This is an item description, nothing special ..."
+        },
         "collectSound": "itemCollected"
     }
 ]

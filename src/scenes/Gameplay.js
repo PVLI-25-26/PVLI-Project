@@ -48,6 +48,12 @@ export default class GameplayScene extends Phaser.Scene {
             this.scene.pause();
         });
 
+        this.input.keyboard.on("keydown-SHIFT", () => {
+            if (this.scene.isPaused("GameplayScene")) return;
+            this.scene.launch("InventoryMenu");
+            this.scene.pause();
+        });
+
         EventBus.removeAllListeners();
 
         // Create physics groups

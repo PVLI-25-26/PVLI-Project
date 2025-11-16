@@ -145,7 +145,9 @@ export class Slider extends Phaser.GameObjects.Container {
      */
     updateValueFromPointer(pointer) {
         const localX = Phaser.Math.Clamp(pointer.x - (this.x - this.width / 2), 0, this.width);
-        this.value = localX / this.width;
+        const localY = Phaser.Math.Clamp(pointer.y - (this.y - this.width / 2), 0, this.width);
+
+        this.value = (localX*Math.cos(this.rotation)+localY*Math.sin(this.rotation)) / this.width;
         this.updateThumbPosition();
         this.invokeChange();
     }
