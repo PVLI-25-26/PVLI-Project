@@ -10,7 +10,10 @@
         
     ],
     "items": [
-        {"key":"testItem","x":0,"y":-50}
+        {"key":"queso","x":0,"y":-50},
+        {"key":"ball","x":100,"y":-50},
+        {"key":"red-vial","x":200,"y":100},
+        {"key":"queso","x":-100,"y":-100}
     ],
     "enemies": [ ]
 }

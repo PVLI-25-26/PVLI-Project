@@ -1,0 +1,30 @@
+[
+    {"key": "player", "type": "spritesheet", "file": "assets/sprites/CharacterBaseSprites.png", "settings":{"frameWidth":32}},
+    {"key": "arrow", "type": "spritesheet", "file": "assets/sprites/arrow.png", "settings":{"frameWidth":32}},
+    {"key": "bow", "type": "spritesheet", "file": "assets/sprites/Bow.png", "settings":{"frameWidth":16}},
+    {"key": "aiming-arrow", "type": "image", "file": "assets/sprites/AimingArrow.png", "settings":{"frameWidth":16}},
+
+    {"key": "slime", "type": "image", "file": "assets/sprites/SlimeSprite.png", "settings":{}},
+
+    {"key": "barrel-spritestack", "type": "spritesheet", "file": "assets/sprites/SpriteStackingPlaceholders/MiscProps/Barrel_strip8.png", "settings":{"frameWidth":14}},
+    {"key": "wall-spritestack", "type": "spritesheet", "file": "assets/sprites/SpriteStackingPlaceholders/Walls/WallCornerBrick_strip16.png", "settings":{"frameWidth":16}},
+    {"key": "chest-spritestack", "type": "spritesheet", "file": "assets/sprites/SpriteStackingPlaceholders/MiscProps/Chestf0_strip18.png", "settings":{"frameWidth":16, "spacing":6}},
+    {"key": "crate-spritestack", "type": "spritesheet", "file": "assets/sprites/SpriteStackingPlaceholders/MiscProps/Crate_strip8.png", "settings":{"frameWidth":16}},
+    {"key": "door-spritestack", "type": "spritesheet", "file": "assets/sprites/SpriteStackingPlaceholders/Doors/WoodDoor_strip16.png", "settings":{"frameWidth":16, "frameHeight": 6}},
+    
+    {"key": "queso", "type": "image", "file": "assets/sprites/16x16 RPG Item Pack/Item__65.png", "settings":{}},
+    {"key": "ball", "type": "image", "file": "assets/sprites/16x16 RPG Item Pack/Item__26.png", "settings":{}},
+    {"key": "red-vial", "type": "image", "file": "assets/sprites/16x16 RPG Item Pack/Item__28.png", "settings":{}},
+    {"key": "key", "type": "image", "file": "assets/sprites/16x16 RPG Item Pack/Item__69.png", "settings":{}},
+    {"key": "golden-cup", "type": "image", "file": "assets/sprites/16x16 RPG Item Pack/Item__71.png", "settings":{}},
+
+    {"key": "billboard", "type": "image", "file": "assets/sprites/SpriteStackingPlaceholders/Billboard/catPlaceholder.jpg", "settings":{}},
+    {"key": "grass", "type": "image", "file": "assets/sprites/grass.png", "settings":{}},
+    {"key": "tree", "type": "image", "file": "assets/sprites/tree.png", "settings":{}},
+
+    {"key": "Antonio", "type": "image", "file": "assets/portraits/cat.png", "settings":{}},
+    {"key": "Dolores", "type": "image", "file": "assets/portraits/catS.png", "settings":{}},
+
+    {"key": "musicIcon", "type": "image", "file": "assets/sprites/music-icon.webp", "settings":{}},
+    {"key": "sfxIcon", "type": "image", "file": "assets/sprites/sfx-icon.png", "settings":{}}
+]
