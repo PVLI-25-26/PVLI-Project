@@ -38,7 +38,6 @@ export class PlayerPickItemControllerComponent extends BaseComponent{
         let zone = pair.bodyA.gameObject;
         let item = pair.bodyB.gameObject;
         item.pickUpItem();
-        dungeon.addItemToInventory(item.key);
     }
 
     /**

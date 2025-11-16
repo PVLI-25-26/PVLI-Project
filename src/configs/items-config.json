@@ -16,7 +16,8 @@
         },
         "displayData":{
             "name": "Test Item",
-            "description": "This is an item description, nothing special ..."
+            "description": "This is an item description, nothing special ...",
+            "image": "player"
         },
         "collectSound": "itemCollected"
     }

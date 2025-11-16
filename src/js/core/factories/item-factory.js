@@ -13,9 +13,9 @@ export function createItem(scene, itemSceneData){
     return item;
 }
 
-export function createItemDisplay(scene, x, y, itemKey){
+export function createItemDisplay(scene, x, y, w, h, itemKey){
     const itemData = itemTemplates.get(itemKey).displayData;
-    const itemDisplay = new ItemDisplay(scene, x, y, itemData);
+    const itemDisplay = new ItemDisplay(scene, x, y, itemData, w, h);
 
     return itemDisplay;
 }

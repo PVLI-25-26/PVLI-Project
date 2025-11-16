@@ -1,3 +1,4 @@
+import dungeon from "../core/dungeon";
 import { EventBus } from "../core/event-bus";
 import { BillBoard } from "./BillBoard";
 
@@ -14,6 +15,6 @@ export class Item extends BillBoard{
         this.setActive(false);
         this.setVisible(false);
         this.setCollidesWith(0);
-        return {}; // will return item for inventory
+        dungeon.addItemToInventory(this.key);
     }
 }

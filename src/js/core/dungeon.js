@@ -80,23 +80,28 @@ class Dungeon {
      * @returns {void}
      */
     loadCurrentRoom(scene, obstaclesGroup){
-        scene.logger.log('DUNGEON', 1, 'Loading scene data...');
-
+        
+        scene.logger.log('DUNGEON', 1, 'Getting room ...');
         // Get current dungeon room
         const room = this.#rooms.get(this.currentRoomKey);
 
+        scene.logger.log('DUNGEON', 1, 'Creating obstacles ...');
         // Create obstacles in scene
         room.obstacles.forEach(objSceneData => createObstacle(scene, objSceneData));
 
+        scene.logger.log('DUNGEON', 1, 'Creating items ...');
         // Create items in scene
         room.items.forEach(itemSceneData => createItem(scene, itemSceneData));
 
+        scene.logger.log('DUNGEON', 1, 'Creating connections ...');
         // Create every connection in scene
         room.connections.forEach(connectionSceneData => createConnection(scene, this, connectionSceneData));
         
+        scene.logger.log('DUNGEON', 1, 'Creating enemies ...');
         // Create every enemy in scene
         room.enemies.forEach(enemyData => createEnemy(scene, enemyData));
 
+        scene.logger.log('DUNGEON', 1, 'Creating scattered objects ...');
         // Scatter objects around the scene
         this.createScatteredObjects(scene, obstaclesGroup);
     }

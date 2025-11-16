@@ -4,6 +4,7 @@ import MainMenu from "../scenes/MainMenu.js";
 import PauseMenu from "../scenes/PauseMenu.js";
 import { Logger } from "./core/logger.js";
 import InventoryMenu from "../scenes/InventoryMenu.js";
+import Boot from "../scenes/Boot.js";
 // ================== GAME ENTRY POINT ==================
 
 // TODO - Read config from JSON file?
@@ -28,7 +29,7 @@ const config = {
         }
     },
 
-    scene: [MainMenu, Gameplay, PauseMenu, InventoryMenu],
+    scene: [Boot, MainMenu, Gameplay, PauseMenu, InventoryMenu],
 
     plugins: {
         global: [
