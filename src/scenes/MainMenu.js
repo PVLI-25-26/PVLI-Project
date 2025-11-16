@@ -20,7 +20,8 @@ export default class MainMenu extends Phaser.Scene {
         showLoaderUI(this);
         this.load.image('musicIcon', 'assets/sprites/music-icon.webp');
         this.load.image('sfxIcon', 'assets/sprites/sfx-icon.png');
-        
+        this.load.image("PortraitTest","assets/portraits/cat.png");
+
         audioConfig.sounds.forEach(sound => this.load.audio(sound.key, sound.file));
         audioConfig.music.forEach(track => this.load.audio(track.key, track.file));
     }
@@ -35,5 +36,6 @@ export default class MainMenu extends Phaser.Scene {
         const model = new NPCsDialogueModel(dialogueTest);
         const view = new NPCsDialogueView(this);
         const presenter = new NPCsDialoguePresenter(view,model);
+        presenter.showDialogue("npcName2");
     }
 }
