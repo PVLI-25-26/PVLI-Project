@@ -5,21 +5,21 @@ export default class NPCsDialoguePresenter{
         this.view = view;
         this.model = model;
         //this.view.setPresenter(this);
-
-        this.view.CreateButtons();
+        
         this.subscribeToViewEvents();
-
+        EventBus.on('StartDialogue',(id)=>{this.showDialogue(id)}) 
     }
     
+    
     showDialogue(id){
+        this.view.showView();
         this.getDialogue(id);
         this.setCurrentPage();
         this.view.UpdateText();
-        this.view.CreatePortrait(this.model.currentDialogue.npcName);
-        this.view.CreateName(this.model.currentDialogue.npcName);
-     
+        this.view.UpdateName(this.model.currentDialogue.npcName);
+        this.view.UpdatePortrait(this.model.currentDialogue.npcName);
     }
-
+    
     subscribeToViewEvents(){
         this.view.nextPageButton.on("button-clicked",()=>{
             if (this.model.currentDialogue.currentPage >= this.model.currentDialogue.dialogue.length - 1){

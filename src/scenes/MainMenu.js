@@ -10,6 +10,7 @@ import NPCsDialoguePresenter from "../js/UI/NPCsDialogue/NPCsDialoguePresenter.j
 import NPCsDialogueView from "../js/UI/NPCsDialogue/NPCsDialogueView.js";
 
 import dialogueTest from "../configs/Dialogues/NPCsDialogue-config.json"
+import { EventBus } from "../js/core/event-bus.js";
 
 export default class MainMenu extends Phaser.Scene {
     constructor() {
@@ -20,7 +21,9 @@ export default class MainMenu extends Phaser.Scene {
         showLoaderUI(this);
         this.load.image('musicIcon', 'assets/sprites/music-icon.webp');
         this.load.image('sfxIcon', 'assets/sprites/sfx-icon.png');
-        this.load.image("PortraitTest","assets/portraits/cat.png");
+        this.load.image("Antonio","assets/portraits/cat.png");
+        this.load.image("Dolores","assets/portraits/catS.png");
+
 
         audioConfig.sounds.forEach(sound => this.load.audio(sound.key, sound.file));
         audioConfig.music.forEach(track => this.load.audio(track.key, track.file));
@@ -29,13 +32,14 @@ export default class MainMenu extends Phaser.Scene {
     create() {
         this.sound_facade = new SoundSceneFacade(this, audioConfig);
         
-        //const model = new MainMenuModel();
-        //const view = new MainMenuView(this);
-        //const presenter = new MainMenuPresenter(view, model);
+        const model = new MainMenuModel();
+        const view = new MainMenuView(this);
+        const presenter = new MainMenuPresenter(view, model);
 
-        const model = new NPCsDialogueModel(dialogueTest);
-        const view = new NPCsDialogueView(this);
-        const presenter = new NPCsDialoguePresenter(view,model);
-        presenter.showDialogue("npcName2");
+        //const model = new NPCsDialogueModel(dialogueTest);
+        //const view = new NPCsDialogueView(this);
+        //const presenter = new NPCsDialoguePresenter(view,model);
+        //
+        //EventBus.emit("StartDialogue","npcName2")
     }
 }

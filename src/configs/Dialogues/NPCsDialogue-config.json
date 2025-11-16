@@ -5,18 +5,18 @@
             "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam r"
         ],
         "speed" : 1,
-        "npcName" : "PortraitTest",
+        "npcName" : "Antonio",
         "userOptions" : {}
     
     },
     "npcName2":{
         "dialogue" : [
-            "Hola Caracola",
-            "Que tal",
+            "Hola caballero",
+            "Que tal¿¿¿",
             "Se ha quedao buen dia pa' un paseo, eh?"
         ],
         "speed" : 1,
-        "npcName" : "PortraitTest",
+        "npcName" : "Dolores",
         "userOptions" : {}
     }
 }   
