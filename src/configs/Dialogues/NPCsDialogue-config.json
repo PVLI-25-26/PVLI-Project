@@ -1,0 +1,22 @@
+{
+    "npcName1" : {
+        "dialogue" : [
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et ",
+            "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam r"
+        ],
+        "speed" : 1,
+        "npcName" : "Antonio",
+        "userOptions" : {}
+    
+    },
+    "npcName2":{
+        "dialogue" : [
+            "Hola caballero",
+            "Que tal¿¿¿",
+            "Se ha quedao buen dia pa' un paseo, eh?"
+        ],
+        "speed" : 1,
+        "npcName" : "Dolores",
+        "userOptions" : {}
+    }
+}   
