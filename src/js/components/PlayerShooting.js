@@ -112,16 +112,15 @@ export class PlayerShootingComponent extends BaseComponent{
     update(time, delta){
         // Get mouse data
         let pointer = this.gameObject.scene.input.activePointer;
-
-
-
-        // Begin drag (save first click position in another variable)
-        if(pointer.isDown && !this.#shootWasPressedLastFrame){
-            this.#mouseBeginDragPos = {x: pointer.x, y: pointer.y};
-            EventBus.emit('playSound', 'bowLoad');
-        }
+        
         // If mouse button is down, increase power
         if(pointer.isDown) {
+            // Begin drag (save first click position in another variable)
+            if(!this.#shootWasPressedLastFrame){
+                this.#mouseBeginDragPos = {x: pointer.x, y: pointer.y};
+                this.#mouseEndDragPos = this.#mouseBeginDragPos;
+                EventBus.emit('playSound', 'bowLoad');
+            }
             this.#shootWasPressedLastFrame = true;
 
             // Update last mouse pos while dragging
@@ -150,9 +149,7 @@ export class PlayerShootingComponent extends BaseComponent{
         }
         // When mouse button is released after being pressed, shoot arrow
         if(!pointer.isDown && this.#shootWasPressedLastFrame && this.#currentPower > this.#minPower)
-            {
-            const logger = this.gameObject.scene.plugins.get('logger');
-            
+        {   
             // Calculate direction of shot taking into account camera rotation
             const directionShot = this.calculateShotDirection();
             
@@ -167,10 +164,14 @@ export class PlayerShootingComponent extends BaseComponent{
             this.arrowShot = this.#arrowPool.spawn();
 
             this.hideBowAndBar();            
-            
+        }
+
+        if(!pointer.isDown){
             // Reset shooting values
             this.#shootWasPressedLastFrame = false;
             this.#currentPower = this.#minPower;
+            this.#mouseBeginDragPos = {x:0,y:0};
+            this.#mouseEndDragPos = this.#mouseBeginDragPos;
         }
     }
 
