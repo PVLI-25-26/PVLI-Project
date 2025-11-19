@@ -24,7 +24,7 @@ export function createEnemy(scene, enemyData) {
 
     const enemy = new EnemyClass(scene, enemyData.pos.x, enemyData.pos.y, finalConfig);
 
-    enemy.setCollisionCategory(scene.enemiesGroup);
+    enemy.setCollisionCategory(scene.enemiesCategory);
 
     return enemy;
 }

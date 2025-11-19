@@ -32,7 +32,7 @@ export class Logger extends Phaser.Plugins.BasePlugin{
     })
 
     #enabledModules;
-    #currentLogLevel;
+    #currentLogLevel = 0;
 
     /**
      * Constructor to create the plugin
@@ -45,9 +45,11 @@ export class Logger extends Phaser.Plugins.BasePlugin{
      *  Initializes the plugin using the configuration file
      */
     init(){
-        this.#enabledModules = new Set(config.modules);
-        this.#currentLogLevel = config.level;
-        this.log('LOGGER', Logger.LOG_LEVELS.INFO, 'Logger initialized');
+        if(config){
+            this.#enabledModules = new Set(config.modules);
+            this.#currentLogLevel = config.level;
+            this.log('LOGGER', Logger.LOG_LEVELS.INFO, 'Logger initialized');
+        }
     }
 
     /**

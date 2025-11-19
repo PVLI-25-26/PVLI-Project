@@ -100,9 +100,12 @@ export default class InventoryMenuView {
         }
 
         // Update camera scroll
-        if(this.itemListCamera.height < this.itemDisplayListContainer.list.length*(ITEM_DISPLAY_HEIGHT+ITEM_DISPLAY_MARGIN)){
-            this.maxCamScroll = this.minCamScroll+this.itemDisplayListContainer.list.length*(ITEM_DISPLAY_HEIGHT+ITEM_DISPLAY_MARGIN)-this.itemListCamera.height;
-        }
+        this._updateCameraScroll();
+    }
+
+    _updateCameraScroll() {
+        this.maxCamScroll = this.minCamScroll + this.itemDisplayListContainer.list.length * (ITEM_DISPLAY_HEIGHT + ITEM_DISPLAY_MARGIN) - this.itemListCamera.height;
+        this.maxCamScroll = Math.max(this.minCamScroll, this.maxCamScroll);
     }
 
     removeItem(itemDisplay){
@@ -118,7 +121,7 @@ export default class InventoryMenuView {
         this.itemDisplaysToMove = this.itemDisplayListContainer.list.slice(idx);
         this.scene.tweens.add({
             targets: this.itemDisplaysToMove,
-            y: '-=120',
+            y: `-=${(ITEM_DISPLAY_HEIGHT+ITEM_DISPLAY_MARGIN)}`,
             ease: 'Cubic',
             duration: 100,
             repeat: 0,
@@ -127,18 +130,16 @@ export default class InventoryMenuView {
             }
         })
 
-        // Update camera scroll with tween
-        this.maxCamScroll = this.minCamScroll+this.itemDisplayListContainer.list.length*120-this.itemListCamera.height;
+        // Update camera scroll
+        this._updateCameraScroll();
+        //.maxCamScroll = Math.max(this.minCamScroll, this.minCamScroll+this.itemDisplayListContainer.list.length*(ITEM_DISPLAY_HEIGHT+ITEM_DISPLAY_MARGIN)-this.itemListCamera.height);
+        let newCamScrollY = Math.max(this.itemListCamera.scrollY - (ITEM_DISPLAY_HEIGHT+ITEM_DISPLAY_MARGIN), this.minCamScroll)
         this.scene.tweens.add({
             targets: this.itemListCamera,
-            scrollY: '-=120',
+            scrollY: newCamScrollY,
             ease: 'Cubic',
             duration: 100,
             repeat: 0,
-            onUpdate: (tween, target, key, current, previous, param)=>{
-                // clamp value to min
-                if(current < this.minCamScroll) target.scrollY = this.minCamScroll;
-            },
             onComplete: (tween)=>{
                 tween.remove();
             }

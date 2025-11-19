@@ -16,6 +16,8 @@ export default class GameplayScene extends Phaser.Scene {
     }
 
     create(data) {
+        EventBus.removeAllListeners();
+        
         // Get data about new room (this data depends on the connection take, that is why it is passed through there and not in the dungeon)
         this.playerSpawn = data.playerSpawn || {x: 0, y: 0};
 
@@ -35,7 +37,6 @@ export default class GameplayScene extends Phaser.Scene {
             this.scene.pause();
         });
 
-        EventBus.removeAllListeners();
 
         // Create physics groups
         this.obstaclesCategory = 1 << 0;
