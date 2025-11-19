@@ -15,8 +15,17 @@ export class Item extends BillBoard{
         if(item === this)
         {
             EventBus.emit('playSound', this.collectSound);
-            this.setActive(false);
-            this.setVisible(false);
+            this.scene.tweens.add({
+                targets: this,
+                alpha: 0,
+                duration: 100,
+                repeat: 0,
+                onComplete: (tween)=>{
+                    this.setActive(false);
+                    this.setVisible(false);
+                    tween.remove();
+                }
+            });
             this.setCollidesWith(0);
             dungeon.addItemToInventory(this.key);
         }
