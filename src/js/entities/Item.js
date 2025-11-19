@@ -8,13 +8,26 @@ export class Item extends BillBoard{
         this.key = config.key;
         this.scene.add.existing(this);
         this.collectSound = config.collectSound;
+        EventBus.on('itemPicked', this.pickUpItem, this);
     }
 
-    pickUpItem(){
-        EventBus.emit('playSound', this.collectSound);
-        this.setActive(false);
-        this.setVisible(false);
-        this.setCollidesWith(0);
-        dungeon.addItemToInventory(this.key);
+    pickUpItem(item){
+        if(item === this)
+        {
+            EventBus.emit('playSound', this.collectSound);
+            this.scene.tweens.add({
+                targets: this,
+                alpha: 0,
+                duration: 100,
+                repeat: 0,
+                onComplete: (tween)=>{
+                    this.setActive(false);
+                    this.setVisible(false);
+                    tween.remove();
+                }
+            });
+            this.setCollidesWith(0);
+            dungeon.addItemToInventory(this.key);
+        }
     }
 }
