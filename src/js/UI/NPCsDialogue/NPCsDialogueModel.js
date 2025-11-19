@@ -3,15 +3,16 @@ import { EventBus } from "../../core/event-bus.js";
 
 
 export default class NPCsDialogueModel{
-    constructor(config){
+    constructor(config, events){
         this.dialogues = config;
         this.currentDialogue = {
             npcName : "",
             dialogue : "",
             currentPage : 0,
-            userOptions : {},
-            speed : 1
+            speed : 1,
+            userOptions : []
         }
-
+        // carga los eventos de los botones de userOptions
+        this.events = events;
     }
 }

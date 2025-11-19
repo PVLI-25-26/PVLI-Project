@@ -6,7 +6,16 @@
         ],
         "speed" : 1,
         "npcName" : "Antonio",
-        "userOptions" : {}
+        "userOptions" : [
+            {
+                "label": "Option1",
+                "event" : "Event1"
+            },
+            {
+                "label" : "Option2",
+                "event" : "Event2"
+            }
+        ]
     
     },
     "npcName2":{
@@ -17,6 +26,15 @@
         ],
         "speed" : 1,
         "npcName" : "Dolores",
-        "userOptions" : {}
+        "userOptions" : [
+            {
+                "label" : "end",
+                "event" : "END"
+            },
+            {
+                "label" : "Next",
+                "event" : "NEXT_PAGE"
+            }
+        ]
     }
 }   

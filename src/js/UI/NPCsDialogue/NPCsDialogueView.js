@@ -16,10 +16,17 @@ export default class NPCsDialogueView extends Phaser.GameObjects.Container{
         this.portrait = null;
         scene.add.existing(this);
         this.CreateElements();
+
+        this.buttons = [];
+        this.numButtons = 0;
+        this.buttonPositionX = 200;
+        this.buttonPositionY = 175;
+        this.interliterate = 30;
+
     }
     CreateElements(){
         this.CreateBackground();
-        this.CreateButtons();
+        //this.CreateButtons();
         this.CreateName("default");
         this.CreatePortrait("PortraitTest")
         this.hideView();
@@ -33,14 +40,27 @@ export default class NPCsDialogueView extends Phaser.GameObjects.Container{
         this.textBox = new TextBox(this.scene,130,5,this.currentPage,30,400); 
         this.add(this.textBox)
     }
-    CreateButtons(){
-        this.nextPageButton= new Button(this.scene,180,175,"Next");
-        this.add(this.nextPageButton);
-        this.nextPageButton.addInteraction((btn)=>{
+    CreateButtons(button){
+        this.numButtons ++;
+
+        var newButton = new Button(this.scene,this.buttonPositionX, this.buttonPositionY + this.interliterate * this.numButtons, button.label)
+        this.add(newButton);
+        newButton.addInteraction((btn) => {
             btn.on("pointerdown",()=>{
                 btn.invokeClick();
             });
-        });
+        })
+        this.buttons.push(newButton);
+        return newButton;
+    }
+    EraseButtons(){
+        for (let i = 0; i < this.buttons.length; i++){
+            let button = this.buttons[i];
+            this.remove(button);
+            button.destroy();
+        }
+        this.buttons = [];
+        this.numButtons = 0;
     }
     CreateBackground(){
     }
@@ -70,6 +90,8 @@ export default class NPCsDialogueView extends Phaser.GameObjects.Container{
     }
     hideView(){
         this.setVisible(false);
+        if (this.buttons != undefined)
+            this.EraseButtons();
         EventBus.emit("dialogueFinished")
     }
     showView(){
