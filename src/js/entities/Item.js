@@ -8,13 +8,17 @@ export class Item extends BillBoard{
         this.key = config.key;
         this.scene.add.existing(this);
         this.collectSound = config.collectSound;
+        EventBus.on('itemPicked', this.pickUpItem, this);
     }
 
-    pickUpItem(){
-        EventBus.emit('playSound', this.collectSound);
-        this.setActive(false);
-        this.setVisible(false);
-        this.setCollidesWith(0);
-        dungeon.addItemToInventory(this.key);
+    pickUpItem(item){
+        if(item === this)
+        {
+            EventBus.emit('playSound', this.collectSound);
+            this.setActive(false);
+            this.setVisible(false);
+            this.setCollidesWith(0);
+            dungeon.addItemToInventory(this.key);
+        }
     }
 }
