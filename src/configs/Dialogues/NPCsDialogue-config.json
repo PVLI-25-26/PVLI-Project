@@ -28,7 +28,7 @@
         "npcName" : "Dolores",
         "userOptions" : [
             {
-                "label" : "end",
+                "label" : "Adios",
                 "event" : "END"
             },
             {

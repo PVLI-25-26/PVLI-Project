@@ -4,19 +4,25 @@ export default class NPCsDialoguePresenter{
     constructor(view, model){
         this.view = view;
         this.model = model;
+        this.lastPage = false;
         //this.view.setPresenter(this);
         
         EventBus.on('StartDialogue',(id)=>{this.showDialogue(id)}); 
         EventBus.on('StopDialogue',()=>{this.hideDialogue()});
         EventBus.on('NextPageDialogue',()=>{ 
-            this.model.currentDialogue.currentPage += 1;
-            this.setCurrentPage();
-            this.view.UpdateText();
- 
-        })
+            if (!this.lastPage){
+                this.model.currentDialogue.currentPage += 1;
+                this.setCurrentPage();
+                this.view.UpdateText();
+                if (this.model.currentDialogue.currentPage >= this.model.currentDialogue.dialogue.length-1){
+                    this.lastPage = true;
+                }
+            }
+            
+        });
     }
     
-    
+
     showDialogue(id){
         this.view.showView();
         this.getDialogue(id);
@@ -53,6 +59,10 @@ export default class NPCsDialoguePresenter{
     }
     hideDialogue(){
         this.view.hideView();
+        this.lastPage = false;
+    }
+    endConversation(){
+        
     }
 }
 
