@@ -11,7 +11,7 @@ export class Item extends BillBoard{
         EventBus.on('itemPicked', this.pickUpItem, this);
     }
 
-    pickUpItem(item){
+    pickUpItem(picker, item){
         if(item === this)
         {
             EventBus.emit('playSound', this.collectSound);
@@ -27,7 +27,6 @@ export class Item extends BillBoard{
                 }
             });
             this.setCollidesWith(0);
-            dungeon.addItemToInventory(this.key);
         }
     }
 }

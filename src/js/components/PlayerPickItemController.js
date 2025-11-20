@@ -1,6 +1,5 @@
 import { BaseComponent } from "../core/base-component";
 import createPlayerKeys from "../../configs/controls-config";
-import dungeon from "../core/dungeon";
 import { EventBus } from "../core/event-bus";
 
 export class PlayerPickItemControllerComponent extends BaseComponent{
@@ -19,7 +18,7 @@ export class PlayerPickItemControllerComponent extends BaseComponent{
             },
             isSensor: true
         });
-        this.pickUpZone.setOnCollide(this.pickItem);
+        this.pickUpZone.setOnCollide((pair)=>{this.pickItem(pair)});
         this.pickUpZone.setCollidesWith(0);
 
         this.logger = this.gameObject.scene.plugins.get('logger');
@@ -38,7 +37,7 @@ export class PlayerPickItemControllerComponent extends BaseComponent{
     pickItem(pair){
         let zone = pair.bodyA.gameObject;
         let item = pair.bodyB.gameObject;
-        EventBus.emit('itemPicked', item);
+        EventBus.emit('itemPicked', this.gameObject, item);
     }
 
     /**

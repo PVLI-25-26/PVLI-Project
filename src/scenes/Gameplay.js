@@ -33,7 +33,7 @@ export default class GameplayScene extends Phaser.Scene {
 
         this.input.keyboard.on("keydown-SHIFT", () => {
             if (this.scene.isPaused("GameplayScene")) return;
-            this.scene.launch("InventoryMenu");
+            this.scene.launch("InventoryMenu", this.player);
             this.scene.pause();
         });
 

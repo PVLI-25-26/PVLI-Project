@@ -1,8 +1,8 @@
-import dungeon from "../../core/dungeon";
+import { InventoryComponent } from "../../components/InventoryComponent";
 
 export default class InventoryMenuModel {
-    constructor() {
-        this.itemDisplayData = dungeon.playerInventory;
+    constructor(player) {
+        this.itemDisplayData = player.getComponent(InventoryComponent).getInventory();
     }
 
     removeItem(idx){
