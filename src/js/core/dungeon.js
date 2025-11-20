@@ -37,7 +37,6 @@ class Dungeon {
      * @type {string}
      */
     currentRoomKey;
-    playerInventory;
 
     /**
      * Create a Dungeon manager.
@@ -46,7 +45,6 @@ class Dungeon {
     constructor(initialRoomKey){
         // Load and map rooms to their key
         this.#initializeRooms();
-        this.playerInventory = [];
         this.currentRoomKey = initialRoomKey;
     }
 
@@ -121,10 +119,6 @@ class Dungeon {
                 tree.setCollisionCategory(obstaclesGroup);
             }
         }
-    }
-
-    addItemToInventory(itemKey){
-        this.playerInventory.push(itemKey);
     }
 }
 

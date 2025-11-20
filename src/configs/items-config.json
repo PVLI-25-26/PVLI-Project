@@ -19,6 +19,11 @@
             "description": "Si huele a queso y sabe a queso, probablemente es un queso ...",
             "image": "queso"
         },
+        "buffData":{
+            "type": "movement",
+            "value": 4,
+            "duration": 2000
+        },
         "collectSound": "itemCollected"
     },
     {

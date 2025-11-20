@@ -19,3 +19,7 @@ export function createItemDisplay(scene, x, y, w, h, itemKey){
 
     return itemDisplay;
 }
+
+export function createItemBuff(itemKey){
+    return itemTemplates.get(itemKey).buffData;
+}
