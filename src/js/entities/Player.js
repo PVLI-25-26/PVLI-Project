@@ -7,6 +7,7 @@ import  {BillBoard} from "./BillBoard.js";
 import { PlayerAbilityControllerComponent } from "../components/PlayerAbilityController.js";
 import { PlayerPickItemControllerComponent } from "../components/PlayerPickItemController.js";
 import { InventoryComponent } from "../components/InventoryComponent.js";
+import { BuffManagerComponent } from "../components/BuffManagerComponent.js";
 
 /**
  * Player GameObject with movement and player control.
@@ -90,6 +91,9 @@ export class Player extends BillBoard {
 
         // Add InventoryComponent
         const inventory = new InventoryComponent(this);
+
+        // Add BuffManagerComponent
+        const buffManager = new BuffManagerComponent(this);
     }
 
     /**
