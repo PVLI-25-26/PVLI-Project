@@ -10,6 +10,8 @@ import NPCsDialoguePresenter from "../js/UI/NPCsDialogue/NPCsDialoguePresenter.j
 import NPCsDialogueView from "../js/UI/NPCsDialogue/NPCsDialogueView.js";
 
 import dialogueTest from "../configs/Dialogues/NPCsDialogue-config.json"
+import dialogueEvents from "../configs/Dialogues/NPCsDialogue-buttonEvents.js"
+
 import { EventBus } from "../js/core/event-bus.js";
 
 export default class MainMenu extends Phaser.Scene {
@@ -28,10 +30,10 @@ export default class MainMenu extends Phaser.Scene {
         const view = new MainMenuView(this);
         const presenter = new MainMenuPresenter(view, model);
 
-        // const model = new NPCsDialogueModel(dialogueTest);
-        // const view = new NPCsDialogueView(this);
-        // const presenter = new NPCsDialoguePresenter(view,model);
+        //const model = new NPCsDialogueModel(dialogueTest,dialogueEvents);
+        //const view = new NPCsDialogueView(this);
+        //const presenter = new NPCsDialoguePresenter(view,model);
         
-        // EventBus.emit("StartDialogue","npcName2")
+        //EventBus.emit("StartDialogue","npcName1")
     }
 }
