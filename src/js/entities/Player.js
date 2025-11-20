@@ -3,6 +3,7 @@ import { MovementComponent } from "../components/Movement.js";
 import { PlayerControllerComponent } from "../components/PlayerController.js";
 import { PlayerShootingComponent } from "../components/PlayerShooting.js";
 import { DamageableComponent } from "../components/DamageableComponent.js";
+import { EventBus } from "../core/event-bus.js";
 import  {BillBoard} from "./BillBoard.js";
 import { PlayerAbilityControllerComponent } from "../components/PlayerAbilityController.js";
 import { PlayerPickItemControllerComponent } from "../components/PlayerPickItemController.js";
@@ -37,6 +38,7 @@ export class Player extends BillBoard {
         //super(scene, x, y, config.billboardConfig, scene.cameras.main);
         super(scene, x, y, config.billboardConfig, config.physicsConfig)
         this.config = config;
+        this.type = 'player';
 
         // Add component system to this GameObject
         extendWithComponents(this);
@@ -79,7 +81,14 @@ export class Player extends BillBoard {
         const shootController = new PlayerShootingComponent(this, this.config.minShootPower, this.config.maxShootPower, this.config.powerIncreaseSpeed); // TODO: Refactor parameters to use separate config object
 
         // Add DamageableComponent
-        const damageable = new DamageableComponent(this, this.config.maxHP, ['enemyMeleeHit', 'invisibilityActivated'], true, { damage: this.config.damageSound, death: this.config.deathSound });
+        const damageable = new DamageableComponent(this, 
+            this.config.maxHP, 
+            ['enemyMeleeHit', 'invisibilityActivated'], 
+            true, 
+            { damage: this.config.damageSound, 
+            death: this.config.deathSound });
+
+        EventBus.emit('playerHealthInitialized', { maxHP: this.config.maxHP });
 
         // Add PlayerAbilityControllerComponent
         const abilityController = new PlayerAbilityControllerComponent(this);

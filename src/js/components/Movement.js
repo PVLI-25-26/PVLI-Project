@@ -87,6 +87,11 @@ export class MovementComponent extends BaseComponent {
      */
     moveGameObject() {
         this.gameObject.setVelocity(this.velocity.x, this.velocity.y);
+        EventBus.emit('entityMoved', {
+            entity: this.gameObject,
+            x: this.gameObject.x,
+            y: this.gameObject.y
+        });
     }
 
     /**

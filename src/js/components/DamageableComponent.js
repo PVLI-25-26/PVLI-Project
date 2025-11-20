@@ -83,6 +83,8 @@ export class DamageableComponent extends BaseComponent {
         if (this.isInvulnerable) return;
 
         this.currentHP = Math.max(0, this.currentHP - amount);
+        
+        EventBus.emit('entityDamaged', { entity: this.gameObject, amount: amount, currentHP: this.currentHP });
 
         this.flashRed(300);
 

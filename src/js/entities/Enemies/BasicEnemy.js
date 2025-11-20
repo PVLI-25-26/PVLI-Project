@@ -1,5 +1,6 @@
 import { extendWithComponents } from "../../core/component-extension.js";
 import { BasicEnemyControllerComponent } from "../../components/BasicEnemyController.js";
+import { EventBus } from "../../core/event-bus.js";
 import { MovementComponent } from "../../components/Movement.js";
 import { DamageableComponent } from "../../components/DamageableComponent.js";
 import { BillBoard } from "../../entities/BillBoard.js";
@@ -33,6 +34,7 @@ export class BasicEnemy extends BillBoard {
     constructor(scene, x, y, config) {
         super(scene, x, y, config.billboardConfig, config.physicsConfig, scene.cameras.main);
         this.config = config;
+        this.type = 'enemy';
 
         extendWithComponents(this);
 
@@ -63,7 +65,15 @@ export class BasicEnemy extends BillBoard {
         const controller = new BasicEnemyControllerComponent(this, this.config.state, this.config.patrolRoute);
 
         // Add DamageableComponent
-        const damageable = new DamageableComponent(this, this.config.maxHP, ['arrowHit', 'pushEnemy'], false, { damage: this.config.damageSound, death: this.config.deathSound });
+        const damageable = new DamageableComponent(this, 
+            this.config.maxHP, 
+            ['arrowHit', 'pushEnemy'], 
+            false, 
+            { damage: this.config.damageSound, 
+            death: this.config.deathSound });
+            
+        EventBus.emit('enemyHealthInitialized', 
+            { enemy: this, maxHP: this.config.maxHP });
     }
 
     /**

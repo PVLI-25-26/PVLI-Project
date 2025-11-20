@@ -30,13 +30,14 @@ export class BasicEnemyControllerComponent extends BaseControllerComponent {
     }
 
     // Example of simple player detection (can be expanded with vision cones, etc.)
-    checkPlayerInRange(player) {
+    checkTargetInRange(target) {
+        if (!target) return;
         if (this.currentState instanceof ChaseState) return;
         const distance = Phaser.Math.Distance.Between(
             this.gameObject.x,
             this.gameObject.y,
-            player.x,
-            player.y
+            target.x,
+            target.y
         );
         if (distance < 200) this.changeState('chase');
     }
@@ -44,7 +45,7 @@ export class BasicEnemyControllerComponent extends BaseControllerComponent {
     update(time, delta) {
         if (!this.enabled || !this.movementComponent || !this.currentState) return;
 
-        this.checkPlayerInRange(this.gameObject.scene.player);
+        this.checkTargetInRange(this.gameObject.scene.player);
         this.currentState.update(time, delta);
     }
 }

@@ -3,6 +3,9 @@ import audioConfig from "../configs/audio-config.json";
 import dungeon from "../js/core/dungeon.js";
 import { Player } from '../js/entities/Player.js';
 import { EventBus } from "../js/core/event-bus.js";
+import { HudModel } from "../js/UI/hud/HUDModel.js";
+import { HudView } from "../js/UI/hud/HUDView.js";
+import { HudPresenter } from "../js/UI/hud/HUDPresenter.js";
 import showLoaderUI from "../js/UI/LoaderUI.js";
 import { SoundSceneFacade } from "../js/core/sound-facade.js";
 
@@ -17,6 +20,10 @@ export default class GameplayScene extends Phaser.Scene {
 
     create(data) {
         EventBus.removeAllListeners();
+
+        const model = new HudModel();
+        const view = new HudView(this);
+        const presenter = new HudPresenter(view, model);
         
         // Get data about new room (this data depends on the connection take, that is why it is passed through there and not in the dungeon)
         this.playerSpawn = data.playerSpawn || {x: 0, y: 0};
