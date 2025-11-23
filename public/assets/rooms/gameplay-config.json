@@ -1,43 +1,113 @@
-{
-    "obstacles": [
-        {"key": "wall", "x":100, "y":50, "r":0},
-        {"key": "wall", "x":148, "y":50, "r":0},
-        {"key": "wall", "x":196, "y":50, "r":0},
-        {"key": "wall", "x":244, "y":50, "r":0},
-        {"key": "crate", "x":244, "y":105, "r":45},
-        {"key": "crate", "x":244, "y":160, "r":0},
-        {"key": "barrel", "x":196, "y":100, "r":0},
-        {"key": "chest", "x":148, "y":150, "r":270},
-        {"key": "door", "x":-100, "y":200, "r":0}
-
-
-    ],
-    "enemies": [
+{ "compressionlevel":-1,
+ "height":20,
+ "infinite":true,
+ "layers":[
         {
-            "type": "basic",
-            "pos": { "x": -100, "y": -250 },
-            "state": "patrol",
-            "patrolRoute": {
-                "points": [
-                    { "x": -100, "y": -250, "wait": 500 },
-                    { "x": -200, "y": -250, "wait": 500 },
-                    { "x": -150, "y": -300, "wait": 500 }
-                ]
-            }
-        },
+         "draworder":"topdown",
+         "id":5,
+         "name":"Obstacles",
+         "objects":[
+                {
+                 "id":76,
+                 "template":"Templates\/BillboardTemplate.tx",
+                 "type":"Tree",
+                 "x":288,
+                 "y":0
+                }, 
+                {
+                 "id":75,
+                 "template":"Templates\/BillboardTemplate.tx",
+                 "type":"Tree",
+                 "x":-144,
+                 "y":-96
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
+        }, 
         {
-            "type": "basic",
-            "pos": { "x": -200, "y": -250 },
-            "state": "idle"
-        },
+         "draworder":"topdown",
+         "id":6,
+         "name":"Items",
+         "objects":[],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
+        }, 
         {
-            "type": "basic",
-            "pos": { "x": -200, "y": -350 },
-            "state": "chase"
-        }
-    ],
-    "items":[
-        {"key":"key","x":0,"y":-50},
-        {"key":"golden-cup","x":100,"y":100}
-    ]
+         "draworder":"topdown",
+         "id":7,
+         "name":"Enemies",
+         "objects":[
+                {
+                 "id":77,
+                 "properties":[
+                        {
+                         "name":"patrolRoute",
+                         "propertytype":"PatrolRoute",
+                         "type":"class",
+                         "value":
+                            {
+                             "point1":
+                                {
+                                 "isUsed":false
+                                }
+                            }
+                        }, 
+                        {
+                         "name":"state",
+                         "type":"string",
+                         "value":"idle"
+                        }],
+                 "template":"Templates\/EnemyTemplate.tx",
+                 "type":"basic",
+                 "x":96,
+                 "y":-288
+                }, 
+                {
+                 "id":78,
+                 "properties":[
+                        {
+                         "name":"patrolRoute",
+                         "propertytype":"PatrolRoute",
+                         "type":"class",
+                         "value":
+                            {
+                             "point1":
+                                {
+                                 "isUsed":true
+                                }
+                            }
+                        }, 
+                        {
+                         "name":"state",
+                         "type":"string",
+                         "value":"idle"
+                        }],
+                 "template":"Templates\/EnemyTemplate.tx",
+                 "type":"basic",
+                 "x":192,
+                 "y":-144
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
+        }],
+ "nextlayerid":8,
+ "nextobjectid":79,
+ "orientation":"orthogonal",
+ "renderorder":"right-down",
+ "tiledversion":"1.11.2",
+ "tileheight":48,
+ "tilesets":[],
+ "tilewidth":48,
+ "type":"map",
+ "version":"1.10",
+ "width":30
 }

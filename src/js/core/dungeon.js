@@ -83,30 +83,53 @@ class Dungeon {
         // Get current dungeon room
         const room = this.#rooms.get(this.currentRoomKey);
 
-        scene.logger.log('DUNGEON', 1, 'Creating obstacles ...');
-        // Create obstacles in scene
-        room.obstacles.forEach(objSceneData => createObstacle(scene, objSceneData));
+        this.readTiledJSON(scene, room);
+        // scene.logger.log('DUNGEON', 1, 'Creating obstacles ...');
+        // // Create obstacles in scene
+        // room.obstacles.forEach(objSceneData => createObstacle(scene, objSceneData));
 
-        scene.logger.log('DUNGEON', 1, 'Creating items ...');
-        // Create items in scene
-        room.items.forEach(itemSceneData => createItem(scene, itemSceneData));
+        // scene.logger.log('DUNGEON', 1, 'Creating items ...');
+        // // Create items in scene
+        // room.items.forEach(itemSceneData => createItem(scene, itemSceneData));
 
-        scene.logger.log('DUNGEON', 1, 'Creating connections ...');
-        // Create every connection in scene
-        room.connections.forEach(connectionSceneData => createConnection(scene, this, connectionSceneData));
+        // scene.logger.log('DUNGEON', 1, 'Creating connections ...');
+        // // Create every connection in scene
+        // room.connections.forEach(connectionSceneData => createConnection(scene, this, connectionSceneData));
         
-        scene.logger.log('DUNGEON', 1, 'Creating enemies ...');
-        // Create every enemy in scene
-        room.enemies.forEach(enemyData => createEnemy(scene, enemyData));
+        // scene.logger.log('DUNGEON', 1, 'Creating enemies ...');
+        // // Create every enemy in scene
+        // room.enemies.forEach(enemyData => createEnemy(scene, enemyData));
 
         scene.logger.log('DUNGEON', 1, 'Creating scattered objects ...');
         // Scatter objects around the scene
         this.createScatteredObjects(scene, obstaclesGroup);
     }
 
+    readTiledJSON(scene, room){
+        room.layers.forEach((layer)=>{
+            switch(layer.name){
+                case "Obstacles":
+                    layer.objects.forEach((obj)=>{createObstacle(scene, obj)});
+                    break;
+                case "Items":
+                    layer.objects.forEach((item)=>{createItem(scene, item)});
+                    break;
+                case "Enemies":
+                    layer.objects.forEach((enemy)=>{createEnemy(scene, enemy)});
+                    break;
+                default:
+                    break;
+            }
+        })
+
+        scene.logger.log('DUNGEON', 1, 'Creating connections ...');
+        // Create every connection in scene
+        room.connections.forEach(connectionSceneData => createConnection(scene, this, connectionSceneData));
+    }
+
     createScatteredObjects(scene, obstaclesGroup) {
         for (let i = 0; i < 100; ++i) {
-            const grass = createObstacle(scene, { x: Math.random() * 700 - 350, y: Math.random() * 700 - 350, key: "Grass" });
+            const grass = createObstacle(scene, { x: Math.random() * 700 - 350, y: Math.random() * 700 - 350, type: "Grass" });
             grass.setFlipX(Math.floor(Math.random() * 2));
         }
         for (let i = 0; i < 600; i++) {
@@ -114,7 +137,7 @@ class Dungeon {
             let x = Math.random() * 1500 - 750;
             let y = Math.random() * 1500 - 750;
             if ((x < -350 || x > 350) || (y < -350 || y > 350)) {
-                const tree = createObstacle(scene, { x: x, y: y, key: "Tree" });
+                const tree = createObstacle(scene, { x: x, y: y, type: "Tree" });
                 tree.setFlipX(Math.floor(Math.random() * 2));
                 tree.setCollisionCategory(obstaclesGroup);
             }

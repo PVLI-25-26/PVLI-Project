@@ -16,7 +16,8 @@ export class BasicEnemyControllerComponent extends BaseControllerComponent {
 
         this.states = {
             idle: new IdleState(this),
-            patrol: new PatrolState(this, patrolRoute),
+            // patrolRoute is a Custom Property in tiled, its values are stored in patrolRoute.value
+            patrol: new PatrolState(this, patrolRoute.value),
             chase: new ChaseState(this, { chaseDuration: 2000, evadeDuration: 2000 })
         };
 
