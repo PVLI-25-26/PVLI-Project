@@ -33,6 +33,17 @@ export class PlayerControllerComponent extends BaseControllerComponent {
         EventBus.on('playerDashEnd', ()=>{
             this.movementComponent.setSpeed(5);
         });
+
+        // camera rotation when mouse is moved
+        this.gameObject.scene.input.on('pointermove',(pointer)=>{
+            if(!pointer.isDown)
+            {
+                // Sometimes mouse movement made big movements which where visually annoying, 
+                // this makes sure camera cannot be moved too much
+                this.camera.rotation -= Phaser.Math.Clamp(pointer.movementX*0.002, -0.01, 0.01);
+                EventBus.emit('cameraRotated', this.camera.rotation, Math.cos(-this.camera.rotation), Math.sin(-this.camera.rotation));
+            }
+        }, this);
     }
 
     /**
@@ -60,20 +71,6 @@ export class PlayerControllerComponent extends BaseControllerComponent {
         if (x != 0) this.gameObject.flipX = x < 0;
 
         this.movementComponent.setDirection(x, y);
-
-        // Camera rotation controls
-        // Don't allow both rotation keys at the same time because 
-        //      it is stupid and it will call many events unnecessarily (improves performance)
-        if(this.keys.rotCamRight.isDown && !this.keys.rotCamLeft.isDown) {
-            this.camera.rotation -= 0.002*delta; // Add rotation speed to config
-            // Emit event with new rotation and precalculated cos/sin for performance
-            EventBus.emit('cameraRotated', this.camera.rotation, Math.cos(-this.camera.rotation), Math.sin(-this.camera.rotation));
-        }
-        if(this.keys.rotCamLeft.isDown && !this.keys.rotCamRight.isDown) {
-            this.camera.rotation += 0.002*delta; // Add rotation speed to config
-            // Emit event with new rotation and precalculated cos/sin for performance
-            EventBus.emit('cameraRotated', this.camera.rotation, Math.cos(-this.camera.rotation), Math.sin(-this.camera.rotation));
-        }
     }
 
     /**
