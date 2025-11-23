@@ -22,5 +22,5 @@
     "pickUpRadius": 30,
     "damageSound": "playerHurt",
     "deathSound": "playerHurt",
-    "cameraSensitivity": 0.002
+    "cameraSensitivity": 0.001
 }

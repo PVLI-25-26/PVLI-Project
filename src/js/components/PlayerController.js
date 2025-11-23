@@ -40,7 +40,7 @@ export class PlayerControllerComponent extends BaseControllerComponent {
             {
                 // Sometimes mouse movement made big movements which where visually annoying, 
                 // this makes sure camera cannot be moved too much
-                this.camera.rotation -= Phaser.Math.Clamp(pointer.movementX*this.gameObject.config.cameraSensitivity, -0.01, 0.01);
+                this.camera.rotation -= Phaser.Math.Clamp(pointer.movementX*this.gameObject.config.cameraSensitivity, -0.08, 0.08);
                 EventBus.emit('cameraRotated', this.camera.rotation, Math.cos(-this.camera.rotation), Math.sin(-this.camera.rotation));
             }
         }, this);
