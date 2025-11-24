@@ -32,8 +32,17 @@ export default class GameplayScene extends Phaser.Scene {
         this.logger.log('GAMEPLAY', 1, 'Creating Sound facade...');
         this.sound_facade = new SoundSceneFacade(this, audioConfig);
 
-        this.input.keyboard.on("keydown-ESC", () => {
+        // Lock mouse pointer when scene starts and when scene is resumed
+        this.input.mouse.requestPointerLock();
+        this.events.on('resume', ()=>this.input.mouse.requestPointerLock(), this);
+        // Unlock mouse when scene is paused
+        this.events.on('pause', ()=>this.input.mouse.releasePointerLock(), this);
+        // Lock mouse if user clicks (maybe they exited the lock with ESC)
+        this.input.on('pointerdown', ()=>this.input.mouse.requestPointerLock(), this);
+
+        this.input.keyboard.on("keydown-P", () => {
             if (this.scene.isPaused("GameplayScene")) return;
+            console.log(this.input.mouse.locked);
             this.scene.launch("PauseMenu");
             this.scene.pause();
         });

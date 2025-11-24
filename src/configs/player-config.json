@@ -21,5 +21,6 @@
     "maxHP": 3,
     "pickUpRadius": 30,
     "damageSound": "playerHurt",
-    "deathSound": "playerHurt"
+    "deathSound": "playerHurt",
+    "cameraSensitivity": 0.001
 }

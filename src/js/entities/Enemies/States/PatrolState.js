@@ -9,7 +9,11 @@ export class PatrolState {
      */
     constructor(controller, patrolRoute) {
         this.controller = controller;
-        this.route = patrolRoute;
+        this.route = {points:[]};
+        // Add only used patrol route points (tiled doesn't allow arrays so a fixed amount of points is given)
+        for(const point of Object.values(patrolRoute)){
+            if(point.isUsed) this.route.points.push(point);
+        }
         this.currentPoint = 0;
         this.waiting = false;
         this.waitTimer = 0;

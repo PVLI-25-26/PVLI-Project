@@ -54,7 +54,7 @@ export class SpriteStack extends Phaser.GameObjects.Sprite{
      * @param {Phaser.Camera} camera Camera being used in the scene
      */
     constructor(scene, x, y, spriteStackConfig, physicsConfig, camera){
-        super(scene, x, y, null, null);
+        super(scene, x, y);
 
         // If a physics configuration is provided, set it
         if(physicsConfig){
@@ -66,6 +66,7 @@ export class SpriteStack extends Phaser.GameObjects.Sprite{
         this.#cameraCosR = 1;
         this.#cameraSinR = 0;
         this.config = spriteStackConfig;   
+        this.setOrigin(0.5);
         
         // initializes stacking parameters 
         this.verticalOffset = spriteStackConfig.verticalOffset;

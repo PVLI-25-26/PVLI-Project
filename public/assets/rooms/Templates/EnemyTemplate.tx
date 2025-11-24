@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template>
+ <object type="basic">
+  <properties>
+   <property name="patrolRoute" type="class" propertytype="PatrolRoute"/>
+   <property name="state" value="patrol"/>
+  </properties>
+  <point/>
+ </object>
+</template>

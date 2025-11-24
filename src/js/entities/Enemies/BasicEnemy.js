@@ -4,6 +4,7 @@ import { EventBus } from "../../core/event-bus.js";
 import { MovementComponent } from "../../components/Movement.js";
 import { DamageableComponent } from "../../components/DamageableComponent.js";
 import { BillBoard } from "../../entities/BillBoard.js";
+import { getCustomTiledProperty } from "../../core/tiled-parser.js";
 
 /**
  * BasicEnemy - a simple enemy entity with a visual sprite.
@@ -62,7 +63,9 @@ export class BasicEnemy extends BillBoard {
         const movement = new MovementComponent(this, this.config.speed);
 
         // Add PlayerControllerComponent
-        const controller = new BasicEnemyControllerComponent(this, this.config.state, this.config.patrolRoute);
+        // When adding custom properties in tiled, they are parsed as an array, the first property is the patrol route
+        //      the second property is the state and the value is stored in values (horrible)
+        const controller = new BasicEnemyControllerComponent(this, getCustomTiledProperty(this.config, "state"), getCustomTiledProperty(this.config, "patrolRoute"));
 
         // Add DamageableComponent
         const damageable = new DamageableComponent(this, 

@@ -8,7 +8,7 @@ itemsConfig.forEach(cfg =>{
 });
 
 export function createItem(scene, itemSceneData){
-    let item = new Item(scene, itemSceneData.x, itemSceneData.y, itemTemplates.get(itemSceneData.key));
+    let item = new Item(scene, itemSceneData.x, itemSceneData.y, itemTemplates.get(itemSceneData.type));
     item.setCollisionCategory(scene.itemsCategory);
     return item;
 }
