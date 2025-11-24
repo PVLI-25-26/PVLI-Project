@@ -19,6 +19,7 @@ import { createConnection } from './factories/connection-factory.js';
 import { createEnemy } from "./factories/enemy-simple-fabric.js";
 import { createItem } from './factories/item-factory.js';
 import { createObstacle } from './factories/obstacle-factory.js';
+import { getCustomTiledProperty, getTiledMapLayer } from './tiled-parser.js';
 
 /**
  * Manages dungeon rooms and instantiation of room objects into a Phaser scene.
@@ -58,8 +59,8 @@ class Dungeon {
     #initializeRooms(){
         this.#rooms = new Map();
         // Create all dungeon rooms from the template rooms and their configs in roomsConfig
-        roomsConfig.layers[0].objects.forEach(async (cfg) => {
-            const response = await fetch('assets/rooms/rooms/'+cfg.type);
+        getTiledMapLayer(roomsConfig, "Dungeon").forEach(async (cfg) => {
+            const response = await fetch('assets/rooms/Rooms/'+cfg.type);
             // Read JSON with template for the room being created
             const room = await response.json();
             // Give generic room the specific dungeon connections
@@ -78,44 +79,35 @@ class Dungeon {
      * @returns {void}
      */
     loadCurrentRoom(scene, obstaclesGroup){
-        
-        scene.logger.log('DUNGEON', 1, 'Getting room ...');
+        scene.logger.log('DUNGEON', 1, 'Loading room ...');
+
         // Get current dungeon room
         const room = this.#rooms.get(this.currentRoomKey);
 
+        // Read JSON object to populate scene
         this.readTiledJSON(scene, room);
-        // scene.logger.log('DUNGEON', 1, 'Creating obstacles ...');
-        // // Create obstacles in scene
-        // room.obstacles.forEach(objSceneData => createObstacle(scene, objSceneData));
 
-        // scene.logger.log('DUNGEON', 1, 'Creating items ...');
-        // // Create items in scene
-        // room.items.forEach(itemSceneData => createItem(scene, itemSceneData));
-
-        // scene.logger.log('DUNGEON', 1, 'Creating connections ...');
-        // // Create every connection in scene
-        // room.connections.forEach(connectionSceneData => createConnection(scene, this, connectionSceneData));
         
-        // scene.logger.log('DUNGEON', 1, 'Creating enemies ...');
-        // // Create every enemy in scene
-        // room.enemies.forEach(enemyData => createEnemy(scene, enemyData));
-
-        scene.logger.log('DUNGEON', 1, 'Creating scattered objects ...');
-        // Scatter objects around the scene
-        this.createScatteredObjects(scene, obstaclesGroup);
     }
 
     readTiledJSON(scene, room){
         room.layers.forEach((layer)=>{
             switch(layer.name){
                 case "Obstacles":
+                    scene.logger.log('DUNGEON', 1, 'Creating obstacles ...');
                     layer.objects.forEach((obj)=>{createObstacle(scene, obj)});
                     break;
                 case "Items":
+                    scene.logger.log('DUNGEON', 1, 'Creating items ...');
                     layer.objects.forEach((item)=>{createItem(scene, item)});
                     break;
                 case "Enemies":
+                    scene.logger.log('DUNGEON', 1, 'Creating enemies ...');
                     layer.objects.forEach((enemy)=>{createEnemy(scene, enemy)});
+                    break;
+                case "Scattering":
+                    scene.logger.log('DUNGEON', 1, 'Creating scattered objects ...');
+                    layer.objects.forEach((scattering)=>{this.createScatteredObjects(scene, scattering)});
                     break;
                 default:
                     break;
@@ -127,20 +119,13 @@ class Dungeon {
         room.connections?.forEach(connectionSceneData => createConnection(scene, this, connectionSceneData.value));
     }
 
-    createScatteredObjects(scene, obstaclesGroup) {
-        for (let i = 0; i < 100; ++i) {
-            const grass = createObstacle(scene, { x: Math.random() * 700 - 350, y: Math.random() * 700 - 350, type: "Grass" });
-            grass.setFlipX(Math.floor(Math.random() * 2));
-        }
-        for (let i = 0; i < 600; i++) {
-
-            let x = Math.random() * 1500 - 750;
-            let y = Math.random() * 1500 - 750;
-            if ((x < -350 || x > 350) || (y < -350 || y > 350)) {
-                const tree = createObstacle(scene, { x: x, y: y, type: "Tree" });
-                tree.setFlipX(Math.floor(Math.random() * 2));
-                tree.setCollisionCategory(obstaclesGroup);
-            }
+    createScatteredObjects(scene, scatterData) {
+        // Generates scattered objects from a rectangle defined in Tiled
+        for(let i = 0; i < getCustomTiledProperty(scatterData, "fill"); ++i){
+            const obj = createObstacle(scene, {
+                x: Math.random()*scatterData.width+scatterData.x,
+                y: Math.random()*scatterData.height+scatterData.y,
+                type: scatterData.type});
         }
     }
 }

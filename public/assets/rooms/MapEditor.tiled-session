@@ -11,6 +11,17 @@
     ],
     "file.lastUsedOpenFilter": "All Files (*)",
     "fileStates": {
+        "C:/Users/Adrián Isasi/Documents/PVLI-Project/src/configs/Dungeon/dungeon.json": {
+            "expandedObjectLayers": [
+                2
+            ],
+            "scale": 2,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 27.75,
+                "y": 44
+            }
+        },
         "C:/Users/Adrián Isasi/Documents/PVLI-Project/src/configs/Rooms/dungeon.json": {
             "expandedObjectLayers": [
                 2
@@ -34,6 +45,19 @@
                 "x": 29,
                 "y": -62.5
             }
+        },
+        "Rooms/hub-config.json": {
+            "scale": 0.5,
+            "selectedLayer": 3,
+            "viewCenter": {
+                "x": -659,
+                "y": 311
+            }
+        },
+        "Tilesets/Test.tsx": {
+            "dynamicWrapping": true,
+            "scaleInDock": 1,
+            "scaleInEditor": 8
         },
         "dungeon.json": {
             "expandedObjectLayers": [
@@ -62,6 +86,14 @@
                 "y": -57.5
             }
         },
+        "rooms/hub-config.json": {
+            "scale": 0.75,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 87.33333333333331,
+                "y": -0.6666666666666288
+            }
+        },
         "roomsTest.tmj": {
             "expandedObjectLayers": [
                 2
@@ -83,6 +115,7 @@
         }
     },
     "last.exportedFilePath": "C:/Users/Adrián Isasi/Documents/PVLI-Project/public/assets/rooms",
+    "last.imagePath": "C:/Users/Adrián Isasi/Documents/PVLI-Project/public/assets/sprites/SpriteStackingPlaceholders/MiscProps",
     "last.objectTemplatePath": "C:/Users/Adrián Isasi/Documents/PVLI-Project/public/assets/rooms/Templates",
     "map.fixedSize": false,
     "map.lastUsedExportFilter": "JSON map files (*.tmj *.json)",
@@ -90,13 +123,16 @@
     "openFiles": [
     ],
     "project": "MapEditor.tiled-project",
-    "property.type": "Connection",
+    "property.type": "int",
     "recentFiles": [
+        "Tilesets/Test.tsx",
         "gameplay-config.json",
         "C:/Users/Adrián Isasi/Documents/PVLI-Project/src/configs/Rooms/dungeon.json",
         "dungeon.json",
         "roomsTest.tmj",
         "EmptyMap-config.json",
         "tiledRoom.json"
-    ]
+    ],
+    "tileset.lastUsedFormat": "tsx",
+    "tileset.type": 1
 }
