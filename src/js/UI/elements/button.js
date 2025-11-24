@@ -12,20 +12,23 @@ import Phaser from "phaser";
  * @param {number} y - The y-coordinate of the button's position.
  * @param {string} text - The text displayed on the button.
  * @param {Function} callback - Function to call when the button is clicked.
- *
+ * @param {number} size - Size in px.
+ * @param {string} font - Family font.
+ * @param {string} color - Color.
+ * 
  * @example
  * const startButton = new Button(this, 400, 300, "Start Game", () => {
  *     console.log("Button clicked!");
  * }).on("button-clicked", () => console.log("Custom event fired!"));
  */
 export class Button extends Phaser.GameObjects.Text {
-    constructor(scene, x, y, text, callback) {
+    constructor(scene, x, y, text, font, color, size,align,callback) {
         super(scene, x, y, text, {
-            fontSize: "32px",
-            color: "#b2b2b2ff",
+            fontSize: size,
+            color: color,
+            fontFamily: font,
             padding: { x: 20, y: 10 },
         });
-
         /**
          * Reference to the Phaser scene this button belongs to.
          * @type {Phaser.Scene}

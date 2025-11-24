@@ -96,3 +96,12 @@ a{
   text-align: center;
   color: brown;
 }
+
+@font-face {
+  font-family: MicroChat;
+  src: url("assets/fonts/Micro_Chat.ttf");
+}
+@font-face {
+  font-family: FableFont;
+  src: url("assets/fonts/Fabled_Font.ttf");
+}

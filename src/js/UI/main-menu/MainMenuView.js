@@ -1,5 +1,6 @@
 import { Button } from "../elements/button.js";
 import { Slider } from "../elements/slider.js";
+import Colors from "../../../configs/color-config.json"
 
 export default class MainMenuView {
     constructor(scene) {
@@ -25,14 +26,14 @@ export default class MainMenuView {
         const centerX = this.scene.scale.width / 2;
         const centerY = this.scene.scale.height / 2;
 
-        this.startButton = new Button(this.scene, centerX, centerY, "Start Game");
+        this.startButton = new Button(this.scene, centerX, centerY, "Start Game", "FableFont",Colors.White,20,"center");
         this.startButton.addInteraction((btn) => {
             btn.on("pointerover", () => {
-                btn.setColor("#ffffffff");
+                btn.setColor(Colors.Red);
                 btn.invokeHover();
             });
             btn.on("pointerout", () => {
-                btn.setColor("#b2b2b2ff");
+                btn.setColor(Colors.White);
             });
             btn.on("pointerdown", () => {
                 btn.invokeClick();

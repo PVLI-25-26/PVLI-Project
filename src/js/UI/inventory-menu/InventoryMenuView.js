@@ -1,6 +1,7 @@
 import { createItemDisplay } from "../../core/factories/item-factory";
 import { Button } from "../elements/button";
 import { Slider } from "../elements/slider";
+import Colors from "../../../configs/color-config.json"
 
 // Far away position of item displays and camera that shows them in inventory
 // Keep large to ensure the items and camera rendering them are outside the visible area
@@ -96,15 +97,15 @@ export default class InventoryMenuView {
      */
     createExitButton(scene) {
         // Create exit button
-        this.exitButton = new Button(scene, this.inventoryBG.x + INVENTORY_WIDTH / 2, this.inventoryBG.y - INVENTORY_HEIGHT / 2, 'X').setOrigin(1, 0);
+        this.exitButton = new Button(scene, this.inventoryBG.x + INVENTORY_WIDTH / 2, this.inventoryBG.y - INVENTORY_HEIGHT / 2, 'X', "MicroChat",Colors.White,20).setOrigin(1, 0);
         // Wire button interactions with visual changes
         this.exitButton.addInteraction((btn) => {
             btn.on("pointerover", () => {
-                btn.setColor("#ffffffff");
+                btn.setColor(Colors.Red);
                 btn.invokeHover();
             });
             btn.on("pointerout", () => {
-                btn.setColor("#b2b2b2ff");
+                btn.setColor(Colors.White);
             });
             btn.on("pointerdown", () => {
                 btn.invokeClick();

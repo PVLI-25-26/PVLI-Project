@@ -28,12 +28,11 @@ export default class MainMenu extends Phaser.Scene {
         
         const model = new MainMenuModel();
         const view = new MainMenuView(this);
-        const presenter = new MainMenuPresenter(view, model);
-
+        const presenter = new MainMenuPresenter(view, model)
         //const model = new NPCsDialogueModel(dialogueTest,dialogueEvents);
         //const view = new NPCsDialogueView(this);
         //const presenter = new NPCsDialoguePresenter(view,model);
-        
+
         //EventBus.emit("StartDialogue","npcName1")
     }
 }

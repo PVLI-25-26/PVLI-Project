@@ -2,13 +2,15 @@ import Phaser from "phaser";
 
 
 export class TextBox extends Phaser.GameObjects.Text{
-    constructor(scene,x,y,text,speed, boxWidth,){
+    constructor(scene,x,y,text,speed, boxWidth,font, size, color){
         super(scene,x,y,"",{
-            fontSize:"14px",
-            color:"#b2b2b2ff",
+            fontSize:size,
+            color:color,
             padding: {x:10,y:20},
             wordWrap:{width:boxWidth},
+            
         });
+        this.setFontFamily(font);
         scene.add.existing(this);
         this.boxText = text;
         this.speed = speed;

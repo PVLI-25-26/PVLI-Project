@@ -8,12 +8,14 @@
         "npcName" : "Antonio",
         "userOptions" : [
             {
-                "label": "Option1",
-                "event" : "Event1"
+                "label": "Bye",
+                "event" : "Event1",
+                "color" : "White"
             },
             {
-                "label" : "Option2",
-                "event" : "Event2"
+                "label" : "Next",
+                "event" : "Event2",
+                "color" : "Red"
             }
         ]
     
@@ -29,11 +31,13 @@
         "userOptions" : [
             {
                 "label" : "Adios",
-                "event" : "END"
+                "event" : "END",
+                "color" : "White"
             },
             {
                 "label" : "Next",
-                "event" : "NEXT_PAGE"
+                "event" : "NEXT_PAGE",
+                "color" : "Green"
             }
         ]
     }
