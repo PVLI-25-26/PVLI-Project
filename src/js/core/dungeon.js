@@ -14,7 +14,7 @@
  * @property {Array<Connection>} [connections] - Connections to other rooms.
  */
 
-import roomsConfig from '../../configs/Rooms/rooms.json'
+import roomsConfig from '../../configs/Dungeon/dungeon.json'
 import { createConnection } from './factories/connection-factory.js';
 import { createEnemy } from "./factories/enemy-simple-fabric.js";
 import { createItem } from './factories/item-factory.js';
@@ -58,14 +58,14 @@ class Dungeon {
     #initializeRooms(){
         this.#rooms = new Map();
         // Create all dungeon rooms from the template rooms and their configs in roomsConfig
-        roomsConfig.forEach(async (cfg) => {
-            const response = await fetch('assets/rooms/'+cfg.path);
+        roomsConfig.layers[0].objects.forEach(async (cfg) => {
+            const response = await fetch('assets/rooms/rooms/'+cfg.type);
             // Read JSON with template for the room being created
             const room = await response.json();
             // Give generic room the specific dungeon connections
-            room.connections = cfg.connections;
+            room.connections = cfg.properties;
             // Add room to the map of rooms
-            this.#rooms.set(cfg.key, room);
+            this.#rooms.set(cfg.id, room);
         });
     }
 
@@ -124,7 +124,7 @@ class Dungeon {
 
         scene.logger.log('DUNGEON', 1, 'Creating connections ...');
         // Create every connection in scene
-        room.connections.forEach(connectionSceneData => createConnection(scene, this, connectionSceneData));
+        room.connections?.forEach(connectionSceneData => createConnection(scene, this, connectionSceneData.value));
     }
 
     createScatteredObjects(scene, obstaclesGroup) {
@@ -145,4 +145,4 @@ class Dungeon {
     }
 }
 
-export default new Dungeon('hub');
+export default new Dungeon(1);
