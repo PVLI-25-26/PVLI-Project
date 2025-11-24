@@ -28,3 +28,6 @@ GDD/.obsidian/*
 
 # Ignore logger configuration
 logger-config.json 
+
+# Ignore tiled editor sessions file
+*.tiled-session
