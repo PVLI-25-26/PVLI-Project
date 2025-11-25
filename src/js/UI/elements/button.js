@@ -22,7 +22,7 @@ import Phaser from "phaser";
  * }).on("button-clicked", () => console.log("Custom event fired!"));
  */
 export class Button extends Phaser.GameObjects.Text {
-    constructor(scene, x, y, text, font, color, size,align,callback) {
+    constructor(scene, x, y, text, font, color, size ,align ,callback) {
         super(scene, x, y, text, {
             fontSize: size,
             color: color,

@@ -60,7 +60,7 @@ class Dungeon {
         this.#rooms = new Map();
         // Create all dungeon rooms from the template rooms and their configs in roomsConfig
         getTiledMapLayer(roomsConfig, "Dungeon").forEach(async (cfg) => {
-            const response = await fetch('assets/rooms/Rooms/'+cfg.type);
+            const response = await fetch('assets/rooms/rooms/'+cfg.type);
             // Read JSON with template for the room being created
             const room = await response.json();
             // Give generic room the specific dungeon connections
