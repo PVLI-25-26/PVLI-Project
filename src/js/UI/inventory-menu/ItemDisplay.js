@@ -1,19 +1,23 @@
+import Colors from "../../../configs/color-config.json"
+
 // Vertical margin for the image inside the item
 const IMG_MARGIN_VER = 20;
 // Horizontal margin for the image inside the item
-const IMG_MARGIN_HOR = 10;
+const IMG_MARGIN_HOR = 20;
 
 // For item name and description
 // Distance between item image and item title and description
-const ITEM_TEXT_MARGIN_HOR = 10;
+const ITEM_TEXT_MARGIN_HOR = 20;
 
 // Font size and color used in item title
 const ITEM_TITLE_FONTSIZE = '20px';
-const ITEM_TITLE_COLOR = '#0';
+const ITEM_TITLE_COLOR = Colors.Red;
+const ITEM_TITLE_FONTFAMILY = 'FableFont';
 
 // Font size and color used in item description
-const ITEM_DESC_FONTSIZE = '12px';
-const ITEM_DESC_COLOR = '#4f4f4f';
+const ITEM_DESC_FONTSIZE = '9px';
+const ITEM_DESC_COLOR = Colors.White;
+const ITEM_DESC_FONTFAMILY = 'MicroChat';
 
 // Speed at which the progress bar is increased or decreased when player holds click
 // NOTE: Progres bar goes from values 0 - 1
@@ -39,10 +43,13 @@ export class ItemDisplay extends Phaser.GameObjects.Container{
         super(scene, x, y);
 
         // Create display background
-        this.itemBG = this.scene.add.rectangle(0, 0, width, height, 0xFFFFFF).setOrigin(0);
+        this.itemBG = this.scene.add.nineslice(0, 0, 'UIbackground', 0, width/2, height/2, 3,3,3,3 ).setOrigin(0);
+        this.itemBG.setScale(2);
 
         // Create background progress bar for consuming items
-        this.itemProgress = this.scene.add.rectangle(0, 0, 0, height, 0x0).setOrigin(0).setAlpha(0.2);
+        this.itemProgress = this.scene.add.rectangle(this.itemBG.leftWidth*this.itemBG.scale, this.itemBG.topHeight*this.itemBG.scale, 0, (height/2)-6, parseInt(Colors.LightBrown.slice(1), 16)).setOrigin(0);
+        this.itemProgress.setScale(2);
+
         // reset progress bar values
         this.consumeProgress = 0;
         this.isBeingPressed = false;
@@ -54,13 +61,15 @@ export class ItemDisplay extends Phaser.GameObjects.Container{
         // Set item title text
         this.itemTITLE = this.scene.add.text(this.itemIMG.x+this.itemIMG.width+ITEM_TEXT_MARGIN_HOR, this.itemIMG.y-this.itemIMG.height/2, itemData.name, {
             color: ITEM_TITLE_COLOR, 
-            fontSize: ITEM_TITLE_FONTSIZE
+            fontSize: ITEM_TITLE_FONTSIZE,
+            fontFamily: ITEM_TITLE_FONTFAMILY
         }).setOrigin(0);
 
         // Set item description text
-        this.itemDESC = this.scene.add.text(this.itemIMG.x+this.itemIMG.width+ITEM_TEXT_MARGIN_HOR, this.itemIMG.y, itemData.description, {
+        this.itemDESC = this.scene.add.text(this.itemIMG.x+this.itemIMG.width+ITEM_TEXT_MARGIN_HOR, this.itemTITLE.y+this.itemTITLE.height, itemData.description, {
             color: ITEM_DESC_COLOR, 
             fontSize: ITEM_DESC_FONTSIZE,
+            fontFamily: ITEM_DESC_FONTFAMILY
         }).setOrigin(0);  
         this.itemDESC.setWordWrapWidth(width-this.itemDESC.x-ITEM_TEXT_MARGIN_HOR)
         
@@ -87,12 +96,12 @@ export class ItemDisplay extends Phaser.GameObjects.Container{
         if(this.isBeingPressed){
             this.consumeProgress += ITEM_CONSUMPTION_SPEED * dt;
             this.consumeProgress = Math.min(1, this.consumeProgress);
-            this.itemProgress.width = this.consumeProgress * this.itemBG.width;
+            this.itemProgress.width = this.consumeProgress * (this.itemBG.width-this.itemBG.rightWidth*2);
         }
         else{
             this.consumeProgress -= ITEM_DECONSUMPTION_SPEED * dt;
             this.consumeProgress = Math.max(0, this.consumeProgress);
-            this.itemProgress.width = this.consumeProgress * this.itemBG.width;
+            this.itemProgress.width = this.consumeProgress * (this.itemBG.width-this.itemBG.rightWidth*2);
         }
 
         // If progress bar is complete, consume item

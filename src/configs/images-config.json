@@ -30,5 +30,6 @@
 
     {"key": "UIdialogueButton", "type": "image", "file": "assets/UI/Dialogues/button_background.png", "settings":{}},
     {"key": "UIdialoguePortraitBackground", "type": "image", "file": "assets/UI/Dialogues/Dialogue_background.png", "settings":{}},
-    {"key": "UIdialogueBackground", "type": "image", "file": "assets/UI/Dialogues/Portrait_background.png", "settings":{}}
+    {"key": "UIdialogueBackground", "type": "image", "file": "assets/UI/Dialogues/Portrait_background.png", "settings":{}},
+    {"key": "UIbackground", "type": "image", "file": "assets/UI/UI_Background_NineSlice.png", "settings":{}}
 ]
