@@ -23,7 +23,5 @@ export default class InventoryMenuModel {
     removeItem(idx){
         // Remove item from player's inventory (will apply buffs of said item)
         this.playerInventoryComponent.removeItem(idx);
-        // Remove item from display data
-        this.itemDisplayData.splice(idx, 1);
     }
 }
