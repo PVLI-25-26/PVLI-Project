@@ -27,5 +27,11 @@ export default class Boot extends Phaser.Scene {
     create() {
         this.logger.log('BOOT', 1, 'Loading complete, starting game!');
         this.scene.start('MainMenu');
+        this.loadFonts();
+    }
+    loadFonts(){
+        document.fonts.load("32px FableFont").then(()=>{});
+        document.fonts.load("32px MicroChat").then(()=>{});
+
     }
 }
