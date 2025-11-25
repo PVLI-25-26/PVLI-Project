@@ -32,9 +32,10 @@ export class BasicEnemy extends BillBoard {
      */
     config;
 
-    constructor(scene, x, y, config) {
+    constructor(scene, x, y, id, config) {
         super(scene, x, y, config.billboardConfig, config.physicsConfig, scene.cameras.main);
         this.config = config;
+        this.id = id;
         this.type = 'enemy';
 
         extendWithComponents(this);

@@ -26,7 +26,7 @@ export function createEnemy(scene, enemyData, patrolRoutes) {
     // Get enemy patrol route and add it to its config properties
     const enemyRoute = getTiledObject(patrolRoutes, (getCustomTiledProperty(enemyData, "PatrolRoute")));
     finalConfig.patrolRoute = enemyRoute.polygon;
-    const enemy = new EnemyClass(scene, enemyData.x, enemyData.y, finalConfig);
+    const enemy = new EnemyClass(scene, enemyData.x, enemyData.y, enemyData.id, finalConfig);
 
     enemy.setCollisionCategory(scene.enemiesCategory);
 

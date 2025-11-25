@@ -1,4 +1,3 @@
-import dungeon from "../core/dungeon";
 import { EventBus } from "../core/event-bus";
 import { BillBoard } from "./BillBoard";
 
@@ -15,10 +14,11 @@ export class Item extends BillBoard{
      * @param {number} y - Y world position.
      * @param {ItemConfig} config - Item configuration object.
      */
-    constructor(scene, x, y, config){
+    constructor(scene, x, y, id, config){
         super(scene, x, y, config.billboardConfig, config.physicsConfig);
         // save item key
         this.key = config.key;
+        this.id = id;
 
         // Add item to scene
         this.scene.add.existing(this);

@@ -21,10 +21,10 @@ export class InventoryComponent extends BaseComponent{
      * Create an InventoryComponent.
      * @param {Phaser.GameObjects.GameObject} gameObject - Owner game object (player).
      */
-    constructor(gameObject){
+    constructor(gameObject, inventory){
         super(gameObject);
         // Create inventory (array of item keys)
-        this.#playerInventory = [];
+        this.#playerInventory = inventory || [];
         // Wire item picked events to add item to inventory
         EventBus.on('itemPicked', (picker, item)=>{
             if(this.gameObject === picker) this.addItemToInventory(item.key);
