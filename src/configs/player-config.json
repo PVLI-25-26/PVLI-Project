@@ -12,8 +12,8 @@
         }
     },
 
-    "offsetX": 0,
-    "offsetY": -20,
+    "offsetX": 0.5,
+    "offsetY": 0.8,
     "speed": 5,
     "minShootPower": 5,
     "maxShootPower": 40,

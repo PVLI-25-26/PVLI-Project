@@ -52,6 +52,11 @@ export default class GameplayScene extends Phaser.Scene {
             this.scene.pause();
         });
 
+        this.input.keyboard.on("keydown-U", () => {
+            this.matter.world.drawDebug = !this.matter.world.drawDebug;
+            this.matter.world.debugGraphic.visible = this.matter.world.drawDebug;
+        });
+
 
         // Create physics groups
         this.obstaclesCategory = 1 << 0;

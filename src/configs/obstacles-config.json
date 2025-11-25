@@ -124,12 +124,12 @@
         "physicsConfig":{
             "shape": {
                 "type": "rectangle",
-                "width": 5,
+                "width": 3,
                 "height": 10
             },
             "isStatic": true
         },
-        "offsetX": 0,
-        "offsetY": -10
+        "offsetX": 0.5,
+        "offsetY": 0.95
     }
 ]

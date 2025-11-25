@@ -26,7 +26,7 @@ const config = {
         matter: {
         enabled: true,
         gravity: { y: 0 },
-        debug: false,
+        debug: true,
         }
     },
 
