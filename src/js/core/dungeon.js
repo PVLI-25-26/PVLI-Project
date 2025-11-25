@@ -91,6 +91,9 @@ class Dungeon {
     }
 
     readTiledJSON(scene, room){
+        // Set background color specified in Tiled (only the main camera)
+        scene.cameras.main.setBackgroundColor(room.backgroundcolor);
+
         // Fix polygon coordinates used as enemy routes
         // Explanation: Points in polygons have a "local position" in the polygon, not the actual world coordinates
         //              For that reason, why first fix the enemy routes and them give them to the enemies how want them

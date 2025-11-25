@@ -42,7 +42,6 @@ export default class GameplayScene extends Phaser.Scene {
 
         this.input.keyboard.on("keydown-P", () => {
             if (this.scene.isPaused("GameplayScene")) return;
-            console.log(this.input.mouse.locked);
             this.scene.launch("PauseMenu");
             this.scene.pause();
         });
