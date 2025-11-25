@@ -1,4 +1,5 @@
-{ "compressionlevel":-1,
+{ "backgroundcolor":"#4f4a45",
+ "compressionlevel":-1,
  "height":20,
  "infinite":true,
  "layers":[
@@ -18,8 +19,8 @@
                  "id":75,
                  "template":"..\/Templates\/BillboardTemplate.tx",
                  "type":"Tree",
-                 "x":-144,
-                 "y":-96
+                 "x":0,
+                 "y":0
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -44,29 +45,32 @@
          "name":"Enemies",
          "objects":[
                 {
-                 "id":77,
+                 "id":78,
+                 "name":"Enemy 2",
                  "properties":[
                         {
-                         "name":"patrolRoute",
-                         "propertytype":"PatrolRoute",
-                         "type":"class",
-                         "value":
-                            {
-                             "point1":
-                                {
-                                 "isUsed":true,
-                                 "wait":500,
-                                 "x":-150,
-                                 "y":-330
-                                },
-                             "point2":
-                                {
-                                 "isUsed":true,
-                                 "wait":500,
-                                 "x":96,
-                                 "y":-288
-                                }
-                            }
+                         "name":"PatrolRoute",
+                         "type":"object",
+                         "value":83
+                        }, 
+                        {
+                         "name":"state",
+                         "type":"string",
+                         "value":"patrol"
+                        }],
+                 "template":"..\/Templates\/EnemyTemplate.tx",
+                 "type":"basic",
+                 "x":192,
+                 "y":-144
+                }, 
+                {
+                 "id":84,
+                 "name":"Enemy 1",
+                 "properties":[
+                        {
+                         "name":"PatrolRoute",
+                         "type":"object",
+                         "value":83
                         }, 
                         {
                          "name":"state",
@@ -77,31 +81,53 @@
                  "type":"basic",
                  "x":96,
                  "y":-288
-                }, 
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "draworder":"topdown",
+         "id":10,
+         "name":"Enemy Routes",
+         "objects":[
                 {
-                 "id":78,
-                 "properties":[
+                 "height":0,
+                 "id":83,
+                 "name":"",
+                 "polygon":[
                         {
-                         "name":"patrolRoute",
-                         "propertytype":"PatrolRoute",
-                         "type":"class",
-                         "value":
-                            {
-                             "point1":
-                                {
-                                 "isUsed":true
-                                }
-                            }
+                         "x":-192,
+                         "y":-192
                         }, 
                         {
-                         "name":"state",
-                         "type":"string",
-                         "value":"idle"
+                         "x":-384,
+                         "y":-120
+                        }, 
+                        {
+                         "x":-384,
+                         "y":48
+                        }, 
+                        {
+                         "x":-192,
+                         "y":144
+                        }, 
+                        {
+                         "x":0,
+                         "y":48
+                        }, 
+                        {
+                         "x":-48,
+                         "y":-144
                         }],
-                 "template":"..\/Templates\/EnemyTemplate.tx",
-                 "type":"basic",
-                 "x":192,
-                 "y":-144
+                 "rotation":0,
+                 "type":"Patrol Route",
+                 "visible":true,
+                 "width":0,
+                 "x":0,
+                 "y":-192
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -109,8 +135,8 @@
          "x":0,
          "y":0
         }],
- "nextlayerid":8,
- "nextobjectid":79,
+ "nextlayerid":12,
+ "nextobjectid":85,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.11.2",

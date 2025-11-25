@@ -12,11 +12,11 @@ const CAMERA_SCROLL_SPEED = 0.7;
 const INVENTORY_WIDTH = 500;
 const INVENTORY_HEIGHT = 500;
 
-const ITEMLIST_DISPLAY_WIDTH = 300;
-const ITEMLIST_DISPLAY_HEIGHT = 400;
+const ITEMLIST_DISPLAY_WIDTH = 380;
+const ITEMLIST_DISPLAY_HEIGHT = 480;
 
 const ITEM_DISPLAY_WIDTH = ITEMLIST_DISPLAY_WIDTH;
-const ITEM_DISPLAY_HEIGHT = 100;
+const ITEM_DISPLAY_HEIGHT = 150;
 // Space between each Item display
 const ITEM_DISPLAY_MARGIN = 20;
 
@@ -49,7 +49,10 @@ export default class InventoryMenuView {
      */
     createElements(scene){
         // Create inventory background
-        this.inventoryBG = this.scene.add.rectangle(this.scene.scale.width/2, this.scene.scale.height/2, INVENTORY_WIDTH, INVENTORY_HEIGHT, 0x998570, 40).setOrigin(0.5);
+        this.inventoryBG = this.scene.add.nineslice(this.scene.scale.width/2, this.scene.scale.height/2, 'UIbackground', 0, INVENTORY_WIDTH, INVENTORY_HEIGHT, 4, 4, 4, 4).setOrigin(0.5);
+        this.inventoryBG.setScale(2);
+        this.inventoryBG.width /= 2;
+        this.inventoryBG.height /= 2;
 
         // Create container with all item displays
         this.itemDisplayListContainer = this.scene.add.container(ITEMLIST_DISPLAY_POS, ITEMLIST_DISPLAY_POS);
@@ -121,7 +124,7 @@ export default class InventoryMenuView {
      */
     createSlider(scene) {
         // Create slider
-        this.itemListSlider = new Slider(scene, this.inventoryBG.x + INVENTORY_WIDTH / 2 - 10, this.inventoryBG.y, SLIDER_WIDTH, SLIDER_HEIGHT, 0);
+        this.itemListSlider = new Slider(scene, this.inventoryBG.x + INVENTORY_WIDTH / 2 - 30, this.inventoryBG.y, SLIDER_WIDTH, SLIDER_HEIGHT, 0);
         this.itemListSlider.setAngle(90);
 
         // Update camera scroll when scroll slider value is updated

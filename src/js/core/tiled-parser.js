@@ -22,3 +22,15 @@ export function getTiledMapLayer(tiledMap, layerName){
     }
     return undefined;
 }
+
+export function getTiledObject(tiledLayer, objectID){
+    if(tiledLayer){
+        for(const object of tiledLayer)
+        {
+            if(object.id === objectID){
+                return object;
+            }
+        }
+    }
+    return undefined;
+}

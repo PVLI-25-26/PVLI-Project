@@ -42,7 +42,6 @@ export default class GameplayScene extends Phaser.Scene {
 
         this.input.keyboard.on("keydown-P", () => {
             if (this.scene.isPaused("GameplayScene")) return;
-            console.log(this.input.mouse.locked);
             this.scene.launch("PauseMenu");
             this.scene.pause();
         });
@@ -51,6 +50,11 @@ export default class GameplayScene extends Phaser.Scene {
             if (this.scene.isPaused("GameplayScene")) return;
             this.scene.launch("InventoryMenu", this.player);
             this.scene.pause();
+        });
+
+        this.input.keyboard.on("keydown-U", () => {
+            this.matter.world.drawDebug = !this.matter.world.drawDebug;
+            this.matter.world.debugGraphic.visible = this.matter.world.drawDebug;
         });
 
 
