@@ -2,7 +2,7 @@ Editing rooms comfortably is key for designers, as it allows for fast iteration 
 Making our own editor would take a lot of work and time, which we don't have. For that reason, we use [Tiled](https://www.mapeditor.org) as our map editor, with some work a rounds in special cases.
 
 # How to create a room
-Rooms are structured in special **layers for each type of distinct object** in a scene. Currently, there are 4 layers that the user can work with: Obstacles, Items, Enemies and Scattering. 
+Rooms are structured in special **layers for each type of distinct object** in a scene. Currently, there are 5 layers that the user can work with: *Obstacles*, *Items*, *Enemies*, *Enemy Routes* and *Scattering*. 
 
 >[!Failure]
 >Each object must belong to their corresponding layer, otherwise, the **game will crash** trying to load the scene.
@@ -35,13 +35,17 @@ Now you just need to specify the *identifier* of the **item** to make sure the g
 ## How to add enemies to a room
 ### Adding the enemy
 To add an **enemy** to a room, go to the **Enemies** layer. Now you can open the `Templates` folder and drag the `EnemyTemplate.tx` template to the map.
-As you can see, its *custom properties* will already be populated with a `state` and a `patrolRoute`. This properties will be explained in the following section.
+As you can see, its *custom properties* will already be populated with a `state` and a `PatrolRoute`. This properties will be explained in the following section.
 Now you just need to specify the *identifier* of the **Enemy** to make sure the game knows what item enemy are trying to instance. Enter the *identifier* in the `Class` property of the object created.
 *identifiers* of item are defined in their `JSON` file at `src/configs/Enemies/<enemy>-config.json`.
 ![[Screenshot from 2025-11-24 23-14-58.png]]
 
 ### Adding a patrol route
-#WIP Changes on how this works are being implemented. This section is still not defined.
+To create a **patrol route**, go to the **Enemy Routes** layer. Now you can add a *polygon* with the **polygon tool** in the map. Each point of the polygon represents the points of the enemy routes.
+Now, for each enemy, you may select the route you want it to follow in the `PatrolRoute` property.
+>[!warning] Patrol routes can only be polygons.
+
+![[Pasted image 20251125093917.png]]
 
 ## How to add scattering areas
 To add a **scattering area** to a room, go to the **Scattering** layer. Now you can open the `Templates` folder and drag the `ScatteringTemplate.tx` template to the map.

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <template>
- <object type="basic">
+ <object name="Enemy Template" type="&lt;enemy-type&gt;">
   <properties>
-   <property name="patrolRoute" type="class" propertytype="PatrolRoute"/>
-   <property name="state" value="patrol"/>
+   <property name="PatrolRoute" type="object" value="0"/>
+   <property name="state" value="idle"/>
   </properties>
   <point/>
  </object>

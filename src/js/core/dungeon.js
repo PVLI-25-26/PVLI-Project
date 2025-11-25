@@ -91,6 +91,19 @@ class Dungeon {
     }
 
     readTiledJSON(scene, room){
+        // Fix polygon coordinates used as enemy routes
+        // Explanation: Points in polygons have a "local position" in the polygon, not the actual world coordinates
+        //              For that reason, why first fix the enemy routes and them give them to the enemies how want them
+        // Why Polygons then? Because it's far better than setting points by hand
+        getTiledMapLayer(room, "Enemy Routes")?.forEach(route=>{
+            route.polygon.forEach(point=>{
+                point.x += route.x;
+                point.y += route.y;
+            })
+        });
+
+        // We use each layer in tiled to filter the types of object to be instantiated
+        // Each factory handles whatever they have to do to create the object
         room.layers.forEach((layer)=>{
             switch(layer.name){
                 case "Obstacles":
@@ -103,7 +116,7 @@ class Dungeon {
                     break;
                 case "Enemies":
                     scene.logger.log('DUNGEON', 1, 'Creating enemies ...');
-                    layer.objects.forEach((enemy)=>{createEnemy(scene, enemy)});
+                    layer.objects.forEach((enemy)=>{createEnemy(scene, enemy, getTiledMapLayer(room, "Enemy Routes"))});
                     break;
                 case "Scattering":
                     scene.logger.log('DUNGEON', 1, 'Creating scattered objects ...');

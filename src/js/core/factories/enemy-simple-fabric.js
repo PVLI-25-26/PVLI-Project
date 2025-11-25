@@ -1,5 +1,6 @@
 import basicEnemyConfig from "../../../configs/Enemies/basic-enemy-config.json";
 import { BasicEnemy } from "../../entities/Enemies/BasicEnemy.js";
+import { getCustomTiledProperty, getTiledObject } from "../tiled-parser.js";
 
 const ENEMY_GLOBAL_CONFIGS = {
     "basic": basicEnemyConfig
@@ -9,7 +10,7 @@ const ENEMY_TYPES = {
   "basic": BasicEnemy,
 };
 
-export function createEnemy(scene, enemyData) {
+export function createEnemy(scene, enemyData, patrolRoutes) {
     const EnemyClass = ENEMY_TYPES[enemyData.type];
     if (!EnemyClass) throw new Error(`Unknown enemy type: ${enemyData.type}`);
 
@@ -22,6 +23,9 @@ export function createEnemy(scene, enemyData) {
         ...enemyData
     };
 
+    // Get enemy patrol route and add it to its config properties
+    const enemyRoute = getTiledObject(patrolRoutes, (getCustomTiledProperty(enemyData, "PatrolRoute")));
+    finalConfig.patrolRoute = enemyRoute.polygon;
     const enemy = new EnemyClass(scene, enemyData.x, enemyData.y, finalConfig);
 
     enemy.setCollisionCategory(scene.enemiesCategory);

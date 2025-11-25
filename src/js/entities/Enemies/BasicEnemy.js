@@ -63,9 +63,8 @@ export class BasicEnemy extends BillBoard {
         const movement = new MovementComponent(this, this.config.speed);
 
         // Add PlayerControllerComponent
-        // When adding custom properties in tiled, they are parsed as an array, the first property is the patrol route
-        //      the second property is the state and the value is stored in values (horrible)
-        const controller = new BasicEnemyControllerComponent(this, getCustomTiledProperty(this.config, "state"), getCustomTiledProperty(this.config, "patrolRoute"));
+        // The patrol route isn't a TiledProperty, it is set in the factory
+        const controller = new BasicEnemyControllerComponent(this, getCustomTiledProperty(this.config, "state"), this.config.patrolRoute);
 
         // Add DamageableComponent
         const damageable = new DamageableComponent(this, 
