@@ -18,6 +18,7 @@ export default class PauseMenuView {
 
     createElements() {
         this.createButtons();
+
     }
 
     createButtons() {
@@ -57,5 +58,11 @@ export default class PauseMenuView {
         });
         this.mainMenuButton.setAlpha(0);
         this.elements.push(this.mainMenuButton);
-    }
+   }
+
 }
+
+
+
+
+   

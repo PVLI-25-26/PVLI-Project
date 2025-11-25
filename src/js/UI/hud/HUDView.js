@@ -6,7 +6,10 @@ export class HudView {
         this.playerHealthBar = null;
         this.enemyHealthBars = new Map();
     }
-
+// To DO:
+/*
+- indicador de flechas como objeto encopsulado(cajita de flecha)
+*/
     setPresenter(presenter) {
         this.presenter = presenter;
     }
