@@ -81,24 +81,22 @@ export default class PauseMenuView {
         this.settingsButton.setAlpha(0);
         this.elements.push(this.settingsButton);
 
-        //Go Back from settings to MainMenu
-        this.backButton = new ButtonIcon(this.scene, screenLeft+50, screenTop+50, 'arrow', 1);
-        this.backButton.setFrame(1);
+        //Go Back from settings to PauseMenu
+        this.backButton = new ButtonIcon(this.scene, screenLeft+50, screenTop+50, 'settingsIcon', 1);
+        this.backButton.setFrame(2);
         this.backButton.setActive(false);
         this.backButton.setVisible(false);
         this.backButton.addInteraction((btn) => {
             btn.on("pointerover", () => {
 
-                this.backButton.setFrame(0);
+                this.backButton.setFrame(3);
                 btn.invokeHover();          
             });
            btn.on("pointerout", () => {
-                 btn.setFrame(1);
+                 btn.setFrame(2);
             });
             btn.on("pointerdown", () => {
-   
-                btn.invokeClick();
-                  
+                btn.invokeClick();  
             });
         });
 

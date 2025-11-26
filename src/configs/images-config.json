@@ -33,5 +33,5 @@
     {"key": "UIdialogueBackground", "type": "image", "file": "assets/UI/Dialogues/Portrait_background.png", "settings":{}},
     {"key": "UIbackground", "type": "image", "file": "assets/UI/UI_Background_NineSlice.png", "settings":{}},
 
-    {"key": "settingsIcon", "type":"image", "file": "assets/sprites/Settings_icon.png", "settings":{}}
+    {"key": "settingsIcon", "type": "spritesheet", "file": "assets/sprites/Settings_Icons.png", "settings":{"frameWidth":32}}
 ]

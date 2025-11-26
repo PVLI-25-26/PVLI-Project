@@ -41,6 +41,15 @@ export default class MainMenuPresenter {
             EventBus.emit("playSound", "hover");
         });
 
+        // Back
+        this.view.backButton.on("button-clicked", () => {
+             EventBus.emit('stopMusic');
+            EventBus.emit("playSound", "click");
+            this.view.toggleSettings();
+        });
+        this.view.backButton.on("button-hovered", () => {
+            EventBus.emit("playSound", "hover");
+        });
 
     }
 

@@ -41,7 +41,7 @@ export default class MainMenuView {
             });
         });
 
-        this.settingsButton = new ButtonIcon(this.scene, screenLeft+50, screenTop+50, 'arrow', 1);
+        this.settingsButton = new ButtonIcon(this.scene, screenLeft+50, screenTop+50, 'settingsIcon', 1);
         this.settingsButton.setFrame(0);
         this.settingsButton.addInteraction((btn) => {
             btn.on("pointerover", () => {
@@ -78,6 +78,28 @@ export default class MainMenuView {
 
             });
         });
+
+         //Go Back from settings to MainMenu
+        this.backButton = new ButtonIcon(this.scene, screenLeft+50, screenTop+50, 'settingsIcon', 1);
+        this.backButton.setFrame(2);
+        this.backButton.setActive(false);
+        this.backButton.setVisible(false);
+        this.backButton.addInteraction((btn) => {
+            btn.on("pointerover", () => {
+
+                this.backButton.setFrame(3);
+                btn.invokeHover();          
+            });
+           btn.on("pointerout", () => {
+                 btn.setFrame(2);
+            });
+            btn.on("pointerdown", () => {
+                btn.invokeClick();  
+            });
+        });
+        this.backButton.setActive(false);
+        this.backButton.setVisible(false);
+
     }
 
     createSliders() {
@@ -118,6 +140,12 @@ export default class MainMenuView {
 
         this.startButton.setActive(!this.startButton.active);
         this.startButton.setVisible(!this.startButton.visible);
+
+        this.backButton.setActive(!this.backButton.active);
+        this.backButton.setVisible(!this.backButton.visible);
+
+        this.settingsButton.setActive(!this.settingsButton.active);
+        this.settingsButton.setVisible(!this.settingsButton.visible);
         
     }
 } 
