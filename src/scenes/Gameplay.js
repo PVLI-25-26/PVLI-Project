@@ -1,6 +1,5 @@
 import playerConfig from "../configs/player-config.json";
 import audioConfig from "../configs/audio-config.json";
-import dungeon from "../js/core/dungeon.js";
 import { Player } from '../js/entities/Player.js';
 import { EventBus } from "../js/core/event-bus.js";
 import { HudModel } from "../js/UI/hud/HUDModel.js";
@@ -88,7 +87,7 @@ export default class GameplayScene extends Phaser.Scene {
         //     },null, this);
 
         // Load scene objects from room data
-        dungeon.loadCurrentRoom(this, this.obstaclesCategory, this.enemiesCategory, this.playerCategory, this.connectionsCategory, this.itemsCategory);
+        this.plugins.get('dungeon').loadCurrentRoom(this, this.obstaclesCategory, this.enemiesCategory, this.playerCategory, this.connectionsCategory, this.itemsCategory);
         // Make camera follow the player
         this.cameras.main.startFollow(this.player, false, 0.1, 0.1, 10, 10);
     }

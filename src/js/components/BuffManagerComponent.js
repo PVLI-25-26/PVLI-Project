@@ -35,20 +35,30 @@ const buffTypeToBuffLogic = {
  */
 export class BuffManagerComponent extends BaseComponent{
     /**
+     * Array of buff info, stores the type, value and timer of each buff currently applied
+     * @type {Array}
+     */
+    #buffs;
+
+    /**
      * Create a BuffManagerComponent.
      * @param {Phaser.GameObjects.GameObject} gameObject - The game object this component is attached to.
      */
-    constructor(gameObject){
+    constructor(gameObject, buffs){
         super(gameObject);
 
         // Maybe we want to do stuff with the timer events later on
-        //this.buffs = [];
+        this.#buffs = [];
 
         // Listen to buffApplied events inside the entity
         this.gameObject.on('buffApplied', this.addBuff, this);
     }
     update(t, dt){
         // Update UI stuff?
+    }
+
+    getBuffs(){
+        return this.#buffs;
     }
 
      /**
@@ -63,17 +73,25 @@ export class BuffManagerComponent extends BaseComponent{
         // Apply buff using each buff logic depending on type
         buffTypeToBuffLogic[buffData.type].apply(buffData.value, this.gameObject)
 
+        const currentBuffsSize = this.#buffs.length;
         // Add timer for buff duration end to remove buff
-        const buff = this.gameObject.scene.time.addEvent({
+        const buffTimer = this.gameObject.scene.time.addEvent({
                         delay: buffData.duration,
                         callback: ()=>{
-                            buffTypeToBuffLogic[buffData.type].remove(buffData.value, this.gameObject)
+                            buffTypeToBuffLogic[buffData.type].remove(buffData.value, this.gameObject);
+                            this.#buffs.splice(currentBuffsSize, 1);
                         },
                         loop: false,
                         repeat: 0
                     });
 
+        const appliedBuff = {
+            type: buffData.type,
+            value: buffData.value,
+            timer: buffTimer
+        }
+
         // Save buff in buffs array
-        //this.buffs.push(buff);
+        this.#buffs.push(appliedBuff);
     }
 }

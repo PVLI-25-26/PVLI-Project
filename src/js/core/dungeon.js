@@ -15,6 +15,8 @@
  */
 
 import roomsConfig from '../../configs/Dungeon/dungeon.json'
+import { BasicEnemy } from '../entities/Enemies/BasicEnemy.js';
+import { EventBus } from './event-bus.js';
 import { createConnection } from './factories/connection-factory.js';
 import { createEnemy } from "./factories/enemy-simple-fabric.js";
 import { createItem } from './factories/item-factory.js';
@@ -27,7 +29,7 @@ import { getCustomTiledProperty, getTiledMapLayer } from './tiled-parser.js';
  * Notes:
  * - Room JSONs referenced by configs/Rooms/rooms.json are fetched at initialization.
  */
-class Dungeon {
+export class Dungeon extends Phaser.Plugins.BasePlugin {
     /**
      * Map of dungeon rooms [key -> RoomConfig]
      * @type {Map<string, RoomInstance>}
@@ -43,10 +45,14 @@ class Dungeon {
      * Create a Dungeon manager.
      * @param {string} initialRoomKey - Key of the initial room to start in.
      */
-    constructor(initialRoomKey){
+    constructor(pluginManager){
+        super('Dungeon', pluginManager);
+    }
+
+    init(data){
         // Load and map rooms to their key
         this.#initializeRooms();
-        this.currentRoomKey = initialRoomKey;
+        this.currentRoomKey = data || 1;
     }
 
     /**
@@ -81,13 +87,24 @@ class Dungeon {
     loadCurrentRoom(scene, obstaclesGroup){
         scene.logger.log('DUNGEON', 1, 'Loading room ...');
 
+        // listen to when an item is picked to remove it from room instance data
+        EventBus.on('itemPicked', (picker, item)=>{
+            this.removeItemFromCurrentRoom(item.id);
+        })
+
+        // listen to when an enemy is killed to removeit from room instance data
+        EventBus.on('entityDied', (entity)=>{
+            if(entity instanceof BasicEnemy)
+            {
+                this.removeEnemyFromCurrentRoom(entity.id)
+            }
+        })
+
         // Get current dungeon room
         const room = this.#rooms.get(this.currentRoomKey);
 
         // Read JSON object to populate scene
         this.readTiledJSON(scene, room);
-
-        
     }
 
     readTiledJSON(scene, room){
@@ -144,6 +161,34 @@ class Dungeon {
                 type: scatterData.type});
         }
     }
-}
 
-export default new Dungeon(1);
+    removeItemFromCurrentRoom(itemID){
+        // Get current room
+        const currentRoom = this.#rooms.get(this.currentRoomKey);
+        // Get items in room
+        const items = getTiledMapLayer(currentRoom, "Items");
+        if(items){
+            // Get index of id given
+            const itemIdx = items.findIndex((item)=>item.id == itemID);
+            // Remove the item from the room data
+            if(itemIdx != -1) items.splice(itemIdx, 1);
+        }
+    }
+
+    removeEnemyFromCurrentRoom(enemyID){
+        // Get current room
+        const currentRoom = this.#rooms.get(this.currentRoomKey);
+        // Get enemies in room
+        const enemies = getTiledMapLayer(currentRoom, "Enemies");
+        if(enemies){
+            // Get index of id given
+            const enemyIdx = enemies.findIndex((enemy)=>enemy.id == enemyID);
+            // Remove the enemy from the room data
+            if(enemyIdx != -1) enemies.splice(enemyIdx, 1);
+        }
+    }
+
+    saveCurrentRoom(){
+        // Does nothing for now
+    }
+}

@@ -54,6 +54,12 @@ export class Player extends BillBoard {
 
         this.addComponents();
 
+        // Save in browser storage player data when scene is shutdown
+        scene.events.on("shutdown", ()=>{
+            localStorage.setItem("playerInventory", JSON.stringify(this.inventoryComponent.getInventory()));
+            localStorage.setItem("playerBuffs", JSON.stringify(this.buffManager.getBuffs()));
+        });
+
         this.scene.anims.create({
             key: "player_walk",
             frames: this.scene.anims.generateFrameNumbers("player", {start:13, end: 16}),
@@ -93,11 +99,15 @@ export class Player extends BillBoard {
         // Add PlayerPickItemControllerComponent
         const pickItemController = new PlayerPickItemControllerComponent(this, this.config.pickUpRadius);
 
-        // Add InventoryComponent
-        const inventory = new InventoryComponent(this);
+        // Add InventoryComponent and load items from browser storage if there are any
+        this.inventoryComponent = new InventoryComponent(this, JSON.parse(localStorage.getItem("playerInventory")));
 
         // Add BuffManagerComponent
-        const buffManager = new BuffManagerComponent(this);
+        this.buffManager = new BuffManagerComponent(this);
+        // Load buffs from browser storage if there are any
+        JSON.parse(localStorage.getItem('playerBuffs'))?.forEach(buff => {
+            this.buffManager.addBuff({type: buff.type, value: buff.value, duration: buff.timer.delay - buff.timer.elapsed});
+        });
     }
 
     /**
