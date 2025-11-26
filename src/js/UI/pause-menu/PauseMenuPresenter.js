@@ -32,5 +32,26 @@ export default class PauseMenuPresenter {
         this.view.mainMenuButton.on("button-hovered", () => {
             EventBus.emit("playSound", "hover");
         });
-    }
+
+        // Settings
+        this.view.settingsButton.on("button-clicked", () => {
+             EventBus.emit('stopMusic');
+            EventBus.emit("playSound", "click");
+            this.view.toggleSettings();
+        });
+        this.view.settingsButton.on("button-hovered", () => {
+            EventBus.emit("playSound", "hover");
+        });
+
+        
+        // Back
+        this.view.backButton.on("button-clicked", () => {
+             EventBus.emit('stopMusic');
+            EventBus.emit("playSound", "click");
+            this.view.toggleSettings();
+        });
+        this.view.backButton.on("button-hovered", () => {
+            EventBus.emit("playSound", "hover");
+        });
+    }   
 }

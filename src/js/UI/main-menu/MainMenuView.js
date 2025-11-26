@@ -81,9 +81,8 @@ export default class MainMenuView {
     }
 
     createSliders() {
-        this.musicSlider = new Slider(this.scene, 250, 550, 300, 20, 0.5);
-        this.sfxSlider = new Slider(this.scene, 250, 500, 300, 20, 0.5);
-
+        this.musicSlider = new Slider(this.scene, 400, 350, 300, 20, 0.5);
+        this.sfxSlider = new Slider(this.scene, 400, 250, 300, 20, 0.5);
         this.sfxSlider.setVisible(false);
         this.sfxSlider.setActive(false);
         this.musicSlider.setVisible(false);
@@ -92,8 +91,8 @@ export default class MainMenuView {
 
     createIcons() {
         
-        this.musicIcon = this.scene.add.image(65, 550, 'musicIcon').setOrigin(0.5);
-        this.sfxIcon = this.scene.add.image(65, 500, 'sfxIcon').setOrigin(0.5);
+        this.musicIcon = this.scene.add.image(215, 250, 'musicIcon').setOrigin(0.5);
+        this.sfxIcon = this.scene.add.image(215, 350, 'sfxIcon').setOrigin(0.5);
 
         this.musicIcon.setScale(0.12);
         this.sfxIcon.setScale(0.08);
