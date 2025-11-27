@@ -116,9 +116,43 @@
         }
     },
     {
-        "key":"Tree",
+        "key":"tree1",
         "billboardConfig":{
-            "texture":"tree",
+            "texture":"tree1",
+            "scale":4
+        },
+        "physicsConfig":{
+            "shape": {
+                "type": "rectangle",
+                "width": 3,
+                "height": 10
+            },
+            "isStatic": true
+        },
+        "offsetX": 0.5,
+        "offsetY": 0.95
+    },
+    {
+        "key":"tree2",
+        "billboardConfig":{
+            "texture":"tree2",
+            "scale":4
+        },
+        "physicsConfig":{
+            "shape": {
+                "type": "rectangle",
+                "width": 3,
+                "height": 10
+            },
+            "isStatic": true
+        },
+        "offsetX": 0.5,
+        "offsetY": 0.95
+    },
+    {
+        "key":"tree3",
+        "billboardConfig":{
+            "texture":"tree3",
             "scale":4
         },
         "physicsConfig":{

@@ -11,14 +11,14 @@
                 {
                  "id":76,
                  "template":"..\/Templates\/BillboardTemplate.tx",
-                 "type":"Tree",
+                 "type":"tree1",
                  "x":288,
                  "y":0
                 }, 
                 {
                  "id":75,
                  "template":"..\/Templates\/BillboardTemplate.tx",
-                 "type":"Tree",
+                 "type":"tree1",
                  "x":0,
                  "y":0
                 }],

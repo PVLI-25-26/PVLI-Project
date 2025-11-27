@@ -20,7 +20,9 @@
 
     {"key": "billboard", "type": "image", "file": "assets/sprites/SpriteStackingPlaceholders/Billboard/catPlaceholder.jpg", "settings":{}},
     {"key": "grass", "type": "image", "file": "assets/sprites/grass.png", "settings":{}},
-    {"key": "tree", "type": "image", "file": "assets/sprites/tree.png", "settings":{}},
+    {"key": "tree1", "type": "image", "file": "assets/sprites/tree1.png", "settings":{}},
+    {"key": "tree2", "type": "image", "file": "assets/sprites/tree2.png", "settings":{}},
+    {"key": "tree3", "type": "image", "file": "assets/sprites/tree3.png", "settings":{}},
 
     {"key": "Antonio", "type": "image", "file": "assets/portraits/cat.png", "settings":{}},
     {"key": "Dolores", "type": "image", "file": "assets/portraits/catS.png", "settings":{}},

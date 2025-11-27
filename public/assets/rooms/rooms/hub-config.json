@@ -263,7 +263,7 @@
                  "y":-480
                 }, 
                 {
-                 "height":196,
+                 "height":452,
                  "id":80,
                  "properties":[
                         {
@@ -272,13 +272,13 @@
                          "value":100
                         }],
                  "template":"..\/Templates\/ScatteringTemplate.tx",
-                 "type":"Tree",
-                 "width":1248,
-                 "x":-608,
-                 "y":-672
+                 "type":"tree1 tree2 tree3",
+                 "width":1568,
+                 "x":-768,
+                 "y":-928
                 }, 
                 {
-                 "height":196,
+                 "height":384,
                  "id":81,
                  "properties":[
                         {
@@ -287,9 +287,9 @@
                          "value":100
                         }],
                  "template":"..\/Templates\/ScatteringTemplate.tx",
-                 "type":"Tree",
-                 "width":1248,
-                 "x":-608,
+                 "type":"tree1 tree2 tree3",
+                 "width":1568,
+                 "x":-768,
                  "y":384
                 }, 
                 {
@@ -302,9 +302,9 @@
                          "value":100
                         }],
                  "template":"..\/Templates\/ScatteringTemplate.tx",
-                 "type":"Tree",
-                 "width":192,
-                 "x":-608,
+                 "type":"tree1 tree2 tree3",
+                 "width":352,
+                 "x":-768,
                  "y":-480
                 }, 
                 {
@@ -317,8 +317,8 @@
                          "value":100
                         }],
                  "template":"..\/Templates\/ScatteringTemplate.tx",
-                 "type":"Tree",
-                 "width":192,
+                 "type":"tree1 tree2 tree3",
+                 "width":352,
                  "x":448,
                  "y":-480
                 }],

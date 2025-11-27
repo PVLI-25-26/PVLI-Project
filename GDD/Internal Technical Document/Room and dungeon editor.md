@@ -16,26 +16,33 @@ To speed up room creation, an EmptyMap-config.json can be copied to make differe
 ## How to add obstacles to a room
 ### Adding Sprite Stacks
 To add a **sprite stack** to a room, go to the **Obstacles** layer. Now you can open the `Templates` folder and drag the `SpriteStackTemplate.tx` template to the map.
+
 There you go, you have a **sprite stack** ready, you just need to specify the *identifier* of the sprite stack to make sure the game knows what obstacle you are trying to instance. Enter the *identifier* in the `Class` property of the object created.
+
 *identifiers* of sprite stacks are defined in their `JSON` file at `src/configs/obstacles-config.json`.![[Screenshot from 2025-11-24 22-56-50.png]]
 >[!warning] Careful rotating rectangles!
 >For some weird reason, the rotation of objects in Tiled doesn't work well. As you can see in the image above, a rectangle is intersecting almost completely with others. This is not actually true in the scene as rotating objects in Tiled makes them move in the x, y coordinates (but they don't actually move in the world). 
 >This means that If you rotate an object in tiled, it's position will be shifted weirdly.
 ### Adding Billboards
 To add a **billboard** to a room, go to the **Obstacles** layer. Now you can open the `Templates` folder and drag the `BillboardTemplate.tx` template to the map.
+
 Now you just need to specify the *identifier* of the **billboard** to make sure the game knows what obstacle you are trying to instance. Enter the *identifier* in the `Class` property of the object created.
+
 *identifiers* of billboards are defined in their `JSON` file at `src/configs/obstacles-config.json`.
 ![[Screenshot from 2025-11-24 23-04-04.png]]
 ## How to add items to a room
 To add an **item** to a room, go to the **Items** layer. Now you can open the `Templates` folder and drag the `ItemTemplate.tx` template to the map.
+
 Now you just need to specify the *identifier* of the **item** to make sure the game knows what item you are trying to instance. Enter the *identifier* in the `Class` property of the object created.
-*identifiers* of item are defined in their `JSON` file at `src/configs/items-config.json`.
+*identifiers* of item are defined in their `JSON` files at the `src/configs/Items`/ folder.
 ![[Screenshot from 2025-11-24 23-08-41.png]]
 
 ## How to add enemies to a room
 ### Adding the enemy
 To add an **enemy** to a room, go to the **Enemies** layer. Now you can open the `Templates` folder and drag the `EnemyTemplate.tx` template to the map.
+
 As you can see, its *custom properties* will already be populated with a `state` and a `PatrolRoute`. This properties will be explained in the following section.
+
 Now you just need to specify the *identifier* of the **Enemy** to make sure the game knows what item enemy are trying to instance. Enter the *identifier* in the `Class` property of the object created.
 *identifiers* of item are defined in their `JSON` file at `src/configs/Enemies/<enemy>-config.json`.
 ![[Screenshot from 2025-11-24 23-14-58.png]]
@@ -50,7 +57,11 @@ Now, for each enemy, you may select the route you want it to follow in the `Patr
 ## How to add scattering areas
 To add a **scattering area** to a room, go to the **Scattering** layer. Now you can open the `Templates` folder and drag the `ScatteringTemplate.tx` template to the map.
 Now you just need to specify the *identifier* of the **obstacles instanced in the area** to make sure the game knows what obstacle you want the area to spawn. Enter the *identifier* in the `Class` property of the object created.
+
+You can specify **multiple identifiers** separated by spaces, to spawn randomly different types of objects. For example: `Class: tree1 tree2 tree3` will spawn randomly the obstacles `tree1`, `tree2` and `tree3` in the area.
+
 *identifiers* of obstacles are defined in their `JSON` file at `src/configs/obstacles-config.json`.
+
 You can also specify **how many objects you want to spawn in the area** with the custom property `fill`. A value of 100 means that 100 objects associated with the identifier in `class` will be spawned inside the area of the rectangle.
 ![[Screenshot from 2025-11-24 23-18-44.png]]
 >[!TIP] Hide or lock the Scattering layer!
