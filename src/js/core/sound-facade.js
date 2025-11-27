@@ -46,9 +46,9 @@ export class SoundSceneFacade {
         this.music = {};
         this.currentMusic = null;
 
-        config.sounds.forEach(s => {
-            this.sounds[s.key] = scene.sound.add(s.key);
-        });
+        // config.sounds.forEach(s => {
+        //     this.sounds[s.key] = scene.sound.add(s.key);
+        // });
 
         config.music.forEach(m => {
             this.music[m.key] = scene.sound.add(m.key, { loop: m.loop, volume: m.volume });
@@ -85,8 +85,9 @@ export class SoundSceneFacade {
      * @returns {void}
      */
     playSound(key) {
-        const sound = this.sounds[key];
-        if (sound) sound.play();
+        // const sound = this.sounds[key];
+        // if (sound) sound.play();
+        this.scene.sound.play(key);
     }
 
     /**
@@ -95,10 +96,11 @@ export class SoundSceneFacade {
      * @returns {void}
      */
     stopSound(key) {
-        const sound = this.sounds[key];
-        if (sound) {
-            sound.stop();
-        }
+        // const sound = this.sounds[key];
+        // if (sound) {
+        //     sound.stop();
+        // }
+        this.scene.sound.stopByKey(key);
     }
 
     /**
