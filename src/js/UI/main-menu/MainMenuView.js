@@ -1,5 +1,4 @@
 import { Button } from "../elements/button.js";
-import { ButtonIcon } from "../elements/iconButton.js";
 import { Slider } from "../elements/slider.js";
 import Colors from "../../../configs/color-config.json"
 
@@ -27,76 +26,93 @@ export default class MainMenuView {
         const centerX = this.scene.scale.width / 2;
         const centerY = this.scene.scale.height / 2;
 
-        this.startButton = new Button(this.scene, centerX, centerY, "Start Game", "FableFont",Colors.White,20,"center");
+        this.startButton = new Button(this.scene, centerX-100, centerY-25, null, 150, 50,
+            {
+                text: 'Start Game',
+                style: {
+                    fontSize: 20,
+                    color: Colors.White,
+                    fontFamily: 'FableFont',
+                    padding: { x: 20, y: 10 },
+                }
+            }
+        );
         this.startButton.addInteraction((btn) => {
             btn.on("pointerover", () => {
-                btn.setColor(Colors.Red);
+                btn.buttonText.setColor(Colors.Red);
                 btn.invokeHover();
             });
             btn.on("pointerout", () => {
-                btn.setColor(Colors.White);
+                btn.buttonText.setColor(Colors.White);
             });
             btn.on("pointerdown", () => {
                 btn.invokeClick();
             });
         });
 
-        this.settingsButton = new ButtonIcon(this.scene, screenLeft+50, screenTop+50, 'settingsIcon', 1);
-        this.settingsButton.setFrame(0);
+        this.settingsButton = new Button(this.scene, screenLeft, screenTop, null, 32, 32,
+            null,
+            {
+                texture: 'settingsIcon',
+                frame: 0,
+                leftWidth: 0,
+                rightWidth: 0,
+                topHeight: 0,
+                bottomHeight: 0
+            }
+        );
         this.settingsButton.addInteraction((btn) => {
             btn.on("pointerover", () => {
-
                 this.scene.tweens.add({
-                    targets: this.settingsButton,
+                    targets: this.settingsButton.buttonNineslice,
                     angle: 90,
                     duration: 100,
                     repeat: 0
                 });
-                this.settingsButton.setFrame(1);
-                btn.invokeHover();          
+                this.settingsButton.buttonNineslice.setFrame(1);
+                btn.invokeHover();
             });
             btn.on("pointerout", () => {
-                
                 this.scene.tweens.add({
-                    targets: this.settingsButton,
+                    targets: this.settingsButton.buttonNineslice,
                     angle: 0,
                     duration: 100,
                     repeat: 0
                 });
-                this.settingsButton.setFrame(0);
+                this.settingsButton.buttonNineslice.setFrame(0);
             });
             btn.on("pointerdown", () => {
-                
-                this.scene.tweens.add({
-                    targets: this.settingsButton,
-                    angle: 120,
-                    duration: 100,
-                    yoyo: true
-                });
                 this.toggleSettings();
                 btn.invokeClick();
-
             });
         });
 
-         //Go Back from settings to MainMenu
-        this.backButton = new ButtonIcon(this.scene, screenLeft+50, screenTop+50, 'settingsIcon', 1);
-        this.backButton.setFrame(2);
-        this.backButton.setActive(false);
-        this.backButton.setVisible(false);
+        // Go back to main menu button
+        this.backButton = new Button(this.scene, screenLeft, screenTop, null, 32, 32,
+            null,
+            {
+                texture: 'settingsIcon',
+                frame: 2,
+                leftWidth: 0,
+                rightWidth: 0,
+                topHeight: 0,
+                bottomHeight: 0
+            }
+        );
         this.backButton.addInteraction((btn) => {
             btn.on("pointerover", () => {
-
-                this.backButton.setFrame(3);
-                btn.invokeHover();          
+                this.backButton.buttonNineslice.setFrame(3);
+                btn.invokeHover();
             });
-           btn.on("pointerout", () => {
-                 btn.setFrame(2);
+            btn.on("pointerout", () => {
+                this.backButton.buttonNineslice.setFrame(2);
             });
             btn.on("pointerdown", () => {
-                btn.invokeClick();  
+                btn.invokeClick();
             });
         });
+        this.backButton.setActive(false);
+        this.backButton.setVisible(false);
         this.backButton.setActive(false);
         this.backButton.setVisible(false);
 

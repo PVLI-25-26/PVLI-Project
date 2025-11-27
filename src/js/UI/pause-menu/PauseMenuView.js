@@ -1,7 +1,6 @@
 import { Button } from "../elements/button.js";
 import { Slider } from "../elements/slider.js";
 import Colors from "../../../configs/color-config.json"
-import { ButtonIcon } from "../elements/iconButton.js";
 
 export default class PauseMenuView {
     constructor(scene) {
@@ -28,31 +27,49 @@ export default class PauseMenuView {
         const centerY = this.scene.scale.height / 2 - 50;
 
         // Resume
-        this.resumeButton = new Button(this.scene, centerX, centerY, "Resume","FableFont",Colors.White,20);
+        this.resumeButton = new Button(this.scene, centerX-100, centerY-80, null, 150, 50,
+            {
+                text: 'Resume',
+                style: {
+                    fontSize: 20,
+                    color: Colors.White,
+                    fontFamily: 'FableFont',
+                    padding: { x: 20, y: 10 },
+                }
+            }
+        );
         this.resumeButton.addInteraction((btn) => {
             btn.on("pointerover", () => {
-                btn.setColor(Colors.Red);
+                btn.buttonText.setColor(Colors.Red);
                 btn.invokeHover();
             });
             btn.on("pointerout", () => {
-                btn.setColor(Colors.White);
+                btn.buttonText.setColor(Colors.White);
             });
             btn.on("pointerdown", () => {
                 btn.invokeClick();
             });
         });
-        this.resumeButton.setAlpha(0);
-        this.elements.push(this.resumeButton);
         
         // MainMenu
-        this.mainMenuButton = new Button(this.scene, centerX, centerY + 80, "Main Menu","FableFont",Colors.White,20);
+        this.mainMenuButton = new Button(this.scene, centerX-100, centerY+80, null, 150, 50,
+            {
+                text: 'Main Menu',
+                style: {
+                    fontSize: 20,
+                    color: Colors.White,
+                    fontFamily: 'FableFont',
+                    padding: { x: 20, y: 10 },
+                }
+            }
+        );
         this.mainMenuButton.addInteraction((btn) => {
             btn.on("pointerover", () => {
-                btn.setColor(Colors.Red);
+                btn.buttonText.setColor(Colors.Red);
                 btn.invokeHover();
             });
             btn.on("pointerout", () => {
-                btn.setColor(Colors.White);
+                btn.buttonText.setColor(Colors.White);
             });
             btn.on("pointerdown", () => {
                 btn.invokeClick();
@@ -63,42 +80,59 @@ export default class PauseMenuView {
 
 
         // Settings
-        this.settingsButton = new Button(this.scene, centerX, centerY + 160,"Settings","FableFont",Colors.White,20);
+        this.settingsButton = new Button(this.scene, centerX-100, centerY, null, 150, 50,
+            {
+                text: 'Settings',
+                style: {
+                    fontSize: 20,
+                    color: Colors.White,
+                    fontFamily: 'FableFont',
+                    padding: { x: 20, y: 10 },
+                }
+            }
+        );
         this.settingsButton.addInteraction((btn) => {
             btn.on("pointerover", () => {
-                btn.setColor(Colors.Red);
+                btn.buttonText.setColor(Colors.Red);
                 btn.invokeHover();
             });
             btn.on("pointerout", () => {
-                 btn.setColor(Colors.White);
+                btn.buttonText.setColor(Colors.White);
             });
             btn.on("pointerdown", () => {
-
                 btn.invokeClick();
-                
             });
         });
         this.settingsButton.setAlpha(0);
         this.elements.push(this.settingsButton);
 
-        //Go Back from settings to PauseMenu
-        this.backButton = new ButtonIcon(this.scene, screenLeft+50, screenTop+50, 'settingsIcon', 1);
-        this.backButton.setFrame(2);
-        this.backButton.setActive(false);
-        this.backButton.setVisible(false);
+        // Go back to main menu button
+        this.backButton = new Button(this.scene, screenLeft, screenTop, null, 32, 32,
+            null,
+            {
+                texture: 'settingsIcon',
+                frame: 2,
+                leftWidth: 0,
+                rightWidth: 0,
+                topHeight: 0,
+                bottomHeight: 0
+            }
+        );
         this.backButton.addInteraction((btn) => {
             btn.on("pointerover", () => {
-
-                this.backButton.setFrame(3);
-                btn.invokeHover();          
+                this.backButton.buttonNineslice.setFrame(3);
+                btn.invokeHover();
             });
-           btn.on("pointerout", () => {
-                 btn.setFrame(2);
+            btn.on("pointerout", () => {
+                this.backButton.buttonNineslice.setFrame(2);
             });
             btn.on("pointerdown", () => {
-                btn.invokeClick();  
+                btn.invokeClick();
             });
         });
+        
+        this.backButton.setActive(false);
+        this.backButton.setVisible(false);
 
         this.resumeButton.setActive(true);
         this.resumeButton.setVisible(true);

@@ -19,7 +19,7 @@ import Phaser from "phaser";
  *     console.log("Button clicked!");
  * }).on("button-clicked", () => console.log("Custom event fired!"));
  */
-export class ButtonIcon extends Phaser.GameObjects.Image {
+export class IconButton extends Phaser.GameObjects.Image {
     constructor(scene, x, y, image,scale, callback) {
         super(scene, x, y, image);
 
@@ -47,7 +47,7 @@ export class ButtonIcon extends Phaser.GameObjects.Image {
      * Allows adding event listeners or animations externally.
      *
      * @param {Function} setupFunction - A function that receives this button instance.
-     * @returns {ButtonIcon} The current button instance for method chaining.
+     * @returns {IconButton} The current button instance for method chaining.
      *
      * @example
      * button.addInteraction((btn) => {
@@ -91,11 +91,11 @@ export class ButtonIcon extends Phaser.GameObjects.Image {
 /**
  * Fired when the button is clicked.
  * @event ButtonIcon#button-clicked
- * @type {ButtonIcon}
+ * @type {IconButton}
  */
 
 /**
  * Fired when the pointer hovers over the button.
  * @event ButtonIcon#button-hovered
- * @type {ButtonIcon}
+ * @type {IconButton}
  */

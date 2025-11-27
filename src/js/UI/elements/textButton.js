@@ -6,25 +6,29 @@ import Phaser from "phaser";
  *
  * @class
  * @category UI
- * @extends Phaser.GameObjects.Image
+ * @extends Phaser.GameObjects.Text
  * @param {Phaser.Scene} scene - The scene this button belongs to.
  * @param {number} x - The x-coordinate of the button's position.
  * @param {number} y - The y-coordinate of the button's position.
- * @param {image} image - The image displayed on the button.
- * @param {number} scale - scale of the image
+ * @param {string} text - The text displayed on the button.
  * @param {Function} callback - Function to call when the button is clicked.
- *
+ * @param {number} size - Size in px.
+ * @param {string} font - Family font.
+ * @param {string} color - Color.
+ * 
  * @example
  * const startButton = new Button(this, 400, 300, "Start Game", () => {
  *     console.log("Button clicked!");
  * }).on("button-clicked", () => console.log("Custom event fired!"));
  */
-export class Button extends Phaser.GameObjects.Container {
-    constructor(scene, x, y, callback, width, height,
-        textSettings = null, ninesliceSettings = null, 
-        scale = 1) {
-        super(scene, x, y);
-
+export class TextButton extends Phaser.GameObjects.Text {
+    constructor(scene, x, y, text, font, color, size ,align ,callback) {
+        super(scene, x, y, text, {
+            fontSize: size,
+            color: color,
+            fontFamily: font,
+            padding: { x: 20, y: 10 },
+        });
         /**
          * Reference to the Phaser scene this button belongs to.
          * @type {Phaser.Scene}
@@ -37,43 +41,10 @@ export class Button extends Phaser.GameObjects.Container {
          */
         this.callback = callback;
 
-        // Make button background if settings provided
-        if(ninesliceSettings){
-            this.buttonNineslice = this.scene.add.nineslice(
-                width/2,
-                height/2,
-                ninesliceSettings.texture,
-                ninesliceSettings.frame,
-                width,
-                height,
-                ninesliceSettings.leftWidth,
-                ninesliceSettings.rightWidth,
-                ninesliceSettings.topHeight,
-                ninesliceSettings.bottomHeight
-            ).setOrigin(0.5);
-            this.add(this.buttonNineslice);
-        }
-        
-        // Make button text if settings provided
-        if(textSettings){
-            this.buttonText = this.scene.add.text(
-                width/2,
-                height/2,
-                textSettings.text,
-                textSettings.style
-            ).setOrigin(0.5);
-            this.add(this.buttonText);
-        }
-        
-        // Make interactive area
-        this.setInteractive(
-            new Phaser.Geom.Rectangle(0, 0, width, height),
-            Phaser.Geom.Rectangle.Contains
-        );
-        
-        this.setScale(scale);
+        scene.add.existing(this);
 
-        this.scene.add.existing(this);
+        this.setInteractive({ useHandCursor: true });
+        this.setOrigin(0.5);
     }
 
     /**
@@ -81,7 +52,7 @@ export class Button extends Phaser.GameObjects.Container {
      * Allows adding event listeners or animations externally.
      *
      * @param {Function} setupFunction - A function that receives this button instance.
-     * @returns {ButtonIcon} The current button instance for method chaining.
+     * @returns {TextButton} The current button instance for method chaining.
      *
      * @example
      * button.addInteraction((btn) => {
@@ -100,7 +71,7 @@ export class Button extends Phaser.GameObjects.Container {
      * Triggers the button click behavior.
      * Emits a `button-clicked` event and calls the provided callback.
      *
-     * @fires ButtonIcon#button-clicked
+     * @fires Button#button-clicked
      * @returns {void}
      */
     invokeClick() {
@@ -114,7 +85,7 @@ export class Button extends Phaser.GameObjects.Container {
      * Triggers the button hover behavior.
      * Emits a `button-hovered` event.
      *
-     * @fires ButtonIcon#button-hovered
+     * @fires Button#button-hovered
      * @returns {void}
      */
     invokeHover() {
@@ -124,12 +95,12 @@ export class Button extends Phaser.GameObjects.Container {
 
 /**
  * Fired when the button is clicked.
- * @event ButtonIcon#button-clicked
- * @type {ButtonIcon}
+ * @event Button#button-clicked
+ * @type {TextButton}
  */
 
 /**
  * Fired when the pointer hovers over the button.
- * @event ButtonIcon#button-hovered
- * @type {ButtonIcon}
+ * @event Button#button-hovered
+ * @type {TextButton}
  */

@@ -99,16 +99,28 @@ export default class InventoryMenuView {
      * @returns {void}
      */
     createExitButton(scene) {
-        // Create exit button
-        this.exitButton = new Button(scene, this.inventoryBG.x + INVENTORY_WIDTH / 2, this.inventoryBG.y - INVENTORY_HEIGHT / 2, 'X', "MicroChat",Colors.White,20).setOrigin(1, 0);
+        this.exitButton = new Button(this.scene, 
+            this.inventoryBG.x + INVENTORY_WIDTH / 2 - 50, 
+            this.inventoryBG.y - INVENTORY_HEIGHT / 2, 
+            null, 50, 50,
+            {
+                text: 'X',
+                style: {
+                    fontSize: 20,
+                    color: Colors.White,
+                    fontFamily: 'FableFont',
+                    padding: { x: 20, y: 10 },
+                }
+            }
+        );
         // Wire button interactions with visual changes
         this.exitButton.addInteraction((btn) => {
             btn.on("pointerover", () => {
-                btn.setColor(Colors.Red);
+                btn.buttonText.setColor(Colors.Red);
                 btn.invokeHover();
             });
             btn.on("pointerout", () => {
-                btn.setColor(Colors.White);
+                btn.buttonText.setColor(Colors.White);
             });
             btn.on("pointerdown", () => {
                 btn.invokeClick();
