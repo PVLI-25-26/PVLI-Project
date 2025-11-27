@@ -1,0 +1,23 @@
+[
+    {
+        "billboardConfig":{
+            "texture":"ball",
+            "scale":3
+        },
+        "physicsConfig":{
+            "shape": {
+                "type": "rectangle",
+                "width": 10,
+                "height": 10
+            },
+            "isStatic": true,
+            "isSensor": true
+        },
+        "displayData":{
+            "name": "Pelota",
+            "description": "No puedo tengo furbo.",
+            "image": "ball"
+        },
+        "collectSound": "itemCollected"
+    }
+]

@@ -1,0 +1,23 @@
+[
+    {
+        "billboardConfig":{
+            "texture":"key",
+            "scale":3
+        },
+        "physicsConfig":{
+            "shape": {
+                "type": "rectangle",
+                "width": 10,
+                "height": 10
+            },
+            "isStatic": true,
+            "isSensor": true
+        },
+        "displayData":{
+            "name": "Llave",
+            "description": "Una llave perdida ...",
+            "image": "key"
+        },
+        "collectSound": "itemCollected"
+    }
+]

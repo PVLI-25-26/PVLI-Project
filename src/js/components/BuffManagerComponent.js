@@ -35,8 +35,8 @@ const buffTypeToBuffLogic = {
  */
 export class BuffManagerComponent extends BaseComponent{
     /**
-     * Array of buff info, stores the type, value and timer of each buff currently applied
-     * @type {Array}
+     * Map of buff info, stores the type, value and timer of each buff currently applied
+     * @type {Map<String>}
      */
     #buffs;
 
@@ -48,7 +48,7 @@ export class BuffManagerComponent extends BaseComponent{
         super(gameObject);
 
         // Maybe we want to do stuff with the timer events later on
-        this.#buffs = [];
+        this.#buffs = new Map();
 
         // Listen to buffApplied events inside the entity
         this.gameObject.on('buffApplied', this.addBuff, this);
@@ -58,7 +58,7 @@ export class BuffManagerComponent extends BaseComponent{
     }
 
     getBuffs(){
-        return this.#buffs;
+        return Array.from(this.#buffs.values());
     }
 
      /**
@@ -70,28 +70,61 @@ export class BuffManagerComponent extends BaseComponent{
      * @returns {void}
      */
     addBuff(buffData){
+        if(this.#buffs.has(buffData.type)){
+            // Get current buff
+            this.mergeNewBuff(buffData);
+        }
+        else{
+            // Si el bufo no esta repetido
+            this.addNewBuff(buffData);
+        }
+    }
+
+    /**
+     * Merges an existing buff with a new buff
+     * @param {BuffData} buffData The data of the new buff
+     * @private
+     */
+    mergeNewBuff(buffData) {
+        const currentBuff = this.#buffs.get(buffData.type);
+        // Undo current buff effects
+        buffTypeToBuffLogic[buffData.type].remove(currentBuff.value, this.gameObject);
+        console.log();
+        // Merge both buffs
+        currentBuff.timer.elapsed -= buffData.duration;
+        if (currentBuff.value < buffData.value) currentBuff.value = buffData.value;
+        // Reapply new buffs merged
+        buffTypeToBuffLogic[buffData.type].apply(buffData.value, this.gameObject);
+    }
+
+    /**
+     * Adds a new buff to the current buffs
+     * @param {BuffData} buffData The data of the new buff
+     * @private
+     */
+    addNewBuff(buffData) {
         // Apply buff using each buff logic depending on type
-        buffTypeToBuffLogic[buffData.type].apply(buffData.value, this.gameObject)
+        buffTypeToBuffLogic[buffData.type].apply(buffData.value, this.gameObject);
 
         const currentBuffsSize = this.#buffs.length;
         // Add timer for buff duration end to remove buff
         const buffTimer = this.gameObject.scene.time.addEvent({
-                        delay: buffData.duration,
-                        callback: ()=>{
-                            buffTypeToBuffLogic[buffData.type].remove(buffData.value, this.gameObject);
-                            this.#buffs.splice(currentBuffsSize, 1);
-                        },
-                        loop: false,
-                        repeat: 0
-                    });
+            delay: buffData.duration,
+            callback: () => {
+                buffTypeToBuffLogic[buffData.type].remove(buffData.value, this.gameObject);
+                this.#buffs.delete(buffData.type);
+            },
+            loop: false,
+            repeat: 0
+        });
 
         const appliedBuff = {
             type: buffData.type,
             value: buffData.value,
             timer: buffTimer
-        }
+        };
 
         // Save buff in buffs array
-        this.#buffs.push(appliedBuff);
+        this.#buffs.set(appliedBuff.type, appliedBuff);
     }
 }

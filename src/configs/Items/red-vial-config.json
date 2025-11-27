@@ -1,0 +1,23 @@
+[
+    {
+        "billboardConfig":{
+            "texture":"red-vial",
+            "scale":3
+        },
+        "physicsConfig":{
+            "shape": {
+                "type": "rectangle",
+                "width": 10,
+                "height": 10
+            },
+            "isStatic": true,
+            "isSensor": true
+        },
+        "displayData":{
+            "name": "Vial rojo",
+            "description": "Su liquido interior es espeso, sabra bien?",
+            "image": "red-vial"
+        },
+        "collectSound": "itemCollected"
+    }
+]

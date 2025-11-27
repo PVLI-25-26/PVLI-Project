@@ -1,0 +1,54 @@
+[
+    {
+        "billboardConfig":{
+            "texture":"queso",
+            "scale":3
+        },
+        "physicsConfig":{
+            "shape": {
+                "type": "rectangle",
+                "width": 10,
+                "height": 10
+            },
+            "isStatic": true,
+            "isSensor": true
+        },
+        "displayData":{
+            "name": "Queso I",
+            "description": "Si huele a queso y sabe a queso, probablemente es un queso ...",
+            "image": "queso"
+        },
+        "buffData":{
+            "type": "movement",
+            "value": 1.25,
+            "duration": 1000
+        },
+        "collectSound": "itemCollected"
+    },
+    {
+        "billboardConfig":{
+            "texture":"queso",
+            "scale":3
+        },
+        "physicsConfig":{
+            "shape": {
+                "type": "rectangle",
+                "width": 10,
+                "height": 10
+            },
+            "isStatic": true,
+            "isSensor": true
+        },
+        "displayData":{
+            "name": "Queso II",
+            "description": "Este queso huele demasiado fuerte, no te lo comas...",
+            "image": "queso"
+        },
+        "buffData":{
+            "type": "movement",
+            "value": 3,
+            "duration": 4000
+        },
+        "collectSound": "itemCollected"
+    }
+]

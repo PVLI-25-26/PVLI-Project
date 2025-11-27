@@ -40,6 +40,11 @@ export class Dungeon extends Phaser.Plugins.BasePlugin {
      * @type {string}
      */
     currentRoomKey;
+    /**
+     * Array of rooms explored by the player.
+     * @type {Set<String>}
+     */
+    roomsExplored;
 
     /**
      * Create a Dungeon manager.
@@ -53,6 +58,8 @@ export class Dungeon extends Phaser.Plugins.BasePlugin {
         // Load and map rooms to their key
         this.#initializeRooms();
         this.currentRoomKey = data || 1;
+        this.roomsExplored = new Set();
+        this.roomsExplored.add(this.currentRoomKey);
     }
 
     /**
@@ -132,7 +139,7 @@ export class Dungeon extends Phaser.Plugins.BasePlugin {
                     break;
                 case "Items":
                     scene.logger.log('DUNGEON', 1, 'Creating items ...');
-                    layer.objects.forEach((item)=>{createItem(scene, item)});
+                    layer.objects.forEach((item)=>{createItem(scene, item, this.roomsExplored.size)});
                     break;
                 case "Enemies":
                     scene.logger.log('DUNGEON', 1, 'Creating enemies ...');
@@ -188,7 +195,8 @@ export class Dungeon extends Phaser.Plugins.BasePlugin {
         }
     }
 
-    saveCurrentRoom(){
-        // Does nothing for now
+    changeRoom(nextRoomKey){
+        this.currentRoomKey = nextRoomKey;
+        this.roomsExplored.add(this.currentRoomKey);
     }
 }

@@ -1,0 +1,23 @@
+[
+    {
+        "billboardConfig":{
+            "texture":"golden-cup",
+            "scale":3
+        },
+        "physicsConfig":{
+            "shape": {
+                "type": "rectangle",
+                "width": 10,
+                "height": 10
+            },
+            "isStatic": true,
+            "isSensor": true
+        },
+        "displayData":{
+            "name": "Copa dorada",
+            "description": "Parece extremadamente valiosa, deberias guardarla.",
+            "image": "golden-cup"
+        },
+        "collectSound": "itemCollected"
+    }
+]
