@@ -23,6 +23,11 @@ export class PlayerControllerComponent extends BaseControllerComponent {
      */
     camera;
 
+    /**
+     * @type {number} Saves the camera rotation to adjust movement direction.
+     */
+    cameraRotation;
+
     constructor(gameObject) {
         super(gameObject);
         this.keys = createPlayerKeys(gameObject.scene);
@@ -44,6 +49,9 @@ export class PlayerControllerComponent extends BaseControllerComponent {
                 EventBus.emit('cameraRotated', this.camera.rotation, Math.cos(-this.camera.rotation), Math.sin(-this.camera.rotation));
             }
         }, this);
+
+        this.cameraRotation = 0;
+        EventBus.on('cameraRotated', (rot)=>{this.cameraRotation=rot;});
     }
 
     /**
@@ -70,7 +78,12 @@ export class PlayerControllerComponent extends BaseControllerComponent {
 
         if (x != 0) this.gameObject.flipX = x < 0;
 
-        this.movementComponent.setDirection(x, y);
+        // Adjust for camera rotation
+        const camRot = this.cameraRotation;
+        const rotx = x*Math.cos(-camRot) - y*Math.sin(-camRot);
+        const roty = x*Math.sin(-camRot) + y*Math.cos(-camRot);
+
+        this.movementComponent.setDirection(rotx, roty);
     }
 
     /**

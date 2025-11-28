@@ -30,19 +30,12 @@ export class MovementComponent extends BaseComponent {
      */
     direction;
 
-    /**
-     * @type {number} Saves the camera rotation to adjust movement direction.
-     */
-    cameraRotation;
-
     constructor(gameObject, speed = 200) {
         super(gameObject);
 
         this.speed = speed;
         this.velocity = { x: 0, y: 0 };
         this.direction = { x: 0, y: 0 };
-        this.cameraRotation = 0;
-        EventBus.on('cameraRotated', (rot)=>{this.cameraRotation=rot;});
     }
 
     /**
@@ -66,14 +59,9 @@ export class MovementComponent extends BaseComponent {
         let { x, y } = this.direction;
         const magnitude = Math.hypot(x, y);
         
-        // Adjust for camera rotation
-        const camRot = this.cameraRotation;
-        const rotx = x*Math.cos(-camRot) - y*Math.sin(-camRot);
-        const roty = x*Math.sin(-camRot) + y*Math.cos(-camRot);
-
         if (magnitude > 0) {
-            this.velocity.x = (rotx / magnitude) * this.speed;
-            this.velocity.y = (roty / magnitude) * this.speed;
+            this.velocity.x = (x / magnitude) * this.speed;
+            this.velocity.y = (y / magnitude) * this.speed;
         } else {
             this.velocity.x = 0;
             this.velocity.y = 0;
