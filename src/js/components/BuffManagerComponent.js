@@ -1,4 +1,7 @@
 import { BaseComponent } from "../core/base-component";
+import { dashBuff } from "./Buffs/DashBuff";
+import { forceFieldBuff } from "./Buffs/ForceFieldBuff";
+import { invisibilityBuff } from "./Buffs/InvisiblityBuff";
 import { movementBuff } from "./Buffs/MovementBuff";
 
 /**
@@ -24,6 +27,9 @@ import { movementBuff } from "./Buffs/MovementBuff";
  */
 const buffTypeToBuffLogic = {
     movement: movementBuff,
+    dash: dashBuff,
+    forceField: forceFieldBuff,
+    invisibility: invisibilityBuff,
     // health: healthBuff (example)
     // ...
 }
