@@ -33,6 +33,12 @@ export default class NPCsDialogueView extends Phaser.GameObjects.Container{
         this.ANCHOR_X = 0;
         this.ANCHOR_Y = 0; 
 
+        EventBus.on("cameraRotated", this.onCameraRotated,this);
+        this.setDepth(1000);
+
+    }
+    onCameraRotated(R){
+        this.setRotation(-R)
     }
     CreateElements(){
         this.CreateBackground();
@@ -53,37 +59,25 @@ export default class NPCsDialogueView extends Phaser.GameObjects.Container{
     CreateButtons(button){
         this.numButtons ++;
 
-        var buttonBackground = this.scene.make.sprite({
-            x: this.buttonPositionX, 
-            y: this.buttonPositionY + this.interliterate * this.numButtons,
-            key: "UIdialogueButton",
-            scale: 2
-        });
-        this.add(buttonBackground);
-        this.buttons.push(buttonBackground);
-
-        let color;
-        switch (button.color){
-            case "DarkBrown":
-                color = Colors.DarkBrown;
-                break;
-            case "LightBrown":
-                color = Colors.LightBrown;
-                break;
-            case "Green":
-                color = Colors.Green;
-                break;
-            case "Orange":
-                color = Colors.Orange;
-                break;
-            case "Red":
-                color = Colors.Red;
-                break;
-            default:
-                color = Colors.White;
-                break;
-        }
-        var newButton = new Button(this.scene,this.buttonPositionX, this.buttonPositionY + this.interliterate * this.numButtons, button.label, "MicroChat", color,"10px")
+        var newButton= new Button(this.scene, this.buttonPositionX, this.buttonPositionY + this.interliterate * this.numButtons, null, 150, 50,
+            {
+                text: button.label,
+                style: {
+                    fontSize: 10,
+                    color: Colors[button.color],
+                    fontFamily: 'MicroChat',
+                    padding: { x: 20, y: 10 },
+                }
+            },
+            {
+                texture:"UIbackground",
+                frame:0,
+                leftWidth:3,
+                rightWidth:3,
+                topHeight:3,
+                bottomHeight:0
+            }
+        );
         this.add(newButton);
         newButton.addInteraction((btn) => {
             btn.on("pointerdown",()=>{
@@ -159,6 +153,10 @@ export default class NPCsDialogueView extends Phaser.GameObjects.Container{
     }
     showView(){
        this.setVisible(true);
+    }
+    setPosition(x,y){
+        this.x = x;
+        this.y = y-200;
     }
 }
 

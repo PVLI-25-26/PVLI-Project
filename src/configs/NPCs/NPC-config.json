@@ -1,0 +1,7 @@
+{
+    "billboardConfig":{
+        "texture":"slime",
+        "scale":0.1
+    },
+    "dialogueName": "npcName1"
+}

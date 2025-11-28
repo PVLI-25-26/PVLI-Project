@@ -8,6 +8,19 @@ import { HudPresenter } from "../js/UI/hud/HUDPresenter.js";
 import showLoaderUI from "../js/UI/LoaderUI.js";
 import { SoundSceneFacade } from "../js/core/sound-facade.js";
 
+import {NPC} from "../js/entities/NPC.js"
+import NPCconfig from "../configs/NPCs/NPC-config.json"
+
+import NPCsDialogueModel from "../js/UI/NPCsDialogue/NPCsDialogueModel.js";
+import NPCsDialoguePresenter from "../js/UI/NPCsDialogue/NPCsDialoguePresenter.js";
+import NPCsDialogueView from "../js/UI/NPCsDialogue/NPCsDialogueView.js";
+
+import dialogueTest from "../configs/Dialogues/NPCsDialogue-config.json"
+import dialogueEvents from "../configs/Dialogues/NPCsDialogue-buttonEvents.js"
+
+
+
+
 export default class GameplayScene extends Phaser.Scene {
     constructor() {
         super({ key: 'GameplayScene' });
@@ -24,6 +37,11 @@ export default class GameplayScene extends Phaser.Scene {
         const view = new HudView(this);
         const presenter = new HudPresenter(view, model);
         
+        const NPCmodel = new NPCsDialogueModel(dialogueTest,dialogueEvents);
+        const NPCview = new NPCsDialogueView(this);
+        const NPCpresenter = new NPCsDialoguePresenter(NPCview,NPCmodel)
+
+
         // Get data about new room (this data depends on the connection take, that is why it is passed through there and not in the dungeon)
         this.playerSpawn = data.playerSpawn || {x: 0, y: 0};
 
@@ -32,12 +50,12 @@ export default class GameplayScene extends Phaser.Scene {
         this.sound_facade = new SoundSceneFacade(this, audioConfig);
 
         // Lock mouse pointer when scene starts and when scene is resumed
-        this.input.mouse.requestPointerLock();
+        //this.input.mouse.requestPointerLock();
         this.events.on('resume', ()=>this.input.mouse.requestPointerLock(), this);
         // Unlock mouse when scene is paused
         this.events.on('pause', ()=>this.input.mouse.releasePointerLock(), this);
         // Lock mouse if user clicks (maybe they exited the lock with ESC)
-        this.input.on('pointerdown', ()=>this.input.mouse.requestPointerLock(), this);
+        //this.input.on('pointerdown', ()=>this.input.mouse.requestPointerLock(), this);
 
         this.input.keyboard.on("keydown-P", () => {
             if (this.scene.isPaused("GameplayScene")) return;
@@ -90,6 +108,9 @@ export default class GameplayScene extends Phaser.Scene {
         this.plugins.get('dungeon').loadCurrentRoom(this, this.obstaclesCategory, this.enemiesCategory, this.playerCategory, this.connectionsCategory, this.itemsCategory);
         // Make camera follow the player
         this.cameras.main.startFollow(this.player, false, 0.1, 0.1, 10, 10);
+        
+        var npc = new NPC(this,100,10,NPCconfig);
+
     }
 }
 

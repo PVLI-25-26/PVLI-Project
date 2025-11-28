@@ -7,7 +7,7 @@ export default class NPCsDialoguePresenter{
         this.lastPage = false;
         //this.view.setPresenter(this);
         
-        EventBus.on('StartDialogue',(id)=>{this.showDialogue(id)}); 
+        EventBus.on('StartDialogue',(id,x,y)=>{this.showDialogue(id,x,y)}); 
         EventBus.on('StopDialogue',()=>{this.hideDialogue()});
         EventBus.on('NextPageDialogue',()=>{ 
             if (!this.lastPage){
@@ -20,10 +20,13 @@ export default class NPCsDialoguePresenter{
             }
             
         });
+        EventBus.on('dialogueFinished',()=>{this.view.scene.input.mouse.requestPointerLock()})
     }
     
-
-    showDialogue(id){
+    
+    showDialogue(id,x,y){
+        this.view.scene.input.mouse.releasePointerLock();
+        this.view.setPosition(x,y)
         this.view.showView();
         this.getDialogue(id);
         this.setCurrentPage();
