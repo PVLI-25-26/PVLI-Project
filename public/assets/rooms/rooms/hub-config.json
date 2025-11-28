@@ -9,134 +9,13 @@
          "name":"Obstacles",
          "objects":[
                 {
-                 "id":47,
-                 "rotation":0,
-                 "template":"..\/Templates\/SpriteStackTemplate.tx",
-                 "type":"wall",
-                 "x":169,
-                 "y":-245
-                }, 
-                {
-                 "id":48,
-                 "rotation":0,
-                 "template":"..\/Templates\/SpriteStackTemplate.tx",
-                 "type":"wall",
-                 "x":220.187,
-                 "y":-195
-                }, 
-                {
-                 "id":49,
-                 "rotation":0,
-                 "template":"..\/Templates\/SpriteStackTemplate.tx",
-                 "type":"wall",
-                 "x":220.375,
-                 "y":-145.001
-                }, 
-                {
-                 "id":50,
-                 "rotation":0,
-                 "template":"..\/Templates\/SpriteStackTemplate.tx",
-                 "type":"wall",
-                 "x":220.562,
-                 "y":-95.001
-                }, 
-                {
-                 "id":51,
-                 "rotation":0,
-                 "template":"..\/Templates\/SpriteStackTemplate.tx",
-                 "type":"wall",
-                 "x":220.749,
-                 "y":-45.0014
-                }, 
-                {
-                 "id":52,
-                 "rotation":0,
-                 "template":"..\/Templates\/SpriteStackTemplate.tx",
-                 "type":"wall",
-                 "x":220.936,
-                 "y":4.9982
-                }, 
-                {
-                 "id":53,
-                 "rotation":0,
-                 "template":"..\/Templates\/SpriteStackTemplate.tx",
-                 "type":"wall",
-                 "x":221.124,
-                 "y":54.9979
-                }, 
-                {
-                 "id":54,
-                 "rotation":0,
-                 "template":"..\/Templates\/SpriteStackTemplate.tx",
-                 "type":"wall",
-                 "x":221.311,
-                 "y":104.9975
-                }, 
-                {
-                 "id":55,
-                 "rotation":0,
-                 "template":"..\/Templates\/SpriteStackTemplate.tx",
-                 "type":"wall",
-                 "x":220,
-                 "y":-245
-                }, 
-                {
-                 "id":56,
-                 "rotation":0,
-                 "template":"..\/Templates\/SpriteStackTemplate.tx",
-                 "type":"wall",
-                 "x":68,
-                 "y":-245
-                }, 
-                {
-                 "id":57,
-                 "rotation":0,
-                 "template":"..\/Templates\/SpriteStackTemplate.tx",
-                 "type":"wall",
-                 "x":119,
-                 "y":-245
-                }, 
-                {
-                 "id":58,
-                 "rotation":0,
-                 "template":"..\/Templates\/SpriteStackTemplate.tx",
-                 "type":"wall",
-                 "x":-33,
-                 "y":-244
-                }, 
-                {
-                 "id":59,
-                 "rotation":0,
-                 "template":"..\/Templates\/SpriteStackTemplate.tx",
-                 "type":"wall",
-                 "x":18,
-                 "y":-244
-                }, 
-                {
-                 "id":60,
-                 "rotation":0,
-                 "template":"..\/Templates\/SpriteStackTemplate.tx",
-                 "type":"wall",
-                 "x":-134,
-                 "y":-244
-                }, 
-                {
-                 "id":61,
-                 "rotation":0,
-                 "template":"..\/Templates\/SpriteStackTemplate.tx",
-                 "type":"wall",
-                 "x":-83,
-                 "y":-244
-                }, 
-                {
                  "id":63,
                  "rotation":270,
                  "template":"..\/Templates\/SpriteStackTemplate.tx",
                  "type":"chest",
                  "x":164,
                  "y":-188
-                },
-            
+                }, 
                 {
                  "id":66,
                  "template":"..\/Templates\/SpriteStackTemplate.tx",
@@ -171,6 +50,69 @@
                  "type":"crate",
                  "x":-115,
                  "y":-190
+                }, 
+                {
+                 "id":87,
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"rock",
+                 "x":-96,
+                 "y":-32
+                }, 
+                {
+                 "id":88,
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"column",
+                 "x":-288,
+                 "y":-160
+                }, 
+                {
+                 "id":89,
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"column",
+                 "x":0,
+                 "y":96
+                }, 
+                {
+                 "id":90,
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"log",
+                 "x":-256,
+                 "y":32
+                }, 
+                {
+                 "id":91,
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"column",
+                 "x":-128,
+                 "y":-320
+                }, 
+                {
+                 "id":92,
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"column",
+                 "x":256,
+                 "y":-64
+                }, 
+                {
+                 "id":93,
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"rock",
+                 "x":288,
+                 "y":-192
+                }, 
+                {
+                 "id":95,
+                 "template":"..\/Templates\/BillboardTemplate.tx",
+                 "type":"tree2",
+                 "x":96,
+                 "y":-320
+                }, 
+                {
+                 "id":96,
+                 "template":"..\/Templates\/BillboardTemplate.tx",
+                 "type":"tree3",
+                 "x":-160,
+                 "y":160
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -186,7 +128,7 @@
                 {
                  "id":62,
                  "template":"..\/Templates\/ItemTemplate.tx",
-                 "type":"queso",
+                 "type":"speed-vase",
                  "x":8,
                  "y":-120
                 }, 
@@ -207,23 +149,44 @@
                 {
                  "id":72,
                  "template":"..\/Templates\/ItemTemplate.tx",
-                 "type":"ball",
-                 "x":157,
-                 "y":-75
+                 "type":"health-flower",
+                 "x":320,
+                 "y":-288
                 }, 
                 {
                  "id":73,
                  "template":"..\/Templates\/ItemTemplate.tx",
-                 "type":"golden-cup",
-                 "x":163,
-                 "y":41
+                 "type":"health-flower",
+                 "x":-160,
+                 "y":0
                 }, 
                 {
                  "id":74,
                  "template":"..\/Templates\/ItemTemplate.tx",
-                 "type":"queso",
+                 "type":"speed-vase",
                  "x":164,
                  "y":113
+                }, 
+                {
+                 "id":84,
+                 "template":"..\/Templates\/ItemTemplate.tx",
+                 "type":"health-flower",
+                 "x":-160,
+                 "y":0
+                }, 
+                {
+                 "id":85,
+                 "template":"..\/Templates\/ItemTemplate.tx",
+                 "type":"health-flower",
+                 "x":-224,
+                 "y":-224
+                }, 
+                {
+                 "id":86,
+                 "template":"..\/Templates\/ItemTemplate.tx",
+                 "type":"health-flower",
+                 "x":-224,
+                 "y":-224
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -248,7 +211,7 @@
          "name":"Scattering",
          "objects":[
                 {
-                 "height":864,
+                 "height":1408,
                  "id":78,
                  "properties":[
                         {
@@ -257,10 +220,10 @@
                          "value":300
                         }],
                  "template":"..\/Templates\/ScatteringTemplate.tx",
-                 "type":"Grass",
-                 "width":864,
-                 "x":-416,
-                 "y":-480
+                 "type":"grass1 grass2 grass3 grass4 flower1 flower2 flower3",
+                 "width":1312,
+                 "x":-640,
+                 "y":-768
                 }, 
                 {
                  "height":452,
@@ -272,7 +235,7 @@
                          "value":100
                         }],
                  "template":"..\/Templates\/ScatteringTemplate.tx",
-                 "type":"tree1 tree2 tree3",
+                 "type":"tree1 tree2 tree3 tree4",
                  "width":1568,
                  "x":-768,
                  "y":-928
@@ -287,10 +250,10 @@
                          "value":100
                         }],
                  "template":"..\/Templates\/ScatteringTemplate.tx",
-                 "type":"tree1 tree2 tree3",
+                 "type":"tree1 tree2 tree3 tree4",
                  "width":1568,
-                 "x":-768,
-                 "y":384
+                 "x":-760,
+                 "y":380
                 }, 
                 {
                  "height":864,
@@ -302,7 +265,7 @@
                          "value":100
                         }],
                  "template":"..\/Templates\/ScatteringTemplate.tx",
-                 "type":"tree1 tree2 tree3",
+                 "type":"tree1 tree2 tree3 tree4",
                  "width":352,
                  "x":-768,
                  "y":-480
@@ -317,7 +280,7 @@
                          "value":100
                         }],
                  "template":"..\/Templates\/ScatteringTemplate.tx",
-                 "type":"tree1 tree2 tree3",
+                 "type":"tree1 tree2 tree3 tree4",
                  "width":352,
                  "x":448,
                  "y":-480
@@ -329,7 +292,7 @@
          "y":0
         }],
  "nextlayerid":10,
- "nextobjectid":84,
+ "nextobjectid":97,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.11.2",

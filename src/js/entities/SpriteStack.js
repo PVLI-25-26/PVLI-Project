@@ -65,8 +65,14 @@ export class SpriteStack extends Phaser.GameObjects.Sprite{
         this.camera = camera;
         this.#cameraCosR = 1;
         this.#cameraSinR = 0;
-        this.config = spriteStackConfig;   
-        this.setOrigin(0.5);
+        this.config = spriteStackConfig;  
+        this.setOrigin(0.5); 
+        if (this.config.offsetX || this.config.offsetY) {
+            this.body.position.x += this.config.offsetX;
+            this.body.position.y += this.config.offsetY;
+            this.body.positionPrev.x += this.config.offsetX;
+            this.body.positionPrev.y += this.config.offsetY;
+        }
         
         // initializes stacking parameters 
         this.verticalOffset = spriteStackConfig.verticalOffset;

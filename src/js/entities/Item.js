@@ -24,8 +24,6 @@ export class Item extends BillBoard{
         // Add item to scene
         this.scene.add.existing(this);
 
-        this.setOrigin(0.5);
-
         // save item collect sound
         this.collectSound = config.collectSound;
 

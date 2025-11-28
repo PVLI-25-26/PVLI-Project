@@ -6,7 +6,9 @@
             "textures": "barrel-spritestack",
             "frameCount": 8,
             "verticalOffset": 4,
-            "scale": 3
+            "scale": 3,
+            "offsetX": 0,
+            "offsetY": 0
         },
         "physicsConfig":{
             "shape": {
@@ -15,9 +17,7 @@
                 "height": 30
             },
             "isStatic": true
-        },
-        "offsetX": 0,
-        "offsetY": 0
+        }
     },
     {
         "key": "wall",
@@ -26,7 +26,9 @@
             "textures": "wall-spritestack",
             "frameCount": 16,
             "verticalOffset": 2,
-            "scale": 3
+            "scale": 3,
+            "offsetX": 0,
+            "offsetY": 0
         },
         "physicsConfig":{
             "shape": {
@@ -35,9 +37,7 @@
                 "height": 48
             },
             "isStatic": true
-        },
-        "offsetX": 0,
-        "offsetY": 0
+        }
     },
     {
         "key": "chest",
@@ -46,7 +46,9 @@
             "textures": "chest-spritestack",
             "frameCount": 18,
             "verticalOffset": 2,
-            "scale": 3
+            "scale": 3,
+            "offsetX": 0,
+            "offsetY": 0
         },
         "physicsConfig":{
             "shape": {
@@ -55,9 +57,7 @@
                 "height": 48
             },
             "isStatic": true
-        },
-        "offsetX": 0,
-        "offsetY": 0
+        }
     },
     {
         "key": "crate",
@@ -66,7 +66,9 @@
             "textures": "crate-spritestack",
             "frameCount": 8,
             "verticalOffset": 2,
-            "scale": 3
+            "scale": 3,
+            "offsetX": 0,
+            "offsetY": 0
         },
         "physicsConfig":{
             "shape": {
@@ -75,9 +77,66 @@
                 "height": 48
             },
             "isStatic": true
+        }
+    },
+    {
+        "key": "rock",
+        "spriteStackConfig": 
+        {
+            "textures": "rock-spritestack",
+            "frameCount": 6,
+            "verticalOffset": 6,
+            "scale": 3,
+            "offsetX": 0,
+            "offsetY": 0
         },
-        "offsetX": 0,
-        "offsetY": 0
+        "physicsConfig":{
+            "shape": {
+                "type": "rectangle",
+                "width": 48,
+                "height": 48
+            },
+            "isStatic": true
+        }
+    },
+    {
+        "key": "column",
+        "spriteStackConfig": 
+        {
+            "textures": "column-spritestack",
+            "frameCount": 28,
+            "verticalOffset": 3,
+            "scale": 3,
+            "offsetX": 0,
+            "offsetY": 0
+        },
+        "physicsConfig":{
+            "shape": {
+                "type": "rectangle",
+                "width": 48,
+                "height": 48
+            },
+            "isStatic": true
+        }
+    },
+    {
+        "key": "log",
+        "spriteStackConfig": 
+        {
+            "textures": "log-spritestack",
+            "frameCount": 4,
+            "verticalOffset": 3,
+            "scale": 5,
+            "offsetX": 0,
+            "offsetY": 0
+        },
+        "physicsConfig":{
+            "shape": {
+                "type": "circle",
+                "radius": 24
+            },
+            "isStatic": true
+        }
     },
     {
         "key": "door",
@@ -86,7 +145,9 @@
             "textures": "door-spritestack",
             "frameCount": 16,
             "verticalOffset": 2,
-            "scale": 3
+            "scale": 3,
+            "offsetX": 0,
+            "offsetY": 0    
         },
         "physicsConfig":{
             "shape": {
@@ -95,9 +156,7 @@
                 "height": 12
             },
             "isStatic": true
-        },
-        "offsetX": 0,
-        "offsetY": 0
+        }
     },
     {
 
@@ -105,21 +164,74 @@
         "billboardConfig":
         {
             "texture":"billboard",
-            "scale":0.1            
+            "scale":0.1,
+            "frame":0        
         }
     },
     {
-        "key": "Grass",
+        "key": "grass1",
         "billboardConfig":{
             "texture":"grass",
-            "scale":4
+            "scale":4,
+            "frame":0
+        }
+    },
+    {
+        "key": "grass2",
+        "billboardConfig":{
+            "texture":"grass",
+            "scale":4,
+            "frame":1  
+        }
+    },
+    {
+        "key": "grass3",
+        "billboardConfig":{
+            "texture":"grass",
+            "scale":4,
+            "frame":2
+        }
+    },
+    {
+        "key": "grass4",
+        "billboardConfig":{
+            "texture":"grass",
+            "scale":4,
+            "frame": 3
+        }
+    },
+    {
+        "key": "flower1",
+        "billboardConfig":{
+            "texture":"flowers",
+            "scale":4,
+            "frame":0
+        }
+    },
+    {
+        "key": "flower2",
+        "billboardConfig":{
+            "texture":"flowers",
+            "scale":4,
+            "frame":1
+        }
+    },
+    {
+        "key": "flower3",
+        "billboardConfig":{
+            "texture":"flowers",
+            "scale":4,
+            "frame":2 
         }
     },
     {
         "key":"tree1",
         "billboardConfig":{
-            "texture":"tree1",
-            "scale":4
+            "texture":"trees",
+            "scale":4,
+            "frame":0,
+            "offsetX": 0.5,
+            "offsetY": 0.95
         },
         "physicsConfig":{
             "shape": {
@@ -128,15 +240,16 @@
                 "height": 10
             },
             "isStatic": true
-        },
-        "offsetX": 0.5,
-        "offsetY": 0.95
+        }
     },
     {
         "key":"tree2",
         "billboardConfig":{
-            "texture":"tree2",
-            "scale":4
+            "texture":"trees",
+            "scale":4,
+            "frame":1,
+            "offsetX": 0.5,
+            "offsetY": 0.95
         },
         "physicsConfig":{
             "shape": {
@@ -145,15 +258,16 @@
                 "height": 10
             },
             "isStatic": true
-        },
-        "offsetX": 0.5,
-        "offsetY": 0.95
+        }
     },
     {
         "key":"tree3",
         "billboardConfig":{
-            "texture":"tree3",
-            "scale":4
+            "texture":"trees",
+            "scale":4,
+            "frame":2,
+            "offsetX": 0.5,
+            "offsetY": 0.95
         },
         "physicsConfig":{
             "shape": {
@@ -162,8 +276,24 @@
                 "height": 10
             },
             "isStatic": true
+        }
+    },
+    {
+        "key":"tree4",
+        "billboardConfig":{
+            "texture":"trees",
+            "scale":4,
+            "frame":3,
+            "offsetX": 0.5,
+            "offsetY": 0.95
         },
-        "offsetX": 0.5,
-        "offsetY": 0.95
+        "physicsConfig":{
+            "shape": {
+                "type": "rectangle",
+                "width": 3,
+                "height": 10
+            },
+            "isStatic": true
+        }
     }
 ]

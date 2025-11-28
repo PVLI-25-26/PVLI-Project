@@ -1,0 +1,96 @@
+[
+    {
+        "billboardConfig":{
+            "texture":"speedVases",
+            "scale":3,
+            "frame":0,
+            "offsetX": 0.5,
+            "offsetY": 1
+        },
+        "physicsConfig":{
+            "shape": {
+                "type": "rectangle",
+                "width": 10,
+                "height": 10
+            },
+            "isStatic": true,
+            "isSensor": true
+        },
+        "displayData":{
+            "name": "Vase I",
+            "description": "Blah blah blah",
+            "image": "speedVases",
+            "frame": 0
+        },
+        "buffData":{
+            "type": "movement",
+            "value": 1.10,
+            "duration": 5000
+        },
+        "collectSound": "itemCollected"
+    },
+    {
+        "billboardConfig":{
+            "texture":"speedVases",
+            "scale":3,
+            "frame":1,
+            "offsetX": 0.5,
+            "offsetY": 1
+        },
+        "physicsConfig":{
+            "shape": {
+                "type": "rectangle",
+                "width": 10,
+                "height": 10
+            },
+            "isStatic": true,
+            "isSensor": true
+        },
+        "displayData":{
+            "name": "Vase II",
+            "description": "Blah blah blah",
+            "image": "speedVases",
+            "frame": 1
+        },
+        "buffData":{
+            "type": "movement",
+            "value": 1.30,
+            "duration": 5000
+        },
+        "collectSound": "itemCollected",
+        "offsetX": 0.5,
+        "offsetY": 1
+    },
+    {
+        "billboardConfig":{
+            "texture":"speedVases",
+            "scale":3,
+            "frame":2,
+            "offsetX": 0.5,
+            "offsetY": 1
+        },
+        "physicsConfig":{
+            "shape": {
+                "type": "rectangle",
+                "width": 10,
+                "height": 10
+            },
+            "isStatic": true,
+            "isSensor": true
+        },
+        "displayData":{
+            "name": "Vase III",
+            "description": "Blah blah blah",
+            "image": "speedVases",
+            "frame": 2
+        },
+        "buffData":{
+            "type": "movement",
+            "value": 1.60,
+            "duration": 5000
+        },
+        "collectSound": "itemCollected",
+        "offsetX": 0.5,
+        "offsetY": 1
+    }
+]

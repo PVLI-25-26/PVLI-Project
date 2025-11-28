@@ -1,0 +1,81 @@
+[
+    {
+        "billboardConfig":{
+            "texture":"healthFlowers",
+            "scale":3,
+            "frame":0,
+            "offsetX": 0.5,
+            "offsetY": 1
+        },
+        "physicsConfig":{
+            "shape": {
+                "type": "rectangle",
+                "width": 10,
+                "height": 10
+            },
+            "isStatic": true,
+            "isSensor": true
+        },
+        "displayData":{
+            "name": "Healing Flower I",
+            "description": "Blah blah blah",
+            "image": "healthFlowers",
+            "frame": 0
+        },
+        "collectSound": "itemCollected"
+    },
+    {
+        "billboardConfig":{
+            "texture":"healthFlowers",
+            "scale":3,
+            "frame":1,
+            "offsetX": 0.5,
+            "offsetY": 1
+        },
+        "physicsConfig":{
+            "shape": {
+                "type": "rectangle",
+                "width": 10,
+                "height": 10
+            },
+            "isStatic": true,
+            "isSensor": true
+        },
+        "displayData":{
+            "name": "Healing Flower II",
+            "description": "Blah blah blah",
+            "image": "healthFlowers",
+            "frame": 1
+        },
+        "collectSound": "itemCollected",
+        "offsetX": 0.5,
+        "offsetY": 1
+    },
+    {
+        "billboardConfig":{
+            "texture":"healthFlowers",
+            "scale":3,
+            "frame":2,
+            "offsetX": 0.5,
+            "offsetY": 1
+        },
+        "physicsConfig":{
+            "shape": {
+                "type": "rectangle",
+                "width": 10,
+                "height": 10
+            },
+            "isStatic": true,
+            "isSensor": true
+        },
+        "displayData":{
+            "name": "Healing Flower III",
+            "description": "Blah blah blah",
+            "image": "healthFlowers",
+            "frame": 2
+        },
+        "collectSound": "itemCollected",
+        "offsetX": 0.5,
+        "offsetY": 1
+    }
+]

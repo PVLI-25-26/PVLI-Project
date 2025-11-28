@@ -35,8 +35,6 @@ export class ObstacleBillboard extends BillBoard {
         this.addComponents();
 
         this.scene.add.existing(this);
-        this.setOrigin(config.offsetX, config.offsetY);
-        
     }
 
     /**

@@ -54,7 +54,7 @@ export class ItemDisplay extends Phaser.GameObjects.Container{
         this.consumeProgress = 0;
         this.isBeingPressed = false;
         // Create item image and set its size depending on space available
-        this.itemIMG = this.scene.add.image(IMG_MARGIN_HOR, height/2, itemData.image).setOrigin(0, 0.5);
+        this.itemIMG = this.scene.add.image(IMG_MARGIN_HOR, height/2, itemData.image, itemData.frame).setOrigin(0, 0.5);
         this.itemIMG.displayWidth = this.itemIMG.width = height-IMG_MARGIN_VER*2;
         this.itemIMG.displayHeight = this.itemIMG.height =  height-IMG_MARGIN_VER*2;
 

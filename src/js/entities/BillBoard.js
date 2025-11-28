@@ -15,8 +15,9 @@ import { DepthSortedSprite } from "./DepthSortedSprite";
 export class BillBoard extends DepthSortedSprite{
     constructor(scene, x, y, config, physicsConfig){
         super(scene, x, y, config.texture, null, physicsConfig);
-        this.setOrigin(0.5);
+        this.setOrigin(config.offsetX, config.offsetY);
         this.scale = config.scale;
+        this.setFrame(config.frame);
         EventBus.on('cameraRotated', this.onCameraRotated,this);
     }
 
