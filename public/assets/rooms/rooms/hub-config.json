@@ -122,6 +122,24 @@
         }, 
         {
          "draworder":"topdown",
+         "id":10,
+         "name":"NPCs",
+         "objects":[
+                {
+                 "id":97,
+                 "template":"..\/Templates\/NPCTemplate.tx",
+                 "type":"testNPC",
+                 "x":256,
+                 "y":96
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "draworder":"topdown",
          "id":6,
          "name":"Items",
          "objects":[
@@ -287,12 +305,12 @@
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":true,
+         "visible":false,
          "x":0,
          "y":0
         }],
- "nextlayerid":10,
- "nextobjectid":97,
+ "nextlayerid":11,
+ "nextobjectid":99,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.11.2",

@@ -41,7 +41,7 @@ export class PlayerControllerComponent extends BaseControllerComponent {
 
         // camera rotation when mouse is moved
         this.gameObject.scene.input.on('pointermove',(pointer)=>{
-            if(!pointer.isDown)
+            if(!pointer.isDown && this.gameObject.scene.input.mouse.locked)
             {
                 // Sometimes mouse movement made big movements which where visually annoying, 
                 // this makes sure camera cannot be moved too much

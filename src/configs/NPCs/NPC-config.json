@@ -1,7 +1,19 @@
-{
-    "billboardConfig":{
-        "texture":"slime",
-        "scale":0.1
-    },
-    "dialogueName": "npcName1"
-}
+[
+    {
+        "key": "testNPC",
+        "billboardConfig":{
+            "texture":"slime",
+            "scale":0.1
+        },
+        "physicsConfig":{
+            "shape": {
+                "type": "rectangle",
+                "width": 450,
+                "height": 450
+            },
+            "isStatic": true,
+            "isSensor": true
+        },
+        "dialogueName": "npcName1"
+    }
+]

@@ -111,9 +111,6 @@ export default class GameplayScene extends Phaser.Scene {
         this.plugins.get('dungeon').loadCurrentRoom(this, this.obstaclesCategory, this.enemiesCategory, this.playerCategory, this.connectionsCategory, this.interactablesCategory);
         // Make camera follow the player
         this.cameras.main.startFollow(this.player, false, 0.1, 0.1, 10, 10);
-        
-        var npc = new NPC(this,100,10,NPCconfig);
-
     }
 }
 

@@ -22,7 +22,6 @@ export default class NPCsDialoguePresenter{
         });
     }
     
-    
     showDialogue(id,x,y){
         EventBus.emit('releasePointer');
         EventBus.emit('disablePlayerKeys');

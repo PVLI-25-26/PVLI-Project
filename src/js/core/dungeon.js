@@ -20,6 +20,7 @@ import { EventBus } from './event-bus.js';
 import { createConnection } from './factories/connection-factory.js';
 import { createEnemy } from "./factories/enemy-simple-fabric.js";
 import { createItem } from './factories/item-factory.js';
+import { createNPC } from './factories/npc-factory.js';
 import { createObstacle } from './factories/obstacle-factory.js';
 import { getCustomTiledProperty, getTiledMapLayer } from './tiled-parser.js';
 
@@ -145,6 +146,9 @@ export class Dungeon extends Phaser.Plugins.BasePlugin {
                     scene.logger.log('DUNGEON', 1, 'Creating enemies ...');
                     layer.objects.forEach((enemy)=>{createEnemy(scene, enemy, getTiledMapLayer(room, "Enemy Routes"))});
                     break;
+                case "NPCs":
+                    scene.logger.log('DUNGEON', 1, 'Creating NPCs ...');
+                    layer.objects.forEach((npc)=>{createNPC(scene, npc)});
                 case "Scattering":
                     scene.logger.log('DUNGEON', 1, 'Creating scattered objects ...');
                     layer.objects.forEach((scattering)=>{this.createScatteredObjects(scene, scattering)});

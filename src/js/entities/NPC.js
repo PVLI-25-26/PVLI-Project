@@ -3,7 +3,7 @@ import { EventBus } from "../core/event-bus.js";
 
 export class NPC extends BillBoard{
     constructor(scene,x,y,config){
-        super(scene,x,y,config.billboardConfig,{isStatic:true,isSensor:false});
+        super(scene,x,y,config.billboardConfig,config.physicsConfig);
         this.config = config;
         this.dialogueName = config.dialogueName; 
 
@@ -15,7 +15,7 @@ export class NPC extends BillBoard{
         
         this.scene.add.existing(this);
 
-        this.setCollisionCategory(scene.interactablesCategory);
+        if(config.physicsConfig) this.setCollisionCategory(scene.interactablesCategory);
         
         EventBus.on('interact', this.onPlayerInteraction, this);
     }
