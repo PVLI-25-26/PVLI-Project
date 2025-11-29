@@ -50,7 +50,7 @@ export function createItem(scene, itemSceneData, roomsExplored){
         // Coge la id base del objeto y le suma el numero de habitaciones exploradas para sacara el item real
         itemConfig
     );
-    item.setCollisionCategory(scene.itemsCategory);
+    item.setCollisionCategory(scene.interactablesCategory);
     return item;
 }
 

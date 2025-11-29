@@ -17,6 +17,7 @@ import NPCsDialogueView from "../js/UI/NPCsDialogue/NPCsDialogueView.js";
 
 import dialogueTest from "../configs/Dialogues/NPCsDialogue-config.json"
 import dialogueEvents from "../configs/Dialogues/NPCsDialogue-buttonEvents.js"
+import { InputFacade } from "../js/core/input-facade.js";
 
 
 
@@ -32,6 +33,9 @@ export default class GameplayScene extends Phaser.Scene {
 
     create(data) {
         EventBus.removeAllListeners();
+
+        this.inputFacade = new InputFacade(this);
+        this.inputFacade.resetPointerLockCount();
 
         const model = new HudModel();
         const view = new HudView(this);
@@ -50,12 +54,12 @@ export default class GameplayScene extends Phaser.Scene {
         this.sound_facade = new SoundSceneFacade(this, audioConfig);
 
         // Lock mouse pointer when scene starts and when scene is resumed
-        //this.input.mouse.requestPointerLock();
-        this.events.on('resume', ()=>this.input.mouse.requestPointerLock(), this);
+        this.inputFacade.lockPointer();
+        this.events.on('resume', this.inputFacade.lockPointer, this);
         // Unlock mouse when scene is paused
-        this.events.on('pause', ()=>this.input.mouse.releasePointerLock(), this);
+        this.events.on('pause', this.inputFacade.releasePointer, this);
         // Lock mouse if user clicks (maybe they exited the lock with ESC)
-        //this.input.on('pointerdown', ()=>this.input.mouse.requestPointerLock(), this);
+        //this.input.on('pointerdown', ()=>{console.log('p');this.input.mouse.requestPointerLock()}, this);
 
         this.input.keyboard.on("keydown-P", () => {
             if (this.scene.isPaused("GameplayScene")) return;
@@ -74,21 +78,20 @@ export default class GameplayScene extends Phaser.Scene {
             this.matter.world.debugGraphic.visible = this.matter.world.drawDebug;
         });
 
-
         // Create physics groups
         this.obstaclesCategory = 1 << 0;
         this.enemiesCategory = 1 << 1;
         this.playerCategory = 1 << 2;
         this.arrowCategory = 1 << 3;
         this.connectionsCategory = 1 << 4;
-        this.itemsCategory = 1 << 5;
+        this.interactablesCategory = 1 << 5;
 
         // Create player
         this.logger.log('GAMEPLAY', 1, 'Creating player...');
         this.player = new Player(this, this.playerSpawn.x, this.playerSpawn.y, playerConfig);
         this.player.setCollisionCategory(this.playerCategory);
         // Create colliders
-        this.player.setCollidesWith([this.enemiesCategory, this.obstaclesCategory, this.connectionsCategory, this.itemsCategory]);
+        this.player.setCollidesWith([this.enemiesCategory, this.obstaclesCategory, this.connectionsCategory, this.interactablesCategory]);
 
         // HOW DO I MAKE THIS ONLY WITH ONE CATEGORY
         this.player.setOnCollide((pair) => {
@@ -105,7 +108,7 @@ export default class GameplayScene extends Phaser.Scene {
         //     },null, this);
 
         // Load scene objects from room data
-        this.plugins.get('dungeon').loadCurrentRoom(this, this.obstaclesCategory, this.enemiesCategory, this.playerCategory, this.connectionsCategory, this.itemsCategory);
+        this.plugins.get('dungeon').loadCurrentRoom(this, this.obstaclesCategory, this.enemiesCategory, this.playerCategory, this.connectionsCategory, this.interactablesCategory);
         // Make camera follow the player
         this.cameras.main.startFollow(this.player, false, 0.1, 0.1, 10, 10);
         

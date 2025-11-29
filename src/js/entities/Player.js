@@ -6,7 +6,7 @@ import { DamageableComponent } from "../components/DamageableComponent.js";
 import { EventBus } from "../core/event-bus.js";
 import  {BillBoard} from "./BillBoard.js";
 import { PlayerAbilityControllerComponent } from "../components/PlayerAbilityController.js";
-import { PlayerPickItemControllerComponent } from "../components/PlayerPickItemController.js";
+import { PlayerInteractControllerComponent } from "../components/PlayerInteractController.js";
 import { InventoryComponent } from "../components/InventoryComponent.js";
 import { BuffManagerComponent } from "../components/BuffManagerComponent.js";
 
@@ -97,8 +97,8 @@ export class Player extends BillBoard {
         // Add PlayerAbilityControllerComponent
         const abilityController = new PlayerAbilityControllerComponent(this);
 
-        // Add PlayerPickItemControllerComponent
-        const pickItemController = new PlayerPickItemControllerComponent(this, this.config.pickUpRadius);
+        // Add PlayerInteractControllerComponent
+        const interactController = new PlayerInteractControllerComponent(this, this.config.interactRadius);
 
         // Add InventoryComponent and load items from browser storage if there are any
         this.inventoryComponent = new InventoryComponent(this, JSON.parse(localStorage.getItem("playerInventory")));

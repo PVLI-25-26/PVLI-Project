@@ -30,7 +30,7 @@ export class PlayerControllerComponent extends BaseControllerComponent {
 
     constructor(gameObject) {
         super(gameObject);
-        this.keys = createPlayerKeys(gameObject.scene);
+        this.keys = gameObject.scene.inputFacade.getPlayerKeys();
         this.camera = gameObject.scene.cameras.main;
         EventBus.on('playerDash', (dashSpeed)=>{
             this.movementComponent.setSpeed(dashSpeed);
@@ -41,7 +41,7 @@ export class PlayerControllerComponent extends BaseControllerComponent {
 
         // camera rotation when mouse is moved
         this.gameObject.scene.input.on('pointermove',(pointer)=>{
-            if(!pointer.isDown && this.gameObject.scene.input.mouse.locked)
+            if(!pointer.isDown)
             {
                 // Sometimes mouse movement made big movements which where visually annoying, 
                 // this makes sure camera cannot be moved too much

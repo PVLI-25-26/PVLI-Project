@@ -2,19 +2,19 @@
     "npcName1" : {
         "dialogue" : [
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et ",
-            "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam r"
+            "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium."
         ],
         "speed" : 1,
         "npcName" : "Antonio",
         "userOptions" : [
             {
-                "label": "Bye",
-                "event" : "Event1",
+                "label": "Next",
+                "event" : "NEXT_PAGE",
                 "color" : "White"
             },
             {
-                "label" : "Next",
-                "event" : "Event2",
+                "label" : "Exit",
+                "event" : "END",
                 "color" : "Red"
             }
         ]
@@ -30,14 +30,14 @@
         "npcName" : "Dolores",
         "userOptions" : [
             {
-                "label" : "Adios",
-                "event" : "END",
-                "color" : "White"
-            },
-            {
                 "label" : "Next",
                 "event" : "NEXT_PAGE",
                 "color" : "Green"
+            },
+            {
+                "label" : "Exit",
+                "event" : "END",
+                "color" : "White"
             }
         ]
     }

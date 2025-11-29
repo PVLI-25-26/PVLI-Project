@@ -7,38 +7,38 @@ import { EventBus } from "../core/event-bus";
  *
  * @extends {BaseComponent}
  */
-export class PlayerPickItemControllerComponent extends BaseComponent{
+export class PlayerInteractControllerComponent extends BaseComponent{
     /**
-     * Radius in pixels for the pickup sensor.
+     * Radius in pixels for the interact sensor.
      * @type {number}
      * @private
      */
-    #pickUpRadius;
+    #interactRadius;
 
     /**
      * Create a PlayerPickItemControllerComponent.
      *
      * @param {Phaser.GameObjects.GameObject} gameObject - Owner game object (player).
-     * @param {number} pickUpRadius - Radius in pixels for the pickup sensor zone.
+     * @param {number} interactRadius - Radius in pixels for the interact sensor zone.
      */
-    constructor(gameObject, pickUpRadius){
+    constructor(gameObject, interactRadius){
         super(gameObject);
         // set properties
-        this.#pickUpRadius = pickUpRadius
+        this.#interactRadius = interactRadius
         // get player keys
-        this.keys = createPlayerKeys(gameObject.scene);
+        this.keys = gameObject.scene.inputFacade.getPlayerKeys();
 
-        // Create pick up effect zone to detect items nearby
-        this.pickUpZone = this.gameObject.scene.add.zone(this.gameObject.x, this.gameObject.y);
-        this.gameObject.scene.matter.add.gameObject(this.pickUpZone, {
+        // Create interact effect zone to detect entities nearby
+        this.interactZone = this.gameObject.scene.add.zone(this.gameObject.x, this.gameObject.y);
+        this.gameObject.scene.matter.add.gameObject(this.interactZone, {
             shape: {
                 type: "circle",
-                radius: this.#pickUpRadius,
+                radius: this.#interactRadius,
             },
             isSensor: true
         });
-        this.pickUpZone.setOnCollide((pair)=>{this.pickItem(pair)});
-        this.pickUpZone.setCollidesWith(0);
+        this.interactZone.setOnCollide((pair)=>{this.interact(pair)});
+        this.interactZone.setCollidesWith(0);
 
         this.logger = this.gameObject.scene.plugins.get('logger');
     }
@@ -46,26 +46,26 @@ export class PlayerPickItemControllerComponent extends BaseComponent{
     update(t, dt){
         // Toggle effect zone
         if(this.keys.pickItem.isDown) {
-            this.pickUpZone.setPosition(this.gameObject.x, this.gameObject.y);
-            this.pickUpZone.setCollidesWith(this.gameObject.scene.itemsCategory);
+            this.interactZone.setPosition(this.gameObject.x, this.gameObject.y);
+            this.interactZone.setCollidesWith(this.gameObject.scene.interactablesCategory);
         }
         else{
-            this.pickUpZone.setCollidesWith(0);
+            this.interactZone.setCollidesWith(0);
         }
     }
 
     /**
      * Handler invoked when the pickup sensor collides with another body.
-     * Emits an 'itemPicked' event on the EventBus with the picker and the item.
+     * Emits an 'interact' event on the EventBus with the actor and the reciever.
      *
      * @param {MatterCollisionPair} pair - Collision pair object provided by Matter.
      * @returns {void}
      */
-    pickItem(pair){
-        // Pick items in effect zone
+    interact(pair){
+        // get entity interacted in effect zone
         let zone = pair.bodyA.gameObject;
-        let item = pair.bodyB.gameObject;
-        EventBus.emit('itemPicked', this.gameObject, item);
+        let reciever = pair.bodyB.gameObject;
+        EventBus.emit('interact', this.gameObject, reciever);
     }
 
     /**

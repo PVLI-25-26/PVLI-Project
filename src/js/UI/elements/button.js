@@ -21,8 +21,7 @@ import Phaser from "phaser";
  */
 export class Button extends Phaser.GameObjects.Container {
     constructor(scene, x, y, callback, width, height,
-        textSettings = null, ninesliceSettings = null, 
-        scale = 1) {
+        textSettings = null, ninesliceSettings = null) {
         super(scene, x, y);
 
         /**
@@ -51,6 +50,7 @@ export class Button extends Phaser.GameObjects.Container {
                 ninesliceSettings.topHeight,
                 ninesliceSettings.bottomHeight
             ).setOrigin(0.5);
+            this.buttonNineslice.setScale(ninesliceSettings.scale);
             this.add(this.buttonNineslice);
         }
         
@@ -70,8 +70,6 @@ export class Button extends Phaser.GameObjects.Container {
             new Phaser.Geom.Rectangle(0, 0, width, height),
             Phaser.Geom.Rectangle.Contains
         );
-        
-        this.setScale(scale);
 
         this.scene.add.existing(this);
     }

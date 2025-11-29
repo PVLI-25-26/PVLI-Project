@@ -7,41 +7,41 @@ export class NPC extends BillBoard{
         this.config = config;
         this.dialogueName = config.dialogueName; 
 
-        // Dialogue height
-        this.height = 10; 
+        // Dialogue position offset
+        this.diagOffsetY = -150;
+        this.diagOffsetX = -80;
         this.x = x;
         this.y = y
         
         this.scene.add.existing(this);
 
-        this.interactZoneWidth = 20;
-        this.interactZoneHeight = 20;
+        this.setCollisionCategory(scene.interactablesCategory);
+        
+        EventBus.on('interact', this.onPlayerInteraction, this);
+    }
 
-        //new Phaser.GameObjects.Zone(this.scene,x,y,this.interactZoneWidth,this.interactZoneHeight);
-        //this.interactObject = this.scene.add.zone(x,y).setInteractive();
-
-        //this.interactZone = new Zone(this.scene, x,y,this.interactZoneWidth,this.interactZoneHeight);
-        //this.scene.matter.world.on("collisionstart",(event,BodyA,bodyB)=>{
-        //    if (BodyA === this|| bodyB ===this){
-        //        this.throwDialogue()
-        //    }
-        //})
-        this.throwDialogue();
+    onPlayerInteraction(player, reciever){
+        // check if the reciever is me
+        if(reciever === this)
+        {
+            this.throwDialogue();
+        }
     }
 
     throwDialogue(){
-        console.log(this.dialogueName)
-        const R = 0;
-        var transformationMatrix = new Phaser.Math.Matrix4();
-        transformationMatrix.setValues(
-            Math.cos(R),-Math.sin(R),1,1,
-            Math.sin(R), Math.cos(R),1,1,
-            1,1,1,1,
-            1,1,1,1
-        );
-        var position = new Phaser.Math.Vector3(this.x-200,this.y-this.height,1);
-        position = position.transformMat4(transformationMatrix);
-        EventBus.emit("StartDialogue",this.dialogueName, position.x,position.y);
+        const cam = this.scene.cameras.main;
+
+        // DE TESTEO PQ ME ESTABA VOLVIENDO LOCO
+        // for(let i = 0; i < 360; i++){
+        //     this.scene.add.rectangle(
+        //         this.diagOffsetX * Math.cos(i) - this.diagOffsetY * Math.sin(i) + this.x, 
+        //         this.diagOffsetX * Math.sin(i) + this.diagOffsetY * Math.cos(i) + this.y, 
+        //         5, 5, i*0xFFFFFFFF/360).setDepth(9999999);
+        // }
+        const diagPosX = this.diagOffsetX * Math.cos(-cam.rotation) - this.diagOffsetY * Math.sin(-cam.rotation) + this.x;
+        const diagPosY = this.diagOffsetX * Math.sin(-cam.rotation) + this.diagOffsetY * Math.cos(-cam.rotation) + this.y;
+
+        EventBus.emit("StartDialogue",this.dialogueName, diagPosX, diagPosY);
     }
 
 }

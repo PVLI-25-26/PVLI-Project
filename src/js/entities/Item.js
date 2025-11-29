@@ -28,7 +28,7 @@ export class Item extends BillBoard{
         this.collectSound = config.collectSound;
 
         // Listen to item picked events
-        EventBus.on('itemPicked', this.pickUpItem, this);
+        EventBus.on('interact', this.pickUpItem, this);
     }
 
     /**
@@ -36,13 +36,13 @@ export class Item extends BillBoard{
      * If the picked item matches this instance, plays the configured collect sound,
      * fades the item out, disables collisions and hides the object.
      *
-     * @param {Phaser.GameObjects.GameObject} picker - The game object that picked the item (e.g. player).
-     * @param {Phaser.GameObjects.GameObject|Item} item - The item instance that was picked.
+     * @param {Phaser.GameObjects.GameObject} actor - The game object that picked the item (e.g. player).
+     * @param {Phaser.GameObjects.GameObject|Item} reciever - The item instance that was picked.
      * @returns {void}
      */
-    pickUpItem(picker, item){
+    pickUpItem(actor, reciever){
         // check if the item picked is this item
-        if(item === this)
+        if(reciever === this)
         {
             // play this item collect sound
             EventBus.emit('playSound', this.collectSound);
@@ -62,6 +62,7 @@ export class Item extends BillBoard{
 
             // Remove collisions to ensure it isn't picked again
             this.setCollidesWith(0);
+            EventBus.emit('itemPicked', actor, reciever);
         }
     }
 }

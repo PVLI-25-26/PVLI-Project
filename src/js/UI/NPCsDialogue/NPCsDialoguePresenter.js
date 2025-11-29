@@ -20,12 +20,12 @@ export default class NPCsDialoguePresenter{
             }
             
         });
-        EventBus.on('dialogueFinished',()=>{this.view.scene.input.mouse.requestPointerLock()})
     }
     
     
     showDialogue(id,x,y){
-        this.view.scene.input.mouse.releasePointerLock();
+        EventBus.emit('releasePointer');
+        EventBus.emit('disablePlayerKeys');
         this.view.setPosition(x,y)
         this.view.showView();
         this.getDialogue(id);
@@ -63,9 +63,7 @@ export default class NPCsDialoguePresenter{
     hideDialogue(){
         this.view.hideView();
         this.lastPage = false;
-    }
-    endConversation(){
-        
+        EventBus.emit('enablePlayerKeys');
     }
 }
 
