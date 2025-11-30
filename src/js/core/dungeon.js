@@ -246,6 +246,9 @@ export class Dungeon extends Phaser.Plugins.BasePlugin {
         this.roomsExplored.add(this.currentRoomKey);
         if(nextRoomKey == this.#hubID){
             EventBus.emit('hubReached');
+            // reset dungeon exploration
+            this.roomsExplored.clear();
+            this.roomsExplored.add(nextRoomKey); // Add hub to the explored rooms (always starts with hub)
         }
     }
 }

@@ -53,7 +53,6 @@ export class Button extends Phaser.GameObjects.Container {
             this.buttonNineslice.setScale(ninesliceSettings.scale);
             this.add(this.buttonNineslice);
         }
-        
         // Make button text if settings provided
         if(textSettings){
             this.buttonText = this.scene.add.text(

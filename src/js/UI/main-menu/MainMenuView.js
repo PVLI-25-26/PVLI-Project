@@ -50,7 +50,7 @@ export default class MainMenuView {
             });
         });
 
-        this.settingsButton = new Button(this.scene, screenLeft, screenTop, null, 32, 32,
+        this.settingsButton = new Button(this.scene, screenLeft, screenTop, null, 32,32,
             null,
             {
                 texture: 'settingsIcon',
@@ -58,9 +58,9 @@ export default class MainMenuView {
                 leftWidth: 0,
                 rightWidth: 0,
                 topHeight: 0,
-                bottomHeight: 0
+                bottomHeight: 1
             }
-        );
+        )
         this.settingsButton.addInteraction((btn) => {
             btn.on("pointerover", () => {
                 this.scene.tweens.add({
@@ -96,9 +96,9 @@ export default class MainMenuView {
                 leftWidth: 0,
                 rightWidth: 0,
                 topHeight: 0,
-                bottomHeight: 0
+                bottomHeight: 1
             }
-        );
+        )
         this.backButton.addInteraction((btn) => {
             btn.on("pointerover", () => {
                 this.backButton.buttonNineslice.setFrame(3);
