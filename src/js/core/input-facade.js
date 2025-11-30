@@ -21,7 +21,6 @@ export class InputFacade {
 
         // Initially enable player keys
         this.enablePlayerKeys();
-        
 
         // Subscribe to events
         EventBus.on('lockPointer', this.lockPointer, this)
@@ -31,6 +30,13 @@ export class InputFacade {
         EventBus.on('disablePlayerKeys', this.disablePlayerKeys, this);
 
         EventBus.on('enablePlayerKeys', this.enablePlayerKeys, this);
+
+        // Checks if pointer isn't locked when it should be (user exited mouse lock with ESC),
+        // and locks mouse to correct it, when user clicks on the game.
+        this.input.on('pointerdown',()=>{
+            if(numLockRequests > 0 && !this.input.mouse.locked)
+                this.input.mouse.requestPointerLock();
+        }, this);
     }
 
     /**
