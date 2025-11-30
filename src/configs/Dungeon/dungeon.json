@@ -10,7 +10,7 @@
                 {
                  "height":0,
                  "id":1,
-                 "name":"Hub",
+                 "name":"Intro",
                  "point":true,
                  "properties":[
                         {
@@ -20,22 +20,49 @@
                          "value":
                             {
                              "scene":3,
-                             "spawnX":120,
-                             "spawnY":200,
-                             "y":200
+                             "spawnX":-360,
+                             "spawnY":0,
+                             "x":500,
+                             "y":0
                             }
                         }],
                  "rotation":0,
-                 "type":"hub-config.json",
+                 "type":"begin-tutorial-config.json",
                  "visible":true,
                  "width":0,
-                 "x":0,
-                 "y":32
+                 "x":-65.6477272727273,
+                 "y":0.55681818181818
                 }, 
                 {
                  "height":0,
                  "id":3,
-                 "name":"Gameplay",
+                 "name":"Hub Intro",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"Connection1",
+                         "propertytype":"Connection",
+                         "type":"class",
+                         "value":
+                            {
+                             "scene":4,
+                             "spawnX":-400,
+                             "spawnY":0,
+                             "x":360,
+                             "y":0
+                            }
+                        }],
+                 "rotation":0,
+                 "type":"hub-tutorial-config.json",
+                 "visible":true,
+                 "width":0,
+                 "x":-52.6477272727273,
+                 "y":0.18181818181818
+                }, 
+                {
+                 "height":0,
+                 "id":4,
+                 "name":"Dungeon Combat Tutorial",
                  "point":true,
                  "properties":[
                         {
@@ -44,19 +71,53 @@
                          "type":"class",
                          "value":
                             {
-                             "scene":1,
-                             "spawnX":100,
-                             "spawnY":200,
+                             "scene":5,
+                             "spawnX":-200,
+                             "spawnY":0,
+                             "x":440,
+                             "y":0
+                            }
+                        }],
+                 "rotation":0,
+                 "type":"dungeon-combat-tutorial.json",
+                 "visible":true,
+                 "width":0,
+                 "x":-35.6477272727273,
+                 "y":0.55681818181818
+                }, 
+                {
+                 "height":0,
+                 "id":5,
+                 "name":"Dungeon Exit",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"Connection",
+                         "propertytype":"Connection",
+                         "type":"class",
+                         "value":
+                            {
+                             "scene":6,
+                             "spawnX":-300,
+                             "spawnY":0,
                              "x":0,
                              "y":0
                             }
                         }],
                  "rotation":0,
-                 "type":"gameplay-config.json",
+                 "type":"dungeon-exit-tutorial.json",
                  "visible":true,
                  "width":0,
-                 "x":34.25,
-                 "y":-22.375
+                 "x":-18.2727272727273,
+                 "y":0.30681818181818
+                }, 
+                {
+                 "id":6,
+                 "name":"Hub",
+                 "template":"..\/..\/..\/public\/assets\/rooms\/Templates\/RoomTemplate.tx",
+                 "type":"hub-config.json",
+                 "x":-4.64772727272727,
+                 "y":0.18181818181818
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -65,7 +126,7 @@
          "y":0
         }],
  "nextlayerid":3,
- "nextobjectid":4,
+ "nextobjectid":7,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.11.2",

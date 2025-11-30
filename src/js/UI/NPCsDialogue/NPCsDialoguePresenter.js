@@ -8,7 +8,7 @@ export default class NPCsDialoguePresenter{
         //this.view.setPresenter(this);
         
         EventBus.on('StartDialogue',(id,x,y)=>{this.showDialogue(id,x,y)}); 
-        EventBus.on('StopDialogue',()=>{this.hideDialogue()});
+        EventBus.on('StopDialogue',()=>{this.hideDialogue(); EventBus.emit("lockPointer");});
         EventBus.on('NextPageDialogue',()=>{ 
             if (!this.lastPage){
                 this.model.currentDialogue.currentPage += 1;
@@ -18,7 +18,10 @@ export default class NPCsDialoguePresenter{
                     this.lastPage = true;
                 }
             }
-            
+            else{
+                this.hideDialogue();
+                EventBus.emit("lockPointer");
+            }
         });
     }
     

@@ -20,8 +20,6 @@ import dialogueEvents from "../configs/Dialogues/NPCsDialogue-buttonEvents.js"
 import { InputFacade } from "../js/core/input-facade.js";
 
 
-
-
 export default class GameplayScene extends Phaser.Scene {
     constructor() {
         super({ key: 'GameplayScene' });
@@ -32,6 +30,7 @@ export default class GameplayScene extends Phaser.Scene {
     }
 
     create(data) {
+        this.toggleDebug();
         EventBus.removeAllListeners();
 
         this.inputFacade = new InputFacade(this);
@@ -74,8 +73,7 @@ export default class GameplayScene extends Phaser.Scene {
         });
 
         this.input.keyboard.on("keydown-U", () => {
-            this.matter.world.drawDebug = !this.matter.world.drawDebug;
-            this.matter.world.debugGraphic.visible = this.matter.world.drawDebug;
+            this.toggleDebug();
         });
 
         // Create physics groups
@@ -111,6 +109,11 @@ export default class GameplayScene extends Phaser.Scene {
         this.plugins.get('dungeon').loadCurrentRoom(this, this.obstaclesCategory, this.enemiesCategory, this.playerCategory, this.connectionsCategory, this.interactablesCategory);
         // Make camera follow the player
         this.cameras.main.startFollow(this.player, false, 0.1, 0.1, 10, 10);
+    }
+
+    toggleDebug() {
+        this.matter.world.drawDebug = !this.matter.world.drawDebug;
+        this.matter.world.debugGraphic.visible = this.matter.world.drawDebug;
     }
 }
 

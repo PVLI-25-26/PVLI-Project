@@ -4,13 +4,14 @@ import { EventBus } from "../../core/event-bus.js";
 import Colors from "../../../configs/color-config.json"
 
 const SCALE = 2;
+const TEXT_SPEED = 20;
 
 const PORTRAIT_WIDTH = 32 + 6; // +6 por el borde que viene ya dibujado
 const PORTRAIT_HEIGHT = 48 + 6; // +6 por el borde que viene ya dibujado
 
 const TEXTBOX_WIDTH = 150;
 const TEXTBOX_HEIGHT = PORTRAIT_HEIGHT + 10;
-const TEXTBOX_TEXT_WIDTH = TEXTBOX_WIDTH*SCALE;
+const TEXTBOX_TEXT_WIDTH = TEXTBOX_WIDTH*SCALE - 10;
 const TEXTBOX_TEXT_PADDING = 5*SCALE;
 const TEXTBOX_TEXT_FONTSIZE = 10;
 
@@ -79,7 +80,7 @@ export default class NPCsDialogueView extends Phaser.GameObjects.Container{
             this.textBox.text= "";
             this.remove(this.textBox);
         }
-        this.textBox = new TextBox(this.scene,TEXTBOX_TEXT_X,TEXTBOX_TEXT_Y,this.currentPage,30,TEXTBOX_TEXT_WIDTH, "MicroChat",TEXTBOX_TEXT_FONTSIZE, Colors.White); 
+        this.textBox = new TextBox(this.scene,TEXTBOX_TEXT_X,TEXTBOX_TEXT_Y,this.currentPage,TEXT_SPEED,TEXTBOX_TEXT_WIDTH, "MicroChat",TEXTBOX_TEXT_FONTSIZE, Colors.White); 
         this.add(this.textBox)
     }
     CreateButtons(button){

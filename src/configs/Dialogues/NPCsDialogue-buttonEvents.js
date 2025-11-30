@@ -7,6 +7,5 @@ export default events  = {
     },
     END :() =>{
         EventBus.emit("StopDialogue");
-        EventBus.emit("lockPointer");
     }
 }

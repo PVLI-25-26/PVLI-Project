@@ -20,24 +20,60 @@
         ]
     
     },
-    "npcName2":{
+    "melinoe-intro":{
         "dialogue" : [
-            "Hola caballero",
-            "Que tal¿¿¿",
-            "Se ha quedao buen dia pa' un paseo, eh?"
+            "¡¿Artemisa?! ¿Qué haces aquí? Este es un lugar muy peligroso.",
+            "Este bosque no es un bosque normal, esta lleno de criaturas que intentarán acabar con cualquiera que entre.",
+            "¿Me preguntas que porqué estoy yo aquí?",
+            "El bosque está lleno de objetos mágicos con poderes, estoy intentando averiguar su origen.",
+            "No obstante, cada vez que consigo salir con unos cuantos, se convierten en monedas.",
+            "Más adelante está el lugar donde me asiento. Qué tal si continúas y te lo muestro."
         ],
         "speed" : 1,
-        "npcName" : "Dolores",
+        "npcName" : "Melinoe",
         "userOptions" : [
             {
                 "label" : "Next",
                 "event" : "NEXT_PAGE",
                 "color" : "Green"
-            },
+            }
+        ]
+    },
+    "melinoe-hub-intro":{
+        "dialogue" : [
+            "Bienvenida a mi humilde tienda. Aquí guardo objetos mágicos interesantes que te podría resultar útiles.",
+            "Pero yo tampoco soy tonta, sólo te los daré a cambio de algunas moneditas jijiji.",
+            "Veo que no tienes nada ... Antes he visto un slime más adelante. Mátalo, y coge los items que suelte.",
+            "Al volver se convertirán en monedas que podrás usar para intercambiar conmigo.",
+            "¡¿Cómo no vas a saber disparar?! ¡Eres la diosa de la caza, simpre vas con un arco!",
+            "En fin, para tensar el arco, mantén click y arrastra el ratón en la dirección contraria a la que apuntas.",
+            "Al soltar el click la flecha saldrá disparada en esa dirección.",
+            "Pues a qué esperas. ¡A la aventura!"
+        ],
+        "speed" : 1,
+        "npcName" : "Melinoe",
+        "userOptions" : [
             {
-                "label" : "Exit",
-                "event" : "END",
-                "color" : "White"
+                "label" : "Next",
+                "event" : "NEXT_PAGE",
+                "color" : "Green"
+            }
+        ]
+    },
+    "melinoe-exit-intro":{
+        "dialogue" : [
+            "Joderrr, vaya paliza le has metido. Creo que me vas a ser muy útil por aquí.",
+            "Mira, Este es un lugar especial, desde aquí siempre podrás volver a mi asentamiento.",
+            "Normalmente habrá otros caminos por los que podrás continuar, si quieres, pero en este caso solo puedes volver.",
+            "¿Qué tal si vuelves a la tienda e intentas comprar algo? Te estaré esperando."
+        ],
+        "speed" : 1,
+        "npcName" : "Melinoe",
+        "userOptions" : [
+            {
+                "label" : "Next",
+                "event" : "NEXT_PAGE",
+                "color" : "Green"
             }
         ]
     }

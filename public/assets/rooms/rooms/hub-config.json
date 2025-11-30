@@ -7,113 +7,7 @@
          "draworder":"topdown",
          "id":5,
          "name":"Obstacles",
-         "objects":[
-                {
-                 "id":63,
-                 "rotation":270,
-                 "template":"..\/Templates\/SpriteStackTemplate.tx",
-                 "type":"chest",
-                 "x":164,
-                 "y":-188
-                }, 
-                {
-                 "id":66,
-                 "template":"..\/Templates\/SpriteStackTemplate.tx",
-                 "type":"barrel",
-                 "x":49,
-                 "y":-184
-                }, 
-                {
-                 "id":67,
-                 "template":"..\/Templates\/SpriteStackTemplate.tx",
-                 "type":"barrel",
-                 "x":95,
-                 "y":-185
-                }, 
-                {
-                 "id":68,
-                 "template":"..\/Templates\/SpriteStackTemplate.tx",
-                 "type":"barrel",
-                 "x":67,
-                 "y":-140
-                }, 
-                {
-                 "id":69,
-                 "template":"..\/Templates\/SpriteStackTemplate.tx",
-                 "type":"crate",
-                 "x":-65,
-                 "y":-188
-                }, 
-                {
-                 "id":70,
-                 "template":"..\/Templates\/SpriteStackTemplate.tx",
-                 "type":"crate",
-                 "x":-115,
-                 "y":-190
-                }, 
-                {
-                 "id":87,
-                 "template":"..\/Templates\/SpriteStackTemplate.tx",
-                 "type":"rock",
-                 "x":-96,
-                 "y":-32
-                }, 
-                {
-                 "id":88,
-                 "template":"..\/Templates\/SpriteStackTemplate.tx",
-                 "type":"column",
-                 "x":-288,
-                 "y":-160
-                }, 
-                {
-                 "id":89,
-                 "template":"..\/Templates\/SpriteStackTemplate.tx",
-                 "type":"column",
-                 "x":0,
-                 "y":96
-                }, 
-                {
-                 "id":90,
-                 "template":"..\/Templates\/SpriteStackTemplate.tx",
-                 "type":"log",
-                 "x":-256,
-                 "y":32
-                }, 
-                {
-                 "id":91,
-                 "template":"..\/Templates\/SpriteStackTemplate.tx",
-                 "type":"column",
-                 "x":-128,
-                 "y":-320
-                }, 
-                {
-                 "id":92,
-                 "template":"..\/Templates\/SpriteStackTemplate.tx",
-                 "type":"column",
-                 "x":256,
-                 "y":-64
-                }, 
-                {
-                 "id":93,
-                 "template":"..\/Templates\/SpriteStackTemplate.tx",
-                 "type":"rock",
-                 "x":288,
-                 "y":-192
-                }, 
-                {
-                 "id":95,
-                 "template":"..\/Templates\/BillboardTemplate.tx",
-                 "type":"tree2",
-                 "x":96,
-                 "y":-320
-                }, 
-                {
-                 "id":96,
-                 "template":"..\/Templates\/BillboardTemplate.tx",
-                 "type":"tree3",
-                 "x":-160,
-                 "y":160
-                }],
+         "objects":[],
          "opacity":1,
          "type":"objectgroup",
          "visible":true,
@@ -129,8 +23,8 @@
                  "id":97,
                  "template":"..\/Templates\/NPCTemplate.tx",
                  "type":"testNPC",
-                 "x":256,
-                 "y":96
+                 "x":82,
+                 "y":-71
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -142,70 +36,7 @@
          "draworder":"topdown",
          "id":6,
          "name":"Items",
-         "objects":[
-                {
-                 "id":62,
-                 "template":"..\/Templates\/ItemTemplate.tx",
-                 "type":"speed-vase",
-                 "x":8,
-                 "y":-120
-                }, 
-                {
-                 "id":65,
-                 "template":"..\/Templates\/ItemTemplate.tx",
-                 "type":"red-vial",
-                 "x":-93,
-                 "y":-112
-                }, 
-                {
-                 "id":71,
-                 "template":"..\/Templates\/ItemTemplate.tx",
-                 "type":"key",
-                 "x":160,
-                 "y":-24
-                }, 
-                {
-                 "id":72,
-                 "template":"..\/Templates\/ItemTemplate.tx",
-                 "type":"health-flower",
-                 "x":320,
-                 "y":-288
-                }, 
-                {
-                 "id":73,
-                 "template":"..\/Templates\/ItemTemplate.tx",
-                 "type":"health-flower",
-                 "x":-160,
-                 "y":0
-                }, 
-                {
-                 "id":74,
-                 "template":"..\/Templates\/ItemTemplate.tx",
-                 "type":"speed-vase",
-                 "x":164,
-                 "y":113
-                }, 
-                {
-                 "id":84,
-                 "template":"..\/Templates\/ItemTemplate.tx",
-                 "type":"health-flower",
-                 "x":-160,
-                 "y":0
-                }, 
-                {
-                 "id":85,
-                 "template":"..\/Templates\/ItemTemplate.tx",
-                 "type":"health-flower",
-                 "x":-224,
-                 "y":-224
-                }, 
-                {
-                 "id":86,
-                 "template":"..\/Templates\/ItemTemplate.tx",
-                 "type":"health-flower",
-                 "x":-224,
-                 "y":-224
-                }],
+         "objects":[],
          "opacity":1,
          "type":"objectgroup",
          "visible":true,

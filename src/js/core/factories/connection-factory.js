@@ -14,6 +14,7 @@ export function createConnection(scene, dungeon, connectionSceneData){
     connection.setOnCollide(()=>{
         dungeon.changeRoom(connectionSceneData.scene);
         scene.logger.log('DUNGEON', 1, `Entering room: ${connectionSceneData.scene}`);
+        
         scene.scene.restart({sceneName: connectionSceneData.scene, playerSpawn: {x:connectionSceneData.spawnX, y:connectionSceneData.spawnY}});
     });
 
