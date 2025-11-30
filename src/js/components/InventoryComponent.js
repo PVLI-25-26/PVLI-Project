@@ -43,6 +43,7 @@ export class InventoryComponent extends BaseComponent{
             }
             this.#playerInventory = [];
         }, this);
+        EventBus.on('removeGold', this.removeGold, this);
     }
 
     update(t, dt){}
