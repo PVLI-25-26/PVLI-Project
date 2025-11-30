@@ -57,7 +57,7 @@ export class Player extends BillBoard {
         // Save in browser storage player data when scene is shutdown
         scene.events.on("shutdown", ()=>{
             localStorage.setItem("playerInventory", JSON.stringify(this.inventoryComponent.getInventory()));
-            console.log(this.buffManager.getBuffs());
+            localStorage.setItem("playerGold", JSON.stringify(this.inventoryComponent.getGold()));
             localStorage.setItem("playerBuffs", JSON.stringify(this.buffManager.getBuffs()));
         });
 
@@ -101,7 +101,7 @@ export class Player extends BillBoard {
         const interactController = new PlayerInteractControllerComponent(this, this.config.interactRadius);
 
         // Add InventoryComponent and load items from browser storage if there are any
-        this.inventoryComponent = new InventoryComponent(this, JSON.parse(localStorage.getItem("playerInventory")));
+        this.inventoryComponent = new InventoryComponent(this, JSON.parse(localStorage.getItem("playerInventory")), JSON.parse(localStorage.getItem("playerGold")));
 
         // Add BuffManagerComponent
         this.buffManager = new BuffManagerComponent(this);

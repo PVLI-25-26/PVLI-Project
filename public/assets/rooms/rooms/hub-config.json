@@ -36,7 +36,49 @@
          "draworder":"topdown",
          "id":6,
          "name":"Items",
-         "objects":[],
+         "objects":[
+                {
+                 "id":99,
+                 "template":"..\/Templates\/ItemTemplate.tx",
+                 "type":"speed-vase",
+                 "x":-140,
+                 "y":-238
+                }, 
+                {
+                 "id":100,
+                 "template":"..\/Templates\/ItemTemplate.tx",
+                 "type":"speed-vase",
+                 "x":-99,
+                 "y":-238
+                }, 
+                {
+                 "id":101,
+                 "template":"..\/Templates\/ItemTemplate.tx",
+                 "type":"speed-vase",
+                 "x":-114,
+                 "y":-271
+                }, 
+                {
+                 "id":102,
+                 "template":"..\/Templates\/ItemTemplate.tx",
+                 "type":"health-flower",
+                 "x":-146,
+                 "y":-157
+                }, 
+                {
+                 "id":103,
+                 "template":"..\/Templates\/ItemTemplate.tx",
+                 "type":"health-flower",
+                 "x":-132,
+                 "y":-121
+                }, 
+                {
+                 "id":104,
+                 "template":"..\/Templates\/ItemTemplate.tx",
+                 "type":"health-flower",
+                 "x":-173,
+                 "y":-128
+                }],
          "opacity":1,
          "type":"objectgroup",
          "visible":true,
@@ -141,7 +183,7 @@
          "y":0
         }],
  "nextlayerid":11,
- "nextobjectid":99,
+ "nextobjectid":105,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.11.2",

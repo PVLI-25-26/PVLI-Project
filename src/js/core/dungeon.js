@@ -46,6 +46,10 @@ export class Dungeon extends Phaser.Plugins.BasePlugin {
      * @type {Set<String>}
      */
     roomsExplored;
+    /**
+     * ID of the room with name Hub. Saved to emit global event when player goes to Hub.
+     */
+    #hubID
 
     /**
      * Create a Dungeon manager.
@@ -81,6 +85,9 @@ export class Dungeon extends Phaser.Plugins.BasePlugin {
             room.connections = cfg.properties;
             // Add room to the map of rooms
             this.#rooms.set(cfg.id, room);
+            // If the room is the Hub we save it
+            if(cfg.name == "Hub")
+                this.#hubID = cfg.id;
         });
     }
 
@@ -222,5 +229,8 @@ export class Dungeon extends Phaser.Plugins.BasePlugin {
     changeRoom(nextRoomKey){
         this.currentRoomKey = nextRoomKey;
         this.roomsExplored.add(this.currentRoomKey);
+        if(nextRoomKey == this.#hubID){
+            EventBus.emit('hubReached');
+        }
     }
 }

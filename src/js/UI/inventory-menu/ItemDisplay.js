@@ -19,6 +19,8 @@ const ITEM_DESC_FONTSIZE = '9px';
 const ITEM_DESC_COLOR = Colors.White;
 const ITEM_DESC_FONTFAMILY = 'MicroChat';
 
+const GOLD_TEXT_COLOR = Colors.Orange;
+
 // Speed at which the progress bar is increased or decreased when player holds click
 // NOTE: Progres bar goes from values 0 - 1
 const ITEM_CONSUMPTION_SPEED = 0.001;
@@ -72,6 +74,15 @@ export class ItemDisplay extends Phaser.GameObjects.Container{
             fontFamily: ITEM_DESC_FONTFAMILY
         }).setOrigin(0);  
         this.itemDESC.setWordWrapWidth(width-this.itemDESC.x-ITEM_TEXT_MARGIN_HOR)
+
+        this.goldSprite = this.scene.add.image(this.itemBG.width*2-10, this.itemBG.height*2-10, 'gold', 0).setOrigin(1).setScale(2);
+
+        // Set item gold value text
+        this.itemGOLD = this.scene.add.text(this.goldSprite.x-this.goldSprite.width-10, this.goldSprite.y, itemData.gold, {
+            color: GOLD_TEXT_COLOR,
+            fontSize: ITEM_DESC_FONTSIZE,
+            fontFamily: ITEM_DESC_FONTFAMILY
+        }).setOrigin(1,1);
         
         // Make container interactive to detect pointer presses
         this.setInteractive(
@@ -80,7 +91,7 @@ export class ItemDisplay extends Phaser.GameObjects.Container{
         );
 
         // Add all items to container
-        this.add([this.itemBG, this.itemProgress, this.itemIMG, this.itemTITLE, this.itemDESC]);
+        this.add([this.itemBG, this.itemProgress, this.itemIMG, this.itemTITLE, this.itemDESC, this.itemGOLD, this.goldSprite]);
         
         // Add container to scene
         this.scene.add.existing(this);

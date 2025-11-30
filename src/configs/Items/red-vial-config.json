@@ -18,6 +18,7 @@
             "description": "Su liquido interior es espeso, sabra bien?",
             "image": "red-vial"
         },
+        "gold": 20,
         "collectSound": "itemCollected"
     }
 ]

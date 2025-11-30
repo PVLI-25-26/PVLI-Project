@@ -1,6 +1,6 @@
 import { BaseComponent } from "../core/base-component";
 import { EventBus } from "../core/event-bus";
-import { createItemBuff } from "../core/factories/item-factory";
+import { createItemBuff, getItemGold } from "../core/factories/item-factory";
 
 /**
  * Component that manages a simple player inventory (list of item keys).
@@ -16,19 +16,33 @@ export class InventoryComponent extends BaseComponent{
      * @private
      */
     #playerInventory;
-
+    /**
+     * Amount of gold the player has.
+     * @type {Number}
+     * @private
+     */
+    #gold;
     /**
      * Create an InventoryComponent.
      * @param {Phaser.GameObjects.GameObject} gameObject - Owner game object (player).
      */
-    constructor(gameObject, inventory){
+    constructor(gameObject, inventory, gold){
         super(gameObject);
         // Create inventory (array of item keys)
         this.#playerInventory = inventory || [];
+        // Set player gold
+        this.#gold = gold || 0;
         // Wire item picked events to add item to inventory
         EventBus.on('itemPicked', (picker, item)=>{
             if(this.gameObject === picker) this.addItemToInventory(item.key);
         });
+        // When hub reached convert all player items into gold
+        EventBus.on('hubReached', ()=>{
+            for(let item of this.#playerInventory){
+                this.#gold += getItemGold(item);
+            }
+            this.#playerInventory = [];
+        }, this);
     }
 
     update(t, dt){}
@@ -52,6 +66,23 @@ export class InventoryComponent extends BaseComponent{
     }
 
     /**
+     * Get the amount of gold.
+     * @returns {Number} Amount of gold.
+     */
+    getGold(){
+        return this.#gold;
+    }
+
+    /**
+     * Remove gold from player. WIll neve set negative values for gold.
+     * @param {Number} amount amount to remove
+     */
+    removeGold(amount){
+        this.#gold -= amount;
+        if(this.#gold < 0) this.#gold = 0;
+    }
+
+    /**
      * Remove an item at the given index from the player's inventory.
      * If the item has an associated buff payload (via createItemBuff), emit a 'buffApplied' event on the owner.
      *
@@ -65,6 +96,7 @@ export class InventoryComponent extends BaseComponent{
         if(itemBuffData){
             this.gameObject.emit('buffApplied', itemBuffData);
         }
+
         // Remove item from array
         this.#playerInventory.splice(idx, 1);
     }

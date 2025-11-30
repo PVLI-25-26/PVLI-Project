@@ -56,6 +56,8 @@ export function createItem(scene, itemSceneData, roomsExplored){
 
 export function createItemDisplay(scene, x, y, w, h, itemKey){
     const itemConfig = getItemConfig(itemKey);
+    // Add to the display data, the gold value of the item
+    itemConfig.displayData.gold = itemConfig.gold;
     const itemDisplay = new ItemDisplay(scene, x, y, itemConfig.displayData, w, h);
 
     return itemDisplay;
@@ -65,4 +67,8 @@ export function createItemDisplay(scene, x, y, w, h, itemKey){
 export function createItemBuff(itemKey){
     const itemConfig = getItemConfig(itemKey);
     return itemConfig.buffData;
+}
+
+export function getItemGold(itemKey){
+    return getItemConfig(itemKey).gold;
 }

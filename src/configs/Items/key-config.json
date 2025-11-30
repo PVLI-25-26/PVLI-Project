@@ -18,6 +18,7 @@
             "description": "Una llave perdida ...",
             "image": "key"
         },
+        "gold": 10,
         "collectSound": "itemCollected"
     }
 ]

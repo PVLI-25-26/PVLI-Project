@@ -18,6 +18,7 @@
             "description": "Parece extremadamente valiosa, deberias guardarla.",
             "image": "golden-cup"
         },
+        "gold": 30,
         "collectSound": "itemCollected"
     }
 ]

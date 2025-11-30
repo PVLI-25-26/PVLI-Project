@@ -23,6 +23,7 @@
             "value": 1.25,
             "duration": 1000
         },
+        "gold": 30,
         "collectSound": "itemCollected"
     },
     {
@@ -49,6 +50,7 @@
             "value": 3,
             "duration": 4000
         },
+        "gold": 50,
         "collectSound": "itemCollected"
     }
 ]

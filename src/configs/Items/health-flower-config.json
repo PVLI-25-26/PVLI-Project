@@ -22,6 +22,7 @@
             "image": "healthFlowers",
             "frame": 0
         },
+        "gold": 5,
         "collectSound": "itemCollected"
     },
     {
@@ -47,6 +48,7 @@
             "image": "healthFlowers",
             "frame": 1
         },
+        "gold": 10,
         "collectSound": "itemCollected",
         "offsetX": 0.5,
         "offsetY": 1
@@ -74,6 +76,7 @@
             "image": "healthFlowers",
             "frame": 2
         },
+        "gold": 15,
         "collectSound": "itemCollected",
         "offsetX": 0.5,
         "offsetY": 1

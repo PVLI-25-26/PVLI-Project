@@ -18,6 +18,7 @@
             "description": "No puedo tengo furbo.",
             "image": "ball"
         },
+        "gold": 5,
         "collectSound": "itemCollected"
     }
 ]

@@ -3,6 +3,7 @@
     {"key": "arrow", "type": "spritesheet", "file": "assets/sprites/arrow.png", "settings":{"frameWidth":32}},
     {"key": "bow", "type": "spritesheet", "file": "assets/sprites/Bow.png", "settings":{"frameWidth":16}},
     {"key": "aiming-arrow", "type": "image", "file": "assets/sprites/AimingArrow.png", "settings":{"frameWidth":16}},
+    {"key": "gold", "type": "image", "file": "assets/sprites/gold.png", "settings":{}},
 
     {"key": "slime", "type": "image", "file": "assets/sprites/SlimeSprite.png", "settings":{}},
 
