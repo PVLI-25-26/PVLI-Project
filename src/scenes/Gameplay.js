@@ -58,7 +58,7 @@ export default class GameplayScene extends Phaser.Scene {
         // Unlock mouse when scene is paused
         this.events.on('pause', this.inputFacade.releasePointer, this);
         // Lock mouse if user clicks (maybe they exited the lock with ESC)
-        //this.input.on('pointerdown', ()=>{console.log('p');this.input.mouse.requestPointerLock()}, this);
+        //this.input.on('pointerdown', ()=>{this.input.mouse.requestPointerLock()}, this);
 
         this.input.keyboard.on("keydown-P", () => {
             if (this.scene.isPaused("GameplayScene")) return;

@@ -153,6 +153,21 @@ export class Dungeon extends Phaser.Plugins.BasePlugin {
                     scene.logger.log('DUNGEON', 1, 'Creating scattered objects ...');
                     layer.objects.forEach((scattering)=>{this.createScatteredObjects(scene, scattering)});
                     break;
+                case "World Borders":
+                    scene.logger.log('DUNGEON', 1, 'Creating world borders objects ...');
+                    layer.objects.forEach((worldBorder)=>{
+                        const border = scene.add.rectangle(worldBorder.x+worldBorder.width/2, worldBorder.y+worldBorder.height/2, worldBorder.width, worldBorder.height, 0)
+                            .setVisible(false);
+                        scene.matter.add.gameObject(border, {
+                            "shape": {
+                                "type": "rectangle",
+                                "width": worldBorder.width,
+                                "height": worldBorder.height
+                            },
+                            isStatic: true,
+                        });
+                        border.setCollisionCategory(scene.obstaclesCategory);
+                    });
                 default:
                     break;
             }

@@ -113,6 +113,61 @@
         }, 
         {
          "draworder":"topdown",
+         "id":11,
+         "name":"World Borders",
+         "objects":[
+                {
+                 "height":136,
+                 "id":109,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":1178,
+                 "x":-324,
+                 "y":346.666666666667
+                }, 
+                {
+                 "height":136,
+                 "id":113,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":1182.00033333333,
+                 "x":-325.000166666667,
+                 "y":-385.333333333333
+                }, 
+                {
+                 "height":673.333333333333,
+                 "id":114,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":159.333666666667,
+                 "x":-327.666833333333,
+                 "y":-313.333333333333
+                }, 
+                {
+                 "height":673.333,
+                 "id":115,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":159.334,
+                 "x":696.333,
+                 "y":-304.6665
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "draworder":"topdown",
          "id":8,
          "locked":true,
          "name":"Scattering",
@@ -250,8 +305,8 @@
          "x":0,
          "y":0
         }],
- "nextlayerid":11,
- "nextobjectid":109,
+ "nextlayerid":12,
+ "nextobjectid":116,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.11.2",
