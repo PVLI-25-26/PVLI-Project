@@ -29,9 +29,124 @@
                         }],
                  "template":"..\/Templates\/ScatteringTemplate.tx",
                  "type":"grass1 grass2 grass3 grass4 flower1 flower2 flower3",
-                 "width":804,
+                 "width":920,
                  "x":-413,
                  "y":-376.666666666667
+                }, 
+                {
+                 "height":665.091,
+                 "id":92,
+                 "properties":[
+                        {
+                         "name":"fill",
+                         "type":"int",
+                         "value":100
+                        }],
+                 "template":"..\/Templates\/ScatteringTemplate.tx",
+                 "type":"tree1 tree2 tree3 tree4",
+                 "width":505.575333333333,
+                 "x":-864.121,
+                 "y":-339.408666666667
+                }, 
+                {
+                 "height":526.000333333333,
+                 "id":93,
+                 "properties":[
+                        {
+                         "name":"fill",
+                         "type":"int",
+                         "value":100
+                        }],
+                 "template":"..\/Templates\/ScatteringTemplate.tx",
+                 "type":"tree1 tree2 tree3 tree4",
+                 "width":1860.12,
+                 "x":-959.393333333333,
+                 "y":-842.166666666667
+                }, 
+                {
+                 "height":390.121,
+                 "id":94,
+                 "properties":[
+                        {
+                         "name":"fill",
+                         "type":"int",
+                         "value":100
+                        }],
+                 "template":"..\/Templates\/ScatteringTemplate.tx",
+                 "type":"tree1 tree2 tree3 tree4",
+                 "width":1856.12,
+                 "x":-956.393333333333,
+                 "y":310.712333333333
+                }, 
+                {
+                 "height":659.394,
+                 "id":95,
+                 "properties":[
+                        {
+                         "name":"fill",
+                         "type":"int",
+                         "value":100
+                        }],
+                 "template":"..\/Templates\/ScatteringTemplate.tx",
+                 "type":"tree1 tree2 tree3 tree4",
+                 "width":446.666333333333,
+                 "x":423.393666666667,
+                 "y":-345.682
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "draworder":"topdown",
+         "id":11,
+         "name":"World Borders",
+         "objects":[
+                {
+                 "height":136,
+                 "id":104,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":1178,
+                 "x":-539.333166666667,
+                 "y":376.666666666667
+                }, 
+                {
+                 "height":136,
+                 "id":105,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":1182,
+                 "x":-552.333166666667,
+                 "y":-536.666666666667
+                }, 
+                {
+                 "height":798.666333333333,
+                 "id":106,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":159.334,
+                 "x":-591.000166666667,
+                 "y":-412.666666666667
+                }, 
+                {
+                 "height":845.333,
+                 "id":107,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":159.334,
+                 "x":527.6665,
+                 "y":-424.000666666667
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -54,7 +169,55 @@
          "draworder":"topdown",
          "id":10,
          "name":"Enemy Routes",
-         "objects":[],
+         "objects":[
+                {
+                 "height":0,
+                 "id":91,
+                 "name":"",
+                 "polygon":[
+                        {
+                         "x":0,
+                         "y":0
+                        }, 
+                        {
+                         "x":-110.666666666667,
+                         "y":-41.3333333333333
+                        }, 
+                        {
+                         "x":-249.333333333333,
+                         "y":1.33333333333331
+                        }, 
+                        {
+                         "x":-312,
+                         "y":142.666666666667
+                        }, 
+                        {
+                         "x":-300,
+                         "y":322.666666666667
+                        }, 
+                        {
+                         "x":-206.666666666667,
+                         "y":401.333333333333
+                        }, 
+                        {
+                         "x":-72,
+                         "y":394.666666666667
+                        }, 
+                        {
+                         "x":13.3333333333333,
+                         "y":297.333333333333
+                        }, 
+                        {
+                         "x":56,
+                         "y":154.666666666667
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":217.333333333333,
+                 "y":-178.666666666667
+                }],
          "opacity":1,
          "type":"objectgroup",
          "visible":true,
@@ -86,19 +249,19 @@
                         {
                          "name":"PatrolRoute",
                          "type":"object",
-                         "value":0
+                         "value":91
                         }, 
                         {
                          "name":"state",
                          "type":"string",
-                         "value":"idle"
+                         "value":"patrol"
                         }],
                  "rotation":0,
                  "type":"basic",
                  "visible":true,
                  "width":0,
-                 "x":1.4210854715202e-14,
-                 "y":149.333333333333
+                 "x":141.333333333333,
+                 "y":2.66666666666634
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -106,8 +269,8 @@
          "x":0,
          "y":0
         }],
- "nextlayerid":11,
- "nextobjectid":91,
+ "nextlayerid":12,
+ "nextobjectid":108,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.11.2",
