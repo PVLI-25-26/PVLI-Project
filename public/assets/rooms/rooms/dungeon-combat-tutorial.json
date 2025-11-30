@@ -29,8 +29,8 @@
                         }],
                  "template":"..\/Templates\/ScatteringTemplate.tx",
                  "type":"grass1 grass2 grass3 grass4 flower1 flower2 flower3",
-                 "width":920,
-                 "x":-413,
+                 "width":978,
+                 "x":-471,
                  "y":-376.666666666667
                 }, 
                 {
@@ -44,7 +44,7 @@
                         }],
                  "template":"..\/Templates\/ScatteringTemplate.tx",
                  "type":"tree1 tree2 tree3 tree4",
-                 "width":505.575333333333,
+                 "width":427.575333333333,
                  "x":-864.121,
                  "y":-339.408666666667
                 }, 

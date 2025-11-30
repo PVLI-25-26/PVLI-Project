@@ -110,7 +110,7 @@ export class PlayerShootingComponent extends BaseComponent{
 
         this.gameObject.scene.input.on('pointermove',(pointer)=>{
             // If mouse button is down, increase power
-            if(pointer.isDown) {
+            if(pointer.isDown && this.gameObject.scene.input.mouse.locked) {
                 // Begin drag (save first click position in another variable)
                 if(!this.#shootWasPressedLastFrame){
                     this.#mouseDrag = {x: 0, y: 0};

@@ -48,8 +48,15 @@ export class Dungeon extends Phaser.Plugins.BasePlugin {
     roomsExplored;
     /**
      * ID of the room with name Hub. Saved to emit global event when player goes to Hub.
+     * @type {Number}
      */
     #hubID
+    /**
+     * Number of enemies alive in room
+     * When this counter reaches 0, a global event "roomCleared" is emitted
+     * @type {Number}
+     */
+    #roomEnemiesCounter;
 
     /**
      * Create a Dungeon manager.
@@ -112,6 +119,10 @@ export class Dungeon extends Phaser.Plugins.BasePlugin {
             if(entity instanceof BasicEnemy)
             {
                 this.removeEnemyFromCurrentRoom(entity.id)
+                this.#roomEnemiesCounter--;
+                if(this.#roomEnemiesCounter == 0){
+                    EventBus.emit('roomCleared');
+                }
             }
         })
 
@@ -120,6 +131,9 @@ export class Dungeon extends Phaser.Plugins.BasePlugin {
 
         // Read JSON object to populate scene
         this.readTiledJSON(scene, room);
+
+        // If the room has no enemies, emit 'roomCleared'
+        if(this.#roomEnemiesCounter == 0) EventBus.emit('roomCleared');
     }
 
     readTiledJSON(scene, room){
@@ -152,6 +166,7 @@ export class Dungeon extends Phaser.Plugins.BasePlugin {
                 case "Enemies":
                     scene.logger.log('DUNGEON', 1, 'Creating enemies ...');
                     layer.objects.forEach((enemy)=>{createEnemy(scene, enemy, getTiledMapLayer(room, "Enemy Routes"))});
+                    this.#roomEnemiesCounter = layer.objects.length;
                     break;
                 case "NPCs":
                     scene.logger.log('DUNGEON', 1, 'Creating NPCs ...');
