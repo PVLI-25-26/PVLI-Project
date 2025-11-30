@@ -31,6 +31,7 @@ export class Item extends BillBoard{
         // Listen to item picked events
         EventBus.on('interact', this.pickUpItem, this);
 
+//#region KeyTipCode
         // Key press tip shown when player is close (This logic should be moved to HUD but Daniil is sick so ill move it later when he pushes)
         this.keyTip = this.scene.add.nineslice(this.x, this.y, 'UIbackground',0,15,15,3,3,3,3).setVisible(false).setScale(2);
         this.keyTipKey = this.scene.add.text(this.x, this.y, 'F', {
@@ -64,7 +65,7 @@ export class Item extends BillBoard{
             this.keyTipKey.setVisible(true);
         });
         this.interactZone.setOnCollideEnd(()=>{
-            this.scene.tweens.add({
+            this.scene?.tweens.add({
                 targets: [this.keyTip, this.keyTipKey],
                 alpha: 0,
                 duration:150,
@@ -73,14 +74,15 @@ export class Item extends BillBoard{
         })
         this.interactZone.setCollidesWith(this.scene.playerCategory);
 
-        EventBus.on('cameraRotated', (R, cR, sR)=>{
+        EventBus.on('cameraRotated', (R, cR, sR) => {
             this.keyTip.x = this.keyTipOffsetX * cR - this.keyTipOffsetY * sR + this.x;
             this.keyTip.y = this.keyTipOffsetX * sR + this.keyTipOffsetY * cR + this.y;
             this.keyTip.rotation = -R;
             this.keyTipKey.x = this.keyTip.x;
             this.keyTipKey.y = this.keyTip.y;
             this.keyTipKey.rotation = this.keyTip.rotation;
-        })
+        }, this);
+//#endregion
     }
 
     /**
@@ -113,7 +115,6 @@ export class Item extends BillBoard{
             });
 
             // Remove collisions to ensure it isn't picked again
-            this.destroy(true);
             this.interactZone.destroy(true);
             EventBus.emit('itemPicked', actor, reciever);
         }
