@@ -32,7 +32,7 @@
     {"key": "Antonio", "type": "image", "file": "assets/portraits/cat.png", "settings":{}},
     {"key": "Dolores", "type": "image", "file": "assets/portraits/catS.png", "settings":{}},
 
-    {"key": "musicIcon", "type": "image", "file": "assets/sprites/music-icon.webp", "settings":{}},
+    {"key": "musicIcon", "type": "image", "file": "assets/sprites/music-icon.png", "settings":{}},
     {"key": "sfxIcon", "type": "image", "file": "assets/sprites/sfx-icon.png", "settings":{}},
 
     {"key": "UIdialogueButton", "type": "image", "file": "assets/UI/Dialogues/button_background.png", "settings":{}},

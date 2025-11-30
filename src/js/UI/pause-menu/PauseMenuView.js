@@ -115,7 +115,7 @@ export default class PauseMenuView {
                 leftWidth: 0,
                 rightWidth: 0,
                 topHeight: 0,
-                bottomHeight: 0
+                bottomHeight: 1
             }
         );
         this.backButton.addInteraction((btn) => {
@@ -158,8 +158,8 @@ export default class PauseMenuView {
         this.musicIcon = this.scene.add.image(215, 250, 'musicIcon').setOrigin(0.5);
         this.sfxIcon = this.scene.add.image(215, 350, 'sfxIcon').setOrigin(0.5);
 
-        this.musicIcon.setScale(0.12);
-        this.sfxIcon.setScale(0.08);
+        this.musicIcon.setScale(3);
+        this.sfxIcon.setScale(3);
 
         this.musicIcon.setVisible(false);
         this.musicIcon.setActive(false);
