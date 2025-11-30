@@ -10,10 +10,10 @@ const ITEMLIST_DISPLAY_POS = 10000;
 const CAMERA_SCROLL_SPEED = 0.7;
 
 const INVENTORY_WIDTH = 500;
-const INVENTORY_HEIGHT = 500;
+const INVENTORY_HEIGHT = 600;
 
 const ITEMLIST_DISPLAY_WIDTH = 380;
-const ITEMLIST_DISPLAY_HEIGHT = 480;
+const ITEMLIST_DISPLAY_HEIGHT = 500;
 
 const ITEM_DISPLAY_WIDTH = ITEMLIST_DISPLAY_WIDTH;
 const ITEM_DISPLAY_HEIGHT = 150;
@@ -23,6 +23,14 @@ const ITEM_DISPLAY_MARGIN = 20;
 // It's rotated 90 degrees (width goes in y axis, and height in x)
 const SLIDER_WIDTH = INVENTORY_HEIGHT*0.70;
 const SLIDER_HEIGHT = 10;
+
+const INVENTORY_TITLE_COLOR = Colors.White; 
+const INVENTORY_TITLE_FONTSIZE = 20;
+const INVENTORY_TITLE_FONTFAMILY = 'FableFont';
+
+const INVENTORY_TIP_COLOR = Colors.White; 
+const INVENTORY_TIP_FONTSIZE = 10;
+const INVENTORY_TIP_FONTFAMILY = 'MicroChat';
 
 /**
  * View class for the inventory menu UI.
@@ -53,6 +61,20 @@ export default class InventoryMenuView {
         this.inventoryBG.setScale(2);
         this.inventoryBG.width /= 2;
         this.inventoryBG.height /= 2;
+
+        this.inventoryTitle = this.scene.add.text(this.inventoryBG.x, this.inventoryBG.y-(this.inventoryBG.height)+25, 'INVENTORY', {
+            color: INVENTORY_TITLE_COLOR, 
+            fontSize: INVENTORY_TITLE_FONTSIZE,
+            fontFamily: INVENTORY_TITLE_FONTFAMILY,
+            padding: {x: 0, y: 10}
+        }).setOrigin(0.5);
+
+        this.inventoryTip = this.scene.add.text(this.inventoryBG.x, this.inventoryBG.y+(this.inventoryBG.height)-25, 'Hold click on an item to consume it.', {
+            color: INVENTORY_TIP_COLOR, 
+            fontSize: INVENTORY_TIP_FONTSIZE,
+            fontFamily: INVENTORY_TIP_FONTFAMILY,
+            padding: {x: 0, y: 10}
+        }).setOrigin(0.5);
 
         // Create container with all item displays
         this.itemDisplayListContainer = this.scene.add.container(ITEMLIST_DISPLAY_POS, ITEMLIST_DISPLAY_POS);
