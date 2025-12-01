@@ -1,8 +1,15 @@
 import { BaseComponent } from "../core/base-component";
+
+import { burningDebuff } from "./Buffs/BurningDebuff";
+import { inmobilizedDebuff} from "./Buffs/InmobilizedDebuff"
+import { poisonedDebuff } from "./Buffs/PoisonedDebuff";
+
 import { dashBuff } from "./Buffs/DashBuff";
 import { forceFieldBuff } from "./Buffs/ForceFieldBuff";
 import { invisibilityBuff } from "./Buffs/InvisiblityBuff";
+
 import { movementBuff } from "./Buffs/MovementBuff";
+
 
 /**
  * Interface for a buff implementation.
@@ -30,6 +37,9 @@ const buffTypeToBuffLogic = {
     dash: dashBuff,
     forceField: forceFieldBuff,
     invisibility: invisibilityBuff,
+    burning: burningDebuff,
+    inmobilized: inmobilizedDebuff,
+    poisoned: poisonedDebuff
     // health: healthBuff (example)
     // ...
 }
@@ -61,6 +71,9 @@ export class BuffManagerComponent extends BaseComponent{
     }
     update(t, dt){
         // Update UI stuff?
+        if(this.#buffs.length > 0){
+            console.log(this.#buffs);
+        }
     }
 
     getBuffs(){
