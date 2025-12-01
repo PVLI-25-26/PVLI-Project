@@ -42,23 +42,13 @@ export class DamageableComponent extends BaseComponent {
     handleDamageEvent(event, data) {
         if (data.target !== this.gameObject) return;
 
-        if (event === 'arrowHit') {
-            const knockbackParameters = {
-                direction: { x: data.target.x - data.arrow.x, y: data.target.y - data.arrow.y },
-                force: 2,
-                duration: 100
-            };
-            this.takeDamage(1, knockbackParameters); // Placeholder damage value, arrow must store its damage
-
-        }
-
-        if (event === 'enemyMeleeHit') {
+        if (event === 'entityHit') {
             const knockbackParameters = {
                 direction: { x: data.target.x - data.attacker.x, y: data.target.y - data.attacker.y },
-                force: 10,
-                duration: 200
+                force: data.force,
+                duration: data.duration
             };
-            this.takeDamage(1, knockbackParameters); // Placeholder damage value, enemy must store its damage
+            this.takeDamage(data.damage, knockbackParameters);
         }
 
         if(event === 'pushEnemy') {

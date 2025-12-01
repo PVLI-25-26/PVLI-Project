@@ -18,7 +18,7 @@ export const burningDebuff = {
     apply: function (fireData, entity){
         entity.scene.time.addEvent({
             delay: 500,
-            callback: ()=>{EventBus.emit('enemyMeleeHit', {target: entity, attacker: entity})},
+            callback: ()=>{EventBus.emit('entityHit', {target: entity, attacker: entity, damage: fireData.damage, force: 10, duration: 10})},
             repeat: fireData.duration/500,
         });
     },

@@ -1,6 +1,7 @@
 import { EventBus } from "../../core/event-bus";
 import { DepthSortedSprite } from "../DepthSortedSprite";
 import { Obstacle } from "../Obstacle.js";
+import { PoisonCloud } from "../PoisonCloud.js";
 
 
 /**
@@ -147,12 +148,33 @@ export class Arrow extends DepthSortedSprite{
         if (other instanceof Obstacle) {
             arrow.onLanded();
         } 
+        else{
+            // If the arrow is a gass arrow, we spawn a poison cloud
+            if(arrow.effect.debuff.type == 'poisoned'){
+                new PoisonCloud(arrow.scene, arrow.x, arrow.y, arrow.effect.debuff);
+            }
+        }
         if(arrow.stickToObject) arrow.stickToObject(other);
-        EventBus.emit('arrowHit', { arrow: arrow, target: other });
+
+        // Set hitData and send it through an event
+        const hitData = arrow.getEffect();
+        hitData.attacker = arrow;
+        hitData.target = other;
+        EventBus.emit('entityHit', hitData);
+        if(hitData.debuff){
+            // Gass arrows are treated when arrow lands
+            if(hitData.debuff.type != 'poisoned'){
+                other.emit('buffApplied', hitData.debuff);
+            }
+        }
     }
 
     onLanded(){
         EventBus.emit('arrowLanded', this);
+        // If the arrow is a gass arrow, we spawn a poison cloud
+        if(this.effect.debuff.type == 'poisoned'){
+            new PoisonCloud(this.scene, this.x, this.y, this.effect.debuff);
+        }
         this.setCollidesWith(0);
         this.setFrame(1);
         this.applyBouncyTween();
@@ -203,5 +225,9 @@ export class Arrow extends DepthSortedSprite{
             repeat: 2,
             yoyo: true,
         });
+    }
+
+    getEffect(){
+        return this.effect;
     }
 }

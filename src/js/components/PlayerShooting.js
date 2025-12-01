@@ -4,6 +4,9 @@ import Pool from "../core/pool";
 import { Arrow } from "../entities/Arrow/Arrow";
 import { BasicTrajectory } from "../entities/Arrow/BasicTrajectory";
 import { DepthSortedSprite } from "../entities/DepthSortedSprite";
+import fireArrow from "../../configs/Arrows/fire-arrow.json";
+import grassArrow from "../../configs/Arrows/grass-arrow.json";
+import gassArrow from "../../configs/Arrows/gass-arrow.json";
 
 /**
  * Component to handle player shooting mechanics.
@@ -137,7 +140,7 @@ export class PlayerShootingComponent extends BaseComponent{
                 // Get arrow from pool and shoot
                 this.arrowShot.shoot(
                     new BasicTrajectory(0.05, this.gameObject.scene), // Create new basic trajectory for now (later we can inject different types)
-                    {}, // Give empty effect for now (Upate when we have effects and enemies implemented)
+                    gassArrow,
                     this.gameObject.x, this.gameObject.y, // Origin (player position)
                     directionShot.x, directionShot.y, // Target (mouse position in world coordinates)
                     this.#currentPower // Power

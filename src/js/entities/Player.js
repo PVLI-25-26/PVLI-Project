@@ -87,7 +87,7 @@ export class Player extends BillBoard {
         // Add DamageableComponent
         const damageable = new DamageableComponent(this, 
             this.config.maxHP, 
-            ['enemyMeleeHit', 'invisibilityActivated'], 
+            ['entityHit', 'invisibilityActivated'], 
             true, 
             { damage: this.config.damageSound, 
             death: this.config.deathSound });

@@ -11,30 +11,33 @@ export const poisonedDebuff = {
     /**
      * Apply the poisoned debuff to the given entity.
      *
-     * @param {Number} poisonBaseDamage - amount of base damage dealth by poison
+     * @param {Number} poisonData - poison effect data
      * @param {Phaser.GameObjects.GameObject} entity - Entity poisoned
      * @returns {void}
      */
-    apply: function (poisonBaseDamage, entity){
-        entity.scene.time.addEvent({
-            delay: 500,
+    apply: function (poisonData, entity){
+        const timeEvent = entity.scene.time.addEvent({
+            delay: 1000,
             callback: ()=>{
-                // Will use repeat count to increment damage dealt through time 
-                // Damageable component needs rework so stays like this for now
-                EventBus.emit('enemyMeleeHit', {target: entity, attacker: entity})
+                // calculate damage dealt depending on how much time entity is poisoned
+                const damage = poisonData.damage*(poisonData.duration/1000-timeEvent.repeatCount+1);
+                EventBus.emit('entityHit', {target: entity, attacker: entity, damage: damage, force: 10, duration: 10})
             },
-            repeat: poisonBaseDamage.duration/500,
+            repeat: poisonData.duration/1000,
         });
+        // Save the timer in the poison data to remove later
+        poisonData.poisonTimeEvent = timeEvent;
     },
 
     /**
      * Remove the buff from the given entity.
      * 
-     * @param {Number} poisonBaseDamage - amount of base damage dealth by poison
+     * @param {Number} poisonData - poison effect data
      * @param {Phaser.GameObjects.GameObject} entity - Entity poisoned
      * @returns {void}
      */
-    remove: function (poisonBaseDamage, entity){
-        
+    remove: function (poisonData, entity){
+        // Remove poison damage
+        poisonData.poisonTimeEvent.remove();
     }
 }

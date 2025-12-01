@@ -5,6 +5,7 @@ import { MovementComponent } from "../../components/Movement.js";
 import { DamageableComponent } from "../../components/DamageableComponent.js";
 import { BillBoard } from "../../entities/BillBoard.js";
 import { getCustomTiledProperty } from "../../core/tiled-parser.js";
+import { BuffManagerComponent } from "../../components/BuffManagerComponent.js";
 
 /**
  * BasicEnemy - a simple enemy entity with a visual sprite.
@@ -70,13 +71,15 @@ export class BasicEnemy extends BillBoard {
         // Add DamageableComponent
         const damageable = new DamageableComponent(this, 
             this.config.maxHP, 
-            ['arrowHit', 'pushEnemy'], 
+            ['entityHit', 'pushEnemy'], 
             false, 
             { damage: this.config.damageSound, 
             death: this.config.deathSound });
             
         EventBus.emit('enemyHealthInitialized', 
             { enemy: this, maxHP: this.config.maxHP });
+
+        const buffManager = new BuffManagerComponent(this);
     }
 
     /**

@@ -1,0 +1,10 @@
+{
+    "damage": 1,
+    "force": 20,
+    "duration": 100,
+    "debuff": {
+        "type": "inmobilized",
+        "value": 0,
+        "duration": 5000
+    }
+}

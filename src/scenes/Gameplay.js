@@ -97,7 +97,8 @@ export default class GameplayScene extends Phaser.Scene {
                 {
                     const player = pair.bodyA.gameObject;
                     const enemy = pair.bodyB.gameObject;
-                    EventBus.emit('enemyMeleeHit', { attacker: enemy, target: player });
+                    // This should be handled by enemies
+                    EventBus.emit('entityHit', { attacker: enemy, target: player, damage: 1, force: 20, duration: 300 });
                 }
             });
         // this.physics.add.collider(this.player, this.enemiesCategory, 

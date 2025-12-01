@@ -68,6 +68,7 @@ export class BuffManagerComponent extends BaseComponent{
 
         // Listen to buffApplied events inside the entity
         this.gameObject.on('buffApplied', this.addBuff, this);
+        this.gameObject.on('buffRemoved', this.removeBuff, this);
     }
     update(t, dt){
         // Update UI stuff?
@@ -145,5 +146,19 @@ export class BuffManagerComponent extends BaseComponent{
 
         // Save buff in buffs array
         this.#buffs.set(appliedBuff.type, appliedBuff);
+    }
+
+    /**
+     * Removes buff from entity
+     * @param {String} buffType Buff to be removed
+     */
+    removeBuff(buffType){
+        const buffToRemove = this.#buffs.get(buffType);
+        // If buff is active, remove it
+        if(buffToRemove){
+            buffToRemove.timer.remove()
+            buffTypeToBuffLogic[buffToRemove.type].remove(buffToRemove.value, this.gameObject);
+            this.#buffs.delete(buffType);
+        }
     }
 }
