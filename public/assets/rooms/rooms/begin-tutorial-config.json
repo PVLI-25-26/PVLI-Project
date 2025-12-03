@@ -287,49 +287,7 @@
          "draworder":"topdown",
          "id":6,
          "name":"Items",
-         "objects":[
-                {
-                 "id":116,
-                 "template":"..\/Templates\/ItemTemplate.tx",
-                 "type":"speed-vase",
-                 "x":22.3333333333333,
-                 "y":-131.333333333333
-                }, 
-                {
-                 "id":117,
-                 "template":"..\/Templates\/ItemTemplate.tx",
-                 "type":"speed-vase",
-                 "x":63.3333333333333,
-                 "y":-131.333333333333
-                }, 
-                {
-                 "id":118,
-                 "template":"..\/Templates\/ItemTemplate.tx",
-                 "type":"speed-vase",
-                 "x":48.3333333333333,
-                 "y":-164.333333333333
-                }, 
-                {
-                 "id":119,
-                 "template":"..\/Templates\/ItemTemplate.tx",
-                 "type":"health-flower",
-                 "x":16.3333333333333,
-                 "y":-50.3333333333333
-                }, 
-                {
-                 "id":120,
-                 "template":"..\/Templates\/ItemTemplate.tx",
-                 "type":"health-flower",
-                 "x":30.3333333333333,
-                 "y":-14.3333333333333
-                }, 
-                {
-                 "id":121,
-                 "template":"..\/Templates\/ItemTemplate.tx",
-                 "type":"health-flower",
-                 "x":-10.6666666666667,
-                 "y":-21.3333333333333
-                }],
+         "objects":[],
          "opacity":1,
          "type":"objectgroup",
          "visible":true,

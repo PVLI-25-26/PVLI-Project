@@ -1,5 +1,4 @@
-{ "backgroundcolor":"#4f4a45",
- "compressionlevel":-1,
+{ "compressionlevel":-1,
  "height":20,
  "infinite":true,
  "layers":[
@@ -16,17 +15,161 @@
         }, 
         {
          "draworder":"topdown",
-         "id":10,
-         "name":"NPCs",
+         "id":8,
+         "name":"Scattering",
          "objects":[
                 {
+                 "height":655,
+                 "id":88,
+                 "properties":[
+                        {
+                         "name":"fill",
+                         "type":"int",
+                         "value":50
+                        }],
+                 "template":"..\/Templates\/ScatteringTemplate.tx",
+                 "type":"grass1 grass2 grass3 grass4 flower1 flower2 flower3",
+                 "width":740,
+                 "x":-360.121212121212,
+                 "y":-341.333333333333
+                }, 
+                {
+                 "height":412.667,
+                 "id":94,
+                 "properties":[
+                        {
+                         "name":"fill",
+                         "type":"int",
+                         "value":100
+                        }],
+                 "template":"..\/Templates\/ScatteringTemplate.tx",
+                 "type":"tree1 tree2 tree3 tree4",
+                 "width":798.12,
+                 "x":-408.06,
+                 "y":-672.3335
+                }, 
+                {
+                 "height":412.667,
+                 "id":95,
+                 "properties":[
+                        {
+                         "name":"fill",
+                         "type":"int",
+                         "value":100
+                        }],
+                 "template":"..\/Templates\/ScatteringTemplate.tx",
+                 "type":"tree1 tree2 tree3 tree4",
+                 "width":798.12,
+                 "x":-423.06,
+                 "y":259.6665
+                }, 
+                {
+                 "height":1028.667,
+                 "id":96,
+                 "properties":[
+                        {
+                         "name":"fill",
+                         "type":"int",
+                         "value":100
+                        }],
+                 "template":"..\/Templates\/ScatteringTemplate.tx",
+                 "type":"tree1 tree2 tree3 tree4",
+                 "width":798.12,
+                 "x":262.94,
+                 "y":-536.3335
+                }, 
+                {
+                 "height":1028.67,
                  "id":97,
-                 "name":"Melinoe",
-                 "template":"..\/Templates\/NPCTemplate.tx",
-                 "type":"melinoe-hub",
-                 "x":82,
-                 "y":-71
+                 "properties":[
+                        {
+                         "name":"fill",
+                         "type":"int",
+                         "value":100
+                        }],
+                 "template":"..\/Templates\/ScatteringTemplate.tx",
+                 "type":"tree1 tree2 tree3 tree4",
+                 "width":798.12,
+                 "x":-1057.06,
+                 "y":-488.335
                 }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "draworder":"topdown",
+         "id":9,
+         "name":"NPCs",
+         "objects":[],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "draworder":"topdown",
+         "id":11,
+         "name":"World Borders",
+         "objects":[
+                {
+                 "height":92,
+                 "id":90,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":552,
+                 "x":-296,
+                 "y":-322
+                }, 
+                {
+                 "height":596,
+                 "id":91,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":93,
+                 "x":-327,
+                 "y":-318
+                }, 
+                {
+                 "height":573,
+                 "id":92,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":72,
+                 "x":235,
+                 "y":-289
+                }, 
+                {
+                 "height":67,
+                 "id":93,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":579,
+                 "x":-299,
+                 "y":234
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "draworder":"topdown",
+         "id":10,
+         "name":"Enemy Routes",
+         "objects":[],
          "opacity":1,
          "type":"objectgroup",
          "visible":true,
@@ -54,156 +197,15 @@
          "visible":true,
          "x":0,
          "y":0
-        }, 
-        {
-         "draworder":"topdown",
-         "id":9,
-         "name":"Scattering",
-         "objects":[
-                {
-                 "height":1408,
-                 "id":78,
-                 "properties":[
-                        {
-                         "name":"fill",
-                         "type":"int",
-                         "value":300
-                        }],
-                 "template":"..\/Templates\/ScatteringTemplate.tx",
-                 "type":"grass1 grass2 grass3 grass4 flower1 flower2 flower3",
-                 "width":1312,
-                 "x":-640,
-                 "y":-768
-                }, 
-                {
-                 "height":452,
-                 "id":80,
-                 "properties":[
-                        {
-                         "name":"fill",
-                         "type":"int",
-                         "value":100
-                        }],
-                 "template":"..\/Templates\/ScatteringTemplate.tx",
-                 "type":"tree1 tree2 tree3 tree4",
-                 "width":1568,
-                 "x":-768,
-                 "y":-928
-                }, 
-                {
-                 "height":384,
-                 "id":81,
-                 "properties":[
-                        {
-                         "name":"fill",
-                         "type":"int",
-                         "value":100
-                        }],
-                 "template":"..\/Templates\/ScatteringTemplate.tx",
-                 "type":"tree1 tree2 tree3 tree4",
-                 "width":1568,
-                 "x":-760,
-                 "y":380
-                }, 
-                {
-                 "height":864,
-                 "id":82,
-                 "properties":[
-                        {
-                         "name":"fill",
-                         "type":"int",
-                         "value":100
-                        }],
-                 "template":"..\/Templates\/ScatteringTemplate.tx",
-                 "type":"tree1 tree2 tree3 tree4",
-                 "width":352,
-                 "x":-768,
-                 "y":-480
-                }, 
-                {
-                 "height":864,
-                 "id":83,
-                 "properties":[
-                        {
-                         "name":"fill",
-                         "type":"int",
-                         "value":100
-                        }],
-                 "template":"..\/Templates\/ScatteringTemplate.tx",
-                 "type":"tree1 tree2 tree3 tree4",
-                 "width":352,
-                 "x":448,
-                 "y":-480
-                }],
-         "opacity":1,
-         "type":"objectgroup",
-         "visible":true,
-         "x":0,
-         "y":0
-        }, 
-        {
-         "draworder":"topdown",
-         "id":11,
-         "name":"World Borders",
-         "objects":[
-                {
-                 "height":58,
-                 "id":105,
-                 "name":"",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":968,
-                 "x":-456,
-                 "y":-538
-                }, 
-                {
-                 "height":870,
-                 "id":106,
-                 "name":"",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":38,
-                 "x":-456,
-                 "y":-486
-                }, 
-                {
-                 "height":58,
-                 "id":107,
-                 "name":"",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":958,
-                 "x":-456,
-                 "y":384
-                }, 
-                {
-                 "height":874,
-                 "id":108,
-                 "name":"",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":50,
-                 "x":452,
-                 "y":-490
-                }],
-         "opacity":1,
-         "type":"objectgroup",
-         "visible":true,
-         "x":0,
-         "y":0
         }],
  "nextlayerid":12,
- "nextobjectid":109,
+ "nextobjectid":98,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.11.2",
- "tileheight":32,
+ "tileheight":48,
  "tilesets":[],
- "tilewidth":32,
+ "tilewidth":48,
  "type":"map",
  "version":"1.10",
  "width":30

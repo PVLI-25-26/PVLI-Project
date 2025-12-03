@@ -69,7 +69,7 @@
             {"text":"Al soltar el click la flecha saldrá disparada en esa dirección.",
              "options": [0]},
             {"text":"Pues a qué esperas. ¡A la aventura!",
-             "options": [0]}
+             "options": [1]}
         ],
         "speed" : 1,
         "npcName" : "Melinoe",
@@ -78,6 +78,11 @@
                 "label" : "Next",
                 "event" : "NEXT_PAGE",
                 "color" : "Green"
+            },
+            {
+                "label" : "Exit",
+                "event" : "END",
+                "color" : "Red"
             }
         ]
     },
@@ -90,7 +95,7 @@
             {"text":"Normalmente habrá otros caminos por los que podrás continuar, si quieres, pero en este caso solo puedes volver.",
              "options": [0]},
             {"text":"¿Qué tal si vuelves a la tienda e intentas comprar algo? Te estaré esperando.",
-             "options": [0]}
+             "options": [1]}
         ],
         "speed" : 1,
         "npcName" : "Melinoe",
@@ -99,6 +104,31 @@
                 "label" : "Next",
                 "event" : "NEXT_PAGE",
                 "color" : "Green"
+            },
+            {
+                "label" : "Exit",
+                "event" : "END",
+                "color" : "Red"
+            }
+        ]
+    },
+    "melinoe-hub":{
+        "dialogue" : [
+            {"text":"¡Hola! ¿Necesitas algo?",
+             "options": [1]}
+        ],
+        "speed" : 1,
+        "npcName" : "Melinoe",
+        "userOptions" : [
+            {
+                "label" : "Next",
+                "event" : "NEXT_PAGE",
+                "color" : "Green"
+            },
+            {
+                "label" : "Exit",
+                "event" : "END",
+                "color" : "Red"
             }
         ]
     }
