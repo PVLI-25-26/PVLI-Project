@@ -119,7 +119,7 @@ export default class GameplayScene extends Phaser.Scene {
             this.cameras.main.fadeOut(800,79,74,69, (cam, progr)=>{
                 if(progr >= 1){
                     this.plugins.get('dungeon').returnToHub();
-                    this.scene.restart();
+                    this.scene.restart({playerSpawn: {x: 0, y: 0}});
                 }
             });
         })

@@ -22,7 +22,9 @@ import { createEnemy } from "./factories/enemy-simple-fabric.js";
 import { createItem } from './factories/item-factory.js';
 import { createNPC } from './factories/npc-factory.js';
 import { createObstacle } from './factories/obstacle-factory.js';
+import saveDataManager from './save-data-manager.js';
 import { getCustomTiledProperty, getTiledMapLayer } from './tiled-parser.js';
+import fs from 'fs';
 
 /**
  * Manages dungeon rooms and instantiation of room objects into a Phaser scene.
@@ -31,6 +33,11 @@ import { getCustomTiledProperty, getTiledMapLayer } from './tiled-parser.js';
  * - Room JSONs referenced by configs/Rooms/rooms.json are fetched at initialization.
  */
 export class Dungeon extends Phaser.Plugins.BasePlugin {
+    /**
+     * Reference to the game instance (used to load json to cache)
+     * @type {Phaser.Game}
+     */
+    #game;
     /**
      * Map of dungeon rooms [key -> RoomConfig]
      * @type {Map<string, RoomInstance>}
@@ -52,6 +59,11 @@ export class Dungeon extends Phaser.Plugins.BasePlugin {
      */
     #hubID
     /**
+     * ID of the room with name Intro. Saved to return to the Intro if player dies in the tutorial.
+     * @type {Number}
+     */
+    #tutorialIntroID
+    /**
      * Number of enemies alive in room
      * When this counter reaches 0, a global event "roomCleared" is emitted
      * @type {Number}
@@ -64,6 +76,7 @@ export class Dungeon extends Phaser.Plugins.BasePlugin {
      */
     constructor(pluginManager){
         super('Dungeon', pluginManager);
+        this.#game = pluginManager.game;
     }
 
     init(data){
@@ -81,13 +94,19 @@ export class Dungeon extends Phaser.Plugins.BasePlugin {
      * @private
      * @returns {void}
      */
-    #initializeRooms(){
+    async #initializeRooms(scene){
         this.#rooms = new Map();
-        // Create all dungeon rooms from the template rooms and their configs in roomsConfig
+        this.#rooms.clear();
+
+        const rooms = getTiledMapLayer(roomsConfig, "Dungeon");
+
         getTiledMapLayer(roomsConfig, "Dungeon").forEach(async (cfg) => {
-            const response = await fetch('assets/rooms/rooms/'+cfg.type);
+            const response = await fetch('assets/rooms/rooms/' + cfg.type);
+            //console.log('awaiting');
+
             // Read JSON with template for the room being created
             const room = await response.json();
+            //console.log('awaited');
             // Give generic room the specific dungeon connections
             room.connections = cfg.properties;
             // Add room to the map of rooms
@@ -95,7 +114,25 @@ export class Dungeon extends Phaser.Plugins.BasePlugin {
             // If the room is the Hub we save it
             if(cfg.name == "Hub")
                 this.#hubID = cfg.id;
+            else if(cfg.name == "Intro")
+                this.#tutorialIntroID = cfg.id;
         });
+
+        // getTiledMapLayer(roomsConfig, "Dungeon").forEach((cfg) => {
+        //     console.log(this.#game)
+        //     const room = this.#game.scene.scenes[0].load.json(cfg.id, 'assets/rooms/rooms/' + cfg.type);
+        //     // Give generic room the specific dungeon connections
+        //     room.connections = cfg.properties;
+        //     // Add room to the map of rooms
+        //     this.#rooms.set(cfg.id, room);
+        //     // If the room is the Hub we save it
+        //     if(cfg.name == "Hub")
+        //         this.#hubID = cfg.id;
+        //     else if(cfg.name == "Intro")
+        //         this.#tutorialIntroID = cfg.id;
+        // });
+
+        //console.log('should be at the end')
     }
 
     /**
@@ -128,7 +165,6 @@ export class Dungeon extends Phaser.Plugins.BasePlugin {
 
         // Get current dungeon room
         const room = this.#rooms.get(this.currentRoomKey);
-
         // Read JSON object to populate scene
         this.readTiledJSON(scene, room);
 
@@ -138,6 +174,9 @@ export class Dungeon extends Phaser.Plugins.BasePlugin {
 
     readTiledJSON(scene, room){
         // Set background color specified in Tiled (only the main camera)
+        // console.log(this.currentRoomKey);
+        // console.log(this.#rooms);
+        // console.log(this.#rooms.get(this.currentRoomKey));
         scene.cameras.main.setBackgroundColor(room.backgroundcolor);
 
         // Fix polygon coordinates used as enemy routes
@@ -249,10 +288,20 @@ export class Dungeon extends Phaser.Plugins.BasePlugin {
             // reset dungeon exploration
             this.roomsExplored.clear();
             this.roomsExplored.add(nextRoomKey); // Add hub to the explored rooms (always starts with hub)
+            // this.#initializeRooms(); // Restart all the dungeon
+            saveDataManager.setData('isTutorialComplete', true);
         }
     }
 
     returnToHub(){
-        this.changeRoom(this.#hubID);
+        if(saveDataManager.getData('isTutorialComplete'))
+        {
+            // If tutorial is complete return to normal hub
+            this.changeRoom(this.#hubID);
+        }
+        else{
+            // If tutorial isn't complete return to tutorial hub
+            this.changeRoom(this.#tutorialIntroID);
+        }
     }
 }

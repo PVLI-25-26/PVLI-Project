@@ -1,6 +1,9 @@
 import createPlayerKeys from "../../configs/controls-config";
 import { BaseComponent } from "../core/base-component";
 import { EventBus } from "../core/event-bus";
+import dashAbility from "../../configs/Abilities/dash-config.json";
+import forcefieldAbility from "../../configs/Abilities/forcefield-config.json";
+import invisibiltyAbility from "../../configs/Abilities/invisibility-config.json";
 /**
  * Component that listens for the player's ability input and forwards it to the active ability instance.
  *
@@ -27,42 +30,33 @@ export class PlayerAbilityControllerComponent extends BaseComponent{
      * Create the PlayerAbilityControllerComponent.
      * @param {Phaser.GameObjects.GameObject} gameObject - Owner game object (player).
      */
-    constructor(gameObject){
+    constructor(gameObject, ability){
         super(gameObject);
         // Get player keys
         this.keys = createPlayerKeys(gameObject.scene);
 
         // FOR TESTING - abilities
-        // this.#ability = {
-        //     type: 'dash',
-        //     value: 20,
-        //     duration: 65,
-        //     coolDown: 1000
-        // };
-        // this.#ability = {
-        //     type: 'forceField',
-        //     value: {
-        //         effectRadius: 100,
-        //         duration: 1000, // I know its weird but the game crashed, this is the real duration.
-        //     },
-        //     duration: 1000,
-        //     coolDown: 1000,
-        // }
-        // this.#ability = {
-        //     type: 'invisibility',
-        //     value: 1000,
-        //     duration: 1000,
-        //     coolDown: 1000,
-        // }
+        this.#ability = ability || null;
+        // this.#ability = dashAbility
+        // this.#ability = forcefieldAbility
+        // this.#ability = invisibiltyAbility
 
         this.hasCoolDownEnded = true;
 
         this.logger = gameObject.scene.plugins.get('logger');
 
-        // When an ability is bought, we change the equiped ability
-        EventBus.on('abilityBought', (ability)=>{
+        // When an ability is equipped
+        EventBus.on('abilityEquipped', (ability)=>{
             this.#ability = ability;
         });
+    }
+
+    getCurrentAbility(){
+        return this.#ability;
+    }
+
+    clearAbility() {
+        this.#ability = null;
     }
 
     update(t, dt){

@@ -93,8 +93,8 @@
         "physicsConfig":{
             "shape": {
                 "type": "rectangle",
-                "width": 450,
-                "height": 450
+                "width": 10,
+                "height": 10
             },
             "isStatic": true,
             "isSensor": true
@@ -110,8 +110,8 @@
         "physicsConfig":{
             "shape": {
                 "type": "rectangle",
-                "width": 450,
-                "height": 450
+                "width": 10,
+                "height": 10
             },
             "isStatic": true,
             "isSensor": true
@@ -127,8 +127,8 @@
         "physicsConfig":{
             "shape": {
                 "type": "rectangle",
-                "width": 450,
-                "height": 450
+                "width": 10,
+                "height": 10
             },
             "isStatic": true,
             "isSensor": true

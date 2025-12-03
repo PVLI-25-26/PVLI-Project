@@ -32,24 +32,24 @@
                  "name":"Fire-Arrow",
                  "template":"..\/Templates\/NPCTemplate.tx",
                  "type":"Fire-Arrow",
-                 "x":-80,
-                 "y":98.6666666666667
+                 "x":-87.3333333333333,
+                 "y":98
                 }, 
                 {
                  "id":110,
                  "name":"Gas-Arrow",
                  "template":"..\/Templates\/NPCTemplate.tx",
                  "type":"Gas-Arrow",
-                 "x":201.333333333333,
-                 "y":81.3333333333334
+                 "x":240,
+                 "y":86.6666666666667
                 }, 
                 {
                  "id":111,
                  "name":"Grass-Arrow",
                  "template":"..\/Templates\/NPCTemplate.tx",
                  "type":"Grass-Arrow",
-                 "x":112,
-                 "y":201.333333333333
+                 "x":94.6666666666667,
+                 "y":198.666666666666
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -221,7 +221,7 @@
          "y":0
         }],
  "nextlayerid":12,
- "nextobjectid":112,
+ "nextobjectid":113,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.11.2",

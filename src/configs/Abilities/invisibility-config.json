@@ -1,0 +1,7 @@
+{
+    "type": "invisibility",
+    "value": 1000,
+    "duration": 1000,
+    "coolDown": 1000,
+    "gold": 10
+}

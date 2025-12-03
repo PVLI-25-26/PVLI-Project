@@ -105,8 +105,6 @@ export class PlayerShootingComponent extends BaseComponent{
                     },
                 });	
             },
-            
-            
         );
 
         // Basic UI for testing
@@ -126,19 +124,19 @@ export class PlayerShootingComponent extends BaseComponent{
         EventBus.on('cameraRotated', (R, cR, sR)=>{this.camCosR=cR;this.camSinR=sR;}, this);
 
         // Equip arrow when bought
-        EventBus.on('arrowBought', (arrow)=>{
+        EventBus.on('arrowEquipped', (arrow)=>{
             this.#equippedArrow = arrow;
         })
         // Equip trajectory when bought
-        EventBus.on('trajectoryBought', (trajectory)=>{
+        EventBus.on('trajectoryEquipped', (trajectory)=>{
             this.#equippedTrajectory = trajectory;
         })
 
         this.gameObject.scene.input.keyboard.on('keydown-T', ()=>{
-            EventBus.emit('arrowBought', basicArrow);
+            EventBus.emit('arrowEquipped', fireArrow);
         })
         this.gameObject.scene.input.keyboard.on('keydown-G', ()=>{
-            EventBus.emit('arrowBought', gassArrow);
+            EventBus.emit('arrowEquipped', gassArrow);
         })
 
         // Move aim with mouse
@@ -168,11 +166,11 @@ export class PlayerShootingComponent extends BaseComponent{
             {   
                 // Calculate direction of shot taking into account camera rotation
                 const directionShot = this.calculateShotDirection();
-                console.log(this.#equippedArrow);
+                const effect = Object.assign({}, this.#equippedArrow);
                 // Get arrow from pool and shoot
                 this.arrowShot.shoot(
                     this.#equippedTrajectory,
-                    this.#equippedArrow,
+                    effect,
                     this.gameObject.x, this.gameObject.y, // Origin (player position)
                     directionShot.x, directionShot.y, // Target (mouse position in world coordinates)
                     this.#currentPower // Power
@@ -259,5 +257,29 @@ export class PlayerShootingComponent extends BaseComponent{
                 }
             })
         }
+    }
+
+    setArrowTrajectory(trajectory){
+        if(trajectory){
+            // SHOULD MAKE A TRAJECTORY FROM A TRAJECTORY CONFIG, NOT JUST ACCEPT AN OBJECT AS IS
+            this.#equippedTrajectory = trajectory;
+        }
+    }
+    getArrowTrajectory(){
+        //return this.#equippedTrajectory;
+        // SHOULD RETURN A TRAJECTORY CONFIG TO THEN CREATE TRAJECTORIES, CANT JUST GIVE A PHASER OBJECT TO PARSE AS A JSON
+    }
+    setArrowEffect(effect){
+        if(effect){
+            this.#equippedArrow = effect;
+        }
+    }
+    getArrowEffect(){
+        return this.#equippedArrow;
+    }
+
+    resetArrowAndTrajectory() {
+        this.#equippedArrow = basicArrow;
+        this.#equippedTrajectory = new BasicTrajectory(0.05, this.gameObject.scene);
     }
 } 

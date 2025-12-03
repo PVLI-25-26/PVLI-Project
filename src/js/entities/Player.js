@@ -60,6 +60,9 @@ export class Player extends BillBoard {
             saveDataManager.setData("playerInventory", this.inventoryComponent.getInventory());
             saveDataManager.setData("playerGold", this.inventoryComponent.getGold());
             saveDataManager.setData("playerBuffs", this.buffManager.getBuffs());
+            saveDataManager.setData("playerAbility", this.abilityController.getCurrentAbility());
+            saveDataManager.setData("playerArrowEffect", this.shootController.getArrowEffect());
+            //saveDataManager.setData("playerArrowTrajectory", this.shootController.getArrowTrajectory());
         });
 
         this.scene.anims.create({
@@ -74,6 +77,8 @@ export class Player extends BillBoard {
             EventBus.emit('playerDied');
             this.inventoryComponent.clearInventory();
             this.buffManager.clearBuffs();
+            this.abilityController.clearAbility();
+            this.shootController.resetArrowAndTrajectory();
         })
     }
 
@@ -89,7 +94,9 @@ export class Player extends BillBoard {
         const controller = new PlayerControllerComponent(this);
         
         // Add PlayerShootingComponent
-        const shootController = new PlayerShootingComponent(this, this.config.minShootPower, this.config.maxShootPower, this.config.powerIncreaseSpeed); // TODO: Refactor parameters to use separate config object
+        this.shootController = new PlayerShootingComponent(this, this.config.minShootPower, this.config.maxShootPower, this.config.powerIncreaseSpeed); // TODO: Refactor parameters to use separate config object
+        this.shootController.setArrowEffect(saveDataManager.getData("playerArrowEffect"));
+        this.shootController.setArrowTrajectory(saveDataManager.getData("playerArrowTrajectory"));
 
         // Add DamageableComponent
         const damageable = new DamageableComponent(this, 
@@ -102,7 +109,7 @@ export class Player extends BillBoard {
         EventBus.emit('playerHealthInitialized', { maxHP: this.config.maxHP });
 
         // Add PlayerAbilityControllerComponent
-        const abilityController = new PlayerAbilityControllerComponent(this);
+        this.abilityController = new PlayerAbilityControllerComponent(this, saveDataManager.getData("playerAbility"));
 
         // Add PlayerInteractControllerComponent
         const interactController = new PlayerInteractControllerComponent(this, this.config.interactRadius);
@@ -114,7 +121,6 @@ export class Player extends BillBoard {
         this.buffManager = new BuffManagerComponent(this);
         // Load buffs from browser storage if there are any
         const buffs = saveDataManager.getData("playerBuffs");
-        console.log(buffs);
         buffs?.forEach(buff => {
             this.buffManager.addBuff({type: buff.type, value: buff.value, duration: buff.timer.delay - buff.timer.elapsed});
         });

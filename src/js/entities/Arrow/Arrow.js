@@ -121,7 +121,6 @@ export class Arrow extends DepthSortedSprite{
         this.setFrame(0);
         
         this.setOrigin(0.5,0.5);
-        
         this.trajectory.shoot(this);
         this.isFlying = true;
 
