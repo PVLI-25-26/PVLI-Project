@@ -50,7 +50,7 @@ export default class MainMenuView {
             });
         });
 
-        this.settingsButton = new Button(this.scene, screenLeft, screenTop, null, 32,32,
+        this.settingsButton = new Button(this.scene, screenLeft+25, screenTop+25, null, 32,32,
             null,
             {
                 texture: 'settingsIcon',
@@ -88,7 +88,7 @@ export default class MainMenuView {
         });
 
         // Go back to main menu button
-        this.backButton = new Button(this.scene, screenLeft, screenTop, null, 32, 32,
+        this.backButton = new Button(this.scene, screenLeft+25, screenTop+25, null, 32, 32,
             null,
             {
                 texture: 'settingsIcon',
@@ -116,6 +116,53 @@ export default class MainMenuView {
         this.backButton.setActive(false);
         this.backButton.setVisible(false);
 
+        this.saveFile1 = new Button(this.scene, centerX-100, centerY+50, null, 150, 50,
+            {
+                text: 'Save File 1',
+                style: {
+                    fontSize: 20,
+                    color: Colors.White,
+                    fontFamily: 'FableFont',
+                    padding: { x: 20, y: 10 },
+                }
+            }
+        );
+        this.saveFile1.addInteraction((btn) => {
+            btn.on("pointerover", () => {
+                btn.buttonText.setColor(Colors.Red);
+                btn.invokeHover();
+            });
+            btn.on("pointerout", () => {
+                btn.buttonText.setColor(Colors.White);
+            });
+            btn.on("pointerdown", () => {
+                btn.invokeClick();
+            });
+        });
+
+        this.saveFile2 = new Button(this.scene, centerX-100, centerY+100, null, 150, 50,
+            {
+                text: 'Save File 2',
+                style: {
+                    fontSize: 20,
+                    color: Colors.White,
+                    fontFamily: 'FableFont',
+                    padding: { x: 20, y: 10 },
+                }
+            }
+        );
+        this.saveFile2.addInteraction((btn) => {
+            btn.on("pointerover", () => {
+                btn.buttonText.setColor(Colors.Red);
+                btn.invokeHover();
+            });
+            btn.on("pointerout", () => {
+                btn.buttonText.setColor(Colors.White);
+            });
+            btn.on("pointerdown", () => {
+                btn.invokeClick();
+            });
+        });
     }
 
     createSliders() {

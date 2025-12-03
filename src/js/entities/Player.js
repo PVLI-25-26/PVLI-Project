@@ -9,6 +9,7 @@ import { PlayerAbilityControllerComponent } from "../components/PlayerAbilityCon
 import { PlayerInteractControllerComponent } from "../components/PlayerInteractController.js";
 import { InventoryComponent } from "../components/InventoryComponent.js";
 import { BuffManagerComponent } from "../components/BuffManagerComponent.js";
+import saveDataManager from "../core/save-data-manager.js";
 
 /**
  * Player GameObject with movement and player control.
@@ -56,9 +57,9 @@ export class Player extends BillBoard {
 
         // Save in browser storage player data when scene is shutdown
         scene.events.on("shutdown", ()=>{
-            localStorage.setItem("playerInventory", JSON.stringify(this.inventoryComponent.getInventory()));
-            localStorage.setItem("playerGold", JSON.stringify(this.inventoryComponent.getGold()));
-            localStorage.setItem("playerBuffs", JSON.stringify(this.buffManager.getBuffs()));
+            saveDataManager.setData("playerInventory", this.inventoryComponent.getInventory());
+            saveDataManager.setData("playerGold", this.inventoryComponent.getGold());
+            saveDataManager.setData("playerBuffs", this.buffManager.getBuffs());
         });
 
         this.scene.anims.create({
@@ -101,12 +102,14 @@ export class Player extends BillBoard {
         const interactController = new PlayerInteractControllerComponent(this, this.config.interactRadius);
 
         // Add InventoryComponent and load items from browser storage if there are any
-        this.inventoryComponent = new InventoryComponent(this, JSON.parse(localStorage.getItem("playerInventory")), JSON.parse(localStorage.getItem("playerGold")));
+        this.inventoryComponent = new InventoryComponent(this, saveDataManager.getData("playerInventory"), saveDataManager.getData("playerGold"));
 
         // Add BuffManagerComponent
         this.buffManager = new BuffManagerComponent(this);
         // Load buffs from browser storage if there are any
-        JSON.parse(localStorage.getItem('playerBuffs'))?.forEach(buff => {
+        const buffs = saveDataManager.getData("playerBuffs");
+        console.log(buffs);
+        buffs?.forEach(buff => {
             this.buffManager.addBuff({type: buff.type, value: buff.value, duration: buff.timer.delay - buff.timer.elapsed});
         });
     }

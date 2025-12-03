@@ -1,4 +1,5 @@
 import { EventBus } from "../../core/event-bus.js";
+import saveDataManager from "../../core/save-data-manager.js";
 
 export default class MainMenuPresenter {
     constructor(view, model) {
@@ -51,6 +52,25 @@ export default class MainMenuPresenter {
             EventBus.emit("playSound", "hover");
         });
 
+        // Save files
+        this.view.saveFile1.on("button-clicked", () => {
+            EventBus.emit('stopMusic');
+            EventBus.emit("playSound", "click");
+            saveDataManager.changeCurrentSave(0);
+        });
+        this.view.saveFile1.on("button-hovered", () => {
+            EventBus.emit("playSound", "hover");
+        });
+
+        this.view.saveFile2.on("button-clicked", () => {
+            EventBus.emit('stopMusic');
+            EventBus.emit("playSound", "click");
+            this.view.scene.scene.start("GameplayScene");
+            saveDataManager.changeCurrentSave(1);
+        });
+        this.view.saveFile2.on("button-hovered", () => {
+            EventBus.emit("playSound", "hover");
+        });
     }
 
     setValuesFromModel() {

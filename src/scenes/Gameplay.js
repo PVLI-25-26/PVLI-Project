@@ -18,6 +18,7 @@ import NPCsDialogueView from "../js/UI/NPCsDialogue/NPCsDialogueView.js";
 import dialogueTest from "../configs/Dialogues/NPCsDialogue-config.json"
 import dialogueEvents from "../configs/Dialogues/NPCsDialogue-buttonEvents.js"
 import { InputFacade } from "../js/core/input-facade.js";
+import saveDataManager from "../js/core/save-data-manager.js";
 
 
 export default class GameplayScene extends Phaser.Scene {
@@ -75,6 +76,8 @@ export default class GameplayScene extends Phaser.Scene {
         this.input.keyboard.on("keydown-U", () => {
             this.toggleDebug();
         });
+
+        this.events.on("shutdown", ()=>saveDataManager.saveCurrentData());
 
         // Create physics groups
         this.obstaclesCategory = 1 << 0;
