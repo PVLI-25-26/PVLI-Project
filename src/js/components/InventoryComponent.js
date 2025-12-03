@@ -101,4 +101,8 @@ export class InventoryComponent extends BaseComponent{
         // Remove item from array
         this.#playerInventory.splice(idx, 1);
     }
+
+    clearInventory(){
+        this.#playerInventory = [];
+    }
 }

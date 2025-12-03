@@ -151,9 +151,11 @@ export class DamageableComponent extends BaseComponent {
      */
     onDeath() {
         EventBus.emit('entityDied', this.gameObject);
+        this.gameObject.emit('entityDied'); // Cheaper and easier to know from within the object if they have died
         EventBus.emit('playSound', this.sounds.death);
         this.gameObject.setActive(false);
         this.gameObject.setVisible(false);
+        this.gameObject.setStatic(true);
         this.gameObject.setCollidesWith(0);
     }
 
