@@ -7,6 +7,7 @@ import { DepthSortedSprite } from "../entities/DepthSortedSprite";
 import fireArrow from "../../configs/Arrows/fire-arrow.json";
 import grassArrow from "../../configs/Arrows/grass-arrow.json";
 import gassArrow from "../../configs/Arrows/gass-arrow.json";
+import basicArrow from "../../configs/Arrows/basic-arrow.json";
 
 /**
  * Component to handle player shooting mechanics.
@@ -61,6 +62,16 @@ export class PlayerShootingComponent extends BaseComponent{
     camSinR = 0;
 
     /**
+     * @type {Trajectory} The currently equipped trajectory
+     */
+    #equippedTrajectory = new BasicTrajectory(0.05, this.gameObject.scene);
+
+    /**
+     * @type {Arrow} The currently equipped arrow
+     */
+    #equippedArrow = basicArrow;
+
+    /**
      * Creates a new PlayerShootingComponent to handle player shooting.
      * 
      * @param {Object} gameObject Gameobject to which this component is attached.
@@ -83,16 +94,19 @@ export class PlayerShootingComponent extends BaseComponent{
             10,
             ()=>{return new Arrow(gameObject.scene);},
             (entity)=>{entity.scene.tweens.add({
-                targets: entity,
-                alpha: 0,
-                duration: 200,
-                onComplete: (tween)=>{
-                    tween.remove();
-                    entity.setActive(false);
-                    entity.setVisible(false);
-                    entity.alpha = 1;
-                },
-		    });	},
+                    targets: entity,
+                    alpha: 0,
+                    duration: 200,
+                    onComplete: (tween)=>{
+                        tween.remove();
+                        entity.setActive(false);
+                        entity.setVisible(false);
+                        entity.alpha = 1;
+                    },
+                });	
+            },
+            
+            
         );
 
         // Basic UI for testing
@@ -111,6 +125,23 @@ export class PlayerShootingComponent extends BaseComponent{
         // Listen to camera rotation updates
         EventBus.on('cameraRotated', (R, cR, sR)=>{this.camCosR=cR;this.camSinR=sR;}, this);
 
+        // Equip arrow when bought
+        EventBus.on('arrowBought', (arrow)=>{
+            this.#equippedArrow = arrow;
+        })
+        // Equip trajectory when bought
+        EventBus.on('trajectoryBought', (trajectory)=>{
+            this.#equippedTrajectory = trajectory;
+        })
+
+        this.gameObject.scene.input.keyboard.on('keydown-T', ()=>{
+            EventBus.emit('arrowBought', basicArrow);
+        })
+        this.gameObject.scene.input.keyboard.on('keydown-G', ()=>{
+            EventBus.emit('arrowBought', gassArrow);
+        })
+
+        // Move aim with mouse
         this.gameObject.scene.input.on('pointermove',(pointer)=>{
             // If mouse button is down, increase power
             if(pointer.isDown && this.gameObject.scene.input.mouse.locked) {
@@ -131,6 +162,7 @@ export class PlayerShootingComponent extends BaseComponent{
             }
         }, this);
 
+        // Release arrow when pointer up
         this.gameObject.scene.input.on('pointerup',(pointer)=>{
             if(this.#shootWasPressedLastFrame && this.#currentPower > this.#minPower)
             {   
@@ -139,8 +171,8 @@ export class PlayerShootingComponent extends BaseComponent{
                 
                 // Get arrow from pool and shoot
                 this.arrowShot.shoot(
-                    new BasicTrajectory(0.05, this.gameObject.scene), // Create new basic trajectory for now (later we can inject different types)
-                    gassArrow,
+                    this.#equippedTrajectory,
+                    this.#equippedArrow,
                     this.gameObject.x, this.gameObject.y, // Origin (player position)
                     directionShot.x, directionShot.y, // Target (mouse position in world coordinates)
                     this.#currentPower // Power

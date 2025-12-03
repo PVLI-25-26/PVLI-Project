@@ -51,6 +51,12 @@ export class Arrow extends DepthSortedSprite{
      */
     power;
 
+    /**
+     * Flag to know when the flag is flying
+     * @type {Boolean}
+     */
+    isFlying;
+
 
     /**
      * Create a new Arrow.
@@ -78,6 +84,7 @@ export class Arrow extends DepthSortedSprite{
         
         this.setActive(false);
         this.setVisible(false);
+        this.isFlying = false;
         //this.colliders.forEach(collider => collider.active = false);
     }
 
@@ -106,16 +113,17 @@ export class Arrow extends DepthSortedSprite{
 
         this.trajectory = trajectory;
         this.effect = effect;
-
+        
         // target direction
         this.target = {x: tX-oX, y: tY-oY};
         this.power = power;
-
+        
         this.setFrame(0);
-
+        
         this.setOrigin(0.5,0.5);
-
+        
         this.trajectory.shoot(this);
+        this.isFlying = true;
 
         this.setActive(true);
 
@@ -141,6 +149,7 @@ export class Arrow extends DepthSortedSprite{
         const other = pair.bodyB.gameObject;
 
         arrow.setCollidesWith(0);
+        arrow.isFlying = false;
         // Notify the trajectory controller about the collision so it can
         // handle stopping, pooling or effects.
         if(arrow.trajectory) arrow.trajectory.onCollision();
@@ -150,7 +159,7 @@ export class Arrow extends DepthSortedSprite{
         } 
         else{
             // If the arrow is a gass arrow, we spawn a poison cloud
-            if(arrow.effect.debuff.type == 'poisoned'){
+            if(arrow.effect.debuff && arrow.effect.debuff.type == 'poisoned'){
                 new PoisonCloud(arrow.scene, arrow.x, arrow.y, arrow.effect.debuff);
             }
         }
@@ -172,13 +181,14 @@ export class Arrow extends DepthSortedSprite{
     onLanded(){
         EventBus.emit('arrowLanded', this);
         // If the arrow is a gass arrow, we spawn a poison cloud
-        if(this.effect.debuff.type == 'poisoned'){
+        if(this.effect.debuff && this.effect.debuff.type == 'poisoned'){
             new PoisonCloud(this.scene, this.x, this.y, this.effect.debuff);
         }
         this.setCollidesWith(0);
         this.setFrame(1);
         this.applyBouncyTween();
         EventBus.emit('playSound', 'arrowLand');
+        this.isFlying = false;
     }
 
     stickToObject(target) {
@@ -210,7 +220,7 @@ export class Arrow extends DepthSortedSprite{
         if (this.stuckTo && this.stuckTo.active) {
             this.x = this.stuckTo.x + this.offsetX;
             this.y = this.stuckTo.y + this.offsetY;
-        } else if (this.trajectory) {
+        } else if (this.trajectory && this.isFlying) {
             this.trajectory.update(time, delta);
         }
     }
