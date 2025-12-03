@@ -31,6 +31,7 @@ export default class GameplayScene extends Phaser.Scene {
     }
 
     create(data) {
+        this.cameras.main.fadeIn(800,79,74,69);
         this.toggleDebug();
         EventBus.removeAllListeners();
 
@@ -113,6 +114,15 @@ export default class GameplayScene extends Phaser.Scene {
         this.plugins.get('dungeon').loadCurrentRoom(this, this.obstaclesCategory, this.enemiesCategory, this.playerCategory, this.connectionsCategory, this.interactablesCategory);
         // Make camera follow the player
         this.cameras.main.startFollow(this.player, false, 0.1, 0.1, 10, 10);
+
+        EventBus.on('playerDied', ()=>{
+            this.cameras.main.fadeOut(800,79,74,69, (cam, progr)=>{
+                if(progr >= 1){
+                    this.plugins.get('dungeon').returnToHub();
+                    this.scene.restart();
+                }
+            });
+        })
     }
 
     toggleDebug() {

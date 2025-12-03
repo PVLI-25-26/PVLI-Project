@@ -73,6 +73,7 @@ export class BasicTrajectory {
         arrow.setFrictionAir(this.#airDrag);
 
         this.#timeSinceLaunch = 0;
+        this.#isFlying = true;
 
         // End arrow flight at after airTime milliseconds
         this.#scene.time.delayedCall(this.#airTime, ()=>{

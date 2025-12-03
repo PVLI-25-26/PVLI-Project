@@ -1,5 +1,6 @@
 import createPlayerKeys from "../../configs/controls-config";
 import { BaseComponent } from "../core/base-component";
+import { EventBus } from "../core/event-bus";
 /**
  * Component that listens for the player's ability input and forwards it to the active ability instance.
  *
@@ -31,7 +32,7 @@ export class PlayerAbilityControllerComponent extends BaseComponent{
         // Get player keys
         this.keys = createPlayerKeys(gameObject.scene);
 
-        // FOR TESTING - create ability used
+        // FOR TESTING - abilities
         // this.#ability = {
         //     type: 'dash',
         //     value: 20,
@@ -47,17 +48,21 @@ export class PlayerAbilityControllerComponent extends BaseComponent{
         //     duration: 1000,
         //     coolDown: 1000,
         // }
-        this.#ability = {
-            type: 'invisibility',
-            value: 1000,
-            duration: 1000,
-            coolDown: 1000,
-        }
-        //this.#ability = new Invisibility(gameObject.scene, 1000, 3000, this.gameObject);
+        // this.#ability = {
+        //     type: 'invisibility',
+        //     value: 1000,
+        //     duration: 1000,
+        //     coolDown: 1000,
+        // }
 
         this.hasCoolDownEnded = true;
 
         this.logger = gameObject.scene.plugins.get('logger');
+
+        // When an ability is bought, we change the equiped ability
+        EventBus.on('abilityBought', (ability)=>{
+            this.#ability = ability;
+        });
     }
 
     update(t, dt){

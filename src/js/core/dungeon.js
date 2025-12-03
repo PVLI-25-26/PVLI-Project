@@ -251,4 +251,8 @@ export class Dungeon extends Phaser.Plugins.BasePlugin {
             this.roomsExplored.add(nextRoomKey); // Add hub to the explored rooms (always starts with hub)
         }
     }
+
+    returnToHub(){
+        this.changeRoom(this.#hubID);
+    }
 }

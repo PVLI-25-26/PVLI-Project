@@ -16,8 +16,13 @@ export function createConnection(scene, dungeon, connectionSceneData){
     connection.setOnCollide(()=>{
         dungeon.changeRoom(connectionSceneData.scene);
         scene.logger.log('DUNGEON', 1, `Entering room: ${connectionSceneData.scene}`);
-        
-        scene.scene.restart({sceneName: connectionSceneData.scene, playerSpawn: {x:connectionSceneData.spawnX, y:connectionSceneData.spawnY}});
+
+        // Fade out camera and change sceen (this code shouldn't be here, but idk where to put it)
+        scene.cameras.main.fadeOut(800,79,74,69, (cam, progr)=>{
+            if(progr >= 1){
+                scene.scene.restart({sceneName: connectionSceneData.scene, playerSpawn: {x:connectionSceneData.spawnX, y:connectionSceneData.spawnY}});
+            }
+        });
     });
     // Connections appear when the room is cleared
     connection.setActive(false);

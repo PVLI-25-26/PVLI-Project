@@ -71,10 +71,6 @@ export class BuffManagerComponent extends BaseComponent{
         this.gameObject.on('buffRemoved', this.removeBuff, this);
     }
     update(t, dt){
-        // Update UI stuff?
-        if(this.#buffs.length > 0){
-            console.log(this.#buffs);
-        }
     }
 
     getBuffs(){
@@ -159,6 +155,12 @@ export class BuffManagerComponent extends BaseComponent{
             buffToRemove.timer.remove()
             buffTypeToBuffLogic[buffToRemove.type].remove(buffToRemove.value, this.gameObject);
             this.#buffs.delete(buffType);
+        }
+    }
+
+    clearBuffs(){
+        for(const buff of this.#buffs.keys()){
+            this.removeBuff(buff);
         }
     }
 }

@@ -1,8 +1,10 @@
 {
     "npcName1" : {
         "dialogue" : [
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et ",
-            "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium."
+            {"text":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et ",
+             "options": [0]},
+            {"text":"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.",
+             "options": [0, 1]}
         ],
         "speed" : 1,
         "npcName" : "Antonio",
@@ -22,12 +24,18 @@
     },
     "melinoe-intro":{
         "dialogue" : [
-            "¡¿Artemisa?! ¿Qué haces aquí? Este es un lugar muy peligroso.",
-            "Este bosque no es un bosque normal, esta lleno de criaturas que intentarán acabar con cualquiera que entre.",
-            "¿Me preguntas que porqué estoy yo aquí?",
-            "El bosque está lleno de objetos mágicos con poderes, estoy intentando averiguar su origen.",
-            "No obstante, cada vez que consigo salir con unos cuantos, se convierten en monedas.",
-            "Más adelante está el lugar donde me asiento. Qué tal si continúas y te lo muestro."
+            {"text":"¡¿Artemisa?! ¿Qué haces aquí? Este es un lugar muy peligroso.",
+             "options": [0]},
+            {"text":"Este bosque no es un bosque normal, esta lleno de criaturas que intentarán acabar con cualquiera que entre.",
+             "options": [0]},
+            {"text":"¿Me preguntas que porqué estoy yo aquí?",
+             "options": [0]},
+            {"text":"El bosque está lleno de objetos mágicos con poderes, estoy intentando averiguar su origen.",
+             "options": [0]},
+            {"text":"No obstante, cada vez que consigo salir con unos cuantos, se convierten en monedas.",
+             "options": [0]},
+            {"text":"Más adelante está el lugar donde me asiento. Qué tal si continúas y te lo muestro.",
+             "options": [1]}
         ],
         "speed" : 1,
         "npcName" : "Melinoe",
@@ -36,19 +44,32 @@
                 "label" : "Next",
                 "event" : "NEXT_PAGE",
                 "color" : "Green"
+            },
+            {
+                "label" : "Exit",
+                "event" : "END",
+                "color" : "Red"
             }
         ]
     },
     "melinoe-hub-intro":{
         "dialogue" : [
-            "Bienvenida a mi humilde tienda. Aquí guardo objetos mágicos interesantes que te podría resultar útiles.",
-            "Pero yo tampoco soy tonta, sólo te los daré a cambio de algunas moneditas jijiji.",
-            "Veo que no tienes nada ... Antes he visto un slime más adelante. Mátalo, y coge los items que suelte.",
-            "Al volver se convertirán en monedas que podrás usar para intercambiar conmigo.",
-            "¡¿Cómo no vas a saber disparar?! ¡Eres la diosa de la caza, simpre vas con un arco!",
-            "En fin, para tensar el arco, mantén click y arrastra el ratón en la dirección contraria a la que apuntas.",
-            "Al soltar el click la flecha saldrá disparada en esa dirección.",
-            "Pues a qué esperas. ¡A la aventura!"
+            {"text":"Bienvenida a mi humilde tienda. Aquí guardo objetos mágicos interesantes que te podría resultar útiles.",
+             "options": [0]},
+            {"text":"Pero yo tampoco soy tonta, sólo te los daré a cambio de algunas moneditas jijiji.",
+             "options": [0]},
+            {"text":"Veo que no tienes nada ... Antes he visto un slime más adelante. Mátalo, y coge los items que suelte.",
+             "options": [0]},
+            {"text":"Al volver se convertirán en monedas que podrás usar para intercambiar conmigo.",
+             "options": [0]},
+            {"text":"¡¿Cómo no vas a saber disparar?! ¡Eres la diosa de la caza, simpre vas con un arco!",
+             "options": [0]},
+            {"text":"En fin, para tensar el arco, mantén click y arrastra el ratón en la dirección contraria a la que apuntas.",
+             "options": [0]},
+            {"text":"Al soltar el click la flecha saldrá disparada en esa dirección.",
+             "options": [0]},
+            {"text":"Pues a qué esperas. ¡A la aventura!",
+             "options": [1]}
         ],
         "speed" : 1,
         "npcName" : "Melinoe",
@@ -57,15 +78,24 @@
                 "label" : "Next",
                 "event" : "NEXT_PAGE",
                 "color" : "Green"
+            },
+            {
+                "label" : "Exit",
+                "event" : "END",
+                "color" : "Red"
             }
         ]
     },
     "melinoe-exit-intro":{
         "dialogue" : [
-            "Joderrr, vaya paliza le has metido. Creo que me vas a ser muy útil por aquí.",
-            "Mira, Este es un lugar especial, desde aquí siempre podrás volver a mi asentamiento.",
-            "Normalmente habrá otros caminos por los que podrás continuar, si quieres, pero en este caso solo puedes volver.",
-            "¿Qué tal si vuelves a la tienda e intentas comprar algo? Te estaré esperando."
+            {"text":"Joderrr, vaya paliza le has metido. Creo que me vas a ser muy útil por aquí.",
+             "options": [0]},
+            {"text":"Mira, Este es un lugar especial, desde aquí siempre podrás volver a mi asentamiento.",
+             "options": [0]},
+            {"text":"Normalmente habrá otros caminos por los que podrás continuar, si quieres, pero en este caso solo puedes volver.",
+             "options": [0]},
+            {"text":"¿Qué tal si vuelves a la tienda e intentas comprar algo? Te estaré esperando.",
+             "options": [1]}
         ],
         "speed" : 1,
         "npcName" : "Melinoe",
@@ -74,7 +104,98 @@
                 "label" : "Next",
                 "event" : "NEXT_PAGE",
                 "color" : "Green"
+            },
+            {
+                "label" : "Exit",
+                "event" : "END",
+                "color" : "Red"
             }
         ]
-    }
+    },
+    "melinoe-hub":{
+        "dialogue" : [
+            {"text":"¡Hola! ¿Necesitas algo?",
+             "options": [1]}
+        ],
+        "speed" : 1,
+        "npcName" : "Melinoe",
+        "userOptions" : [
+            {
+                "label" : "Next",
+                "event" : "NEXT_PAGE",
+                "color" : "Green"
+            },
+            {
+                "label" : "Exit",
+                "event" : "END",
+                "color" : "Red"
+            }
+        ]
+    },
+	"Fire-Arrow":{
+		"dialogue" : [
+			{
+				"text": "Flecha de fuego",
+				"options":[0]
+			}
+		],
+		"speed" : 1,
+		"npcName" : "Fire-Arrow",
+		"userOptions":[
+			{
+				"label" : "Buy",
+				"event" : "BUY_FIRE_ARROW",
+				"color" : "Green"
+			},
+			{
+				"label" : "Exit",
+				"event" : "END",
+				"color" : "Red"
+			}
+		]
+	},
+	"Grass-Arrow":{
+		"dialogue" : [
+			{
+				"text": "Flecha de fuego",
+				"options":[0]
+			}
+		],
+		"speed" : 1,
+		"npcName" : "GrassArrow",
+		"userOptions":[
+			{
+				"label" : "Buy",
+				"event" : "BUY_GRASS_ARROW",
+				"color" : "Green"
+			},
+			{
+				"label" : "Exit",
+				"event" : "END",
+				"color" : "Red"
+			}
+		]
+	},
+	"Gas-Arrow":{
+		"dialogue" : [
+			{
+				"text": "Flecha de fuego",
+				"options":[0]
+			}
+		],
+		"speed" : 1,
+		"npcName" : "GasArrow",
+		"userOptions":[
+			{
+				"label" : "Buy",
+				"event" : "BUY_GAS_ARROW",
+				"color" : "Green"
+			},
+			{
+				"label" : "Exit",
+				"event" : "END",
+				"color" : "Red"
+			}
+		]
+	}
 }   

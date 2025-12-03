@@ -69,6 +69,12 @@ export class Player extends BillBoard {
             repeat: -1
         });
         this.play('player_walk');
+
+        this.on('entityDied', ()=>{
+            EventBus.emit('playerDied');
+            this.inventoryComponent.clearInventory();
+            this.buffManager.clearBuffs();
+        })
     }
 
     /**

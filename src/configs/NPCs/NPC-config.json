@@ -66,5 +66,75 @@
             "isSensor": true
         },
         "dialogueName": "melinoe-exit-intro"
+    },
+    {
+        "key": "melinoe-hub",
+        "billboardConfig":{
+            "texture":"slime",
+            "scale":0.1
+        },
+        "physicsConfig":{
+            "shape": {
+                "type": "rectangle",
+                "width": 450,
+                "height": 450
+            },
+            "isStatic": true,
+            "isSensor": true
+        },
+        "dialogueName": "melinoe-hub"
+    },
+	{
+        "key": "Fire-Arrow",
+        "billboardConfig":{
+            "texture":"Fire-Arrow",
+            "scale":2
+        },
+        "physicsConfig":{
+            "shape": {
+                "type": "rectangle",
+                "width": 450,
+                "height": 450
+            },
+            "isStatic": true,
+            "isSensor": true
+        },
+        "dialogueName": "Fire-Arrow"
+    },
+	{
+        "key": "Grass-Arrow",
+        "billboardConfig":{
+            "texture":"Grass-Arrow",
+            "scale":2
+        },
+        "physicsConfig":{
+            "shape": {
+                "type": "rectangle",
+                "width": 450,
+                "height": 450
+            },
+            "isStatic": true,
+            "isSensor": true
+        },
+        "dialogueName": "Grass-Arrow"
+    },
+	{
+        "key": "Gas-Arrow",
+        "billboardConfig":{
+            "texture":"Grass-Arrow",
+            "scale":2
+        },
+        "physicsConfig":{
+            "shape": {
+                "type": "rectangle",
+                "width": 450,
+                "height": 450
+            },
+            "isStatic": true,
+            "isSensor": true
+        },
+        "dialogueName": "Gas-Arrow"
     }
+
+
 ]

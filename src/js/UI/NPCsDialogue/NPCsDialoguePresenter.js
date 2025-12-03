@@ -14,6 +14,8 @@ export default class NPCsDialoguePresenter{
                 this.model.currentDialogue.currentPage += 1;
                 this.setCurrentPage();
                 this.view.UpdateText();
+                this.view.EraseButtons();
+                this.createButtons();
                 if (this.model.currentDialogue.currentPage >= this.model.currentDialogue.dialogue.length-1){
                     this.lastPage = true;
                 }
@@ -35,6 +37,7 @@ export default class NPCsDialoguePresenter{
         this.view.UpdateText();
         this.view.UpdateName(this.model.currentDialogue.npcName);
         this.view.UpdatePortrait(this.model.currentDialogue.npcName);
+		//Esta
         this.createButtons();
     }
     
@@ -48,8 +51,11 @@ export default class NPCsDialoguePresenter{
         }
     }
     createButtons(){
-        for (let i = 0; i<this.model.currentDialogue.userOptions.length; i++){
-            let option = this.model.currentDialogue.userOptions[i];
+        const currPage = this.model.currentDialogue.dialogue[this.model.currentDialogue.currentPage];
+        const numOfButtons = currPage.options.length;
+        for (let i = 0; i<numOfButtons; i++){
+            // Por cada dialogo se especifica que botones de los disponibles para esta conversacion se quiere usar
+            let option = this.model.currentDialogue.userOptions[currPage.options[i]];
             let newOption = this.view.CreateButtons(option);
             
             if (this.model.events[option.event]!= null){
@@ -60,7 +66,7 @@ export default class NPCsDialoguePresenter{
         }
     }
     setCurrentPage(){
-        this.view.currentPage = this.model.currentDialogue.dialogue[this.model.currentDialogue.currentPage];
+        this.view.currentPage = this.model.currentDialogue.dialogue[this.model.currentDialogue.currentPage].text;
     }
     hideDialogue(){
         this.view.hideView();
