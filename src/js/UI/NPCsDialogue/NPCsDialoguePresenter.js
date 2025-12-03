@@ -37,6 +37,7 @@ export default class NPCsDialoguePresenter{
         this.view.UpdateText();
         this.view.UpdateName(this.model.currentDialogue.npcName);
         this.view.UpdatePortrait(this.model.currentDialogue.npcName);
+		//Esta
         this.createButtons();
     }
     

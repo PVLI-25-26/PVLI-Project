@@ -40,5 +40,8 @@
     {"key": "UIdialogueBackground", "type": "image", "file": "assets/UI/Dialogues/Portrait_background.png", "settings":{}},
     {"key": "UIbackground", "type": "image", "file": "assets/UI/UI_Background_NineSlice.png", "settings":{}},
 
-    {"key": "settingsIcon", "type": "spritesheet", "file": "assets/sprites/Settings_Icons.png", "settings":{"frameWidth":16}}
+    {"key": "settingsIcon", "type": "spritesheet", "file": "assets/sprites/Settings_Icons.png", "settings":{"frameWidth":16}},
+    {"key": "Fire-Arrow", "type": "image", "file": "assets/arrows/fire-arrow.png", "settings":{}},
+    {"key": "Grass-Arrow", "type": "image", "file": "assets/arrows/grass-arrow.png", "settings":{}}
 ]
+

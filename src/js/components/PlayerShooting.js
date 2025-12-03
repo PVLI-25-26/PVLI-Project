@@ -168,7 +168,7 @@ export class PlayerShootingComponent extends BaseComponent{
             {   
                 // Calculate direction of shot taking into account camera rotation
                 const directionShot = this.calculateShotDirection();
-                
+                console.log(this.#equippedArrow);
                 // Get arrow from pool and shoot
                 this.arrowShot.shoot(
                     this.#equippedTrajectory,

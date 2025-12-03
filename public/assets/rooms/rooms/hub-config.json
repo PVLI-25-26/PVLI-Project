@@ -26,6 +26,30 @@
                  "type":"melinoe-hub",
                  "x":82,
                  "y":-71
+                }, 
+                {
+                 "id":109,
+                 "name":"Fire-Arrow",
+                 "template":"..\/Templates\/NPCTemplate.tx",
+                 "type":"Fire-Arrow",
+                 "x":-80,
+                 "y":98.6666666666667
+                }, 
+                {
+                 "id":110,
+                 "name":"Gas-Arrow",
+                 "template":"..\/Templates\/NPCTemplate.tx",
+                 "type":"Gas-Arrow",
+                 "x":201.333333333333,
+                 "y":81.3333333333334
+                }, 
+                {
+                 "id":111,
+                 "name":"Grass-Arrow",
+                 "template":"..\/Templates\/NPCTemplate.tx",
+                 "type":"Grass-Arrow",
+                 "x":112,
+                 "y":201.333333333333
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -137,7 +161,7 @@
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":true,
+         "visible":false,
          "x":0,
          "y":0
         }, 
@@ -197,7 +221,7 @@
          "y":0
         }],
  "nextlayerid":12,
- "nextobjectid":109,
+ "nextobjectid":112,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.11.2",

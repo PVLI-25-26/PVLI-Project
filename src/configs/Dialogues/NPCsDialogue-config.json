@@ -131,5 +131,71 @@
                 "color" : "Red"
             }
         ]
-    }
+    },
+	"Fire-Arrow":{
+		"dialogue" : [
+			{
+				"text": "Flecha de fuego",
+				"options":[0]
+			}
+		],
+		"speed" : 1,
+		"npcName" : "Fire-Arrow",
+		"userOptions":[
+			{
+				"label" : "Buy",
+				"event" : "BUY_FIRE_ARROW",
+				"color" : "Green"
+			},
+			{
+				"label" : "Exit",
+				"event" : "END",
+				"color" : "Red"
+			}
+		]
+	},
+	"Grass-Arrow":{
+		"dialogue" : [
+			{
+				"text": "Flecha de fuego",
+				"options":[0]
+			}
+		],
+		"speed" : 1,
+		"npcName" : "GrassArrow",
+		"userOptions":[
+			{
+				"label" : "Buy",
+				"event" : "BUY_GRASS_ARROW",
+				"color" : "Green"
+			},
+			{
+				"label" : "Exit",
+				"event" : "END",
+				"color" : "Red"
+			}
+		]
+	},
+	"Gas-Arrow":{
+		"dialogue" : [
+			{
+				"text": "Flecha de fuego",
+				"options":[0]
+			}
+		],
+		"speed" : 1,
+		"npcName" : "GasArrow",
+		"userOptions":[
+			{
+				"label" : "Buy",
+				"event" : "BUY_GAS_ARROW",
+				"color" : "Green"
+			},
+			{
+				"label" : "Exit",
+				"event" : "END",
+				"color" : "Red"
+			}
+		]
+	}
 }   
