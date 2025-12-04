@@ -23,6 +23,6 @@ export function createObstacle(scene, objSceneData){
     }
     if(obstacleTemplate.physicsConfig) obstacle.setCollisionCategory(scene.obstaclesCategory);
 
-    // scene.worldLayer.add(obstacle);
+    scene.worldLayer.add(obstacle);
     return obstacle
 }
