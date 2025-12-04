@@ -15,7 +15,6 @@ export function createObstacle(scene, objSceneData){
     }
     else if(obstacleTemplate.spriteStackConfig){
         obstacle = new Obstacle(scene, objSceneData.x, objSceneData.y, obstacleTemplate);
-        console.log("Added obstacle to world layer:", obstacle);
         obstacle.setAngle(objSceneData.rotation);
     }
     else{

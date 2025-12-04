@@ -1,4 +1,5 @@
 import { Bar } from "../elements/bar.js";  
+import { CombatText } from "../elements/combat-text.js";
 
 export class HudView {
     constructor(scene) {
@@ -31,5 +32,11 @@ export class HudView {
         this.enemyHealthBars.set(enemy, enemyHealthBar);
         this.playerHealthBar.setScrollFactor(0);
         this.scene.hudLayer.add(enemyHealthBar);
+    }
+
+    createCombatText(x, y, amount, isHeal = false) {
+        const combatText = new CombatText(this.scene, x, y, amount, isHeal);
+        combatText.setScrollFactor(0);
+        this.scene.hudLayer.add(combatText);
     }
 }

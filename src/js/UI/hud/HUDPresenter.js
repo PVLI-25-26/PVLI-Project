@@ -26,18 +26,33 @@ export class HudPresenter {
         const normalizedHP = this.model.playerCurrentHP / this.model.playerMaxHP;
         const previousNormalizedHP = this.model.playerPreviousHP / this.model.playerMaxHP;
 
-        const color = normalizedHP < previousNormalizedHP ?
+        const barColor = normalizedHP < previousNormalizedHP ?
         0xff5555 : 0x55ff55;
-        this.view.playerHealthBar.setValue(normalizedHP, color);
+        this.view.playerHealthBar.setValue(normalizedHP, barColor);
+
+        const isHeal = normalizedHP > previousNormalizedHP;
+        const textColor = isHeal ? "#55ff55" : "#ff5555";
+        const amount = Math.abs(this.model.playerCurrentHP - this.model.playerPreviousHP);
+
+        this.view.createCombatText(400, 250, amount, textColor);
     }
 
     onEnemyHealthChanged(enemy) {
         const normalizedHP = this.model.enemies.get(enemy).currentHP / this.model.enemies.get(enemy).maxHP;
         const previousNormalizedHP = this.model.enemies.get(enemy).previousHP / this.model.enemies.get(enemy).maxHP;
 
-        const color = normalizedHP < previousNormalizedHP ?
+        const barColor = normalizedHP < previousNormalizedHP ?
         0xff5555 : 0x55ff55;
-        this.view.enemyHealthBars.get(enemy).setValue(normalizedHP, color);
+        this.view.enemyHealthBars.get(enemy).setValue(normalizedHP, barColor);
+
+        const mainCamera = this.view.scene.cameras.main;
+        const screenPos = worldToScreen(enemy.x, enemy.y, mainCamera);
+
+        const isHeal = normalizedHP > previousNormalizedHP;
+        const textColor = isHeal ? "#55ff55" : "#fff8f0";
+        const amount = Math.abs(this.model.enemies.get(enemy).currentHP - this.model.enemies.get(enemy).previousHP);
+
+        this.view.createCombatText(screenPos.x, screenPos.y, amount, textColor);
     }
 
     onEnemyPositionUpdated(enemy, x, y) {

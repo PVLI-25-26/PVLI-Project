@@ -82,9 +82,10 @@ export default class NPCsDialogueView extends Phaser.GameObjects.Container{
         }
         this.textBox = new TextBox(this.scene,TEXTBOX_TEXT_X,TEXTBOX_TEXT_Y,this.currentPage,TEXT_SPEED,TEXTBOX_TEXT_WIDTH, "MicroChat",TEXTBOX_TEXT_FONTSIZE, Colors.White); 
         this.add(this.textBox)
+        this.scene.uiCam.ignore(this.textBox);
     }
     CreateButtons(button){
-        var newButton= new Button(this.scene, BUTTONS_POS_X, BUTTONS_POS_Y + (BUTTONS_HEIGHT*SCALE+MARGINS) * this.numButtons, null, BUTTONS_WIDTH, BUTTONS_HEIGHT,
+        var newButton = new Button(this.scene, BUTTONS_POS_X, BUTTONS_POS_Y + (BUTTONS_HEIGHT*SCALE+MARGINS) * this.numButtons, null, BUTTONS_WIDTH, BUTTONS_HEIGHT,
             {
                 text: button.label,
                 style: {
@@ -111,6 +112,7 @@ export default class NPCsDialogueView extends Phaser.GameObjects.Container{
             });
         })
 
+        this.scene.uiCam.ignore(newButton);
         this.numButtons ++;
 
         this.buttons.push(newButton);
@@ -142,6 +144,7 @@ export default class NPCsDialogueView extends Phaser.GameObjects.Container{
         );
         this.background.setScale(SCALE);
         this.add(this.background);
+        this.scene.uiCam.ignore(this.background);
     }
     CreatePortrait(portrait){
         this.portrait = this.scene.make.sprite(
@@ -151,10 +154,12 @@ export default class NPCsDialogueView extends Phaser.GameObjects.Container{
             });
         this.portrait.setScale(SCALE);
         this.add(this.portrait);
+        this.scene.uiCam.ignore(this.portrait);
     }
     CreateName(NPCname){
         this.name = this.scene.add.text(TEXTBOX_NAME_X,TEXTBOX_NAME_Y,NPCname,{fontSize:"20px", color:Colors.Red, padding: TEXTBOX_NAME_PADDING,fontFamily:"FableFont"}) 
         this.add(this.name);
+        this.scene.uiCam.ignore(this.name);
     }
     UpdateName(NPCname){
         this.name.text = NPCname;
