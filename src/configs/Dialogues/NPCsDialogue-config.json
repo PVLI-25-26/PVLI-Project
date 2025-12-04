@@ -136,7 +136,7 @@
 		"dialogue" : [
 			{
 				"text": "Flecha de fuego",
-				"options":[0]
+				"options":[0,1]
 			}
 		],
 		"speed" : 1,
@@ -158,11 +158,11 @@
 		"dialogue" : [
 			{
 				"text": "Flecha de fuego",
-				"options":[0]
+				"options":[0,1]
 			}
 		],
 		"speed" : 1,
-		"npcName" : "GrassArrow",
+		"npcName" : "Grass-Arrow",
 		"userOptions":[
 			{
 				"label" : "Buy",
@@ -176,15 +176,15 @@
 			}
 		]
 	},
-	"Gas-Arrow":{
+	"Gass-Arrow":{
 		"dialogue" : [
 			{
 				"text": "Flecha de fuego",
-				"options":[0]
+				"options":[0,1]
 			}
 		],
 		"speed" : 1,
-		"npcName" : "GasArrow",
+		"npcName" : "Gass-Arrow",
 		"userOptions":[
 			{
 				"label" : "Buy",

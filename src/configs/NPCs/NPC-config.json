@@ -119,9 +119,9 @@
         "dialogueName": "Grass-Arrow"
     },
 	{
-        "key": "Gas-Arrow",
+        "key": "Gass-Arrow",
         "billboardConfig":{
-            "texture":"Grass-Arrow",
+            "texture":"Gass-Arrow",
             "scale":2
         },
         "physicsConfig":{
@@ -133,7 +133,7 @@
             "isStatic": true,
             "isSensor": true
         },
-        "dialogueName": "Gas-Arrow"
+        "dialogueName": "Gass-Arrow"
     }
 
 
