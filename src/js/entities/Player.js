@@ -36,7 +36,6 @@ export class Player extends BillBoard {
      * @type {Object}
      */
     config;
-
     constructor(scene, x, y, config) {
         //super(scene, x, y, config.billboardConfig, scene.cameras.main);
         super(scene, x, y, config.billboardConfig, config.physicsConfig)

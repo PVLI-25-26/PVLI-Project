@@ -37,9 +37,9 @@
                 }, 
                 {
                  "id":110,
-                 "name":"Gas-Arrow",
+                 "name":"Gass-Arrow",
                  "template":"..\/Templates\/NPCTemplate.tx",
-                 "type":"Gas-Arrow",
+                 "type":"Gass-Arrow",
                  "x":240,
                  "y":86.6666666666667
                 }, 
