@@ -1,4 +1,5 @@
 import { EventBus } from "../../core/event-bus.js";
+import { worldToScreen } from "../../core/world-screen-space.js";
 
 export class HudPresenter {
     constructor(view, model) {
@@ -40,11 +41,24 @@ export class HudPresenter {
     }
 
     onEnemyPositionUpdated(enemy, x, y) {
+        const mainCamera = this.view.scene.cameras.main;
+        const screenPos = worldToScreen(x, y, mainCamera);
+        
         const enemyHealthBar = this.view.enemyHealthBars.get(enemy);
         if (enemyHealthBar) {
-            x -= enemyHealthBar.width / 2;
-            y -= 20; // TODO: change magic number to dependency on enemy sprite size
-            enemyHealthBar.setPosition(x, y);
+            let barPosX = screenPos.x - enemyHealthBar.width / 2;
+            let barPosY = screenPos.y - 40;
+            enemyHealthBar.setPosition(barPosX, barPosY);
+        }
+    }
+
+    onCameraRotated(rotation) { 
+    if (this.view.playerHealthBar) { 
+        this.view.playerHealthBar.setRotation(-rotation); 
+    } 
+    
+    for (const bar of this.view.enemyHealthBars.values()) { 
+            bar.setRotation(rotation); 
         }
     }
 

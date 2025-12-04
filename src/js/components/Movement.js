@@ -117,6 +117,11 @@ export class MovementComponent extends BaseComponent {
 
         if (this.gameObject.body) {
             this.gameObject.setVelocity(vx, vy);
+                EventBus.emit('entityMoved', {
+                entity: this.gameObject,
+                x: this.gameObject.x,
+                y: this.gameObject.y
+            });
         }
 
         // End knockback when duration is over

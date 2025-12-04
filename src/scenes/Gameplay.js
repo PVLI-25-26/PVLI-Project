@@ -32,6 +32,12 @@ export default class GameplayScene extends Phaser.Scene {
 
     create(data) {
         this.cameras.main.fadeIn(800,79,74,69);
+        this.worldLayer = this.add.layer();
+        this.hudLayer = this.add.layer();
+        this.uiCam = this.cameras.add(0, 0, this.scale.width, this.scale.height);
+        this.uiCam.ignore(this.worldLayer);
+        this.cameras.main.ignore(this.hudLayer);
+
         this.toggleDebug();
         EventBus.removeAllListeners();
 
@@ -115,6 +121,9 @@ export default class GameplayScene extends Phaser.Scene {
         // Make camera follow the player
         this.cameras.main.startFollow(this.player, false, 0.1, 0.1, 10, 10);
 
+        for (const obj of this.worldLayer.list) {
+            console.log("World layer object:", obj);
+        }
         EventBus.on('playerDied', ()=>{
             this.cameras.main.fadeOut(800,79,74,69, (cam, progr)=>{
                 if(progr >= 1){

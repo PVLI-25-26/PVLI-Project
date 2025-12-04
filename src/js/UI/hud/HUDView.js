@@ -19,7 +19,9 @@ export class HudView {
         const y = 40;
 
         this.playerHealthBar = new Bar(this.scene, x, y, 300, 25, 0xc20000);
+        this.scene.hudLayer.add(this.playerHealthBar);
         this.playerHealthBar.setScrollFactor(0);
+        this.playerHealthBar.setro
     }
 
     createEnemyHealthBar(enemy) {
@@ -27,5 +29,7 @@ export class HudView {
         const y = enemy.y - 40;
         const enemyHealthBar = new Bar(this.scene, x, y, 100, 10, 0xc20000);
         this.enemyHealthBars.set(enemy, enemyHealthBar);
+        this.playerHealthBar.setScrollFactor(0);
+        this.scene.hudLayer.add(enemyHealthBar);
     }
 }

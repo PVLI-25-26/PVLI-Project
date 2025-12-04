@@ -112,9 +112,11 @@ export class PlayerShootingComponent extends BaseComponent{
         this.powerBar.setScale(1.5);
         this.powerBar.setOrigin(0,0.5);
         this.powerBar.setVisible(false);
+        gameObject.scene.worldLayer.add(this.powerBar);
 
         this.bow = new DepthSortedSprite(gameObject.scene, this.gameObject.x, this.gameObject.y, 'bow', 0);
         gameObject.scene.add.existing(this.bow);
+        gameObject.scene.worldLayer.add(this.bow);
         this.bow.scale = 2.5;
         this.bow.setVisible(false);
 
