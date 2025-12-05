@@ -73,6 +73,9 @@ export class Button extends Phaser.GameObjects.Container {
         this.scene.add.existing(this);
     }
 
+    //Change text
+
+    
     /**
      * Adds custom interaction setup logic to the button.
      * Allows adding event listeners or animations externally.

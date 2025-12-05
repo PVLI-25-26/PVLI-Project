@@ -16,7 +16,7 @@ export default class MainMenuPresenter {
         this.view.startButton.on("button-clicked", () => {
             EventBus.emit('stopMusic');
             EventBus.emit("playSound", "click");
-            this.view.scene.scene.start("GameplayScene");
+            //this.view.scene.scene.start("GameplayScene");
         });
         this.view.startButton.on("button-hovered", () => {
             EventBus.emit("playSound", "hover");
@@ -42,7 +42,7 @@ export default class MainMenuPresenter {
             EventBus.emit("playSound", "hover");
         });
 
-        // Back
+        // Back from settings
         this.view.backButton.on("button-clicked", () => {
              EventBus.emit('stopMusic');
             EventBus.emit("playSound", "click");
@@ -52,10 +52,25 @@ export default class MainMenuPresenter {
             EventBus.emit("playSound", "hover");
         });
 
-        // Save files
+        //Back From Load Game
+
+         this.view.GoMenuButton.on("button-clicked", () => {
+             EventBus.emit('stopMusic');
+            EventBus.emit("playSound", "click");
+            this.view.toggleLoadGame();
+        });
+        this.view.GoMenuButton.on("button-hovered", () => {
+            EventBus.emit("playSound", "hover");
+        });
+
+
+        // Saved files
+
+
         this.view.saveFile1.on("button-clicked", () => {
             EventBus.emit('stopMusic');
             EventBus.emit("playSound", "click");
+            this.view.scene.scene.start("GameplayScene");
             saveDataManager.changeCurrentSave(0);
         });
         this.view.saveFile1.on("button-hovered", () => {
@@ -67,8 +82,29 @@ export default class MainMenuPresenter {
             EventBus.emit("playSound", "click");
             this.view.scene.scene.start("GameplayScene");
             saveDataManager.changeCurrentSave(1);
+            
         });
         this.view.saveFile2.on("button-hovered", () => {
+            EventBus.emit("playSound", "hover");
+        });
+
+        this.view.saveFile3.on("button-clicked", () => {
+            EventBus.emit('stopMusic');
+            EventBus.emit("playSound", "click");
+            this.view.scene.scene.start("GameplayScene");
+            saveDataManager.changeCurrentSave(2);
+        });
+        this.view.saveFile3.on("button-hovered", () => {
+            EventBus.emit("playSound", "hover");
+        });
+
+        //delete Files DeleteGame3
+        this.view.DeleteGame3.on("button-clicked", () => {
+            EventBus.emit('stopMusic');
+            EventBus.emit("playSound", "click");
+            saveDataManager.deleteData(2);
+        });
+        this.view.DeleteGame3.on("button-hovered", () => {
             EventBus.emit("playSound", "hover");
         });
     }
