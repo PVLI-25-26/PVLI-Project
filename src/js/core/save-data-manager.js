@@ -20,14 +20,12 @@ class SaveDataManager {
     changeCurrentSave(newCurrentSave, savePrevious){
         if(savePrevious){
             this.storeCurrentSaveFile();
-            this.deleteData()
         }
         this.currentSave = newCurrentSave;
         this.loadCurrentData();
     }
 
     loadCurrentData(){
-        console.log(localStorage.getItem(this.currentSave));
         this.saveData = JSON.parse(localStorage.getItem(this.currentSave)) || {};
     }
 
