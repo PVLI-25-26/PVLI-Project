@@ -16,6 +16,7 @@ export class Bar extends Phaser.GameObjects.Container {
         this.width = width;
         this.height = height;
         this.value = 1; // normalized value from 0 to 1
+        this.attachedTo = null; // { x, y, space: "world" | "screen" }
 
         // Back bar (used for delayed animation)
         this.backBar = scene.add.rectangle(0, 0, width, height, 0x666666).setOrigin(0, 0.5);

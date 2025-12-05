@@ -1,7 +1,7 @@
 import { EventBus } from "../../js/core/event-bus.js";
-import FireArrow from "../../configs/Arrows/fire-arrow.json"
-import GrassArrow from "../../configs/Arrows/grass-arrow.json"
-import GasArrow from "../../configs/Arrows/gass-arrow.json"
+import FireArrow from "../Arrows/fire-arrow.json"
+import GrassArrow from "../Arrows/grass-arrow.json"
+import GasArrow from "../Arrows/gass-arrow.json"
 
 
 var events;

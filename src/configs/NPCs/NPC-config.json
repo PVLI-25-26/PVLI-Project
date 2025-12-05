@@ -93,8 +93,8 @@
         "physicsConfig":{
             "shape": {
                 "type": "rectangle",
-                "width": 450,
-                "height": 450
+                "width": 10,
+                "height": 10
             },
             "isStatic": true,
             "isSensor": true
@@ -110,8 +110,8 @@
         "physicsConfig":{
             "shape": {
                 "type": "rectangle",
-                "width": 450,
-                "height": 450
+                "width": 10,
+                "height": 10
             },
             "isStatic": true,
             "isSensor": true
@@ -119,21 +119,21 @@
         "dialogueName": "Grass-Arrow"
     },
 	{
-        "key": "Gas-Arrow",
+        "key": "Gass-Arrow",
         "billboardConfig":{
-            "texture":"Grass-Arrow",
+            "texture":"Gass-Arrow",
             "scale":2
         },
         "physicsConfig":{
             "shape": {
                 "type": "rectangle",
-                "width": 450,
-                "height": 450
+                "width": 10,
+                "height": 10
             },
             "isStatic": true,
             "isSensor": true
         },
-        "dialogueName": "Gas-Arrow"
+        "dialogueName": "Gass-Arrow"
     }
 
 

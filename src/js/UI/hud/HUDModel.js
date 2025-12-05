@@ -37,6 +37,9 @@ export class HudModel {
             this.enemies.get(data.entity).y = data.y;
             EventBus.emit('hudEnemyPositionUpdated', data.entity, data.x, data.y);
         }
+        else if (data.entity.type == 'player') {
+            EventBus.emit('hudPlayerPositionUpdated', data.x, data.y);
+        }
     }
 
     // data = { entity, amount, currentHP }

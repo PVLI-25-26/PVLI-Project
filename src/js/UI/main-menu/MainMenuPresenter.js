@@ -16,7 +16,7 @@ export default class MainMenuPresenter {
         this.view.startButton.on("button-clicked", () => {
             EventBus.emit('stopMusic');
             EventBus.emit("playSound", "click");
-            //this.view.scene.scene.start("GameplayScene");
+            
         });
         this.view.startButton.on("button-hovered", () => {
             EventBus.emit("playSound", "hover");
@@ -70,8 +70,10 @@ export default class MainMenuPresenter {
         this.view.saveFile1.on("button-clicked", () => {
             EventBus.emit('stopMusic');
             EventBus.emit("playSound", "click");
-            this.view.scene.scene.start("GameplayScene");
             saveDataManager.changeCurrentSave(0);
+            this.view.scene.scene.start("GameplayScene", {playerSpawn: {x: 0, y:0}});
+            // Player always starts from hub
+            this.view.scene.plugins.get('dungeon').returnToHub();
         });
         this.view.saveFile1.on("button-hovered", () => {
             EventBus.emit("playSound", "hover");
@@ -80,9 +82,10 @@ export default class MainMenuPresenter {
         this.view.saveFile2.on("button-clicked", () => {
             EventBus.emit('stopMusic');
             EventBus.emit("playSound", "click");
-            this.view.scene.scene.start("GameplayScene");
             saveDataManager.changeCurrentSave(1);
-            
+            this.view.scene.scene.start("GameplayScene", {playerSpawn: {x: 0, y:0}});
+            // Player always starts from hub
+            this.view.scene.plugins.get('dungeon').returnToHub();
         });
         this.view.saveFile2.on("button-hovered", () => {
             EventBus.emit("playSound", "hover");
@@ -91,8 +94,10 @@ export default class MainMenuPresenter {
         this.view.saveFile3.on("button-clicked", () => {
             EventBus.emit('stopMusic');
             EventBus.emit("playSound", "click");
-            this.view.scene.scene.start("GameplayScene");
             saveDataManager.changeCurrentSave(2);
+            this.view.scene.scene.start("GameplayScene", {playerSpawn: {x: 0, y:0}});
+            // Player always starts from hub
+            this.view.scene.plugins.get('dungeon').returnToHub();
         });
         this.view.saveFile3.on("button-hovered", () => {
             EventBus.emit("playSound", "hover");

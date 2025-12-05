@@ -44,6 +44,35 @@ export class InventoryComponent extends BaseComponent{
             this.#playerInventory = [];
         }, this);
         EventBus.on('removeGold', this.removeGold, this);
+
+        // For each item player can buy, check if there is enought gold, if there is, equip the item        
+        EventBus.on('abilityBought', (ability)=>{
+            if(ability.gold <= this.#gold){
+                this.removeGold(ability.gold);
+                EventBus.emit('abilityEquipped', ability);
+            }
+            else{
+                console.log('not enought coins')
+            }
+        });
+        EventBus.on('arrowBought', (arrow)=>{
+            if(arrow.gold <= this.#gold){
+                this.removeGold(arrow.gold);
+                EventBus.emit('arrowEquipped', arrow);
+            }
+            else{
+                console.log('not enought coins')
+            }
+        });
+        EventBus.on('trajectoryBought', (trajectory)=>{
+            if(trajectory.gold <= this.#gold){
+                this.removeGold(trajectory.gold);
+                EventBus.emit('trajectoryEquipped', trajectory);
+            }
+            else{
+                console.log('not enought coins')
+            }
+        })
     }
 
     update(t, dt){}
