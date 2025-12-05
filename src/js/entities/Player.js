@@ -63,7 +63,7 @@ export class Player extends BillBoard {
             saveDataManager.setData("playerArrowEffect", this.shootController.getArrowEffect());
             //saveDataManager.setData("playerArrowTrajectory", this.shootController.getArrowTrajectory());
         });
-
+		//TODO: crear nuevas animaciones
         this.scene.anims.create({
             key: "player_walk",
             frames: this.scene.anims.generateFrameNumbers("player", {start:13, end: 16}),
