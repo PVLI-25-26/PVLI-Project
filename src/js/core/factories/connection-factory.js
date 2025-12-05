@@ -35,5 +35,6 @@ export function createConnection(scene, dungeon, connectionSceneData){
         connection.setCollidesWith(scene.playerCategory);
     })
 
+    scene.worldLayer.add(connection);
     return connection;
 }
