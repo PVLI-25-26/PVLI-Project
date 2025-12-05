@@ -32,10 +32,9 @@ export default class GameplayScene extends Phaser.Scene {
 
     create(data) {
         this.cameras.main.fadeIn(800,79,74,69);
-        this.worldLayer = this.add.layer();
         this.hudLayer = this.add.layer();
         this.uiCam = this.cameras.add(0, 0, this.scale.width, this.scale.height);
-        this.uiCam.ignore(this.worldLayer);
+        this.uiCam.setScroll(10000, 10000); 
         this.cameras.main.ignore(this.hudLayer);
 
         this.toggleDebug();
@@ -129,6 +128,8 @@ export default class GameplayScene extends Phaser.Scene {
                 }
             });
         })
+
+        
     }
 
     toggleDebug() {

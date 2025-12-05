@@ -99,6 +99,17 @@ export class DamageableComponent extends BaseComponent {
     }
 
     /**
+     * Heals the entity by the specified amount.
+     * @param {number} amount - Amount to heal.
+     */
+    heal(amount) {
+        const healingAmount = Math.min(amount, this.maxHP - this.currentHP);
+        if (healingAmount <= 0) return;
+        this.currentHP += healingAmount;
+        EventBus.emit('entityHealed', { entity: this.gameObject, amount: healingAmount, currentHP: this.currentHP });
+    }
+
+    /**
      * Changes the sprite tint to red temporarily to indicate damage.
      * @param {number} duration - Duration of the effect in milliseconds.
      */
@@ -157,6 +168,7 @@ export class DamageableComponent extends BaseComponent {
         this.gameObject.setVisible(false);
         this.gameObject.setStatic(true);
         this.gameObject.setCollidesWith(0);
+        this.destroy();
     }
 
     /**
