@@ -30,8 +30,20 @@ export default class Boot extends Phaser.Scene {
         this.loadFonts();
     }
     loadFonts(){
-        document.fonts.load("32px FableFont").then(()=>{});
-        document.fonts.load("32px MicroChat").then(()=>{});
-
+        let FableFont = new FontFace('FableFont', `url(assets/fonts/Fabled_Font.ttf)`);
+        FableFont.load()
+            .then(function (loaded) { 
+                document.fonts.add(loaded);
+            }).catch(function (error) {
+                return error;
+            });
+        
+        let MicroChat = new FontFace('MicroChat', `url(assets/fonts/Micro_Chat.ttf)`);
+        MicroChat.load()
+            .then(function (loaded) { 
+                document.fonts.add(loaded);
+            }).catch(function (error) {
+                return error;
+            });
     }
 }
