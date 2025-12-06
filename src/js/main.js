@@ -5,7 +5,7 @@ import PauseMenu from "../scenes/PauseMenu.js";
 import { Logger } from "./core/logger.js";
 import InventoryMenu from "../scenes/InventoryMenu.js";
 import Boot from "../scenes/Boot.js";
-import Colors from "../configs/color-config.json"
+import Colors from "../configs/colors-config.js"
 import { Dungeon } from "./core/dungeon.js";
 // ================== GAME ENTRY POINT ==================
 

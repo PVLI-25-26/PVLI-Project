@@ -1,7 +1,7 @@
 import { createItemDisplay } from "../../core/factories/item-factory";
 import { Button } from "../elements/button";
 import { Slider } from "../elements/slider";
-import Colors from "../../../configs/color-config.json"
+import Colors from "../../../configs/colors-config.js"
 
 // Far away position of item displays and camera that shows them in inventory
 // Keep large to ensure the items and camera rendering them are outside the visible area

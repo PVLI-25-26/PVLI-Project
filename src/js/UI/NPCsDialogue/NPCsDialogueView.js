@@ -1,7 +1,7 @@
 import { Button } from "../elements/button.js";
 import { TextBox } from "../elements/TextBox.js" 
 import { EventBus } from "../../core/event-bus.js";
-import Colors from "../../../configs/color-config.json"
+import Colors from "../../../configs/colors-config.js";
 
 const SCALE = 2;
 const TEXT_SPEED = 20;

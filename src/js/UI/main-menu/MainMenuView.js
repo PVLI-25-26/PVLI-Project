@@ -1,6 +1,6 @@
 import { Button } from "../elements/button.js";
 import { Slider } from "../elements/slider.js";
-import Colors from "../../../configs/color-config.json"
+import Colors from "../../../configs/colors-config.js"
 
 export default class MainMenuView {
     constructor(scene) {

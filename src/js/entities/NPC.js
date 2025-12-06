@@ -1,6 +1,6 @@
 import { BillBoard } from "./BillBoard.js";
 import { EventBus } from "../core/event-bus.js";
-import Colors from "../../configs/color-config.json"
+import Colors from "../../configs/colors-config.js";
 
 export class NPC extends BillBoard{
     constructor(scene,x,y,config){

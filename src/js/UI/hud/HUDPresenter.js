@@ -1,5 +1,6 @@
 import { EventBus } from "../../core/event-bus.js";
 import { worldToScreen } from "../../core/world-screen-space.js";
+import Colors from "../../../configs/colors-config.js";
 
 export class HudPresenter {
     constructor(view, model) {
@@ -12,10 +13,13 @@ export class HudPresenter {
         EventBus.on('hudEnemyHealthChanged', this.onEnemyHealthChanged, this);
         EventBus.on('hudEnemyPositionUpdated', this.onEnemyPositionUpdated, this);
         EventBus.on('hudEnemyRemoved', this.onEnemyRemoved, this);
+        EventBus.on('hudPlayerGoldInitialized', this.onPlayerGoldInitialized, this);
+        EventBus.on('hudPlayerGoldChanged', this.onPlayerGoldChanged, this);
     }
 
     onPlayerInitialized() {
         this.view.createPlayerHealthBar();
+        
         this.setInitialHealthBarValue();
     }
 
@@ -28,14 +32,22 @@ export class HudPresenter {
         const previousNormalizedHP = this.model.playerPreviousHP / this.model.playerMaxHP;
 
         const barColor = normalizedHP < previousNormalizedHP ?
-        0xff5555 : 0x55ff55;
+        Colors.RedHex : Colors.GreenHex;
         this.view.playerHealthBar.setValue(normalizedHP, barColor);
 
         const isHeal = normalizedHP > previousNormalizedHP;
-        const textColor = isHeal ? "#55ff55" : "#ff5555";
+        const textColor = isHeal ? Colors.Green : Colors.Red;
         const amount = Math.abs(this.model.playerCurrentHP - this.model.playerPreviousHP);
 
         this.view.createCombatText(400, 250, amount, textColor);
+    }
+
+    onPlayerGoldInitialized(data){
+        this.view.createGoldIndicator(data);
+    }
+
+    onPlayerGoldChanged(data){
+        this.view.updateGoldIndicator(data.prev, data.new);
     }
 
     onEnemyHealthChanged(enemy) {
@@ -43,14 +55,14 @@ export class HudPresenter {
         const previousNormalizedHP = this.model.enemies.get(enemy).previousHP / this.model.enemies.get(enemy).maxHP;
 
         const barColor = normalizedHP < previousNormalizedHP ?
-        0xff5555 : 0x55ff55;
+        Colors.RedHex : Colors.GreenHex;
         this.view.enemyHealthBars.get(enemy).setValue(normalizedHP, barColor);
 
         const mainCamera = this.view.scene.cameras.main;
         const screenPos = worldToScreen(enemy.x, enemy.y, mainCamera);
 
         const isHeal = normalizedHP > previousNormalizedHP;
-        const textColor = isHeal ? "#55ff55" : "#fff8f0";
+        const textColor = isHeal ? Colors.Green : Colors.White;
         const amount = Math.abs(this.model.enemies.get(enemy).currentHP - this.model.enemies.get(enemy).previousHP);
 
         this.view.createCombatText(screenPos.x, screenPos.y, amount, textColor);

@@ -1,4 +1,4 @@
-import Colors from "../../../configs/color-config.json"
+import Colors from "../../../configs/colors-config.js";
 
 // Vertical margin for the image inside the item
 const IMG_MARGIN_VER = 20;
@@ -49,7 +49,7 @@ export class ItemDisplay extends Phaser.GameObjects.Container{
         this.itemBG.setScale(2);
 
         // Create background progress bar for consuming items
-        this.itemProgress = this.scene.add.rectangle(this.itemBG.leftWidth*this.itemBG.scale, this.itemBG.topHeight*this.itemBG.scale, 0, (height/2)-6, parseInt(Colors.LightBrown.slice(1), 16)).setOrigin(0);
+        this.itemProgress = this.scene.add.rectangle(this.itemBG.leftWidth*this.itemBG.scale, this.itemBG.topHeight*this.itemBG.scale, 0, (height/2)-6, Colors.LightBrownHex).setOrigin(0);
         this.itemProgress.setScale(2);
 
         // reset progress bar values
