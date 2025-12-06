@@ -6,7 +6,7 @@ import { StrafeState } from "../entities/Enemies/States/StrafeState.js";
 import { RetreatState } from "../entities/Enemies/States/RetreatState.js";
 import { EventBus } from "../core/event-bus.js";
 
-export class BasicEnemyControllerComponent extends BaseControllerComponent {
+export class ElementalMovementControllerComponent extends BaseControllerComponent {
     /**
      * @param {Phaser.GameObjects.GameObject} gameObject
      * @param {string} initialState
