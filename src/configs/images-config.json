@@ -47,6 +47,5 @@
 	{"key": "Gass-Arrow", "type": "image", "file": "assets/arrows/gass-arrow.png", "settings":{}},
 
 
-	{"key": "Player_animation", "type": "spritesheet", "file": "assets/sprites/Player/PlayerAnimations.png", "settings":{"frameWidth":19, "frameHeight":21}}
+	{"key": "Player_animation", "type": "spritesheet", "file": "assets/sprites/Player/PlayerAnimations.png", "settings":{"frameWidth":21, "frameHeight":19}}
 ]
-
