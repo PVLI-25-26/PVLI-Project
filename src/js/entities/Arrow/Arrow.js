@@ -74,7 +74,6 @@ export class Arrow extends DepthSortedSprite{
 
         // This should probably be done by the pool
         this.scene.add.existing(this);
-        this.scene.worldLayer.add(this);
 
         this.colliders = [this.scene.obstaclesCategory, this.scene.enemiesCategory];
         // collision with obstacles

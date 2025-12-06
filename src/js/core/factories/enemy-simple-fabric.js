@@ -29,7 +29,6 @@ export function createEnemy(scene, enemyData, patrolRoutes) {
     const enemy = new EnemyClass(scene, enemyData.x, enemyData.y, enemyData.id, finalConfig);
 
     enemy.setCollisionCategory(scene.enemiesCategory);
-    scene.worldLayer.add(enemy);
 
     return enemy;
 }

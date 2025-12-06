@@ -84,8 +84,6 @@ export class Player extends BillBoard {
             this.abilityController.clearAbility();
             this.shootController.resetArrowAndTrajectory();
         })
-
-        this.scene.worldLayer.add(this);
     }
 
     /**
