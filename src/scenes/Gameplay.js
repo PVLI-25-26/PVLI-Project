@@ -74,7 +74,7 @@ export default class GameplayScene extends Phaser.Scene {
             this.scene.pause();
         });
 
-        this.input.keyboard.on("keydown-SHIFT", () => {
+        this.input.keyboard.on("keydown-E", () => {
             if (this.scene.isPaused("GameplayScene")) return;
             this.scene.launch("InventoryMenu", this.player);
             this.scene.pause();
@@ -83,8 +83,6 @@ export default class GameplayScene extends Phaser.Scene {
         this.input.keyboard.on("keydown-U", () => {
             this.toggleDebug();
         });
-
-        this.events.on("shutdown", ()=>saveDataManager.saveCurrentData());
 
         // Create physics groups
         this.obstaclesCategory = 1 << 0;
