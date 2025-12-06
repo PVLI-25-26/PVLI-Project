@@ -380,7 +380,7 @@
                          "value":"patrol"
                         }],
                  "template":"..\/Templates\/EnemyTemplate.tx",
-                 "type":"basic",
+                 "type":"elemental",
                  "x":-288,
                  "y":-48
                 }],

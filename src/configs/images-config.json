@@ -44,8 +44,8 @@
 
     {"key": "Fire-Arrow", "type": "image", "file": "assets/arrows/fire-arrow.png", "settings":{}},
     {"key": "Grass-Arrow", "type": "image", "file": "assets/arrows/grass-arrow.png", "settings":{}},
-	{"key": "Gass-Arrow", "type": "image", "file": "assets/arrows/gass-arrow.png", "settings":{}}
+	{"key": "Gass-Arrow", "type": "image", "file": "assets/arrows/gass-arrow.png", "settings":{}},
 
 
+	{"key": "Player_animation", "type": "spritesheet", "file": "assets/sprites/Player/PlayerAnimations.png", "settings":{"frameWidth":21, "frameHeight":19}}
 ]
-

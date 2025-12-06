@@ -14,11 +14,6 @@ export class BasicEnemyCombatControllerComponent extends BaseComponent {
         this.controller = this.getComponent(BasicEnemyControllerComponent);;
         this.damageableComponent = this.getComponent(DamageableComponent);
     }
-
-    healEntity() {
-        const target = this.gameObject;
-        this.damageableComponent.heal(1);
-    }
     
     update(time, delta) {
         return; 

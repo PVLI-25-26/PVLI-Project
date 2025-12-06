@@ -1,13 +1,17 @@
 import basicEnemyConfig from "../../../configs/Enemies/basic-enemy-config.json";
+import elementalConfig from "../../../configs/Enemies/elemental-config.json";
 import { BasicEnemy } from "../../entities/Enemies/BasicEnemy.js";
+import { Elemental } from "../../entities/Enemies/Elemental.js";
 import { getCustomTiledProperty, getTiledObject } from "../tiled-parser.js";
 
 const ENEMY_GLOBAL_CONFIGS = {
-    "basic": basicEnemyConfig
+    "basic": basicEnemyConfig,
+    "elemental": elementalConfig
 };
 
 const ENEMY_TYPES = {
   "basic": BasicEnemy,
+"elemental": Elemental
 };
 
 export function createEnemy(scene, enemyData, patrolRoutes) {

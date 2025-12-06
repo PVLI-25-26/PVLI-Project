@@ -108,10 +108,6 @@ export default class GameplayScene extends Phaser.Scene {
                     EventBus.emit('entityHit', { attacker: enemy, target: player, damage: 1, force: 20, duration: 300 });
                 }
             });
-        // this.physics.add.collider(this.player, this.enemiesCategory, 
-        //     (player, enemy) => {
-        //         EventBus.emit('enemyMeleeHit', { attacker: enemy, target: player });
-        //     },null, this);
 
         // Load scene objects from room data
         this.plugins.get('dungeon').loadCurrentRoom(this, this.obstaclesCategory, this.enemiesCategory, this.playerCategory, this.connectionsCategory, this.interactablesCategory);

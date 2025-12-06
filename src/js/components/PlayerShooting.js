@@ -114,10 +114,15 @@ export class PlayerShootingComponent extends BaseComponent{
         this.powerBar.setVisible(false);
 
         this.bow = new DepthSortedSprite(gameObject.scene, this.gameObject.x, this.gameObject.y, 'bow', 0);
-        gameObject.scene.add.existing(this.bow);
-        this.bow.scale = 2.5;
-        this.bow.setVisible(false);
 
+		this.gameObject.scene.add.existing(this.bow);
+		//FIX: arreglar error con el offset, aparece debajo del player
+		this.bow.offsetX = 0.5;
+		this.bow.offsetY = 0.8;
+
+
+        this.bow.scale = 4;
+        this.bow.setVisible(false);
         this.arrowShot = this.#arrowPool.spawn();
 
         // Listen to camera rotation updates
@@ -144,6 +149,8 @@ export class PlayerShootingComponent extends BaseComponent{
             // If mouse button is down, increase power
             if(pointer.isDown && this.gameObject.scene.input.mouse.locked) {
                 // Begin drag (save first click position in another variable)
+
+					EventBus.emit("PlayerAiming");
                 if(!this.#shootWasPressedLastFrame){
                     this.#mouseDrag = {x: 0, y: 0};
                     EventBus.emit('playSound', 'bowLoad');
@@ -159,6 +166,10 @@ export class PlayerShootingComponent extends BaseComponent{
                 this.#currentPower = this.#mouseDragLength * this.#powerIncSpeed;
                 this.#currentPower = Math.min(this.#currentPower, this.#maxPower);
             }
+			else{
+				EventBus.emit("PlayerNotAiming");
+				
+			}
         }, this);
 
         // Release arrow when pointer up

@@ -68,14 +68,10 @@ export class Player extends BillBoard {
         // Clear player inventory when game is quitted (if quits in run, progress from that run is lost. If the quits in hub, Player should have no inventory)
         EventBus.on("gameExited", this.inventoryComponent.clearInventory, this.inventoryComponent);
         this.on('destroy', ()=>EventBus.off("gameExited", this.inventoryComponent.clearInventory));
-
-        this.scene.anims.create({
-            key: "player_walk",
-            frames: this.scene.anims.generateFrameNumbers("player", {start:13, end: 16}),
-            frameRate: 7,
-            repeat: -1
-        });
-        this.play('player_walk');
+		
+		this.createAnimations();
+		this.scale *= 2;
+		
 
         this.on('entityDied', ()=>{
             EventBus.emit('playerDied');
@@ -85,6 +81,33 @@ export class Player extends BillBoard {
             this.shootController.resetArrowAndTrajectory();
         })
     }
+	createAnimations(){
+		this.scene.anims.create({
+            key: "player_idle_bow",
+            frames: this.scene.anims.generateFrameNumbers("Player_animation", {start:0, end: 7}),
+            frameRate: 8,
+            repeat: -1
+        });
+		this.scene.anims.create({
+            key: "player_walk_bow",
+            frames: this.scene.anims.generateFrameNumbers("Player_animation", {start:8, end: 18}),
+            frameRate: 12,
+            repeat: -1
+        });
+		this.scene.anims.create({
+            key: "player_idle",
+            frames: this.scene.anims.generateFrameNumbers("Player_animation", {start:19, end: 27}),
+            frameRate: 8,
+            repeat: -1
+        });
+		this.scene.anims.create({
+            key: "player_walk",
+            frames: this.scene.anims.generateFrameNumbers("Player_animation", {start:28, end: 38}),
+            frameRate: 12,
+            repeat: -1
+        });
+
+	}
 
     /**
      * Adds MovementComponent and PlayerControllerComponent to the player.
