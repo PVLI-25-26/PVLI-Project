@@ -1,4 +1,5 @@
 {
+    "texture": "Gass-Arrow",
     "damage": 1,
     "force": 20,
     "duration": 100,

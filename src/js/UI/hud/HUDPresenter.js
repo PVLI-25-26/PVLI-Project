@@ -7,14 +7,25 @@ export class HudPresenter {
         this.view = view;
         this.model = model;
 
+        // Health bars
         EventBus.on('hudPlayerInitialized', this.onPlayerInitialized, this);
         EventBus.on('hudEnemyAdded', this.onEnemyAdded, this);
         EventBus.on('hudPlayerHealthChanged', this.onPlayerHealthChanged, this);
         EventBus.on('hudEnemyHealthChanged', this.onEnemyHealthChanged, this);
         EventBus.on('hudEnemyPositionUpdated', this.onEnemyPositionUpdated, this);
         EventBus.on('hudEnemyRemoved', this.onEnemyRemoved, this);
+
+        // Gold
         EventBus.on('hudPlayerGoldInitialized', this.onPlayerGoldInitialized, this);
         EventBus.on('hudPlayerGoldChanged', this.onPlayerGoldChanged, this);
+
+        // Abilities
+        EventBus.on('hudPlayerEquippedAbility', this.onPlayerEquippedAbility, this);
+        EventBus.on('playerAbilityTriggered', this.onPlayerAbilityTriggered, this);
+
+        // Arrows
+        EventBus.on('hudPlayerEquippedArrow', this.onPlayerEquippedArrow, this);
+        EventBus.on('playerArrowsSwitched', this.onPlayerArrowsSwitched, this);
     }
 
     onPlayerInitialized() {
@@ -85,16 +96,32 @@ export class HudPresenter {
     }
 
     onCameraRotated(rotation) { 
-    if (this.view.playerHealthBar) { 
-        this.view.playerHealthBar.setRotation(-rotation); 
-    } 
-    
-    for (const bar of this.view.enemyHealthBars.values()) { 
+        if (this.view.playerHealthBar) { 
+            this.view.playerHealthBar.setRotation(-rotation); 
+        } 
+        
+        for (const bar of this.view.enemyHealthBars.values()) { 
             bar.setRotation(rotation); 
         }
     }
 
     setInitialHealthBarValue() {
         this.view.playerHealthBar.setValue(this.model.playerCurrentHP / this.model.playerMaxHP);
+    }
+
+    onPlayerEquippedAbility(){
+        this.view.createAbilityIndicator(this.model.playerEquippedAbility?.type);
+    }
+
+    onPlayerAbilityTriggered(ability){
+        this.view.abilityTriggered(ability.coolDown);
+    }
+
+    onPlayerEquippedArrow(){
+        this.view.createArrowIndicators(this.model.playerEquippedArrow?.texture);
+    }
+
+    onPlayerArrowsSwitched(){
+        this.view.switchArrowIndicators();
     }
 }

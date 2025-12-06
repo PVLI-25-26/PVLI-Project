@@ -1,14 +1,36 @@
 import { Bar } from "../elements/bar.js";  
 import { CombatText } from "../elements/combat-text.js";
+import {Button} from "../elements/button.js";
 import Colors from "../../../configs/colors-config.js";
 
 export class HudView {
     constructor(scene) {
         this.scene = scene;
+        // Health Bars
         this.playerHealthBar = null;
+        this.enemyHealthBars = new Map();
+        
+        // Gold
         this.goldSprite = null;
         this.goldText = null;
-        this.enemyHealthBars = new Map();
+
+        // Abilities
+        this.abilityBackground = null;
+        this.abilitySprite = null;
+        this.abilityCooldown = null;
+        
+        // Arrows
+        this.normalArrowBackground = null;
+        this.specialArrowBackground = null;
+        this.normalArrowSprite = null;
+        this.specialArrowSprite = null;
+        // Arrows pos (could be moved to constants)
+        this.selectedArrowX = this.scene.cameras.main.width - 100;
+        this.selectedArrowY = this.scene.cameras.main.height - 150;
+        this.unselectedArrowX = this.scene.cameras.main.width - 150;
+        this.unselectedArrowY = this.scene.cameras.main.height - 100;
+        // Flag to know which is active easily
+        this.isNormalArrowSelected = true;
     }
 // To DO:
 /*
@@ -69,6 +91,7 @@ export class HudView {
     }
 
     updateGoldIndicator(prevValue, newValue){
+        // Tween gold number to increase
         const prevGoldText = prevValue;
         this.scene.tweens.addCounter({
             targets: this.goldText,
@@ -84,6 +107,7 @@ export class HudView {
             }
         });
         
+        // Show amount added below indicator
         const addedGold = Number(newValue)-Number(prevGoldText);
         const addedGoldIndicator = this.scene.add.text(this.goldText.x, this.goldText.y+this.goldText.height, 
             (addedGold<=0?"":"+") + addedGold, 
@@ -112,6 +136,159 @@ export class HudView {
                 tween.destroy;
                 addedGoldIndicator.destroy(true);
             }
+        });
+    }
+
+    createAbilityIndicator(abilityKey){
+        const x = this.scene.cameras.main.width - 100;
+        const y = this.scene.cameras.main.height - 250;
+
+        if(!this.abilityBackground){
+            this.abilityBackground = new Button(this.scene, x, y, null, 40, 40, null, {
+                texture: 'UIbackground',
+                frame: 0,
+                leftWidth: 3,
+                rightWidth: 3,
+                topHeight: 3,
+                bottomHeight: 3
+            });
+            this.abilityBackground.setScale(2);
+            this.scene.hudLayer.add(this.abilityBackground);
+            this.abilityBackground.setScrollFactor(0);
+
+            this.abilityCooldown = this.scene.add.rectangle(x+6, y+6, 34, 0, Colors.RedHex)
+                .setOrigin(0)
+                .setScale(2);
+            this.scene.hudLayer.add(this.abilityCooldown);
+            this.abilityCooldown.setScrollFactor(0);
+        }
+
+        if(this.abilitySprite){
+            this.abilitySprite.destroy(true);
+        }
+        if(abilityKey){
+            this.abilitySprite = this.scene.add.sprite(this.abilityBackground.x+this.abilityBackground.buttonNineslice.width, this.abilityBackground.y+this.abilityBackground.buttonNineslice.height, abilityKey, 0).setOrigin(0.5);
+            this.abilitySprite.setScale(2);
+            this.scene.hudLayer.add(this.abilitySprite);
+            this.abilitySprite.setScrollFactor(0);
+        }
+    }
+
+    abilityTriggered(coolDown){
+        this.abilityCooldown.height = 0;
+        this.abilityCooldown.alpha = 1;
+        this.scene.tweens.add({
+            targets: this.abilityCooldown,
+            height: 34,
+            duration: coolDown,
+            ease: 'Linear',
+            onComplete: ()=>{
+                this.scene.tweens.add({
+                    targets: this.abilityCooldown,
+                    alpha: 0,
+                    duration: 100,
+                    ease: 'Linear'
+                });
+            }
+        })
+    }
+
+    createArrowIndicators(specialArrowTexture){
+
+        // Create normal arrow background, special arrow background, and normal arrowsprite (these never change)
+        if(!this.normalArrowBackground){
+            // Normal arrow BG
+            this.normalArrowBackground = new Button(this.scene, this.selectedArrowX, this.selectedArrowY, null, 40, 40, null, {
+                texture: 'UIbackground',
+                frame: 0,
+                leftWidth: 3,
+                rightWidth: 3,
+                topHeight: 3,
+                bottomHeight: 3
+            });
+            this.normalArrowBackground.setScale(2);
+            this.scene.hudLayer.add(this.normalArrowBackground);
+            this.normalArrowBackground.setScrollFactor(0);
+
+            // Normal arrow
+            this.normalArrowSprite = this.scene.add.sprite(this.normalArrowBackground.x+this.normalArrowBackground.buttonNineslice.width, this.normalArrowBackground.y+this.normalArrowBackground.buttonNineslice.height, 'arrow', 0)
+                .setAngle(-45)
+                .setOrigin(0.5)
+                .setScale(2);
+            this.scene.hudLayer.add(this.normalArrowSprite);
+            this.normalArrowSprite.setScrollFactor(0);
+
+            // Special arrow BG
+            this.specialArrowBackground = new Button(this.scene, this.unselectedArrowX, this.unselectedArrowY, null, 40, 40, null, {
+                texture: 'UIbackground',
+                frame: 0,
+                leftWidth: 3,
+                rightWidth: 3,
+                topHeight: 3,
+                bottomHeight: 3
+            }).setDepth(this.normalArrowBackground.depth-10);
+            this.specialArrowBackground.setScale(2);
+            this.scene.hudLayer.add(this.specialArrowBackground);
+            this.specialArrowBackground.setScrollFactor(0);
+        }
+
+        
+        // Special arrow
+        if(this.specialArrowSprite){
+            this.specialArrowSprite.destroy(true);
+        }        
+        this.specialArrowSprite = this.scene.add.sprite(this.specialArrowBackground.x+this.specialArrowBackground.buttonNineslice.width, this.specialArrowBackground.y+this.specialArrowBackground.buttonNineslice.height, specialArrowTexture, 0)
+                .setAngle(-45)
+                .setOrigin(0.5)
+                .setScale(2)
+                .setDepth(this.specialArrowBackground.depth+0.1);
+        this.scene.hudLayer.add(this.specialArrowSprite);
+        this.specialArrowSprite.setScrollFactor(0);
+    }
+
+    switchArrowIndicators(){
+        this.isNormalArrowSelected = !this.isNormalArrowSelected;
+
+        // Update elements depths
+        if(!this.isNormalArrowSelected){
+            this.specialArrowBackground.depth += 11;
+            if(this.specialArrowSprite) this.specialArrowSprite.depth = this.specialArrowBackground.depth+0.1;
+        }
+        else{
+            this.specialArrowBackground.depth -= 11;
+            if(this.specialArrowSprite) this.specialArrowSprite.depth = this.specialArrowBackground.depth+0.1;
+        }
+
+        // Tween elements
+        this.scene.tweens.add({
+            targets: this.specialArrowBackground,
+            x: this.isNormalArrowSelected?this.unselectedArrowX:this.selectedArrowX,
+            y: this.isNormalArrowSelected?this.unselectedArrowY:this.selectedArrowY,
+            duration: 200,
+            ease: 'Quad'
+        });
+        if(this.specialArrowSprite){
+            this.scene.tweens.add({
+                targets: this.specialArrowSprite,
+                x: this.isNormalArrowSelected?this.unselectedArrowX+this.specialArrowBackground.buttonNineslice.width:this.selectedArrowX+this.specialArrowBackground.buttonNineslice.width,
+                y: this.isNormalArrowSelected?this.unselectedArrowY+this.specialArrowBackground.buttonNineslice.height:this.selectedArrowY+this.specialArrowBackground.buttonNineslice.height,
+                duration: 200,
+                ease: 'Quad'
+            });
+        }
+        this.scene.tweens.add({
+            targets: this.normalArrowBackground,
+            x: this.isNormalArrowSelected?this.selectedArrowX:this.unselectedArrowX,
+            y: this.isNormalArrowSelected?this.selectedArrowY:this.unselectedArrowY,
+            duration: 200,
+            ease: 'Quad'
+        });
+        this.scene.tweens.add({
+            targets: this.normalArrowSprite,
+            x: this.isNormalArrowSelected?this.selectedArrowX+this.normalArrowBackground.buttonNineslice.width:this.unselectedArrowX+this.normalArrowBackground.buttonNineslice.width,
+            y: this.isNormalArrowSelected?this.selectedArrowY+this.normalArrowBackground.buttonNineslice.height:this.unselectedArrowY+this.normalArrowBackground.buttonNineslice.height,
+            duration: 200,
+            ease: 'Quad'
         });
     }
 }

@@ -7,16 +7,27 @@ export class HudModel {
         this.playerCurrentHP;
         this.playerPreviousHP; // used for bar animation color (damage/heal)
         this.playerGold = 0;
+        this.playerEquippedAbility = null;
+        this.playerEquippedArrow = null;
         this.enemies = new Map(); // enemy => { x, y, maxHP, currentHP, previousHP }
 
+        // Health bars
         EventBus.on('playerHealthInitialized', this.onPlayerHealthInitialized, this);
         EventBus.on('enemyHealthInitialized', this.onEnemyInitialized, this);
-        EventBus.on('playerGoldChanged', this.onPlayerGoldChanged, this);
-        EventBus.on('playerGoldInitialized', this.onPlayerGoldInitialized, this);
         EventBus.on('entityMoved', this.onEntityMoved, this);
         EventBus.on('entityDamaged', this.onEntityDamaged, this);
         EventBus.on('entityHealed', this.onEntityHealed, this);
         EventBus.on('entityDied', (entity) => this.onEntityDied(entity), this);
+
+        // Gold
+        EventBus.on('playerGoldChanged', this.onPlayerGoldChanged, this);
+        EventBus.on('playerGoldInitialized', this.onPlayerGoldInitialized, this);
+
+        // Abilities
+        EventBus.on('abilityEquipped', this.onPlayerAbilityEquipped, this);
+
+        // Arrows
+        EventBus.on('arrowEquipped', this.onPlayerArrowEquipped, this);
     }
 
     // data = { maxHP }
@@ -41,7 +52,6 @@ export class HudModel {
 
     // data = Gold amount
     onPlayerGoldChanged(data){
-        console.log(`${this.playerGold} => ${data}`);
         EventBus.emit('hudPlayerGoldChanged', {prev: this.playerGold, new: data});
         this.playerGold = data;
     }
@@ -100,6 +110,16 @@ export class HudModel {
         this.playerPreviousHP = this.playerCurrentHP;
         this.playerCurrentHP = Phaser.Math.Clamp(value, 0, this.playerMaxHP);
         EventBus.emit('hudPlayerHealthChanged');
+    }
+
+    onPlayerAbilityEquipped(ability){
+        this.playerEquippedAbility = ability;
+        EventBus.emit('hudPlayerEquippedAbility');
+    }
+
+    onPlayerArrowEquipped(arrow){
+        this.playerEquippedArrow = arrow;
+        EventBus.emit('hudPlayerEquippedArrow');
     }
 }
 

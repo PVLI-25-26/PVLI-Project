@@ -1,7 +1,7 @@
 {
     "type": "dash",
     "value": 20,
-    "duration": 65,
+    "duration": 100,
     "coolDown": 1000,
     "gold": 10
 }

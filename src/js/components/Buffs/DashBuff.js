@@ -1,4 +1,6 @@
 import { EventBus } from "../../core/event-bus";
+import {DepthSortedSprite} from "../../entities/DepthSortedSprite.js";
+import Colors from "../../../configs/colors-config.js";
 
 /**
  * Dash buff implementation.
@@ -19,6 +21,22 @@ export const dashBuff = {
     apply: function (dashSpeed, entity){
                 // Only player dashes (currently)
                 EventBus.emit('playerDash', dashSpeed);
+                entity.setBlendMode(Phaser.BlendModes.ADD);
+                entity.setTint(Colors.OrangeHex);
+                const ghostCopy = new DepthSortedSprite(entity.scene, entity.x, entity.y, entity.texture.key, 0)
+                    .setOrigin(entity.originX, entity.originY)
+                    .setScale(entity.scale)
+                    .setFlip(entity.flipX)
+                    .setTint(Colors.OrangeHex)
+                    .setBlendMode(Phaser.BlendModes.ADD);
+                entity.scene.add.existing(ghostCopy);
+                entity.scene.add.tween({
+                    targets: ghostCopy,
+                    alpha: 0,
+                    duration: 300,
+                    ease: 'Linear',
+                    onComplete: ()=>{ghostCopy.destroy(true)}
+                })
             },
 
     /**
@@ -31,5 +49,7 @@ export const dashBuff = {
      */
     remove: function (dashSpeed, entity){
                 EventBus.emit('playerDashEnd');
+                entity.setTint(0xFFFFFF);
+                entity.setBlendMode(Phaser.BlendModes.NORMAL);
             }
 }
