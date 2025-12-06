@@ -1,15 +1,14 @@
 import { extendWithComponents } from "../../core/component-extension.js";
-import { BasicEnemyControllerComponent } from "../../components/BasicEnemyController.js";
+import { ElementalMovementControllerComponent } from "../../components/ElementalMovementController.js";
 import { EventBus } from "../../core/event-bus.js";
 import { MovementComponent } from "../../components/Movement.js";
 import { DamageableComponent } from "../../components/DamageableComponent.js";
-import { BasicEnemyCombatControllerComponent } from "../../components/BasicEnemyCombatController.js";
 import { BillBoard } from "../../entities/BillBoard.js";
 import { getCustomTiledProperty } from "../../core/tiled-parser.js";
 import { BuffManagerComponent } from "../../components/BuffManagerComponent.js";
 
 /**
- * BasicEnemy - a simple enemy entity with a visual sprite.
+ * Elemental 
  * Serves as an example of an enemy GameObject.
  *
  * @class
@@ -27,7 +26,7 @@ import { BuffManagerComponent } from "../../components/BuffManagerComponent.js";
  * @param {number} [config.offsetX] - X offset of the body from center (optional)
  * @param {number} [config.offsetY] - Y offset of the body from center (optional)
  */
-export class BasicEnemy extends BillBoard {
+export class Elemental extends BillBoard {
     /**
      * Enemy configuration object.
      * @type {Object}
@@ -41,6 +40,7 @@ export class BasicEnemy extends BillBoard {
         this.type = 'enemy';
 
         extendWithComponents(this);
+        console.log("Created Elemental Enemy:", this.id);
 
         // Add to scene and physics
         this.scene.add.existing(this);
@@ -67,7 +67,7 @@ export class BasicEnemy extends BillBoard {
 
         // Add PlayerControllerComponent
         // The patrol route isn't a TiledProperty, it is set in the factory
-        const controller = new BasicEnemyControllerComponent(this, getCustomTiledProperty(this.config, "state"), this.config.patrolRoute);
+        const controller = new ElementalMovementControllerComponent(this, getCustomTiledProperty(this.config, "state"), this.config.patrolRoute);
 
         // Add DamageableComponent
         const damageable = new DamageableComponent(this, 
@@ -81,8 +81,6 @@ export class BasicEnemy extends BillBoard {
             { enemy: this, maxHP: this.config.maxHP });
 
         const buffManager = new BuffManagerComponent(this);
-
-        const combatController = new BasicEnemyCombatControllerComponent(this);
     }
 
     /**

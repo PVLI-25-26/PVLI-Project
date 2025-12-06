@@ -62,8 +62,13 @@ export class Player extends BillBoard {
             saveDataManager.setData("playerAbility", this.abilityController.getCurrentAbility());
             saveDataManager.setData("playerArrowEffect", this.shootController.getArrowEffect());
             //saveDataManager.setData("playerArrowTrajectory", this.shootController.getArrowTrajectory());
+            saveDataManager.saveCurrentData()
         });
-		//TODO: crear nuevas animaciones
+
+        // Clear player inventory when game is quitted (if quits in run, progress from that run is lost. If the quits in hub, Player should have no inventory)
+        EventBus.on("gameExited", this.inventoryComponent.clearInventory, this.inventoryComponent);
+        this.on('destroy', ()=>EventBus.off("gameExited", this.inventoryComponent.clearInventory));
+
         this.scene.anims.create({
             key: "player_walk",
             frames: this.scene.anims.generateFrameNumbers("player", {start:13, end: 16}),
@@ -79,8 +84,6 @@ export class Player extends BillBoard {
             this.abilityController.clearAbility();
             this.shootController.resetArrowAndTrajectory();
         })
-
-        this.scene.worldLayer.add(this);
     }
 
     /**

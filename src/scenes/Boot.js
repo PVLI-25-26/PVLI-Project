@@ -28,9 +28,6 @@ export default class Boot extends Phaser.Scene {
         this.logger.log('BOOT', 1, 'Loading complete, starting game!');
         this.scene.start('MainMenu');
         this.loadFonts();
-
-        // Clears local storage because we don't have a proper system yet
-        localStorage.clear()
     }
     loadFonts(){
         document.fonts.load("32px FableFont").then(()=>{});

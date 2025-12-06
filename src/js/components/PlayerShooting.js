@@ -112,11 +112,9 @@ export class PlayerShootingComponent extends BaseComponent{
         this.powerBar.setScale(1.5);
         this.powerBar.setOrigin(0,0.5);
         this.powerBar.setVisible(false);
-        gameObject.scene.worldLayer.add(this.powerBar);
 
         this.bow = new DepthSortedSprite(gameObject.scene, this.gameObject.x, this.gameObject.y, 'bow', 0);
         gameObject.scene.add.existing(this.bow);
-        gameObject.scene.worldLayer.add(this.bow);
         this.bow.scale = 2.5;
         this.bow.setVisible(false);
 
@@ -149,6 +147,7 @@ export class PlayerShootingComponent extends BaseComponent{
                 if(!this.#shootWasPressedLastFrame){
                     this.#mouseDrag = {x: 0, y: 0};
                     EventBus.emit('playSound', 'bowLoad');
+                    EventBus.emit('playerStartedAiming');
                 }
                 this.#shootWasPressedLastFrame = true;
 

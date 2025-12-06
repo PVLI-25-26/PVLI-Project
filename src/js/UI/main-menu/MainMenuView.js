@@ -28,7 +28,7 @@ export default class MainMenuView {
 
         this.startButton = new Button(this.scene, centerX-100, centerY-25, null, 150, 50,
             {
-                text: 'Start Game',
+                text: 'Play',
                 style: {
                     fontSize: 20,
                     color: Colors.White,
@@ -47,8 +47,222 @@ export default class MainMenuView {
             });
             btn.on("pointerdown", () => {
                 btn.invokeClick();
+                this.toggleLoadGame();
             });
         });
+
+        this.saveFile1 = new Button(this.scene, centerX-100, centerY-120, null, 150, 50,
+            {
+                text: localStorage.getItem(0) == null ? 'New Game': 'Load Game 1',
+                style: {
+                    fontSize: 20,
+                    color: Colors.White,
+                    fontFamily: 'FableFont',
+                    padding: { x: 20, y: 10 },
+                }
+            }
+        );
+        this.saveFile1.addInteraction((btn) => {
+            btn.on("pointerover", () => {
+                btn.buttonText.setColor(Colors.Red);
+                btn.invokeHover();
+            });
+            btn.on("pointerout", () => {
+                btn.buttonText.setColor(Colors.White);
+            });
+            btn.on("pointerdown", () => {
+                btn.invokeClick();
+            });
+        });
+
+        this.saveFile2 = new Button(this.scene, centerX-100, centerY - 20, null, 150, 50,
+            {
+                text: localStorage.getItem(1) == null ? 'New Game': 'Load Game 2',
+                style: {
+                    fontSize: 20,
+                    color: Colors.White,
+                    fontFamily: 'FableFont',
+                    padding: { x: 20, y: 10 },
+                }
+            }
+        );
+        this.saveFile2.addInteraction((btn) => {
+            btn.on("pointerover", () => {
+                btn.buttonText.setColor(Colors.Red);
+                btn.invokeHover();
+            });
+            btn.on("pointerout", () => {
+                btn.buttonText.setColor(Colors.White);
+            });
+            btn.on("pointerdown", () => {
+                btn.invokeClick();
+            });
+        });
+
+        
+
+        this.saveFile3 = new Button(this.scene, centerX-100, centerY+80, null, 150, 50,
+            {
+                text: localStorage.getItem(2) == null ? 'New Game': 'Load Game 3',
+                style: {
+                    fontSize: 20,
+                    color: Colors.White,
+                    fontFamily: 'FableFont',
+                    padding: { x: 20, y: 10 },
+                }
+            }
+        );
+        console.log(localStorage.getItem(2));
+        this.saveFile3.addInteraction((btn) => {
+            btn.on("pointerover", () => {
+                btn.buttonText.setColor(Colors.Red);
+                btn.invokeHover();
+            });
+            btn.on("pointerout", () => {
+                btn.buttonText.setColor(Colors.White);
+            });
+            btn.on("pointerdown", () => {
+                btn.invokeClick();
+            });
+        });
+
+        this.saveFile1.setActive(false);
+        this.saveFile1.setVisible(false);
+
+        this.saveFile2.setActive(false);
+        this.saveFile2.setVisible(false);
+
+        this.saveFile3.setActive(false);
+        this.saveFile3.setVisible(false);
+
+        //Delete data buttons
+        this.DeleteGame1 = new Button(this.scene, centerX+80, this.saveFile1.y, null, 20, 20,
+            {
+                text: 'X',
+                style: {
+                    fontSize: 10,
+                    color: Colors.White,
+                    fontFamily: 'FableFont',
+                    padding: { x: 5, y: 5 },
+                }
+            },
+            {
+                texture: "UIbackground",
+                frame: 0,
+                leftWidth: 3,
+                rightWidth: 3,
+                topHeight: 3,
+                bottomHeight: 3
+            }
+        ).setScale(2);
+
+        this.DeleteGame1.addInteraction((btn) => {
+            btn.on("pointerover", () => {
+                btn.buttonText.setColor(Colors.Red);
+                btn.invokeHover();
+            });
+            btn.on("pointerout", () => {
+                btn.buttonText.setColor(Colors.White);
+            });
+            btn.on("pointerdown", () => {
+                btn.invokeClick();
+                this.saveFile1.buttonText.setText('New Game');
+
+                this.DeleteGame1.setActive(false);
+                this.DeleteGame1.setVisible(false);
+            });
+        });
+
+
+        
+        this.DeleteGame2 = new Button(this.scene, centerX+80, this.saveFile2.y, null, 20, 20,
+            {
+                text: 'X',
+                style: {
+                    fontSize: 10,
+                    color: Colors.White,
+                    fontFamily: 'FableFont',
+                    padding: { x: 5, y: 5 },
+                }
+            },
+            {
+                texture: "UIbackground",
+                frame: 0,
+                leftWidth: 3,
+                rightWidth: 3,
+                topHeight: 3,
+                bottomHeight: 3
+            }
+        ).setScale(2);
+
+        this.DeleteGame2.addInteraction((btn) => {
+            btn.on("pointerover", () => {
+                btn.buttonText.setColor(Colors.Red);
+                btn.invokeHover();
+            });
+            btn.on("pointerout", () => {
+                btn.buttonText.setColor(Colors.White);
+            });
+            btn.on("pointerdown", () => {
+                btn.invokeClick();
+                this.saveFile2.buttonText.setText('New Game');
+
+                this.DeleteGame2.setActive(false);
+                this.DeleteGame2.setVisible(false);
+            });
+        });
+
+
+    
+
+        this.DeleteGame3 = new Button(this.scene, centerX+80, this.saveFile3.y, null, 20, 20,
+            {
+                text: 'X',
+                style: {
+                    fontSize: 10,
+                    color: Colors.White,
+                    fontFamily: 'FableFont',
+                    padding: { x: 5, y: 5 },
+                }
+            },
+            {
+                texture: "UIbackground",
+                frame: 0,
+                leftWidth: 3,
+                rightWidth: 3,
+                topHeight: 3,
+                bottomHeight: 3
+            }
+        ).setScale(2);
+        this.DeleteGame3.addInteraction((btn) => {
+            btn.on("pointerover", () => {
+                btn.buttonText.setColor(Colors.Red);
+                btn.invokeHover();
+            });
+            btn.on("pointerout", () => {
+                btn.buttonText.setColor(Colors.White);
+            });
+            btn.on("pointerdown", () => {
+                btn.invokeClick();
+                this.saveFile3.buttonText.setText('New Game');
+
+                this.DeleteGame3.setActive(false);
+                this.DeleteGame3.setVisible(false);
+            });
+        });
+
+        this.DeleteGame1.setActive(false);
+        this.DeleteGame1.setVisible(false);
+
+        this.DeleteGame2.setActive(false);
+        this.DeleteGame2.setVisible(false);
+
+        this.DeleteGame3.setActive(false);
+        this.DeleteGame3.setVisible(false);
+     
+
+
+        //Settings Icon
 
         this.settingsButton = new Button(this.scene, screenLeft+25, screenTop+25, null, 32,32,
             null,
@@ -87,7 +301,7 @@ export default class MainMenuView {
             });
         });
 
-        // Go back to main menu button
+        // Go back to main menu from settings button
         this.backButton = new Button(this.scene, screenLeft+25, screenTop+25, null, 32, 32,
             null,
             {
@@ -116,53 +330,38 @@ export default class MainMenuView {
         this.backButton.setActive(false);
         this.backButton.setVisible(false);
 
-        this.saveFile1 = new Button(this.scene, centerX-100, centerY+50, null, 150, 50,
+        //Volver a menu desde Load Games
+        this.GoMenuButton = new Button(this.scene, screenLeft+25, screenTop+25, null, 32, 32,
+            null,
             {
-                text: 'Save File 1',
-                style: {
-                    fontSize: 20,
-                    color: Colors.White,
-                    fontFamily: 'FableFont',
-                    padding: { x: 20, y: 10 },
-                }
+                texture: 'settingsIcon',
+                frame: 2,
+                leftWidth: 0,
+                rightWidth: 0,
+                topHeight: 0,
+                bottomHeight: 1
             }
-        );
-        this.saveFile1.addInteraction((btn) => {
+        )
+        this.GoMenuButton.addInteraction((btn) => {
             btn.on("pointerover", () => {
-                btn.buttonText.setColor(Colors.Red);
+                this.GoMenuButton.buttonNineslice.setFrame(3);
                 btn.invokeHover();
             });
             btn.on("pointerout", () => {
-                btn.buttonText.setColor(Colors.White);
+                this.GoMenuButton.buttonNineslice.setFrame(2);
             });
             btn.on("pointerdown", () => {
                 btn.invokeClick();
             });
         });
+        this.GoMenuButton.setActive(false);
+        this.GoMenuButton.setVisible(false);
+        this.GoMenuButton.setActive(false);
+        this.GoMenuButton.setVisible(false);
 
-        this.saveFile2 = new Button(this.scene, centerX-100, centerY+100, null, 150, 50,
-            {
-                text: 'Save File 2',
-                style: {
-                    fontSize: 20,
-                    color: Colors.White,
-                    fontFamily: 'FableFont',
-                    padding: { x: 20, y: 10 },
-                }
-            }
-        );
-        this.saveFile2.addInteraction((btn) => {
-            btn.on("pointerover", () => {
-                btn.buttonText.setColor(Colors.Red);
-                btn.invokeHover();
-            });
-            btn.on("pointerout", () => {
-                btn.buttonText.setColor(Colors.White);
-            });
-            btn.on("pointerdown", () => {
-                btn.invokeClick();
-            });
-        });
+
+        
+
     }
 
     createSliders() {
@@ -210,5 +409,54 @@ export default class MainMenuView {
         this.settingsButton.setActive(!this.settingsButton.active);
         this.settingsButton.setVisible(!this.settingsButton.visible);
         
+    }
+
+    toggleLoadGame(){
+        this.GoMenuButton.setActive(!this.GoMenuButton.active);
+        this.GoMenuButton.setVisible(!this.GoMenuButton.visible);
+
+        this.settingsButton.setActive(!this.settingsButton.active);
+        this.settingsButton.setVisible(!this.settingsButton.visible);
+
+        this.startButton.setActive(!this.startButton.active);
+        this.startButton.setVisible(!this.startButton.visible);
+
+        this.saveFile1.setActive(!this.saveFile1.active);
+        this.saveFile1.setVisible(!this.saveFile1.visible);
+
+        this.saveFile2.setActive(!this.saveFile2.active);
+        this.saveFile2.setVisible(!this.saveFile2.visible);
+
+        this.saveFile3.setActive(!this.saveFile3.active);
+        this.saveFile3.setVisible(!this.saveFile3.visible);
+
+        if (localStorage.getItem(0) != null && this.saveFile1.active){
+        this.DeleteGame1.setActive(true);
+        this.DeleteGame1.setVisible(true);
+        }
+        else{
+        this.DeleteGame1.setActive(false);
+        this.DeleteGame1.setVisible(false);
+        }
+
+
+        if (localStorage.getItem(1) != null && this.saveFile2.active){
+        this.DeleteGame2.setActive(true);
+        this.DeleteGame2.setVisible(true);
+        }
+        else{
+        this.DeleteGame2.setActive(false);
+        this.DeleteGame2.setVisible(false);
+        }
+        
+        
+        if (localStorage.getItem(2) != null && this.saveFile3.active){
+        this.DeleteGame3.setActive(true);
+        this.DeleteGame3.setVisible(true);
+        }
+        else{
+        this.DeleteGame3.setActive(false);
+        this.DeleteGame3.setVisible(false);
+        }
     }
 } 

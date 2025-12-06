@@ -11,6 +11,7 @@ export class HudPresenter {
         EventBus.on('hudPlayerHealthChanged', this.onPlayerHealthChanged, this);
         EventBus.on('hudEnemyHealthChanged', this.onEnemyHealthChanged, this);
         EventBus.on('hudEnemyPositionUpdated', this.onEnemyPositionUpdated, this);
+        EventBus.on('hudEnemyRemoved', this.onEnemyRemoved, this);
     }
 
     onPlayerInitialized() {
@@ -65,6 +66,10 @@ export class HudPresenter {
             let barPosY = screenPos.y - 40;
             enemyHealthBar.setPosition(barPosX, barPosY);
         }
+    }
+
+    onEnemyRemoved(enemy) {
+        this.view.deleteEnemyHealthBar(enemy);
     }
 
     onCameraRotated(rotation) { 

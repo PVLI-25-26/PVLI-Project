@@ -32,10 +32,9 @@ export default class GameplayScene extends Phaser.Scene {
 
     create(data) {
         this.cameras.main.fadeIn(800,79,74,69);
-        this.worldLayer = this.add.layer();
         this.hudLayer = this.add.layer();
         this.uiCam = this.cameras.add(0, 0, this.scale.width, this.scale.height);
-        this.uiCam.ignore(this.worldLayer);
+        this.uiCam.setScroll(10000, 10000); 
         this.cameras.main.ignore(this.hudLayer);
 
         this.toggleDebug();
@@ -74,7 +73,7 @@ export default class GameplayScene extends Phaser.Scene {
             this.scene.pause();
         });
 
-        this.input.keyboard.on("keydown-SHIFT", () => {
+        this.input.keyboard.on("keydown-E", () => {
             if (this.scene.isPaused("GameplayScene")) return;
             this.scene.launch("InventoryMenu", this.player);
             this.scene.pause();
@@ -83,8 +82,6 @@ export default class GameplayScene extends Phaser.Scene {
         this.input.keyboard.on("keydown-U", () => {
             this.toggleDebug();
         });
-
-        this.events.on("shutdown", ()=>saveDataManager.saveCurrentData());
 
         // Create physics groups
         this.obstaclesCategory = 1 << 0;
@@ -111,10 +108,6 @@ export default class GameplayScene extends Phaser.Scene {
                     EventBus.emit('entityHit', { attacker: enemy, target: player, damage: 1, force: 20, duration: 300 });
                 }
             });
-        // this.physics.add.collider(this.player, this.enemiesCategory, 
-        //     (player, enemy) => {
-        //         EventBus.emit('enemyMeleeHit', { attacker: enemy, target: player });
-        //     },null, this);
 
         // Load scene objects from room data
         this.plugins.get('dungeon').loadCurrentRoom(this, this.obstaclesCategory, this.enemiesCategory, this.playerCategory, this.connectionsCategory, this.interactablesCategory);
@@ -129,6 +122,8 @@ export default class GameplayScene extends Phaser.Scene {
                 }
             });
         })
+
+        
     }
 
     toggleDebug() {
