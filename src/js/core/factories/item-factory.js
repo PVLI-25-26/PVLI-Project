@@ -51,7 +51,6 @@ export function createItem(scene, itemSceneData, roomsExplored){
         itemConfig
     );
     item.setCollisionCategory(scene.interactablesCategory);
-    scene.worldLayer.add(item);
     return item;
 }
 

@@ -10,6 +10,5 @@ export function createNPC(scene, objSceneData){
     let npc;
     let npcTemplate = npcTemplates.get(objSceneData.type);
     npc = new NPC(scene, objSceneData.x, objSceneData.y, npcTemplate);
-    scene.worldLayer.add(npc);
     return npc
 }

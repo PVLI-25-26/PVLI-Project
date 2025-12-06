@@ -14,6 +14,7 @@ export class HudModel {
         EventBus.on('entityMoved', this.onEntityMoved, this);
         EventBus.on('entityDamaged', this.onEntityDamaged, this);
         EventBus.on('entityHealed', this.onEntityHealed, this);
+        EventBus.on('entityDied', (entity) => this.onEntityDied(entity), this);
     }
 
     // data = { maxHP }
@@ -58,6 +59,16 @@ export class HudModel {
         if (data.entity.type == 'player') {
             this.setPlayerHealth(this.playerCurrentHP + data.amount);
             return;
+        }
+        if (data.entity.type == 'enemy') {
+            this.setEnemyHealth(data.entity, this.enemies.get(data.entity).currentHP + data.amount);
+        }
+    }
+
+    onEntityDied(entity) {
+        if (entity.type == 'enemy' && this.enemies.has(entity)) {
+            this.enemies.delete(entity);
+            EventBus.emit('hudEnemyRemoved', entity);
         }
     }
 
