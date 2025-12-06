@@ -11,13 +11,11 @@ export class BasicEnemyCombatControllerComponent extends BaseComponent {
     constructor(gameObject) {
         super(gameObject);
 
-        EventBus.on('arrowLanded', this.healEntity, this);
         this.controller = this.getComponent(BasicEnemyControllerComponent);;
         this.damageableComponent = this.getComponent(DamageableComponent);
     }
 
     healEntity() {
-        console.log('Healing entity if targeted');  
         const target = this.gameObject;
         this.damageableComponent.heal(1);
     }

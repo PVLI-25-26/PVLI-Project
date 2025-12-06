@@ -168,7 +168,6 @@ export class DamageableComponent extends BaseComponent {
         this.gameObject.setVisible(false);
         this.gameObject.setStatic(true);
         this.gameObject.setCollidesWith(0);
-        this.destroy();
     }
 
     /**
