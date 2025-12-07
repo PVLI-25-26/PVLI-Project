@@ -32,16 +32,22 @@ export class InventoryComponent extends BaseComponent{
         this.#playerInventory = inventory || [];
         // Set player gold
         this.#gold = gold || 0;
+        EventBus.emit('playerGoldInitialized', this.#gold);
+
         // Wire item picked events to add item to inventory
         EventBus.on('itemPicked', (picker, item)=>{
             if(this.gameObject === picker) this.addItemToInventory(item.key);
         });
         // When hub reached convert all player items into gold
         EventBus.on('hubReached', ()=>{
-            for(let item of this.#playerInventory){
-                this.#gold += getItemGold(item);
+            if(this.#playerInventory.length > 0){
+                let totalGold = 0;
+                for(let item of this.#playerInventory){
+                    totalGold += getItemGold(item);
+                }
+                this.addGold(totalGold);
+                this.#playerInventory = [];
             }
-            this.#playerInventory = [];
         }, this);
         EventBus.on('removeGold', this.removeGold, this);
 
@@ -73,6 +79,8 @@ export class InventoryComponent extends BaseComponent{
                 console.log('not enought coins')
             }
         })
+        this.gameObject.scene.input.keyboard.on('keydown-M', ()=>{this.addGold(50);});
+        this.gameObject.scene.input.keyboard.on('keydown-N', ()=>{this.removeGold(50);});
     }
 
     update(t, dt){}
@@ -110,6 +118,17 @@ export class InventoryComponent extends BaseComponent{
     removeGold(amount){
         this.#gold -= amount;
         if(this.#gold < 0) this.#gold = 0;
+        EventBus.emit('playerGoldChanged', this.#gold);
+    }
+
+    /**
+     * Add gold to player. Will neve set negative values for gold.
+     * @param {Number} amount amount to add
+     */
+    addGold(amount){
+        this.#gold += amount;
+        if(this.#gold < 0) this.#gold = 0;
+        EventBus.emit('playerGoldChanged', this.#gold);
     }
 
     /**

@@ -5,6 +5,8 @@ import showLoaderUI from "../js/UI/LoaderUI";
 export default class Boot extends Phaser.Scene {
     constructor() {
         super("Boot");
+        this.fontsLoaded = 0;
+        this.fontsToLoad = 2;
     }
 
     preload() {
@@ -27,11 +29,5 @@ export default class Boot extends Phaser.Scene {
     create() {
         this.logger.log('BOOT', 1, 'Loading complete, starting game!');
         this.scene.start('MainMenu');
-        this.loadFonts();
-    }
-    loadFonts(){
-        document.fonts.load("32px FableFont").then(()=>{});
-        document.fonts.load("32px MicroChat").then(()=>{});
-
     }
 }

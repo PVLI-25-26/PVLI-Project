@@ -23,6 +23,7 @@
     {"key": "golden-cup", "type": "image", "file": "assets/sprites/16x16 RPG Item Pack/Item__71.png", "settings":{}},
     {"key": "healthFlowers", "type": "spritesheet", "file": "assets/sprites/ItemSprites/HealthFlower.png", "settings":{"frameWidth":32}},
     {"key": "speedVases", "type": "spritesheet", "file": "assets/sprites/ItemSprites/SpeedVase.png", "settings":{"frameWidth":32}},
+    {"key": "damageRocks", "type": "spritesheet", "file": "assets/sprites/ItemSprites/DamageRock.png", "settings":{"frameWidth":32}},
 
     {"key": "billboard", "type": "image", "file": "assets/sprites/SpriteStackingPlaceholders/Billboard/catPlaceholder.jpg", "settings":{}},
     {"key": "grass", "type": "spritesheet", "file": "assets/sprites/grass.png", "settings":{"frameWidth":8}},
@@ -44,8 +45,17 @@
 
     {"key": "Fire-Arrow", "type": "image", "file": "assets/arrows/fire-arrow.png", "settings":{}},
     {"key": "Grass-Arrow", "type": "image", "file": "assets/arrows/grass-arrow.png", "settings":{}},
-	{"key": "Gass-Arrow", "type": "image", "file": "assets/arrows/gass-arrow.png", "settings":{}}
+	{"key": "Gass-Arrow", "type": "image", "file": "assets/arrows/gass-arrow.png", "settings":{}},
 
 
+	{"key": "Player_animation", "type": "spritesheet", "file": "assets/sprites/Player/PlayerAnimations.png", "settings":{"frameWidth":21, "frameHeight":19}},
+
+    {"key": "dash", "type": "image", "file": "assets/sprites/Abilities/dash.png", "settings":{}},
+    {"key": "forceField", "type": "image", "file": "assets/sprites/Abilities/forcefield.png", "settings":{}},
+
+    {"key": "plusParticle", "type": "image", "file": "assets/sprites/Particles/PlusParticle.png", "settings":{}},
+    {"key": "poisonParticle", "type": "image", "file": "assets/sprites/Particles/PoisonParticle.png", "settings":{}},
+    {"key": "verticalParticle", "type": "image", "file": "assets/sprites/Particles/VerticalParticle.png", "settings":{}},
+    {"key": "fireParticle", "type": "spritesheet", "file": "assets/sprites/Particles/FireParticle.png", "settings":{"frameWidth":8}},
+    {"key": "crossParticle", "type": "image", "file": "assets/sprites/Particles/CrossParticle.png", "settings":{}}
 ]
-

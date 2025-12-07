@@ -1,12 +1,12 @@
 {
+    "texture": "Fire-Arrow",
     "damage": 1,
     "force": 20,
     "duration": 100,
     "debuff": {
         "type": "burning",
         "value":{
-            "damage": 1,
-            "duration": 5000
+            "damage": 1
         },
         "duration": 5000
     },

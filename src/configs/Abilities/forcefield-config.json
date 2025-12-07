@@ -1,10 +1,9 @@
 {
     "type": "forceField",
     "value": {
-        "effectRadius": 100,
-        "duration": 1000
+        "effectRadius": 100
     },
-    "duration": 1000,
+    "duration": 200,
     "coolDown": 1000,
     "gold": 10
 }

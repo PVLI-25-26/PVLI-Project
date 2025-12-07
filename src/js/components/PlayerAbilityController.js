@@ -37,6 +37,7 @@ export class PlayerAbilityControllerComponent extends BaseComponent{
 
         // FOR TESTING - abilities
         this.#ability = ability || null;
+        EventBus.emit('abilityEquipped', this.#ability);
         // this.#ability = dashAbility
         // this.#ability = forcefieldAbility
         // this.#ability = invisibiltyAbility
@@ -49,6 +50,9 @@ export class PlayerAbilityControllerComponent extends BaseComponent{
         EventBus.on('abilityEquipped', (ability)=>{
             this.#ability = ability;
         });
+
+        this.gameObject.scene.input.keyboard.on('keydown-K', ()=>{EventBus.emit('abilityEquipped', dashAbility)});
+        this.gameObject.scene.input.keyboard.on('keydown-J', ()=>{EventBus.emit('abilityEquipped', forcefieldAbility)});
     }
 
     getCurrentAbility(){
@@ -64,6 +68,7 @@ export class PlayerAbilityControllerComponent extends BaseComponent{
         if(this.keys.ability.isDown && this.#ability && this.hasCoolDownEnded) {
             // Apply ability
             this.gameObject.emit('buffApplied', this.#ability);
+            EventBus.emit('playerAbilityTriggered', this.#ability);
 
             this.hasCoolDownEnded = false;
             // Start cool-down timer to know when ability can be activated again

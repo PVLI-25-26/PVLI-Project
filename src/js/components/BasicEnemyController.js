@@ -1,7 +1,10 @@
 import { BaseControllerComponent } from "./BaseController.js";
 import { IdleState } from "../entities/Enemies/States/IdleState.js";
 import { PatrolState } from "../entities/Enemies/States/PatrolState.js";
-import { ChaseState } from "../entities/Enemies/States/ChaseState.js";
+import { DirectChaseState } from "../entities/Enemies/States/DirectChaseState.js";
+import { StrafeState } from "../entities/Enemies/States/StrafeState.js";
+import { RetreatState } from "../entities/Enemies/States/RetreatState.js";
+import { EventBus } from "../core/event-bus.js";
 
 export class BasicEnemyControllerComponent extends BaseControllerComponent {
     /**
@@ -13,13 +16,22 @@ export class BasicEnemyControllerComponent extends BaseControllerComponent {
         super(gameObject);
 
         this.currentState = null;
+        this.target = null;
+        this.initialState = initialState;
+        this.aggroRange = 300;
 
         this.states = {
             idle: new IdleState(this),
             patrol: new PatrolState(this, patrolRoute),
-            chase: new ChaseState(this, { chaseDuration: 2000, evadeDuration: 2000 })
+            chase: new DirectChaseState(this),
+            strafe: new StrafeState(this),
+            retreat: new RetreatState(this),
         };
 
+        EventBus.on('entityMoved', this.onEntityMoved, this);
+        EventBus.on('playerStartedAiming', this.onPlayerStartedAiming, this);
+        EventBus.on('arrowLanded', this.onArrowLanded, this);
+        EventBus.on('entityDamaged', this.onReceiveDamage, this);
         this.changeState(initialState);
     }
 
@@ -29,23 +41,51 @@ export class BasicEnemyControllerComponent extends BaseControllerComponent {
         this.currentState?.enter();
     }
 
-    // Example of simple player detection (can be expanded with vision cones, etc.)
-    checkTargetInRange(target) {
-        if (!target) return;
-        if (this.currentState instanceof ChaseState) return;
-        const distance = Phaser.Math.Distance.Between(
-            this.gameObject.x,
-            this.gameObject.y,
-            target.x,
-            target.y
-        );
-        if (distance < 200) this.changeState('chase');
+    // data = { entity, x, y }
+    onEntityMoved(data) {
+        if (data.entity.type == 'player' && this.checkTargetInAggroRange(data.entity))
+        {
+            if (this.currentState == this.states.patrol || this.currentState == this.states.idle) {
+                this.changeState('chase');
+                this.target = data.entity;
+            }
+        }
+    }
+
+    onPlayerStartedAiming() {
+        if (this.target && this.checkTargetInAggroRange(this.target)) {
+            this.changeState('strafe');
+        }
+    }
+
+    onArrowLanded() {
+        if (this.target && this.checkTargetInAggroRange(this.target)) {
+            this.changeState('chase');
+        }
+        else {
+            this.changeState(this.initialState);
+        }
+    }
+
+    onReceiveDamage(data) {
+        this.aggroRange = 600;
+        if (this.target) {
+            this.changeState('chase');
+        }
     }
 
     update(time, delta) {
         if (!this.enabled || !this.movementComponent || !this.currentState) return;
 
-        this.checkTargetInRange(this.gameObject.scene.player);
         this.currentState.update(time, delta);
+    }
+
+    checkTargetInAggroRange(target) {
+        const enemy = this.gameObject;
+        const distance = Phaser.Math.Distance.Between(enemy.x, enemy.y, target.x, target.y);
+        if (distance <= this.aggroRange) {
+            return true;
+        }
+        return false;
     }
 }

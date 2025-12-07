@@ -24,7 +24,6 @@ import { createNPC } from './factories/npc-factory.js';
 import { createObstacle } from './factories/obstacle-factory.js';
 import saveDataManager from './save-data-manager.js';
 import { getCustomTiledProperty, getTiledMapLayer } from './tiled-parser.js';
-import fs from 'fs';
 
 /**
  * Manages dungeon rooms and instantiation of room objects into a Phaser scene.
@@ -34,15 +33,16 @@ import fs from 'fs';
  */
 export class Dungeon extends Phaser.Plugins.BasePlugin {
     /**
-     * Reference to the game instance (used to load json to cache)
-     * @type {Phaser.Game}
-     */
-    #game;
-    /**
-     * Map of dungeon rooms [key -> RoomConfig]
-     * @type {Map<string, RoomInstance>}
+     * Map of every dungeon room [key -> RoomConfig]
+     * @type {Map<Number, RoomInstance>}
      */
     #rooms;
+    /**
+     * Map of only resetable room IDs and their file path [ID -> path].
+     * This is used when reseting the dungeon, to only read the rooms necessary.
+     * @type {Map<Number, String>}
+     */
+    #resetableRooms
     /**
      * Current active room key.
      * @type {string}
@@ -76,7 +76,6 @@ export class Dungeon extends Phaser.Plugins.BasePlugin {
      */
     constructor(pluginManager){
         super('Dungeon', pluginManager);
-        this.#game = pluginManager.game;
     }
 
     init(data){
@@ -94,19 +93,16 @@ export class Dungeon extends Phaser.Plugins.BasePlugin {
      * @private
      * @returns {void}
      */
-    async #initializeRooms(scene){
+    #initializeRooms(){
         this.#rooms = new Map();
-        this.#rooms.clear();
-
-        const rooms = getTiledMapLayer(roomsConfig, "Dungeon");
+        this.#resetableRooms = new Map();
 
         getTiledMapLayer(roomsConfig, "Dungeon").forEach(async (cfg) => {
-            const response = await fetch('assets/rooms/rooms/' + cfg.type);
-            //console.log('awaiting');
-
+            const path = 'assets/rooms/rooms/' + cfg.type;
+            const response = await fetch(path);
             // Read JSON with template for the room being created
             const room = await response.json();
-            //console.log('awaited');
+
             // Give generic room the specific dungeon connections
             room.connections = cfg.properties;
             // Add room to the map of rooms
@@ -114,25 +110,34 @@ export class Dungeon extends Phaser.Plugins.BasePlugin {
             // If the room is the Hub we save it
             if(cfg.name == "Hub")
                 this.#hubID = cfg.id;
+            // If the room is the beginning of the tutorial we save it
             else if(cfg.name == "Intro")
                 this.#tutorialIntroID = cfg.id;
+            // If the room is any other room (dungeon rooms) we save them to then only reset these rooms when dungeon restarts
+            else{
+                this.#resetableRooms.set(cfg.id, path);
+            }
         });
+    }
 
-        // getTiledMapLayer(roomsConfig, "Dungeon").forEach((cfg) => {
-        //     console.log(this.#game)
-        //     const room = this.#game.scene.scenes[0].load.json(cfg.id, 'assets/rooms/rooms/' + cfg.type);
-        //     // Give generic room the specific dungeon connections
-        //     room.connections = cfg.properties;
-        //     // Add room to the map of rooms
-        //     this.#rooms.set(cfg.id, room);
-        //     // If the room is the Hub we save it
-        //     if(cfg.name == "Hub")
-        //         this.#hubID = cfg.id;
-        //     else if(cfg.name == "Intro")
-        //         this.#tutorialIntroID = cfg.id;
-        // });
+    /**
+     * Reset the dungeon rooms (resets everything but the Hub and Intro scenes)
+     * @private
+     * @returns {void}
+     */
+    #resetDungeon(){
+        this.#resetableRooms.forEach(async (path, id)=>{
+            const response = await fetch(path);
+            // Read JSON with template for the room being created
+            const room = await response.json();
 
-        //console.log('should be at the end')
+            const prevRoom = this.#rooms.get(id);
+            // Give the new room the previous room connections
+            room.connections = prevRoom.connections;
+
+            // Overwrite previous values in the map of rooms
+            this.#rooms.set(id, room);
+        });
     }
 
     /**
@@ -288,7 +293,7 @@ export class Dungeon extends Phaser.Plugins.BasePlugin {
             // reset dungeon exploration
             this.roomsExplored.clear();
             this.roomsExplored.add(nextRoomKey); // Add hub to the explored rooms (always starts with hub)
-            // this.#initializeRooms(); // Restart all the dungeon
+            this.#resetDungeon(); // Restart all the dungeon
             saveDataManager.setData('isTutorialComplete', true);
         }
     }

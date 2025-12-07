@@ -1,5 +1,5 @@
 import Phaser from "phaser";
-import Colors from "../../../configs/color-config.json"
+import Colors from "../../../configs/colors-config.js";
 
 /**
  * Interactive horizontal slider UI component for adjusting normalized values (0–1).
@@ -59,14 +59,14 @@ export class Slider extends Phaser.GameObjects.Container {
          * Background track of the slider.
          * @type {Phaser.GameObjects.Rectangle}
          */
-        this.track = scene.add.rectangle(0, 0, width, height, parseInt(Colors.LightBrown.slice(1), 16)).setOrigin(0.5);
+        this.track = scene.add.rectangle(0, 0, width, height, Colors.LightBrownHex).setOrigin(0.5);
         this.add(this.track);
 
         /**
          * Movable thumb handle of the slider.
          * @type {Phaser.GameObjects.Rectangle}
          */
-        this.thumb = scene.add.rectangle(0, 0, height, height,parseInt(Colors.White.slice(1), 16)).setOrigin(0.5);
+        this.thumb = scene.add.rectangle(0, 0, height, height,Colors.WhiteHex).setOrigin(0.5);
         this.add(this.thumb);
 
         // Enable mouse input

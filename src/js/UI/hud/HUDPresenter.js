@@ -1,20 +1,36 @@
 import { EventBus } from "../../core/event-bus.js";
 import { worldToScreen } from "../../core/world-screen-space.js";
+import Colors from "../../../configs/colors-config.js";
 
 export class HudPresenter {
     constructor(view, model) {
         this.view = view;
         this.model = model;
 
+        // Health bars
         EventBus.on('hudPlayerInitialized', this.onPlayerInitialized, this);
         EventBus.on('hudEnemyAdded', this.onEnemyAdded, this);
         EventBus.on('hudPlayerHealthChanged', this.onPlayerHealthChanged, this);
         EventBus.on('hudEnemyHealthChanged', this.onEnemyHealthChanged, this);
         EventBus.on('hudEnemyPositionUpdated', this.onEnemyPositionUpdated, this);
+        EventBus.on('hudEnemyRemoved', this.onEnemyRemoved, this);
+
+        // Gold
+        EventBus.on('hudPlayerGoldInitialized', this.onPlayerGoldInitialized, this);
+        EventBus.on('hudPlayerGoldChanged', this.onPlayerGoldChanged, this);
+
+        // Abilities
+        EventBus.on('hudPlayerEquippedAbility', this.onPlayerEquippedAbility, this);
+        EventBus.on('playerAbilityTriggered', this.onPlayerAbilityTriggered, this);
+
+        // Arrows
+        EventBus.on('hudPlayerEquippedArrow', this.onPlayerEquippedArrow, this);
+        EventBus.on('playerArrowsSwitched', this.onPlayerArrowsSwitched, this);
     }
 
     onPlayerInitialized() {
         this.view.createPlayerHealthBar();
+        
         this.setInitialHealthBarValue();
     }
 
@@ -27,14 +43,22 @@ export class HudPresenter {
         const previousNormalizedHP = this.model.playerPreviousHP / this.model.playerMaxHP;
 
         const barColor = normalizedHP < previousNormalizedHP ?
-        0xff5555 : 0x55ff55;
+        Colors.RedHex : Colors.GreenHex;
         this.view.playerHealthBar.setValue(normalizedHP, barColor);
 
         const isHeal = normalizedHP > previousNormalizedHP;
-        const textColor = isHeal ? "#55ff55" : "#ff5555";
+        const textColor = isHeal ? Colors.Green : Colors.Red;
         const amount = Math.abs(this.model.playerCurrentHP - this.model.playerPreviousHP);
 
         this.view.createCombatText(400, 250, amount, textColor);
+    }
+
+    onPlayerGoldInitialized(data){
+        this.view.createGoldIndicator(data);
+    }
+
+    onPlayerGoldChanged(data){
+        this.view.updateGoldIndicator(data.prev, data.new);
     }
 
     onEnemyHealthChanged(enemy) {
@@ -42,14 +66,14 @@ export class HudPresenter {
         const previousNormalizedHP = this.model.enemies.get(enemy).previousHP / this.model.enemies.get(enemy).maxHP;
 
         const barColor = normalizedHP < previousNormalizedHP ?
-        0xff5555 : 0x55ff55;
+        Colors.RedHex : Colors.GreenHex;
         this.view.enemyHealthBars.get(enemy).setValue(normalizedHP, barColor);
 
         const mainCamera = this.view.scene.cameras.main;
         const screenPos = worldToScreen(enemy.x, enemy.y, mainCamera);
 
         const isHeal = normalizedHP > previousNormalizedHP;
-        const textColor = isHeal ? "#55ff55" : "#fff8f0";
+        const textColor = isHeal ? Colors.Green : Colors.White;
         const amount = Math.abs(this.model.enemies.get(enemy).currentHP - this.model.enemies.get(enemy).previousHP);
 
         this.view.createCombatText(screenPos.x, screenPos.y, amount, textColor);
@@ -67,17 +91,37 @@ export class HudPresenter {
         }
     }
 
+    onEnemyRemoved(enemy) {
+        this.view.deleteEnemyHealthBar(enemy);
+    }
+
     onCameraRotated(rotation) { 
-    if (this.view.playerHealthBar) { 
-        this.view.playerHealthBar.setRotation(-rotation); 
-    } 
-    
-    for (const bar of this.view.enemyHealthBars.values()) { 
+        if (this.view.playerHealthBar) { 
+            this.view.playerHealthBar.setRotation(-rotation); 
+        } 
+        
+        for (const bar of this.view.enemyHealthBars.values()) { 
             bar.setRotation(rotation); 
         }
     }
 
     setInitialHealthBarValue() {
         this.view.playerHealthBar.setValue(this.model.playerCurrentHP / this.model.playerMaxHP);
+    }
+
+    onPlayerEquippedAbility(){
+        this.view.createAbilityIndicator(this.model.playerEquippedAbility?.type);
+    }
+
+    onPlayerAbilityTriggered(ability){
+        this.view.abilityTriggered(ability.coolDown);
+    }
+
+    onPlayerEquippedArrow(){
+        this.view.createArrowIndicators(this.model.playerEquippedArrow?.texture);
+    }
+
+    onPlayerArrowsSwitched(){
+        this.view.switchArrowIndicators();
     }
 }

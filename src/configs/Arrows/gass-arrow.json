@@ -1,12 +1,12 @@
 {
+    "texture": "Gass-Arrow",
     "damage": 1,
     "force": 20,
     "duration": 100,
     "debuff": {
         "type": "poisoned",
         "value":{
-            "damage": 1,
-            "duration": 3000
+            "damage": 1
         },
         "duration": 3000
     },

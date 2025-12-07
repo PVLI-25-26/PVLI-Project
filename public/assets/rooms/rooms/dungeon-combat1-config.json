@@ -334,6 +334,22 @@
                  "type":"health-flower",
                  "x":192,
                  "y":144
+                }, 
+                {
+                 "id":134,
+                 "name":"Damage Rock",
+                 "template":"..\/Templates\/ItemTemplate.tx",
+                 "type":"damage-rock",
+                 "x":269.333333333333,
+                 "y":-577.333333333333
+                }, 
+                {
+                 "id":135,
+                 "name":"Damage Rock",
+                 "template":"..\/Templates\/ItemTemplate.tx",
+                 "type":"damage-rock",
+                 "x":401.333333333333,
+                 "y":-342.666666666667
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -380,7 +396,7 @@
                          "value":"patrol"
                         }],
                  "template":"..\/Templates\/EnemyTemplate.tx",
-                 "type":"basic",
+                 "type":"elemental",
                  "x":-288,
                  "y":-48
                 }],
@@ -466,7 +482,7 @@
          "y":0
         }],
  "nextlayerid":14,
- "nextobjectid":134,
+ "nextobjectid":136,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.11.2",

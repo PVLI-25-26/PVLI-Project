@@ -22,6 +22,13 @@
             "image": "healthFlowers",
             "frame": 0
         },
+        "buffData":{
+            "type": "healing",
+            "value": {
+                "healthIncrease": 1
+            },
+            "duration": 300
+        },
         "gold": 5,
         "collectSound": "itemCollected"
     },
@@ -47,6 +54,13 @@
             "description": "Blah blah blah",
             "image": "healthFlowers",
             "frame": 1
+        },
+        "buffData":{
+            "type": "healing",
+            "value": {
+                "healthIncrease": 2
+            },
+            "duration": 300
         },
         "gold": 10,
         "collectSound": "itemCollected",
@@ -75,6 +89,13 @@
             "description": "Blah blah blah",
             "image": "healthFlowers",
             "frame": 2
+        },
+        "buffData":{
+            "type": "healing",
+            "value": {
+                "healthIncrease": 3
+            },
+            "duration": 300
         },
         "gold": 15,
         "collectSound": "itemCollected",

@@ -9,6 +9,8 @@ import { forceFieldBuff } from "./Buffs/ForceFieldBuff";
 import { invisibilityBuff } from "./Buffs/InvisiblityBuff";
 
 import { movementBuff } from "./Buffs/MovementBuff";
+import { healingBuff } from "./Buffs/HealingBuff";
+import { powerBuff } from "./Buffs/PowerBuff";
 
 
 /**
@@ -39,8 +41,9 @@ const buffTypeToBuffLogic = {
     invisibility: invisibilityBuff,
     burning: burningDebuff,
     inmobilized: inmobilizedDebuff,
-    poisoned: poisonedDebuff
-    // health: healthBuff (example)
+    poisoned: poisonedDebuff,
+    healing: healingBuff,
+    power: powerBuff
     // ...
 }
 
@@ -69,7 +72,9 @@ export class BuffManagerComponent extends BaseComponent{
         // Listen to buffApplied events inside the entity
         this.gameObject.on('buffApplied', this.addBuff, this);
         this.gameObject.on('buffRemoved', this.removeBuff, this);
+        this.gameObject.on('entityDied', this.clearBuffs, this);
     }
+
     update(t, dt){
     }
 
@@ -120,6 +125,7 @@ export class BuffManagerComponent extends BaseComponent{
      */
     addNewBuff(buffData) {
         // Apply buff using each buff logic depending on type
+        buffData.value.duration = buffData.duration; // Add the duration to the values of the buff
         buffTypeToBuffLogic[buffData.type].apply(buffData.value, this.gameObject);
 
         const currentBuffsSize = this.#buffs.length;
@@ -162,5 +168,6 @@ export class BuffManagerComponent extends BaseComponent{
         for(const buff of this.#buffs.keys()){
             this.removeBuff(buff);
         }
+        console.log(this.#buffs);
     }
 }

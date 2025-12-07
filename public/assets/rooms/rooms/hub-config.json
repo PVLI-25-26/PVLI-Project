@@ -61,7 +61,31 @@
          "draworder":"topdown",
          "id":6,
          "name":"Items",
-         "objects":[],
+         "objects":[
+                {
+                 "id":113,
+                 "name":"Vase",
+                 "template":"..\/Templates\/ItemTemplate.tx",
+                 "type":"speed-vase",
+                 "x":-173,
+                 "y":-273
+                }, 
+                {
+                 "id":114,
+                 "name":"Flower",
+                 "template":"..\/Templates\/ItemTemplate.tx",
+                 "type":"health-flower",
+                 "x":-63,
+                 "y":-281
+                }, 
+                {
+                 "id":115,
+                 "name":"Damage Rock",
+                 "template":"..\/Templates\/ItemTemplate.tx",
+                 "type":"damage-rock",
+                 "x":100,
+                 "y":-289
+                }],
          "opacity":1,
          "type":"objectgroup",
          "visible":true,
@@ -221,7 +245,7 @@
          "y":0
         }],
  "nextlayerid":12,
- "nextobjectid":113,
+ "nextobjectid":116,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.11.2",

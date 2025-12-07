@@ -34,6 +34,18 @@ export class SoundSceneFacade {
     currentMusic = null;
 
     /**
+     * SFX Volume
+     * @type {Number}
+     */
+    SFXVolume;
+
+    /**
+     * Music Volume
+     * @type {Number}
+     */
+    MusicVolume;
+
+    /**
      * Creates a new SoundSceneFacade instance
      * @param {Phaser.Scene} scene - The Phaser scene this facade belongs to
      * @param {Object} config - Configuration object for sounds and music
@@ -72,10 +84,12 @@ export class SoundSceneFacade {
             if (this.currentMusic) {
                 this.currentMusic.setVolume(value);
             }
+            this.MusicVolume = value;
         });
 
         EventBus.on("sfxVolumeChanged", (value) => {
-            Object.values(this.sounds).forEach((sound) => sound.setVolume(value));
+            // Object.values(this.sounds).forEach((sound) => sound.setVolume(value));
+            this.SFXVolume = value;
         });
     }
 
@@ -87,7 +101,7 @@ export class SoundSceneFacade {
     playSound(key) {
         // const sound = this.sounds[key];
         // if (sound) sound.play();
-        this.scene.sound.play(key);
+        this.scene.sound.play(key, {volume: this.SFXVolume});
     }
 
     /**

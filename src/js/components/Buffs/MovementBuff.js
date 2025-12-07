@@ -1,3 +1,5 @@
+import { EventBus } from "../../core/event-bus";
+import { BuffParticleEmitter } from "../../entities/BuffParticleEmitter";
 import { MovementComponent } from "../Movement";
 /**
  * Multiplier value used by the movement buff.
@@ -19,20 +21,22 @@ export const movementBuff = {
      * Multiplies the MovementComponent.speed by the provided multiplier and sets the new speed.
      * If no MovementComponent is found nothing will happen.
      *
-     * @param {SpeedMultiplier} speedIncrease - Multiplier to apply to the entity's base speed.
+     * @param {SpeedMultiplier} data.value - Multiplier to apply to the entity's base speed.
      * @param {Phaser.GameObjects.GameObject} entity - Target entity which should have MovementComponent.
      * @returns {void}
      */
-    apply: function (speedIncrease, entity){
+    apply: function (data, entity){
                 // Try get movement component
                 const movementComponent = entity.getComponent(MovementComponent);
                 if(movementComponent){
                     // Get movement component current speed
                     let speed = movementComponent.speed;
                     // Add buff
-                    speed *= speedIncrease;
+                    speed *= data.speedIncrease;
                     movementComponent.setSpeed(speed);
                 }
+
+                new BuffParticleEmitter(entity.scene, entity, "verticalParticle", data.duration, 100, 25)
             },
 
     /**
@@ -40,18 +44,18 @@ export const movementBuff = {
      * Divides the MovementComponent.speed by the provided multiplier to restore prior speed.
      * If no MovementComponent is found nothing will happen.
      * 
-     * @param {SpeedMultiplier} speedIncreased - Multiplier that was previously applied.
+     * @param {SpeedMultiplier} data - Multiplier that was previously applied.
      * @param {Phaser.GameObjects.GameObject} entity - Target entity which should expose getComponent().
      * @returns {void}
      */
-    remove: function (speedIncreased, entity){
+    remove: function (data, entity){
                 // Try get movement component
                 const movementComponent = entity.getComponent(MovementComponent);
                 if(movementComponent){
                     // Get movement component current speed
                     let speed = movementComponent.speed;
                     // Remove buff
-                    speed /= speedIncreased;
+                    speed /= data.speedIncrease;
                     movementComponent.setSpeed(speed);
                 }
             }

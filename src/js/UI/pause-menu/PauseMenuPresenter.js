@@ -23,6 +23,8 @@ export default class PauseMenuPresenter {
         // Main Menu 
         this.view.mainMenuButton.on("button-clicked", () => {
             EventBus.emit("playSound", "click");
+            // Notify when the player exits the game (scene onDestroy event is not enough because every room change destroys the previous room scene)
+            EventBus.emit("gameExited");
             // Останавливаем паузу и геймплей, переходим в главное меню
             this.view.scene.scene.stop("PauseMenu");
             this.view.scene.scene.stop("GameplayScene");

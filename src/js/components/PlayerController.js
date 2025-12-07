@@ -52,6 +52,7 @@ export class PlayerControllerComponent extends BaseControllerComponent {
 
         this.cameraRotation = 0;
         EventBus.on('cameraRotated', (rot)=>{this.cameraRotation=rot;});
+		this.aiming = false;
     }
 
     /**
@@ -67,16 +68,23 @@ export class PlayerControllerComponent extends BaseControllerComponent {
 
         const x = (this.keys.right.isDown ? 1 : 0) - (this.keys.left.isDown ? 1 : 0);
         const y = (this.keys.down.isDown ? 1 : 0) - (this.keys.up.isDown ? 1 : 0);
-            
+        EventBus.on("PlayerAiming",()=>{this.aiming = true});
+		EventBus.on("PlayerNotAiming",()=>{this.aiming = false});
+
         if(x != 0 || y != 0){
-            this.gameObject.play('player_walk', true);
+			if (this.aiming)
+				this.gameObject.play("player_walk",true);
+			else
+            	this.gameObject.play('player_walk_bow', true);
         }
         else{
-            this.gameObject.anims.stop();
-            this.frame = 0;
+			if (this.aiming)
+				this.gameObject.play("player_idle",true)
+			else
+				this.gameObject.play("player_idle_bow", true);
         }
 
-        if (x != 0) this.gameObject.flipX = x < 0;
+        if (x != 0) this.gameObject.flipX = x > 0;
 
         // Adjust for camera rotation
         const camRot = this.cameraRotation;

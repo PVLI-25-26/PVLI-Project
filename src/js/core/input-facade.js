@@ -105,7 +105,8 @@ export class InputFacade {
                 rotCamLeft: Phaser.Input.Keyboard.KeyCodes.Q,
                 rotCamRight: Phaser.Input.Keyboard.KeyCodes.E,
                 ability: Phaser.Input.Keyboard.KeyCodes.SPACE,
-                pickItem: Phaser.Input.Keyboard.KeyCodes.F
+                pickItem: Phaser.Input.Keyboard.KeyCodes.F,
+                switchArrows: Phaser.Input.Keyboard.KeyCodes.R,
             });
         }
 

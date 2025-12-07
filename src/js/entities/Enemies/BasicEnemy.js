@@ -3,6 +3,7 @@ import { BasicEnemyControllerComponent } from "../../components/BasicEnemyContro
 import { EventBus } from "../../core/event-bus.js";
 import { MovementComponent } from "../../components/Movement.js";
 import { DamageableComponent } from "../../components/DamageableComponent.js";
+import { BasicEnemyCombatControllerComponent } from "../../components/BasicEnemyCombatController.js";
 import { BillBoard } from "../../entities/BillBoard.js";
 import { getCustomTiledProperty } from "../../core/tiled-parser.js";
 import { BuffManagerComponent } from "../../components/BuffManagerComponent.js";
@@ -80,6 +81,8 @@ export class BasicEnemy extends BillBoard {
             { enemy: this, maxHP: this.config.maxHP });
 
         const buffManager = new BuffManagerComponent(this);
+
+        const combatController = new BasicEnemyCombatControllerComponent(this);
     }
 
     /**
