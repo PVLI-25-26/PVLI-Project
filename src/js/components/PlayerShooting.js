@@ -190,7 +190,7 @@ export class PlayerShootingComponent extends BaseComponent{
                 // Calculate direction of shot taking into account camera rotation
                 const directionShot = this.calculateShotDirection();
                 // Get current effect
-                const effect = Object.assign({}, this.#isSpecialArrowActive ? this.#equippedArrow : basicArrow);
+                const effect = structuredClone(this.#isSpecialArrowActive ? this.#equippedArrow : basicArrow);
                 effect.damage *= this.#damageMultiplier;
                 // Get arrow from pool and shoot
                 this.arrowShot.shoot(
