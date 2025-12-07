@@ -29,8 +29,9 @@ class SaveDataManager {
         this.saveData = JSON.parse(localStorage.getItem(this.currentSave)) || {};
     }
 
-    deleteData(){
-        localStorage.removeItem(this.currentSave);
+    deleteData(toDelete){
+
+        localStorage.removeItem(toDelete);
         localStorage.removeItem("currentSaveFile");
     }
 

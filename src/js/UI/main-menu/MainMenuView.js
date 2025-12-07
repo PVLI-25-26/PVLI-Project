@@ -51,6 +51,41 @@ export default class MainMenuView {
             });
         });
 
+        //SaveFiles
+
+        this.saveFiles = [];
+        let yOffset = 0;
+        for (let i = 0; i < 3; i++) 
+        {
+            this.saveFiles.push(new Button(this.scene, centerX-100, centerY-120+yOffset, null, 150, 50, {
+                text: localStorage.getItem(i) == null ? 'New Game' : 'Load Game ' + (i + 1),
+                style: {
+                    fontSize: 20,
+                    color: Colors.White,
+                    fontFamily: 'FableFont',
+                    padding: {x:20, y: 10}
+                }
+            }))
+            this.saveFiles[i].addInteraction((btn) => 
+            {
+                btn.on("pointerover", () => {
+                    btn.buttonText.setColor(Colors.Red);
+                    btn.invokeHover();
+                });
+                btn.on("pointerout", () => {
+                    btn.buttonText.setColor(Colors.White);
+                });
+                btn.on("pointerdown", () => {
+                    btn.invokeClick();
+                });                            
+            })
+            
+            this.saveFiles[i].setActive(false);
+            this.saveFiles[i].setVisible(false);
+
+            yOffset+=100;
+        }
+        /*
         this.saveFile1 = new Button(this.scene, centerX-100, centerY-120, null, 150, 50,
             {
                 text: localStorage.getItem(0) == null ? 'New Game': 'Load Game 1',
@@ -135,8 +170,61 @@ export default class MainMenuView {
         this.saveFile3.setActive(false);
         this.saveFile3.setVisible(false);
 
+        */
+
         //Delete data buttons
-        this.DeleteGame1 = new Button(this.scene, centerX+80, this.saveFile1.y, null, 20, 20,
+
+        this.deleteGame = [];
+
+        for(let i = 0; i < this.saveFiles.length; i++)
+        {
+            this.deleteGame.push(new Button(this.scene, centerX+80, this.saveFiles[i].y, null, 20, 20,
+            {
+                text: 'X',
+                style: {
+                    fontSize: 10,
+                    color: Colors.White,
+                    fontFamily: 'FableFont',
+                    padding: { x: 5, y: 5 },
+                }
+            },
+            {
+                texture: "UIbackground",
+                frame: 0,
+                leftWidth: 3,
+                rightWidth: 3,
+                topHeight: 3,
+                bottomHeight: 3
+            }
+        ).setScale(2)
+        );
+
+        this.deleteGame[i].addInteraction((btn) => {
+            btn.on("pointerover", () => {
+                btn.buttonText.setColor(Colors.Red);
+                btn.invokeHover();
+            });
+            btn.on("pointerout", () => {
+                btn.buttonText.setColor(Colors.White);
+            });
+            btn.on("pointerdown", () => {
+                btn.invokeClick();
+                this.saveFiles[i].buttonText.setText('New Game');
+
+                this.deleteGame[i].setActive(false);
+                this.deleteGame[i].setVisible(false);
+            });
+        });
+
+        this.deleteGame[i].setActive(false);
+        this.deleteGame[i].setVisible(false);
+
+        }
+
+
+/*
+
+        this.DeleteGame1 = new Button(this.scene, centerX+80, this.saveFiles[0].y, null, 20, 20,
             {
                 text: 'X',
                 style: {
@@ -166,16 +254,14 @@ export default class MainMenuView {
             });
             btn.on("pointerdown", () => {
                 btn.invokeClick();
-                this.saveFile1.buttonText.setText('New Game');
+                this.saveFiles[0].buttonText.setText('New Game');
 
                 this.DeleteGame1.setActive(false);
                 this.DeleteGame1.setVisible(false);
             });
         });
-
-
-        
-        this.DeleteGame2 = new Button(this.scene, centerX+80, this.saveFile2.y, null, 20, 20,
+ 
+        this.DeleteGame2 = new Button(this.scene, centerX+80, this.saveFiles[1].y, null, 20, 20,
             {
                 text: 'X',
                 style: {
@@ -205,19 +291,19 @@ export default class MainMenuView {
             });
             btn.on("pointerdown", () => {
                 btn.invokeClick();
-                this.saveFile2.buttonText.setText('New Game');
+                this.saveFiles[1].buttonText.setText('New Game');
 
                 this.DeleteGame2.setActive(false);
                 this.DeleteGame2.setVisible(false);
             });
         });
-
+*/
 
     
 
-        this.DeleteGame3 = new Button(this.scene, centerX+80, this.saveFile3.y, null, 20, 20,
+        this.DeleteGame3 = new Button(this.scene, centerX+150, this.saveFiles[2].y, null, 50, 20,
             {
-                text: 'X',
+                text: 'Save',
                 style: {
                     fontSize: 10,
                     color: Colors.White,
@@ -244,21 +330,9 @@ export default class MainMenuView {
             });
             btn.on("pointerdown", () => {
                 btn.invokeClick();
-                this.saveFile3.buttonText.setText('New Game');
-
-                this.DeleteGame3.setActive(false);
-                this.DeleteGame3.setVisible(false);
             });
         });
 
-        this.DeleteGame1.setActive(false);
-        this.DeleteGame1.setVisible(false);
-
-        this.DeleteGame2.setActive(false);
-        this.DeleteGame2.setVisible(false);
-
-        this.DeleteGame3.setActive(false);
-        this.DeleteGame3.setVisible(false);
      
 
 
@@ -421,6 +495,32 @@ export default class MainMenuView {
         this.startButton.setActive(!this.startButton.active);
         this.startButton.setVisible(!this.startButton.visible);
 
+
+        for(let i = 0 ; i< this.saveFiles.length ;i++){
+
+            this.saveFiles[i].setActive(!this.saveFiles[i].active);
+            this.saveFiles[i].setVisible(!this.saveFiles[i].visible);
+
+            if (localStorage.getItem(i) != null && this.saveFiles[i].active){
+                this.deleteGame[i].setActive(true);
+                this.deleteGame[i].setVisible(true);
+
+                //TO DO:poner cargar archivo como false
+                //      poner guardar archivo como true
+            }
+            else{
+                this.deleteGame[i].setActive(false);
+                this.deleteGame[i].setVisible(false);
+
+                //TO DO:poner cargar archivo como true
+                //      poner guardar archivo como false
+            }            
+        }
+
+        /*
+
+        
+
         this.saveFile1.setActive(!this.saveFile1.active);
         this.saveFile1.setVisible(!this.saveFile1.visible);
 
@@ -430,7 +530,18 @@ export default class MainMenuView {
         this.saveFile3.setActive(!this.saveFile3.active);
         this.saveFile3.setVisible(!this.saveFile3.visible);
 
-        if (localStorage.getItem(0) != null && this.saveFile1.active){
+        for(let i = 0 ; i< this.saveFiles.length ;i++){
+            if (localStorage.getItem(0) != null && this.saveFiles[0].active){
+            this.DeleteGame1.setActive(true);
+                    this.DeleteGame1.setVisible(true);
+            }
+            else{
+                this.DeleteGame1.setActive(false);
+                this.DeleteGame1.setVisible(false);
+            }
+        }
+       
+        if (localStorage.getItem(0) != null && this.saveFiles[0].active){
         this.DeleteGame1.setActive(true);
         this.DeleteGame1.setVisible(true);
         }
@@ -440,7 +551,7 @@ export default class MainMenuView {
         }
 
 
-        if (localStorage.getItem(1) != null && this.saveFile2.active){
+        if (localStorage.getItem(1) != null && this.saveFiles[1].active){
         this.DeleteGame2.setActive(true);
         this.DeleteGame2.setVisible(true);
         }
@@ -450,7 +561,7 @@ export default class MainMenuView {
         }
         
         
-        if (localStorage.getItem(2) != null && this.saveFile3.active){
+        if (localStorage.getItem(2) != null && this.saveFiles[2].active){
         this.DeleteGame3.setActive(true);
         this.DeleteGame3.setVisible(true);
         }
@@ -458,5 +569,6 @@ export default class MainMenuView {
         this.DeleteGame3.setActive(false);
         this.DeleteGame3.setVisible(false);
         }
+         */
     }
 } 

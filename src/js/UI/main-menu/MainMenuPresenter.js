@@ -65,9 +65,23 @@ export default class MainMenuPresenter {
 
 
         // Saved files
+        
+        this.view.saveFiles.forEach((element, index) => {
+            element.on("button-clicked", () => {
+                EventBus.emit('stopMusic');
+                EventBus.emit("playSound", "click");
+                saveDataManager.changeCurrentSave(index);
+                this.view.scene.scene.start("GameplayScene", {playerSpawn: {x: 0, y:0}});
+            // Player always starts from hub
+                this.view.scene.plugins.get('dungeon').returnToHub();
+            });
+            element.on("button-hovered", () => {
+                EventBus.emit("playSound", "hover");
+            })
+        });
 
-
-        this.view.saveFile1.on("button-clicked", () => {
+/*
+        this.view.saveFiles[0].on("button-clicked", () => {
             EventBus.emit('stopMusic');
             EventBus.emit("playSound", "click");
             saveDataManager.changeCurrentSave(0);
@@ -75,11 +89,11 @@ export default class MainMenuPresenter {
             // Player always starts from hub
             this.view.scene.plugins.get('dungeon').returnToHub();
         });
-        this.view.saveFile1.on("button-hovered", () => {
+        this.view.saveFiles[0].on("button-hovered", () => {
             EventBus.emit("playSound", "hover");
         });
 
-        this.view.saveFile2.on("button-clicked", () => {
+        this.view.saveFiles[1].on("button-clicked", () => {
             EventBus.emit('stopMusic');
             EventBus.emit("playSound", "click");
             saveDataManager.changeCurrentSave(1);
@@ -87,11 +101,11 @@ export default class MainMenuPresenter {
             // Player always starts from hub
             this.view.scene.plugins.get('dungeon').returnToHub();
         });
-        this.view.saveFile2.on("button-hovered", () => {
+        this.view.saveFiles[1].on("button-hovered", () => {
             EventBus.emit("playSound", "hover");
         });
 
-        this.view.saveFile3.on("button-clicked", () => {
+        this.view.saveFiles[2].on("button-clicked", () => {
             EventBus.emit('stopMusic');
             EventBus.emit("playSound", "click");
             saveDataManager.changeCurrentSave(2);
@@ -99,20 +113,64 @@ export default class MainMenuPresenter {
             // Player always starts from hub
             this.view.scene.plugins.get('dungeon').returnToHub();
         });
-        this.view.saveFile3.on("button-hovered", () => {
+        this.view.saveFiles[2].on("button-hovered", () => {
+            EventBus.emit("playSound", "hover");
+        });
+        //*/
+        //delete Files 
+
+        this.view.deleteGame.forEach((element,index)=>{
+            element.on("button-clicked", () => {
+                EventBus.emit('stopMusic');
+                EventBus.emit("playSound", "click");
+                saveDataManager.deleteData(index);
+            });
+            element.on("button-hovered", () => {
+                EventBus.emit("playSound", "hover");
+            });
+        }
+        );
+
+/*
+
+        this.view.DeleteGame1.on("button-clicked", () => {
+            EventBus.emit('stopMusic');
+            EventBus.emit("playSound", "click");
+            saveDataManager.deleteData(0);
+        });
+        this.view.DeleteGame1.on("button-hovered", () => {
             EventBus.emit("playSound", "hover");
         });
 
-        //delete Files DeleteGame3
+        this.view.DeleteGame2.on("button-clicked", () => {
+            EventBus.emit('stopMusic');
+            EventBus.emit("playSound", "click");
+            saveDataManager.deleteData(1);
+        });
+        this.view.DeleteGame2.on("button-hovered", () => {
+            EventBus.emit("playSound", "hover");
+        });*/
+
         this.view.DeleteGame3.on("button-clicked", () => {
             EventBus.emit('stopMusic');
             EventBus.emit("playSound", "click");
-            saveDataManager.deleteData(2);
+            //saveDataManager.deleteData(2);
+
+            //saveDataManager.saveDataDocument();
+
+            const a = document.createElement("a");
+            const file = new Blob([JSON.stringify({hola:"test"})], { type: "text/plain" });
+            a.href = URL.createObjectURL(file);
+            a.download = "test.json";
+            a.click();
         });
         this.view.DeleteGame3.on("button-hovered", () => {
             EventBus.emit("playSound", "hover");
         });
+
+
     }
+        
 
     setValuesFromModel() {
         const musicVolume = this.model.musicVolume;
