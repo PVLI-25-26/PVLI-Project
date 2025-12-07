@@ -18,9 +18,9 @@ export const dashBuff = {
      * @param {Phaser.GameObjects.GameObject} entity - Entity dashing (only the player in theory).
      * @returns {void}
      */
-    apply: function (dashSpeed, entity){
+    apply: function (values, entity){
                 // Only player dashes (currently)
-                EventBus.emit('playerDash', dashSpeed);
+                EventBus.emit('playerDash', values.speedIncrease);
                 entity.setBlendMode(Phaser.BlendModes.ADD);
                 entity.setTint(Colors.OrangeHex);
                 const ghostCopy = new DepthSortedSprite(entity.scene, entity.x, entity.y, entity.texture.key, 0)
@@ -47,7 +47,7 @@ export const dashBuff = {
      * @param {Phaser.GameObjects.GameObject} entity - Entity dashing (only the player in theory).
      * @returns {void}
      */
-    remove: function (dashSpeed, entity){
+    remove: function (values, entity){
                 EventBus.emit('playerDashEnd');
                 entity.setTint(0xFFFFFF);
                 entity.setBlendMode(Phaser.BlendModes.NORMAL);

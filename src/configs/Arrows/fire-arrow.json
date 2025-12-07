@@ -6,8 +6,7 @@
     "debuff": {
         "type": "burning",
         "value":{
-            "damage": 1,
-            "duration": 5000
+            "damage": 1
         },
         "duration": 5000
     },

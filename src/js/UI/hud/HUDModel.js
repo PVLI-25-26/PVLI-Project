@@ -17,7 +17,7 @@ export class HudModel {
         EventBus.on('entityMoved', this.onEntityMoved, this);
         EventBus.on('entityDamaged', this.onEntityDamaged, this);
         EventBus.on('entityHealed', this.onEntityHealed, this);
-        EventBus.on('entityDied', (entity) => this.onEntityDied(entity), this);
+        EventBus.on('entityDied', this.onEntityDied, this);
 
         // Gold
         EventBus.on('playerGoldChanged', this.onPlayerGoldChanged, this);
@@ -74,7 +74,7 @@ export class HudModel {
         if (entity.type == 'player') {
             this.setPlayerHealth(this.playerCurrentHP - data.amount);
         }
-        if (entity.type == 'enemy') {
+        if (entity.type == 'enemy' && this.enemies.has(entity)) {
             this.setEnemyHealth(entity, this.enemies.get(entity).currentHP - data.amount);
         }
     }

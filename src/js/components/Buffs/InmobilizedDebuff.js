@@ -16,7 +16,7 @@ export const inmobilizedDebuff = {
      * @param {Phaser.GameObjects.GameObject} entity - Entity Inmobilized
      * @returns {void}
      */
-    apply: function (fireData, entity){
+    apply: function (value, entity){
         // Try get movement component
         const movementComponent = entity.getComponent(MovementComponent);
         if(movementComponent){
@@ -35,7 +35,7 @@ export const inmobilizedDebuff = {
      * @param {Phaser.GameObjects.GameObject} entity - Entity Inmobilized
      * @returns {void}
      */
-    remove: function (fireDamage, entity){
+    remove: function (value, entity){
         // Try get movement component
         const movementComponent = entity.getComponent(MovementComponent);
         if(movementComponent){

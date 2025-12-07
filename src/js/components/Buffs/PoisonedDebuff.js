@@ -1,4 +1,5 @@
 import { EventBus } from "../../core/event-bus";
+import { BuffParticleEmitter } from "../../entities/BuffParticleEmitter";
 
 /**
  * poisoned debuff implementation.
@@ -27,6 +28,10 @@ export const poisonedDebuff = {
         });
         // Save the timer in the poison data to remove later
         poisonData.poisonTimeEvent = timeEvent;
+
+        const particles = new BuffParticleEmitter(entity.scene, entity, 'poisonParticle', poisonData.duration, 50, 25);
+        // Cant save the object because it causes a circular definition error when saving buff in JSON
+        poisonData.removeParticles = ()=>{particles.remove()};
     },
 
     /**
@@ -39,5 +44,6 @@ export const poisonedDebuff = {
     remove: function (poisonData, entity){
         // Remove poison damage
         poisonData.poisonTimeEvent.remove();
+        poisonData.removeParticles();
     }
 }

@@ -50,5 +50,10 @@
 	{"key": "Player_animation", "type": "spritesheet", "file": "assets/sprites/Player/PlayerAnimations.png", "settings":{"frameWidth":21, "frameHeight":19}},
 
     {"key": "dash", "type": "image", "file": "assets/sprites/Abilities/dash.png", "settings":{}},
-    {"key": "forceField", "type": "image", "file": "assets/sprites/Abilities/forcefield.png", "settings":{}}
+    {"key": "forceField", "type": "image", "file": "assets/sprites/Abilities/forcefield.png", "settings":{}},
+
+    {"key": "plusParticle", "type": "image", "file": "assets/sprites/Particles/PlusParticle.png", "settings":{}},
+    {"key": "poisonParticle", "type": "image", "file": "assets/sprites/Particles/PoisonParticle.png", "settings":{}},
+    {"key": "verticalParticle", "type": "image", "file": "assets/sprites/Particles/VerticalParticle.png", "settings":{}},
+    {"key": "fireParticle", "type": "spritesheet", "file": "assets/sprites/Particles/FireParticle.png", "settings":{"frameWidth":8}}
 ]

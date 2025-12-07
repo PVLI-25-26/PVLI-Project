@@ -5,7 +5,7 @@
     "duration": 100,
     "debuff": {
         "type": "inmobilized",
-        "value": 0,
+        "value": {},
         "duration": 5000
     },
     "gold": 10
