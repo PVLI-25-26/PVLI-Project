@@ -71,9 +71,7 @@ export class PoisonCloud{
         poisonzone.setCollidesWith([this.scene.playerCategory, this.scene.enemiesCategory]);
         poisonzone.setOnCollide((pair)=>{
             const entity = pair.bodyA.gameObject;
-            // Copy poison effect, to give each enemy a different one
-            const poison = structuredClone(poisonEffect);
-            entity.emit('buffApplied', poison);
+            entity.emit('buffApplied', poisonEffect);
         });
         poisonzone.setOnCollideEnd((pair)=>{
             const entity = pair.bodyA.gameObject;

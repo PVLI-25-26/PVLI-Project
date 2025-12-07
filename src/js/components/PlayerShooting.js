@@ -190,7 +190,8 @@ export class PlayerShootingComponent extends BaseComponent{
                 // Calculate direction of shot taking into account camera rotation
                 const directionShot = this.calculateShotDirection();
                 // Get current effect
-                const effect = structuredClone(this.#isSpecialArrowActive ? this.#equippedArrow : basicArrow);
+                // Make shallow copy of effect, no need to make deep copy (it is done in buffManager) the reason we make shallow copy is to not share the attacker and reciever properties added later in the arrow object.
+                const effect = Object.assign({}, this.#isSpecialArrowActive ? this.#equippedArrow : basicArrow);
                 effect.damage *= this.#damageMultiplier;
                 // Get arrow from pool and shoot
                 this.arrowShot.shoot(
