@@ -23,6 +23,21 @@ export default events  = {
 	BUY_GAS_ARROW : () =>{
 		EventBus.emit("arrowBought", GasArrow);
 		EventBus.emit("StopDialogue");
+	},
+	ACCEPT_MISSION: ()=>{
+		// Missions are accepted automatically
+		EventBus.emit("StopDialogue");
+	},
+	REJECT_MISSION: ()=>{
+		EventBus.emit("missionRejected");
+		EventBus.emit("StopDialogue");
+	},
+	REJECT_REWARD: ()=>{
+		EventBus.emit("StopDialogue");
+	},
+	RECIEVE_50COINS: ()=>{
+		EventBus.emit("addGold", 50);
+		EventBus.emit("StopDialogue");
 	}
 }
 

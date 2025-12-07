@@ -330,7 +330,7 @@
          "name":"Enemies",
          "objects":[
                 {
-                 "id":78,
+                 "id":147,
                  "name":"Enemy 2",
                  "properties":[
                         {
@@ -345,46 +345,8 @@
                         }],
                  "template":"..\/Templates\/EnemyTemplate.tx",
                  "type":"basic",
-                 "x":218.666666666667,
-                 "y":-421.333333333333
-                }, 
-                {
-                 "id":84,
-                 "name":"Enemy 3",
-                 "properties":[
-                        {
-                         "name":"PatrolRoute",
-                         "type":"object",
-                         "value":145
-                        }, 
-                        {
-                         "name":"state",
-                         "type":"string",
-                         "value":"patrol"
-                        }],
-                 "template":"..\/Templates\/EnemyTemplate.tx",
-                 "type":"basic",
-                 "x":24,
-                 "y":46.6666666666666
-                }, 
-                {
-                 "id":146,
-                 "name":"Enemy 1",
-                 "properties":[
-                        {
-                         "name":"PatrolRoute",
-                         "type":"object",
-                         "value":145
-                        }, 
-                        {
-                         "name":"state",
-                         "type":"string",
-                         "value":"patrol"
-                        }],
-                 "template":"..\/Templates\/EnemyTemplate.tx",
-                 "type":"basic",
-                 "x":-194.666666666667,
-                 "y":232
+                 "x":220,
+                 "y":-426.666666666667
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -532,7 +494,7 @@
          "y":0
         }],
  "nextlayerid":14,
- "nextobjectid":147,
+ "nextobjectid":148,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.11.2",

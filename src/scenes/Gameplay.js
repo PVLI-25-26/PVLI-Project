@@ -15,10 +15,11 @@ import NPCsDialogueModel from "../js/UI/NPCsDialogue/NPCsDialogueModel.js";
 import NPCsDialoguePresenter from "../js/UI/NPCsDialogue/NPCsDialoguePresenter.js";
 import NPCsDialogueView from "../js/UI/NPCsDialogue/NPCsDialogueView.js";
 
-import dialogueTest from "../configs/Dialogues/NPCsDialogue-config.json"
+import dialoguesConfig from "../configs/Dialogues/NPCsDialogue-config.json"
 import dialogueEvents from "../configs/Dialogues/NPCsDialogue-buttonEvents.js"
 import { InputFacade } from "../js/core/input-facade.js";
 import saveDataManager from "../js/core/save-data-manager.js";
+import missionManager from "../js/core/mission-manager.js";
 
 
 export default class GameplayScene extends Phaser.Scene {
@@ -43,11 +44,14 @@ export default class GameplayScene extends Phaser.Scene {
         this.inputFacade = new InputFacade(this);
         this.inputFacade.resetPointerLockCount();
 
+        // Resubscribe to events (events are currently cleared every time)
+        missionManager.subscribeToEvents(this);
+
         const model = new HudModel();
         const view = new HudView(this);
         const presenter = new HudPresenter(view, model);
         
-        const NPCmodel = new NPCsDialogueModel(dialogueTest,dialogueEvents);
+        const NPCmodel = new NPCsDialogueModel(dialoguesConfig,dialogueEvents);
         const NPCview = new NPCsDialogueView(this);
         const NPCpresenter = new NPCsDialoguePresenter(NPCview,NPCmodel)
 

@@ -197,5 +197,118 @@
 				"color" : "Red"
 			}
 		]
-	}
+	},
+
+
+
+
+
+
+
+    "noMoreMissions":{
+		"dialogue" : [
+			{
+				"text": "Lo siento, no tengo más misiones para ti. Puedes comprar un item si quieres.",
+				"options":[0]
+			}
+		],
+		"speed" : 1,
+		"npcName" : "Melinoe",
+		"userOptions":[
+			{
+				"label" : "Exit",
+				"event" : "END",
+				"color" : "Red"
+			}
+		]
+    },
+
+    "gather3ItemsStart":{
+		"dialogue" : [
+			{
+				"text": "Recoge 3 items cualesquiera. Si lo consigues te dare una flecha de gas.",
+				"options":[0,1]
+			}
+		],
+		"speed" : 1,
+		"npcName" : "Melinoe",
+		"userOptions":[
+			{
+				"label" : "Accept",
+				"event" : "ACCEPT_MISSION",
+				"color" : "Green"
+			},
+			{
+				"label" : "Reject",
+				"event" : "REJECT_MISSION",
+				"color" : "Red"
+			}
+		]
+    },
+    "gather3ItemsEnd":{
+		"dialogue" : [
+			{
+				"text": "Veo que has conseguido recoger 3 items, recoge tu recompensa.",
+				"options":[0,1]
+			}
+		],
+		"speed" : 1,
+		"npcName" : "Melinoe",
+		"userOptions":[
+			{
+				"label" : "Accept",
+				"event" : "BUY_GAS_ARROW",
+				"color" : "Green"
+			},
+			{
+				"label" : "Reject",
+				"event" : "END",
+				"color" : "Red"
+			}
+		]
+    },
+    "kill2EnemiesStart":{
+		"dialogue" : [
+			{
+				"text": "Necesito que mates a 2 enemigos. ¿Podrías hacerlo? Te recompensare con monedas.",
+				"options":[0,1]
+			}
+		],
+		"speed" : 1,
+		"npcName" : "Melinoe",
+		"userOptions":[
+			{
+				"label" : "Accept",
+				"event" : "ACCEPT_MISSION",
+				"color" : "Green"
+			},
+			{
+				"label" : "Reject",
+				"event" : "REJECT_MISSION",
+				"color" : "Red"
+			}
+		]
+    },
+    "kill2EnemiesEnd":{
+		"dialogue" : [
+			{
+				"text": "¡Has matado 2 enemigos! Toma, las monedas prometidas",
+				"options":[0,1]
+			}
+		],
+		"speed" : 1,
+		"npcName" : "Melinoe",
+		"userOptions":[
+			{
+				"label" : "Accept",
+				"event" : "RECIEVE_50COINS",
+				"color" : "Green"
+			},
+			{
+				"label" : "Reject",
+				"event" : "END",
+				"color" : "Red"
+			}
+		]
+    }
 }   

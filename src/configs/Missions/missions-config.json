@@ -1,0 +1,16 @@
+[
+    {
+        "missionStartDialogue": "gather3ItemsStart",
+        "completeConditions": [
+            {"property": "itemsGathered", "op": ">", "amount":2}
+        ],
+        "missionClaimDialogue": "gather3ItemsEnd"
+    },
+    {
+        "missionStartDialogue": "kill2EnemiesStart",
+        "completeConditions": [
+            {"property": "enemiesKilled", "op": ">", "amount":1}
+        ],
+        "missionClaimDialogue": "kill2EnemiesEnd"
+    }
+]

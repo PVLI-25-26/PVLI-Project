@@ -1,3 +1,4 @@
+
 /**
  * Cloud that applies poison (or anything actually) to all enemies in an area
  */
@@ -70,7 +71,9 @@ export class PoisonCloud{
         poisonzone.setCollidesWith([this.scene.playerCategory, this.scene.enemiesCategory]);
         poisonzone.setOnCollide((pair)=>{
             const entity = pair.bodyA.gameObject;
-            entity.emit('buffApplied', poisonEffect);
+            // Copy poison effect, to give each enemy a different one
+            const poison = structuredClone(poisonEffect);
+            entity.emit('buffApplied', poison);
         });
         poisonzone.setOnCollideEnd((pair)=>{
             const entity = pair.bodyA.gameObject;

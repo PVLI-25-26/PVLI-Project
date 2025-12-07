@@ -110,7 +110,6 @@ export class BuffManagerComponent extends BaseComponent{
         const currentBuff = this.#buffs.get(buffData.type);
         // Undo current buff effects
         buffTypeToBuffLogic[buffData.type].remove(currentBuff.value, this.gameObject);
-        console.log();
         // Merge both buffs
         currentBuff.timer.elapsed -= buffData.duration;
         if (currentBuff.value < buffData.value) currentBuff.value = buffData.value;
@@ -145,6 +144,7 @@ export class BuffManagerComponent extends BaseComponent{
             value: buffData.value,
             timer: buffTimer
         };
+        appliedBuff.id = buffData.id;
 
         // Save buff in buffs array
         this.#buffs.set(appliedBuff.type, appliedBuff);
@@ -168,6 +168,5 @@ export class BuffManagerComponent extends BaseComponent{
         for(const buff of this.#buffs.keys()){
             this.removeBuff(buff);
         }
-        console.log(this.#buffs);
     }
 }

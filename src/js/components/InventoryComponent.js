@@ -50,6 +50,7 @@ export class InventoryComponent extends BaseComponent{
             }
         }, this);
         EventBus.on('removeGold', this.removeGold, this);
+        EventBus.on('addGold', this.addGold, this);
 
         // For each item player can buy, check if there is enought gold, if there is, equip the item        
         EventBus.on('abilityBought', (ability)=>{
@@ -139,6 +140,7 @@ export class InventoryComponent extends BaseComponent{
      * @returns {void}
      */
     removeItem(idx){
+        EventBus.emit('itemConsumed', this.#playerInventory[idx]);
         // Get item buff data
         const itemBuffData = createItemBuff(this.#playerInventory[idx]);
         // If item has buff associated, apply the buff

@@ -82,6 +82,7 @@
             "isStatic": true,
             "isSensor": true
         },
+        "givesMissions": true,
         "dialogueName": "melinoe-hub"
     },
 	{

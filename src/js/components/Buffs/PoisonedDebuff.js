@@ -17,6 +17,7 @@ export const poisonedDebuff = {
      * @returns {void}
      */
     apply: function (poisonData, entity){
+        
         const timeEvent = entity.scene.time.addEvent({
             delay: 1000,
             callback: ()=>{
@@ -43,7 +44,7 @@ export const poisonedDebuff = {
      */
     remove: function (poisonData, entity){
         // Remove poison damage
-        poisonData.poisonTimeEvent.remove();
+        poisonData.poisonTimeEvent.destroy();
         poisonData.removeParticles();
     }
 }
