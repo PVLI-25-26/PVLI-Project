@@ -77,6 +77,14 @@
                  "type":"health-flower",
                  "x":-63,
                  "y":-281
+                }, 
+                {
+                 "id":115,
+                 "name":"Damage Rock",
+                 "template":"..\/Templates\/ItemTemplate.tx",
+                 "type":"damage-rock",
+                 "x":100,
+                 "y":-289
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -237,7 +245,7 @@
          "y":0
         }],
  "nextlayerid":12,
- "nextobjectid":115,
+ "nextobjectid":116,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.11.2",

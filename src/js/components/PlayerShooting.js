@@ -77,6 +77,11 @@ export class PlayerShootingComponent extends BaseComponent{
     #isSpecialArrowActive = false;
 
     /**
+     * @type {Number} Factor multiplied to the arrow effect as extra damage
+     */
+    #damageMultiplier = 1;
+
+    /**
      * Creates a new PlayerShootingComponent to handle player shooting.
      * 
      * @param {Object} gameObject Gameobject to which this component is attached.
@@ -184,7 +189,9 @@ export class PlayerShootingComponent extends BaseComponent{
             {   
                 // Calculate direction of shot taking into account camera rotation
                 const directionShot = this.calculateShotDirection();
+                // Get current effect
                 const effect = Object.assign({}, this.#isSpecialArrowActive ? this.#equippedArrow : basicArrow);
+                effect.damage *= this.#damageMultiplier;
                 // Get arrow from pool and shoot
                 this.arrowShot.shoot(
                     this.#equippedTrajectory,
@@ -312,5 +319,13 @@ export class PlayerShootingComponent extends BaseComponent{
     resetArrowAndTrajectory() {
         EventBus.emit('arrowEquipped', basicArrow);
         this.#equippedTrajectory = new BasicTrajectory(0.05, this.gameObject.scene);
+    }
+
+    getDamageMultiplier(){
+        return this.#damageMultiplier;
+    }
+
+    setDamageMultiplier(value){
+        this.#damageMultiplier = value;
     }
 } 

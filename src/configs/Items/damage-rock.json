@@ -1,0 +1,105 @@
+[
+    {
+        "billboardConfig":{
+            "texture":"damageRocks",
+            "scale":3,
+            "frame":0,
+            "offsetX": 0.5,
+            "offsetY": 1
+        },
+        "physicsConfig":{
+            "shape": {
+                "type": "rectangle",
+                "width": 10,
+                "height": 10
+            },
+            "isStatic": true,
+            "isSensor": true
+        },
+        "displayData":{
+            "name": "Power Rock I",
+            "description": "Blah blah blah",
+            "image": "damageRocks",
+            "frame": 0
+        },
+        "buffData":{
+            "type": "power",
+            "value": {
+                "damageMult": 1.50
+            },
+            "duration": 5000
+        },
+        "gold": 10,
+        "collectSound": "itemCollected"
+    },
+    {
+        "billboardConfig":{
+            "texture":"damageRocks",
+            "scale":3,
+            "frame":1,
+            "offsetX": 0.5,
+            "offsetY": 1
+        },
+        "physicsConfig":{
+            "shape": {
+                "type": "rectangle",
+                "width": 10,
+                "height": 10
+            },
+            "isStatic": true,
+            "isSensor": true
+        },
+        "displayData":{
+            "name": "Power Rock II",
+            "description": "Blah blah blah",
+            "image": "damageRocks",
+            "frame": 1
+        },
+        "buffData":{
+            "type": "power",
+            "value": {
+                "damageMult": 2
+            },
+            "duration": 5000
+        },
+        "gold": 20,
+        "collectSound": "itemCollected",
+        "offsetX": 0.5,
+        "offsetY": 1
+    },
+    {
+        "billboardConfig":{
+            "texture":"damageRocks",
+            "scale":3,
+            "frame":2,
+            "offsetX": 0.5,
+            "offsetY": 1
+        },
+        "physicsConfig":{
+            "shape": {
+                "type": "rectangle",
+                "width": 10,
+                "height": 10
+            },
+            "isStatic": true,
+            "isSensor": true
+        },
+        "displayData":{
+            "name": "Power Rock III",
+            "description": "Blah blah blah",
+            "image": "damageRocks",
+            "frame": 2
+        },
+        "buffData":{
+            "type": "power",
+            "value": {
+                "damageMult": 3
+            },
+            "duration": 5000
+        },
+        "gold": 30,
+        "collectSound": "itemCollected",
+        "offsetX": 0.5,
+        "offsetY": 1
+    }
+]

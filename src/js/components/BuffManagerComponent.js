@@ -10,6 +10,7 @@ import { invisibilityBuff } from "./Buffs/InvisiblityBuff";
 
 import { movementBuff } from "./Buffs/MovementBuff";
 import { healingBuff } from "./Buffs/HealingBuff";
+import { powerBuff } from "./Buffs/PowerBuff";
 
 
 /**
@@ -41,7 +42,8 @@ const buffTypeToBuffLogic = {
     burning: burningDebuff,
     inmobilized: inmobilizedDebuff,
     poisoned: poisonedDebuff,
-    healing: healingBuff
+    healing: healingBuff,
+    power: powerBuff
     // ...
 }
 

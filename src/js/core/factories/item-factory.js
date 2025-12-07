@@ -5,6 +5,7 @@ import quesoConfig from '../../../configs/Items/queso-config.json'
 import redVialConfig from '../../../configs/Items/red-vial-config.json'
 import healthFlowerConfig from '../../../configs/Items/health-flower-config.json'
 import speedVaseConfig from '../../../configs/Items/speed-vase-config.json'
+import damageRockConfig from '../../../configs/Items/damage-rock.json'
 import { Item } from '../../entities/Item';
 import { ItemDisplay } from '../../UI/inventory-menu/ItemDisplay';
 
@@ -15,7 +16,8 @@ const ITEM_CONFIGS ={
     "queso": quesoConfig,
     "red-vial": redVialConfig,
     "health-flower": healthFlowerConfig,
-    "speed-vase": speedVaseConfig
+    "speed-vase": speedVaseConfig,
+    "damage-rock": damageRockConfig,
 }
 
 export class ItemKey{
