@@ -13,12 +13,14 @@ export default class MainMenuPresenter {
     }
 
     subscribeToViewEvents() {
-        this.view.startButton.on("button-clicked", () => {
+
+
+        this.view.playButton.on("button-clicked", () => {
             EventBus.emit('stopMusic');
             EventBus.emit("playSound", "click");
             
         });
-        this.view.startButton.on("button-hovered", () => {
+        this.view.playButton.on("button-hovered", () => {
             EventBus.emit("playSound", "hover");
         });
         
@@ -64,9 +66,9 @@ export default class MainMenuPresenter {
         });
 
 
-        // Saved files
+        // Game Slots
         
-        this.view.saveFiles.forEach((element, index) => {
+        this.view.gameSlot.forEach((element, index) => {
             element.on("button-clicked", () => {
                 EventBus.emit('stopMusic');
                 EventBus.emit("playSound", "click");
@@ -80,43 +82,8 @@ export default class MainMenuPresenter {
             })
         });
 
-/*
-        this.view.saveFiles[0].on("button-clicked", () => {
-            EventBus.emit('stopMusic');
-            EventBus.emit("playSound", "click");
-            saveDataManager.changeCurrentSave(0);
-            this.view.scene.scene.start("GameplayScene", {playerSpawn: {x: 0, y:0}});
-            // Player always starts from hub
-            this.view.scene.plugins.get('dungeon').returnToHub();
-        });
-        this.view.saveFiles[0].on("button-hovered", () => {
-            EventBus.emit("playSound", "hover");
-        });
 
-        this.view.saveFiles[1].on("button-clicked", () => {
-            EventBus.emit('stopMusic');
-            EventBus.emit("playSound", "click");
-            saveDataManager.changeCurrentSave(1);
-            this.view.scene.scene.start("GameplayScene", {playerSpawn: {x: 0, y:0}});
-            // Player always starts from hub
-            this.view.scene.plugins.get('dungeon').returnToHub();
-        });
-        this.view.saveFiles[1].on("button-hovered", () => {
-            EventBus.emit("playSound", "hover");
-        });
 
-        this.view.saveFiles[2].on("button-clicked", () => {
-            EventBus.emit('stopMusic');
-            EventBus.emit("playSound", "click");
-            saveDataManager.changeCurrentSave(2);
-            this.view.scene.scene.start("GameplayScene", {playerSpawn: {x: 0, y:0}});
-            // Player always starts from hub
-            this.view.scene.plugins.get('dungeon').returnToHub();
-        });
-        this.view.saveFiles[2].on("button-hovered", () => {
-            EventBus.emit("playSound", "hover");
-        });
-        //*/
         //delete Files 
 
         this.view.deleteGame.forEach((element,index)=>{
@@ -128,47 +95,32 @@ export default class MainMenuPresenter {
             element.on("button-hovered", () => {
                 EventBus.emit("playSound", "hover");
             });
-        }
-        );
-
-/*
-
-        this.view.DeleteGame1.on("button-clicked", () => {
-            EventBus.emit('stopMusic');
-            EventBus.emit("playSound", "click");
-            saveDataManager.deleteData(0);
         });
-        this.view.DeleteGame1.on("button-hovered", () => {
-            EventBus.emit("playSound", "hover");
-        });
-
-        this.view.DeleteGame2.on("button-clicked", () => {
-            EventBus.emit('stopMusic');
-            EventBus.emit("playSound", "click");
-            saveDataManager.deleteData(1);
-        });
-        this.view.DeleteGame2.on("button-hovered", () => {
-            EventBus.emit("playSound", "hover");
-        });*/
-
-        this.view.DeleteGame3.on("button-clicked", () => {
-            EventBus.emit('stopMusic');
-            EventBus.emit("playSound", "click");
-            //saveDataManager.deleteData(2);
-
-            //saveDataManager.saveDataDocument();
-
-            const a = document.createElement("a");
-            const file = new Blob([JSON.stringify({hola:"test"})], { type: "text/plain" });
-            a.href = URL.createObjectURL(file);
-            a.download = "test.json";
-            a.click();
-        });
-        this.view.DeleteGame3.on("button-hovered", () => {
-            EventBus.emit("playSound", "hover");
+        
+        //Save Game Files
+        this.view.saveGame.forEach((element,index)=>{
+            element.on("button-clicked", () => {
+                EventBus.emit('stopMusic');
+                EventBus.emit("playSound", "click");
+                saveDataManager.saveDataDocument(index);;
+            });
+            element.on("button-hovered", () => {
+                EventBus.emit("playSound", "hover");
+            });
         });
 
-
+        //Load Game Files
+        this.view.loadGameFile.forEach((element,index)=>{
+            element.on("button-clicked", () => {
+                EventBus.emit('stopMusic');
+                EventBus.emit("playSound", "click");
+                saveDataManager.loadDataDocument(index);;
+            });
+            element.on("button-hovered", () => {
+                EventBus.emit("playSound", "hover");
+            });
+        });
+        
     }
         
 

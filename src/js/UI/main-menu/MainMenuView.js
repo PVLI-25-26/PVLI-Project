@@ -5,7 +5,7 @@ import Colors from "../../../configs/colors-config.js"
 export default class MainMenuView {
     constructor(scene) {
         this.scene = scene;
-        this.startButton = null;
+        this.playButton = null;
         this.musicSlider = null;
         this.sfxSlider = null;
         
@@ -26,7 +26,7 @@ export default class MainMenuView {
         const centerX = this.scene.scale.width / 2;
         const centerY = this.scene.scale.height / 2;
 
-        this.startButton = new Button(this.scene, centerX-100, centerY-25, null, 150, 50,
+        this.playButton = new Button(this.scene, centerX-100, centerY-25, null, 150, 50,
             {
                 text: 'Play',
                 style: {
@@ -37,7 +37,7 @@ export default class MainMenuView {
                 }
             }
         );
-        this.startButton.addInteraction((btn) => {
+        this.playButton.addInteraction((btn) => {
             btn.on("pointerover", () => {
                 btn.buttonText.setColor(Colors.Red);
                 btn.invokeHover();
@@ -51,13 +51,13 @@ export default class MainMenuView {
             });
         });
 
-        //SaveFiles
+        //Game Slots Button
 
-        this.saveFiles = [];
+        this.gameSlot = [];
         let yOffset = 0;
         for (let i = 0; i < 3; i++) 
         {
-            this.saveFiles.push(new Button(this.scene, centerX-100, centerY-120+yOffset, null, 150, 50, {
+            this.gameSlot.push(new Button(this.scene, centerX-100, centerY-120+yOffset, null, 150, 50, {
                 text: localStorage.getItem(i) == null ? 'New Game' : 'Load Game ' + (i + 1),
                 style: {
                     fontSize: 20,
@@ -66,7 +66,7 @@ export default class MainMenuView {
                     padding: {x:20, y: 10}
                 }
             }))
-            this.saveFiles[i].addInteraction((btn) => 
+            this.gameSlot[i].addInteraction((btn) => 
             {
                 btn.on("pointerover", () => {
                     btn.buttonText.setColor(Colors.Red);
@@ -80,105 +80,19 @@ export default class MainMenuView {
                 });                            
             })
             
-            this.saveFiles[i].setActive(false);
-            this.saveFiles[i].setVisible(false);
+            this.gameSlot[i].setActive(false);
+            this.gameSlot[i].setVisible(false);
 
             yOffset+=100;
         }
-        /*
-        this.saveFile1 = new Button(this.scene, centerX-100, centerY-120, null, 150, 50,
-            {
-                text: localStorage.getItem(0) == null ? 'New Game': 'Load Game 1',
-                style: {
-                    fontSize: 20,
-                    color: Colors.White,
-                    fontFamily: 'FableFont',
-                    padding: { x: 20, y: 10 },
-                }
-            }
-        );
-        this.saveFile1.addInteraction((btn) => {
-            btn.on("pointerover", () => {
-                btn.buttonText.setColor(Colors.Red);
-                btn.invokeHover();
-            });
-            btn.on("pointerout", () => {
-                btn.buttonText.setColor(Colors.White);
-            });
-            btn.on("pointerdown", () => {
-                btn.invokeClick();
-            });
-        });
-
-        this.saveFile2 = new Button(this.scene, centerX-100, centerY - 20, null, 150, 50,
-            {
-                text: localStorage.getItem(1) == null ? 'New Game': 'Load Game 2',
-                style: {
-                    fontSize: 20,
-                    color: Colors.White,
-                    fontFamily: 'FableFont',
-                    padding: { x: 20, y: 10 },
-                }
-            }
-        );
-        this.saveFile2.addInteraction((btn) => {
-            btn.on("pointerover", () => {
-                btn.buttonText.setColor(Colors.Red);
-                btn.invokeHover();
-            });
-            btn.on("pointerout", () => {
-                btn.buttonText.setColor(Colors.White);
-            });
-            btn.on("pointerdown", () => {
-                btn.invokeClick();
-            });
-        });
-
-        
-
-        this.saveFile3 = new Button(this.scene, centerX-100, centerY+80, null, 150, 50,
-            {
-                text: localStorage.getItem(2) == null ? 'New Game': 'Load Game 3',
-                style: {
-                    fontSize: 20,
-                    color: Colors.White,
-                    fontFamily: 'FableFont',
-                    padding: { x: 20, y: 10 },
-                }
-            }
-        );
-        console.log(localStorage.getItem(2));
-        this.saveFile3.addInteraction((btn) => {
-            btn.on("pointerover", () => {
-                btn.buttonText.setColor(Colors.Red);
-                btn.invokeHover();
-            });
-            btn.on("pointerout", () => {
-                btn.buttonText.setColor(Colors.White);
-            });
-            btn.on("pointerdown", () => {
-                btn.invokeClick();
-            });
-        });
-
-        this.saveFile1.setActive(false);
-        this.saveFile1.setVisible(false);
-
-        this.saveFile2.setActive(false);
-        this.saveFile2.setVisible(false);
-
-        this.saveFile3.setActive(false);
-        this.saveFile3.setVisible(false);
-
-        */
 
         //Delete data buttons
 
         this.deleteGame = [];
 
-        for(let i = 0; i < this.saveFiles.length; i++)
+        for(let i = 0; i < this.gameSlot.length; i++)
         {
-            this.deleteGame.push(new Button(this.scene, centerX+80, this.saveFiles[i].y, null, 20, 20,
+            this.deleteGame.push(new Button(this.scene, centerX+80, this.gameSlot[i].y, null, 20, 20,
             {
                 text: 'X',
                 style: {
@@ -209,7 +123,8 @@ export default class MainMenuView {
             });
             btn.on("pointerdown", () => {
                 btn.invokeClick();
-                this.saveFiles[i].buttonText.setText('New Game');
+                this.toggleSlotOptions(i);
+                this.gameSlot[i].buttonText.setText('New Game');
 
                 this.deleteGame[i].setActive(false);
                 this.deleteGame[i].setVisible(false);
@@ -220,120 +135,87 @@ export default class MainMenuView {
         this.deleteGame[i].setVisible(false);
 
         }
-
-
-/*
-
-        this.DeleteGame1 = new Button(this.scene, centerX+80, this.saveFiles[0].y, null, 20, 20,
-            {
-                text: 'X',
-                style: {
-                    fontSize: 10,
-                    color: Colors.White,
-                    fontFamily: 'FableFont',
-                    padding: { x: 5, y: 5 },
-                }
-            },
-            {
-                texture: "UIbackground",
-                frame: 0,
-                leftWidth: 3,
-                rightWidth: 3,
-                topHeight: 3,
-                bottomHeight: 3
-            }
-        ).setScale(2);
-
-        this.DeleteGame1.addInteraction((btn) => {
-            btn.on("pointerover", () => {
-                btn.buttonText.setColor(Colors.Red);
-                btn.invokeHover();
-            });
-            btn.on("pointerout", () => {
-                btn.buttonText.setColor(Colors.White);
-            });
-            btn.on("pointerdown", () => {
-                btn.invokeClick();
-                this.saveFiles[0].buttonText.setText('New Game');
-
-                this.DeleteGame1.setActive(false);
-                this.DeleteGame1.setVisible(false);
-            });
-        });
- 
-        this.DeleteGame2 = new Button(this.scene, centerX+80, this.saveFiles[1].y, null, 20, 20,
-            {
-                text: 'X',
-                style: {
-                    fontSize: 10,
-                    color: Colors.White,
-                    fontFamily: 'FableFont',
-                    padding: { x: 5, y: 5 },
-                }
-            },
-            {
-                texture: "UIbackground",
-                frame: 0,
-                leftWidth: 3,
-                rightWidth: 3,
-                topHeight: 3,
-                bottomHeight: 3
-            }
-        ).setScale(2);
-
-        this.DeleteGame2.addInteraction((btn) => {
-            btn.on("pointerover", () => {
-                btn.buttonText.setColor(Colors.Red);
-                btn.invokeHover();
-            });
-            btn.on("pointerout", () => {
-                btn.buttonText.setColor(Colors.White);
-            });
-            btn.on("pointerdown", () => {
-                btn.invokeClick();
-                this.saveFiles[1].buttonText.setText('New Game');
-
-                this.DeleteGame2.setActive(false);
-                this.DeleteGame2.setVisible(false);
-            });
-        });
-*/
-
     
-
-        this.DeleteGame3 = new Button(this.scene, centerX+150, this.saveFiles[2].y, null, 50, 20,
-            {
-                text: 'Save',
-                style: {
-                    fontSize: 10,
-                    color: Colors.White,
-                    fontFamily: 'FableFont',
-                    padding: { x: 5, y: 5 },
+        //Save Game Document Buttons
+        this.saveGame = [];
+        for(let i = 0; i < this.gameSlot.length; i++)
+        {
+            this.saveGame.push(new Button(this.scene, centerX+150, this.gameSlot[i].y, null, 50, 20,
+                {
+                    text: 'Save',
+                    style: {
+                        fontSize: 10,
+                        color: Colors.White,
+                        fontFamily: 'FableFont',
+                        padding: { x: 5, y: 5 },
+                    }
+                },
+                {
+                    texture: "UIbackground",
+                    frame: 0,
+                    leftWidth: 3,
+                    rightWidth: 3,
+                    topHeight: 3,
+                    bottomHeight: 3
                 }
-            },
-            {
-                texture: "UIbackground",
-                frame: 0,
-                leftWidth: 3,
-                rightWidth: 3,
-                topHeight: 3,
-                bottomHeight: 3
-            }
-        ).setScale(2);
-        this.DeleteGame3.addInteraction((btn) => {
-            btn.on("pointerover", () => {
-                btn.buttonText.setColor(Colors.Red);
-                btn.invokeHover();
-            });
-            btn.on("pointerout", () => {
-                btn.buttonText.setColor(Colors.White);
-            });
-            btn.on("pointerdown", () => {
-                btn.invokeClick();
-            });
-        });
+            ).setScale(2))
+        
+            this.saveGame[i].addInteraction((btn) => {
+                btn.on("pointerover", () => {
+                    btn.buttonText.setColor(Colors.Green);
+                    btn.invokeHover();
+                });
+                btn.on("pointerout", () => {
+                    btn.buttonText.setColor(Colors.White);
+                });
+                btn.on("pointerdown", () => {
+                    btn.invokeClick();
+                });
 
-     
+                this.saveGame[i].setActive(false);
+                this.saveGame[i].setVisible(false);
+            });
+        }
+        //Load File Button
+        this.loadGameFile = [];
+        for(let i = 0; i < this.gameSlot.length; i++)
+        {
+            this.loadGameFile.push(new Button(this.scene, centerX+100, this.gameSlot[i].y, null, 50, 20,
+                {
+                    text: 'Load',
+                    style: {
+                        fontSize: 10,
+                        color: Colors.White,
+                        fontFamily: 'FableFont',
+                        padding: { x: 5, y: 5 },
+                    }
+                },
+                {
+                    texture: "UIbackground",
+                    frame: 0,
+                    leftWidth: 3,
+                    rightWidth: 3,
+                    topHeight: 3,
+                    bottomHeight: 3
+                }
+            ).setScale(2))
+        
+            this.loadGameFile[i].addInteraction((btn) => {
+                btn.on("pointerover", () => {
+                    btn.buttonText.setColor(Colors.Green);
+                    btn.invokeHover();
+                });
+                btn.on("pointerout", () => {
+                    btn.buttonText.setColor(Colors.White);
+                });
+                btn.on("pointerdown", () => {
+                    btn.invokeClick();
+                });
+
+                this.loadGameFile[i].setActive(false);
+                this.loadGameFile[i].setVisible(false);
+            });
+        }
 
 
         //Settings Icon
@@ -401,8 +283,7 @@ export default class MainMenuView {
         });
         this.backButton.setActive(false);
         this.backButton.setVisible(false);
-        this.backButton.setActive(false);
-        this.backButton.setVisible(false);
+
 
         //Volver a menu desde Load Games
         this.GoMenuButton = new Button(this.scene, screenLeft+25, screenTop+25, null, 32, 32,
@@ -430,11 +311,6 @@ export default class MainMenuView {
         });
         this.GoMenuButton.setActive(false);
         this.GoMenuButton.setVisible(false);
-        this.GoMenuButton.setActive(false);
-        this.GoMenuButton.setVisible(false);
-
-
-        
 
     }
 
@@ -474,8 +350,8 @@ export default class MainMenuView {
         this.sfxIcon.setVisible(!this.sfxIcon.visible);
 
 
-        this.startButton.setActive(!this.startButton.active);
-        this.startButton.setVisible(!this.startButton.visible);
+        this.playButton.setActive(!this.playButton.active);
+        this.playButton.setVisible(!this.playButton.visible);
 
         this.backButton.setActive(!this.backButton.active);
         this.backButton.setVisible(!this.backButton.visible);
@@ -483,6 +359,16 @@ export default class MainMenuView {
         this.settingsButton.setActive(!this.settingsButton.active);
         this.settingsButton.setVisible(!this.settingsButton.visible);
         
+    }
+    toggleSlotOptions(slotNumber){
+        this.deleteGame[slotNumber].setActive(false);
+        this.deleteGame[slotNumber].setVisible(false);
+
+        this.loadGameFile[slotNumber].setActive(true);
+        this.loadGameFile[slotNumber].setVisible(true);
+
+        this.saveGame[slotNumber].setActive(false);
+        this.saveGame[slotNumber].setVisible(false);    
     }
 
     toggleLoadGame(){
@@ -492,83 +378,35 @@ export default class MainMenuView {
         this.settingsButton.setActive(!this.settingsButton.active);
         this.settingsButton.setVisible(!this.settingsButton.visible);
 
-        this.startButton.setActive(!this.startButton.active);
-        this.startButton.setVisible(!this.startButton.visible);
+        this.playButton.setActive(!this.playButton.active);
+        this.playButton.setVisible(!this.playButton.visible);
 
 
-        for(let i = 0 ; i< this.saveFiles.length ;i++){
+        for(let i = 0 ; i< this.gameSlot.length ;i++){
 
-            this.saveFiles[i].setActive(!this.saveFiles[i].active);
-            this.saveFiles[i].setVisible(!this.saveFiles[i].visible);
+            this.gameSlot[i].setActive(!this.gameSlot[i].active);
+            this.gameSlot[i].setVisible(!this.gameSlot[i].visible);
 
-            if (localStorage.getItem(i) != null && this.saveFiles[i].active){
+            if (localStorage.getItem(i) != null && this.gameSlot[i].active){
                 this.deleteGame[i].setActive(true);
                 this.deleteGame[i].setVisible(true);
 
-                //TO DO:poner cargar archivo como false
-                //      poner guardar archivo como true
+                this.deleteGame[i].setActive(false);
+                this.loadGameFile[i].setVisible(false);
+
+                this.saveGame[i].setActive(true);
+                this.saveGame[i].setVisible(true);                
             }
             else{
                 this.deleteGame[i].setActive(false);
                 this.deleteGame[i].setVisible(false);
 
-                //TO DO:poner cargar archivo como true
-                //      poner guardar archivo como false
+                this.deleteGame[i].setActive(true);
+                this.loadGameFile[i].setVisible(true);
+
+                this.saveGame[i].setActive(false);
+                this.saveGame[i].setVisible(false);
             }            
-        }
-
-        /*
-
-        
-
-        this.saveFile1.setActive(!this.saveFile1.active);
-        this.saveFile1.setVisible(!this.saveFile1.visible);
-
-        this.saveFile2.setActive(!this.saveFile2.active);
-        this.saveFile2.setVisible(!this.saveFile2.visible);
-
-        this.saveFile3.setActive(!this.saveFile3.active);
-        this.saveFile3.setVisible(!this.saveFile3.visible);
-
-        for(let i = 0 ; i< this.saveFiles.length ;i++){
-            if (localStorage.getItem(0) != null && this.saveFiles[0].active){
-            this.DeleteGame1.setActive(true);
-                    this.DeleteGame1.setVisible(true);
-            }
-            else{
-                this.DeleteGame1.setActive(false);
-                this.DeleteGame1.setVisible(false);
-            }
-        }
-       
-        if (localStorage.getItem(0) != null && this.saveFiles[0].active){
-        this.DeleteGame1.setActive(true);
-        this.DeleteGame1.setVisible(true);
-        }
-        else{
-        this.DeleteGame1.setActive(false);
-        this.DeleteGame1.setVisible(false);
-        }
-
-
-        if (localStorage.getItem(1) != null && this.saveFiles[1].active){
-        this.DeleteGame2.setActive(true);
-        this.DeleteGame2.setVisible(true);
-        }
-        else{
-        this.DeleteGame2.setActive(false);
-        this.DeleteGame2.setVisible(false);
-        }
-        
-        
-        if (localStorage.getItem(2) != null && this.saveFiles[2].active){
-        this.DeleteGame3.setActive(true);
-        this.DeleteGame3.setVisible(true);
-        }
-        else{
-        this.DeleteGame3.setActive(false);
-        this.DeleteGame3.setVisible(false);
-        }
-         */
+        }      
     }
 } 
