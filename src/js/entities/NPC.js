@@ -56,6 +56,8 @@ export class NPC extends BillBoard{
         EventBus.on('cameraRotated', (R, cR, sR)=>{
             this.rotateKeyTip(cR, sR, R);
         })
+
+
         // #endregion
     }
 
