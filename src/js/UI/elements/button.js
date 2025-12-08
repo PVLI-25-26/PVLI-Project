@@ -63,10 +63,23 @@ export class Button extends Phaser.GameObjects.Container {
             ).setOrigin(0.5);
             this.add(this.buttonText);
         }
-        
-        // Make interactive area
+
+        // If the button has nineslice, make the nineslice the interact area, otherwise, use width and height given
+        let interactRect;
+        if(ninesliceSettings){
+            // Has to move the area manually because ninslice origin is 0.5
+            interactRect = new Phaser.Geom.Rectangle(this.buttonNineslice.x-width*this.buttonNineslice.scale/2, this.buttonNineslice.y-height*this.buttonNineslice.scale/2, width*this.buttonNineslice.scale, height*this.buttonNineslice.scale);
+            // Debug rect
+            // this.add(this.scene.add.rectangle(this.buttonNineslice.x-width*this.buttonNineslice.scale/2, this.buttonNineslice.y-height*this.buttonNineslice.scale/2, width*this.buttonNineslice.scale, height*this.buttonNineslice.scale, 0, 0.5).setOrigin(0))
+        }
+        else{
+            interactRect = new Phaser.Geom.Rectangle(0, 0, width, height)
+            // Debug rect
+            // this.add(this.scene.add.rectangle(0, 0, width, height, 0, 0.5).setOrigin(0))
+        }
+
         this.setInteractive(
-            new Phaser.Geom.Rectangle(0, 0, width, height),
+            interactRect,
             Phaser.Geom.Rectangle.Contains
         );
 
