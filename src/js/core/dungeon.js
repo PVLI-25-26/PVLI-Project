@@ -59,6 +59,11 @@ export class Dungeon extends Phaser.Plugins.BasePlugin {
      */
     #hubID
     /**
+     * Path of the file where the hub is defined.
+     * @type {String}
+     */
+    #hubPath
+    /**
      * ID of the room with name Intro. Saved to return to the Intro if player dies in the tutorial.
      * @type {Number}
      */
@@ -108,11 +113,14 @@ export class Dungeon extends Phaser.Plugins.BasePlugin {
             // Add room to the map of rooms
             this.#rooms.set(cfg.id, room);
             // If the room is the Hub we save it
-            if(cfg.name == "Hub")
+            if(cfg.name == "Hub"){
                 this.#hubID = cfg.id;
+                this.#hubPath = path;
+            }
             // If the room is the beginning of the tutorial we save it
-            else if(cfg.name == "Intro")
+            else if(cfg.name == "Intro"){
                 this.#tutorialIntroID = cfg.id;
+            }
             // If the room is any other room (dungeon rooms) we save them to then only reset these rooms when dungeon restarts
             else{
                 this.#resetableRooms.set(cfg.id, path);
@@ -138,6 +146,24 @@ export class Dungeon extends Phaser.Plugins.BasePlugin {
             // Overwrite previous values in the map of rooms
             this.#rooms.set(id, room);
         });
+    }
+
+    /**
+     * Reset the hub (resets only the hub)
+     * @private
+     * @returns {void}
+     */
+    async #resetHub(){
+        const response = await fetch(this.#hubPath);
+        // Read JSON with template for the room being created
+        const room = await response.json();
+
+        const prevRoom = this.#rooms.get(this.#hubID);
+        // Give the new room the previous room connections
+        room.connections = prevRoom.connections;
+
+        // Overwrite previous values in the map of rooms
+        this.#rooms.set(this.#hubID, room);
     }
 
     /**
@@ -306,8 +332,16 @@ export class Dungeon extends Phaser.Plugins.BasePlugin {
     }
 
     changeRoom(nextRoomKey){
+        // If previous room was hub, then we can reload the hub now that we left it
+        if(this.currentRoomKey == this.#hubID){
+            this.#resetHub();
+        }
+        // Update current room key
         this.currentRoomKey = nextRoomKey;
+        // Add room to explored rooms set
         this.roomsExplored.add(this.currentRoomKey);
+
+        // If we have changed room to the hub, reset the dungeon no that we left it
         if(nextRoomKey == this.#hubID){
             EventBus.emit('hubReached');
             // reset dungeon exploration
