@@ -44,9 +44,6 @@ export default class GameplayScene extends Phaser.Scene {
         this.inputFacade = new InputFacade(this);
         this.inputFacade.resetPointerLockCount();
 
-        // Resubscribe to events (events are currently cleared every time)
-        missionManager.subscribeToEvents(this);
-
         const model = new HudModel();
         const view = new HudView(this);
         const presenter = new HudPresenter(view, model);
@@ -55,6 +52,8 @@ export default class GameplayScene extends Phaser.Scene {
         const NPCview = new NPCsDialogueView(this);
         const NPCpresenter = new NPCsDialoguePresenter(NPCview,NPCmodel)
 
+        // Resubscribe to events (events are currently cleared every time)
+        missionManager.subscribeToEvents(this);
 
         // Get data about new room (this data depends on the connection take, that is why it is passed through there and not in the dungeon)
         this.playerSpawn = data.playerSpawn || {x: 0, y: 0};

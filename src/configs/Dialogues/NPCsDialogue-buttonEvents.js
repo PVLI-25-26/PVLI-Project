@@ -25,7 +25,7 @@ export default events  = {
 		EventBus.emit("StopDialogue");
 	},
 	ACCEPT_MISSION: ()=>{
-		// Missions are accepted automatically
+		EventBus.emit("missionAccepted");
 		EventBus.emit("StopDialogue");
 	},
 	REJECT_MISSION: ()=>{

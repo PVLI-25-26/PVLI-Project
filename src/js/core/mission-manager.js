@@ -33,15 +33,22 @@ class MissionManager{
         EventBus.on("roomCleared", this.onRoomCleared, this);
         EventBus.on("hubReached", this.resetCounters, this);
         EventBus.on("missionRejected", this.onMissionRejected, this);
+        EventBus.on("missionAccepted", this.onMissionAccepted, this);
 
         // reset completed mission to player completed missions
         this.completedMissions = saveDataManager.getData('completedMissions') || [];
+
+        EventBus.emit('missionsInitialized', {activeMissions: this.activeMissions, completedMissions: this.completedMissions});
     }
 
     onMissionRejected(){
         // Pop last added mission (missions are activated when NPCs request for a random missions to manager, however if player rejects the mission last added mission is removed)
         this.activeMissions.pop();
         this.logger.log('MISSION', 0, `Mission rejected: ${JSON.stringify(this.activeMissions)}`);
+    }
+
+    onMissionAccepted(){
+        EventBus.emit('missionAdded', this.activeMissions[this.activeMissions.length-1]);
     }
 
     onEntityDied(entity){
@@ -105,22 +112,25 @@ class MissionManager{
             this.logger.log('MISSION', 0, `Checking conditions: ${mission.missionStartDialogue}`);
             // Check every complete condition
             for(let j = 0; j < mission.completeConditions.length && isMissionComplete; j++){
+                // Set mission progress
+                mission.completeConditions[j].progress = this[mission.completeConditions[j].property];
                 // Check property depending on operator specified
                 switch(mission.completeConditions[j].op){
                     case ">":
-                        isMissionComplete = this[mission.completeConditions[j].property] > mission.completeConditions[j].amount;
+                        isMissionComplete = mission.completeConditions[j].progress > mission.completeConditions[j].amount;
                         break;
                     case "=":
-                        isMissionComplete = this[mission.completeConditions[j].property] == mission.completeConditions[j].amount;
+                        isMissionComplete = mission.completeConditions[j].progress == mission.completeConditions[j].amount;
                         break;
                     case "<":
-                        isMissionComplete = this[mission.completeConditions[j].property] < mission.completeConditions[j].amount;
+                        isMissionComplete = mission.completeConditions[j].progress < mission.completeConditions[j].amount;
                         break;
                 }
-                this.logger.log('MISSION', 0, `${this[mission.completeConditions[j].property]} ${mission.completeConditions[j].op} ${mission.completeConditions[j].amount}`);
+                this.logger.log('MISSION', 0, `${mission.completeConditions[j].progress} ${mission.completeConditions[j].op} ${mission.completeConditions[j].amount}`);
             }
             // If mission cumplimented all conditions, move to completed missions
             if(isMissionComplete){
+                EventBus.emit('missionCompleted', i);
                 // Remove mission from active missions
                 this.activeMissions.splice(i, 1);
                 // Add to completed missions
@@ -131,6 +141,8 @@ class MissionManager{
                 this.logger.log('MISSION', 0, `Completed missions: ${JSON.stringify(this.completedMissions)}`);
             }
         }
+        // Notify missionProgress has been updated
+        EventBus.emit('missionProgressUpdated');
     }
 
     resetCounters(){
@@ -154,6 +166,7 @@ class MissionManager{
     getMissionDialogue(){
         // If there is a completed mission unclaimed, return completed mission dialogue so that the player may claim it
         if(this.completedMissions.length != 0){
+            EventBus.emit('missionRemoved', this.completedMissions.length-1);
             const dialogue = this.completedMissions.pop().missionClaimDialogue;
             saveDataManager.setData('completedMissions', this.completedMissions);
             saveDataManager.saveCurrentData(); // IDK if i should do this here

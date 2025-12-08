@@ -2,6 +2,7 @@ import { Bar } from "../elements/bar.js";
 import { CombatText } from "../elements/combat-text.js";
 import {Button} from "../elements/button.js";
 import Colors from "../../../configs/colors-config.js";
+import { MissionInfoDisplay } from "../elements/missionInfoDisplay.js";
 
 export class HudView {
     constructor(scene) {
@@ -31,6 +32,11 @@ export class HudView {
         this.unselectedArrowY = this.scene.cameras.main.height - 100;
         // Flag to know which is active easily
         this.isNormalArrowSelected = true;
+        
+        // Missions
+        this.missionsTitle = null;
+        this.noMissionsText = null;
+        this.missionDisplays = [];
     }
 // To DO:
 /*
@@ -290,5 +296,70 @@ export class HudView {
             duration: 200,
             ease: 'Quad'
         });
+    }
+
+    createMissionTexts(missions, areCompleted){
+        this.missionsTitle = this.scene.add.text(this.scene.cameras.main.width - 50, 75, 'Missions',{
+            fontFamily: 'FableFont',
+            fontSize: 20,
+            color: Colors.Red
+        }).setOrigin(1);
+
+        this.scene.hudLayer.add(this.missionsTitle);
+        this.missionsTitle.setScrollFactor(0);
+
+        if(!this.noMissionsText){
+            this.noMissionsText = this.scene.add.text(this.scene.cameras.main.width - 50, 100, 'No missions',{
+                fontFamily: 'MicroChat',
+                    fontSize: 10,
+                    color: Colors.White
+                }).setOrigin(1).setAlpha(0);
+            this.scene.hudLayer.add(this.noMissionsText);
+            this.noMissionsText.setScrollFactor(0);
+        }
+        
+        if(missions.length == 0){
+            this.noMissionsText.setAlpha(1);
+        }
+
+        missions.forEach((mission) => {
+            this.addMissionText(mission, areCompleted);
+        });
+    }
+
+    addMissionText(mission, isCompleted){
+        const x = this.scene.cameras.main.width - 50;
+        const y = 100;
+
+        if(this.noMissionsText.alpha == 1){
+            this.noMissionsText.setAlpha(0);
+        }
+
+        const missionDisplay = new MissionInfoDisplay(this.scene, x, y+this.missionDisplays.length*25, mission, isCompleted);
+        missionDisplay.missionSummary.setOrigin(1);
+        this.missionDisplays.push(missionDisplay);
+        this.scene.hudLayer.add(missionDisplay);
+        missionDisplay.setScrollFactor(0);
+    }
+
+    completeMission(missionIdx){
+        const missionDisplay = this.missionDisplays[missionIdx];
+        missionDisplay.completeMission();
+    }
+
+    removeMission(missionIdx){
+        const missionDisplay = this.missionDisplays[missionIdx];
+        this.missionDisplays.splice(missionIdx, 1)
+        missionDisplay.remove();
+
+        if(this.missionDisplays.length == 0){
+            this.noMissionsText.setAlpha(1);
+        }
+    }
+
+    updateMissionProgress(){
+        this.missionDisplays.forEach((mission)=>{
+            mission.updateProgress();
+        })
     }
 }

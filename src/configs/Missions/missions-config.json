@@ -2,15 +2,18 @@
     {
         "missionStartDialogue": "gather3ItemsStart",
         "completeConditions": [
-            {"property": "itemsGathered", "op": ">", "amount":2}
+            {"property": "itemsGathered", "op": ">", "amount":2},
+            {"property": "damageDealt", "op": ">", "amount":1}
         ],
-        "missionClaimDialogue": "gather3ItemsEnd"
+        "missionClaimDialogue": "gather3ItemsEnd",
+        "summary": "Gather 3 items"
     },
     {
         "missionStartDialogue": "kill2EnemiesStart",
         "completeConditions": [
             {"property": "enemiesKilled", "op": ">", "amount":1}
         ],
-        "missionClaimDialogue": "kill2EnemiesEnd"
+        "missionClaimDialogue": "kill2EnemiesEnd",
+        "summary": "Kill 2 enemies"
     }
 ]
