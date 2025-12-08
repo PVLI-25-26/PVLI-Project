@@ -15,6 +15,7 @@
     {"key": "rock-spritestack", "type": "spritesheet", "file": "assets/sprites/SpriteStacks/Rock.png", "settings":{"frameWidth":16, "frameHeight": 16}},
     {"key": "column-spritestack", "type": "spritesheet", "file": "assets/sprites/SpriteStacks/Column.png", "settings":{"frameWidth":16, "frameHeight": 16}},
     {"key": "log-spritestack", "type": "spritesheet", "file": "assets/sprites/SpriteStacks/Log.png", "settings":{"frameWidth":12, "frameHeight": 12}},
+    {"key": "shop-carpet", "type": "spritesheet", "file": "assets/sprites/SpriteStacks/Carpet.png", "settings":{"frameWidth":32}},
     
     {"key": "queso", "type": "image", "file": "assets/sprites/16x16 RPG Item Pack/Item__65.png", "settings":{}},
     {"key": "ball", "type": "image", "file": "assets/sprites/16x16 RPG Item Pack/Item__26.png", "settings":{}},

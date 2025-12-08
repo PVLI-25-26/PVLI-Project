@@ -7,7 +7,7 @@
              "options": [0, 1]}
         ],
         "speed" : 1,
-        "npcName" : "Antonio",
+        "npcName" : "Antonio", "portrait":"Antonio",
         "userOptions" : [
             {
                 "label": "Next",
@@ -38,7 +38,7 @@
              "options": [1]}
         ],
         "speed" : 1,
-        "npcName" : "Melinoe",
+        "npcName" : "Melinoe", "portrait":"Melinoe",
         "userOptions" : [
             {
                 "label" : "Next",
@@ -72,7 +72,7 @@
              "options": [1]}
         ],
         "speed" : 1,
-        "npcName" : "Melinoe",
+        "npcName" : "Melinoe", "portrait":"Melinoe",
         "userOptions" : [
             {
                 "label" : "Next",
@@ -98,7 +98,7 @@
              "options": [1]}
         ],
         "speed" : 1,
-        "npcName" : "Melinoe",
+        "npcName" : "Melinoe", "portrait":"Melinoe",
         "userOptions" : [
             {
                 "label" : "Next",
@@ -118,7 +118,7 @@
              "options": [1]}
         ],
         "speed" : 1,
-        "npcName" : "Melinoe",
+        "npcName" : "Melinoe", "portrait":"Melinoe",
         "userOptions" : [
             {
                 "label" : "Next",
@@ -132,15 +132,27 @@
             }
         ]
     },
+
+
+
+
+
+
+
+
 	"Fire-Arrow":{
 		"dialogue" : [
 			{
-				"text": "Fire arrow",
-				"options":[0,1]
+				"text": "When impacting an enemy, the fire arrow applies burning status, dealing 1 damage every 0.5s for 2 seconds.",
+				"options":[2]
+			},
+			{
+				"text": "Do you want to buy a fire arrow? Cost: 50 coins",
+				"options":[0, 1]
 			}
 		],
 		"speed" : 1,
-		"npcName" : "Fire-Arrow",
+		"npcName" : "Fire Arrow", "portrait":"Fire-Arrow",
 		"userOptions":[
 			{
 				"label" : "Buy",
@@ -151,18 +163,27 @@
 				"label" : "Exit",
 				"event" : "END",
 				"color" : "Red"
+			},
+			{
+				"label" : "Next",
+				"event" : "NEXT_PAGE",
+				"color" : "White"
 			}
 		]
 	},
 	"Grass-Arrow":{
 		"dialogue" : [
 			{
-				"text": "Grass arrow",
-				"options":[0,1]
+				"text": "When impacting an enemy, the grass arrow inmobilizes the enemy for 2 seconds.",
+				"options":[2]
+			},
+			{
+				"text": "Do you want to buy a grass arrow? Cost: 25 coins",
+				"options":[0, 1]
 			}
 		],
 		"speed" : 1,
-		"npcName" : "Grass-Arrow",
+		"npcName" : "Grass Arrow","portrait":"Grass-Arrow",
 		"userOptions":[
 			{
 				"label" : "Buy",
@@ -173,18 +194,31 @@
 				"label" : "Exit",
 				"event" : "END",
 				"color" : "Red"
+			},
+			{
+				"label" : "Next",
+				"event" : "NEXT_PAGE",
+				"color" : "White"
 			}
 		]
 	},
 	"Gass-Arrow":{
 		"dialogue" : [
 			{
-				"text": "Gas arrow",
-				"options":[0,1]
+				"text": "When landing, the gas arrow emits a poison cloud. The cloud lasts for 5 seconds, ...",
+				"options":[2]
+			},
+			{
+				"text": "... and deals damage exponentially to anything inside it.",
+				"options":[2]
+			},
+			{
+				"text": "Do you want to buy a gas arrow? Cost: 50 coins",
+				"options":[0, 1]
 			}
 		],
 		"speed" : 1,
-		"npcName" : "Gass-Arrow",
+		"npcName" : "Gas Arrow","portrait":"Gass-Arrow",
 		"userOptions":[
 			{
 				"label" : "Buy",
@@ -195,6 +229,75 @@
 				"label" : "Exit",
 				"event" : "END",
 				"color" : "Red"
+			},
+			{
+				"label" : "Next",
+				"event" : "NEXT_PAGE",
+				"color" : "White"
+			}
+		]
+	},
+	"Dash-Ability":{
+		"dialogue" : [
+			{
+				"text": "Quickly dash in the direction you are moving to avoid enemies and create distance.",
+				"options":[2]
+			},
+			{
+				"text": "Do you want to buy the dash ability? Cost: 30 coins",
+				"options":[0, 1]
+			}
+		],
+		"speed" : 1,
+		"npcName" : "Dash",
+        "portrait" : "dash",
+		"userOptions":[
+			{
+				"label" : "Buy",
+				"event" : "BUY_DASH",
+				"color" : "Green"
+			},
+			{
+				"label" : "Exit",
+				"event" : "END",
+				"color" : "Red"
+			},
+			{
+				"label" : "Next",
+				"event" : "NEXT_PAGE",
+				"color" : "White"
+			}
+		]
+	},
+	"Forcefield-Ability":{
+		"dialogue" : [
+			{
+				"text": "Create a magical force field that pushes all enemies around you.",
+				"options":[2]
+			},
+			{
+				"text": "Do you want to buy the force field ability? Cost: 25 coins",
+				"options":[0, 1]
+			}
+		],
+		"speed" : 1,
+		"npcName" : "Force field",
+        "portrait" : "forceField",
+		"userOptions":[
+			{
+				"label" : "Buy",
+				"event" : "BUY_FORCEFIELD",
+				"color" : "Green"
+			},
+			{
+				"label" : "Exit",
+				"event" : "END",
+				"color" : "Red"
+			},
+			{
+				"label" : "Next",
+				"event" : "NEXT_PAGE",
+				"color" : "White"
 			}
 		]
 	},
@@ -213,7 +316,7 @@
 			}
 		],
 		"speed" : 1,
-		"npcName" : "Melinoe",
+		"npcName" : "Melinoe", "portrait":"Melinoe",
 		"userOptions":[
 			{
 				"label" : "Exit",
@@ -231,7 +334,7 @@
 			}
 		],
 		"speed" : 1,
-		"npcName" : "Melinoe",
+		"npcName" : "Melinoe", "portrait":"Melinoe",
 		"userOptions":[
 			{
 				"label" : "Accept",
@@ -253,7 +356,7 @@
 			}
 		],
 		"speed" : 1,
-		"npcName" : "Melinoe",
+		"npcName" : "Melinoe", "portrait":"Melinoe",
 		"userOptions":[
 			{
 				"label" : "Accept",
@@ -279,7 +382,7 @@
 			}
 		],
 		"speed" : 1,
-		"npcName" : "Melinoe",
+		"npcName" : "Melinoe", "portrait":"Melinoe",
 		"userOptions":[
 			{
 				"label" : "Accept",
@@ -306,7 +409,7 @@
 			}
 		],
 		"speed" : 1,
-		"npcName" : "Melinoe",
+		"npcName" : "Melinoe", "portrait":"Melinoe",
 		"userOptions":[
 			{
 				"label" : "Accept",
@@ -335,7 +438,7 @@
 			}
 		],
 		"speed" : 1,
-		"npcName" : "Melinoe",
+		"npcName" : "Melinoe", "portrait":"Melinoe",
 		"userOptions":[
 			{
 				"label" : "Accept",
@@ -362,7 +465,7 @@
 			}
 		],
 		"speed" : 1,
-		"npcName" : "Melinoe",
+		"npcName" : "Melinoe", "portrait":"Melinoe",
 		"userOptions":[
 			{
 				"label" : "Accept",
@@ -389,7 +492,7 @@
 			}
 		],
 		"speed" : 1,
-		"npcName" : "Melinoe",
+		"npcName" : "Melinoe", "portrait":"Melinoe",
 		"userOptions":[
 			{
 				"label" : "Accept",
@@ -416,7 +519,7 @@
 			}
 		],
 		"speed" : 1,
-		"npcName" : "Melinoe",
+		"npcName" : "Melinoe", "portrait":"Melinoe",    
 		"userOptions":[
 			{
 				"label" : "Accept",
@@ -444,7 +547,7 @@
             }
         ],
         "speed": 1,
-        "npcName": "Melinoe",
+        "npcName": "Melinoe", "portrait":"Melinoe",   
         "userOptions": [
             { "label": "Accept", "event": "ACCEPT_MISSION", "color": "Green" },
             { "label": "Reject", "event": "REJECT_MISSION", "color": "Red" },
@@ -460,7 +563,7 @@
             }
         ],
         "speed": 1,
-        "npcName": "Melinoe",
+        "npcName": "Melinoe", "portrait":"Melinoe",   
         "userOptions": [
             { "label": "Accept", "event": "RECIEVE_100COINS", "color": "Green" },
             { "label": "Reject", "event": "END", "color": "Red" }
@@ -479,7 +582,7 @@
             }
         ],
         "speed": 1,
-        "npcName": "Melinoe",
+        "npcName": "Melinoe", "portrait":"Melinoe",   
         "userOptions": [
             { "label": "Accept", "event": "ACCEPT_MISSION", "color": "Green" },
             { "label": "Reject", "event": "REJECT_MISSION", "color": "Red" },
@@ -495,7 +598,7 @@
             }
         ],
         "speed": 1,
-        "npcName": "Melinoe",
+        "npcName": "Melinoe", "portrait":"Melinoe",   
         "userOptions": [
             { "label": "Accept", "event": "EQUIP_FORCEFIELD", "color": "Green" },
             { "label": "Reject", "event": "END", "color": "Red" }
@@ -514,7 +617,7 @@
             }
         ],
         "speed": 1,
-        "npcName": "Melinoe",
+        "npcName": "Melinoe", "portrait":"Melinoe",   
         "userOptions": [
             { "label": "Accept", "event": "ACCEPT_MISSION", "color": "Green" },
             { "label": "Reject", "event": "REJECT_MISSION", "color": "Red" },
@@ -530,7 +633,7 @@
             }
         ],
         "speed": 1,
-        "npcName": "Melinoe",
+        "npcName": "Melinoe", "portrait":"Melinoe",   
         "userOptions": [
             { "label": "Accept", "event": "EQUIP_DASH", "color": "Green" },
             { "label": "Reject", "event": "END", "color": "Red" }
@@ -551,7 +654,7 @@
             }
         ],
         "speed": 1,
-        "npcName": "Melinoe",
+        "npcName": "Melinoe", "portrait":"Melinoe",   
         "userOptions": [
             { "label": "Accept", "event": "ACCEPT_MISSION", "color": "Green" },
             { "label": "Reject", "event": "REJECT_MISSION", "color": "Red" },
@@ -567,7 +670,7 @@
             }
         ],
         "speed": 1,
-        "npcName": "Melinoe",
+        "npcName": "Melinoe", "portrait":"Melinoe",   
         "userOptions": [
             { "label": "Accept", "event": "EQUIP_FIRE_ARROW", "color": "Green" },
             { "label": "Reject", "event": "END", "color": "Red" }
@@ -582,7 +685,7 @@
             }
         ],
         "speed": 1,
-        "npcName": "Melinoe",
+        "npcName": "Melinoe", "portrait":"Melinoe",   
         "userOptions": [
             { "label": "Accept", "event": "ACCEPT_MISSION", "color": "Green" },
             { "label": "Reject", "event": "REJECT_MISSION", "color": "Red" }
@@ -597,7 +700,7 @@
             }
         ],
         "speed": 1,
-        "npcName": "Melinoe",
+        "npcName": "Melinoe", "portrait":"Melinoe",   
         "userOptions": [
             { "label": "Accept", "event": "EQUIP_GAS_ARROW", "color": "Green" },
             { "label": "Reject", "event": "END", "color": "Red" }
@@ -616,7 +719,7 @@
             }
         ],
         "speed": 1,
-        "npcName": "Melinoe",
+        "npcName": "Melinoe", "portrait":"Melinoe",   
         "userOptions": [
             { "label": "Accept", "event": "ACCEPT_MISSION", "color": "Green" },
             { "label": "Reject", "event": "REJECT_MISSION", "color": "Red" },
@@ -632,7 +735,7 @@
             }
         ],
         "speed": 1,
-        "npcName": "Melinoe",
+        "npcName": "Melinoe", "portrait":"Melinoe",   
         "userOptions": [
             { "label": "Accept", "event": "RECIEVE_100COINS", "color": "Green" },
             { "label": "Reject", "event": "END", "color": "Red" }

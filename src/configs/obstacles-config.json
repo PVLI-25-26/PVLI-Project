@@ -20,6 +20,19 @@
         }
     },
     {
+        "key": "shop-carpet",
+        "spriteStackConfig": 
+        {
+            "textures": "shop-carpet",
+            "frameCount": 1,
+            "verticalOffset": 0,
+            "scale": 3,
+            "offsetX": 0,
+            "offsetY": 0,
+            "alwaysRenderBelow": true
+        }
+    },
+    {
         "key": "wall",
         "spriteStackConfig": 
         {

@@ -66,6 +66,8 @@ export class SpriteStack extends Phaser.GameObjects.Sprite{
         this.#cameraCosR = 1;
         this.#cameraSinR = 0;
         this.config = spriteStackConfig;  
+        this.shouldDepthSort = this.config?.alwaysRenderBelow;
+        
         this.setOrigin(0.5); 
         if (this.config.offsetX || this.config.offsetY) {
             this.body.position.x += this.config.offsetX;
@@ -135,16 +137,22 @@ export class SpriteStack extends Phaser.GameObjects.Sprite{
      * @param {*} sinR Sine of -camera rotation
      */
     updateDepth(cosR, sinR){
-        // TODO: TEST IF THIS WORKS PROPERLY I THINK IT MIGHT BE WRONG
-        // ALSO I DONT THINK WE NEED TO UPDATE DEPTH OF ALL SPRITES IN THE STACK?
-            // Updates depth of all sprites in the stack
+        // Updates depth of all sprites in the stack
         for (let i = 0; i<this.sprites.length; i ++){
             // The reason for '+ Number.MIN_VALUE' is that the sprite stack must internally be depth sorted
             //      in opposite order of all other sprites, however as a group they must be sorted like the rest
             //      of sprites in the game. Therefore, we adjust their depth by the smallest value possible so 
             //      so that internally they are sorted contrary to other sprites but they will be depth sorted
             //      correctly as a group.
-            this.sprites[i].setDepth((this.y*cosR-this.x*sinR) + Number.MIN_VALUE*i);
+            
+            if(!this.shouldDepthSort)
+            {
+                this.sprites[i].setDepth((this.y*cosR-this.x*sinR) + Number.MIN_VALUE*i);
+            }
+            else{
+                // For floor decoration
+                this.sprites[i].setDepth((-Number.MAX_VALUE + Number.MIN_VALUE*i));
+            }
         }
     }
 }

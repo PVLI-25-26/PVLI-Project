@@ -7,7 +7,31 @@
          "draworder":"topdown",
          "id":5,
          "name":"Obstacles",
-         "objects":[],
+         "objects":[
+                {
+                 "id":116,
+                 "name":"Carpet",
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"shop-carpet",
+                 "x":-12.6666666666667,
+                 "y":-44
+                }, 
+                {
+                 "id":117,
+                 "name":"Carpet",
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"shop-carpet",
+                 "x":58.3333333333333,
+                 "y":-44.3333333333333
+                }, 
+                {
+                 "id":118,
+                 "name":"Carpet",
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"shop-carpet",
+                 "x":130.333333333333,
+                 "y":-44.3333333333333
+                }],
          "opacity":1,
          "type":"objectgroup",
          "visible":true,
@@ -24,32 +48,24 @@
                  "name":"Melinoe",
                  "template":"..\/Templates\/NPCTemplate.tx",
                  "type":"melinoe-hub",
-                 "x":82,
-                 "y":-71
+                 "x":52,
+                 "y":-122.333333333333
                 }, 
                 {
                  "id":109,
-                 "name":"Fire-Arrow",
+                 "name":"Arrow shop",
                  "template":"..\/Templates\/NPCTemplate.tx",
-                 "type":"Fire-Arrow",
-                 "x":-87.3333333333333,
-                 "y":98
+                 "type":"Fire-Arrow Grass-Arrow Gass-Arrow",
+                 "x":60,
+                 "y":-42
                 }, 
                 {
-                 "id":110,
-                 "name":"Gass-Arrow",
+                 "id":119,
+                 "name":"Ability shop",
                  "template":"..\/Templates\/NPCTemplate.tx",
-                 "type":"Gass-Arrow",
-                 "x":240,
-                 "y":86.6666666666667
-                }, 
-                {
-                 "id":111,
-                 "name":"Grass-Arrow",
-                 "template":"..\/Templates\/NPCTemplate.tx",
-                 "type":"Grass-Arrow",
-                 "x":94.6666666666667,
-                 "y":198.666666666666
+                 "type":"Dash-Ability Forcefield-Ability",
+                 "x":132.666666666667,
+                 "y":-42.6666666666667
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -221,7 +237,7 @@
          "y":0
         }],
  "nextlayerid":12,
- "nextobjectid":116,
+ "nextobjectid":127,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.11.2",

@@ -29,6 +29,15 @@ export default events  = {
 		EventBus.emit("StopDialogue");
 	},
 
+	BUY_DASH : () =>{
+		EventBus.emit("abilityBought", dashAbility);
+		EventBus.emit("StopDialogue");
+	},
+	BUY_FORCEFIELD : () =>{
+		EventBus.emit("abilityBought", forceField);
+		EventBus.emit("StopDialogue");
+	},
+
 
 	EQUIP_FIRE_ARROW : () =>{
 		EventBus.emit('arrowEquipped', FireArrow);

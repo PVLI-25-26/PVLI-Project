@@ -12,12 +12,17 @@ To speed up room creation, an EmptyMap-config.json can be copied to make differe
 
 > [!warning] Don't modify the Empty Map!
 > Please make sure you don't modify the empty map. :)
+## How to define world borders
+To define a rooms **world borders**, go to the **World Borders** layer. Now you add any **rectangle** you want to define *colliders* the player will not be able to cross.
+You can make any shape as long as the rectangles are always axis aligned. (Rotations in Tiled are very weird with rectangles so I didn't take rotations into account when parsing the JSON)
+Example:
+![[Pasted image 20251208133053.png]]
 
 ## How to add obstacles to a room
 ### Adding Sprite Stacks
 To add a **sprite stack** to a room, go to the **Obstacles** layer. Now you can open the `Templates` folder and drag the `SpriteStackTemplate.tx` template to the map.
 
-There you go, you have a **sprite stack** ready, you just need to specify the *identifier* of the sprite stack to make sure the game knows what obstacle you are trying to instance. Enter the *identifier* in the `Class` property of the object created.
+There you go, you have a **sprite stack** ready, you just need to specify the *identifier* of the sprite stack to make sure the game knows what obstacle you are trying to instance. Enter the *identifier* in the `Class` property of the object created. You can enter multiple *identifiers* separated by **spaces** to spawn any of the entities randomly.
 
 *identifiers* of sprite stacks are defined in their `JSON` file at `src/configs/obstacles-config.json`.![[Screenshot from 2025-11-24 22-56-50.png]]
 >[!warning] Careful rotating rectangles!
@@ -26,7 +31,7 @@ There you go, you have a **sprite stack** ready, you just need to specify the *i
 ### Adding Billboards
 To add a **billboard** to a room, go to the **Obstacles** layer. Now you can open the `Templates` folder and drag the `BillboardTemplate.tx` template to the map.
 
-Now you just need to specify the *identifier* of the **billboard** to make sure the game knows what obstacle you are trying to instance. Enter the *identifier* in the `Class` property of the object created.
+Now you just need to specify the *identifier* of the **billboard** to make sure the game knows what obstacle you are trying to instance. Enter the *identifier* in the `Class` property of the object created. You can enter multiple *identifiers* separated by **spaces** to spawn any of the entities randomly.
 
 *identifiers* of billboards are defined in their `JSON` file at `src/configs/obstacles-config.json`.
 ![[Screenshot from 2025-11-24 23-04-04.png]]
@@ -34,7 +39,7 @@ Now you just need to specify the *identifier* of the **billboard** to make sure 
 To add an **item** to a room, go to the **Items** layer. Now you can open the `Templates` folder and drag the `ItemTemplate.tx` template to the map.
 
 Now you just need to specify the *identifier* of the **item** to make sure the game knows what item you are trying to instance. Enter the *identifier* in the `Class` property of the object created.
-*identifiers* of item are defined in their `JSON` files at the `src/configs/Items`/ folder.
+*identifiers* of item are defined in their `JSON` files at the `src/configs/Items`/ folder. You can enter multiple *identifiers* separated by **spaces** to spawn any of the entities randomly.
 ![[Screenshot from 2025-11-24 23-08-41.png]]
 
 ## How to add enemies to a room
@@ -43,7 +48,7 @@ To add an **enemy** to a room, go to the **Enemies** layer. Now you can open the
 
 As you can see, its *custom properties* will already be populated with a `state` and a `PatrolRoute`. This properties will be explained in the following section.
 
-Now you just need to specify the *identifier* of the **Enemy** to make sure the game knows what item enemy are trying to instance. Enter the *identifier* in the `Class` property of the object created.
+Now you just need to specify the *identifier* of the **Enemy** to make sure the game knows what item enemy are trying to instance. Enter the *identifier* in the `Class` property of the object created. You can enter multiple *identifiers* separated by **spaces** to spawn any of the entities randomly.
 *identifiers* of item are defined in their `JSON` file at `src/configs/Enemies/<enemy>-config.json`.
 ![[Screenshot from 2025-11-24 23-14-58.png]]
 
@@ -57,7 +62,7 @@ Now, for each enemy, you may select the route you want it to follow in the `Patr
 ## How to add NPCs
 To add a **NPC** to a room, go to the **NPCs** layer. Now you can open the `Templates` folder and drag the `NPCTemplate.tx` template to the map.
 
-Now you just need to specify the *identifier* of the **NPC** to make sure the game knows what item you are trying to instance. Enter the *identifier* in the `Class` property of the object created.
+Now you just need to specify the *identifier* of the **NPC** to make sure the game knows what item you are trying to instance. Enter the *identifier* in the `Class` property of the object created. You can enter multiple *identifiers* separated by **spaces** to spawn any of the entities randomly.
 *identifiers* of item are defined in their `JSON` files at the `src/configs/NPCs/` folder.
 ![[Pasted image 20251130001709.png]]
 

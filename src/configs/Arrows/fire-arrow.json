@@ -8,7 +8,7 @@
         "value":{
             "damage": 1
         },
-        "duration": 5000
+        "duration": 2000
     },
-    "gold": 10
+    "gold": 50
 }

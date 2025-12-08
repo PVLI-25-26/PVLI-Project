@@ -201,20 +201,40 @@ export class Dungeon extends Phaser.Plugins.BasePlugin {
             switch(layer.name){
                 case "Obstacles":
                     scene.logger.log('DUNGEON', 1, 'Creating obstacles ...');
-                    layer.objects.forEach((obj)=>{createObstacle(scene, obj)});
+                    layer.objects.forEach((obj)=>{
+                        // Choose random obstcle from list given
+                        const types = obj.type.split(" ");
+                        obj.type = types[Math.floor(Math.random()*types.length)];
+                        createObstacle(scene, obj)
+                    });
                     break;
                 case "Items":
                     scene.logger.log('DUNGEON', 1, 'Creating items ...');
-                    layer.objects.forEach((item)=>{createItem(scene, item, this.roomsExplored.size)});
+                    layer.objects.forEach((item)=>{
+                        // Choose random item from list given
+                        const types = item.type.split(" ");
+                        item.type = types[Math.floor(Math.random()*types.length)];
+                        createItem(scene, item, this.roomsExplored.size)
+                    });
                     break;
                 case "Enemies":
                     scene.logger.log('DUNGEON', 1, 'Creating enemies ...');
-                    layer.objects.forEach((enemy)=>{createEnemy(scene, enemy, getTiledMapLayer(room, "Enemy Routes"))});
+                    layer.objects.forEach((enemy)=>{
+                        // Choose random enemy from list given
+                        const types = enemy.type.split(" ");
+                        enemy.type = types[Math.floor(Math.random()*types.length)];
+                        createEnemy(scene, enemy, getTiledMapLayer(room, "Enemy Routes"))
+                    });
                     this.#roomEnemiesCounter = layer.objects.length;
                     break;
                 case "NPCs":
                     scene.logger.log('DUNGEON', 1, 'Creating NPCs ...');
-                    layer.objects.forEach((npc)=>{createNPC(scene, npc)});
+                    layer.objects.forEach((npc)=>{
+                        // Choose random npc from list given
+                        const types = npc.type.split(" ");
+                        npc.type = types[Math.floor(Math.random()*types.length)];
+                        createNPC(scene, npc);
+                    });
                 case "Scattering":
                     scene.logger.log('DUNGEON', 1, 'Creating scattered objects ...');
                     layer.objects.forEach((scattering)=>{this.createScatteredObjects(scene, scattering)});
