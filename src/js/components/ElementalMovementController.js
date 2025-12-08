@@ -35,6 +35,7 @@ export class ElementalMovementControllerComponent extends BaseControllerComponen
         this.changeState(initialState);
 
 		this.setUpAnimations();
+		this.gameObject.scale = 3;
     }
 
     changeState(newState) {
@@ -88,26 +89,31 @@ export class ElementalMovementControllerComponent extends BaseControllerComponen
 	setUpAnimations(){
 		this.gameObject.scene.anims.create({
 			key:"elemental_idle",
-			frames: this.gameObject.scene.anims.generateFrameNumbers("Elemental_animation",{start: 0, end: 1}),
+			frames: this.gameObject.scene.anims.generateFrameNumbers("Elemental_animation",{start: 0, end: 4}),
 			framerate: 8,
-			repeat: -1
+			repeat: -1,
 		});
 		this.gameObject.scene.anims.create({
 			key:"elemental_walk",
-			frames: this.gameObject.scene.anims.generateFrameNumbers("Elemental_animation",{start: 0, end: 1}),
-			framerate: 12,
-			repeat: -1
+			frames: this.gameObject.scene.anims.generateFrameNumbers("Elemental_animation",{start: 5, end: 16}),
+			framerate: 8,
+			repeat: -1,
+			duration: 1000
 		});
+
 	}
 
 
 	updateAnimations(){
-		if (this.states.idle){
-			this.gameObject.play("elemental_idle",true);
-		}
-		else{
+		let velocity = this.gameObject.getVelocity();
+		console.log(velocity);
+		if (velocity.x != 0 || velocity.y != 0 ){
 			this.gameObject.play("elemental_walk",true);
 		}
+		else{
+			this.gameObject.play("elmental_idle",true);
+		}
+		if (velocity.x != 0) this.gameObject.flipX = velocity.x> 0;
 
 	}
 
