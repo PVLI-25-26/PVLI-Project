@@ -27,7 +27,7 @@ export const burningDebuff = {
 
         const particles = new BuffParticleEmitter(entity.scene, entity, 'fireParticle', fireData.duration, 100, 25, 0, 4);
 
-        fireData.particles = particles;
+        fireData.removeParticles = ()=>{particles.remove()};
     },
 
     /**
@@ -39,6 +39,6 @@ export const burningDebuff = {
      */
     remove: function (fireData, entity){
         fireData.timer.remove();
-        fireData.particles.remove();
+        fireData.removeParticles();
     }
 }

@@ -10,7 +10,7 @@ export class DepthSortedSprite extends Phaser.GameObjects.Sprite {
             scene.matter.add.gameObject(this, physicsConfig);
         }
         EventBus.on('cameraRotated', this.updateDepth, this);
-        this.on('destroy',()=>EventBus.off('cameraRotated', this.updateDepth));
+        this.on('destroy',()=>EventBus.off('cameraRotated', this.updateDepth, this));
     }
 
     preUpdate(time, delta){

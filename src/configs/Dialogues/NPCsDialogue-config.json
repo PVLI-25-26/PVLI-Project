@@ -7,7 +7,7 @@
              "options": [0, 1]}
         ],
         "speed" : 1,
-        "npcName" : "Antonio",
+        "npcName" : "Antonio", "portrait":"Antonio",
         "userOptions" : [
             {
                 "label": "Next",
@@ -24,21 +24,21 @@
     },
     "melinoe-intro":{
         "dialogue" : [
-            {"text":"¡¿Artemisa?! ¿Qué haces aquí? Este es un lugar muy peligroso.",
+            {"text":"Artemis?! What are you doing here? This is a very dangerous place.",
              "options": [0]},
-            {"text":"Este bosque no es un bosque normal, esta lleno de criaturas que intentarán acabar con cualquiera que entre.",
+            {"text":"This forest is not a normal forest; it's full of creatures that will try to finish off anyone who enters.",
              "options": [0]},
-            {"text":"¿Me preguntas que porqué estoy yo aquí?",
+            {"text":"You ask why I'm here?",
              "options": [0]},
-            {"text":"El bosque está lleno de objetos mágicos con poderes, estoy intentando averiguar su origen.",
+            {"text":"The forest is full of magical objects with powers; I'm trying to discover their origin.",
              "options": [0]},
-            {"text":"No obstante, cada vez que consigo salir con unos cuantos, se convierten en monedas.",
+            {"text":"However, every time I manage to leave with a few, they turn into coins.",
              "options": [0]},
-            {"text":"Más adelante está el lugar donde me asiento. Qué tal si continúas y te lo muestro.",
+            {"text":"Further ahead is the place where I set up camp. How about you continue and I'll show you.",
              "options": [1]}
         ],
         "speed" : 1,
-        "npcName" : "Melinoe",
+        "npcName" : "Melinoe", "portrait":"Melinoe",
         "userOptions" : [
             {
                 "label" : "Next",
@@ -54,25 +54,25 @@
     },
     "melinoe-hub-intro":{
         "dialogue" : [
-            {"text":"Bienvenida a mi humilde tienda. Aquí guardo objetos mágicos interesantes que te podría resultar útiles.",
+            {"text":"Welcome to my humble shop. Here I keep interesting magical items that might be useful to you.",
              "options": [0]},
-            {"text":"Pero yo tampoco soy tonta, sólo te los daré a cambio de algunas moneditas jijiji.",
+            {"text":"But I'm not foolish, I will only give them to you in exchange for some coins hehe.",
              "options": [0]},
-            {"text":"Veo que no tienes nada ... Antes he visto un slime más adelante. Mátalo, y coge los items que suelte.",
+            {"text":"I see you have nothing... Earlier I saw a slime ahead. Kill it and take the items it drops.",
              "options": [0]},
-            {"text":"Al volver se convertirán en monedas que podrás usar para intercambiar conmigo.",
+            {"text":"When you return they will turn into coins that you can use to trade with me.",
              "options": [0]},
-            {"text":"¡¿Cómo no vas a saber disparar?! ¡Eres la diosa de la caza, simpre vas con un arco!",
+            {"text":"How do you not know how to shoot?! You are the goddess of the hunt, you always carry a bow!",
              "options": [0]},
-            {"text":"En fin, para tensar el arco, mantén click y arrastra el ratón en la dirección contraria a la que apuntas.",
+            {"text":"Anyway, to draw the bow, hold the click and drag the mouse in the opposite direction to where you're aiming.",
              "options": [0]},
-            {"text":"Al soltar el click la flecha saldrá disparada en esa dirección.",
+            {"text":"When you release the click the arrow will be fired in that direction.",
              "options": [0]},
-            {"text":"Pues a qué esperas. ¡A la aventura!",
+            {"text":"So what are you waiting for. Off on an adventure!",
              "options": [1]}
         ],
         "speed" : 1,
-        "npcName" : "Melinoe",
+        "npcName" : "Melinoe", "portrait":"Melinoe",
         "userOptions" : [
             {
                 "label" : "Next",
@@ -88,17 +88,17 @@
     },
     "melinoe-exit-intro":{
         "dialogue" : [
-            {"text":"Joderrr, vaya paliza le has metido. Creo que me vas a ser muy útil por aquí.",
+            {"text":"Wow, what a beating you gave them. I think you'll be very useful around here.",
              "options": [0]},
-            {"text":"Mira, Este es un lugar especial, desde aquí siempre podrás volver a mi asentamiento.",
+            {"text":"Look, this is a special place; from here you can always return to my settlement.",
              "options": [0]},
-            {"text":"Normalmente habrá otros caminos por los que podrás continuar, si quieres, pero en este caso solo puedes volver.",
+            {"text":"There will normally be other paths you can continue on, if you want, but in this case you can only return.",
              "options": [0]},
-            {"text":"¿Qué tal si vuelves a la tienda e intentas comprar algo? Te estaré esperando.",
+            {"text":"How about you go back to the shop and try to buy something? I'll be waiting.",
              "options": [1]}
         ],
         "speed" : 1,
-        "npcName" : "Melinoe",
+        "npcName" : "Melinoe", "portrait":"Melinoe",
         "userOptions" : [
             {
                 "label" : "Next",
@@ -114,11 +114,11 @@
     },
     "melinoe-hub":{
         "dialogue" : [
-            {"text":"¡Hola! ¿Necesitas algo?",
+            {"text":"Hello! Do you need something?",
              "options": [1]}
         ],
         "speed" : 1,
-        "npcName" : "Melinoe",
+        "npcName" : "Melinoe", "portrait":"Melinoe",
         "userOptions" : [
             {
                 "label" : "Next",
@@ -132,15 +132,119 @@
             }
         ]
     },
+    "tomb-daniil":{
+        "dialogue" : [
+            {"text":"Programmer, designer and product manager.",
+             "options": [1]},
+            {"text":"The righteous shall go into life eternal.",
+             "options": [0]}
+        ],
+        "speed" : 1,
+        "npcName" : "Daniil Sosiedka", 
+		"portrait":"empty",
+        "userOptions" : [
+            {
+                "label" : "Exit",
+                "event" : "END",
+                "color" : "Red"
+            },
+			{
+                "label" : "Next",
+                "event" : "NEXT_PAGE",
+                "color" : "White"
+            }
+        ]
+    },
+    "tomb-isasi":{
+        "dialogue" : [
+            {"text":"Programmer, designer and artist.",
+             "options": [1]},
+            {"text":"I am not there; I do not sleep. I am a thousand winds that blow.",
+             "options": [0]}
+        ],
+        "speed" : 1,
+        "npcName" : "Adrián Isasi", 
+		"portrait":"empty",
+        "userOptions" : [
+            {
+                "label" : "Exit",
+                "event" : "END",
+                "color" : "Red"
+            },
+			{
+                "label" : "Next",
+                "event" : "NEXT_PAGE",
+                "color" : "White"
+            }
+        ]
+    },
+    "tomb-miguela":{
+        "dialogue" : [
+            {"text":"Programmer, designer and artist.",
+             "options": [1]},
+            {"text":"Death leaves a heartache no one can steal; love leaves a memory no one can steal.",
+             "options": [0]}
+        ],
+        "speed" : 1,
+        "npcName" : "Miguel Ángel Gónzalez", 
+		"portrait":"empty",
+        "userOptions" : [
+            {
+                "label" : "Exit",
+                "event" : "END",
+                "color" : "Red"
+            },
+			{
+                "label" : "Next",
+                "event" : "NEXT_PAGE",
+                "color" : "White"
+            }
+        ]
+    },
+    "tomb-santiago":{
+        "dialogue" : [
+            {"text":"Programmer and designer.",
+             "options": [1]},
+            {"text":"To live in the hearts of those we leave behind is never to die.",
+             "options": [0]}
+        ],
+        "speed" : 1,
+        "npcName" : "Santiago Salto", 
+		"portrait":"empty",
+        "userOptions" : [
+            {
+                "label" : "Exit",
+                "event" : "END",
+                "color" : "Red"
+            },
+			{
+                "label" : "Next",
+                "event" : "NEXT_PAGE",
+                "color" : "White"
+            }
+        ]
+    },
+
+
+
+
+
+
+
+
 	"Fire-Arrow":{
 		"dialogue" : [
 			{
-				"text": "Flecha de fuego",
-				"options":[0,1]
+				"text": "When impacting an enemy, the fire arrow applies burning status, dealing 1 damage every 0.5s for 2 seconds.",
+				"options":[2]
+			},
+			{
+				"text": "Do you want to buy a fire arrow? Cost: 50 coins",
+				"options":[0, 1]
 			}
 		],
 		"speed" : 1,
-		"npcName" : "Fire-Arrow",
+		"npcName" : "Fire Arrow", "portrait":"Fire-Arrow",
 		"userOptions":[
 			{
 				"label" : "Buy",
@@ -151,18 +255,27 @@
 				"label" : "Exit",
 				"event" : "END",
 				"color" : "Red"
+			},
+			{
+				"label" : "Next",
+				"event" : "NEXT_PAGE",
+				"color" : "White"
 			}
 		]
 	},
 	"Grass-Arrow":{
 		"dialogue" : [
 			{
-				"text": "Flecha de fuego",
-				"options":[0,1]
+				"text": "When impacting an enemy, the grass arrow inmobilizes the enemy for 2 seconds.",
+				"options":[2]
+			},
+			{
+				"text": "Do you want to buy a grass arrow? Cost: 25 coins",
+				"options":[0, 1]
 			}
 		],
 		"speed" : 1,
-		"npcName" : "Grass-Arrow",
+		"npcName" : "Grass Arrow","portrait":"Grass-Arrow",
 		"userOptions":[
 			{
 				"label" : "Buy",
@@ -173,18 +286,31 @@
 				"label" : "Exit",
 				"event" : "END",
 				"color" : "Red"
+			},
+			{
+				"label" : "Next",
+				"event" : "NEXT_PAGE",
+				"color" : "White"
 			}
 		]
 	},
 	"Gass-Arrow":{
 		"dialogue" : [
 			{
-				"text": "Flecha de fuego",
-				"options":[0,1]
+				"text": "When landing, the gas arrow emits a poison cloud. The cloud lasts for 5 seconds, ...",
+				"options":[2]
+			},
+			{
+				"text": "... and deals damage exponentially to anything inside it.",
+				"options":[2]
+			},
+			{
+				"text": "Do you want to buy a gas arrow? Cost: 50 coins",
+				"options":[0, 1]
 			}
 		],
 		"speed" : 1,
-		"npcName" : "Gass-Arrow",
+		"npcName" : "Gas Arrow","portrait":"Gass-Arrow",
 		"userOptions":[
 			{
 				"label" : "Buy",
@@ -195,7 +321,516 @@
 				"label" : "Exit",
 				"event" : "END",
 				"color" : "Red"
+			},
+			{
+				"label" : "Next",
+				"event" : "NEXT_PAGE",
+				"color" : "White"
 			}
 		]
-	}
+	},
+	"Dash-Ability":{
+		"dialogue" : [
+			{
+				"text": "Quickly dash in the direction you are moving to avoid enemies and create distance.",
+				"options":[2]
+			},
+			{
+				"text": "Do you want to buy the dash ability? Cost: 30 coins",
+				"options":[0, 1]
+			}
+		],
+		"speed" : 1,
+		"npcName" : "Dash",
+        "portrait" : "dash",
+		"userOptions":[
+			{
+				"label" : "Buy",
+				"event" : "BUY_DASH",
+				"color" : "Green"
+			},
+			{
+				"label" : "Exit",
+				"event" : "END",
+				"color" : "Red"
+			},
+			{
+				"label" : "Next",
+				"event" : "NEXT_PAGE",
+				"color" : "White"
+			}
+		]
+	},
+	"Forcefield-Ability":{
+		"dialogue" : [
+			{
+				"text": "Create a magical force field that pushes all enemies around you.",
+				"options":[2]
+			},
+			{
+				"text": "Do you want to buy the force field ability? Cost: 25 coins",
+				"options":[0, 1]
+			}
+		],
+		"speed" : 1,
+		"npcName" : "Force field",
+        "portrait" : "forceField",
+		"userOptions":[
+			{
+				"label" : "Buy",
+				"event" : "BUY_FORCEFIELD",
+				"color" : "Green"
+			},
+			{
+				"label" : "Exit",
+				"event" : "END",
+				"color" : "Red"
+			},
+			{
+				"label" : "Next",
+				"event" : "NEXT_PAGE",
+				"color" : "White"
+			}
+		]
+	},
+
+
+
+
+
+
+
+    "noMoreMissions":{
+		"dialogue" : [
+			{
+				"text": "Sorry, I don't have any more missions for you. You can buy an item if you want.",
+				"options": [0]
+			}
+		],
+		"speed" : 1,
+		"npcName" : "Melinoe", "portrait":"Melinoe",
+		"userOptions":[
+			{
+				"label" : "Exit",
+				"event" : "END",
+				"color" : "Red"
+			}
+		]
+    },
+
+    "gather5ItemsStart":{
+		"dialogue" : [
+			{
+				"text": "Collect any 5 items. If you succeed I'll give you a grass arrow.",
+				"options":[0,1]
+			}
+		],
+		"speed" : 1,
+		"npcName" : "Melinoe", "portrait":"Melinoe",
+		"userOptions":[
+			{
+				"label" : "Accept",
+				"event" : "ACCEPT_MISSION",
+				"color" : "Green"
+			},
+			{
+				"label" : "Reject",
+				"event" : "REJECT_MISSION",
+				"color" : "Red"
+			}
+		]
+    },
+    "gather5ItemsEnd":{
+		"dialogue" : [
+			{
+				"text": "I see you've managed to collect 5 items, claim your reward.",
+				"options":[0,1]
+			}
+		],
+		"speed" : 1,
+		"npcName" : "Melinoe", "portrait":"Melinoe",
+		"userOptions":[
+			{
+				"label" : "Accept",
+				"event" : "EQUIP_GRASS_ARROW",
+				"color" : "Green"
+			},
+			{
+				"label" : "Reject",
+				"event" : "END",
+				"color" : "Red"
+			}
+		]
+    },
+    "gather8ItemsStart":{
+		"dialogue" : [
+			{
+				"text": "I have a big job for you, I need tons of items for the next time you return.",
+				"options":[2]
+			},
+			{
+				"text": "Collect any 8 items. If you succeed I'll give you a fire arrow.",
+				"options":[0,1]
+			}
+		],
+		"speed" : 1,
+		"npcName" : "Melinoe", "portrait":"Melinoe",
+		"userOptions":[
+			{
+				"label" : "Accept",
+				"event" : "ACCEPT_MISSION",
+				"color" : "Green"
+			},
+			{
+				"label" : "Reject",
+				"event" : "REJECT_MISSION",
+				"color" : "Red"
+			},
+			{
+				"label" : "Next",
+				"event" : "NEXT_PAGE",
+				"color" : "White"
+			}
+		]
+    },
+    "gather8ItemsEnd":{
+		"dialogue" : [
+			{
+				"text": "I see you've managed to collect 8 items. Here, your fire arrow, as promised.",
+				"options":[0,1]
+			}
+		],
+		"speed" : 1,
+		"npcName" : "Melinoe", "portrait":"Melinoe",
+		"userOptions":[
+			{
+				"label" : "Accept",
+				"event" : "EQUIP_FIRE_ARROW",
+				"color" : "Green"
+			},
+			{
+				"label" : "Reject",
+				"event" : "END",
+				"color" : "Red"
+			}
+		]
+    },
+
+
+
+    "kill2EnemiesStart":{
+		"dialogue" : [
+			{
+				"text": "I need some monster samples for an experiment. Could you kill to monsters for me?",
+				"options":[2]
+			},
+			{
+				"text": "I will reward you with 25 coins if you kill 2 monsters for me.",
+				"options":[0,1]
+			}
+		],
+		"speed" : 1,
+		"npcName" : "Melinoe", "portrait":"Melinoe",
+		"userOptions":[
+			{
+				"label" : "Accept",
+				"event" : "ACCEPT_MISSION",
+				"color" : "Green"
+			},
+			{
+				"label" : "Reject",
+				"event" : "REJECT_MISSION",
+				"color" : "Red"
+			},
+			{
+				"label" : "Next",
+				"event" : "NEXT_PAGE",
+				"color" : "White"
+			}
+		]
+    },
+    "kill2EnemiesEnd":{
+		"dialogue" : [
+			{
+				"text": "You've killed 2 enemies! Here, the promised coins.",
+				"options":[0,1]
+			}
+		],
+		"speed" : 1,
+		"npcName" : "Melinoe", "portrait":"Melinoe",
+		"userOptions":[
+			{
+				"label" : "Accept",
+				"event" : "RECIEVE_25COINS",
+				"color" : "Green"
+			},
+			{
+				"label" : "Reject",
+				"event" : "END",
+				"color" : "Red"
+			}
+		]
+    },
+
+    "kill5EnemiesStart":{
+		"dialogue" : [
+			{
+				"text": "There are way too many monsters in the forest. It's going to get dangerous if we don't do something",
+				"options":[2]
+			},
+			{
+				"text": "If the next time you leave, you kill 5 enemies, I will reward you with 50 coins. What do you say?",
+				"options":[0,1]
+			}
+		],
+		"speed" : 1,
+		"npcName" : "Melinoe", "portrait":"Melinoe",
+		"userOptions":[
+			{
+				"label" : "Accept",
+				"event" : "ACCEPT_MISSION",
+				"color" : "Green"
+			},
+			{
+				"label" : "Reject",
+				"event" : "REJECT_MISSION",
+				"color" : "Red"
+			},
+			{
+				"label" : "Next",
+				"event" : "NEXT_PAGE",
+				"color" : "White"
+			}
+		]
+    },
+    "kill5EnemiesEnd":{
+		"dialogue" : [
+			{
+				"text": "I see you did what you promised, thank you. Here are your coins.",
+				"options":[0,1]
+			}
+		],
+		"speed" : 1,
+		"npcName" : "Melinoe", "portrait":"Melinoe",    
+		"userOptions":[
+			{
+				"label" : "Accept",
+				"event" : "RECIEVE_50COINS",
+				"color" : "Green"
+			},
+			{
+				"label" : "Reject",
+				"event" : "END",
+				"color" : "Red"
+			}
+		]
+    },
+	
+	
+	"kill10EnemiesStart": {
+        "dialogue": [
+            {
+                "text": "The forest is getting worse — I need more samples to study. This time, can you clear out more monsters?",
+                "options": [2]
+            },
+            {
+                "text": "If you kill 10 enemies on your next outing I'll reward you well with 100 coins.",
+                "options": [0, 1]
+            }
+        ],
+        "speed": 1,
+        "npcName": "Melinoe", "portrait":"Melinoe",   
+        "userOptions": [
+            { "label": "Accept", "event": "ACCEPT_MISSION", "color": "Green" },
+            { "label": "Reject", "event": "REJECT_MISSION", "color": "Red" },
+            { "label": "Next", "event": "NEXT_PAGE", "color": "White" }
+        ]
+    },
+
+    "kill10EnemiesEnd": {
+        "dialogue": [
+            {
+                "text": "Amazing work clearing 10 monsters. Here is the 100 coins I promised.",
+                "options": [0, 1]
+            }
+        ],
+        "speed": 1,
+        "npcName": "Melinoe", "portrait":"Melinoe",   
+        "userOptions": [
+            { "label": "Accept", "event": "RECIEVE_100COINS", "color": "Green" },
+            { "label": "Reject", "event": "END", "color": "Red" }
+        ]
+    },
+
+    "gather4FlowersStart": {
+        "dialogue": [
+            {
+                "text": "I think you should take more care of yourself. You should use the flowers in the forest to heal.",
+                "options": [2]
+            },
+            {
+                "text": "Gather 4 flowers and consume any 4 items. I'll give you the force field ability in return.",
+                "options": [0, 1]
+            }
+        ],
+        "speed": 1,
+        "npcName": "Melinoe", "portrait":"Melinoe",   
+        "userOptions": [
+            { "label": "Accept", "event": "ACCEPT_MISSION", "color": "Green" },
+            { "label": "Reject", "event": "REJECT_MISSION", "color": "Red" },
+            { "label": "Next", "event": "NEXT_PAGE", "color": "White" }
+        ]
+    },
+
+    "gather4FlowersEnd": {
+        "dialogue": [
+            {
+                "text": "I saw you took care of yourself out there! Here, with force field you will be able to go much further next time.",
+                "options": [0, 1]
+            }
+        ],
+        "speed": 1,
+        "npcName": "Melinoe", "portrait":"Melinoe",   
+        "userOptions": [
+            { "label": "Accept", "event": "EQUIP_FORCEFIELD", "color": "Green" },
+            { "label": "Reject", "event": "END", "color": "Red" }
+        ]
+    },
+
+    "collect3SpeedVasesStart": {
+        "dialogue": [
+            {
+                "text": "There are speed vases scattered in the ruins. They could boost travel if studied.",
+                "options": [2]
+            },
+            {
+                "text": "Bring me 3 speed vases on your next run and I'll reward you with the dash ability.",
+                "options": [0, 1]
+            }
+        ],
+        "speed": 1,
+        "npcName": "Melinoe", "portrait":"Melinoe",   
+        "userOptions": [
+            { "label": "Accept", "event": "ACCEPT_MISSION", "color": "Green" },
+            { "label": "Reject", "event": "REJECT_MISSION", "color": "Red" },
+            { "label": "Next", "event": "NEXT_PAGE", "color": "White" }
+        ]
+    },
+
+    "collect3SpeedVasesEnd": {
+        "dialogue": [
+            {
+                "text": "Nice, you brought 3 speed vases. Here, with the dash no enemy will catch you.",
+                "options": [0, 1]
+            }
+        ],
+        "speed": 1,
+        "npcName": "Melinoe", "portrait":"Melinoe",   
+        "userOptions": [
+            { "label": "Accept", "event": "EQUIP_DASH", "color": "Green" },
+            { "label": "Reject", "event": "END", "color": "Red" }
+        ]
+    },
+
+	
+
+    "collect4DamageRocksStart": {
+        "dialogue": [
+            {
+                "text": "I need rugged damage rocks for my experiments. They're dangerous but valuable.",
+                "options": [2]
+            },
+            {
+                "text": "Collect 4 damage rocks and I'll give you a fire arrow as a reward.",
+                "options": [0, 1]
+            }
+        ],
+        "speed": 1,
+        "npcName": "Melinoe", "portrait":"Melinoe",   
+        "userOptions": [
+            { "label": "Accept", "event": "ACCEPT_MISSION", "color": "Green" },
+            { "label": "Reject", "event": "REJECT_MISSION", "color": "Red" },
+            { "label": "Next", "event": "NEXT_PAGE", "color": "White" }
+        ]
+    },
+
+    "collect4DamageRocksEnd": {
+        "dialogue": [
+            {
+                "text": "Excellent — you found 4 damage rocks. Here is the fire arrow I promised.",
+                "options": [0, 1]
+            }
+        ],
+        "speed": 1,
+        "npcName": "Melinoe", "portrait":"Melinoe",   
+        "userOptions": [
+            { "label": "Accept", "event": "EQUIP_FIRE_ARROW", "color": "Green" },
+            { "label": "Reject", "event": "END", "color": "Red" }
+        ]
+    },
+
+    "consume5ItemsStart": {
+        "dialogue": [
+            {
+                "text": "To test potion effects, consume some of the items you find and report back.",
+                "options": [0, 1]
+            }
+        ],
+        "speed": 1,
+        "npcName": "Melinoe", "portrait":"Melinoe",   
+        "userOptions": [
+            { "label": "Accept", "event": "ACCEPT_MISSION", "color": "Green" },
+            { "label": "Reject", "event": "REJECT_MISSION", "color": "Red" }
+        ]
+    },
+
+    "consume5ItemsEnd": {
+        "dialogue": [
+            {
+                "text": "Your data was extremely useful. Take this gas arrow as thanks.",
+                "options": [0, 1]
+            }
+        ],
+        "speed": 1,
+        "npcName": "Melinoe", "portrait":"Melinoe",   
+        "userOptions": [
+            { "label": "Accept", "event": "EQUIP_GAS_ARROW", "color": "Green" },
+            { "label": "Reject", "event": "END", "color": "Red" }
+        ]
+    },
+
+    "deal30DamageStart": {
+        "dialogue": [
+            {
+                "text": "We need to test the effectiveness of different arrows in combat.",
+                "options": [2]
+            },
+            {
+                "text": "Deal over 30 damage across enemies and I'll reward you with 100 coins.",
+                "options": [0, 1]
+            }
+        ],
+        "speed": 1,
+        "npcName": "Melinoe", "portrait":"Melinoe",   
+        "userOptions": [
+            { "label": "Accept", "event": "ACCEPT_MISSION", "color": "Green" },
+            { "label": "Reject", "event": "REJECT_MISSION", "color": "Red" },
+            { "label": "Next", "event": "NEXT_PAGE", "color": "White" }
+        ]
+    },
+
+    "deal30DamageEnd": {
+        "dialogue": [
+            {
+                "text": "You've dealt over 30 total damage. Good work — here are 100 coins.",
+                "options": [0, 1]
+            }
+        ],
+        "speed": 1,
+        "npcName": "Melinoe", "portrait":"Melinoe",   
+        "userOptions": [
+            { "label": "Accept", "event": "RECIEVE_100COINS", "color": "Green" },
+            { "label": "Reject", "event": "END", "color": "Red" }
+        ]
+    }
 }   

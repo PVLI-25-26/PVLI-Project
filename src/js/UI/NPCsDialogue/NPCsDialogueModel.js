@@ -7,6 +7,7 @@ export default class NPCsDialogueModel{
         this.dialogues = config;
         this.currentDialogue = {
             npcName : "",
+            portrait: "",
             dialogue : [],
             currentPage : 0,
             speed : 1,

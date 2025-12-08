@@ -28,11 +28,15 @@ export class ElementalMovementControllerComponent extends BaseControllerComponen
             retreat: new RetreatState(this),
         };
 
+		this.animationPatrol = true;
+
         EventBus.on('entityMoved', this.onEntityMoved, this);
         EventBus.on('playerStartedAiming', this.onPlayerStartedAiming, this);
         EventBus.on('arrowLanded', this.onArrowLanded, this);
         EventBus.on('entityDamaged', this.onReceiveDamage, this);
         this.changeState(initialState);
+
+		this.gameObject.scale = 4;
     }
 
     changeState(newState) {
@@ -49,6 +53,7 @@ export class ElementalMovementControllerComponent extends BaseControllerComponen
                 this.changeState('chase');
                 this.target = data.entity;
             }
+			this.animationPatrol = false;
         }
     }
 
@@ -77,8 +82,23 @@ export class ElementalMovementControllerComponent extends BaseControllerComponen
     update(time, delta) {
         if (!this.enabled || !this.movementComponent || !this.currentState) return;
 
+		this.updateAnimations();
+
         this.currentState.update(time, delta);
     }
+
+
+	updateAnimations(){
+		let velocity = this.gameObject.getVelocity();
+		if (this.animationPatrol){
+			this.gameObject.play("elemental_idle",true);
+		}
+		else{
+			this.gameObject.play("elemental_walk",true);
+		}
+		if (velocity.x != 0) this.gameObject.flipX = velocity.x> 0;
+
+	}
 
     checkTargetInAggroRange(target) {
         const enemy = this.gameObject;

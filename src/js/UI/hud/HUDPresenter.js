@@ -18,6 +18,7 @@ export class HudPresenter {
         // Gold
         EventBus.on('hudPlayerGoldInitialized', this.onPlayerGoldInitialized, this);
         EventBus.on('hudPlayerGoldChanged', this.onPlayerGoldChanged, this);
+        EventBus.on('notEnoughGold', this.onNotEnoughGold, this);
 
         // Abilities
         EventBus.on('hudPlayerEquippedAbility', this.onPlayerEquippedAbility, this);
@@ -26,6 +27,13 @@ export class HudPresenter {
         // Arrows
         EventBus.on('hudPlayerEquippedArrow', this.onPlayerEquippedArrow, this);
         EventBus.on('playerArrowsSwitched', this.onPlayerArrowsSwitched, this);
+
+        // Missions
+        EventBus.on('hudMissionsInitialized', this.onMissionsInitialized, this);
+        EventBus.on('hudMissionAdded', this.onMissionAdded, this);
+        EventBus.on('hudMissionCompleted', this.onMissionComplete, this);
+        EventBus.on('hudMissionRemoved', this.onMissionRemoved, this);
+        EventBus.on('missionProgressUpdated', this.onMissionProgressUpdated, this);
     }
 
     onPlayerInitialized() {
@@ -59,6 +67,10 @@ export class HudPresenter {
 
     onPlayerGoldChanged(data){
         this.view.updateGoldIndicator(data.prev, data.new);
+    }
+
+    onNotEnoughGold(){
+        this.view.shakeGold();
     }
 
     onEnemyHealthChanged(enemy) {
@@ -123,5 +135,26 @@ export class HudPresenter {
 
     onPlayerArrowsSwitched(){
         this.view.switchArrowIndicators();
+    }
+
+    onMissionsInitialized(){
+        this.view.createMissionTexts(this.model.activeMissions);
+        this.view.createMissionTexts(this.model.completedMissions, true);
+    }
+
+    onMissionAdded(){
+        this.view.addMissionText(this.model.activeMissions[this.model.activeMissions.length-1]);
+    }
+
+    onMissionComplete(i){
+        this.view.completeMission(i);
+    }
+
+    onMissionRemoved(i){
+        this.view.removeMission(i);
+    }
+
+    onMissionProgressUpdated(){
+        this.view.updateMissionProgress();
     }
 }

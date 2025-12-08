@@ -9,6 +9,8 @@ export class HudModel {
         this.playerGold = 0;
         this.playerEquippedAbility = null;
         this.playerEquippedArrow = null;
+        this.activeMissions = [];
+        this.completedMissions = [];
         this.enemies = new Map(); // enemy => { x, y, maxHP, currentHP, previousHP }
 
         // Health bars
@@ -28,6 +30,12 @@ export class HudModel {
 
         // Arrows
         EventBus.on('arrowEquipped', this.onPlayerArrowEquipped, this);
+
+        // Missions
+        EventBus.on('missionsInitialized', this.onMissionsInitialized, this);
+        EventBus.on('missionAccepted', this.onMissionAccepted, this);
+        EventBus.on('missionCompleted', this.onMissionCompleted, this);
+        EventBus.on('missionRemoved', this.onMissionRemoved, this);
     }
 
     // data = { maxHP }
@@ -120,6 +128,24 @@ export class HudModel {
     onPlayerArrowEquipped(arrow){
         this.playerEquippedArrow = arrow;
         EventBus.emit('hudPlayerEquippedArrow');
+    }
+
+    onMissionsInitialized(data){
+        this.activeMissions = data.activeMissions;
+        this.completedMissions = data.completedMissions;
+        EventBus.emit('hudMissionsInitialized');
+    }
+
+    onMissionAccepted(mission){
+        EventBus.emit('hudMissionAdded');
+    }
+
+    onMissionCompleted(i){
+        EventBus.emit('hudMissionCompleted', i);
+    }
+
+    onMissionRemoved(i){
+        EventBus.emit('hudMissionRemoved', i);
     }
 }
 

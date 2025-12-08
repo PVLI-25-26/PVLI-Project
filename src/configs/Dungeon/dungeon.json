@@ -173,6 +173,19 @@
                              "x":400,
                              "y":-370
                             }
+                        }, 
+                        {
+                         "name":"CreditsRoom",
+                         "propertytype":"Connection",
+                         "type":"class",
+                         "value":
+                            {
+                             "scene":11,
+                             "spawnX":190,
+                             "spawnY":0,
+                             "x":-400,
+                             "y":400
+                            }
                         }],
                  "template":"..\/..\/..\/public\/assets\/rooms\/Templates\/RoomTemplate.tx",
                  "type":"dungeon-entrance-config.json",
@@ -309,6 +322,28 @@
                  "type":"dungeon-combat2-config.json",
                  "x":11.4545454545455,
                  "y":4
+                }, 
+                {
+                 "id":11,
+                 "name":"Credits Room",
+                 "properties":[
+                        {
+                         "name":"Connection",
+                         "propertytype":"Connection",
+                         "type":"class",
+                         "value":
+                            {
+                             "scene":7,
+                             "spawnX":-300,
+                             "spawnY":340,
+                             "x":240,
+                             "y":0
+                            }
+                        }],
+                 "template":"..\/..\/..\/public\/assets\/rooms\/Templates\/RoomTemplate.tx",
+                 "type":"credits-room-config.json",
+                 "x":-4.125,
+                 "y":6.0625
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -317,7 +352,7 @@
          "y":0
         }],
  "nextlayerid":3,
- "nextobjectid":11,
+ "nextobjectid":12,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.11.2",

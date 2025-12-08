@@ -84,6 +84,7 @@ export class BuffManagerComponent extends BaseComponent{
 
      /**
      * Apply a buff described by buffData to the attached game object.
+     * Makes a deep copy of buffData and uses it.
      * Looks up the corresponding BuffLogic by buffData.type and calls its apply/remove methods.
      * A Phaser TimerEvent is scheduled to call remove after buffData.duration milliseconds.
      *
@@ -91,13 +92,15 @@ export class BuffManagerComponent extends BaseComponent{
      * @returns {void}
      */
     addBuff(buffData){
-        if(this.#buffs.has(buffData.type)){
+        // Make deep copy of buffData
+        const buff = structuredClone(buffData);
+        if(this.#buffs.has(buff.type)){
             // Get current buff
-            this.mergeNewBuff(buffData);
+            this.mergeNewBuff(buff);
         }
         else{
             // Si el bufo no esta repetido
-            this.addNewBuff(buffData);
+            this.addNewBuff(buff);
         }
     }
 
@@ -110,7 +113,6 @@ export class BuffManagerComponent extends BaseComponent{
         const currentBuff = this.#buffs.get(buffData.type);
         // Undo current buff effects
         buffTypeToBuffLogic[buffData.type].remove(currentBuff.value, this.gameObject);
-        console.log();
         // Merge both buffs
         currentBuff.timer.elapsed -= buffData.duration;
         if (currentBuff.value < buffData.value) currentBuff.value = buffData.value;
@@ -145,6 +147,7 @@ export class BuffManagerComponent extends BaseComponent{
             value: buffData.value,
             timer: buffTimer
         };
+        appliedBuff.id = buffData.id;
 
         // Save buff in buffs array
         this.#buffs.set(appliedBuff.type, appliedBuff);
@@ -168,6 +171,5 @@ export class BuffManagerComponent extends BaseComponent{
         for(const buff of this.#buffs.keys()){
             this.removeBuff(buff);
         }
-        console.log(this.#buffs);
     }
 }

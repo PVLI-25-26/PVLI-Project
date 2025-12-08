@@ -59,6 +59,11 @@ export class Dungeon extends Phaser.Plugins.BasePlugin {
      */
     #hubID
     /**
+     * Path of the file where the hub is defined.
+     * @type {String}
+     */
+    #hubPath
+    /**
      * ID of the room with name Intro. Saved to return to the Intro if player dies in the tutorial.
      * @type {Number}
      */
@@ -108,11 +113,14 @@ export class Dungeon extends Phaser.Plugins.BasePlugin {
             // Add room to the map of rooms
             this.#rooms.set(cfg.id, room);
             // If the room is the Hub we save it
-            if(cfg.name == "Hub")
+            if(cfg.name == "Hub"){
                 this.#hubID = cfg.id;
+                this.#hubPath = path;
+            }
             // If the room is the beginning of the tutorial we save it
-            else if(cfg.name == "Intro")
+            else if(cfg.name == "Intro"){
                 this.#tutorialIntroID = cfg.id;
+            }
             // If the room is any other room (dungeon rooms) we save them to then only reset these rooms when dungeon restarts
             else{
                 this.#resetableRooms.set(cfg.id, path);
@@ -141,6 +149,24 @@ export class Dungeon extends Phaser.Plugins.BasePlugin {
     }
 
     /**
+     * Reset the hub (resets only the hub)
+     * @private
+     * @returns {void}
+     */
+    async #resetHub(){
+        const response = await fetch(this.#hubPath);
+        // Read JSON with template for the room being created
+        const room = await response.json();
+
+        const prevRoom = this.#rooms.get(this.#hubID);
+        // Give the new room the previous room connections
+        room.connections = prevRoom.connections;
+
+        // Overwrite previous values in the map of rooms
+        this.#rooms.set(this.#hubID, room);
+    }
+
+    /**
      * Populate the given Phaser scene with the current room's obstacles and connections.
      *
      * @param {Phaser.Scene} scene - The scene where objects will be created.
@@ -158,7 +184,7 @@ export class Dungeon extends Phaser.Plugins.BasePlugin {
 
         // listen to when an enemy is killed to removeit from room instance data
         EventBus.on('entityDied', (entity)=>{
-            if(entity instanceof BasicEnemy)
+            if(entity.type == 'enemy')
             {
                 this.removeEnemyFromCurrentRoom(entity.id)
                 this.#roomEnemiesCounter--;
@@ -201,20 +227,40 @@ export class Dungeon extends Phaser.Plugins.BasePlugin {
             switch(layer.name){
                 case "Obstacles":
                     scene.logger.log('DUNGEON', 1, 'Creating obstacles ...');
-                    layer.objects.forEach((obj)=>{createObstacle(scene, obj)});
+                    layer.objects.forEach((obj)=>{
+                        // Choose random obstcle from list given
+                        const types = obj.type.split(" ");
+                        obj.type = types[Math.floor(Math.random()*types.length)];
+                        createObstacle(scene, obj)
+                    });
                     break;
                 case "Items":
                     scene.logger.log('DUNGEON', 1, 'Creating items ...');
-                    layer.objects.forEach((item)=>{createItem(scene, item, this.roomsExplored.size)});
+                    layer.objects.forEach((item)=>{
+                        // Choose random item from list given
+                        const types = item.type.split(" ");
+                        item.type = types[Math.floor(Math.random()*types.length)];
+                        createItem(scene, item, this.roomsExplored.size)
+                    });
                     break;
                 case "Enemies":
                     scene.logger.log('DUNGEON', 1, 'Creating enemies ...');
-                    layer.objects.forEach((enemy)=>{createEnemy(scene, enemy, getTiledMapLayer(room, "Enemy Routes"))});
+                    layer.objects.forEach((enemy)=>{
+                        // Choose random enemy from list given
+                        const types = enemy.type.split(" ");
+                        enemy.type = types[Math.floor(Math.random()*types.length)];
+                        createEnemy(scene, enemy, getTiledMapLayer(room, "Enemy Routes"))
+                    });
                     this.#roomEnemiesCounter = layer.objects.length;
                     break;
                 case "NPCs":
                     scene.logger.log('DUNGEON', 1, 'Creating NPCs ...');
-                    layer.objects.forEach((npc)=>{createNPC(scene, npc)});
+                    layer.objects.forEach((npc)=>{
+                        // Choose random npc from list given
+                        const types = npc.type.split(" ");
+                        npc.type = types[Math.floor(Math.random()*types.length)];
+                        createNPC(scene, npc);
+                    });
                 case "Scattering":
                     scene.logger.log('DUNGEON', 1, 'Creating scattered objects ...');
                     layer.objects.forEach((scattering)=>{this.createScatteredObjects(scene, scattering)});
@@ -286,8 +332,16 @@ export class Dungeon extends Phaser.Plugins.BasePlugin {
     }
 
     changeRoom(nextRoomKey){
+        // If previous room was hub, then we can reload the hub now that we left it
+        if(this.currentRoomKey == this.#hubID){
+            this.#resetHub();
+        }
+        // Update current room key
         this.currentRoomKey = nextRoomKey;
+        // Add room to explored rooms set
         this.roomsExplored.add(this.currentRoomKey);
+
+        // If we have changed room to the hub, reset the dungeon no that we left it
         if(nextRoomKey == this.#hubID){
             EventBus.emit('hubReached');
             // reset dungeon exploration

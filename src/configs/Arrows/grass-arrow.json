@@ -6,7 +6,7 @@
     "debuff": {
         "type": "inmobilized",
         "value": {},
-        "duration": 5000
+        "duration": 2000
     },
-    "gold": 10
+    "gold": 25
 }

@@ -4,14 +4,6 @@ import MainMenuPresenter from "../js/UI/main-menu/MainMenuPresenter.js";
 import { SoundSceneFacade } from "../js/core/sound-facade.js";
 import showLoaderUI from "../js/UI/LoaderUI.js";
 import audioConfig from "../configs/audio-config.json";
-
-import NPCsDialogueModel from "../js/UI/NPCsDialogue/NPCsDialogueModel.js";
-import NPCsDialoguePresenter from "../js/UI/NPCsDialogue/NPCsDialoguePresenter.js";
-import NPCsDialogueView from "../js/UI/NPCsDialogue/NPCsDialogueView.js";
-
-import dialogueTest from "../configs/Dialogues/NPCsDialogue-config.json"
-import dialogueEvents from "../configs/Dialogues/NPCsDialogue-buttonEvents.js"
-
 import { EventBus } from "../js/core/event-bus.js";
 
 export default class MainMenu extends Phaser.Scene {

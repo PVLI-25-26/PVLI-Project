@@ -29,5 +29,53 @@ export default class Boot extends Phaser.Scene {
     create() {
         this.logger.log('BOOT', 1, 'Loading complete, starting game!');
         this.scene.start('MainMenu');
+        this.loadFonts();
+		this.setUpAnimations();
     }
+    loadFonts(){
+        document.fonts.load("32px FableFont").then(()=>{});
+        document.fonts.load("32px MicroChat").then(()=>{});
+
+    }
+	setUpAnimations(){
+		this.anims.create({
+			key:"elemental_idle",
+			frames: this.anims.generateFrameNumbers("Elemental_animation",{start: 0, end: 9}),
+			framerate: 8,
+			repeat: -1,
+			duration: 1500
+		});
+		this.anims.create({
+			key:"elemental_walk",
+			frames: this.anims.generateFrameNumbers("Elemental_animation",{start: 10, end: 21}),
+			framerate: 8,
+			repeat: -1,
+			duration: 1000
+		});
+		this.anims.create({
+            key: "player_idle_bow",
+            frames: this.anims.generateFrameNumbers("Player_animation", {start:0, end: 7}),
+            frameRate: 8,
+            repeat: -1
+        });
+		this.anims.create({
+            key: "player_walk_bow",
+            frames: this.anims.generateFrameNumbers("Player_animation", {start:8, end: 18}),
+            frameRate: 12,
+            repeat: -1
+        });
+		this.anims.create({
+            key: "player_idle",
+            frames: this.anims.generateFrameNumbers("Player_animation", {start:19, end: 27}),
+            frameRate: 8,
+            repeat: -1
+        });
+		this.anims.create({
+            key: "player_walk",
+            frames: this.anims.generateFrameNumbers("Player_animation", {start:28, end: 37}),
+            frameRate: 12,
+            repeat: -1
+        });
+
+	}
 }
