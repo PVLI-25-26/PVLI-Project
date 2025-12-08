@@ -42,14 +42,23 @@ export class PlayerShootingComponent extends BaseComponent{
      */
     #powerIncSpeed;
 
+    /**
+     * @type {Object} Vector representing the drag of the mouse
+     */
     #mouseDrag;
+    /**
+     * @type {Number} Length of the vector #mouseDrag
+     */
     #mouseDragLength;
 
     /**
      * @type {Pool} Simple object pool for arrows.
      */
     #arrowPool;
-    arrowShot;
+    /**
+     * @type {Arrow} Arrow entity to be shot (got from the arrow pool)
+     */
+    #arrowShot;
 
     /**
      * @type {number} Current cosine of camera rotation.
@@ -118,7 +127,7 @@ export class PlayerShootingComponent extends BaseComponent{
             },
         );
 
-        // Basic UI for testing
+        // Create Bow, power bar, and get arrow (All for visual represent aiming in the game)
         this.powerBar = this.gameObject.scene.add.nineslice(this.gameObject.x, this.gameObject.y, 'aiming-arrow', 0, 16, 16, 0, 6);
         this.powerBar.setScale(1.5);
         this.powerBar.setOrigin(0,0.5);
@@ -130,8 +139,6 @@ export class PlayerShootingComponent extends BaseComponent{
 		//FIX: arreglar error con el offset, aparece debajo del player
 		this.bow.offsetX = 0.5;
 		this.bow.offsetY = 0.8;
-
-
         this.bow.scale = 4;
         this.bow.setVisible(false);
         this.arrowShot = this.#arrowPool.spawn();
@@ -148,6 +155,7 @@ export class PlayerShootingComponent extends BaseComponent{
             this.#equippedTrajectory = trajectory;
         })
 
+        // Cheat keybindings
         this.gameObject.scene.input.keyboard.on('keydown-T', ()=>{
             EventBus.emit('arrowEquipped', fireArrow);
         })
@@ -194,7 +202,7 @@ export class PlayerShootingComponent extends BaseComponent{
                 const effect = Object.assign({}, this.#isSpecialArrowActive ? this.#equippedArrow : basicArrow);
                 effect.damage *= this.#damageMultiplier;
                 // Get arrow from pool and shoot
-                this.arrowShot.shoot(
+                this.#arrowShot.shoot(
                     this.#equippedTrajectory,
                     effect,
                     this.gameObject.x, this.gameObject.y, // Origin (player position)
@@ -215,7 +223,7 @@ export class PlayerShootingComponent extends BaseComponent{
     update(time, delta){
         // Handle bow aiming
         if(this.#currentPower > this.#minPower){
-            this.showBowAndBar(this.#mouseDrag.x, this.#mouseDrag.y, this.#mouseDragLength, this.arrowShot);
+            this.showBowAndBar(this.#mouseDrag.x, this.#mouseDrag.y, this.#mouseDragLength, this.#arrowShot);
         }
         else{
             this.hideBowAndBar();
@@ -228,6 +236,9 @@ export class PlayerShootingComponent extends BaseComponent{
         }
     }
 
+    /**
+     * @returns {Object} direction of shot with player drag  values
+     */
     calculateShotDirection(){
         const noRotDirX = this.#mouseDrag.x;
         const noRotDirY = this.#mouseDrag.y;
@@ -237,34 +248,54 @@ export class PlayerShootingComponent extends BaseComponent{
         return dir;
     }
 
+    /**
+     * Rotates a vector.
+     * @param {Number} cR - cosine of rotation wanted
+     * @param {Number} sR - sine of rotation wanted
+     * @param {Number} vec - vector to rotate
+     * @returns returns vector passed rotated
+     */
     rotateVector(cR, sR, vec){
         return {x: vec.x * cR - vec.y * sR,
                 y: vec.x * sR + vec.y * cR};
     }
 
+    /**
+     * Shows the bow and power bar indicators
+     * @param {Number} dragX  - drag direction x
+     * @param {Number} dragY - drag direction y
+     * @param {Number} dragLength - drag length
+     * @param {Object} arrow - arrow being shot
+     */
     showBowAndBar(dragX, dragY, dragLength, arrow){
+        // Calculate drag direction taking into account cam direction
         const dragDir = this.rotateVector(this.camCosR, this.camSinR, {y: dragY, x: dragX});
+        // Bow orbit values
         const orbitDistance = 20;
         const orbitX = this.gameObject.x - orbitDistance*dragDir.x/dragLength;
         const orbitY = this.gameObject.y - orbitDistance*dragDir.y/dragLength;
+        // How much the player has drawn the bow
         const drawProgress01 = (this.#currentPower-this.#minPower)/(this.#maxPower-this.#minPower);
 
+        // Show power bar and set width to progress
         this.powerBar.setVisible(true);
         this.powerBar.width = 100 * drawProgress01;
         this.powerBar.alpha = Math.max(0, drawProgress01*100);
         
-        
+        // Rotate power bar with drag rotation
         const dragRotation = Math.atan2(-dragDir.y, -dragDir.x);
         this.powerBar.rotation = dragRotation;
         this.powerBar.x = orbitX;
         this.powerBar.y = orbitY;
         
+        // Show bow and rotate with drag direction
         this.bow.setVisible(true);
         this.bow.rotation = dragRotation;
         this.bow.x = orbitX;
         this.bow.y = orbitY;
         this.bow.setFrame(Math.max(0, Math.round(drawProgress01*3)));
 
+        // Show arow being shot and rotate with drag direction
         arrow.setVisible(true);
         arrow.setDepth(this.bow.depth+0.1);
         arrow.rotation = dragRotation;
@@ -272,11 +303,16 @@ export class PlayerShootingComponent extends BaseComponent{
         arrow.y = this.gameObject.y - (arrow.width/2 + orbitDistance - Math.max(0, Math.round(drawProgress01)*10)) * dragDir.y/dragLength;
     }
 
+    /**
+     * Hides the bow and power bar visual indicators
+     */
     hideBowAndBar(){
+        // If they are visible, hide them
         if(this.bow.visible || this.powerBar.visible){
             this.bow.setFrame(0);
+            // Hide with tween reducing alpha
             this.gameObject.scene.tweens.add({
-                targets: [this.bow, this.powerBar, this.arrowShot],
+                targets: [this.bow, this.powerBar, this.#arrowShot],
                 alpha: 0,
                 duration: 200,
                 onComplete: (tween)=>{
@@ -285,13 +321,17 @@ export class PlayerShootingComponent extends BaseComponent{
                     this.powerBar.alpha = 1;
                     this.bow.setVisible(false);
                     this.bow.alpha = 1;
-                    this.arrowShot.setVisible(false);
-                    this.arrowShot.alpha = 1;
+                    this.#arrowShot.setVisible(false);
+                    this.#arrowShot.alpha = 1;
                 }
             })
         }
     }
 
+    /**
+     * Set currently equipped trajectory
+     * @param {*} trajectory 
+     */
     setArrowTrajectory(trajectory){
         if(trajectory){
             // SHOULD MAKE A TRAJECTORY FROM A TRAJECTORY CONFIG, NOT JUST ACCEPT AN OBJECT AS IS
@@ -301,10 +341,17 @@ export class PlayerShootingComponent extends BaseComponent{
             //EventBus.emit('trajectoryEquipped', BasicTrajectory);
         }
     }
+    /**
+     * Get currently active trajectory
+     */
     getArrowTrajectory(){
         //return this.#equippedTrajectory;
         // SHOULD RETURN A TRAJECTORY CONFIG TO THEN CREATE TRAJECTORIES, CANT JUST GIVE A PHASER OBJECT TO PARSE AS A JSON
     }
+    /**
+     * Set currently equipped effect
+     * @param {*} effect 
+     */
     setArrowEffect(effect){
         if(effect){
             EventBus.emit('arrowEquipped', effect);
@@ -313,19 +360,32 @@ export class PlayerShootingComponent extends BaseComponent{
             EventBus.emit('arrowEquipped', basicArrow);
         }
     }
+    /**
+     * Get currently equipped effect
+     */
     getArrowEffect(){
         return this.#equippedArrow;
     }
 
+    /**
+     * Reset equipped arrow and trajectory to defaults
+     */
     resetArrowAndTrajectory() {
         EventBus.emit('arrowEquipped', basicArrow);
         this.#equippedTrajectory = new BasicTrajectory(0.05, this.gameObject.scene);
     }
 
+    /**
+     * Get current damage multiplier
+     */
     getDamageMultiplier(){
         return this.#damageMultiplier;
     }
 
+    /**
+     * Set current damage multiplier
+     * @param {Number} value 
+     */
     setDamageMultiplier(value){
         this.#damageMultiplier = value;
     }

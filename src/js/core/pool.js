@@ -85,7 +85,9 @@ export default class Pool {
 		if(this.#onRelease) this.#onRelease(entity);
 	}
 
-
+	/**
+	 * @returns {Phaser.GameObjects.Group} The group used as a pool
+	 */
 	getPhaserGroup(){
 		return this.#group;
 	}

@@ -2,9 +2,10 @@ import { EventBus } from "../../core/event-bus";
 import { BuffParticleEmitter } from "../../entities/BuffParticleEmitter";
 import { MovementComponent } from "../Movement";
 /**
- * Multiplier value used by the movement buff.
- * Example: 1.2 increases speed by 20%.
- * @typedef {number} SpeedMultiplier
+ * Data object used by the movement buff.
+ * @typedef {Object} MovementBuffData
+ * @property {number} speedIncrease - Multiplier applied to the MovementComponent speed (e.g. 1.2 for +20%).
+ * @property {number} [duration] - Optional duration in milliseconds used for particle lifetime / visuals.
  */
 
 /**
@@ -21,7 +22,7 @@ export const movementBuff = {
      * Multiplies the MovementComponent.speed by the provided multiplier and sets the new speed.
      * If no MovementComponent is found nothing will happen.
      *
-     * @param {SpeedMultiplier} data.value - Multiplier to apply to the entity's base speed.
+     * @param {MovementBuffData} data - Buff configuration (speedIncrease required).
      * @param {Phaser.GameObjects.GameObject} entity - Target entity which should have MovementComponent.
      * @returns {void}
      */
@@ -36,6 +37,7 @@ export const movementBuff = {
                     movementComponent.setSpeed(speed);
                 }
 
+                // Emit movement increased particles
                 new BuffParticleEmitter(entity.scene, entity, "verticalParticle", data.duration, 100, 25)
             },
 
@@ -44,7 +46,7 @@ export const movementBuff = {
      * Divides the MovementComponent.speed by the provided multiplier to restore prior speed.
      * If no MovementComponent is found nothing will happen.
      * 
-     * @param {SpeedMultiplier} data - Multiplier that was previously applied.
+     * @param {MovementBuffData} data - Buff configuration that was used to apply the effect.
      * @param {Phaser.GameObjects.GameObject} entity - Target entity which should expose getComponent().
      * @returns {void}
      */
