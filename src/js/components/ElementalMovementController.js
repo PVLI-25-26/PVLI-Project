@@ -33,6 +33,8 @@ export class ElementalMovementControllerComponent extends BaseControllerComponen
         EventBus.on('arrowLanded', this.onArrowLanded, this);
         EventBus.on('entityDamaged', this.onReceiveDamage, this);
         this.changeState(initialState);
+
+		this.setUpAnimations();
     }
 
     changeState(newState) {
@@ -77,8 +79,37 @@ export class ElementalMovementControllerComponent extends BaseControllerComponen
     update(time, delta) {
         if (!this.enabled || !this.movementComponent || !this.currentState) return;
 
+		console.log("A");
+
+		this.updateAnimations();
+
         this.currentState.update(time, delta);
     }
+	setUpAnimations(){
+		this.gameObject.scene.anims.create({
+			key:"elemental_idle",
+			frames: this.gameObject.scene.anims.generateFrameNumbers("Elemental_animation",{start: 0, end: 1}),
+			framerate: 8,
+			repeat: -1
+		});
+		this.gameObject.scene.anims.create({
+			key:"elemental_walk",
+			frames: this.gameObject.scene.anims.generateFrameNumbers("Elemental_animation",{start: 0, end: 1}),
+			framerate: 12,
+			repeat: -1
+		});
+	}
+
+
+	updateAnimations(){
+		if (this.states.idle){
+			this.gameObject.play("elemental_idle",true);
+		}
+		else{
+			this.gameObject.play("elemental_walk",true);
+		}
+
+	}
 
     checkTargetInAggroRange(target) {
         const enemy = this.gameObject;

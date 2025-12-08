@@ -54,9 +54,9 @@ export class Elemental extends BillBoard {
             this.body.positionPrev.y += config.offsetY;
         }
 
+
         this.addComponents();
     }
-
      /**
      * Adds MovementComponent and EnemyController to the player.
      * @returns {void}
