@@ -28,14 +28,15 @@ export class ElementalMovementControllerComponent extends BaseControllerComponen
             retreat: new RetreatState(this),
         };
 
+		this.animationPatrol = true;
+
         EventBus.on('entityMoved', this.onEntityMoved, this);
         EventBus.on('playerStartedAiming', this.onPlayerStartedAiming, this);
         EventBus.on('arrowLanded', this.onArrowLanded, this);
         EventBus.on('entityDamaged', this.onReceiveDamage, this);
         this.changeState(initialState);
 
-		this.setUpAnimations();
-		this.gameObject.scale = 3;
+		this.gameObject.scale = 4;
     }
 
     changeState(newState) {
@@ -52,6 +53,7 @@ export class ElementalMovementControllerComponent extends BaseControllerComponen
                 this.changeState('chase');
                 this.target = data.entity;
             }
+			this.animationPatrol = false;
         }
     }
 
@@ -80,38 +82,19 @@ export class ElementalMovementControllerComponent extends BaseControllerComponen
     update(time, delta) {
         if (!this.enabled || !this.movementComponent || !this.currentState) return;
 
-		console.log("A");
-
 		this.updateAnimations();
 
         this.currentState.update(time, delta);
     }
-	setUpAnimations(){
-		this.gameObject.scene.anims.create({
-			key:"elemental_idle",
-			frames: this.gameObject.scene.anims.generateFrameNumbers("Elemental_animation",{start: 0, end: 4}),
-			framerate: 8,
-			repeat: -1,
-		});
-		this.gameObject.scene.anims.create({
-			key:"elemental_walk",
-			frames: this.gameObject.scene.anims.generateFrameNumbers("Elemental_animation",{start: 5, end: 16}),
-			framerate: 8,
-			repeat: -1,
-			duration: 1000
-		});
-
-	}
 
 
 	updateAnimations(){
 		let velocity = this.gameObject.getVelocity();
-		console.log(velocity);
-		if (velocity.x != 0 || velocity.y != 0 ){
-			this.gameObject.play("elemental_walk",true);
+		if (this.animationPatrol){
+			this.gameObject.play("elemental_idle",true);
 		}
 		else{
-			this.gameObject.play("elmental_idle",true);
+			this.gameObject.play("elemental_walk",true);
 		}
 		if (velocity.x != 0) this.gameObject.flipX = velocity.x> 0;
 
