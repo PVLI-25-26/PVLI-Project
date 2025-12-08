@@ -332,14 +332,14 @@ export class HudView {
             this.scene.hudLayer.add(this.noMissionsText);
             this.noMissionsText.setScrollFactor(0);
         }
-        
-        if(missions.length == 0){
-            this.noMissionsText.setAlpha(1);
-        }
 
         missions.forEach((mission) => {
             this.addMissionText(mission, areCompleted);
         });
+        
+        if(this.missionDisplays.length == 0){
+            this.noMissionsText.setAlpha(1);
+        }
     }
 
     addMissionText(mission, isCompleted){
