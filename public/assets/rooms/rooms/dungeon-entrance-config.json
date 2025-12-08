@@ -1,4 +1,5 @@
-{ "compressionlevel":-1,
+{ "backgroundcolor":"#4f4a45",
+ "compressionlevel":-1,
  "height":20,
  "infinite":true,
  "layers":[
@@ -36,8 +37,8 @@
                  "name":"Tree",
                  "template":"..\/Templates\/BillboardTemplate.tx",
                  "type":"tree2",
-                 "x":-304,
-                 "y":380
+                 "x":-185.333333333333,
+                 "y":388
                 }, 
                 {
                  "id":109,

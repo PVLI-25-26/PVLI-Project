@@ -152,6 +152,26 @@
         }
     },
     {
+        "key": "tomb",
+        "spriteStackConfig": 
+        {
+            "textures": "tomb-spritestack",
+            "frameCount": 8,
+            "verticalOffset": 6,
+            "scale": 3,
+            "offsetX": 0,
+            "offsetY": 0
+        },
+        "physicsConfig":{
+            "shape": {
+                "type": "rectangle",
+                "width": 127,
+                "height": 54
+            },
+            "isStatic": true
+        }
+    },
+    {
         "key": "door",
         "spriteStackConfig": 
         {
@@ -214,6 +234,38 @@
         }
     },
     {
+        "key": "greenGrass1",
+        "billboardConfig":{
+            "texture":"greengrass",
+            "scale":4,
+            "frame":0
+        }
+    },
+    {
+        "key": "greenGrass2",
+        "billboardConfig":{
+            "texture":"greengrass",
+            "scale":4,
+            "frame":1  
+        }
+    },
+    {
+        "key": "greenGrass3",
+        "billboardConfig":{
+            "texture":"greengrass",
+            "scale":4,
+            "frame":2
+        }
+    },
+    {
+        "key": "greenGrass4",
+        "billboardConfig":{
+            "texture":"greengrass",
+            "scale":4,
+            "frame": 3
+        }
+    },
+    {
         "key": "flower1",
         "billboardConfig":{
             "texture":"flowers",
@@ -233,6 +285,30 @@
         "key": "flower3",
         "billboardConfig":{
             "texture":"flowers",
+            "scale":4,
+            "frame":2 
+        }
+    },
+    {
+        "key": "greenFlower1",
+        "billboardConfig":{
+            "texture":"greenflowers",
+            "scale":4,
+            "frame":0
+        }
+    },
+    {
+        "key": "greenFlower2",
+        "billboardConfig":{
+            "texture":"greenflowers",
+            "scale":4,
+            "frame":1
+        }
+    },
+    {
+        "key": "greenFlower3",
+        "billboardConfig":{
+            "texture":"greenflowers",
             "scale":4,
             "frame":2 
         }
@@ -295,6 +371,78 @@
         "key":"tree4",
         "billboardConfig":{
             "texture":"trees",
+            "scale":4,
+            "frame":3,
+            "offsetX": 0.5,
+            "offsetY": 0.95
+        },
+        "physicsConfig":{
+            "shape": {
+                "type": "rectangle",
+                "width": 3,
+                "height": 10
+            },
+            "isStatic": true
+        }
+    },
+    {
+        "key":"greenTree1",
+        "billboardConfig":{
+            "texture":"greentrees",
+            "scale":4,
+            "frame":0,
+            "offsetX": 0.5,
+            "offsetY": 0.95
+        },
+        "physicsConfig":{
+            "shape": {
+                "type": "rectangle",
+                "width": 3,
+                "height": 10
+            },
+            "isStatic": true
+        }
+    },
+    {
+        "key":"greenTree2",
+        "billboardConfig":{
+            "texture":"greentrees",
+            "scale":4,
+            "frame":1,
+            "offsetX": 0.5,
+            "offsetY": 0.95
+        },
+        "physicsConfig":{
+            "shape": {
+                "type": "rectangle",
+                "width": 3,
+                "height": 10
+            },
+            "isStatic": true
+        }
+    },
+    {
+        "key":"greenTree3",
+        "billboardConfig":{
+            "texture":"greentrees",
+            "scale":4,
+            "frame":2,
+            "offsetX": 0.5,
+            "offsetY": 0.95
+        },
+        "physicsConfig":{
+            "shape": {
+                "type": "rectangle",
+                "width": 3,
+                "height": 10
+            },
+            "isStatic": true
+        }
+    },
+    {
+        "key":"greenTree4",
+        "billboardConfig":{
+            "texture":"greentrees",
             "scale":4,
             "frame":3,
             "offsetX": 0.5,

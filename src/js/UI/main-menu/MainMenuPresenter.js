@@ -13,12 +13,14 @@ export default class MainMenuPresenter {
     }
 
     subscribeToViewEvents() {
-        this.view.startButton.on("button-clicked", () => {
+
+
+        this.view.playButton.on("button-clicked", () => {
             EventBus.emit('stopMusic');
             EventBus.emit("playSound", "click");
             
         });
-        this.view.startButton.on("button-hovered", () => {
+        this.view.playButton.on("button-hovered", () => {
             EventBus.emit("playSound", "hover");
         });
         
@@ -64,55 +66,63 @@ export default class MainMenuPresenter {
         });
 
 
-        // Saved files
-
-
-        this.view.saveFile1.on("button-clicked", () => {
-            EventBus.emit('stopMusic');
-            EventBus.emit("playSound", "click");
-            saveDataManager.changeCurrentSave(0);
-            this.view.scene.scene.start("GameplayScene", {playerSpawn: {x: 0, y:0}});
+        // Game Slots
+        
+        this.view.gameSlot.forEach((element, index) => {
+            element.on("button-clicked", () => {
+                EventBus.emit('stopMusic');
+                EventBus.emit("playSound", "click");
+                saveDataManager.changeCurrentSave(index);
+                this.view.scene.scene.start("GameplayScene", {playerSpawn: {x: 0, y:0}});
             // Player always starts from hub
-            this.view.scene.plugins.get('dungeon').returnToHub();
-        });
-        this.view.saveFile1.on("button-hovered", () => {
-            EventBus.emit("playSound", "hover");
-        });
-
-        this.view.saveFile2.on("button-clicked", () => {
-            EventBus.emit('stopMusic');
-            EventBus.emit("playSound", "click");
-            saveDataManager.changeCurrentSave(1);
-            this.view.scene.scene.start("GameplayScene", {playerSpawn: {x: 0, y:0}});
-            // Player always starts from hub
-            this.view.scene.plugins.get('dungeon').returnToHub();
-        });
-        this.view.saveFile2.on("button-hovered", () => {
-            EventBus.emit("playSound", "hover");
+                this.view.scene.plugins.get('dungeon').returnToHub();
+            });
+            element.on("button-hovered", () => {
+                EventBus.emit("playSound", "hover");
+            })
         });
 
-        this.view.saveFile3.on("button-clicked", () => {
-            EventBus.emit('stopMusic');
-            EventBus.emit("playSound", "click");
-            saveDataManager.changeCurrentSave(2);
-            this.view.scene.scene.start("GameplayScene", {playerSpawn: {x: 0, y:0}});
-            // Player always starts from hub
-            this.view.scene.plugins.get('dungeon').returnToHub();
+
+
+        //delete Files 
+
+        this.view.deleteGame.forEach((element,index)=>{
+            element.on("button-clicked", () => {
+                EventBus.emit('stopMusic');
+                EventBus.emit("playSound", "click");
+                saveDataManager.deleteData(index);
+            });
+            element.on("button-hovered", () => {
+                EventBus.emit("playSound", "hover");
+            });
         });
-        this.view.saveFile3.on("button-hovered", () => {
-            EventBus.emit("playSound", "hover");
+        
+        //Save Game Files
+        this.view.saveGame.forEach((element,index)=>{
+            element.on("button-clicked", () => {
+                EventBus.emit('stopMusic');
+                EventBus.emit("playSound", "click");
+                saveDataManager.saveDataDocument(index);;
+            });
+            element.on("button-hovered", () => {
+                EventBus.emit("playSound", "hover");
+            });
         });
 
-        //delete Files DeleteGame3
-        this.view.DeleteGame3.on("button-clicked", () => {
-            EventBus.emit('stopMusic');
-            EventBus.emit("playSound", "click");
-            saveDataManager.deleteData(2);
+        //Load Game Files
+        this.view.loadGameFile.forEach((element,index)=>{
+            element.on("button-clicked", () => {
+                EventBus.emit('stopMusic');
+                EventBus.emit("playSound", "click");
+                saveDataManager.loadDataDocument(index);;
+            });
+            element.on("button-hovered", () => {
+                EventBus.emit("playSound", "hover");
+            });
         });
-        this.view.DeleteGame3.on("button-hovered", () => {
-            EventBus.emit("playSound", "hover");
-        });
+        
     }
+        
 
     setValuesFromModel() {
         const musicVolume = this.model.musicVolume;
