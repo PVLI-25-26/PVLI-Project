@@ -1,7 +1,7 @@
 import { EventBus } from "../core/event-bus";
 import { ItemKey } from "../core/factories/item-factory";
 import { BillBoard } from "./BillBoard";
-import Colors from "../../configs/color-config.json"
+import Colors from "../../configs/colors-config.js";
 
 /**
  * Game entity representing a world item that can be picked up by the player.

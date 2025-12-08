@@ -9,6 +9,8 @@ import { forceFieldBuff } from "./Buffs/ForceFieldBuff";
 import { invisibilityBuff } from "./Buffs/InvisiblityBuff";
 
 import { movementBuff } from "./Buffs/MovementBuff";
+import { healingBuff } from "./Buffs/HealingBuff";
+import { powerBuff } from "./Buffs/PowerBuff";
 
 
 /**
@@ -39,8 +41,9 @@ const buffTypeToBuffLogic = {
     invisibility: invisibilityBuff,
     burning: burningDebuff,
     inmobilized: inmobilizedDebuff,
-    poisoned: poisonedDebuff
-    // health: healthBuff (example)
+    poisoned: poisonedDebuff,
+    healing: healingBuff,
+    power: powerBuff
     // ...
 }
 
@@ -69,7 +72,9 @@ export class BuffManagerComponent extends BaseComponent{
         // Listen to buffApplied events inside the entity
         this.gameObject.on('buffApplied', this.addBuff, this);
         this.gameObject.on('buffRemoved', this.removeBuff, this);
+        this.gameObject.on('entityDied', this.clearBuffs, this);
     }
+
     update(t, dt){
     }
 
@@ -79,6 +84,7 @@ export class BuffManagerComponent extends BaseComponent{
 
      /**
      * Apply a buff described by buffData to the attached game object.
+     * Makes a deep copy of buffData and uses it.
      * Looks up the corresponding BuffLogic by buffData.type and calls its apply/remove methods.
      * A Phaser TimerEvent is scheduled to call remove after buffData.duration milliseconds.
      *
@@ -86,13 +92,15 @@ export class BuffManagerComponent extends BaseComponent{
      * @returns {void}
      */
     addBuff(buffData){
-        if(this.#buffs.has(buffData.type)){
+        // Make deep copy of buffData
+        const buff = structuredClone(buffData);
+        if(this.#buffs.has(buff.type)){
             // Get current buff
-            this.mergeNewBuff(buffData);
+            this.mergeNewBuff(buff);
         }
         else{
             // Si el bufo no esta repetido
-            this.addNewBuff(buffData);
+            this.addNewBuff(buff);
         }
     }
 
@@ -105,7 +113,6 @@ export class BuffManagerComponent extends BaseComponent{
         const currentBuff = this.#buffs.get(buffData.type);
         // Undo current buff effects
         buffTypeToBuffLogic[buffData.type].remove(currentBuff.value, this.gameObject);
-        console.log();
         // Merge both buffs
         currentBuff.timer.elapsed -= buffData.duration;
         if (currentBuff.value < buffData.value) currentBuff.value = buffData.value;
@@ -120,6 +127,7 @@ export class BuffManagerComponent extends BaseComponent{
      */
     addNewBuff(buffData) {
         // Apply buff using each buff logic depending on type
+        buffData.value.duration = buffData.duration; // Add the duration to the values of the buff
         buffTypeToBuffLogic[buffData.type].apply(buffData.value, this.gameObject);
 
         const currentBuffsSize = this.#buffs.length;
@@ -139,6 +147,7 @@ export class BuffManagerComponent extends BaseComponent{
             value: buffData.value,
             timer: buffTimer
         };
+        appliedBuff.id = buffData.id;
 
         // Save buff in buffs array
         this.#buffs.set(appliedBuff.type, appliedBuff);

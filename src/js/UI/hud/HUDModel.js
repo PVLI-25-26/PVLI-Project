@@ -1,5 +1,4 @@
 import { EventBus } from "../../core/event-bus.js";
-import { Player } from "../../entities/Player.js";
 import Phaser from "phaser";
 
 export class HudModel {
@@ -7,18 +6,40 @@ export class HudModel {
         this.playerMaxHP;
         this.playerCurrentHP;
         this.playerPreviousHP; // used for bar animation color (damage/heal)
+        this.playerGold = 0;
+        this.playerEquippedAbility = null;
+        this.playerEquippedArrow = null;
+        this.activeMissions = [];
+        this.completedMissions = [];
         this.enemies = new Map(); // enemy => { x, y, maxHP, currentHP, previousHP }
 
-        EventBus.on('playerHealthInitialized', this.onPlayerInitialized, this);
+        // Health bars
+        EventBus.on('playerHealthInitialized', this.onPlayerHealthInitialized, this);
         EventBus.on('enemyHealthInitialized', this.onEnemyInitialized, this);
         EventBus.on('entityMoved', this.onEntityMoved, this);
         EventBus.on('entityDamaged', this.onEntityDamaged, this);
         EventBus.on('entityHealed', this.onEntityHealed, this);
-        EventBus.on('entityDied', (entity) => this.onEntityDied(entity), this);
+        EventBus.on('entityDied', this.onEntityDied, this);
+
+        // Gold
+        EventBus.on('playerGoldChanged', this.onPlayerGoldChanged, this);
+        EventBus.on('playerGoldInitialized', this.onPlayerGoldInitialized, this);
+
+        // Abilities
+        EventBus.on('abilityEquipped', this.onPlayerAbilityEquipped, this);
+
+        // Arrows
+        EventBus.on('arrowEquipped', this.onPlayerArrowEquipped, this);
+
+        // Missions
+        EventBus.on('missionsInitialized', this.onMissionsInitialized, this);
+        EventBus.on('missionAccepted', this.onMissionAccepted, this);
+        EventBus.on('missionCompleted', this.onMissionCompleted, this);
+        EventBus.on('missionRemoved', this.onMissionRemoved, this);
     }
 
     // data = { maxHP }
-    onPlayerInitialized(data) {
+    onPlayerHealthInitialized(data) {
         this.playerMaxHP = data.maxHP;
         this.playerCurrentHP = data.maxHP;
         this.playerPreviousHP = data.maxHP;
@@ -29,6 +50,18 @@ export class HudModel {
     onEnemyInitialized(data) {
         this.enemies.set(data.enemy, { x: data.enemy.x, y: data.enemy.y, maxHP: data.maxHP, currentHP: data.maxHP });
         EventBus.emit('hudEnemyAdded', data.enemy);
+    }
+
+    // data = Gold amount
+    onPlayerGoldInitialized(data){
+        this.playerGold = data;
+        EventBus.emit('hudPlayerGoldInitialized', data);
+    }
+
+    // data = Gold amount
+    onPlayerGoldChanged(data){
+        EventBus.emit('hudPlayerGoldChanged', {prev: this.playerGold, new: data});
+        this.playerGold = data;
     }
 
     // data = { entity, x, y }
@@ -49,7 +82,7 @@ export class HudModel {
         if (entity.type == 'player') {
             this.setPlayerHealth(this.playerCurrentHP - data.amount);
         }
-        if (entity.type == 'enemy') {
+        if (entity.type == 'enemy' && this.enemies.has(entity)) {
             this.setEnemyHealth(entity, this.enemies.get(entity).currentHP - data.amount);
         }
     }
@@ -85,6 +118,34 @@ export class HudModel {
         this.playerPreviousHP = this.playerCurrentHP;
         this.playerCurrentHP = Phaser.Math.Clamp(value, 0, this.playerMaxHP);
         EventBus.emit('hudPlayerHealthChanged');
+    }
+
+    onPlayerAbilityEquipped(ability){
+        this.playerEquippedAbility = ability;
+        EventBus.emit('hudPlayerEquippedAbility');
+    }
+
+    onPlayerArrowEquipped(arrow){
+        this.playerEquippedArrow = arrow;
+        EventBus.emit('hudPlayerEquippedArrow');
+    }
+
+    onMissionsInitialized(data){
+        this.activeMissions = data.activeMissions;
+        this.completedMissions = data.completedMissions;
+        EventBus.emit('hudMissionsInitialized');
+    }
+
+    onMissionAccepted(mission){
+        EventBus.emit('hudMissionAdded');
+    }
+
+    onMissionCompleted(i){
+        EventBus.emit('hudMissionCompleted', i);
+    }
+
+    onMissionRemoved(i){
+        EventBus.emit('hudMissionRemoved', i);
     }
 }
 

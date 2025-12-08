@@ -1,6 +1,6 @@
 import { Button } from "../elements/button.js";
 import { Slider } from "../elements/slider.js";
-import Colors from "../../../configs/color-config.json"
+import Colors from "../../../configs/colors-config.js"
 
 export default class MainMenuView {
     constructor(scene) {
@@ -365,8 +365,8 @@ export default class MainMenuView {
     }
 
     createSliders() {
-        this.musicSlider = new Slider(this.scene, 400, 350, 300, 20, 0.5);
-        this.sfxSlider = new Slider(this.scene, 400, 250, 300, 20, 0.5);
+        this.musicSlider = new Slider(this.scene, 400, 250, 300, 20, 0.5);
+        this.sfxSlider = new Slider(this.scene, 400, 350, 300, 20, 0.5);
         this.sfxSlider.setVisible(false);
         this.sfxSlider.setActive(false);
         this.musicSlider.setVisible(false);

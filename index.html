@@ -7,8 +7,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Sansation:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
     <link href="style.css" rel="stylesheet">
     <script type="module" src="/src/js/main.js" defer></script>
-    <link rel="preload" as="font" href="public/assets/fonts/Fabled_Font.ttf" type="font/ttf" />
-    <link rel="preload" as="font" href="public/assets/fonts/Micro_Chat.ttf" type="font/ttf" />
+    <!--Load fonts by using them in the html. This way the browser loads them before the game starts. This had to be done because loading fonts synchronously in the game wasn't possible-->
+    <div style="font-family:FableFont; position:absolute; left:-1000px; visibility: hidden;">.</div>
+    <div style="font-family:MicroChat; position:absolute; left:-1000px; visibility: hidden;">.</div>
   </head>
   <body>
     <header>

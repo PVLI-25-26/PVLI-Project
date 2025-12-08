@@ -82,6 +82,7 @@
             "isStatic": true,
             "isSensor": true
         },
+        "givesMissions": true,
         "dialogueName": "melinoe-hub"
     },
 	{
@@ -134,6 +135,40 @@
             "isSensor": true
         },
         "dialogueName": "Gass-Arrow"
+    },
+	{
+        "key": "Dash-Ability",
+        "billboardConfig":{
+            "texture":"dash",
+            "scale":2
+        },
+        "physicsConfig":{
+            "shape": {
+                "type": "rectangle",
+                "width": 10,
+                "height": 10
+            },
+            "isStatic": true,
+            "isSensor": true
+        },
+        "dialogueName": "Dash-Ability"
+    },
+	{
+        "key": "Forcefield-Ability",
+        "billboardConfig":{
+            "texture":"forceField",
+            "scale":2
+        },
+        "physicsConfig":{
+            "shape": {
+                "type": "rectangle",
+                "width": 10,
+                "height": 10
+            },
+            "isStatic": true,
+            "isSensor": true
+        },
+        "dialogueName": "Forcefield-Ability"
     }
 
 

@@ -36,7 +36,7 @@ export default class NPCsDialoguePresenter{
         this.setCurrentPage();
         this.view.UpdateText();
         this.view.UpdateName(this.model.currentDialogue.npcName);
-        this.view.UpdatePortrait(this.model.currentDialogue.npcName);
+        this.view.UpdatePortrait(this.model.currentDialogue.portrait);
 		//Esta
         this.createButtons();
     }
@@ -46,6 +46,7 @@ export default class NPCsDialoguePresenter{
             npcName : this.model.dialogues[name].npcName,
             dialogue : this.model.dialogues[name].dialogue,
             currentPage : 0,
+            portrait: this.model.dialogues[name].portrait,
             speed : this.model.dialogues[name].speed,
             userOptions : this.model.dialogues[name].userOptions,
         }

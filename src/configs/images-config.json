@@ -15,6 +15,7 @@
     {"key": "rock-spritestack", "type": "spritesheet", "file": "assets/sprites/SpriteStacks/Rock.png", "settings":{"frameWidth":16, "frameHeight": 16}},
     {"key": "column-spritestack", "type": "spritesheet", "file": "assets/sprites/SpriteStacks/Column.png", "settings":{"frameWidth":16, "frameHeight": 16}},
     {"key": "log-spritestack", "type": "spritesheet", "file": "assets/sprites/SpriteStacks/Log.png", "settings":{"frameWidth":12, "frameHeight": 12}},
+    {"key": "shop-carpet", "type": "spritesheet", "file": "assets/sprites/SpriteStacks/Carpet.png", "settings":{"frameWidth":32}},
     
     {"key": "queso", "type": "image", "file": "assets/sprites/16x16 RPG Item Pack/Item__65.png", "settings":{}},
     {"key": "ball", "type": "image", "file": "assets/sprites/16x16 RPG Item Pack/Item__26.png", "settings":{}},
@@ -51,4 +52,12 @@
 	{"key": "Player_animation", "type": "spritesheet", "file": "assets/sprites/Player/PlayerAnimations.png", "settings":{"frameWidth":21, "frameHeight":19}},
 	{"key": "Elemental_animation", "type": "spritesheet", "file": "assets/sprites/Enemies/ElementalAnimations.png", "settings":{"frameWidth":35,"frameHeight":28}}
 
+    {"key": "dash", "type": "image", "file": "assets/sprites/Abilities/dash.png", "settings":{}},
+    {"key": "forceField", "type": "image", "file": "assets/sprites/Abilities/forcefield.png", "settings":{}},
+
+    {"key": "plusParticle", "type": "image", "file": "assets/sprites/Particles/PlusParticle.png", "settings":{}},
+    {"key": "poisonParticle", "type": "image", "file": "assets/sprites/Particles/PoisonParticle.png", "settings":{}},
+    {"key": "verticalParticle", "type": "image", "file": "assets/sprites/Particles/VerticalParticle.png", "settings":{}},
+    {"key": "fireParticle", "type": "spritesheet", "file": "assets/sprites/Particles/FireParticle.png", "settings":{"frameWidth":8}},
+    {"key": "crossParticle", "type": "image", "file": "assets/sprites/Particles/CrossParticle.png", "settings":{}}
 ]

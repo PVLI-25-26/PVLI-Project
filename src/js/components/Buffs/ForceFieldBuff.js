@@ -1,4 +1,5 @@
 import { EventBus } from "../../core/event-bus";
+import Colors from "../../../configs/colors-config.js";
 
 /**
  * Object that contains parameters used to create and destroy the force field
@@ -37,11 +38,31 @@ export const forceFieldBuff = {
         effectZone.setOnCollide(this.pushEnemies);
         effectZone.setCollidesWith(entity.scene.enemiesCategory);
 
+        const VFX = entity.scene.add.circle(entity.x, entity.y, 0, 1)
+            .setFillStyle(Colors.OrangeHex,0.1)
+            .setStrokeStyle(5, Colors.OrangeHex, 1);
+            // .setBlendMode(Phaser.BlendModes.ADD)
+        entity.scene.tweens.add({
+            targets: VFX,
+            radius: forceFieldValues.effectRadius,
+            duration: forceFieldValues.duration,
+            ease: 'Quad'
+        })
+
         // This ability handles the destruction of the object because the game crashed when trying to save an entity on shutdown
         entity.scene.time.addEvent({
             delay: forceFieldValues.duration,
             callback: () => {
                 effectZone.destroy(true);
+                entity.scene.tweens.add({
+                    targets: VFX,
+                    alpha: 0,
+                    duration: 100,
+                    ease: 'Linear',
+                    onComplete: ()=>{
+                        VFX.destroy(true);
+                    }
+                })
             },
             loop: false,
             repeat: 0

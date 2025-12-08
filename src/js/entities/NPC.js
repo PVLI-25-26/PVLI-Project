@@ -1,12 +1,14 @@
 import { BillBoard } from "./BillBoard.js";
 import { EventBus } from "../core/event-bus.js";
-import Colors from "../../configs/color-config.json"
+import Colors from "../../configs/colors-config.js";
+import missionManager from "../core/mission-manager.js";
 
 export class NPC extends BillBoard{
     constructor(scene,x,y,config){
         super(scene,x,y,config.billboardConfig,config.physicsConfig);
         this.config = config;
         this.dialogueName = config.dialogueName; 
+        this.hasInteracted = false;
 
         // Dialogue position offset
         this.diagOffsetY = -150;
@@ -110,7 +112,23 @@ export class NPC extends BillBoard{
 
         this.hideKeyTip();
 
-        EventBus.emit("StartDialogue",this.dialogueName, diagPosX, diagPosY);
+        // If NPC doesn't give missions, we just send their associated dialogue
+        if(!this.config.givesMissions){
+            this.hasInteracted = true;
+            EventBus.emit("StartDialogue",this.dialogueName, diagPosX, diagPosY);
+        }
+        // If NPC gives missions and hasn´t given a mission yet
+        else if(!this.hasInteracted){
+            // Request mission manager next mission dialogue and start it
+            const mission = missionManager.getMissionDialogue();
+            // If the player recieves a new, mission, we set the flag as interacted. If it isn't a new mission (player is claiming missions), we set the flag as false.
+            this.hasInteracted = mission.isNewMission;
+            EventBus.emit("StartDialogue", mission.dialogue, diagPosX, diagPosY);
+        }
+        else{
+            EventBus.emit("StartDialogue", "noMoreMissions", diagPosX, diagPosY);
+        }
+            
     }
 
 }

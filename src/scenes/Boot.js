@@ -5,6 +5,8 @@ import showLoaderUI from "../js/UI/LoaderUI";
 export default class Boot extends Phaser.Scene {
     constructor() {
         super("Boot");
+        this.fontsLoaded = 0;
+        this.fontsToLoad = 2;
     }
 
     preload() {

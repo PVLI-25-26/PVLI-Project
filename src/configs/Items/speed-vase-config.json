@@ -24,7 +24,9 @@
         },
         "buffData":{
             "type": "movement",
-            "value": 1.10,
+            "value": {
+                "speedIncrease": 1.10
+            },
             "duration": 5000
         },
         "gold": 10,
@@ -55,7 +57,9 @@
         },
         "buffData":{
             "type": "movement",
-            "value": 1.30,
+            "value": {
+                "speedIncrease": 1.30
+            },
             "duration": 5000
         },
         "gold": 20,
@@ -88,7 +92,9 @@
         },
         "buffData":{
             "type": "movement",
-            "value": 1.60,
+            "value": {
+                "speedIncrease": 2
+            },
             "duration": 5000
         },
         "gold": 30,

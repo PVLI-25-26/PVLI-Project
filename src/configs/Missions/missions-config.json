@@ -1,0 +1,83 @@
+[
+    {
+        "missionStartDialogue": "gather5ItemsStart",
+        "completeConditions": [
+            {"property": "itemsGathered", "op": ">", "amount":4}
+        ],
+        "missionClaimDialogue": "gather5ItemsEnd",
+        "summary": "Gather 5 items during the next run"
+    },
+    {
+        "missionStartDialogue": "gather8ItemsStart",
+        "completeConditions": [
+            {"property": "itemsGathered", "op": ">", "amount":7}
+        ],
+        "missionClaimDialogue": "gather8ItemsEnd",
+        "summary": "Gather 8 items during the next run"
+    },
+    {
+        "missionStartDialogue": "gather4FlowersStart",
+        "completeConditions": [
+            {"property": "healthFlowersGathered", "op": ">", "amount":3},
+            {"property": "itemsConsumed", "op": ">", "amount":1}
+        ],
+        "missionClaimDialogue": "gather4FlowersEnd",
+        "summary": "Gather 4 flowers and consume 2 items during the next run"
+    },
+    {
+        "missionStartDialogue": "collect3SpeedVasesStart",
+        "completeConditions": [
+            {"property": "speedVasesGathered", "op": ">", "amount":2}
+        ],
+        "missionClaimDialogue": "collect3SpeedVasesEnd",
+        "summary": "Collect 3 speed vases in the next run"
+    },
+    {
+        "missionStartDialogue": "collect4DamageRocksStart",
+        "completeConditions": [
+            {"property": "damageRocksGathered", "op": ">", "amount":3}
+        ],
+        "missionClaimDialogue": "collect4DamageRocksEnd",
+        "summary": "Gather 4 damage rocks in the next run"
+    },
+    {
+        "missionStartDialogue": "consume5ItemsStart",
+        "completeConditions": [
+            {"property": "itemsConsumed", "op": ">", "amount":4}
+        ],
+        "missionClaimDialogue": "consume5ItemsEnd",
+        "summary": "Consume 5 items in the next run"
+    },
+    {
+        "missionStartDialogue": "kill2EnemiesStart",
+        "completeConditions": [
+            {"property": "enemiesKilled", "op": ">", "amount":1}
+        ],
+        "missionClaimDialogue": "kill2EnemiesEnd",
+        "summary": "Kill 2 enemies during the next run"
+    },
+    {
+        "missionStartDialogue": "kill5EnemiesStart",
+        "completeConditions": [
+            {"property": "enemiesKilled", "op": ">", "amount":4}
+        ],
+        "missionClaimDialogue": "kill5EnemiesEnd",
+        "summary": "Kill 5 enemies during the next run"
+    },
+    {
+        "missionStartDialogue": "kill10EnemiesStart",
+        "completeConditions": [
+            {"property": "enemiesKilled", "op": ">", "amount":9}
+        ],
+        "missionClaimDialogue": "kill10EnemiesEnd",
+        "summary": "Kill 10 enemies during the next run"
+    },
+    {
+        "missionStartDialogue": "deal30DamageStart",
+        "completeConditions": [
+            {"property": "damageDealt", "op": ">", "amount":29}
+        ],
+        "missionClaimDialogue": "deal30DamageEnd",
+        "summary": "Deal 30 damage during the next run"
+    }
+]

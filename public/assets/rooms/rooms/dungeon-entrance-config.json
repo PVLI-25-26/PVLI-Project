@@ -253,11 +253,19 @@
                 }, 
                 {
                  "id":104,
+                 "name":"Damage Rock",
+                 "template":"..\/Templates\/ItemTemplate.tx",
+                 "type":"damage-rock",
+                 "x":38.6666666666663,
+                 "y":-49.3333333333337
+                }, 
+                {
+                 "id":113,
                  "name":"Health Flower",
                  "template":"..\/Templates\/ItemTemplate.tx",
                  "type":"health-flower",
                  "x":-190.666666666667,
-                 "y":-302.666666666667
+                 "y":-316
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -277,7 +285,7 @@
          "y":0
         }],
  "nextlayerid":12,
- "nextobjectid":113,
+ "nextobjectid":114,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.11.2",

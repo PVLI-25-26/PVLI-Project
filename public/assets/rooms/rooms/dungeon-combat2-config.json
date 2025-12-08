@@ -330,26 +330,7 @@
          "name":"Enemies",
          "objects":[
                 {
-                 "id":78,
-                 "name":"Enemy 2",
-                 "properties":[
-                        {
-                         "name":"PatrolRoute",
-                         "type":"object",
-                         "value":83
-                        }, 
-                        {
-                         "name":"state",
-                         "type":"string",
-                         "value":"patrol"
-                        }],
-                 "template":"..\/Templates\/EnemyTemplate.tx",
-                 "type":"basic",
-                 "x":218.666666666667,
-                 "y":-421.333333333333
-                }, 
-                {
-                 "id":84,
+                 "id":147,
                  "name":"Enemy 3",
                  "properties":[
                         {
@@ -364,17 +345,17 @@
                         }],
                  "template":"..\/Templates\/EnemyTemplate.tx",
                  "type":"basic",
-                 "x":24,
-                 "y":46.6666666666666
+                 "x":-112,
+                 "y":172
                 }, 
                 {
-                 "id":146,
-                 "name":"Enemy 1",
+                 "id":148,
+                 "name":"Enemy 2",
                  "properties":[
                         {
                          "name":"PatrolRoute",
                          "type":"object",
-                         "value":145
+                         "value":83
                         }, 
                         {
                          "name":"state",
@@ -383,8 +364,27 @@
                         }],
                  "template":"..\/Templates\/EnemyTemplate.tx",
                  "type":"basic",
-                 "x":-194.666666666667,
-                 "y":232
+                 "x":221.333333333333,
+                 "y":-433.333333333333
+                }, 
+                {
+                 "id":149,
+                 "name":"Enemy 1",
+                 "properties":[
+                        {
+                         "name":"PatrolRoute",
+                         "type":"object",
+                         "value":83
+                        }, 
+                        {
+                         "name":"state",
+                         "type":"string",
+                         "value":"patrol"
+                        }],
+                 "template":"..\/Templates\/EnemyTemplate.tx",
+                 "type":"basic",
+                 "x":257.333333333333,
+                 "y":-128
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -532,7 +532,7 @@
          "y":0
         }],
  "nextlayerid":14,
- "nextobjectid":147,
+ "nextobjectid":150,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.11.2",

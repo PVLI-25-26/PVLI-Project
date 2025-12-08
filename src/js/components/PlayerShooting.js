@@ -72,6 +72,16 @@ export class PlayerShootingComponent extends BaseComponent{
     #equippedArrow = basicArrow;
 
     /**
+     * @type {Boolean} Flag to know if the player has the special arrows selected
+     */
+    #isSpecialArrowActive = false;
+
+    /**
+     * @type {Number} Factor multiplied to the arrow effect as extra damage
+     */
+    #damageMultiplier = 1;
+
+    /**
      * Creates a new PlayerShootingComponent to handle player shooting.
      * 
      * @param {Object} gameObject Gameobject to which this component is attached.
@@ -87,6 +97,7 @@ export class PlayerShootingComponent extends BaseComponent{
         this.#currentPower = 0;
         this.#maxPower = maxPower;
         this.#powerIncSpeed = powerIncSpeed;
+        this.playerKeys = this.gameObject.scene.inputFacade.getPlayerKeys();
 
         // Initialize object pool
         this.#arrowPool = new Pool(
@@ -178,7 +189,10 @@ export class PlayerShootingComponent extends BaseComponent{
             {   
                 // Calculate direction of shot taking into account camera rotation
                 const directionShot = this.calculateShotDirection();
-                const effect = Object.assign({}, this.#equippedArrow);
+                // Get current effect
+                // Make shallow copy of effect, no need to make deep copy (it is done in buffManager) the reason we make shallow copy is to not share the attacker and reciever properties added later in the arrow object.
+                const effect = Object.assign({}, this.#isSpecialArrowActive ? this.#equippedArrow : basicArrow);
+                effect.damage *= this.#damageMultiplier;
                 // Get arrow from pool and shoot
                 this.arrowShot.shoot(
                     this.#equippedTrajectory,
@@ -199,11 +213,18 @@ export class PlayerShootingComponent extends BaseComponent{
     }
 
     update(time, delta){
+        // Handle bow aiming
         if(this.#currentPower > this.#minPower){
             this.showBowAndBar(this.#mouseDrag.x, this.#mouseDrag.y, this.#mouseDragLength, this.arrowShot);
         }
         else{
             this.hideBowAndBar();
+        }
+
+        // Handle arrow switching
+        if(Phaser.Input.Keyboard.JustDown(this.playerKeys.switchArrows)){
+            this.#isSpecialArrowActive = !this.#isSpecialArrowActive;
+            EventBus.emit('playerArrowsSwitched');
         }
     }
 
@@ -274,7 +295,10 @@ export class PlayerShootingComponent extends BaseComponent{
     setArrowTrajectory(trajectory){
         if(trajectory){
             // SHOULD MAKE A TRAJECTORY FROM A TRAJECTORY CONFIG, NOT JUST ACCEPT AN OBJECT AS IS
-            this.#equippedTrajectory = trajectory;
+            EventBus.emit('trajectoryEquipped', trajectory);
+        }
+        else {
+            //EventBus.emit('trajectoryEquipped', BasicTrajectory);
         }
     }
     getArrowTrajectory(){
@@ -283,7 +307,10 @@ export class PlayerShootingComponent extends BaseComponent{
     }
     setArrowEffect(effect){
         if(effect){
-            this.#equippedArrow = effect;
+            EventBus.emit('arrowEquipped', effect);
+        }
+        else {
+            EventBus.emit('arrowEquipped', basicArrow);
         }
     }
     getArrowEffect(){
@@ -291,7 +318,15 @@ export class PlayerShootingComponent extends BaseComponent{
     }
 
     resetArrowAndTrajectory() {
-        this.#equippedArrow = basicArrow;
+        EventBus.emit('arrowEquipped', basicArrow);
         this.#equippedTrajectory = new BasicTrajectory(0.05, this.gameObject.scene);
+    }
+
+    getDamageMultiplier(){
+        return this.#damageMultiplier;
+    }
+
+    setDamageMultiplier(value){
+        this.#damageMultiplier = value;
     }
 } 
