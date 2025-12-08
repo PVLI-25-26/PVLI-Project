@@ -35,8 +35,28 @@ export default events  = {
 	REJECT_REWARD: ()=>{
 		EventBus.emit("StopDialogue");
 	},
+	RECIEVE_25COINS: ()=>{
+		EventBus.emit("addGold", 25);
+		EventBus.emit("StopDialogue");
+	},
 	RECIEVE_50COINS: ()=>{
 		EventBus.emit("addGold", 50);
+		EventBus.emit("StopDialogue");
+	},
+	RECIEVE_75COINS: ()=>{
+		EventBus.emit("addGold", 75);
+		EventBus.emit("StopDialogue");
+	},
+	RECIEVE_100COINS: ()=>{
+		EventBus.emit("addGold", 100);
+		EventBus.emit("StopDialogue");
+	},
+	RECIEVE_150COINS: ()=>{
+		EventBus.emit("addGold", 150);
+		EventBus.emit("StopDialogue");
+	},
+	RECIEVE_200COINS: ()=>{
+		EventBus.emit("addGold", 200);
 		EventBus.emit("StopDialogue");
 	}
 }

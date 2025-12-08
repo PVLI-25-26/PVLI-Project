@@ -2,8 +2,7 @@
     {
         "missionStartDialogue": "gather3ItemsStart",
         "completeConditions": [
-            {"property": "itemsGathered", "op": ">", "amount":2},
-            {"property": "damageDealt", "op": ">", "amount":1}
+            {"property": "itemsGathered", "op": ">", "amount":2}
         ],
         "missionClaimDialogue": "gather3ItemsEnd",
         "summary": "Gather 3 items"

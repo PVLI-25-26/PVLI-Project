@@ -145,6 +145,21 @@ export class HudView {
         });
     }
 
+    shakeGold(){
+        this.goldText.setColor(Colors.Red);
+        this.scene.tweens.add({
+            targets: this.goldText,
+            x:  this.goldText.x-10,
+            duration: 50,
+            ease: 'Linear',
+            repeat: 5,
+            yoyo: true,
+            onComplete: ()=>{
+                this.goldText.setColor(Colors.White);
+            }
+        })
+    }
+
     createAbilityIndicator(abilityKey){
         const x = this.scene.cameras.main.width - 100;
         const y = this.scene.cameras.main.height - 250;

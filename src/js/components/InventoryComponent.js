@@ -59,7 +59,7 @@ export class InventoryComponent extends BaseComponent{
                 EventBus.emit('abilityEquipped', ability);
             }
             else{
-                console.log('not enought coins')
+                EventBus.emit('notEnoughGold');
             }
         });
         EventBus.on('arrowBought', (arrow)=>{
@@ -68,7 +68,7 @@ export class InventoryComponent extends BaseComponent{
                 EventBus.emit('arrowEquipped', arrow);
             }
             else{
-                console.log('not enought coins')
+                EventBus.emit('notEnoughGold');
             }
         });
         EventBus.on('trajectoryBought', (trajectory)=>{
@@ -77,7 +77,7 @@ export class InventoryComponent extends BaseComponent{
                 EventBus.emit('trajectoryEquipped', trajectory);
             }
             else{
-                console.log('not enought coins')
+                EventBus.emit('notEnoughGold');
             }
         })
         this.gameObject.scene.input.keyboard.on('keydown-M', ()=>{this.addGold(50);});

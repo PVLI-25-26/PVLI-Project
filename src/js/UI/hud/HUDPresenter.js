@@ -18,6 +18,7 @@ export class HudPresenter {
         // Gold
         EventBus.on('hudPlayerGoldInitialized', this.onPlayerGoldInitialized, this);
         EventBus.on('hudPlayerGoldChanged', this.onPlayerGoldChanged, this);
+        EventBus.on('notEnoughGold', this.onNotEnoughGold, this);
 
         // Abilities
         EventBus.on('hudPlayerEquippedAbility', this.onPlayerEquippedAbility, this);
@@ -66,6 +67,10 @@ export class HudPresenter {
 
     onPlayerGoldChanged(data){
         this.view.updateGoldIndicator(data.prev, data.new);
+    }
+
+    onNotEnoughGold(){
+        this.view.shakeGold();
     }
 
     onEnemyHealthChanged(enemy) {
