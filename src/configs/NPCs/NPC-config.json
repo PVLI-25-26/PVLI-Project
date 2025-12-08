@@ -169,6 +169,74 @@
             "isSensor": true
         },
         "dialogueName": "Forcefield-Ability"
+    },
+	{
+        "key": "Tomb-Daniil",
+        "billboardConfig":{
+            "texture":"empty",
+            "scale":2
+        },
+        "physicsConfig":{
+            "shape": {
+                "type": "rectangle",
+                "width": 20,
+                "height": 20
+            },
+            "isStatic": true,
+            "isSensor": true
+        },
+        "dialogueName": "tomb-daniil"
+    },
+	{
+        "key": "Tomb-Isasi",
+        "billboardConfig":{
+            "texture":"empty",
+            "scale":2
+        },
+        "physicsConfig":{
+            "shape": {
+                "type": "rectangle",
+                "width": 20,
+                "height": 20
+            },
+            "isStatic": true,
+            "isSensor": true
+        },
+        "dialogueName": "tomb-isasi"
+    },
+	{
+        "key": "Tomb-MiguelA",
+        "billboardConfig":{
+            "texture":"empty",
+            "scale":2
+        },
+        "physicsConfig":{
+            "shape": {
+                "type": "rectangle",
+                "width": 20,
+                "height": 20
+            },
+            "isStatic": true,
+            "isSensor": true
+        },
+        "dialogueName": "tomb-miguela"
+    },
+	{
+        "key": "Tomb-Santiago",
+        "billboardConfig":{
+            "texture":"empty",
+            "scale":2
+        },
+        "physicsConfig":{
+            "shape": {
+                "type": "rectangle",
+                "width": 20,
+                "height": 20
+            },
+            "isStatic": true,
+            "isSensor": true
+        },
+        "dialogueName": "tomb-santiago"
     }
 
 

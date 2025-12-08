@@ -132,6 +132,98 @@
             }
         ]
     },
+    "tomb-daniil":{
+        "dialogue" : [
+            {"text":"Programmer, designer and product manager.",
+             "options": [1]},
+            {"text":"The righteous shall go into life eternal.",
+             "options": [0]}
+        ],
+        "speed" : 1,
+        "npcName" : "Daniil Sosiedka", 
+		"portrait":"empty",
+        "userOptions" : [
+            {
+                "label" : "Exit",
+                "event" : "END",
+                "color" : "Red"
+            },
+			{
+                "label" : "Next",
+                "event" : "NEXT_PAGE",
+                "color" : "White"
+            }
+        ]
+    },
+    "tomb-isasi":{
+        "dialogue" : [
+            {"text":"Programmer, designer and artist.",
+             "options": [1]},
+            {"text":"I am not there; I do not sleep. I am a thousand winds that blow.",
+             "options": [0]}
+        ],
+        "speed" : 1,
+        "npcName" : "Adrián Isasi", 
+		"portrait":"empty",
+        "userOptions" : [
+            {
+                "label" : "Exit",
+                "event" : "END",
+                "color" : "Red"
+            },
+			{
+                "label" : "Next",
+                "event" : "NEXT_PAGE",
+                "color" : "White"
+            }
+        ]
+    },
+    "tomb-miguela":{
+        "dialogue" : [
+            {"text":"Programmer, designer and artist.",
+             "options": [1]},
+            {"text":"Death leaves a heartache no one can steal; love leaves a memory no one can steal.",
+             "options": [0]}
+        ],
+        "speed" : 1,
+        "npcName" : "Miguel Ángel Gónzalez", 
+		"portrait":"empty",
+        "userOptions" : [
+            {
+                "label" : "Exit",
+                "event" : "END",
+                "color" : "Red"
+            },
+			{
+                "label" : "Next",
+                "event" : "NEXT_PAGE",
+                "color" : "White"
+            }
+        ]
+    },
+    "tomb-santiago":{
+        "dialogue" : [
+            {"text":"Programmer and designer.",
+             "options": [1]},
+            {"text":"To live in the hearts of those we leave behind is never to die.",
+             "options": [0]}
+        ],
+        "speed" : 1,
+        "npcName" : "Santiago Salto", 
+		"portrait":"empty",
+        "userOptions" : [
+            {
+                "label" : "Exit",
+                "event" : "END",
+                "color" : "Red"
+            },
+			{
+                "label" : "Next",
+                "event" : "NEXT_PAGE",
+                "color" : "White"
+            }
+        ]
+    },
 
 
 
