@@ -50,7 +50,7 @@
 
 
 	{"key": "Player_animation", "type": "spritesheet", "file": "assets/sprites/Player/PlayerAnimations.png", "settings":{"frameWidth":21, "frameHeight":19}},
-	{"key": "Elemental_animation", "type": "spritesheet", "file": "assets/sprites/Enemies/ElementalAnimations.png", "settings":{"frameWidth":35,"frameHeight":28}}
+	{"key": "Elemental_animation", "type": "spritesheet", "file": "assets/sprites/Enemies/ElementalAnimations.png", "settings":{"frameWidth":35,"frameHeight":28}},
 
     {"key": "dash", "type": "image", "file": "assets/sprites/Abilities/dash.png", "settings":{}},
     {"key": "forceField", "type": "image", "file": "assets/sprites/Abilities/forcefield.png", "settings":{}},
