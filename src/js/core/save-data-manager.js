@@ -1,3 +1,5 @@
+import MainMenuView from "../UI/main-menu/MainMenuView";
+import { EventBus } from "./event-bus";
 
 class SaveDataManager {
     // Currently selected save file
@@ -7,6 +9,7 @@ class SaveDataManager {
     constructor(){
         this.currentSave = localStorage.getItem("currentSaveFile") || 0;
         this.loadCurrentData();
+        document.getElementById('docpicker').addEventListener('change',(event)=>{ this.onDocumentPickerClick(event)});
     }
 
     setData(key, data){
@@ -49,16 +52,36 @@ class SaveDataManager {
     }
     async loadDataDocument(toLoad){
 
-        const reader = new FileReader(); //crea el Reader
-        reader.onload = function(e) //escucha el evento de que el archivo ha sido leído 
-        {  
-            let content = e.target.result;
-        //aquí haces lo que quieras con el contenido del archivo
+        this.currentSave = toLoad;
 
-        localStorage.setItem(toLoad, JSON.stringify(this.saveData));
-        };
+        docpicker.click();
+    }
+    
+   
 
+    onDocumentPickerClick(event) {
+  
+        const file = event.target.files[0]; // Obtiene el primer archivo seleccionado
+
+        if (file) {
+            const reader = new FileReader(); // Crea una instancia de FileReader
+
+
+            // 1. Leer como texto (para .txt, .csv, etc.)
+            reader.readAsText(file); // Inicia la lectura como texto
+
+            reader.onload =  (e)=> {
+                const content = e.target.result; // El contenido del archivo
+
+                localStorage.setItem(this.currentSave, content) || {};
+
+                EventBus.emit("DataLoaded", this.currentSave);
+
+                event.target.value ='';
+
+            };
+        }
     }
 }
+ export default new SaveDataManager();
 
-export default new SaveDataManager();

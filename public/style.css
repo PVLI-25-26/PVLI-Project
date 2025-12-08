@@ -105,3 +105,7 @@ a{
   font-family: FableFont;
   src: url("assets/fonts/Fabled_Font.ttf");
 }
+
+#docpicker{
+  display: none;
+}
