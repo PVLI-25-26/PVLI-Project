@@ -92,7 +92,7 @@ export default class MainMenuView {
 
         for(let i = 0; i < this.gameSlot.length; i++)
         {
-            this.deleteGame.push(new Button(this.scene, centerX+250, this.gameSlot[i].y, null, 20, 20,
+            this.deleteGame.push(new Button(this.scene, centerX+130, this.gameSlot[i].y, null, 20, 20,
             {
                 text: 'X',
                 style: {
@@ -137,33 +137,33 @@ export default class MainMenuView {
         this.saveGame = [];
         for(let i = 0; i < this.gameSlot.length; i++)
         {
-            this.saveGame.push(new Button(this.scene, centerX+130, this.gameSlot[i].y, null, 50, 20,
+            this.saveGame.push(new Button(this.scene, centerX+80, this.gameSlot[i].y, null, 20, 20, null,
+                // {
+                //     text: 'Save',
+                //     style: {
+                //         fontSize: 10,
+                //         color: Colors.White,
+                //         fontFamily: 'FableFont',
+                //         padding: { x: 5, y: 5 },
+                //     }
+                // },
                 {
-                    text: 'Save',
-                    style: {
-                        fontSize: 10,
-                        color: Colors.White,
-                        fontFamily: 'FableFont',
-                        padding: { x: 5, y: 5 },
-                    }
-                },
-                {
-                    texture: "UIbackground",
+                    texture: "saveIcon",
                     frame: 0,
-                    leftWidth: 3,
-                    rightWidth: 3,
-                    topHeight: 3,
-                    bottomHeight: 3
+                    leftWidth: 0,
+                    rightWidth: 0,
+                    topHeight: 0,
+                    bottomHeight: 1
                 }
             ).setScale(2))
         
             this.saveGame[i].addInteraction((btn) => {
                 btn.on("pointerover", () => {
-                    btn.buttonText.setColor(Colors.Green);
+                    btn.buttonNineslice.setTint(Colors.RedHex);
                     btn.invokeHover();
                 });
                 btn.on("pointerout", () => {
-                    btn.buttonText.setColor(Colors.White);
+                    btn.buttonNineslice.setTint(0xFFFFFF);
                 });
                 btn.on("pointerdown", () => {
                     btn.invokeClick();
@@ -177,33 +177,33 @@ export default class MainMenuView {
         this.loadGameFile = [];
         for(let i = 0; i < this.gameSlot.length; i++)
         {
-            this.loadGameFile.push(new Button(this.scene, centerX+100, this.gameSlot[i].y, null, 70, 20,
+            this.loadGameFile.push(new Button(this.scene, centerX+80, this.gameSlot[i].y, null, 20, 20, null,
+                // {
+                //     text: 'LoadFile',
+                //     style: {
+                //         fontSize: 10,
+                //         color: Colors.White,
+                //         fontFamily: 'FableFont',
+                //         padding: { x: 5, y: 5 },
+                //     }
+                // },
                 {
-                    text: 'LoadFile',
-                    style: {
-                        fontSize: 10,
-                        color: Colors.White,
-                        fontFamily: 'FableFont',
-                        padding: { x: 5, y: 5 },
-                    }
-                },
-                {
-                    texture: "UIbackground",
+                    texture: "saveIcon",
                     frame: 0,
-                    leftWidth: 3,
-                    rightWidth: 3,
-                    topHeight: 3,
-                    bottomHeight: 3
+                    leftWidth: 0,
+                    rightWidth: 0,
+                    topHeight: 0,
+                    bottomHeight: 1
                 }
             ).setScale(2))
         
             this.loadGameFile[i].addInteraction((btn) => {
                 btn.on("pointerover", () => {
-                    btn.buttonText.setColor(Colors.Green);
+                    btn.buttonNineslice.setTint(Colors.RedHex);
                     btn.invokeHover();
                 });
                 btn.on("pointerout", () => {
-                    btn.buttonText.setColor(Colors.White);
+                    btn.buttonNineslice.setTint(0xFFFFFF);
                 });
                 btn.on("pointerdown", () => {
                     btn.invokeClick();

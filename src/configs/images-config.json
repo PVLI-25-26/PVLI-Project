@@ -41,6 +41,7 @@
 
     {"key": "musicIcon", "type": "image", "file": "assets/sprites/music-icon.png", "settings":{}},
     {"key": "sfxIcon", "type": "image", "file": "assets/sprites/sfx-icon.png", "settings":{}},
+    {"key": "saveIcon", "type": "image", "file": "assets/sprites/SaveIcon.png", "settings":{}},
 
     {"key": "UIdialogueButton", "type": "image", "file": "assets/UI/Dialogues/button_background.png", "settings":{}},
     {"key": "UIdialoguePortraitBackground", "type": "image", "file": "assets/UI/Dialogues/Dialogue_background.png", "settings":{}},
