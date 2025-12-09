@@ -141,6 +141,7 @@ export class Dungeon extends Phaser.Plugins.BasePlugin {
      * @returns {void}
      */
     #resetDungeon(){
+        EventBus.emit("dungeonReset");
         this.#resetableRooms.forEach(async (path, id)=>{
             const response = await fetch(path);
             // Read JSON with template for the room being created
@@ -161,6 +162,7 @@ export class Dungeon extends Phaser.Plugins.BasePlugin {
      * @returns {void}
      */
     async #resetHub(){
+        EventBus.emit("hubReset");
         const response = await fetch(this.#hubPath);
         // Read JSON with template for the room being created
         const room = await response.json();
@@ -390,6 +392,7 @@ export class Dungeon extends Phaser.Plugins.BasePlugin {
 
         // If we have changed room to the hub, reset the dungeon no that we left it
         if(nextRoomKey == this.#hubID){
+            console.log('emitting hubREached');
             EventBus.emit('hubReached');
             // reset dungeon exploration
             this.roomsExplored.clear();
