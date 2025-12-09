@@ -1,5 +1,6 @@
 import { extendWithComponents } from "../../core/component-extension.js";
-import { ElementalMovementControllerComponent } from "../../components/ElementalMovementController.js";
+import { DryadMovementControllerComponent } from "../../components/DryadMovementController.js";
+import { DryadCombatControllerComponent } from "../../components/DryadCombatController.js";
 import { EventBus } from "../../core/event-bus.js";
 import { MovementComponent } from "../../components/Movement.js";
 import { DamageableComponent } from "../../components/DamageableComponent.js";
@@ -8,8 +9,8 @@ import { getCustomTiledProperty } from "../../core/tiled-parser.js";
 import { BuffManagerComponent } from "../../components/BuffManagerComponent.js";
 
 /**
- * Elemental 
- * Melee pursuer that forces constant movement.
+ * Dryad
+ * Enhances the squad and heals allies.
  *
  * @class
  * @category Entities
@@ -26,7 +27,7 @@ import { BuffManagerComponent } from "../../components/BuffManagerComponent.js";
  * @param {number} [config.offsetX] - X offset of the body from center (optional)
  * @param {number} [config.offsetY] - Y offset of the body from center (optional)
  */
-export class Elemental extends BillBoard {
+export class Dryad extends BillBoard {
     /**
      * Enemy configuration object.
      * @type {Object}
@@ -40,7 +41,7 @@ export class Elemental extends BillBoard {
         this.type = 'enemy';
 
         extendWithComponents(this);
-        console.log("Created Elemental Enemy:", this.id);
+        console.log("Created Dryad Enemy:", this.id);
 
         // Add to scene and physics
         this.scene.add.existing(this);
@@ -67,7 +68,7 @@ export class Elemental extends BillBoard {
 
         // Add PlayerControllerComponent
         // The patrol route isn't a TiledProperty, it is set in the factory
-        const controller = new ElementalMovementControllerComponent(this, getCustomTiledProperty(this.config, "state"), this.config.patrolRoute);
+        const controller = new DryadMovementControllerComponent(this, getCustomTiledProperty(this.config, "state"), this.config.patrolRoute);
 
         // Add DamageableComponent
         const damageable = new DamageableComponent(this, 
@@ -81,6 +82,8 @@ export class Elemental extends BillBoard {
             { enemy: this, maxHP: this.config.maxHP });
 
         const buffManager = new BuffManagerComponent(this);
+
+        const combatController = new DryadCombatControllerComponent(this);
     }
 
     /**
