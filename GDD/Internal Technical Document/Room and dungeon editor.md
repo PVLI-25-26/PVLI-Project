@@ -16,7 +16,7 @@ To speed up room creation, an EmptyMap-config.json can be copied to make differe
 To define a rooms **world borders**, go to the **World Borders** layer. Now you add any **rectangle** you want to define *colliders* the player will not be able to cross.
 You can make any shape as long as the rectangles are always axis aligned. (Rotations in Tiled are very weird with rectangles so I didn't take rotations into account when parsing the JSON)
 Example:
-![[Pasted image 20251208133053.png]]
+![[Game Design Document/Images/Pasted image 20251208133053.png]]
 
 ## How to add obstacles to a room
 ### Adding Sprite Stacks
@@ -24,7 +24,7 @@ To add a **sprite stack** to a room, go to the **Obstacles** layer. Now you can 
 
 There you go, you have a **sprite stack** ready, you just need to specify the *identifier* of the sprite stack to make sure the game knows what obstacle you are trying to instance. Enter the *identifier* in the `Class` property of the object created. You can enter multiple *identifiers* separated by **spaces** to spawn any of the entities randomly.
 
-*identifiers* of sprite stacks are defined in their `JSON` file at `src/configs/obstacles-config.json`.![[Screenshot from 2025-11-24 22-56-50.png]]
+*identifiers* of sprite stacks are defined in their `JSON` file at `src/configs/obstacles-config.json`.![[Game Design Document/Images/Screenshot from 2025-11-24 22-56-50.png]]
 >[!warning] Careful rotating rectangles!
 >For some weird reason, the rotation of objects in Tiled doesn't work well. As you can see in the image above, a rectangle is intersecting almost completely with others. This is not actually true in the scene as rotating objects in Tiled makes them move in the x, y coordinates (but they don't actually move in the world). 
 >This means that If you rotate an object in tiled, it's position will be shifted weirdly.
@@ -34,13 +34,13 @@ To add a **billboard** to a room, go to the **Obstacles** layer. Now you can ope
 Now you just need to specify the *identifier* of the **billboard** to make sure the game knows what obstacle you are trying to instance. Enter the *identifier* in the `Class` property of the object created. You can enter multiple *identifiers* separated by **spaces** to spawn any of the entities randomly.
 
 *identifiers* of billboards are defined in their `JSON` file at `src/configs/obstacles-config.json`.
-![[Screenshot from 2025-11-24 23-04-04.png]]
+![[Game Design Document/Images/Screenshot from 2025-11-24 23-04-04.png]]
 ## How to add items to a room
 To add an **item** to a room, go to the **Items** layer. Now you can open the `Templates` folder and drag the `ItemTemplate.tx` template to the map.
 
 Now you just need to specify the *identifier* of the **item** to make sure the game knows what item you are trying to instance. Enter the *identifier* in the `Class` property of the object created.
 *identifiers* of item are defined in their `JSON` files at the `src/configs/Items`/ folder. You can enter multiple *identifiers* separated by **spaces** to spawn any of the entities randomly.
-![[Screenshot from 2025-11-24 23-08-41.png]]
+![[Game Design Document/Images/Screenshot from 2025-11-24 23-08-41.png]]
 
 ## How to add enemies to a room
 ### Adding the enemy
@@ -50,21 +50,21 @@ As you can see, its *custom properties* will already be populated with a `state`
 
 Now you just need to specify the *identifier* of the **Enemy** to make sure the game knows what item enemy are trying to instance. Enter the *identifier* in the `Class` property of the object created. You can enter multiple *identifiers* separated by **spaces** to spawn any of the entities randomly.
 *identifiers* of item are defined in their `JSON` file at `src/configs/Enemies/<enemy>-config.json`.
-![[Screenshot from 2025-11-24 23-14-58.png]]
+![[Game Design Document/Images/Screenshot from 2025-11-24 23-14-58.png]]
 
 ### Adding a patrol route
 To create a **patrol route**, go to the **Enemy Routes** layer. Now you can add a *polygon* with the **polygon tool** in the map. Each point of the polygon represents the points of the enemy routes.
 Now, for each enemy, you may select the route you want it to follow in the `PatrolRoute` property.
 >[!warning] Patrol routes can only be polygons.
 
-![[Pasted image 20251125093917.png]]
+![[Game Design Document/Images/Pasted image 20251125093917.png]]
 
 ## How to add NPCs
 To add a **NPC** to a room, go to the **NPCs** layer. Now you can open the `Templates` folder and drag the `NPCTemplate.tx` template to the map.
 
 Now you just need to specify the *identifier* of the **NPC** to make sure the game knows what item you are trying to instance. Enter the *identifier* in the `Class` property of the object created. You can enter multiple *identifiers* separated by **spaces** to spawn any of the entities randomly.
 *identifiers* of item are defined in their `JSON` files at the `src/configs/NPCs/` folder.
-![[Pasted image 20251130001709.png]]
+![[Game Design Document/Images/Pasted image 20251130001709.png]]
 
 ## How to add scattering areas
 To add a **scattering area** to a room, go to the **Scattering** layer. Now you can open the `Templates` folder and drag the `ScatteringTemplate.tx` template to the map.
@@ -75,7 +75,7 @@ You can specify **multiple identifiers** separated by spaces, to spawn randomly 
 *identifiers* of obstacles are defined in their `JSON` file at `src/configs/obstacles-config.json`.
 
 You can also specify **how many objects you want to spawn in the area** with the custom property `fill`. A value of 100 means that 100 objects associated with the identifier in `class` will be spawned inside the area of the rectangle.
-![[Screenshot from 2025-11-24 23-18-44.png]]
+![[Game Design Document/Images/Screenshot from 2025-11-24 23-18-44.png]]
 >[!TIP] Hide or lock the Scattering layer!
 >Areas in the Scattering layer will often overlap other objects in the scene. To avoid them from moving unintentionally, lock them or hide them away in the Layers menu.
 >I also recommend highlighting the current layer in the preferences.
@@ -93,7 +93,7 @@ Rooms can be reused multiple times in the same dungeon. This means that you can 
 To add a **room instance** to the dungeon, go to the **Dungeon** layer. Now you can open the `Templates` folder and drag the `RoomTemplate.tx` template to the map.
 
 In the `class` property, you must specify the **file name of the room** you want to instance. The engine will look for this file in the following path: `public/assets/rooms/rooms/<name-of-room>`. So if you specify in the `class` property: `exit-config.json`, it will try to load:`public/assets/rooms/rooms/exit-config.json`.
-![[ScreenshotRoomEditor.png]]
+![[Game Design Document/Images/ScreenshotRoomEditor.png]]
 ### Connecting rooms
 Rooms only make sense if they are connected to other rooms. To connect rooms to other rooms, add a new **Custom property** of type `Connection`. You can add as many connections as you want to one scene, but they all must be connected to another scene.
 The `Connection` property will allow you to specify the following properties:
@@ -102,4 +102,4 @@ The `Connection` property will allow you to specify the following properties:
 - **spawnY** *(int)* - The y coordinate where the player will spawn in the *other room* when using the connection.
 - **x** *(int)* - The x coordinate of the connection in the *current room*.
 - **y** *(int)* - The y coordinate of the connection in the *current room*.
-![[Screenshot from 2025-11-24 23-44-02.png]]
+![[Game Design Document/Images/Screenshot from 2025-11-24 23-44-02.png]]

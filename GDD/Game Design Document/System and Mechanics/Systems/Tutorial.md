@@ -1,1 +1,1 @@
-![[Tutorial_PVLI.png]]
+![[Game Design Document/Images/Tutorial_PVLI.png]]
