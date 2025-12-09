@@ -141,7 +141,7 @@ export class SoundSceneFacade extends Phaser.Plugins.BasePlugin{
     playMusic(key) {
 		
         if (this.currentMusic) {
-            this.currentMusic.stop();
+            this.stopMusic(this.currentMusic);
         }
         const music = this.music[key];
         if (music) {
@@ -152,7 +152,7 @@ export class SoundSceneFacade extends Phaser.Plugins.BasePlugin{
 				targets: music,
 				duration: 600,
 				ease: Phaser.Math.Easing.Sine.In,
-				volume: 1
+				volume: this.MusicVolume
 			})
         }
 
@@ -168,7 +168,7 @@ export class SoundSceneFacade extends Phaser.Plugins.BasePlugin{
 				targets: this.currentMusic,
 				duration: 600,
 				ease: Phaser.Math.Easing.Sine.Out,
-				volume: 0,
+				volume: 0.01,
 				onComplete:()=>{
  	    	    	this.currentMusic.stop();
     	        	this.currentMusic = null;
