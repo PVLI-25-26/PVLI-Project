@@ -37,27 +37,15 @@ export class PlayerControllerComponent extends BaseControllerComponent {
         this.camera = gameObject.scene.cameras.main;
 
         // Listen to dash buff to increase speed
-        EventBus.on('playerDash', (dashSpeed)=>{
-            this.movementComponent.setSpeed(dashSpeed);
-        });
-        EventBus.on('playerDashEnd', ()=>{
-            this.movementComponent.setSpeed(5);
-        });
+        EventBus.on('playerDash', this.onPlayerDash, this);
+        EventBus.on('playerDashEnd', this.onPlayerDashEnd, this);
 
         // camera rotation when mouse is moved
-        this.gameObject.scene.input.on('pointermove',(pointer)=>{
-            if(!pointer.isDown && this.gameObject.scene.input.mouse.locked)
-            {
-                // Sometimes mouse movement made big movements which where visually annoying, 
-                // this makes sure camera cannot be moved too much
-                this.camera.rotation -= Phaser.Math.Clamp(pointer.movementX*this.gameObject.config.cameraSensitivity, -0.08, 0.08);
-                EventBus.emit('cameraRotated', this.camera.rotation, Math.cos(-this.camera.rotation), Math.sin(-this.camera.rotation));
-            }
-        }, this);
+        this.gameObject.scene.input.on('pointermove', this.onPointerMove, this);
 
         // Set initial camera rotation
         this.cameraRotation = 0;
-        EventBus.on('cameraRotated', (rot)=>{this.cameraRotation=rot;});
+        EventBus.on('cameraRotated', this.onCameraRotated, this);
 		this.aiming = false;
     }
 
@@ -102,11 +90,39 @@ export class PlayerControllerComponent extends BaseControllerComponent {
         this.movementComponent.setDirection(rotx, roty);
     }
 
+    onPointerMove(pointer){
+        {
+            if(!pointer.isDown && this.gameObject.scene.input.mouse.locked)
+            {
+                // Sometimes mouse movement made big movements which where visually annoying, 
+                // this makes sure camera cannot be moved too much
+                this.camera.rotation -= Phaser.Math.Clamp(pointer.movementX*this.gameObject.config.cameraSensitivity, -0.08, 0.08);
+                EventBus.emit('cameraRotated', this.camera.rotation, Math.cos(-this.camera.rotation), Math.sin(-this.camera.rotation));
+            }
+        }
+    }
+
+    onCameraRotated(rotation){
+        this.cameraRotation=rotation;
+    }
+
+    onPlayerDash(dashSpeed){
+        this.movementComponent.setSpeed(dashSpeed);
+    }
+
+    onPlayerDashEnd(){
+        this.movementComponent.setSpeed(5);
+    }
+
     /**
      * Cleans up the component, disabling it.
      * @returns {void}
      */
     destroy() {
         super.destroy();
+        this.gameObject.scene.input.off('pointermove', this.onPointerMove, this);
+        EventBus.off('playerDash', this.onPlayerDash, this);
+        EventBus.off('playerDashEnd', this.onPlayerDashEnd, this);
+        EventBus.off('cameraRotated', this.onCameraRotated, this);
     }
 }

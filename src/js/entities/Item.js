@@ -74,14 +74,8 @@ export class Item extends BillBoard{
         })
         this.interactZone.setCollidesWith(this.scene.playerCategory);
 
-        EventBus.on('cameraRotated', (R, cR, sR) => {
-            this.keyTip.x = this.keyTipOffsetX * cR - this.keyTipOffsetY * sR + this.x;
-            this.keyTip.y = this.keyTipOffsetX * sR + this.keyTipOffsetY * cR + this.y;
-            this.keyTip.rotation = -R;
-            this.keyTipKey.x = this.keyTip.x;
-            this.keyTipKey.y = this.keyTip.y;
-            this.keyTipKey.rotation = this.keyTip.rotation;
-        }, this);
+        EventBus.on('cameraRotated', this.onCameraRotatedForKeyTip, this);
+
 //#endregion
     }
 
@@ -115,8 +109,29 @@ export class Item extends BillBoard{
             });
 
             // Remove collisions to ensure it isn't picked again
-            this.interactZone.destroy(true);
             EventBus.emit('itemPicked', actor, reciever);
+            this.interactZone.destroy(true);
+            this.destroy();
         }
     }
+
+    onCameraRotatedForKeyTip(rotation, cosR, sinR) {
+        {
+            this.keyTip.x = this.keyTipOffsetX * cosR - this.keyTipOffsetY * sinR + this.x;
+            this.keyTip.y = this.keyTipOffsetX * sinR + this.keyTipOffsetY * cosR + this.y;
+            this.keyTip.rotation = -rotation;
+            this.keyTipKey.x = this.keyTip.x;
+            this.keyTipKey.y = this.keyTip.y;
+            this.keyTipKey.rotation = this.keyTip.rotation;
+        }
+    }
+
+    destroy() {
+        EventBus.off('interact', this.pickUpItem, this);
+        EventBus.off('cameraRotated', this.onCameraRotatedForKeyTip, this);
+        this.keyTip.destroy();
+        this.keyTipKey.destroy();
+        super.destroy();
+    }
+
 }

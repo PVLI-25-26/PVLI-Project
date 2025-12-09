@@ -32,6 +32,8 @@ export class BasicEnemyControllerComponent extends BaseControllerComponent {
         EventBus.on('playerStartedAiming', this.onPlayerStartedAiming, this);
         EventBus.on('arrowLanded', this.onArrowLanded, this);
         EventBus.on('entityDamaged', this.onReceiveDamage, this);
+        EventBus.on('entityDied', this.onEntityDied, this);
+
         this.changeState(initialState);
     }
 
@@ -43,7 +45,7 @@ export class BasicEnemyControllerComponent extends BaseControllerComponent {
 
     // data = { entity, x, y }
     onEntityMoved(data) {
-        if (data.entity.type == 'player' && this.checkTargetInAggroRange(data.entity))
+        if (data.entity.type == 'player' && this.checkTargetInAggroRange(data.entity) && this.target != data.entity)
         {
             if (this.currentState == this.states.patrol || this.currentState == this.states.idle) {
                 this.changeState('chase');
@@ -63,6 +65,13 @@ export class BasicEnemyControllerComponent extends BaseControllerComponent {
             this.changeState('chase');
         }
         else {
+            this.changeState(this.initialState);
+        }
+    }
+
+    onEntityDied(entity) {
+        if (entity === this.target) {
+            this.target = null;
             this.changeState(this.initialState);
         }
     }
@@ -87,5 +96,13 @@ export class BasicEnemyControllerComponent extends BaseControllerComponent {
             return true;
         }
         return false;
+    }
+
+    destroy() {
+        super.destroy();
+        EventBus.off('entityMoved', this.onEntityMoved, this);
+        EventBus.off('playerStartedAiming', this.onPlayerStartedAiming, this);
+        EventBus.off('arrowLanded', this.onArrowLanded, this);
+        EventBus.off('entityDamaged', this.onReceiveDamage, this);
     }
 }

@@ -59,9 +59,7 @@ export class PlayerAbilityControllerComponent extends BaseComponent{
         this.logger = gameObject.scene.plugins.get('logger');
 
         // When an ability is equipped
-        EventBus.on('abilityEquipped', (ability)=>{
-            this.#ability = ability;
-        });
+        EventBus.on('abilityEquipped', this.onAbilityEquipped, this);
 
         this.gameObject.scene.input.keyboard.on('keydown-K', ()=>{EventBus.emit('abilityEquipped', dashAbility)});
         this.gameObject.scene.input.keyboard.on('keydown-J', ()=>{EventBus.emit('abilityEquipped', forcefieldAbility)});
@@ -81,6 +79,10 @@ export class PlayerAbilityControllerComponent extends BaseComponent{
      */
     clearAbility() {
         this.#ability = null;
+    }
+
+    onAbilityEquipped(ability) {
+        this.#ability = ability;
     }
 
     update(t, dt){
@@ -106,5 +108,6 @@ export class PlayerAbilityControllerComponent extends BaseComponent{
      */
     destroy() {
         super.destroy();
+        EventBus.off('abilityEquipped', this.onAbilityEquipped, this);
     }
 }
