@@ -104,7 +104,7 @@ export class InventoryComponent extends BaseComponent{
         } 
     }
 
-    onItemPicked(item, picker) { 
+    onItemPicked(picker, item) { 
         if(this.gameObject === picker) this.addItemToInventory(item.key);
     }
 
