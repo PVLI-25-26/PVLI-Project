@@ -114,12 +114,19 @@ export default class MainMenuPresenter {
             element.on("button-clicked", () => {
                 EventBus.emit('stopMusic');
                 EventBus.emit("playSound", "click");
-                saveDataManager.loadDataDocument(index);;
+                saveDataManager.loadDataDocument(index);           
             });
             element.on("button-hovered", () => {
                 EventBus.emit("playSound", "hover");
-            });
+            }); 
         });
+
+        //On loaded Files
+        EventBus.on("DataLoaded", (i) => {
+            this.view.toggleSlotOptions(i);
+            this.view.gameSlot[i].buttonText.setText('Load Saved Game '+ (i+1));
+        });
+        
         
     }
         

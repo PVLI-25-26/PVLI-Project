@@ -17,12 +17,15 @@ export default class PauseMenu extends Phaser.Scene {
 
         audioConfig.sounds.forEach(sound => this.load.audio(sound.key, sound.file));
         audioConfig.music.forEach(track => this.load.audio(track.key, track.file));
+
+        this.keyP = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.P);
     }
 
     create() {
-        this.sound_facade = new SoundSceneFacade(this, audioConfig);
+        const soundFacade = this.plugins.get('soundfacade');
+        soundFacade.initializeSoundFacade(this);
 
-        const model = new PauseMenuModel();
+        const model = new PauseMenuModel(soundFacade.getCurrentMusicVolume(), soundFacade.getCurrentSFXVolume());
         const view = new PauseMenuView(this);
         const presenter = new PauseMenuPresenter(view, model);
 
@@ -41,5 +44,13 @@ export default class PauseMenu extends Phaser.Scene {
             duration: 300,
             ease: "Sine.easeInOut"
         });
+    }
+    
+    update(){
+        super.update()
+        if(Phaser.Input.Keyboard.JustDown(this.keyP)){
+            this.scene.resume("GameplayScene");
+            this.scene.stop("PauseMenu");
+        }
     }
 }

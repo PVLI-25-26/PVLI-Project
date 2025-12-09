@@ -83,6 +83,13 @@ export class Dungeon extends Phaser.Plugins.BasePlugin {
         super('Dungeon', pluginManager);
     }
 
+    /**
+     * Initialize the plugin.
+     * Sets up internal room maps and initial current room key.
+     *
+     * @param {string|number} [data] - Optional initial room key to start in. Defaults to 1 if falsy.
+     * @returns {void}
+     */
     init(data){
         // Load and map rooms to their key
         this.#initializeRooms();
@@ -203,6 +210,13 @@ export class Dungeon extends Phaser.Plugins.BasePlugin {
         if(this.#roomEnemiesCounter == 0) EventBus.emit('roomCleared');
     }
 
+    /**
+     * Parse a Tiled room JSON and instantiate its objects into the provided scene.
+     *
+     * @param {Phaser.Scene} scene - Scene where objects should be created.
+     * @param {Object} room - Tiled room JSON object.
+     * @returns {void}
+     */
     readTiledJSON(scene, room){
         // Set background color specified in Tiled (only the main camera)
         // console.log(this.currentRoomKey);
@@ -278,6 +292,13 @@ export class Dungeon extends Phaser.Plugins.BasePlugin {
         room.connections?.forEach(connectionSceneData => createConnection(scene, this, connectionSceneData.value));
     }
 
+    /**
+     * Create a rectangular world border object in the scene using Matter physics.
+     *
+     * @param {Phaser.Scene} scene - Scene where border will be created.
+     * @param {Object} worldBorder - Tiled object describing the border (expects x, y, width, height).
+     * @returns {void}
+     */
     createWorldBorder(scene, worldBorder) {
         const border = scene.add.rectangle(worldBorder.x + worldBorder.width / 2, worldBorder.y + worldBorder.height / 2, worldBorder.width, worldBorder.height, 0)
             .setVisible(false);
@@ -292,6 +313,13 @@ export class Dungeon extends Phaser.Plugins.BasePlugin {
         border.setCollisionCategory(scene.obstaclesCategory);
     }
 
+    /**
+     * Generate scattered obstacle objects inside a rectangular area defined in Tiled.
+     *
+     * @param {Phaser.Scene} scene - Scene where objects will be created.
+     * @param {Object} scatterData - Tiled object defining area and types (expects x, y, width, height, type and custom property 'fill').
+     * @returns {void}
+     */
     createScatteredObjects(scene, scatterData) {
         const types = scatterData.type.split(" ");
         // Generates scattered objects from a rectangle defined in Tiled
@@ -305,6 +333,12 @@ export class Dungeon extends Phaser.Plugins.BasePlugin {
         }
     }
 
+    /**
+     * Remove an item from the current room's Tiled data after it has been picked.
+     *
+     * @param {number} itemID - ID of the item to remove.
+     * @returns {void}
+     */
     removeItemFromCurrentRoom(itemID){
         // Get current room
         const currentRoom = this.#rooms.get(this.currentRoomKey);
@@ -318,6 +352,12 @@ export class Dungeon extends Phaser.Plugins.BasePlugin {
         }
     }
 
+    /**
+     * Remove an enemy from the current room's Tiled data after it has died.
+     *
+     * @param {number} enemyID - ID of the enemy to remove.
+     * @returns {void}
+     */
     removeEnemyFromCurrentRoom(enemyID){
         // Get current room
         const currentRoom = this.#rooms.get(this.currentRoomKey);
@@ -331,6 +371,13 @@ export class Dungeon extends Phaser.Plugins.BasePlugin {
         }
     }
 
+    /**
+     * Change the current active room.
+     * If leaving the hub, the hub is reset. If entering the hub, the dungeon is reset and 'hubReached' event emitted.
+     *
+     * @param {number|string} nextRoomKey - Key/ID of the room to switch to.
+     * @returns {void}
+     */
     changeRoom(nextRoomKey){
         // If previous room was hub, then we can reload the hub now that we left it
         if(this.currentRoomKey == this.#hubID){
@@ -352,6 +399,11 @@ export class Dungeon extends Phaser.Plugins.BasePlugin {
         }
     }
 
+    /**
+     * Return the player to the appropriate hub room depending on tutorial completion.
+     *
+     * @returns {void}
+     */
     returnToHub(){
         if(saveDataManager.getData('isTutorialComplete'))
         {

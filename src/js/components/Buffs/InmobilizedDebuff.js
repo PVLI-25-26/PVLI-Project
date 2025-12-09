@@ -2,6 +2,11 @@ import { EventBus } from "../../core/event-bus";
 import { MovementComponent } from "../Movement";
 
 /**
+ * Value used by the inmobilized debuff (currently unused).
+ * @typedef {number} InmobilizeValue
+ */
+
+/**
  * Inmobilized debuff implementation.
  *
  * This debuff reduces the entity's speed to almost 0
@@ -12,7 +17,7 @@ export const inmobilizedDebuff = {
     /**
      * Apply the Inmobilized debuff to the given entity.
      *
-     * @param {Number} value - Not used
+     * @param {InmobilizeValue} value - Optional configuration value (unused).
      * @param {Phaser.GameObjects.GameObject} entity - Entity Inmobilized
      * @returns {void}
      */
@@ -31,7 +36,7 @@ export const inmobilizedDebuff = {
     /**
      * Remove the buff from the given entity.
      * 
-     * @param {Number} value - Not used
+     * @param {InmobilizeValue} value - Optional configuration value (unused).
      * @param {Phaser.GameObjects.GameObject} entity - Entity Inmobilized
      * @returns {void}
      */

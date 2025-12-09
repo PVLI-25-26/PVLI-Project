@@ -30,8 +30,13 @@ export class PlayerControllerComponent extends BaseControllerComponent {
 
     constructor(gameObject) {
         super(gameObject);
+        // Get player keys
         this.keys = gameObject.scene.inputFacade.getPlayerKeys();
+
+        // Get currently used camera
         this.camera = gameObject.scene.cameras.main;
+
+        // Listen to dash buff to increase speed
         EventBus.on('playerDash', (dashSpeed)=>{
             this.movementComponent.setSpeed(dashSpeed);
         });
@@ -50,6 +55,7 @@ export class PlayerControllerComponent extends BaseControllerComponent {
             }
         }, this);
 
+        // Set initial camera rotation
         this.cameraRotation = 0;
         EventBus.on('cameraRotated', (rot)=>{this.cameraRotation=rot;});
 		this.aiming = false;
@@ -66,11 +72,11 @@ export class PlayerControllerComponent extends BaseControllerComponent {
     update(time, delta) {
         if (!this.enabled || !this.movementComponent) return;
 
+        // set x and y movement values this frame
         const x = (this.keys.right.isDown ? 1 : 0) - (this.keys.left.isDown ? 1 : 0);
         const y = (this.keys.down.isDown ? 1 : 0) - (this.keys.up.isDown ? 1 : 0);
-        EventBus.on("PlayerAiming",()=>{this.aiming = true});
-		EventBus.on("PlayerNotAiming",()=>{this.aiming = false});
 
+        // Play correct player animations
         if(x != 0 || y != 0){
 			if (this.aiming)
 				this.gameObject.play("player_walk",true);
@@ -84,6 +90,7 @@ export class PlayerControllerComponent extends BaseControllerComponent {
 				this.gameObject.play("player_idle_bow", true);
         }
 
+        // Flip object
         if (x != 0) this.gameObject.flipX = x > 0;
 
         // Adjust for camera rotation
@@ -91,6 +98,7 @@ export class PlayerControllerComponent extends BaseControllerComponent {
         const rotx = x*Math.cos(-camRot) - y*Math.sin(-camRot);
         const roty = x*Math.sin(-camRot) + y*Math.cos(-camRot);
 
+        // Give final rotated movement to movementComponent
         this.movementComponent.setDirection(rotx, roty);
     }
 

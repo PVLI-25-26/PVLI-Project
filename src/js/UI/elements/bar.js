@@ -1,5 +1,11 @@
 import Phaser from "phaser";
 
+/**
+ * Reusable Bar UI element.
+ * A resusable progress bar (used in health)
+ * @class
+ * @extends Phaser.GameObjects.Container
+ */
 export class Bar extends Phaser.GameObjects.Container {
     /**
      * @param {Phaser.Scene} scene - Phaser scene

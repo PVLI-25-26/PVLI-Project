@@ -7,12 +7,24 @@ import Phaser from "phaser";
  * @class
  * @category UI
  * @extends Phaser.GameObjects.Image
+ *
  * @param {Phaser.Scene} scene - The scene this button belongs to.
  * @param {number} x - The x-coordinate of the button's position.
  * @param {number} y - The y-coordinate of the button's position.
- * @param {image} image - The image displayed on the button.
- * @param {number} scale - scale of the image
- * @param {Function} callback - Function to call when the button is clicked.
+ * @param {Function} callback - Function to call when the button is invoked/clicked.
+ * @param {number} width - Logical width used to layout children and interaction area.
+ * @param {number} height - Logical height used to layout children and interaction area.
+ * @param {Object|null} [textSettings=null] - Optional text settings. If provided a label will be created.
+ * @param {string} textSettings.text - The label string.
+ * @param {Object} textSettings.style - Phaser text style config passed to scene.add.text.
+ * @param {Object|null} [ninesliceSettings=null] - Optional nine-slice background settings. If provided a nineslice is created.
+ * @param {string} ninesliceSettings.texture - Texture key for the nineslice.
+ * @param {string|number} [ninesliceSettings.frame] - Optional frame for the nineslice texture.
+ * @param {number} ninesliceSettings.leftWidth - Nine-slice left slice width.
+ * @param {number} ninesliceSettings.rightWidth - Nine-slice right slice width.
+ * @param {number} ninesliceSettings.topHeight - Nine-slice top slice height.
+ * @param {number} ninesliceSettings.bottomHeight - Nine-slice bottom slice height.
+ * @param {number} [ninesliceSettings.scale=1] - Scale applied to the nineslice when computing interaction area.
  *
  * @example
  * const startButton = new Button(this, 400, 300, "Start Game", () => {

@@ -26,6 +26,7 @@ export default class InventoryMenuPresenter {
     subscribeToViewEvents() {
         // Exit button clicked
         this.view.exitButton.on("button-clicked", () => {
+            this.view.scene.soundFacade.destroy();
             this.view.scene.scene.resume("GameplayScene");
             this.view.scene.scene.stop("InventoryMenu");
             EventBus.emit("playSound", "click");

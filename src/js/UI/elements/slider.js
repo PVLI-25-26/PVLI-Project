@@ -107,7 +107,7 @@ export class Slider extends Phaser.GameObjects.Container {
      */
     onPointerDown(pointer) {
         const bounds = this.getBounds();
-        if (bounds.contains(pointer.x, pointer.y)) {
+        if (this.active && bounds.contains(pointer.x, pointer.y)) {
             this.isDragging = true;
             this.updateValueFromPointer(pointer);
         }
@@ -132,7 +132,7 @@ export class Slider extends Phaser.GameObjects.Container {
      * @returns {void}
      */
     onPointerMove(pointer) {
-        if (this.isDragging) {
+        if (this.active && this.isDragging) {
             this.updateValueFromPointer(pointer);
         }
     }

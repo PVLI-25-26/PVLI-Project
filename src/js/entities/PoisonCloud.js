@@ -5,10 +5,10 @@
 export class PoisonCloud{
     /**
      * 
-     * @param {*} scene Scene to spawn the cloud
-     * @param {*} x x coordinate to spawn the cloud in the scene
-     * @param {*} y y coordinate to spawn the cloud in the scene
-     * @param {*} poisonEffect effect to apply when an enemy enters
+     * @param {Phaser.Scene} scene Scene to spawn the cloud
+     * @param {Number} x x coordinate to spawn the cloud in the scene
+     * @param {Number} y y coordinate to spawn the cloud in the scene
+     * @param {Object} poisonEffect effect to apply when an enemy enters
      */
     constructor(scene, x, y, poisonEffect){
         this.scene = scene;
@@ -24,6 +24,7 @@ export class PoisonCloud{
             isStatic: true
         });
 
+        // Create particles on the ground
         const emitter = this.scene.add.particles(0, 0, "poisonParticle", {
             speedY: {
                 onEmit: (particle, key, t, value)=> {

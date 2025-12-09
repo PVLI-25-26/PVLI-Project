@@ -58,7 +58,7 @@ export default class MainMenuView {
         for (let i = 0; i < 3; i++) 
         {
             this.gameSlot.push(new Button(this.scene, centerX-100, centerY-120+yOffset, null, 150, 50, {
-                text: localStorage.getItem(i) == null ? 'New Game' : 'Load Game ' + (i + 1),
+                text: localStorage.getItem(i) == null ? 'New Game' : 'Play Game ' + (i + 1),
                 style: {
                     fontSize: 20,
                     color: Colors.White,
@@ -92,7 +92,7 @@ export default class MainMenuView {
 
         for(let i = 0; i < this.gameSlot.length; i++)
         {
-            this.deleteGame.push(new Button(this.scene, centerX+80, this.gameSlot[i].y, null, 20, 20,
+            this.deleteGame.push(new Button(this.scene, centerX+130, this.gameSlot[i].y, null, 20, 20,
             {
                 text: 'X',
                 style: {
@@ -125,9 +125,6 @@ export default class MainMenuView {
                 btn.invokeClick();
                 this.toggleSlotOptions(i);
                 this.gameSlot[i].buttonText.setText('New Game');
-
-                this.deleteGame[i].setActive(false);
-                this.deleteGame[i].setVisible(false);
             });
         });
 
@@ -140,33 +137,33 @@ export default class MainMenuView {
         this.saveGame = [];
         for(let i = 0; i < this.gameSlot.length; i++)
         {
-            this.saveGame.push(new Button(this.scene, centerX+150, this.gameSlot[i].y, null, 50, 20,
+            this.saveGame.push(new Button(this.scene, centerX+80, this.gameSlot[i].y, null, 20, 20, null,
+                // {
+                //     text: 'Save',
+                //     style: {
+                //         fontSize: 10,
+                //         color: Colors.White,
+                //         fontFamily: 'FableFont',
+                //         padding: { x: 5, y: 5 },
+                //     }
+                // },
                 {
-                    text: 'Save',
-                    style: {
-                        fontSize: 10,
-                        color: Colors.White,
-                        fontFamily: 'FableFont',
-                        padding: { x: 5, y: 5 },
-                    }
-                },
-                {
-                    texture: "UIbackground",
+                    texture: "saveIcon",
                     frame: 0,
-                    leftWidth: 3,
-                    rightWidth: 3,
-                    topHeight: 3,
-                    bottomHeight: 3
+                    leftWidth: 0,
+                    rightWidth: 0,
+                    topHeight: 0,
+                    bottomHeight: 1
                 }
             ).setScale(2))
         
             this.saveGame[i].addInteraction((btn) => {
                 btn.on("pointerover", () => {
-                    btn.buttonText.setColor(Colors.Green);
+                    btn.buttonNineslice.setTint(Colors.RedHex);
                     btn.invokeHover();
                 });
                 btn.on("pointerout", () => {
-                    btn.buttonText.setColor(Colors.White);
+                    btn.buttonNineslice.setTint(0xFFFFFF);
                 });
                 btn.on("pointerdown", () => {
                     btn.invokeClick();
@@ -180,36 +177,37 @@ export default class MainMenuView {
         this.loadGameFile = [];
         for(let i = 0; i < this.gameSlot.length; i++)
         {
-            this.loadGameFile.push(new Button(this.scene, centerX+100, this.gameSlot[i].y, null, 50, 20,
+            this.loadGameFile.push(new Button(this.scene, centerX+80, this.gameSlot[i].y, null, 20, 20, null,
+                // {
+                //     text: 'LoadFile',
+                //     style: {
+                //         fontSize: 10,
+                //         color: Colors.White,
+                //         fontFamily: 'FableFont',
+                //         padding: { x: 5, y: 5 },
+                //     }
+                // },
                 {
-                    text: 'Load',
-                    style: {
-                        fontSize: 10,
-                        color: Colors.White,
-                        fontFamily: 'FableFont',
-                        padding: { x: 5, y: 5 },
-                    }
-                },
-                {
-                    texture: "UIbackground",
+                    texture: "saveIcon",
                     frame: 0,
-                    leftWidth: 3,
-                    rightWidth: 3,
-                    topHeight: 3,
-                    bottomHeight: 3
+                    leftWidth: 0,
+                    rightWidth: 0,
+                    topHeight: 0,
+                    bottomHeight: 1
                 }
             ).setScale(2))
         
             this.loadGameFile[i].addInteraction((btn) => {
                 btn.on("pointerover", () => {
-                    btn.buttonText.setColor(Colors.Green);
+                    btn.buttonNineslice.setTint(Colors.RedHex);
                     btn.invokeHover();
                 });
                 btn.on("pointerout", () => {
-                    btn.buttonText.setColor(Colors.White);
+                    btn.buttonNineslice.setTint(0xFFFFFF);
                 });
                 btn.on("pointerdown", () => {
                     btn.invokeClick();
+                    
                 });
 
                 this.loadGameFile[i].setActive(false);
@@ -360,15 +358,16 @@ export default class MainMenuView {
         this.settingsButton.setVisible(!this.settingsButton.visible);
         
     }
-    toggleSlotOptions(slotNumber){
-        this.deleteGame[slotNumber].setActive(false);
-        this.deleteGame[slotNumber].setVisible(false);
+    toggleSlotOptions(slotNum){
 
-        this.loadGameFile[slotNumber].setActive(true);
-        this.loadGameFile[slotNumber].setVisible(true);
+        this.deleteGame[slotNum].setActive(!this.deleteGame[slotNum].active);
+        this.deleteGame[slotNum].setVisible(!this.deleteGame[slotNum].visible);
 
-        this.saveGame[slotNumber].setActive(false);
-        this.saveGame[slotNumber].setVisible(false);    
+        this.loadGameFile[slotNum].setActive(!this.loadGameFile[slotNum].active);
+        this.loadGameFile[slotNum].setVisible(!this.loadGameFile[slotNum].visible);
+
+        this.saveGame[slotNum].setActive(!this.saveGame[slotNum].active);
+        this.saveGame[slotNum].setVisible(!this.saveGame[slotNum].visible);
     }
 
     toggleLoadGame(){
@@ -397,7 +396,7 @@ export default class MainMenuView {
                 this.saveGame[i].setActive(true);
                 this.saveGame[i].setVisible(true);                
             }
-            else{
+            else if(localStorage.getItem(i) == null && this.gameSlot[i].active){
                 this.deleteGame[i].setActive(false);
                 this.deleteGame[i].setVisible(false);
 
@@ -406,7 +405,17 @@ export default class MainMenuView {
 
                 this.saveGame[i].setActive(false);
                 this.saveGame[i].setVisible(false);
-            }            
+            }
+            else{
+                this.deleteGame[i].setActive(false);
+                this.deleteGame[i].setVisible(false);
+
+                this.deleteGame[i].setActive(false);
+                this.loadGameFile[i].setVisible(false);
+
+                this.saveGame[i].setActive(false);
+                this.saveGame[i].setVisible(false);
+            }             
         }      
     }
 } 

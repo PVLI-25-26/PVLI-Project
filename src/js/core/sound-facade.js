@@ -1,4 +1,5 @@
 import { EventBus } from "./event-bus";
+import audioConfig from "../../configs/audio-config.json";
 
 /**
  * Facade for managing sound and music playback within a Phaser scene.
@@ -8,7 +9,7 @@ import { EventBus } from "./event-bus";
  * @class
  * @category Core
  */
-export class SoundSceneFacade {
+export class SoundSceneFacade extends Phaser.Plugins.BasePlugin{
     /**
      * The Phaser scene this facade belongs to
      * @type {Phaser.Scene}
@@ -48,24 +49,26 @@ export class SoundSceneFacade {
     /**
      * Creates a new SoundSceneFacade instance
      * @param {Phaser.Scene} scene - The Phaser scene this facade belongs to
-     * @param {Object} config - Configuration object for sounds and music
-     * @param {Array} config.sounds - Array of sound effect configurations
-     * @param {Array} config.music - Array of music track configurations
+     * @param {Object} audioConfig - Configuration object for sounds and music
+     * @param {Array} audioConfig.sounds - Array of sound effect configurations
+     * @param {Array} audioConfig.music - Array of music track configurations
      */
-    constructor(scene, config) {
-        this.scene = scene;
+    constructor(pluginManager) {
+        super('soundfacade', pluginManager);
+
         this.sounds = {};
         this.music = {};
         this.currentMusic = null;
+        this.MusicVolume = 0.3;
+        this.SFXVolume = 0.3;
+    }
 
-        // config.sounds.forEach(s => {
-        //     this.sounds[s.key] = scene.sound.add(s.key);
-        // });
-
-        config.music.forEach(m => {
-            this.music[m.key] = scene.sound.add(m.key, { loop: m.loop, volume: m.volume });
-        });
-
+    /**
+     * Initializes sound facade and gets scene to play sounds on
+     * @param {Phaser.Scene} scene the scene to reproduce sounds on from now on
+     */
+    initializeSoundFacade(scene){
+        this.scene = scene;
         this.subscribeToEvents();
     }
 
@@ -75,6 +78,15 @@ export class SoundSceneFacade {
      */
     subscribeToEvents() {
         this.scene.events.on('destroy', () => this.destroy());
+
+        
+        // audioConfig.sounds.forEach(s => {
+        //     this.sounds[s.key] = this.scene.sound.add(s.key);
+        // });
+
+        audioConfig.music.forEach(m => {
+            this.music[m.key] = this.scene.sound.add(m.key, { loop: m.loop, volume: m.volume });
+        });
 
         EventBus.on("playSound", this.playSound, this);
         EventBus.on("playMusic", this.playMusic, this);
@@ -146,8 +158,24 @@ export class SoundSceneFacade {
     }
 
     /**
+     * 
+     * @returns Sound Effects volume
+     */
+    getCurrentSFXVolume(){
+        return this.SFXVolume;
+    }
+
+    /**
+     * 
+     * @returns Sound Music volume
+     */
+    getCurrentMusicVolume(){
+        return this.MusicVolume;
+    }
+
+    /**
      * Unsubscribes all event listeners and performs cleanup
-     * Should be called when the scene is destroyed
+     * Called when scene is destroyed automatically
      * @returns {void}
      */
     destroy() {

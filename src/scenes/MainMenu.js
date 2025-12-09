@@ -16,9 +16,10 @@ export default class MainMenu extends Phaser.Scene {
     }
 
     create() {
-        this.sound_facade = new SoundSceneFacade(this, audioConfig);
-        
-        const model = new MainMenuModel();
+        const soundFacade = this.plugins.get('soundfacade');
+
+        soundFacade.initializeSoundFacade(this);
+        const model = new MainMenuModel(soundFacade.getCurrentMusicVolume(), soundFacade.getCurrentSFXVolume());
         const view = new MainMenuView(this);
         const presenter = new MainMenuPresenter(view, model)
     }

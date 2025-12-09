@@ -78,6 +78,9 @@ export class BuffManagerComponent extends BaseComponent{
     update(t, dt){
     }
 
+    /**
+     * @returns {Array<BuffData>} Returns array of buff datas
+     */
     getBuffs(){
         return Array.from(this.#buffs.values());
     }
@@ -167,6 +170,9 @@ export class BuffManagerComponent extends BaseComponent{
         }
     }
 
+    /**
+     * Clears every buff from entity
+     */
     clearBuffs(){
         for(const buff of this.#buffs.keys()){
             this.removeBuff(buff);
