@@ -1,4 +1,22 @@
+/**
+ * Particle emitter for short-lived buff effects that orients emission to the camera.
+ *
+ * The emitter spawns particles around a target position, offset according to the current camera rotation
+ * so particles appear to emit "up" relative to the camera. The emitter automatically fades and destroys
+ * itself after the provided duration.
+ */
 export class BuffParticleEmitter {
+    /**
+     * Create a BuffParticleEmitter.
+     * @param {Phaser.Scene} scene - The Phaser scene instance.
+     * @param {{x:number,y:number}} target - Target object or position used as the emission origin (must have x and y).
+     * @param {string} texture - Key of the particles texture atlas/spritesheet used by the emitter.
+     * @param {number} duration - Duration in milliseconds before the emitter is faded out and destroyed.
+     * @param {number} speed - Base particle speed (used to compute per-axis speed depending on camera rotation).
+     * @param {number} width - Horizontal spread width (in world units) around the target where particles spawn.
+     * @param {number} [frameMin=0] - Minimum frame index for particle frames (if using an atlas/spritesheet).
+     * @param {number} [frameMax=0] - Maximum frame index for particle frames (if using an atlas/spritesheet).
+     */
     constructor(scene, target, texture, duration, speed, width, frameMin = 0, frameMax = 0){
         this.scene = scene;
         
@@ -51,19 +69,17 @@ export class BuffParticleEmitter {
         this.timer = scene.time.addEvent({
             delay: duration,
             callback: ()=>{
-                scene.tweens.add({
-                    targets: this.emitter,
-                    alpha: 0,
-                    duration: 150,
-                    onComplete: ()=>{
-                        this.emitter.destroy(true);
-                    }
-                })
+                this.remove();
             }
         });
         
     }
 
+    /**
+     * Immediately stop and remove the emitter with a short fade tween.
+     *
+     * This clears the scheduled timer and starts a fade tween to destroy the particle manager.
+     */
     remove(){
         this.timer.remove();
         this.scene.tweens.add({

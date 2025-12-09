@@ -22,8 +22,15 @@ export class BasicTrajectory {
      * @type {number} Time in milliseconds the arrow will be considered "flying".
      */
     #airTime;
+
+    /**
+     * @type {Number} Maximum arrow air time in ms
+     */
     #maxAirTime = 400;
 
+    /**
+     * @type {Number} Time since arrow was launched
+     */
     #timeSinceLaunch = 0;
 
     /**
@@ -36,8 +43,17 @@ export class BasicTrajectory {
      */
     #arrow;
 
+    /**
+     * @type {Number} Air resitance
+     */
     #airDrag = 0.05;
+    /**
+     * @type {Number} camera rotation cosine
+     */
     #cosR;
+    /**
+     * @type {Number} camera rotation sine
+     */
     #sinR;
 
     /**

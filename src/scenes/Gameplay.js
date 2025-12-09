@@ -32,22 +32,32 @@ export default class GameplayScene extends Phaser.Scene {
     }
 
     create(data) {
+        // Fade camera in
         this.cameras.main.fadeIn(800,79,74,69);
+        // Camera layers
         this.hudLayer = this.add.layer();
+        // Create UI camera and set it far away (responsible for showing hud)
         this.uiCam = this.cameras.add(0, 0, this.scale.width, this.scale.height);
         this.uiCam.setScroll(10000, 10000); 
+        // Tell main camera to ignore hud layer (Not necessary currently, this is because we tried to do it with layers and not setting the camera far away, it didn't work for some objects)
         this.cameras.main.ignore(this.hudLayer);
 
+        // Remove debug mode by default
         this.toggleDebug();
+
+        // Remove all event listeners in Event Bus (This is a quick fix to not unsubscribing from events on entity destruction, we should have done it the other way)
         EventBus.removeAllListeners();
 
+        // Create input facade and lock pointer
         this.inputFacade = new InputFacade(this);
         this.inputFacade.resetPointerLockCount();
 
+        // Create HUD
         const model = new HudModel();
         const view = new HudView(this);
         const presenter = new HudPresenter(view, model);
         
+        // Create NPC Dialogue UI (Maybe could be handled by HUD?)
         const NPCmodel = new NPCsDialogueModel(dialoguesConfig,dialogueEvents);
         const NPCview = new NPCsDialogueView(this);
         const NPCpresenter = new NPCsDialoguePresenter(NPCview,NPCmodel)
@@ -70,23 +80,26 @@ export default class GameplayScene extends Phaser.Scene {
         // Lock mouse if user clicks (maybe they exited the lock with ESC)
         //this.input.on('pointerdown', ()=>{this.input.mouse.requestPointerLock()}, this);
 
+        // Pause game with [P]
         this.input.keyboard.on("keydown-P", () => {
             if (this.scene.isPaused("GameplayScene")) return;
             this.scene.launch("PauseMenu");
             this.scene.pause();
         });
 
+        // Open inventory with [E]
         this.input.keyboard.on("keydown-E", () => {
             if (this.scene.isPaused("GameplayScene")) return;
             this.scene.launch("InventoryMenu", this.player);
             this.scene.pause();
         });
 
+        // Show debug with [U]
         this.input.keyboard.on("keydown-U", () => {
             this.toggleDebug();
         });
 
-        // Create physics groups
+        // Create physics categories
         this.obstaclesCategory = 1 << 0;
         this.enemiesCategory = 1 << 1;
         this.playerCategory = 1 << 2;
@@ -101,7 +114,7 @@ export default class GameplayScene extends Phaser.Scene {
         // Create colliders
         this.player.setCollidesWith([this.enemiesCategory, this.obstaclesCategory, this.connectionsCategory, this.interactablesCategory]);
 
-        // HOW DO I MAKE THIS ONLY WITH ONE CATEGORY
+        // when player is hit by an enemy it triggers a hit
         this.player.setOnCollide((pair) => {
                 if(pair.bodyB.collisionFilter.category == this.enemiesCategory)
                 {
@@ -129,6 +142,9 @@ export default class GameplayScene extends Phaser.Scene {
         
     }
 
+    /**
+     * Toggles debug view
+     */
     toggleDebug() {
         this.matter.world.drawDebug = !this.matter.world.drawDebug;
         this.matter.world.debugGraphic.visible = this.matter.world.drawDebug;

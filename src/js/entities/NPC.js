@@ -3,18 +3,38 @@ import { EventBus } from "../core/event-bus.js";
 import Colors from "../../configs/colors-config.js";
 import missionManager from "../core/mission-manager.js";
 
+/**
+ * NPC billboard entity that can show dialogues, provide missions and display an interact key tip.
+ *
+ * Extends BillBoard and integrates with the global EventBus and missionManager.
+ *
+ * @extends BillBoard
+ */
 export class NPC extends BillBoard{
+    /**
+     * Create an NPC.
+     * @param {Phaser.Scene} scene - The scene this NPC belongs to.
+     * @param {number} x - X world position.
+     * @param {number} y - Y world position.
+     * @param {Object} config - NPC configuration object.
+     * @param {Object} config.billboardConfig - Configuration forwarded to BillBoard (visual/dialogue settings).
+     * @param {Object} [config.physicsConfig] - Optional physics body configuration (MatterJS).
+     * @param {string} config.dialogueName - Dialogue key/name to start when interacting (if not mission-based).
+     * @param {boolean} [config.givesMissions=false] - Whether this NPC provides missions.
+     */
     constructor(scene,x,y,config){
         super(scene,x,y,config.billboardConfig,config.physicsConfig);
         this.config = config;
+        /** @type {string} */
         this.dialogueName = config.dialogueName; 
+        /** @type {boolean} */
         this.hasInteracted = false;
 
         // Dialogue position offset
+        /** @type {number} */
         this.diagOffsetY = -150;
+        /** @type {number} */
         this.diagOffsetX = -80;
-        this.x = x;
-        this.y = y
         
         this.scene.add.existing(this);
 
@@ -59,6 +79,13 @@ export class NPC extends BillBoard{
         // #endregion
     }
 
+     /**
+     * Position and rotate the key tip relative to the NPC based on camera rotation.
+     * @param {number} cR - Cosine of the camera rotation (cos(R)).
+     * @param {number} sR - Sine of the camera rotation (sin(R)).
+     * @param {number} R - Camera rotation in radians.
+     * @private
+     */
     rotateKeyTip(cR, sR, R) {
         this.keyTip.x = this.keyTipOffsetX * cR - this.keyTipOffsetY * sR + this.x;
         this.keyTip.y = this.keyTipOffsetX * sR + this.keyTipOffsetY * cR + this.y;
@@ -68,6 +95,11 @@ export class NPC extends BillBoard{
         this.keyTipKey.rotation = this.keyTip.rotation;
     }
 
+    /**
+     * Show the interact key tip with a short fade-in tween.
+     * Makes both the background nineslice and key text visible and animates alpha.
+     * @private
+     */
     showKeyTip() {
         this.scene.tweens.add({
             targets: [this.keyTip, this.keyTipKey],
@@ -80,6 +112,10 @@ export class NPC extends BillBoard{
         this.keyTipKey.setVisible(true);
     }
 
+    /**
+     * Hide the interact key tip with a short fade-out tween.
+     * @private
+     */
     hideKeyTip() {
         this.scene.tweens.add({
             targets: [this.keyTip, this.keyTipKey],
@@ -89,6 +125,13 @@ export class NPC extends BillBoard{
         });
     }
 
+    /**
+     * Event handler invoked when a player triggers an 'interact' event.
+     * Checks if the interaction receiver is this NPC and, if so, opens dialogue.
+     * @param {any} player - The player that interacted (emitted with the event).
+     * @param {NPC|any} reciever - The intended receiver of the interaction (compared by identity).
+     * @private
+     */
     onPlayerInteraction(player, reciever){
         // check if the reciever is me
         if(reciever === this)
@@ -97,6 +140,12 @@ export class NPC extends BillBoard{
         }
     }
 
+    /**
+     * Determine dialogue position relative to camera and start the appropriate dialogue flow.
+     * 
+     * Emits "StartDialogue" on EventBus with (dialogueName, x, y).
+     * @private
+     */
     throwDialogue(){
         const cam = this.scene.cameras.main;
 
