@@ -248,8 +248,74 @@
         "physicsConfig":{
             "shape": {
                 "type": "rectangle",
-                "width": 101,
-                "height": 48
+                "width": 110,
+                "height": 90
+            },
+            "isStatic": true
+           
+        }
+    },
+    {
+        "key": "exitSign",
+        "spriteStackConfig": 
+        {
+            "textures": "exitSign-spritestack",
+            "frameCount": 18,
+            "verticalOffset": 3,
+            "scale": 3,
+            "offsetX": 0,
+            "offsetY": 0
+        },
+        "physicsConfig":{
+            "shape": {
+                "type": "rectangle",
+                "width": 20,
+                "height": 5
+
+            },
+            "isStatic": true
+           
+        }
+    },
+    {
+        "key": "enterSign",
+        "spriteStackConfig": 
+        {
+            "textures": "enterSign-spritestack",
+            "frameCount": 18,
+            "verticalOffset": 3,
+            "scale": 3,
+            "offsetX": 0,
+            "offsetY": 0
+        },
+        "physicsConfig":{
+            "shape": {
+                "type": "rectangle",
+                "width": 20,
+                "height": 5
+
+            },
+            "isStatic": true
+           
+        }
+    },
+    {
+        "key": "interrogationSign",
+        "spriteStackConfig": 
+        {
+            "textures": "interrogationSign-spritestack",
+            "frameCount": 18,
+            "verticalOffset": 3,
+            "scale": 3,
+            "offsetX": 0,
+            "offsetY": 0
+        },
+        "physicsConfig":{
+            "shape": {
+                "type": "rectangle",
+                "width": 20,
+                "height": 5
+
             },
             "isStatic": true
            

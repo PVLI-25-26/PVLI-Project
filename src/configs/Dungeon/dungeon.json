@@ -97,11 +97,12 @@
                          "type":"class",
                          "value":
                             {
+                             "rotation":35,
                              "scene":6,
-                             "spawnX":-300,
+                             "spawnX":-200,
                              "spawnY":0,
-                             "x":0,
-                             "y":0
+                             "x":180,
+                             "y":-70
                             }
                         }],
                  "rotation":0,
@@ -121,11 +122,12 @@
                          "type":"class",
                          "value":
                             {
+                             "rotation":25,
                              "scene":7,
-                             "spawnX":-400,
+                             "spawnX":-300,
                              "spawnY":0,
-                             "x":400,
-                             "y":0
+                             "x":330,
+                             "y":-80
                             }
                         }],
                  "template":"..\/..\/..\/public\/assets\/rooms\/Templates\/RoomTemplate.tx",
@@ -154,6 +156,7 @@
                          "type":"class",
                          "value":
                             {
+                             "rotation":-35,
                              "scene":10,
                              "spawnX":-480,
                              "spawnY":-630,
@@ -167,10 +170,11 @@
                          "type":"class",
                          "value":
                             {
+                             "rotation":30,
                              "scene":8,
-                             "spawnX":-200,
+                             "spawnX":-150,
                              "spawnY":0,
-                             "x":400,
+                             "x":300,
                              "y":-370
                             }
                         }, 
@@ -183,8 +187,8 @@
                              "scene":11,
                              "spawnX":190,
                              "spawnY":0,
-                             "x":-400,
-                             "y":400
+                             "x":-330,
+                             "y":370
                             }
                         }],
                  "template":"..\/..\/..\/public\/assets\/rooms\/Templates\/RoomTemplate.tx",
@@ -202,11 +206,12 @@
                          "type":"class",
                          "value":
                             {
+                             "rotation":-45,
                              "scene":10,
                              "spawnX":430,
                              "spawnY":-620,
                              "x":220,
-                             "y":220
+                             "y":100
                             }
                         }, 
                         {
@@ -215,11 +220,12 @@
                          "type":"class",
                          "value":
                             {
+                             "rotation":15,
                              "scene":6,
                              "spawnX":-300,
                              "spawnY":0,
                              "x":0,
-                             "y":0
+                             "y":-170
                             }
                         }, 
                         {
@@ -228,11 +234,12 @@
                          "type":"class",
                          "value":
                             {
+                             "rotation":45,
                              "scene":7,
                              "spawnX":340,
                              "spawnY":-300,
                              "x":-200,
-                             "y":200
+                             "y":100
                             }
                         }],
                  "template":"..\/..\/..\/public\/assets\/rooms\/Templates\/RoomTemplate.tx",
@@ -311,10 +318,11 @@
                          "type":"class",
                          "value":
                             {
+                             "rotation":30,
                              "scene":8,
-                             "spawnX":200,
-                             "spawnY":190,
-                             "x":470,
+                             "spawnX":150,
+                             "spawnY":0,
+                             "x":400,
                              "y":-670
                             }
                         }],
