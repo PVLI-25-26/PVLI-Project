@@ -171,6 +171,90 @@
             "isStatic": true
         }
     },
+     {
+        "key": "portal",
+        "spriteStackConfig": 
+        {
+            "textures": "portal-spritestack",
+            "frameCount": 60,
+            "verticalOffset": 2,
+            "scale": 3,
+            "offsetX": 0,
+            "offsetY": 0
+        },
+        "physicsConfig":{
+            "shape": {
+                "type": "circle",
+                "width": 70,
+                "height": 54
+            },
+            "isStatic": true,
+            "isSensor":true
+        }
+    },
+    {
+        "key": "fireplace",
+        "spriteStackConfig": 
+        {
+            "textures": "fireplace-spritestack",
+            "frameCount": 5,
+            "verticalOffset": 3,
+            "scale": 3,
+            "offsetX": 0,
+            "offsetY": 0
+        },
+        "physicsConfig":{
+            "shape": {
+                "type": "circle",
+                "width": 54,
+                "height": 54
+            },
+            "isStatic": true
+            
+        }
+    },
+    {
+        "key": "logSided",
+        "spriteStackConfig": 
+        {
+            "textures": "logSided-spritestack",
+            "frameCount": 6,
+            "verticalOffset": 3,
+            "scale": 3,
+            "offsetX": 0,
+            "offsetY": 0
+        },
+        "physicsConfig":{
+            "shape": {
+                "type": "rectangle",
+                "width": 101,
+                "height": 48
+            },
+            "isStatic": true
+           
+        }
+    },
+    {
+        "key": "tent",
+        "spriteStackConfig": 
+        {
+            "textures": "tent-spritestack",
+            "frameCount": 20,
+            "verticalOffset": 3,
+            "scale": 3,
+            "offsetX": 0,
+            "offsetY": 0
+        },
+        "physicsConfig":{
+            "shape": {
+                "type": "rectangle",
+                "width": 101,
+                "height": 48
+            },
+            "isStatic": true
+           
+        }
+    },
     {
         "key": "door",
         "spriteStackConfig": 

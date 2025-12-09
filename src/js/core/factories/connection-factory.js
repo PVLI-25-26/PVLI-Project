@@ -1,19 +1,20 @@
 import { EventBus } from "../event-bus";
+import {createObstacle} from "./obstacle-factory"
 
 export function createConnection(scene, dungeon, connectionSceneData){
-    const connection = scene.matter.add.sprite(connectionSceneData.x, connectionSceneData.y, "player", null, {
-                shape: {
-                    type: "rectangle",
-                    width: 48,
-                    height: 48
-                },
-                isStatic: true,
-                isSensor: true
-            });
+    const portalData = {
+
+        type: 'portal',
+        x: connectionSceneData.x,
+        y: connectionSceneData.y,
+        rotation: connectionSceneData.rotation,
+    }
+    const connection = createObstacle(scene,portalData);
     connection.setCollisionCategory(scene.connectionsCategory);
     
     // When player overlaps connection change room
     connection.setOnCollide(()=>{
+        
         dungeon.changeRoom(connectionSceneData.scene);
         scene.logger.log('DUNGEON', 1, `Entering room: ${connectionSceneData.scene}`);
 
