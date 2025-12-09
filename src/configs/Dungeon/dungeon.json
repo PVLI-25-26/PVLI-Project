@@ -333,10 +333,11 @@
                          "type":"class",
                          "value":
                             {
+                             "rotation":50,
                              "scene":7,
-                             "spawnX":-300,
-                             "spawnY":340,
-                             "x":240,
+                             "spawnX":-200,
+                             "spawnY":500,
+                             "x":260,
                              "y":0
                             }
                         }],

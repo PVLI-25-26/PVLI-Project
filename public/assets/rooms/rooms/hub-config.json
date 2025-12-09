@@ -31,6 +31,57 @@
                  "type":"shop-carpet",
                  "x":130.333333333333,
                  "y":-44.3333333333333
+                }, 
+                {
+                 "id":129,
+                 "name":"Fireplace",
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"fireplace",
+                 "x":-116,
+                 "y":-310.666666666667
+                }, 
+                {
+                 "id":130,
+                 "name":"SittingLog",
+                 "rotation":90,
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"logSided",
+                 "x":-218.666666666667,
+                 "y":-306.666666666667
+                }, 
+                {
+                 "id":131,
+                 "name":"SittingLog",
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"logSided",
+                 "x":-121,
+                 "y":-227.666666666667
+                }, 
+                {
+                 "id":132,
+                 "name":"SittingLog",
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"logSided",
+                 "x":-115.666666666667,
+                 "y":-403.666666666667
+                }, 
+                {
+                 "id":133,
+                 "name":"SittingLog",
+                 "rotation":90,
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"logSided",
+                 "x":-10.3333333333333,
+                 "y":-306.333333333333
+                }, 
+                {
+                 "id":134,
+                 "name":"Tent",
+                 "rotation":250,
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"tent",
+                 "x":204,
+                 "y":-324
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -237,7 +288,7 @@
          "y":0
         }],
  "nextlayerid":12,
- "nextobjectid":129,
+ "nextobjectid":135,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.11.2",

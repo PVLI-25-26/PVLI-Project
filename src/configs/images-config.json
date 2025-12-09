@@ -18,6 +18,10 @@
     {"key": "log-spritestack", "type": "spritesheet", "file": "assets/sprites/SpriteStacks/Log.png", "settings":{"frameWidth":12, "frameHeight": 12}},
     {"key": "shop-carpet", "type": "spritesheet", "file": "assets/sprites/SpriteStacks/Carpet.png", "settings":{"frameWidth":32}},
     {"key": "tomb-spritestack", "type": "spritesheet", "file": "assets/sprites/SpriteStacks/Tomb.png", "settings":{"frameWidth":40}},
+    {"key": "portal-spritestack", "type": "spritesheet", "file": "assets/sprites/SpriteStacks/Portal.png", "settings":{"frameWidth":60, "frameHeight":10}},
+    {"key": "fireplace-spritestack", "type": "spritesheet", "file": "assets/sprites/SpriteStacks/Fireplace.png", "settings":{"frameWidth":20, "frameHeight":20}},
+    {"key": "logSided-spritestack", "type": "spritesheet", "file": "assets/sprites/SpriteStacks/LogSided.png", "settings":{"frameWidth":30, "frameHeight":11}},
+    {"key": "tent-spritestack", "type": "spritesheet", "file": "assets/sprites/SpriteStacks/Tent.png", "settings":{"frameWidth":37, "frameHeight":27}},
     
     {"key": "queso", "type": "image", "file": "assets/sprites/16x16 RPG Item Pack/Item__65.png", "settings":{}},
     {"key": "ball", "type": "image", "file": "assets/sprites/16x16 RPG Item Pack/Item__26.png", "settings":{}},
@@ -27,6 +31,7 @@
     {"key": "healthFlowers", "type": "spritesheet", "file": "assets/sprites/ItemSprites/HealthFlower.png", "settings":{"frameWidth":32}},
     {"key": "speedVases", "type": "spritesheet", "file": "assets/sprites/ItemSprites/SpeedVase.png", "settings":{"frameWidth":32}},
     {"key": "damageRocks", "type": "spritesheet", "file": "assets/sprites/ItemSprites/DamageRock.png", "settings":{"frameWidth":32}},
+    {"key": "nabo", "type": "spritesheet", "file": "assets/sprites/ItemSprites/nabo.png", "settings":{"frameWidth":32}},
 
     {"key": "billboard", "type": "image", "file": "assets/sprites/SpriteStackingPlaceholders/Billboard/catPlaceholder.jpg", "settings":{}},
     {"key": "grass", "type": "spritesheet", "file": "assets/sprites/grass.png", "settings":{"frameWidth":8}},
