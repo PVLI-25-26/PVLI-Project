@@ -58,7 +58,7 @@ export class PlayerShootingComponent extends BaseComponent{
     /**
      * @type {Arrow} Arrow entity to be shot (got from the arrow pool)
      */
-    #arrowShot;
+    arrowShot;
 
     /**
      * @type {number} Current cosine of camera rotation.
@@ -202,7 +202,7 @@ export class PlayerShootingComponent extends BaseComponent{
                 const effect = Object.assign({}, this.#isSpecialArrowActive ? this.#equippedArrow : basicArrow);
                 effect.damage *= this.#damageMultiplier;
                 // Get arrow from pool and shoot
-                this.#arrowShot.shoot(
+                this.arrowShot.shoot(
                     this.#equippedTrajectory,
                     effect,
                     this.gameObject.x, this.gameObject.y, // Origin (player position)
@@ -223,7 +223,7 @@ export class PlayerShootingComponent extends BaseComponent{
     update(time, delta){
         // Handle bow aiming
         if(this.#currentPower > this.#minPower){
-            this.showBowAndBar(this.#mouseDrag.x, this.#mouseDrag.y, this.#mouseDragLength, this.#arrowShot);
+            this.showBowAndBar(this.#mouseDrag.x, this.#mouseDrag.y, this.#mouseDragLength, this.arrowShot);
         }
         else{
             this.hideBowAndBar();
@@ -312,7 +312,7 @@ export class PlayerShootingComponent extends BaseComponent{
             this.bow.setFrame(0);
             // Hide with tween reducing alpha
             this.gameObject.scene.tweens.add({
-                targets: [this.bow, this.powerBar, this.#arrowShot],
+                targets: [this.bow, this.powerBar, this.arrowShot],
                 alpha: 0,
                 duration: 200,
                 onComplete: (tween)=>{
@@ -321,8 +321,8 @@ export class PlayerShootingComponent extends BaseComponent{
                     this.powerBar.alpha = 1;
                     this.bow.setVisible(false);
                     this.bow.alpha = 1;
-                    this.#arrowShot.setVisible(false);
-                    this.#arrowShot.alpha = 1;
+                    this.arrowShot.setVisible(false);
+                    this.arrowShot.alpha = 1;
                 }
             })
         }
