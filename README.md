@@ -21,7 +21,7 @@ El objetivo del jugador es derrotar al jefe de la mazmorra. Dependiendo del nive
 El juego implementa una técnica para dar una ilusión de 3D falso llamada "Sprite Stacking". Con esta técnica se consigue dar mayor profundidad y realismo al juego, además de un estilo visual único.
 
 ## Capturas
-<TODO>
+<img width="1597" height="1200" alt="スクリーンショット 2025-12-09 103753" src="https://github.com/user-attachments/assets/d529397a-4cf6-40ad-85e8-83c3e43acebe" />
 
 ## Pagina Web
 [Link a la página web](https://pvli-25-26.github.io/PVLI-Project/).
