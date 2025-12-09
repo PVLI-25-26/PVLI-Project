@@ -29,7 +29,7 @@ export class DamageableComponent extends BaseComponent {
         this.isInvulnerable = false;
         this._blinkTween = null;
 
-        // subscribe to damage events
+        // Subscribe to damage events
         for (const event of damageEvents) {
             EventBus.on(event, (data) => this.handleDamageEvent(event, data));
         }
@@ -164,10 +164,7 @@ export class DamageableComponent extends BaseComponent {
         EventBus.emit('entityDied', this.gameObject);
         this.gameObject.emit('entityDied'); // Cheaper and easier to know from within the object if they have died
         EventBus.emit('playSound', this.sounds.death);
-        this.gameObject.setActive(false);
-        this.gameObject.setVisible(false);
-        this.gameObject.setStatic(true);
-        this.gameObject.setCollidesWith(0);
+        if (this.gameObject.type !== 'player') this.gameObject.destroy();
     }
 
     /**
@@ -178,5 +175,12 @@ export class DamageableComponent extends BaseComponent {
      */
     update(time, delta) {
         // No per-frame updates needed currently
+    }
+
+    destroy() {
+        super.destroy();
+        for (const event of this.damageEvents) {
+            EventBus.off(event, (data) => this.handleDamageEvent(event, data));
+        }
     }
 }

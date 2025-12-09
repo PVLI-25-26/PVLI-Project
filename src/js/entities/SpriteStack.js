@@ -155,4 +155,14 @@ export class SpriteStack extends Phaser.GameObjects.Sprite{
             }
         }
     }
+
+    /**
+     * Override Phaser set visible
+     * @param {boolean} visible 
+     */
+    setVisible(visible){
+        for (let i = 0; i<this.sprites.length; i ++){
+            this.sprites[i].setVisible(visible);
+        }
+    }
 }

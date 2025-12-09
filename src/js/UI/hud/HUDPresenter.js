@@ -61,15 +61,15 @@ export class HudPresenter {
         this.view.createCombatText(400, 250, amount, textColor);
     }
 
-    onPlayerGoldInitialized(data){
+    onPlayerGoldInitialized(data) {
         this.view.createGoldIndicator(data);
     }
 
-    onPlayerGoldChanged(data){
+    onPlayerGoldChanged(data) {
         this.view.updateGoldIndicator(data.prev, data.new);
     }
 
-    onNotEnoughGold(){
+    onNotEnoughGold() {
         this.view.shakeGold();
     }
 

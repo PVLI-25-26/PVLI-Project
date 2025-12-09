@@ -38,6 +38,7 @@ export class BuffParticleEmitter {
             },
             x:{
                 onEmit: (particle, key, t, value)=> {
+                    if (!target.active) return 0;
                     // Choose random horizontal pos (horizontal from camera perspective) in target given
                     const camRot = scene.cameras.main.rotation;
                     return ((Math.random()*2-1)*width)*Math.cos(camRot) + target.x;
@@ -45,6 +46,7 @@ export class BuffParticleEmitter {
             },
             y:{
                 onEmit: (particle, key, t, value)=> {
+                    if (!target.active) return 0;
                     // Choose random horizontal pos (horizontal from camera perspective) in target given
                     const camRot = scene.cameras.main.rotation;
                     return ((Math.random()*2-1)*width)*Math.sin(camRot) + target.y;

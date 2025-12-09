@@ -1,17 +1,21 @@
 import basicEnemyConfig from "../../../configs/Enemies/basic-enemy-config.json";
 import elementalConfig from "../../../configs/Enemies/elemental-config.json";
+import dryadConfig from "../../../configs/Enemies/dryad-config.json";
 import { BasicEnemy } from "../../entities/Enemies/BasicEnemy.js";
 import { Elemental } from "../../entities/Enemies/Elemental.js";
+import { Dryad } from "../../entities/Enemies/Dryad.js";
 import { getCustomTiledProperty, getTiledObject } from "../tiled-parser.js";
 
 const ENEMY_GLOBAL_CONFIGS = {
     "basic": basicEnemyConfig,
-    "elemental": elementalConfig
+    "elemental": elementalConfig,
+    "dryad": dryadConfig
 };
 
 const ENEMY_TYPES = {
   "basic": BasicEnemy,
-"elemental": Elemental
+"elemental": Elemental,
+    "dryad": Dryad
 };
 
 export function createEnemy(scene, enemyData, patrolRoutes) {

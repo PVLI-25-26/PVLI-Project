@@ -35,9 +35,8 @@ export class ElementalMovementControllerComponent extends BaseControllerComponen
         EventBus.on('playerStartedAiming', this.onPlayerStartedAiming, this);
         EventBus.on('arrowLanded', this.onArrowLanded, this);
         EventBus.on('entityDamaged', this.onReceiveDamage, this);
-        this.changeState(initialState);
 
-		this.gameObject.scale = 4;
+        this.changeState(initialState);
     }
 
     changeState(newState) {
@@ -110,5 +109,13 @@ export class ElementalMovementControllerComponent extends BaseControllerComponen
             return true;
         }
         return false;
+    }
+
+    destroy() {
+        super.destroy();
+        EventBus.off('entityMoved', this.onEntityMoved, this);
+        EventBus.off('playerStartedAiming', this.onPlayerStartedAiming, this);
+        EventBus.off('arrowLanded', this.onArrowLanded, this);
+        EventBus.off('entityDamaged', this.onReceiveDamage, this);
     }
 }

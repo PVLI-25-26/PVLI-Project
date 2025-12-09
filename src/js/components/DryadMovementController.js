@@ -6,7 +6,7 @@ import { StrafeState } from "../entities/Enemies/States/StrafeState.js";
 import { RetreatState } from "../entities/Enemies/States/RetreatState.js";
 import { EventBus } from "../core/event-bus.js";
 
-export class BasicEnemyControllerComponent extends BaseControllerComponent {
+export class DryadMovementControllerComponent extends BaseControllerComponent {
     /**
      * @param {Phaser.GameObjects.GameObject} gameObject
      * @param {string} initialState
@@ -18,19 +18,17 @@ export class BasicEnemyControllerComponent extends BaseControllerComponent {
         this.currentState = null;
         this.target = null;
         this.initialState = initialState;
-        this.aggroRange = 300;
+        this.chasingRange = 200;
+        this.onCombat = false;
 
         this.states = {
             idle: new IdleState(this),
             patrol: new PatrolState(this, patrolRoute),
-            chase: new DirectChaseState(this),
-            strafe: new StrafeState(this),
-            retreat: new RetreatState(this),
+            chase: new DirectChaseState(this)
         };
 
-        EventBus.on('entityMoved', this.onEntityMoved, this);
-        EventBus.on('playerStartedAiming', this.onPlayerStartedAiming, this);
-        EventBus.on('arrowLanded', this.onArrowLanded, this);
+        this.animationPatrol = true;
+
         EventBus.on('entityDamaged', this.onReceiveDamage, this);
         EventBus.on('entityDied', this.onEntityDied, this);
 
@@ -43,42 +41,10 @@ export class BasicEnemyControllerComponent extends BaseControllerComponent {
         this.currentState?.enter();
     }
 
-    // data = { entity, x, y }
-    onEntityMoved(data) {
-        if (data.entity.type == 'player' && this.checkTargetInAggroRange(data.entity) && this.target != data.entity)
-        {
-            if (this.currentState == this.states.patrol || this.currentState == this.states.idle) {
-                this.changeState('chase');
-                this.target = data.entity;
-            }
-        }
-    }
-
-    onPlayerStartedAiming() {
-        if (this.target && this.checkTargetInAggroRange(this.target)) {
-            this.changeState('strafe');
-        }
-    }
-
-    onArrowLanded() {
-        if (this.target && this.checkTargetInAggroRange(this.target)) {
-            this.changeState('chase');
-        }
-        else {
-            this.changeState(this.initialState);
-        }
-    }
-
-    onEntityDied(entity) {
-        if (entity === this.target) {
-            this.target = null;
-            this.changeState(this.initialState);
-        }
-    }
 
     onReceiveDamage(data) {
-        this.aggroRange = 600;
-        if (this.target) {
+        if (data.entity.type === 'enemy' && data.entity !== this.gameObject) {
+            this.target = data.entity;
             this.changeState('chase');
         }
     }
@@ -89,20 +55,24 @@ export class BasicEnemyControllerComponent extends BaseControllerComponent {
         this.currentState.update(time, delta);
     }
 
-    checkTargetInAggroRange(target) {
+    checkTargetInChasingRange(target) {
         const enemy = this.gameObject;
         const distance = Phaser.Math.Distance.Between(enemy.x, enemy.y, target.x, target.y);
-        if (distance <= this.aggroRange) {
+        if (distance <= this.chasingRange) {
             return true;
         }
         return false;
     }
 
+    onEntityDied(data) {
+        if (data.entity === this.target) {
+            this.changeState(this.initialState);
+            this.target = null;
+        }
+    }
+
     destroy() {
         super.destroy();
-        EventBus.off('entityMoved', this.onEntityMoved, this);
-        EventBus.off('playerStartedAiming', this.onPlayerStartedAiming, this);
-        EventBus.off('arrowLanded', this.onArrowLanded, this);
         EventBus.off('entityDamaged', this.onReceiveDamage, this);
     }
 }

@@ -36,52 +36,18 @@ export class InventoryComponent extends BaseComponent{
         EventBus.emit('playerGoldInitialized', this.#gold);
 
         // Wire item picked events to add item to inventory
-        EventBus.on('itemPicked', (picker, item)=>{
-            if(this.gameObject === picker) this.addItemToInventory(item.key);
-        });
+        EventBus.on('itemPicked', this.onItemPicked, this);
 
         // When hub reached convert all player items into gold
-        EventBus.on('hubReached', ()=>{
-            if(this.#playerInventory.length > 0){
-                let totalGold = 0;
-                for(let item of this.#playerInventory){
-                    totalGold += getItemGold(item);
-                }
-                this.addGold(totalGold);
-                this.#playerInventory = [];
-            }
-        }, this);
+        EventBus.on('hubReached', this.onHubReached, this);
+
         EventBus.on('removeGold', this.removeGold, this);
         EventBus.on('addGold', this.addGold, this);
 
         // For each item player can buy, check if there is enought gold, if there is, equip the item        
-        EventBus.on('abilityBought', (ability)=>{
-            if(ability.gold <= this.#gold){
-                this.removeGold(ability.gold);
-                EventBus.emit('abilityEquipped', ability);
-            }
-            else{
-                EventBus.emit('notEnoughGold');
-            }
-        });
-        EventBus.on('arrowBought', (arrow)=>{
-            if(arrow.gold <= this.#gold){
-                this.removeGold(arrow.gold);
-                EventBus.emit('arrowEquipped', arrow);
-            }
-            else{
-                EventBus.emit('notEnoughGold');
-            }
-        });
-        EventBus.on('trajectoryBought', (trajectory)=>{
-            if(trajectory.gold <= this.#gold){
-                this.removeGold(trajectory.gold);
-                EventBus.emit('trajectoryEquipped', trajectory);
-            }
-            else{
-                EventBus.emit('notEnoughGold');
-            }
-        })
+        EventBus.on('abilityBought', this.onAbilityBought, this);
+        EventBus.on('arrowBought', this.onArrowBought, this);
+        EventBus.on('trajectoryBought', this.onTrajectoryBought, this);
 
         // cheat keybindings
         this.gameObject.scene.input.keyboard.on('keydown-M', ()=>{this.addGold(50);});
@@ -108,6 +74,40 @@ export class InventoryComponent extends BaseComponent{
         return this.#playerInventory;
     }
 
+    onAbilityBought(ability) {
+        if(ability.gold <= this.#gold){
+                this.removeGold(ability.gold);
+                EventBus.emit('abilityEquipped', ability);
+            }
+            else{
+                EventBus.emit('notEnoughGold');
+            }
+    }
+
+    onArrowBought(arrow) {
+        if(arrow.gold <= this.#gold){
+            this.removeGold(arrow.gold);
+            EventBus.emit('arrowEquipped', arrow);
+        }
+            else {
+            EventBus.emit('notEnoughGold');
+        }
+    }
+
+    onTrajectoryBought(trajectory) {
+        if(trajectory.gold <= this.#gold){
+            this.removeGold(trajectory.gold);
+            EventBus.emit('trajectoryEquipped', trajectory);
+        }
+        else {
+            EventBus.emit('notEnoughGold');
+        } 
+    }
+
+    onItemPicked(picker, item) { 
+        if(this.gameObject === picker) this.addItemToInventory(item.key);
+    }
+
     /**
      * Get the amount of gold.
      * @returns {Number} Amount of gold.
@@ -115,6 +115,17 @@ export class InventoryComponent extends BaseComponent{
     getGold(){
         return this.#gold;
     }
+
+    onHubReached(){
+        if(this.#playerInventory.length > 0){
+                let totalGold = 0;
+                for(let item of this.#playerInventory){
+                    totalGold += getItemGold(item);
+                }
+                this.addGold(totalGold);
+                this.#playerInventory = [];
+            }
+        }
 
     /**
      * Remove gold from player. WIll neve set negative values for gold.
@@ -161,5 +172,16 @@ export class InventoryComponent extends BaseComponent{
      */
     clearInventory(){
         this.#playerInventory = [];
+    }
+
+    destroy() {
+        super.destroy();
+        EventBus.off('itemPicked', this.onItemPicked, this);
+        EventBus.off('hubReached', this.onHubReached, this);
+        EventBus.off('removeGold', this.removeGold, this);
+        EventBus.off('addGold', this.addGold, this);
+        EventBus.off('abilityBought', this.onAbilityBought, this);
+        EventBus.off('arrowBought', this.onArrowBought, this);
+        EventBus.off('trajectoryBought', this.onTrajectoryBought, this);
     }
 }

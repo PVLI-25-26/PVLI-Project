@@ -177,6 +177,13 @@ export class Arrow extends DepthSortedSprite{
         }
     }
 
+    /**
+     * Handle arrow landing on a static obstacle/surface.
+     *
+     * Spawns area effects if applicable, updates visuals and emits events.
+     *
+     * @returns {void}
+     */
     onLanded(){
         EventBus.emit('arrowLanded', this);
         // If the arrow is a gass arrow, we spawn a poison cloud
@@ -190,6 +197,14 @@ export class Arrow extends DepthSortedSprite{
         this.isFlying = false;
     }
 
+    /**
+     * Attach the arrow visually to a target object (stick into the target).
+     *
+     * The arrow will keep a positional offset relative to the target while the
+     * target remains active.
+     *
+     * @param {Phaser.GameObjects.GameObject} target - The object to stick to.
+     */
     stickToObject(target) {
         this.stuckTo = target;
 
@@ -201,6 +216,11 @@ export class Arrow extends DepthSortedSprite{
         this.setOrigin(0.8, 0.5);
     }
 
+    /**
+     * Reset arrow transient state before reuse (e.g. when shooting from a pool).
+     *
+     * Resets stuck references, offsets and collision masks.
+     */
     resetState() {
         this.stuckTo = null;
         this.offsetX = 0;
@@ -209,6 +229,11 @@ export class Arrow extends DepthSortedSprite{
         this.setOrigin(0.5, 0.5);
     }
 
+    /**
+     * Update arrow visuals such as rotation based on its current velocity.
+     *
+     * @param {number} normalizedAirTime01 - Normalized flight progress (0..1) - not used by default but available to trajectories.
+     */
     updateArrowVisuals(normalizedAirTime01){
         const arrowVel = this.getVelocity();
         this.rotation = Math.atan2(arrowVel.y, arrowVel.x);
@@ -224,6 +249,9 @@ export class Arrow extends DepthSortedSprite{
         }
     }
 
+    /**
+     * Apply a small bouncy rotation tween to the arrow when it lands for visual polish.
+     */
     applyBouncyTween(){
         this.setOrigin(0.8,0.5);
         this.scene.tweens.add({
@@ -236,6 +264,10 @@ export class Arrow extends DepthSortedSprite{
         });
     }
 
+    /**
+     * Return the effect payload associated with this arrow (damage, debuffs, etc.).
+     * @returns {*}
+     */
     getEffect(){
         return this.effect;
     }
