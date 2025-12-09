@@ -17,6 +17,11 @@
             "id": 7,
             "members": [
                 {
+                    "name": "rotation",
+                    "type": "int",
+                    "value": 0
+                },
+                {
                     "name": "scene",
                     "type": "object",
                     "value": 0
