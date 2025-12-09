@@ -22,9 +22,10 @@ export default class PauseMenu extends Phaser.Scene {
     }
 
     create() {
-        this.sound_facade = new SoundSceneFacade(this, audioConfig);
+        const soundFacade = this.plugins.get('soundfacade');
+        soundFacade.initializeSoundFacade(this);
 
-        const model = new PauseMenuModel();
+        const model = new PauseMenuModel(soundFacade.getCurrentMusicVolume(), soundFacade.getCurrentSFXVolume());
         const view = new PauseMenuView(this);
         const presenter = new PauseMenuPresenter(view, model);
 
@@ -48,7 +49,6 @@ export default class PauseMenu extends Phaser.Scene {
     update(){
         super.update()
         if(Phaser.Input.Keyboard.JustDown(this.keyP)){
-            this.sound_facade.destroy();
             this.scene.resume("GameplayScene");
             this.scene.stop("PauseMenu");
         }

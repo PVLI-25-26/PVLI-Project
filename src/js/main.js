@@ -7,6 +7,7 @@ import InventoryMenu from "../scenes/InventoryMenu.js";
 import Boot from "../scenes/Boot.js";
 import Colors from "../configs/colors-config.js"
 import { Dungeon } from "./core/dungeon.js";
+import { SoundSceneFacade } from "./core/sound-facade.js";
 // ================== GAME ENTRY POINT ==================
 
 // TODO - Read config from JSON file?
@@ -36,7 +37,8 @@ const config = {
     plugins: {
         global: [
             {key: 'logger', plugin: Logger, start: true},
-            {key: 'dungeon', plugin: Dungeon, start: true, data: 1}
+            {key: 'dungeon', plugin: Dungeon, start: true, data: 1},
+            {key: 'soundfacade', plugin: SoundSceneFacade, start: true}
         ]
     }
 }

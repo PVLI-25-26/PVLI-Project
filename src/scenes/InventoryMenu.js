@@ -13,7 +13,7 @@ export default class InventoryMenu extends Phaser.Scene {
     }
 
     create(player){
-        this.soundFacade = new SoundSceneFacade(this, audioConfig);
+        this.plugins.get('soundfacade').initializeSoundFacade(this);
 
         const model = new InventoryMenuModel(player);
         const view = new InventoryMenuView(this);
@@ -26,7 +26,6 @@ export default class InventoryMenu extends Phaser.Scene {
     update(){
         super.update()
         if(Phaser.Input.Keyboard.JustDown(this.keyESC) || Phaser.Input.Keyboard.JustDown(this.keyE)){
-            this.soundFacade.destroy();
             this.scene.resume("GameplayScene");
             this.scene.stop("InventoryMenu");
         }
