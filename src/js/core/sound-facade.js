@@ -146,6 +146,7 @@ export class SoundSceneFacade extends Phaser.Plugins.BasePlugin{
         if (music) {
             music.play();
             this.currentMusic = music;
+
         }
     }
 
@@ -153,8 +154,8 @@ export class SoundSceneFacade extends Phaser.Plugins.BasePlugin{
      * Stops the currently playing music, if any
      * @returns {void}
      */
-    stopMusic() {
-        if (this.currentMusic) {
+    stopMusic(key) {
+        if (this.currentMusic != null && this.currentMusic.key == key) {
             this.currentMusic.stop();
             this.currentMusic = null;
         }
