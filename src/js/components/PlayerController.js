@@ -59,6 +59,9 @@ export class PlayerControllerComponent extends BaseControllerComponent {
         this.cameraRotation = 0;
         EventBus.on('cameraRotated', (rot)=>{this.cameraRotation=rot;});
 		this.aiming = false;
+
+		EventBus.on("PlayerAiming",()=>{this.aiming = true});
+		EventBus.on("PlayerNotAiming",()=>{this.aiming = false});
     }
 
     /**

@@ -392,7 +392,6 @@ export class Dungeon extends Phaser.Plugins.BasePlugin {
 
         // If we have changed room to the hub, reset the dungeon no that we left it
         if(nextRoomKey == this.#hubID){
-            console.log('emitting hubREached');
             EventBus.emit('hubReached');
             // reset dungeon exploration
             this.roomsExplored.clear();

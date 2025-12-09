@@ -139,6 +139,7 @@ export class PlayerShootingComponent extends BaseComponent{
 		//FIX: arreglar error con el offset, aparece debajo del player
 		this.bow.offsetX = 0.5;
 		this.bow.offsetY = 0.8;
+		this.bow.setOrigin(0.3,0.5),
         this.bow.scale = 4;
         this.bow.setVisible(false);
         this.arrowShot = this.#arrowPool.spawn();

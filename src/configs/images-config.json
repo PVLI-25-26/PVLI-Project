@@ -55,7 +55,7 @@
 	{"key": "Gass-Arrow", "type": "image", "file": "assets/arrows/gass-arrow.png", "settings":{}},
 
 
-	{"key": "Player_animation", "type": "spritesheet", "file": "assets/sprites/Player/PlayerAnimations.png", "settings":{"frameWidth":21, "frameHeight":19}},
+	{"key": "Player_animation", "type": "spritesheet", "file": "assets/sprites/Player/PlayerAnimations.png", "settings":{"frameWidth":26, "frameHeight":19}},
 	{"key": "Elemental_animation", "type": "spritesheet", "file": "assets/sprites/Enemies/ElementalAnimations.png", "settings":{"frameWidth":35,"frameHeight":28}},
 	{"key": "Golem_animation", "type": "spritesheet", "file": "assets/sprites/Enemies/GolemAnimations.png", "settings":{"frameWidth":40,"frameHeight":50}},
 	{"key": "Slime_animation", "type": "spritesheet", "file": "assets/sprites/Enemies/SlimeAnimations.png", "settings":{"frameWidth":25,"frameHeight":17}},

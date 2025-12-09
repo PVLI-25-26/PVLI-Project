@@ -5,7 +5,8 @@
     },
     "physicsConfig":{
         "shape": {
-            "type": "rectangle"
+            "type": "circle",
+			"radius": 10	
         }
     },
     "speed": 3,
