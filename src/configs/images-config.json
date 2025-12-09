@@ -22,7 +22,10 @@
     {"key": "fireplace-spritestack", "type": "spritesheet", "file": "assets/sprites/SpriteStacks/Fireplace.png", "settings":{"frameWidth":20, "frameHeight":20}},
     {"key": "logSided-spritestack", "type": "spritesheet", "file": "assets/sprites/SpriteStacks/LogSided.png", "settings":{"frameWidth":30, "frameHeight":11}},
     {"key": "tent-spritestack", "type": "spritesheet", "file": "assets/sprites/SpriteStacks/Tent.png", "settings":{"frameWidth":37, "frameHeight":27}},
-    
+    {"key": "exitSign-spritestack", "type": "spritesheet", "file": "assets/sprites/SpriteStacks/ExitSign.png", "settings":{"frameWidth":19, "frameHeight":3}},
+    {"key": "enterSign-spritestack", "type": "spritesheet", "file": "assets/sprites/SpriteStacks/EnterSign.png", "settings":{"frameWidth":25, "frameHeight":3}},
+    {"key": "interrogationSign-spritestack", "type": "spritesheet", "file": "assets/sprites/SpriteStacks/InterrogationSign.png", "settings":{"frameWidth":17, "frameHeight":3}},
+   
     {"key": "queso", "type": "image", "file": "assets/sprites/16x16 RPG Item Pack/Item__65.png", "settings":{}},
     {"key": "ball", "type": "image", "file": "assets/sprites/16x16 RPG Item Pack/Item__26.png", "settings":{}},
     {"key": "red-vial", "type": "image", "file": "assets/sprites/16x16 RPG Item Pack/Item__28.png", "settings":{}},

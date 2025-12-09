@@ -82,6 +82,14 @@
                  "type":"tent",
                  "x":204,
                  "y":-324
+                }, 
+                {
+                 "id":135,
+                 "name":"EnterSign",
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"enterSign",
+                 "x":228,
+                 "y":-91
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -288,7 +296,7 @@
          "y":0
         }],
  "nextlayerid":12,
- "nextobjectid":135,
+ "nextobjectid":136,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.11.2",
