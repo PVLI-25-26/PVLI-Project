@@ -33,8 +33,6 @@ export class DryadMovementControllerComponent extends BaseControllerComponent {
         EventBus.on('entityDied', this.onEntityDied, this);
 
         this.changeState(initialState);
-
-        this.gameObject.scale = 4;
     }
 
     changeState(newState) {

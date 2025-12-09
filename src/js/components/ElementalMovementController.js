@@ -37,8 +37,6 @@ export class ElementalMovementControllerComponent extends BaseControllerComponen
         EventBus.on('entityDamaged', this.onReceiveDamage, this);
 
         this.changeState(initialState);
-
-		this.gameObject.scale = 4;
     }
 
     changeState(newState) {
