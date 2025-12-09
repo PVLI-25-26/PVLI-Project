@@ -11,6 +11,7 @@
     { "key": "itemCollected", "file": "assets/sounds/itemEquip.mp3"}
   ],
   "music": [
-    
+     { "key": "HUBMusic", "file": "assets/sounds/Music/HUB/Magical Vol4 Cryst Falls Main.wav"},
+     { "key": "CombatMusic", "file": "assets/sounds/Music/Combat/Magical Vol4 Suncursers Main.wav"}
   ]
 }

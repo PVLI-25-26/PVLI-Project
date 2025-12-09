@@ -54,6 +54,7 @@ export class ElementalMovementControllerComponent extends BaseControllerComponen
                 this.target = data.entity;
             }
 			this.animationPatrol = false;
+			EventBus.emit("PlayCombatMusic");
         }
     }
 

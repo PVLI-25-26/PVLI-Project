@@ -1,4 +1,5 @@
 import playerConfig from "../configs/player-config.json";
+import AudioManager from "../js/core/audio-manager-object.js"
 import audioConfig from "../configs/audio-config.json";
 import { Player } from '../js/entities/Player.js';
 import { EventBus } from "../js/core/event-bus.js";
@@ -47,6 +48,8 @@ export default class GameplayScene extends Phaser.Scene {
 
         // Remove all event listeners in Event Bus (This is a quick fix to not unsubscribing from events on entity destruction, we should have done it the other way)
         EventBus.removeAllListeners();
+
+		var audioManager = new AudioManager();
 
         // Create input facade and lock pointer
         this.inputFacade = new InputFacade(this);
@@ -138,7 +141,6 @@ export default class GameplayScene extends Phaser.Scene {
                 }
             });
         })
-
         
     }
 

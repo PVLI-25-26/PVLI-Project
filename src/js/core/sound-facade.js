@@ -103,6 +103,9 @@ export class SoundSceneFacade extends Phaser.Plugins.BasePlugin{
             // Object.values(this.sounds).forEach((sound) => sound.setVolume(value));
             this.SFXVolume = value;
         });
+		EventBus.on("hubReached",()=>{
+			EventBus.emit("playMusic","HUBMusic");
+		});
     }
 
     /**
