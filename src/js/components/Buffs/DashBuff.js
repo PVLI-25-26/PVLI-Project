@@ -36,6 +36,7 @@ export const dashBuff = {
                 // Create entity copy for ghost effect
                 const ghostCopy = new DepthSortedSprite(entity.scene, entity.x, entity.y, entity.texture.key, 0)
                     .setOrigin(entity.originX, entity.originY)
+                    .setRotation(entity.rotation)
                     .setScale(entity.scale)
                     .setFlip(entity.flipX)
                     .setTint(Colors.OrangeHex)
