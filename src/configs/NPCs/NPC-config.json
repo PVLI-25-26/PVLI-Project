@@ -2,8 +2,9 @@
     {
         "key": "testNPC",
         "billboardConfig":{
-            "texture":"slime",
-            "scale":0.1
+            "texture":"melinoe_idle",
+			"animation":true,
+            "scale":4
         },
         "physicsConfig":{
             "shape": {
@@ -19,8 +20,9 @@
     {
         "key": "melinoe-start",
         "billboardConfig":{
-            "texture":"slime",
-            "scale":0.1
+            "texture":"melinoe_idle",
+			"animation":true,
+            "scale":4
         },
         "physicsConfig":{
             "shape": {
@@ -36,8 +38,9 @@
     {
         "key": "melinoe-hub-intro",
         "billboardConfig":{
-            "texture":"slime",
-            "scale":0.1
+            "texture":"melinoe_idle",
+			"animation" : true,
+            "scale":4
         },
         "physicsConfig":{
             "shape": {
@@ -53,8 +56,9 @@
     {
         "key": "melinoe-exit-intro",
         "billboardConfig":{
-            "texture":"slime",
-            "scale":0.1
+            "texture":"melinoe_idle",
+			"animation":true,
+            "scale":4
         },
         "physicsConfig":{
             "shape": {
@@ -70,14 +74,15 @@
     {
         "key": "melinoe-hub",
         "billboardConfig":{
-            "texture":"slime",
-            "scale":0.1
+            "texture":"melinoe_idle",
+			"animation":true,
+            "scale":4
         },
         "physicsConfig":{
             "shape": {
                 "type": "rectangle",
-                "width": 450,
-                "height": 450
+                "width": 15,
+                "height": 15
             },
             "isStatic": true,
             "isSensor": true

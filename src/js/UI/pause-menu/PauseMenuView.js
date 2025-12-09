@@ -145,8 +145,8 @@ export default class PauseMenuView {
    }
 
     createSliders() {
-        this.musicSlider = new Slider(this.scene,  400, 350, 300, 20, 0.5);
-        this.sfxSlider = new Slider(this.scene, 400, 250, 300, 20, 0.5);
+        this.musicSlider = new Slider(this.scene,  400, 250, 300, 20, 0.5);
+        this.sfxSlider = new Slider(this.scene, 400, 350, 300, 20, 0.5);
         
         this.sfxSlider.setVisible(false);
         this.sfxSlider.setActive(false);

@@ -30,6 +30,7 @@ export class InventoryComponent extends BaseComponent{
         super(gameObject);
         // Create inventory (array of item keys)
         this.#playerInventory = inventory || [];
+
         // Set player gold
         this.#gold = gold || 0;
         EventBus.emit('playerGoldInitialized', this.#gold);
@@ -38,6 +39,7 @@ export class InventoryComponent extends BaseComponent{
         EventBus.on('itemPicked', (picker, item)=>{
             if(this.gameObject === picker) this.addItemToInventory(item.key);
         });
+
         // When hub reached convert all player items into gold
         EventBus.on('hubReached', ()=>{
             if(this.#playerInventory.length > 0){
@@ -80,6 +82,8 @@ export class InventoryComponent extends BaseComponent{
                 EventBus.emit('notEnoughGold');
             }
         })
+
+        // cheat keybindings
         this.gameObject.scene.input.keyboard.on('keydown-M', ()=>{this.addGold(50);});
         this.gameObject.scene.input.keyboard.on('keydown-N', ()=>{this.removeGold(50);});
     }
@@ -152,6 +156,9 @@ export class InventoryComponent extends BaseComponent{
         this.#playerInventory.splice(idx, 1);
     }
 
+    /**
+     * Remove all items from player inventory
+     */
     clearInventory(){
         this.#playerInventory = [];
     }

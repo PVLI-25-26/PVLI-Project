@@ -2,9 +2,10 @@ import { EventBus } from "../../core/event-bus";
 import Colors from "../../../configs/colors-config.js";
 
 /**
- * Object that contains parameters used to create and destroy the force field
+ * Parameters used to configure the force field buff.
  * @typedef {Object} ForceFieldValues
- * @property {Number} effectRadius The radius of effect of the force field
+ * @property {number} effectRadius - Radius of the force field in pixels.
+ * @property {number} duration - Duration of the force field in milliseconds.
  */
 
 /**
@@ -38,10 +39,13 @@ export const forceFieldBuff = {
         effectZone.setOnCollide(this.pushEnemies);
         effectZone.setCollidesWith(entity.scene.enemiesCategory);
 
+        // Create VFX
         const VFX = entity.scene.add.circle(entity.x, entity.y, 0, 1)
             .setFillStyle(Colors.OrangeHex,0.1)
             .setStrokeStyle(5, Colors.OrangeHex, 1);
             // .setBlendMode(Phaser.BlendModes.ADD)
+
+        // Force field VFX to grow quickly
         entity.scene.tweens.add({
             targets: VFX,
             radius: forceFieldValues.effectRadius,
@@ -49,7 +53,7 @@ export const forceFieldBuff = {
             ease: 'Quad'
         })
 
-        // This ability handles the destruction of the object because the game crashed when trying to save an entity on shutdown
+        // This ability handles the destruction of the object because you can't save a Phaser game object as a JSON
         entity.scene.time.addEvent({
             delay: forceFieldValues.duration,
             callback: () => {

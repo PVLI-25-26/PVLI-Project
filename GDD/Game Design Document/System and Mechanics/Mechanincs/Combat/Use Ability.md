@@ -14,7 +14,7 @@ Every ability has a cooldown and a duration of its effect, meaning that the play
 ### Dash
 When the player dashes, his speed is increased greatly for a very short amount of time. This allows the player to make quick moves at certain moments in combat, avoiding projectiles or attacks easily.
 
-### Invisibility
+### Invisibility 
 The player becomes invisible for a certain amount of time. Enemies will not be able to see him while the ability is active. This allows the player to quickly disengage combat in dire situations.
 
 ### Force field

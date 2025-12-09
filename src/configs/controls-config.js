@@ -1,7 +1,7 @@
 /**
  * Configuration for player control keys (WASD).
  * @param {Phaser.Scene} scene
- * @returns {Phaser.Types.Input.Keyboard.CursorKeys}
+ * @returns {Phaser.Types.Input.Keyboard.CursorKeys} Map of action names to Phaser Key objects.
  */
 export default function createPlayerKeys(scene) {
     return scene.input.keyboard.addKeys({

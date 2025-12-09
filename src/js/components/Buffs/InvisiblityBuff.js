@@ -1,6 +1,12 @@
 import { EventBus } from "../../core/event-bus";
 
 /**
+ * Data object used by the invisibility buff.
+ * @typedef {Object} InvisibilityBuffData
+ * @property {number} duration - Duration in milliseconds the invisibility lasts.
+ */
+
+/**
  * Invisibility buff implementation.
  *
  * This buffs makes an entity invisible for some time
@@ -11,6 +17,7 @@ export const invisibilityBuff = {
     /**
      * Apply the invisibility buff to the given entity.
      *
+     * @param {number|InvisibilityBuffData} duration - Duration in ms (or object carrying duration).
      * @param {Phaser.GameObjects.GameObject} entity - Entity.
      * @returns {void}
      */
@@ -23,8 +30,8 @@ export const invisibilityBuff = {
 
     /**
      * Remove the invisibility buff from the given entity.
-     * 
-     * @param {Number} dashSpeed - player's dash speed
+     *
+     * @param {number|InvisibilityBuffData} duration - Duration in ms (or object carrying duration).
      * @param {Phaser.GameObjects.GameObject} entity - Entity invisible.
      * @returns {void}
      */

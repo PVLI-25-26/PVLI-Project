@@ -4,6 +4,18 @@ import { EventBus } from "../core/event-bus";
 import dashAbility from "../../configs/Abilities/dash-config.json";
 import forcefieldAbility from "../../configs/Abilities/forcefield-config.json";
 import invisibiltyAbility from "../../configs/Abilities/invisibility-config.json";
+
+/**
+ * Ability descriptor used by the PlayerAbilityController and buff system.
+ *
+ * @typedef {Object} Ability
+ * @property {string} type - Unique ability identifier.
+ * @property {number} duration - How long the ability effect lasts (milliseconds).
+ * @property {number} coolDown - Cooldown time before the ability can be used again (milliseconds).
+ * @property {Object} [value] - Arbitrary payload passed to buff/effect handlers (e.g. { damageMult: 2 }).
+ * @property {number} gold - Arbitrary payload passed to buff/effect handlers (e.g. { damageMult: 2 }).
+ */
+
 /**
  * Component that listens for the player's ability input and forwards it to the active ability instance.
  *
@@ -55,10 +67,18 @@ export class PlayerAbilityControllerComponent extends BaseComponent{
         this.gameObject.scene.input.keyboard.on('keydown-J', ()=>{EventBus.emit('abilityEquipped', forcefieldAbility)});
     }
 
+    /**
+     * Returns currently equipped ability
+     * @returns 
+     */
     getCurrentAbility(){
         return this.#ability;
     }
 
+    /**
+     * Removes currently equipped ability
+     * @returns {void}
+     */
     clearAbility() {
         this.#ability = null;
     }

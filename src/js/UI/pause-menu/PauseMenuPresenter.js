@@ -6,6 +6,7 @@ export default class PauseMenuPresenter {
         this.model = model;
         this.view.setPresenter(this);
         this.subscribeToViewEvents();
+        this.setValuesFromModel();
     }
 
     subscribeToViewEvents() {
@@ -55,5 +56,22 @@ export default class PauseMenuPresenter {
         this.view.backButton.on("button-hovered", () => {
             EventBus.emit("playSound", "hover");
         });
+
+        this.view.musicSlider.on("slider-changed", (value) => {
+            this.model.setMusicVolume(value);
+        });
+
+        this.view.sfxSlider.on("slider-changed", (value) => {  
+            this.model.setSFXVolume(value);
+        });
     }   
+    
+
+    setValuesFromModel() {
+        const musicVolume = this.model.musicVolume;
+        const sfxVolume = this.model.sfxVolume;
+        
+        this.view.musicSlider.setValue(musicVolume);
+        this.view.sfxSlider.setValue(sfxVolume);
+    }
 }

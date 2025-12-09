@@ -19,6 +19,7 @@ export class ElementalMovementControllerComponent extends BaseControllerComponen
         this.target = null;
         this.initialState = initialState;
         this.aggroRange = 300;
+		this.onCombat = false;
 
         this.states = {
             idle: new IdleState(this),
@@ -54,6 +55,8 @@ export class ElementalMovementControllerComponent extends BaseControllerComponen
                 this.target = data.entity;
             }
 			this.animationPatrol = false;
+			if (!this.onCombat)
+				EventBus.emit("PlayCombatMusic");
         }
     }
 

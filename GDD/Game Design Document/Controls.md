@@ -11,5 +11,5 @@ dg-publish: true
 | **Interact**     | Button South          | F                |
 | **Pause**        | Start                 | Escape           |
 | **Change arrow** | Button North          | R                |
-| **Rotate cam**   | Directional buttons   | Q/E              |
+| **Rotate cam**   | Directional buttons   | Mouse horizontal |
 

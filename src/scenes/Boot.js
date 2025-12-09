@@ -76,6 +76,26 @@ export default class Boot extends Phaser.Scene {
             frameRate: 12,
             repeat: -1
         });
+		this.anims.create({
+            key: "melinoe_idle",
+            frames: this.anims.generateFrameNumbers("Melinoe_animation", {start:0, end: 3}),
+            frameRate: 6,
+            repeat: -1
+        });
+		this.anims.create({
+            key: "slime_idle",
+            frames: this.anims.generateFrameNumbers("Slime_animation", {start:0, end: 3}),
+            frameRate: 12,
+            repeat: -1
+        });
+		this.anims.create({
+            key: "slime_walk",
+            frames: this.anims.generateFrameNumbers("Slime_animation", {start:0, end: 3}),
+            frameRate: 12,
+            repeat: -1
+        });
+		
+
 
 	}
 }
