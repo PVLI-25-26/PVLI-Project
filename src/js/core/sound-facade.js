@@ -100,7 +100,6 @@ export class SoundSceneFacade extends Phaser.Plugins.BasePlugin{
         });
 
         EventBus.on("sfxVolumeChanged", (value) => {
-            console.trace('sfx volume  changed: ' + value)
             // Object.values(this.sounds).forEach((sound) => sound.setVolume(value));
             this.SFXVolume = value;
         });
@@ -163,7 +162,6 @@ export class SoundSceneFacade extends Phaser.Plugins.BasePlugin{
      * @returns Sound Effects volume
      */
     getCurrentSFXVolume(){
-        console.log('current sfx volume requested: value = ' + this.SFXVolume);
         return this.SFXVolume;
     }
 
