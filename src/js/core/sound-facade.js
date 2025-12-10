@@ -109,6 +109,7 @@ export class SoundSceneFacade extends Phaser.Plugins.BasePlugin{
         });
 		EventBus.on("hubReached",()=>{
 			EventBus.emit("playMusic","HUBMusic");
+			EventBus.emit("playMusic","ForestAmbient");
 		});
     }
 

@@ -27,7 +27,10 @@ export class GolemMovementControllerComponent extends BaseControllerComponent {
 
         EventBus.on('entityDamaged', this.onEntityDamaged, this);
         EventBus.on('entityMoved', this.onEntityMoved, this);
+		
+		this.gameObject.on(Phaser.Animations.Events.ANIMATION_COMPLETE_KEY+"golem_up",()=>{this.gameObject.play("golem_walk",true)})
 
+		this.gameObject.play("golem_idle",true);
         this.changeState(initialState);
     }
 
@@ -39,14 +42,21 @@ export class GolemMovementControllerComponent extends BaseControllerComponent {
 
     onEntityDamaged(data) {
         if (data.entity.type == 'enemy') {
+			if (!this.onCombat){
+				this.gameObject.play("golem_up",true);
+			}
             this.onCombat = true;
             console.log("Golem entering combat mode.");
+
+		
         }
     }
 
     update(time, delta) {
         if (!this.enabled || !this.movementComponent || !this.currentState) return;
 
+		let velocity = this.gameObject.getVelocity();
+		if (velocity.x!=0) this.gameObject.flipX = velocity.x>0;
         this.currentState.update(time, delta);
     }
 
@@ -66,6 +76,7 @@ export class GolemMovementControllerComponent extends BaseControllerComponent {
             console.log("Golem lost sight of player, returning to initial state.");
             this.changeState(this.initialState);
             this.onCombat = false;
+			this.gameObject.play("golem_down", true);
             return;
         }
 

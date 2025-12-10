@@ -34,6 +34,8 @@ export class SlimeMovementControllerComponent extends BaseControllerComponent {
         EventBus.on('entityDamaged', this.onReceiveDamage, this);
         EventBus.on('entityDied', this.onEntityDied, this);
 
+		this.gameObject.play("slime_idle",true);
+
         this.changeState(initialState);
     }
 
@@ -51,6 +53,7 @@ export class SlimeMovementControllerComponent extends BaseControllerComponent {
                 this.changeState('strafe');
                 this.target = data.entity;
             }
+			this.gameObject.play("slime_walk",true);
         }
     }
 

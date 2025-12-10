@@ -197,7 +197,9 @@
             "verticalOffset": 3,
             "scale": 3,
             "offsetX": 0,
-            "offsetY": 0
+            "offsetY": 0,
+            "alwaysRenderBelow": true
+
         },
         "physicsConfig":{
             "shape": {
