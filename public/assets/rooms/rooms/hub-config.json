@@ -90,6 +90,48 @@
                  "type":"enterSign",
                  "x":228,
                  "y":-91
+                }, 
+                {
+                 "id":136,
+                 "name":"AltarBoss",
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"bossAltar",
+                 "x":-90,
+                 "y":120
+                }, 
+                {
+                 "id":137,
+                 "name":"column",
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"columnBoss",
+                 "x":-225.333333333333,
+                 "y":225.333333333333
+                }, 
+                {
+                 "id":138,
+                 "name":"column",
+                 "rotation":180,
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"columnBaseBrokenBoss",
+                 "x":40,
+                 "y":231
+                }, 
+                {
+                 "id":139,
+                 "name":"column",
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"columnEyeBoss",
+                 "x":-221,
+                 "y":13.6666666666667
+                }, 
+                {
+                 "id":140,
+                 "name":"column",
+                 "rotation":180,
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"columnTopBrokenBoss",
+                 "x":40,
+                 "y":12.3333333333333
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -296,7 +338,7 @@
          "y":0
         }],
  "nextlayerid":12,
- "nextobjectid":136,
+ "nextobjectid":141,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.11.2",

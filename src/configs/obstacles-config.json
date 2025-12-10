@@ -322,6 +322,141 @@
         }
     },
     {
+        "key": "bosstionSign",
+        "spriteStackConfig": 
+        {
+            "textures": "bossSign-spritestack",
+            "frameCount": 18,
+            "verticalOffset": 3,
+            "scale": 3,
+            "offsetX": 0,
+            "offsetY": 0
+        },
+        "physicsConfig":{
+            "shape": {
+                "type": "rectangle",
+                "width": 20,
+                "height": 5
+
+            },
+            "isStatic": true
+           
+        }
+    },
+    {
+        "key": "bossAltar",
+        "spriteStackConfig": 
+        {
+            "textures": "bossAltar-spritestack",
+            "frameCount": 6,
+            "verticalOffset": 2,
+            "scale": 3,
+            "offsetX": 0,
+            "offsetY": 0,
+            "alwaysRenderBelow": true
+        } 
+    },
+    {
+        "key": "columnBrokenBoss",
+        "spriteStackConfig": 
+        {
+            "textures": "bossBrokenColumn-spritestack",
+            "frameCount": 20,
+            "verticalOffset": 3,
+            "scale": 3,
+            "offsetX": 0,
+            "offsetY": 0
+        },
+        "physicsConfig":{
+            "shape": {
+                "type": "rectangle",
+                "width": 48,
+                "height": 48
+            },
+            "isStatic": true
+        }
+    },
+    {
+        "key": "columnTopBrokenBoss",
+        "spriteStackConfig": 
+        {
+            "textures": "bossTopBrokenColumn-spritestack",
+            "frameCount": 12,
+            "verticalOffset": 3,
+            "scale": 3,
+            "offsetX": 0,
+            "offsetY": 0
+        },
+        "physicsConfig":{
+            "shape": {
+                "type": "rectangle",
+                "width": 48,
+                "height": 48
+            },
+            "isStatic": true
+        }
+    },
+    {
+        "key": "columnBaseBrokenBoss",
+        "spriteStackConfig": 
+        {
+            "textures": "bossBaseBrokenColumn-spritestack",
+            "frameCount": 20,
+            "verticalOffset": 3,
+            "scale": 3,
+            "offsetX": 0,
+            "offsetY": 0
+        },
+        "physicsConfig":{
+            "shape": {
+                "type": "rectangle",
+                "width": 48,
+                "height": 48
+            },
+            "isStatic": true
+        }
+    },
+        {
+        "key": "columnEyeBoss",
+        "spriteStackConfig": 
+        {
+            "textures": "bossEyeColumn-spritestack",
+            "frameCount": 48,
+            "verticalOffset": 3,
+            "scale": 3,
+            "offsetX": 0,
+            "offsetY": 0
+        },
+        "physicsConfig":{
+            "shape": {
+                "type": "rectangle",
+                "width": 48,
+                "height": 48
+            },
+            "isStatic": true
+        }
+    },
+        {
+        "key": "columnBoss",
+        "spriteStackConfig": 
+        {
+            "textures": "bossColumn-spritestack",
+            "frameCount": 28,
+            "verticalOffset": 3,
+            "scale": 3,
+            "offsetX": 0,
+            "offsetY": 0
+        },
+        "physicsConfig":{
+            "shape": {
+                "type": "rectangle",
+                "width": 48,
+                "height": 48
+            },
+            "isStatic": true
+        }
+    },
+    {
         "key": "door",
         "spriteStackConfig": 
         {

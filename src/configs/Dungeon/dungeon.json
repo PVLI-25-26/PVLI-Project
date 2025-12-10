@@ -19,10 +19,11 @@
                          "type":"class",
                          "value":
                             {
+                             "rotation":35,
                              "scene":3,
                              "spawnX":-360,
                              "spawnY":0,
-                             "x":500,
+                             "x":400,
                              "y":0
                             }
                         }],
@@ -45,10 +46,11 @@
                          "type":"class",
                          "value":
                             {
+                             "rotation":35,
                              "scene":4,
                              "spawnX":-400,
                              "spawnY":0,
-                             "x":360,
+                             "x":300,
                              "y":0
                             }
                         }],
@@ -71,11 +73,12 @@
                          "type":"class",
                          "value":
                             {
+                             "rotation":35,
                              "scene":5,
                              "spawnX":-200,
                              "spawnY":0,
-                             "x":440,
-                             "y":0
+                             "x":360,
+                             "y":50
                             }
                         }],
                  "rotation":0,
