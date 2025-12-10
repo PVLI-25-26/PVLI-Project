@@ -78,7 +78,10 @@
 	{"key": "Golem_animation", "type": "spritesheet", "file": "assets/sprites/Enemies/GolemAnimations.png", "settings":{"frameWidth":40,"frameHeight":50}},
 	{"key": "Slime_animation", "type": "spritesheet", "file": "assets/sprites/Enemies/SlimeAnimations.png", "settings":{"frameWidth":25,"frameHeight":17}},
 	{"key": "Melinoe_animation", "type": "spritesheet", "file": "assets/sprites/NPCs/MelinoeAnimations.png", "settings":{"frameWidth":18,"frameHeight":19}},
-{"key": "Dryad_animation", "type": "spritesheet", "file": "assets/sprites/Enemies/DryadAnimations.png", "settings":{"frameWidth":14, "frameHeight":23}},
+	{"key": "Dryad_animation", "type": "spritesheet", "file": "assets/sprites/Enemies/DryadAnimations.png", "settings":{"frameWidth":14, "frameHeight":23}},
+	{"key": "Portal_animation", "type": "spritesheet", "file": "assets/sprites/PortalAnimation.png", "settings":{"frameWidth":35, "frameHeight":31}},
+
+
 
     {"key": "dash", "type": "image", "file": "assets/sprites/Abilities/dash.png", "settings":{}},
     {"key": "forceField", "type": "image", "file": "assets/sprites/Abilities/forcefield.png", "settings":{}},

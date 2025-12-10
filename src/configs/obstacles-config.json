@@ -173,20 +173,16 @@
     },
      {
         "key": "portal",
-        "spriteStackConfig": 
+        "billboardConfig": 
         {
-            "textures": "portal-spritestack",
-            "frameCount": 60,
-            "verticalOffset": 2,
-            "scale": 3,
-            "offsetX": 0,
-            "offsetY": 0
+            "texture": "animated_portal",
+			"scale": 4,
+			"animation": true
         },
         "physicsConfig":{
             "shape": {
                 "type": "circle",
-                "width": 70,
-                "height": 54
+				"circle":15
             },
             "isStatic": true,
             "isSensor":true

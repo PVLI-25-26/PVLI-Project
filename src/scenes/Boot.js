@@ -111,6 +111,12 @@ export default class Boot extends Phaser.Scene {
             frames: this.anims.generateFrameNumbers("Dryad_animation", {start:16, end: 25}),
             frameRate: 12,
         });
+		this.anims.create({
+			key: "animated_portal",
+			frames: this.anims.generateFrameNumbers("Portal_animation",{start:0,end:3}),
+			frameRate:8,
+			repeat:-1
+		})
 		
 		
 
