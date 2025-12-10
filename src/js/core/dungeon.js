@@ -325,7 +325,6 @@ export class Dungeon extends Phaser.Plugins.BasePlugin {
     createScatteredObjects(scene, scatterData) {
         const types = scatterData.type.split(" ");
         // Generates scattered objects from a rectangle defined in Tiled
-console.log(scatterData)
         for(let i = 0; i < getCustomTiledProperty(scatterData, "fill"); ++i){
             let posX;
             let posY;

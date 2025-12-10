@@ -59,8 +59,6 @@ export class HudModel {
                 this.paths.push({from: room.id, to: connection.value.scene});
             })
         })
-        console.log(this.rooms);
-        console.log(this.paths);
     }
 
     // data = { maxHP }
