@@ -11,80 +11,73 @@
                 {
                  "id":116,
                  "name":"AltarBoss",
+                 "rotation":90,
                  "template":"..\/Templates\/SpriteStackTemplate.tx",
                  "type":"bossAltar",
-                 "x":-28.394106060606,
-                 "y":-20.6060439393939
+                 "x":0,
+                 "y":0
                 }, 
                 {
                  "id":117,
-                 "name":"column",
+                 "name":"",
                  "template":"..\/Templates\/SpriteStackTemplate.tx",
                  "type":"columnBoss",
-                 "x":-163.727106060606,
-                 "y":84.7269560606061
+                 "x":-342,
+                 "y":218
                 }, 
                 {
                  "id":118,
-                 "name":"column",
+                 "name":"Base",
                  "rotation":180,
                  "template":"..\/Templates\/SpriteStackTemplate.tx",
                  "type":"columnBaseBrokenBoss",
-                 "x":101.605893939394,
-                 "y":90.3939560606061
-                }, 
-                {
-                 "id":119,
-                 "name":"column",
-                 "template":"..\/Templates\/SpriteStackTemplate.tx",
-                 "type":"columnEyeBoss",
-                 "x":-159.394106060606,
-                 "y":-126.939343939394
+                 "x":186,
+                 "y":342
                 }, 
                 {
                  "id":120,
-                 "name":"column",
+                 "name":"top",
                  "rotation":225,
                  "template":"..\/Templates\/SpriteStackTemplate.tx",
                  "type":"columnTopBrokenBoss",
-                 "x":180.393772727273,
-                 "y":162.636346969697
+                 "x":260.393772727273,
+                 "y":400.636346969697
                 }, 
                 {
                  "id":121,
-                 "name":"column",
-                 "rotation":-45,
+                 "name":"columnEye",
+                 "rotation":0,
                  "template":"..\/Templates\/SpriteStackTemplate.tx",
                  "type":"columnEyeBoss",
-                 "x":-429,
-                 "y":-385
+                 "x":0,
+                 "y":-420
                 }, 
                 {
                  "id":122,
-                 "name":"column",
-                 "rotation":45,
+                 "name":"Eye",
+                 "rotation":90,
                  "template":"..\/Templates\/SpriteStackTemplate.tx",
                  "type":"columnEyeBoss",
-                 "x":371.969696969697,
-                 "y":-382.575757575758
+                 "x":420,
+                 "y":0
                 }, 
                 {
                  "id":123,
                  "name":"column",
-                 "rotation":-225,
+                 "rotation":-180,
                  "template":"..\/Templates\/SpriteStackTemplate.tx",
                  "type":"columnEyeBoss",
-                 "x":378.030303030303,
-                 "y":417.424242424242
+                 "x":0,
+                 "y":420
                 }, 
                 {
                  "id":124,
                  "name":"column",
-                 "rotation":225,
+                 "rotation":-90,
                  "template":"..\/Templates\/SpriteStackTemplate.tx",
                  "type":"columnEyeBoss",
-                 "x":-428.030303030303,
-                 "y":411.363636363636
+                 "x":-420,
+                 "y":0
                 }, 
                 {
                  "id":126,
@@ -92,81 +85,132 @@
                  "rotation":30,
                  "template":"..\/Templates\/SpriteStackTemplate.tx",
                  "type":"columnSidedBoss",
-                 "x":-190.666666666667,
-                 "y":380
-                }, 
-                {
-                 "id":127,
-                 "name":"column",
-                 "template":"..\/Templates\/SpriteStackTemplate.tx",
-                 "type":"columnBoss",
-                 "x":-325.333333333333,
-                 "y":-400
-                }, 
-                {
-                 "id":129,
-                 "name":"column",
-                 "template":"..\/Templates\/SpriteStackTemplate.tx",
-                 "type":"columnBoss",
-                 "x":-253,
-                 "y":-400
+                 "x":-158.666666666667,
+                 "y":334
                 }, 
                 {
                  "id":130,
-                 "name":"column",
+                 "name":"",
                  "template":"..\/Templates\/SpriteStackTemplate.tx",
                  "type":"columnBoss",
-                 "x":-178.333333333333,
-                 "y":-400
+                 "x":-186,
+                 "y":-332
                 }, 
                 {
                  "id":131,
-                 "name":"column",
+                 "name":"",
                  "template":"..\/Templates\/SpriteStackTemplate.tx",
                  "type":"columnBoss",
-                 "x":-99.6666666666666,
-                 "y":-400
+                 "x":342,
+                 "y":-218
                 }, 
                 {
                  "id":132,
-                 "name":"column",
+                 "name":"",
                  "template":"..\/Templates\/SpriteStackTemplate.tx",
                  "type":"columnBoss",
-                 "x":-27.1664833333334,
-                 "y":-400
+                 "x":-342,
+                 "y":-218
                 }, 
                 {
                  "id":133,
-                 "name":"column",
+                 "name":"",
                  "template":"..\/Templates\/SpriteStackTemplate.tx",
                  "type":"columnBoss",
-                 "x":45.1665166666667,
-                 "y":-400
+                 "x":186,
+                 "y":-342
+                }, 
+                {
+                 "id":142,
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"columnBoss",
+                 "x":342,
+                 "y":218
+                }, 
+                {
+                 "id":143,
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"columnBoss",
+                 "x":-622,
+                 "y":0
+                }, 
+                {
+                 "id":155,
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"columnBoss",
+                 "x":0,
+                 "y":-622
                 },
             
                 {
-                 "id":134,
-                 "name":"column",
+                 "id":158,
                  "template":"..\/Templates\/SpriteStackTemplate.tx",
                  "type":"columnBoss",
-                 "x":117.166516666667,
-                 "y":-400
+                 "x":0,
+                 "y":622
                 }, 
                 {
-                 "id":135,
-                 "name":"column",
+                 "id":152,
                  "template":"..\/Templates\/SpriteStackTemplate.tx",
                  "type":"columnBoss",
-                 "x":198.499816666667,
-                 "y":-400
+                 "x":622,
+                 "y":0
                 }, 
                 {
-                 "id":136,
-                 "name":"column",
+                 "id":144,
                  "template":"..\/Templates\/SpriteStackTemplate.tx",
                  "type":"columnBoss",
-                 "x":276.333333333333,
-                 "y":-400
+                 "x":-1020,
+                 "y":0
+                }, 
+                {
+                 "id":157,
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"columnBoss",
+                 "x":0,
+                 "y":-1020
+                }, 
+                {
+                 "id":160,
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"columnBoss",
+                 "x":0,
+                 "y":1020
+                }, 
+                {
+                 "id":154,
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"columnBoss",
+                 "x":1020,
+                 "y":0
+                }, 
+                {
+                 "id":145,
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"columnBoss",
+                 "x":-820,
+                 "y":0
+                }, 
+                {
+                 "id":156,
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"columnBoss",
+                 "x":0,
+                 "y":-820
+                }, 
+                {
+                 "id":159,
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"columnBoss",
+                 "x":0,
+                 "y":820
+                }, 
+                {
+                 "id":153,
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"columnBoss",
+                 "x":820,
+                 "y":0
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -180,7 +224,7 @@
          "name":"Scattering",
          "objects":[
                 {
-                 "height":1408,
+                 "height":2285.81818181818,
                  "id":137,
                  "properties":[
                         {
@@ -190,9 +234,9 @@
                         }],
                  "template":"..\/Templates\/ScatteringTemplate.tx",
                  "type":"grass1 grass2 grass3 grass4 flower1 flower2 flower3",
-                 "width":1312,
-                 "x":-647.878787878788,
-                 "y":-713.272727272727
+                 "width":1057.45454545455,
+                 "x":-1459.93939393939,
+                 "y":-1117.27272727273
                 }, 
                 {
                  "height":452,
@@ -205,9 +249,9 @@
                         }],
                  "template":"..\/Templates\/ScatteringTemplate.tx",
                  "type":"tree1 tree2 tree3 tree4",
-                 "width":1568,
-                 "x":-775.878787878788,
-                 "y":-873.272727272727
+                 "width":3008,
+                 "x":-1535.87878787879,
+                 "y":-1497.27272727273
                 }, 
                 {
                  "height":384,
@@ -220,12 +264,12 @@
                         }],
                  "template":"..\/Templates\/ScatteringTemplate.tx",
                  "type":"tree1 tree2 tree3 tree4",
-                 "width":1568,
-                 "x":-770.909090909091,
-                 "y":507.454545454545
+                 "width":3048,
+                 "x":-1226.90909090909,
+                 "y":1139.45454545455
                 }, 
                 {
-                 "height":864,
+                 "height":2700,
                  "id":140,
                  "properties":[
                         {
@@ -236,11 +280,11 @@
                  "template":"..\/Templates\/ScatteringTemplate.tx",
                  "type":"tree1 tree2 tree3 tree4",
                  "width":352,
-                 "x":-778.909090909091,
-                 "y":-398
+                 "x":-1381.93939393939,
+                 "y":-1214.24242424242
                 }, 
                 {
-                 "height":864,
+                 "height":2620,
                  "id":141,
                  "properties":[
                         {
@@ -251,8 +295,83 @@
                  "template":"..\/Templates\/ScatteringTemplate.tx",
                  "type":"tree1 tree2 tree3 tree4",
                  "width":352,
-                 "x":476.484848484848,
-                 "y":-404.060606060606
+                 "x":1180.48484848485,
+                 "y":-1308.06060606061
+                }, 
+                {
+                 "height":2302.3,
+                 "id":146,
+                 "properties":[
+                        {
+                         "name":"fill",
+                         "type":"int",
+                         "value":300
+                        }],
+                 "template":"..\/Templates\/ScatteringTemplate.tx",
+                 "type":"grass1 grass2 grass3 grass4 flower1 flower2 flower3",
+                 "width":978.667,
+                 "x":419.757409090909,
+                 "y":-1177.08939393939
+                }, 
+                {
+                 "height":1165.57272727273,
+                 "id":147,
+                 "properties":[
+                        {
+                         "name":"fill",
+                         "type":"int",
+                         "value":300
+                        }],
+                 "template":"..\/Templates\/ScatteringTemplate.tx",
+                 "type":"grass1 grass2 grass3 grass4 flower1 flower2 flower3",
+                 "width":978.667,
+                 "x":-480.242590909091,
+                 "y":-1576.72575757576
+                }, 
+                {
+                 "height":1165.57,
+                 "id":148,
+                 "properties":[
+                        {
+                         "name":"fill",
+                         "type":"int",
+                         "value":300
+                        }],
+                 "template":"..\/Templates\/ScatteringTemplate.tx",
+                 "type":"grass1 grass2 grass3 grass4 flower1 flower2 flower3",
+                 "width":942.303363636364,
+                 "x":-495.394106060606,
+                 "y":447.51803030303
+                }, 
+                {
+                 "height":200.606,
+                 "id":150,
+                 "properties":[
+                        {
+                         "name":"fill",
+                         "type":"int",
+                         "value":10
+                        }],
+                 "template":"..\/Templates\/ScatteringTemplate.tx",
+                 "type":"grass1 grass2 grass3 grass4 flower1 flower2 flower3",
+                 "width":214.303363636364,
+                 "x":-461.3335,
+                 "y":-431.454515151515
+                }, 
+                {
+                 "height":227.515090909091,
+                 "id":151,
+                 "properties":[
+                        {
+                         "name":"fill",
+                         "type":"int",
+                         "value":10
+                        }],
+                 "template":"..\/Templates\/ScatteringTemplate.tx",
+                 "type":"grass1 grass2 grass3 grass4 flower1 flower2 flower3",
+                 "width":235.515484848485,
+                 "x":-452.242590909091,
+                 "y":303.575787878788
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -295,19 +414,19 @@
                  "type":"",
                  "visible":true,
                  "width":1100,
-                 "x":-538,
-                 "y":-514
+                 "x":-568.30303030303,
+                 "y":-1133.33333333333
                 }, 
                 {
-                 "height":890,
+                 "height":936,
                  "id":99,
                  "name":"",
                  "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":102,
-                 "x":-538,
-                 "y":-400
+                 "x":-1116,
+                 "y":-454
                 }, 
                 {
                  "height":88,
@@ -317,8 +436,8 @@
                  "type":"",
                  "visible":true,
                  "width":1086,
-                 "x":-538,
-                 "y":468
+                 "x":-522,
+                 "y":1090
                 }, 
                 {
                  "height":974,
@@ -328,8 +447,8 @@
                  "type":"",
                  "visible":true,
                  "width":114,
-                 "x":434,
-                 "y":-420
+                 "x":1090,
+                 "y":-428
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -360,7 +479,7 @@
          "y":0
         }],
  "nextlayerid":12,
- "nextobjectid":142,
+ "nextobjectid":161,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.11.2",
