@@ -3,9 +3,10 @@
  * Enemy goes around the player in a circular motion, dodging arrows
  */
 export class StrafeState {
-    constructor(controller, direction = 0) {
+    constructor(controller, angle = 70, direction = 0) {
         this.controller = controller;
         this.direction = direction;
+        this.angle = angle;
     }
 
     enter() { 
@@ -19,25 +20,25 @@ export class StrafeState {
         const dx = this.controller.target.x - this.controller.gameObject.x;
         const dy = this.controller.target.y - this.controller.gameObject.y;
 
-       const angle = Phaser.Math.DegToRad(70); // или любой угол
+       const angle = Phaser.Math.DegToRad(this.angle); 
 
-        // Вектор к цели
+        // Vector to target
         const tx = dx;
         const ty = dy;
 
-        // Перпендикуляр
+        // Perpendicular vector
         const px =  dy * this.direction;
         const py = -dx * this.direction;
 
-        // Веса
+        // Coefficients
         const wForward = Math.cos(angle);
         const wSide    = Math.sin(angle);
 
-        // Смешиваем
+        // Combined vector
         let vx = tx * wForward + px * wSide;
         let vy = ty * wForward + py * wSide;
 
-        // Нормализуем
+        // Normalize
         const len = Math.sqrt(vx * vx + vy * vy) || 1;
         vx /= len;
         vy /= len;

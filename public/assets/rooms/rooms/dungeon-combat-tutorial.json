@@ -266,7 +266,7 @@
               {
                  "height":0,
                  "id":91,
-                 "name":"Dryad",
+                 "name":"Slime",
                  "point":true,
                  "properties":[
                         {
@@ -280,7 +280,7 @@
                          "value":"patrol"
                         }],
                  "rotation":0,
-                 "type":"dryad",
+                 "type":"slime",
                  "visible":true,
                  "width":0,
                  "x":151.333333333333,
