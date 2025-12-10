@@ -120,6 +120,18 @@
                  "name":"Hub",
                  "properties":[
                         {
+                         "name":"Boss",
+                         "propertytype":"Connection",
+                         "type":"class",
+                         "value":
+                            {
+                             "scene":12,
+                             "spawnY":-300,
+                             "x":100,
+                             "y":250
+                            }
+                        }, 
+                        {
                          "name":"Connection",
                          "propertytype":"Connection",
                          "type":"class",
@@ -196,8 +208,8 @@
                         }],
                  "template":"..\/..\/..\/public\/assets\/rooms\/Templates\/RoomTemplate.tx",
                  "type":"dungeon-entrance-config.json",
-                 "x":2.81818181818182,
-                 "y":-4.44089209850063e-16
+                 "x":8.60482417536359,
+                 "y":15.6741481202062
                 }, 
                 {
                  "id":8,
@@ -246,9 +258,9 @@
                             }
                         }],
                  "template":"..\/..\/..\/public\/assets\/rooms\/Templates\/RoomTemplate.tx",
-                 "type":"dungeon-exit-config.json",
-                 "x":14,
-                 "y":-13.4545454545455
+                 "type":"dungeon-exit1-config.json",
+                 "x":38.069381575087,
+                 "y":-9.92991638375461
                 }, 
                 {
                  "id":9,
@@ -279,11 +291,20 @@
                              "x":0,
                              "y":-700
                             }
+                        }, 
+                        {
+                         "name":"Peaceful1",
+                         "propertytype":"Connection",
+                         "type":"class",
+                         "value":
+                            {
+                             "scene":14
+                            }
                         }],
                  "template":"..\/..\/..\/public\/assets\/rooms\/Templates\/RoomTemplate.tx",
                  "type":"dungeon-combat1-config.json",
-                 "x":2.81818181818182,
-                 "y":12.7272727272727
+                 "x":23.3395783561759,
+                 "y":45.1711199128211
                 }, 
                 {
                  "id":10,
@@ -328,11 +349,20 @@
                              "x":400,
                              "y":-670
                             }
+                        }, 
+                        {
+                         "name":"Peaceful2",
+                         "propertytype":"Connection",
+                         "type":"class",
+                         "value":
+                            {
+                             "scene":15
+                            }
                         }],
                  "template":"..\/..\/..\/public\/assets\/rooms\/Templates\/RoomTemplate.tx",
                  "type":"dungeon-combat2-config.json",
-                 "x":11.4545454545455,
-                 "y":4
+                 "x":40.8962969948448,
+                 "y":36.7003332075946
                 }, 
                 {
                  "id":11,
@@ -354,8 +384,155 @@
                         }],
                  "template":"..\/..\/..\/public\/assets\/rooms\/Templates\/RoomTemplate.tx",
                  "type":"credits-room-config.json",
-                 "x":-4.125,
-                 "y":6.0625
+                 "x":3.03559977367031,
+                 "y":26.6020291085125
+                }, 
+                {
+                 "id":12,
+                 "name":"BossRoom(12)",
+                 "template":"..\/..\/..\/public\/assets\/rooms\/Templates\/RoomTemplate.tx",
+                 "type":"dungeon-boss-config.json",
+                 "x":46.8166729536024,
+                 "y":61.0940001676516
+                }, 
+                {
+                 "id":13,
+                 "name":"Combat3(13)",
+                 "properties":[
+                        {
+                         "name":"Connection",
+                         "propertytype":"Connection",
+                         "type":"class",
+                         "value":
+                            {
+                             "scene":14,
+                             "spawnX":0,
+                             "spawnY":0,
+                             "x":0,
+                             "y":50
+                            }
+                        }],
+                 "template":"..\/..\/..\/public\/assets\/rooms\/Templates\/RoomTemplate.tx",
+                 "type":"dungeon-combat3-config.json",
+                 "x":6.53259776185087,
+                 "y":44.0777589169705
+                }, 
+                {
+                 "id":14,
+                 "name":"Peaceful1(14)",
+                 "properties":[
+                        {
+                         "name":"Boss",
+                         "propertytype":"Connection",
+                         "type":"class",
+                         "value":
+                            {
+                             "scene":12,
+                             "spawnX":0,
+                             "spawnY":-50,
+                             "x":0,
+                             "y":0
+                            }
+                        }, 
+                        {
+                         "name":"Combat1",
+                         "propertytype":"Connection",
+                         "type":"class",
+                         "value":
+                            {
+                             "scene":9,
+                             "spawnY":50
+                            }
+                        }, 
+                        {
+                         "name":"Combat3",
+                         "propertytype":"Connection",
+                         "type":"class",
+                         "value":
+                            {
+                             "scene":13,
+                             "spawnX":-50,
+                             "spawnY":0,
+                             "x":0,
+                             "y":0
+                            }
+                        }, 
+                        {
+                         "name":"Exit",
+                         "propertytype":"Connection",
+                         "type":"class",
+                         "value":
+                            {
+                             "scene":16,
+                             "spawnX":50,
+                             "spawnY":0,
+                             "x":0,
+                             "y":0
+                            }
+                        }],
+                 "template":"..\/..\/..\/public\/assets\/rooms\/Templates\/RoomTemplate.tx",
+                 "type":"dunfeon-peaceful1-config.json",
+                 "x":11.7256957542227,
+                 "y":67.634419925395
+                }, 
+                {
+                 "id":15,
+                 "name":"Peacefull2(15)",
+                 "properties":[
+                        {
+                         "name":"Connection",
+                         "propertytype":"Connection",
+                         "type":"class",
+                         "value":
+                            {
+                             "scene":10,
+                             "spawnX":0,
+                             "spawnY":0,
+                             "x":0,
+                             "y":0
+                            }
+                        }],
+                 "template":"..\/..\/..\/public\/assets\/rooms\/Templates\/RoomTemplate.tx",
+                 "type":"dunfeon-peaceful2-config.json",
+                 "x":57.1852864747056,
+                 "y":32.2121788423656
+                }, 
+                {
+                 "id":16,
+                 "name":"Exit",
+                 "properties":[
+                        {
+                         "name":"Combat2",
+                         "propertytype":"Connection",
+                         "type":"class",
+                         "value":
+                            {
+                             "rotation":-45,
+                             "scene":14,
+                             "spawnX":430,
+                             "spawnY":-620,
+                             "x":220,
+                             "y":100
+                            }
+                        }, 
+                        {
+                         "name":"Connection",
+                         "propertytype":"Connection",
+                         "type":"class",
+                         "value":
+                            {
+                             "rotation":15,
+                             "scene":6,
+                             "spawnX":-300,
+                             "spawnY":0,
+                             "x":0,
+                             "y":-170
+                            }
+                        }],
+                 "template":"..\/..\/..\/public\/assets\/rooms\/Templates\/RoomTemplate.tx",
+                 "type":"dungeon-exit2-config.json",
+                 "x":-11.6866538832306,
+                 "y":46.4090909090909
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -364,7 +541,7 @@
          "y":0
         }],
  "nextlayerid":3,
- "nextobjectid":12,
+ "nextobjectid":17,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.11.2",

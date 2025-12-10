@@ -322,7 +322,7 @@
         }
     },
     {
-        "key": "bosstionSign",
+        "key": "bossSign",
         "spriteStackConfig": 
         {
             "textures": "bossSign-spritestack",
