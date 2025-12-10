@@ -377,7 +377,7 @@
                          "value":"patrol"
                         }],
                  "template":"..\/Templates\/EnemyTemplate.tx",
-                 "type":"basic",
+                 "type":"dryad",
                  "x":-480,
                  "y":-432
                 }, 
