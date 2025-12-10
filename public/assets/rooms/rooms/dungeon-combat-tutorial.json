@@ -243,7 +243,7 @@
                 {
                  "height":0,
                  "id":90,
-                 "name":"Elemental",
+                 "name":"Golem",
                  "point":true,
                  "properties":[
                         {
@@ -257,7 +257,7 @@
                          "value":"patrol"
                         }],
                  "rotation":0,
-                 "type":"elemental",
+                 "type":"golem",
                  "visible":true,
                  "width":0,
                  "x":141.333333333333,

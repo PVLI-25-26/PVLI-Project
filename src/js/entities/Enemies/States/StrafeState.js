@@ -3,13 +3,13 @@
  * Enemy goes around the player in a circular motion, dodging arrows
  */
 export class StrafeState {
-    constructor(controller) {
+    constructor(controller, direction = 0) {
         this.controller = controller;
-        this.direction = 1;
+        this.direction = direction;
     }
 
     enter() { 
-        this.direction = Math.random() < 0.5 ? 1 : -1;
+        if (this.direction === 0) this.direction = Math.random() < 0.5 ? 1 : -1;
     }
 
     update(time, delta) {

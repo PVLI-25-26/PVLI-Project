@@ -4,7 +4,7 @@ import { PatrolState } from "../entities/Enemies/States/PatrolState.js";
 import { DirectChaseState } from "../entities/Enemies/States/DirectChaseState.js";
 import { EventBus } from "../core/event-bus.js";
 
-export class DryadMovementControllerComponent extends BaseControllerComponent {
+export class GolemMovementControllerComponent extends BaseControllerComponent {
     /**
      * @param {Phaser.GameObjects.GameObject} gameObject
      * @param {string} initialState
@@ -16,25 +16,19 @@ export class DryadMovementControllerComponent extends BaseControllerComponent {
         this.currentState = null;
         this.target = null;
         this.initialState = initialState;
-        this.chasingRange = 200;
+        this.chasingRange = 300;
         this.onCombat = false;
 
         this.states = {
             idle: new IdleState(this),
             patrol: new PatrolState(this, patrolRoute),
-            chase: new DirectChaseState(this)
+            chase: new DirectChaseState(this, 50)
         };
 
-        this.animationPatrol = true;
-		this.healing = false;
-
-        EventBus.on('entityDamaged', this.onReceiveDamage, this);
-        EventBus.on('entityDied', this.onEntityDied, this);
-		EventBus.on("DryadHealing",(dryad)=>{if (this.gameObject == dryad) this.healing = true});
-		EventBus.on("DryadNotHealing",(dryad)=>{if (this.gameObject == dryad) this.healing = false});
+        EventBus.on('entityDamaged', this.onEntityDamaged, this);
+        EventBus.on('entityMoved', this.onEntityMoved, this);
 
         this.changeState(initialState);
-		this.gameObject.play("dryad_idle",true);
     }
 
     changeState(newState) {
@@ -43,22 +37,16 @@ export class DryadMovementControllerComponent extends BaseControllerComponent {
         this.currentState?.enter();
     }
 
-
-    onReceiveDamage(data) {
-        if (data.entity.type === 'enemy' && data.entity !== this.gameObject) {
-            this.target = data.entity;
-            this.changeState('chase');
-			this.gameObject.play("dryad_walk",true);
+    onEntityDamaged(data) {
+        if (data.entity.type == 'enemy') {
+            this.onCombat = true;
+            console.log("Golem entering combat mode.");
         }
     }
 
     update(time, delta) {
         if (!this.enabled || !this.movementComponent || !this.currentState) return;
 
-        if (this.currentState == this.states.chase && this.target.active == true &&
-            this.checkTargetInChasingRange(this.target) == true) {
-                this.changeState('idle');
-            }
         this.currentState.update(time, delta);
     }
 
@@ -71,15 +59,27 @@ export class DryadMovementControllerComponent extends BaseControllerComponent {
         return false;
     }
 
-    onEntityDied(data) {
-        if (data.entity === this.target) {
-            this.changeState(this.initialState);
+    onEntityMoved(data) {
+        if (data.entity.type == 'player' && this.checkTargetInChasingRange(data.entity) == false &&
+        this.onCombat == false && this.target != null) {
             this.target = null;
+            console.log("Golem lost sight of player, returning to initial state.");
+            this.changeState(this.initialState);
+            this.onCombat = false;
+            return;
+        }
+
+        if (data.entity.type == 'player' && this.checkTargetInChasingRange(data.entity)
+        && this.onCombat == true && this.currentState != this.states.chase) {
+            this.target = data.entity;
+            console.log("Golem detected player, switching to chase state.");
+            this.changeState('chase');
         }
     }
 
     destroy() {
         super.destroy();
-        EventBus.off('entityDamaged', this.onReceiveDamage, this);
+        EventBus.off('entityDamaged', this.onEntityDamaged, this);
+        EventBus.off('entityMoved', this.onEntityMoved, this);
     }
 }
