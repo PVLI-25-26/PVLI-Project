@@ -136,7 +136,6 @@ export class PlayerShootingComponent extends BaseComponent{
         this.bow = new DepthSortedSprite(gameObject.scene, this.gameObject.x, this.gameObject.y, 'bow', 0);
 
 		this.gameObject.scene.add.existing(this.bow);
-		//FIX: arreglar error con el offset, aparece debajo del player
 		this.bow.offsetX = 0.5;
 		this.bow.offsetY = 0.8;
 		this.bow.setOrigin(0.3,0.5),

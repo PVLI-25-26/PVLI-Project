@@ -155,7 +155,6 @@ export class SoundSceneFacade extends Phaser.Plugins.BasePlugin{
 				volume: 1
 			})
         }
-
     }
 
     /**
