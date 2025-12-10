@@ -109,7 +109,7 @@
                  "y":339.666
                 }, 
                 {
-                 "height":1028.67,
+                 "height":548.67,
                  "id":91,
                  "properties":[
                         {
@@ -120,8 +120,8 @@
                  "template":"..\/Templates\/ScatteringTemplate.tx",
                  "type":"greenTree1 greenTree2 greenTree3 greenTree4",
                  "width":798.12,
-                 "x":265.606666666667,
-                 "y":-549.666333333333
+                 "x":115.182424242425,
+                 "y":270.576090909091
                 }, 
                 {
                  "height":1028.67,
@@ -227,10 +227,40 @@
                  "width":178.666,
                  "x":-183.999666666667,
                  "y":49.8333166666666
+                }, 
+                {
+                 "height":1028.67,
+                 "id":114,
+                 "properties":[
+                        {
+                         "name":"fill",
+                         "type":"int",
+                         "value":100
+                        }],
+                 "template":"..\/Templates\/ScatteringTemplate.tx",
+                 "type":"greenTree1 greenTree2 greenTree3 greenTree4",
+                 "width":798.12,
+                 "x":348.94,
+                 "y":-582.335
+                }, 
+                {
+                 "height":576.67,
+                 "id":115,
+                 "properties":[
+                        {
+                         "name":"fill",
+                         "type":"int",
+                         "value":100
+                        }],
+                 "template":"..\/Templates\/ScatteringTemplate.tx",
+                 "type":"greenTree1 greenTree2 greenTree3 greenTree4",
+                 "width":798.12,
+                 "x":142.94,
+                 "y":-666.335
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":false,
+         "visible":true,
          "x":0,
          "y":0
         }, 
@@ -366,7 +396,7 @@
          "y":0
         }],
  "nextlayerid":12,
- "nextobjectid":114,
+ "nextobjectid":116,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.11.2",

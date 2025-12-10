@@ -178,7 +178,82 @@
          "draworder":"topdown",
          "id":8,
          "name":"Scattering",
-         "objects":[],
+         "objects":[
+                {
+                 "height":1408,
+                 "id":137,
+                 "properties":[
+                        {
+                         "name":"fill",
+                         "type":"int",
+                         "value":300
+                        }],
+                 "template":"..\/Templates\/ScatteringTemplate.tx",
+                 "type":"grass1 grass2 grass3 grass4 flower1 flower2 flower3",
+                 "width":1312,
+                 "x":-647.878787878788,
+                 "y":-713.272727272727
+                }, 
+                {
+                 "height":452,
+                 "id":138,
+                 "properties":[
+                        {
+                         "name":"fill",
+                         "type":"int",
+                         "value":100
+                        }],
+                 "template":"..\/Templates\/ScatteringTemplate.tx",
+                 "type":"tree1 tree2 tree3 tree4",
+                 "width":1568,
+                 "x":-775.878787878788,
+                 "y":-873.272727272727
+                }, 
+                {
+                 "height":384,
+                 "id":139,
+                 "properties":[
+                        {
+                         "name":"fill",
+                         "type":"int",
+                         "value":100
+                        }],
+                 "template":"..\/Templates\/ScatteringTemplate.tx",
+                 "type":"tree1 tree2 tree3 tree4",
+                 "width":1568,
+                 "x":-770.909090909091,
+                 "y":507.454545454545
+                }, 
+                {
+                 "height":864,
+                 "id":140,
+                 "properties":[
+                        {
+                         "name":"fill",
+                         "type":"int",
+                         "value":100
+                        }],
+                 "template":"..\/Templates\/ScatteringTemplate.tx",
+                 "type":"tree1 tree2 tree3 tree4",
+                 "width":352,
+                 "x":-778.909090909091,
+                 "y":-398
+                }, 
+                {
+                 "height":864,
+                 "id":141,
+                 "properties":[
+                        {
+                         "name":"fill",
+                         "type":"int",
+                         "value":100
+                        }],
+                 "template":"..\/Templates\/ScatteringTemplate.tx",
+                 "type":"tree1 tree2 tree3 tree4",
+                 "width":352,
+                 "x":476.484848484848,
+                 "y":-404.060606060606
+                }],
          "opacity":1,
          "type":"objectgroup",
          "visible":true,
@@ -285,7 +360,7 @@
          "y":0
         }],
  "nextlayerid":12,
- "nextobjectid":137,
+ "nextobjectid":142,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.11.2",

@@ -43,11 +43,11 @@
                 {
                  "id":130,
                  "name":"SittingLog",
-                 "rotation":90,
+                 "rotation":270,
                  "template":"..\/Templates\/SpriteStackTemplate.tx",
                  "type":"logSided",
                  "x":-218.666666666667,
-                 "y":-306.666666666667
+                 "y":-312.666666666667
                 }, 
                 {
                  "id":131,
@@ -60,6 +60,7 @@
                 {
                  "id":132,
                  "name":"SittingLog",
+                 "rotation":180,
                  "template":"..\/Templates\/SpriteStackTemplate.tx",
                  "type":"logSided",
                  "x":-115.666666666667,
@@ -71,8 +72,8 @@
                  "rotation":90,
                  "template":"..\/Templates\/SpriteStackTemplate.tx",
                  "type":"logSided",
-                 "x":-10.3333333333333,
-                 "y":-306.333333333333
+                 "x":-6.3333333333333,
+                 "y":-302.333333333333
                 }, 
                 {
                  "id":134,
