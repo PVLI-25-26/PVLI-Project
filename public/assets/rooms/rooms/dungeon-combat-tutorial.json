@@ -1,4 +1,5 @@
-{ "compressionlevel":-1,
+{ "backgroundcolor":"#4f4a45",
+ "compressionlevel":-1,
  "height":20,
  "infinite":true,
  "layers":[
@@ -262,8 +263,8 @@
                  "width":0,
                  "x":141.333333333333,
                  "y":2.66666666666634
-                },
-              {
+                }, 
+                {
                  "height":0,
                  "id":91,
                  "name":"Slime",

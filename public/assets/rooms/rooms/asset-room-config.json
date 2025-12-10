@@ -192,6 +192,14 @@
                  "type":"columnSided",
                  "x":-208,
                  "y":-232.666666666667
+                }, 
+                {
+                 "id":113,
+                 "name":"Tree",
+                 "template":"..\/Templates\/BillboardTemplate.tx",
+                 "type":"tree3",
+                 "x":512,
+                 "y":-50
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -215,9 +223,10 @@
                         }],
                  "template":"..\/Templates\/ScatteringTemplate.tx",
                  "type":"grass1 grass2 grass3 grass4 flower1 flower2 flower3",
+                 "visible":false,
                  "width":1312,
-                 "x":-740.848484848485,
-                 "y":-955.515151515152
+                 "x":-382.848484848485,
+                 "y":-1071.51515151515
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -281,7 +290,7 @@
          "y":0
         }],
  "nextlayerid":12,
- "nextobjectid":113,
+ "nextobjectid":114,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.11.2",
