@@ -18,7 +18,7 @@
         },
         "displayData":{
             "name": "Healing Flower I",
-            "description": "Blah blah blah",
+            "description": "Strange flower, seems like its magical powers keep it green and fresh. Heals 1HP.",
             "image": "healthFlowers",
             "frame": 0
         },
@@ -51,7 +51,7 @@
         },
         "displayData":{
             "name": "Healing Flower II",
-            "description": "Blah blah blah",
+            "description": "Strange flower, seems like its magical powers keep it green and fresh. Heals 2HP.",
             "image": "healthFlowers",
             "frame": 1
         },
@@ -86,7 +86,7 @@
         },
         "displayData":{
             "name": "Healing Flower III",
-            "description": "Blah blah blah",
+            "description": "Strange flower, seems like its magical powers keep it green and fresh. Heals 3HP.",
             "image": "healthFlowers",
             "frame": 2
         },

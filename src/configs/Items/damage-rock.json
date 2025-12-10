@@ -18,7 +18,7 @@
         },
         "displayData":{
             "name": "Power Rock I",
-            "description": "Blah blah blah",
+            "description": "Looking into the crystal,A fiery surge fills you. Damage increased by x1.50",
             "image": "damageRocks",
             "frame": 0
         },
@@ -51,7 +51,7 @@
         },
         "displayData":{
             "name": "Power Rock II",
-            "description": "Blah blah blah",
+            "description": "Looking into the crystal,A fiery surge fills you. Damage increased by x2",
             "image": "damageRocks",
             "frame": 1
         },
@@ -86,7 +86,7 @@
         },
         "displayData":{
             "name": "Power Rock III",
-            "description": "Blah blah blah",
+            "description": "Looking into the crystal,A fiery surge fills you. Damage increased by x3",
             "image": "damageRocks",
             "frame": 2
         },

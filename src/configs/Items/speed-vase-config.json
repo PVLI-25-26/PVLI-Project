@@ -18,7 +18,7 @@
         },
         "displayData":{
             "name": "Vase I",
-            "description": "Blah blah blah",
+            "description": "Vase with magical sparkling salts. Increases speed by x1.10",
             "image": "speedVases",
             "frame": 0
         },
@@ -51,7 +51,7 @@
         },
         "displayData":{
             "name": "Vase II",
-            "description": "Blah blah blah",
+            "description": "Vase with magical sparkling salts. Increases speed by x1.30",
             "image": "speedVases",
             "frame": 1
         },
@@ -86,7 +86,7 @@
         },
         "displayData":{
             "name": "Vase III",
-            "description": "Blah blah blah",
+            "description": "Vase with magical sparkling salts. Increases speed by x2",
             "image": "speedVases",
             "frame": 2
         },
