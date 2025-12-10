@@ -3,11 +3,13 @@ import elementalConfig from "../../../configs/Enemies/elemental-config.json";
 import dryadConfig from "../../../configs/Enemies/dryad-config.json";
 import golemConfig from "../../../configs/Enemies/golem-config.json";
 import slimeConfig from "../../../configs/Enemies/slime-config.json";
+import bossConfig from "../../../configs/Enemies/boss-config.json";
 import { BasicEnemy } from "../../entities/Enemies/BasicEnemy.js";
 import { Elemental } from "../../entities/Enemies/Elemental.js";
 import { Dryad } from "../../entities/Enemies/Dryad.js";
 import { Golem } from "../../entities/Enemies/Golem.js";
 import { Slime } from "../../entities/Enemies/Slime.js";
+import { Boss } from "../../entities/Enemies/Boss.js";
 import { getCustomTiledProperty, getTiledObject } from "../tiled-parser.js";
 
 const ENEMY_GLOBAL_CONFIGS = {
@@ -15,7 +17,8 @@ const ENEMY_GLOBAL_CONFIGS = {
     "elemental": elementalConfig,
     "dryad": dryadConfig,
     "golem": golemConfig,
-    "slime": slimeConfig
+    "slime": slimeConfig,
+    "boss": bossConfig
 };
 
 const ENEMY_TYPES = {
@@ -23,7 +26,8 @@ const ENEMY_TYPES = {
     "elemental": Elemental,
     "dryad": Dryad,
     "golem": Golem,
-    "slime": Slime
+    "slime": Slime,
+    "boss": Boss
 };
 
 export function createEnemy(scene, enemyData, patrolRoutes) {

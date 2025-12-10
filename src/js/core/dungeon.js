@@ -193,7 +193,7 @@ export class Dungeon extends Phaser.Plugins.BasePlugin {
 
         // listen to when an enemy is killed to removeit from room instance data
         EventBus.on('entityDied', (entity)=>{
-            if(entity.type == 'enemy')
+            if(entity.type == 'enemy' || entity.type == 'boss')
             {
                 this.removeEnemyFromCurrentRoom(entity.id)
                 this.#roomEnemiesCounter--;

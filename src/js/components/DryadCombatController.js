@@ -35,12 +35,13 @@ export class DryadCombatControllerComponent extends BaseComponent {
     }
 
     onEntityMoved(data) {
-        if (data.entity.type == 'enemy' && this.checkIsEntityInHealRange(data.entity)) {
+        if ((data.entity.type == 'enemy' || data.entity.type == 'boss') && this.checkIsEntityInHealRange(data.entity) && data.entity !== this.gameObject) {
 
             if (this.healTimer <= 0) {
                 const entityDamageable = data.entity.getComponent(DamageableComponent);
                 if (entityDamageable == null) return;
                 entityDamageable.heal(this.healAmount);
+                console.log(`Dryad ${this.gameObject.id} healed ${data.entity.id} for ${this.healAmount} HP.`);
                 this.healTimer = this.healCooldown;
 				this.gameObject.play("dryad_heal",true);
             }
