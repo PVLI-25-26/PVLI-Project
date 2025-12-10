@@ -550,9 +550,10 @@ The player must feel like his character is completely under his control, with pr
 **Shop System** – a system that manages the game’s economy and how the player can earn and spend coins.
 ## Description
  Before a run, the player can buy the equipment he wishes to use with coins. The stronger the equipment, the more coins needed to buy it.
- The player can buy only 2 types of items for the next run:
+ The player can buy only 3 types of items for the next run:
  - Bows ([Arrows trajectories](#available-modifiers))
- - Arrows (Two types of [arrows with special effect](#arrow-effects))
+ - Arrows ([arrows with special effect](#arrow-effects))
+ - Abilities ([Abilities](#use-ability))
 ### Coins
 Coins are persistent between runs, meaning that they are not lost when the player dies or begins a new run. Coins are obtained by selling [items](#use-item) when [exiting the dungeon](#enter-and-exit-the-dungeon).
 ## Prototype
@@ -566,3 +567,5 @@ The player is confronted with whether it is worth spending more for better or mo
 When the player enters the dungeon, he risks loosing all of his equipment if he dies. Therefore, the player must be careful to buy items which allow him to survive more.
 This also enhances the tension throughout the run, as dying would mean loosing the items bought at the beginning.
 
+# Tutorial
+![](/GDD/Game%20Design%20Document/Images/Tutorial_PVLI.png)
