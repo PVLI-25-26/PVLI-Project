@@ -49,7 +49,7 @@ export default class GameplayScene extends Phaser.Scene {
         // Remove all event listeners in Event Bus (This is a quick fix to not unsubscribing from events on entity destruction, we should have done it the other way)
         EventBus.removeAllListeners();
 
-		var audioManager = new AudioManager();
+		var audioManager = new AudioManager(this);
 
         // Create input facade and lock pointer
         this.inputFacade = new InputFacade(this);

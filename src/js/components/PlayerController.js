@@ -73,12 +73,14 @@ export class PlayerControllerComponent extends BaseControllerComponent {
 				this.gameObject.play("player_walk",true);
 			else
             	this.gameObject.play('player_walk_bow', true);
+			EventBus.emit("PlayerWalking");
         }
         else{
 			if (this.aiming)
 				this.gameObject.play("player_idle",true)
 			else
 				this.gameObject.play("player_idle_bow", true);
+			EventBus.emit("StepsFinished");
         }
 
         // Flip object

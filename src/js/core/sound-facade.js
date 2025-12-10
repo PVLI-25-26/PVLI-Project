@@ -155,7 +155,6 @@ export class SoundSceneFacade extends Phaser.Plugins.BasePlugin{
             ease: Phaser.Math.Easing.Sine.In,
             volume: this.MusicVolume
         })
-
     }
 
     /**

@@ -2,13 +2,12 @@ import {EventBus} from "./event-bus.js"
 
 
 export default class AudioManager{
-	constructor(scene){
-		this.scene = scene;
+	constructor(){
 		this.onCombat = false;
 		this.onHUB = false;
 		this.playerWalking = false;
+		this.playingStep = false;
 		this.rnd = new Phaser.Math.RandomDataGenerator();
-		this.timer;
 		
 		this.steps = ["Steps1", "Steps2", "Steps3", "Steps4"];
 
@@ -33,19 +32,14 @@ export default class AudioManager{
 				this.onCombat = false;
 			}
 		})
-		EventBus.on("PlayerWalking",()=>{
+		EventBus.on("PlaySteps",()=>{
 			if (!this.playerWalking){
-				let randomSound = this.rnd.between(0,3);
-				EventBus.emit("playSound",this.steps[randomSound]);
+				EventBus.emit("playMusic",this.steps[this.rnd.between(0,3)]);
 				this.playerWalking = true;
-				this.timer = this.scene.time.addEvent({delay: 500, loop:true, callback:()=>{
-					let randomSound = this.rnd.between(0,3);
-					EventBus.emit("playSound",this.steps[randomSound]);
-				}})
+				console.log("playing step")
 			}
 		});
 		EventBus.on("StepsFinished",()=>{
-			this.timer?.remove();
 			this.playerWalking = false;
 		});
 	}
