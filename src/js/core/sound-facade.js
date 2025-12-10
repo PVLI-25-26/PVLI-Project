@@ -32,7 +32,7 @@ export class SoundSceneFacade extends Phaser.Plugins.BasePlugin{
      * Currently playing music track
      * @type {Phaser.Sound.BaseSound|null}
      */
-    currentMusic = null;
+    currentMusicKey = null;
 
     /**
      * SFX Volume
@@ -58,7 +58,7 @@ export class SoundSceneFacade extends Phaser.Plugins.BasePlugin{
 
         this.sounds = {};
         this.music = {};
-        this.currentMusic = null;
+        this.currentMusicKey = null;
         this.MusicVolume = 0.3;
         this.SFXVolume = 0.3;
     }
@@ -84,19 +84,23 @@ export class SoundSceneFacade extends Phaser.Plugins.BasePlugin{
         //     this.sounds[s.key] = this.scene.sound.add(s.key);
         // });
 
-        audioConfig.music.forEach(m => {
-            this.music[m.key] = this.scene.sound.add(m.key, { loop: m.loop, volume: m.volume });
-        });
+        // audioConfig.music.forEach(m => {
+        //     this.music[m.key] = this.scene.sound.add(m.key, { loop: m.loop, volume: m.volume });
+        // });
 
         EventBus.on("playSound", this.playSound, this);
         EventBus.on("playMusic", this.playMusic, this);
         EventBus.on("stopMusic", this.stopMusic, this);
 
         EventBus.on("musicVolumeChanged", (value) => {
-            if (this.currentMusic) {
-                this.currentMusic.setVolume(value);
-            }
+            // if (this.currentMusic) {
+            //     this.currentMusic.setVolume(value);
+            // }
             this.MusicVolume = value;
+            if(this.currentMusicKey){
+                const currentMusic = this.scene.sound.get(this.currentMusicKey);
+                currentMusic.volume = this.MusicVolume;
+            }
         });
 
         EventBus.on("sfxVolumeChanged", (value) => {
@@ -139,22 +143,17 @@ export class SoundSceneFacade extends Phaser.Plugins.BasePlugin{
      * @returns {void}
      */
     playMusic(key) {
-		
-        if (this.currentMusic) {
-            this.currentMusic.stop();
-        }
-        const music = this.music[key];
-        if (music) {
-            music.play();
-            this.currentMusic = music;
-			music.volume = 0;
-			var ease_in = this.scene.tweens.add({
-				targets: music,
-				duration: 600,
-				ease: Phaser.Math.Easing.Sine.In,
-				volume: 1
-			})
-        }
+        // const music = this.music[key];
+        // Reproduce nueva musica
+        this.currentMusicKey = key;
+        this.scene.sound.play(key, {volume: 0});
+        const music = this.scene.sound.get(key);
+        var ease_in = this.scene.tweens.add({
+            targets: music,
+            duration: 600,
+            ease: Phaser.Math.Easing.Sine.In,
+            volume: this.MusicVolume
+        })
 
     }
 
@@ -163,19 +162,22 @@ export class SoundSceneFacade extends Phaser.Plugins.BasePlugin{
      * @returns {void}
      */
     stopMusic(key) {
-        if (this.currentMusic != null && this.currentMusic.key == key) {
+        const music = this.scene.sound.get(key?key:this.currentMusicKey);
+
+        if(this.currentMusicKey == key){
+            this.currentMusicKey = null;
+        }
+
+        if (music != null) {
 			var ease_out = this.scene.tweens.add({
-				targets: this.currentMusic,
+				targets: music,
 				duration: 600,
 				ease: Phaser.Math.Easing.Sine.Out,
-				volume: 0,
+				volume: 0.01,
 				onComplete:()=>{
- 	    	    	this.currentMusic.stop();
-    	        	this.currentMusic = null;
- 
+ 	    	    	music.stop();
 				}
 			})
-
        }
     }
 
