@@ -120,6 +120,17 @@
                  "name":"Hub",
                  "properties":[
                         {
+                         "name":"AssetRoom",
+                         "propertytype":"Connection",
+                         "type":"class",
+                         "value":
+                            {
+                             "scene":17,
+                             "x":-200,
+                             "y":250
+                            }
+                        }, 
+                        {
                          "name":"Boss",
                          "propertytype":"Connection",
                          "type":"class",
@@ -376,8 +387,8 @@
                             {
                              "rotation":50,
                              "scene":7,
-                             "spawnX":-200,
-                             "spawnY":500,
+                             "spawnX":-230,
+                             "spawnY":270,
                              "x":260,
                              "y":0
                             }
@@ -533,6 +544,14 @@
                  "type":"dungeon-exit2-config.json",
                  "x":-11.6866538832306,
                  "y":46.4090909090909
+                }, 
+                {
+                 "id":17,
+                 "name":"AssetsVisualizer",
+                 "template":"..\/..\/..\/public\/assets\/rooms\/Templates\/RoomTemplate.tx",
+                 "type":"asset-room-config.json",
+                 "x":-4.56818181818182,
+                 "y":-32.8409090909091
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -541,7 +560,7 @@
          "y":0
         }],
  "nextlayerid":3,
- "nextobjectid":17,
+ "nextobjectid":18,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.11.2",
