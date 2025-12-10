@@ -32,6 +32,9 @@
     {"key": "bossBaseBrokenColumn-spritestack", "type": "spritesheet", "file": "assets/sprites/SpriteStacks/ColumnBaseBrokenBoss.png", "settings":{"frameWidth":16, "frameHeight":16}},
     {"key": "bossColumn-spritestack", "type": "spritesheet", "file": "assets/sprites/SpriteStacks/ColumnBoss.png", "settings":{"frameWidth":16, "frameHeight":16}},
     {"key": "bossEyeColumn-spritestack", "type": "spritesheet", "file": "assets/sprites/SpriteStacks/ColumnEyeBoss.png", "settings":{"frameWidth":16, "frameHeight":16}},
+    {"key": "bossColumnSided-spritestack", "type": "spritesheet", "file": "assets/sprites/SpriteStacks/ColumnSidedBoss.png", "settings":{"frameWidth":16, "frameHeight":43}},
+    {"key": "columnSided-spritestack", "type": "spritesheet", "file": "assets/sprites/SpriteStacks/ColumnSided.png", "settings":{"frameWidth":16, "frameHeight":43}},
+    
     
     {"key": "queso", "type": "image", "file": "assets/sprites/16x16 RPG Item Pack/Item__65.png", "settings":{}},
     {"key": "ball", "type": "image", "file": "assets/sprites/16x16 RPG Item Pack/Item__26.png", "settings":{}},

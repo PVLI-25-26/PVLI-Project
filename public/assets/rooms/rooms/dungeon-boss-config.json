@@ -44,11 +44,11 @@
                 {
                  "id":120,
                  "name":"column",
-                 "rotation":180,
+                 "rotation":225,
                  "template":"..\/Templates\/SpriteStackTemplate.tx",
                  "type":"columnTopBrokenBoss",
-                 "x":101.605893939394,
-                 "y":-128.272743939394
+                 "x":180.393772727273,
+                 "y":162.636346969697
                 }, 
                 {
                  "id":121,
@@ -85,6 +85,88 @@
                  "type":"columnEyeBoss",
                  "x":-428.030303030303,
                  "y":411.363636363636
+                }, 
+                {
+                 "id":126,
+                 "name":"columnSidedBoss",
+                 "rotation":30,
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"columnSidedBoss",
+                 "x":-190.666666666667,
+                 "y":380
+                }, 
+                {
+                 "id":127,
+                 "name":"column",
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"columnBoss",
+                 "x":-325.333333333333,
+                 "y":-400
+                }, 
+                {
+                 "id":129,
+                 "name":"column",
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"columnBoss",
+                 "x":-253,
+                 "y":-400
+                }, 
+                {
+                 "id":130,
+                 "name":"column",
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"columnBoss",
+                 "x":-178.333333333333,
+                 "y":-400
+                }, 
+                {
+                 "id":131,
+                 "name":"column",
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"columnBoss",
+                 "x":-99.6666666666666,
+                 "y":-400
+                }, 
+                {
+                 "id":132,
+                 "name":"column",
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"columnBoss",
+                 "x":-27.1664833333334,
+                 "y":-400
+                }, 
+                {
+                 "id":133,
+                 "name":"column",
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"columnBoss",
+                 "x":45.1665166666667,
+                 "y":-400
+                },
+            
+                {
+                 "id":134,
+                 "name":"column",
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"columnBoss",
+                 "x":117.166516666667,
+                 "y":-400
+                }, 
+                {
+                 "id":135,
+                 "name":"column",
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"columnBoss",
+                 "x":198.499816666667,
+                 "y":-400
+                }, 
+                {
+                 "id":136,
+                 "name":"column",
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"columnBoss",
+                 "x":276.333333333333,
+                 "y":-400
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -96,85 +178,10 @@
          "draworder":"topdown",
          "id":8,
          "name":"Scattering",
-         "objects":[
-                {
-                 "height":1408,
-                 "id":93,
-                 "properties":[
-                        {
-                         "name":"fill",
-                         "type":"int",
-                         "value":300
-                        }],
-                 "template":"..\/Templates\/ScatteringTemplate.tx",
-                 "type":"grass1 grass2 grass3 grass4 flower1 flower2 flower3",
-                 "width":1312,
-                 "x":-660,
-                 "y":-682
-                }, 
-                {
-                 "height":452,
-                 "id":94,
-                 "properties":[
-                        {
-                         "name":"fill",
-                         "type":"int",
-                         "value":100
-                        }],
-                 "template":"..\/Templates\/ScatteringTemplate.tx",
-                 "type":"tree1 tree2 tree3 tree4",
-                 "width":1568,
-                 "x":-788,
-                 "y":-842
-                }, 
-                {
-                 "height":384,
-                 "id":95,
-                 "properties":[
-                        {
-                         "name":"fill",
-                         "type":"int",
-                         "value":100
-                        }],
-                 "template":"..\/Templates\/ScatteringTemplate.tx",
-                 "type":"tree1 tree2 tree3 tree4",
-                 "width":1568,
-                 "x":-780,
-                 "y":466
-                }, 
-                {
-                 "height":864,
-                 "id":96,
-                 "properties":[
-                        {
-                         "name":"fill",
-                         "type":"int",
-                         "value":100
-                        }],
-                 "template":"..\/Templates\/ScatteringTemplate.tx",
-                 "type":"tree1 tree2 tree3 tree4",
-                 "width":352,
-                 "x":-788,
-                 "y":-394
-                }, 
-                {
-                 "height":864,
-                 "id":97,
-                 "properties":[
-                        {
-                         "name":"fill",
-                         "type":"int",
-                         "value":100
-                        }],
-                 "template":"..\/Templates\/ScatteringTemplate.tx",
-                 "type":"tree1 tree2 tree3 tree4",
-                 "width":352,
-                 "x":428,
-                 "y":-394
-                }],
+         "objects":[],
          "opacity":1,
          "type":"objectgroup",
-         "visible":false,
+         "visible":true,
          "x":0,
          "y":0
         }, 
@@ -278,7 +285,7 @@
          "y":0
         }],
  "nextlayerid":12,
- "nextobjectid":125,
+ "nextobjectid":137,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.11.2",
