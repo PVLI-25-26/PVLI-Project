@@ -29,16 +29,16 @@
                  "name":"Tree",
                  "template":"..\/Templates\/BillboardTemplate.tx",
                  "type":"tree2",
-                 "x":-98.6666666666666,
-                 "y":230.666666666667
+                 "x":14.6666666666667,
+                 "y":218.666666666667
                 }, 
                 {
                  "id":108,
                  "name":"Tree",
                  "template":"..\/Templates\/BillboardTemplate.tx",
                  "type":"tree2",
-                 "x":-185.333333333333,
-                 "y":388
+                 "x":-160,
+                 "y":361.333333333333
                 }, 
                 {
                  "id":109,
@@ -53,8 +53,8 @@
                  "name":"Tree",
                  "template":"..\/Templates\/BillboardTemplate.tx",
                  "type":"tree2",
-                 "x":348,
-                 "y":288
+                 "x":338.666666666667,
+                 "y":208
                 }, 
                 {
                  "id":111,
@@ -69,6 +69,25 @@
                  "type":"column",
                  "x":-4,
                  "y":6.66666666666667
+                }, 
+                {
+                 "id":114,
+                 "name":"ExitSign",
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"exitSign",
+                 "x":190,
+                 "y":-354.666666666666
+                }, 
+                {
+                 "height":51.3333333333333,
+                 "id":115,
+                 "name":"interrogationSign",
+                 "rotation":150,
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"interrogationSign",
+                 "width":46,
+                 "x":-185.333333333333,
+                 "y":336
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -286,7 +305,7 @@
          "y":0
         }],
  "nextlayerid":12,
- "nextobjectid":114,
+ "nextobjectid":116,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.11.2",

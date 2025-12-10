@@ -178,4 +178,12 @@ export class BuffManagerComponent extends BaseComponent{
             this.removeBuff(buff);
         }
     }
+
+    destroy() {
+        super.destroy();
+        this.clearBuffs();
+        this.gameObject.off('buffApplied', this.addBuff, this);
+        this.gameObject.off('buffRemoved', this.removeBuff, this);
+        this.gameObject.off('entityDied', this.clearBuffs, this);
+    }
 }

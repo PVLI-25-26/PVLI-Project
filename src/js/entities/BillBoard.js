@@ -22,6 +22,9 @@ export class BillBoard extends DepthSortedSprite{
 		if (config.animation != undefined){
 			this.play(config.texture,true);
 		}
+        this.on('destroy', ()=>{
+            EventBus.off('cameraRotated', this.onCameraRotated,this);
+        });
     }
 
     onCameraRotated(R){

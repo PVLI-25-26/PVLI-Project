@@ -1,7 +1,7 @@
 {
     "billboardConfig": {
         "texture": "Dolores",
-        "scale": 1
+        "scale": 4
     },
     "physicsConfig":{
         "shape": {
@@ -12,7 +12,7 @@
     "speed": 3,
     "offsetX": 0,
     "offsetY": 0,
-    "maxHP": 3,
+    "maxHP": 5,
     "damageSound": "enemyHurt",
     "deathSound": "enemyDeath"
 }

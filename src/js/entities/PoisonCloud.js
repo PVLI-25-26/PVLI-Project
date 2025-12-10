@@ -72,11 +72,11 @@ export class PoisonCloud{
         poisonzone.setCollidesWith([this.scene.playerCategory, this.scene.enemiesCategory]);
         poisonzone.setOnCollide((pair)=>{
             const entity = pair.bodyA.gameObject;
-            entity.emit('buffApplied', poisonEffect);
+            entity?.emit('buffApplied', poisonEffect);
         });
         poisonzone.setOnCollideEnd((pair)=>{
             const entity = pair.bodyA.gameObject;
-            entity.emit('buffRemoved', poisonEffect.type)
+            entity?.emit('buffRemoved', poisonEffect.type)
         });
     }
 }

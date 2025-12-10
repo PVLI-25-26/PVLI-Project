@@ -6,7 +6,29 @@
          "draworder":"topdown",
          "id":5,
          "name":"Obstacles",
-         "objects":[],
+         "objects":[
+                {
+                 "id":100,
+                 "name":"exitSign",
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"exitSign",
+                 "x":56,
+                 "y":-89
+                }, 
+                {
+                 "id":101,
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"column",
+                 "x":149,
+                 "y":-121
+                }, 
+                {
+                 "id":102,
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"column",
+                 "x":237,
+                 "y":-7
+                }],
          "opacity":1,
          "type":"objectgroup",
          "visible":true,
@@ -95,7 +117,7 @@
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":true,
+         "visible":false,
          "x":0,
          "y":0
         }, 
@@ -206,7 +228,7 @@
          "y":0
         }],
  "nextlayerid":12,
- "nextobjectid":98,
+ "nextobjectid":103,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.11.2",

@@ -8,6 +8,7 @@ import speedVaseConfig from '../../../configs/Items/speed-vase-config.json'
 import damageRockConfig from '../../../configs/Items/damage-rock.json'
 import { Item } from '../../entities/Item';
 import { ItemDisplay } from '../../UI/inventory-menu/ItemDisplay';
+import naboConfig from '../../../configs/Items/nabo-config.json'
 
 const ITEM_CONFIGS ={
     "ball": ballConfig,
@@ -18,6 +19,7 @@ const ITEM_CONFIGS ={
     "health-flower": healthFlowerConfig,
     "speed-vase": speedVaseConfig,
     "damage-rock": damageRockConfig,
+    "nabo": naboConfig
 }
 
 /**

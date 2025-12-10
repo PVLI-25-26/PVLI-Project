@@ -16,7 +16,7 @@ export class DirectChaseState {
         const enemy = this.controller.gameObject;
         const scene = enemy.scene;
 
-        if (!this.controller.target || !movement) return;
+        if (!this.controller.target.active || !movement) return;
 
         const dx = this.controller.target.x - enemy.x;
         const dy = this.controller.target.y - enemy.y;

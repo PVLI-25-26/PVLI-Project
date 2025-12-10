@@ -9,7 +9,7 @@ import { BuffManagerComponent } from "../../components/BuffManagerComponent.js";
 
 /**
  * Elemental 
- * Serves as an example of an enemy GameObject.
+ * Melee pursuer that forces constant movement.
  *
  * @class
  * @category Entities

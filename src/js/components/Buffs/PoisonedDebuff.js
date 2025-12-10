@@ -32,7 +32,7 @@ export const poisonedDebuff = {
             delay: 1000,
             callback: ()=>{
                 // calculate damage dealt depending on how much time entity is poisoned
-                const damage = poisonData.damage*(poisonData.duration/1000-timeEvent.repeatCount+1);
+                const damage = poisonData.damage*(poisonData.duration/1000-timeEvent.repeatCount+1) || 1;
                 EventBus.emit('entityHit', {target: entity, attacker: entity, damage: damage, force: 10, duration: 10})
             },
             repeat: poisonData.duration/1000,
@@ -45,6 +45,8 @@ export const poisonedDebuff = {
         // Cant save the object because it causes a circular definition error when saving buff in JSON
         // We save the particles because the effect might be removed before the emitter duration (when exiting the poison cloud or entity dies)
         poisonData.removeParticles = ()=>{particles.remove()};
+        
+        console.log(poisonData);
     },
 
     /**

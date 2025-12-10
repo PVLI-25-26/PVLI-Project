@@ -389,4 +389,11 @@ export class PlayerShootingComponent extends BaseComponent{
     setDamageMultiplier(value){
         this.#damageMultiplier = value;
     }
+
+    destroy() {
+        super.destroy();
+        EventBus.off('cameraRotated', this);
+        EventBus.off('arrowEquipped', this);
+        EventBus.off('trajectoryEquipped', this);
+    }
 } 

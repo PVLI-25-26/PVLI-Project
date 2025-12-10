@@ -159,7 +159,7 @@ export default class MainMenuView {
         
             this.saveGame[i].addInteraction((btn) => {
                 btn.on("pointerover", () => {
-                    btn.buttonNineslice.setTint(Colors.RedHex);
+                    btn.buttonNineslice.setTint(Colors.GreenHex);
                     btn.invokeHover();
                 });
                 btn.on("pointerout", () => {
@@ -177,7 +177,7 @@ export default class MainMenuView {
         this.loadGameFile = [];
         for(let i = 0; i < this.gameSlot.length; i++)
         {
-            this.loadGameFile.push(new Button(this.scene, centerX+80, this.gameSlot[i].y, null, 20, 20, null,
+            this.loadGameFile.push(new Button(this.scene, centerX+100, this.gameSlot[i].y, null, 20, 20, null,
                 // {
                 //     text: 'LoadFile',
                 //     style: {
@@ -199,7 +199,7 @@ export default class MainMenuView {
         
             this.loadGameFile[i].addInteraction((btn) => {
                 btn.on("pointerover", () => {
-                    btn.buttonNineslice.setTint(Colors.RedHex);
+                    btn.buttonNineslice.setTint(Colors.GreenHex);
                     btn.invokeHover();
                 });
                 btn.on("pointerout", () => {
