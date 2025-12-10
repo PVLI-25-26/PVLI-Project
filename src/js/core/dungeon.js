@@ -325,10 +325,23 @@ export class Dungeon extends Phaser.Plugins.BasePlugin {
     createScatteredObjects(scene, scatterData) {
         const types = scatterData.type.split(" ");
         // Generates scattered objects from a rectangle defined in Tiled
+console.log(scatterData)
         for(let i = 0; i < getCustomTiledProperty(scatterData, "fill"); ++i){
+            let posX;
+            let posY;
+            if(!scatterData.ellipse){
+                posX = Math.random()*scatterData.width+scatterData.x;
+                posY = Math.random()*scatterData.height+scatterData.y;
+            }
+            else{
+                const angle = Math.random()*2*Math.PI;
+                posX = scatterData.x + Math.cos(angle) * scatterData.width*Math.random() + scatterData.width/2;
+                posY = scatterData.y + Math.sin(angle) * scatterData.height*Math.random() + scatterData.height/2;
+            }
+
             const obj = createObstacle(scene, {
-                x: Math.random()*scatterData.width+scatterData.x,
-                y: Math.random()*scatterData.height+scatterData.y,
+                x: posX,
+                y: posY,
                 // Get random type from all specified types
                 type: types[Math.floor(Math.random()*types.length)]
             });
