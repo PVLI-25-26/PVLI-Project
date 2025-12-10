@@ -28,11 +28,15 @@ export class DryadMovementControllerComponent extends BaseControllerComponent {
         };
 
         this.animationPatrol = true;
+		this.healing = false;
 
         EventBus.on('entityDamaged', this.onReceiveDamage, this);
         EventBus.on('entityDied', this.onEntityDied, this);
+		EventBus.on("DryadHealing",(dryad)=>{if (this.gameObject == dryad) this.healing = true});
+		EventBus.on("DryadNotHealing",(dryad)=>{if (this.gameObject == dryad) this.healing = false});
 
         this.changeState(initialState);
+		this.gameObject.play("dryad_idle",true);
     }
 
     changeState(newState) {
@@ -46,6 +50,7 @@ export class DryadMovementControllerComponent extends BaseControllerComponent {
         if (data.entity.type === 'enemy' && data.entity !== this.gameObject) {
             this.target = data.entity;
             this.changeState('chase');
+			this.gameObject.play("dryad_walk",true);
         }
     }
 

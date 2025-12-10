@@ -94,6 +94,24 @@ export default class Boot extends Phaser.Scene {
             frameRate: 12,
             repeat: -1
         });
+		this.anims.create({
+            key: "dryad_idle",
+            frames: this.anims.generateFrameNumbers("Dryad_animation", {start:0, end: 5}),
+            frameRate: 8,
+            repeat: -1
+        });
+		this.anims.create({
+            key: "dryad_walk",
+            frames: this.anims.generateFrameNumbers("Dryad_animation", {start:0, end: 15}),
+            frameRate: 12,
+            repeat: -1
+        });
+		this.anims.create({
+            key: "dryad_heal",
+            frames: this.anims.generateFrameNumbers("Dryad_animation", {start:16, end: 25}),
+            frameRate: 12,
+        });
+		
 		
 
 

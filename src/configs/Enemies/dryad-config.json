@@ -1,16 +1,17 @@
 {
     "billboardConfig": {
         "texture": "Dolores",
-        "scale": 1
+        "scale": 4
     },
     "physicsConfig":{
         "shape": {
-            "type": "rectangle"
+            "type": "circle",
+			"radius":7
         }
     },
     "speed": 1.5,
     "offsetX": 0,
-    "offsetY": 0,
+    "offsetY": -0.5,
     "maxHP": 2,
     "damageSound": "enemyHurt",
     "deathSound": "enemyDeath"
