@@ -57,19 +57,30 @@ Combat is entirely ranged and emphasizes precision, positioning, and tactical us
 
 Dialogue with NPCs reveals the story and provides guidance, while responsive movement and special abilities allow for deep exploration of environments. The game combines fast-paced action with thoughtful progression, set in a mysterious, hand-crafted world where every run brings new opportunities — and new risks.
 
+## References
+
+[Hades](https://store.steampowered.com/app/1145360/Hades/) by Supergiant Games
+
+[Noita](https://store.steampowered.com/app/881100/Noita/) by Nolla Games
+
+[Dark and Darker](https://www.darkanddarker.com/) by Iron Mace
+
+[Titan Souls](https://store.steampowered.com/app/297130/Titan_Souls/?l=spanish) by Acid Nerve
+
 
 # Controls
 
-| Action           | Gamepad (XBox Layout) | Keyboard & Mouse |
-| ---------------- | --------------------- | ---------------- |
-| **Aiming**       | Right stick           | Mouse            |
-| **Movement**     | Left stick            | Arrows / WASD    |
-| **Shoot**        | Right Trigger         | LMB              |
-| **Ability**      | Right Shoulder        | LShift           |
-| **Interact**     | Button South          | F                |
-| **Pause**        | Start                 | Escape           |
-| **Change arrow** | Button North          | R                |
-| **Rotate cam**   | Directional buttons   | Q/E              |
+| Action           | Keyboard & Mouse |
+| ---------------- | ---------------- |
+| **Aiming**       | Drag Mouse           |
+| **Movement**     | Arrows / WASD    |
+| **Shoot**        | Realease after dragging            |
+| **Ability**      | SPACE           |
+| **Interact**     | F                |
+| **Inventory**     | E                |
+| **Pause**        | P          |
+| **Change arrow** | R                |
+| **Rotate cam**   | Mouse horizontal             |
 
 
 # Genre and synopsis
@@ -96,7 +107,7 @@ The game is set in a **fantasy medieval world**. The protagonist travels through
 
 6. **Run Completion** – The player exits the dungeon either successfully or fails by losing all health/resources. Rewards are granted based on achievements and collected items.
 
-Each run is accompanied by skill progression and **meta-progression**, such as unlocking new loadouts with different weapon modifiers, which influence the player’s strategy.
+Each run is accompanied by skill progression and **meta-progression**, such as buying new loadouts with different weapon modifiers, which influence the player’s strategy.
 
 ## Game Loop 
 The game has a simple yet effective game loop:
@@ -110,7 +121,7 @@ The objective of the player is to beat the dungeon's boss and win the game. Depe
 
 # Style
 ## Visual References
-`ref-general-moodboard.png`
+![moodboard](image.png)
 #### A sprite stacking reference:
 ![ref](GDD/Game%20Design%20Document/Images/Style/SpriteStackingReference.jpg)
 ![ref](GDD/Game%20Design%20Document/Images/Style/SpriteStackingReference2.jpg)
@@ -129,7 +140,7 @@ Each sprite layer represents a “slice” of an object (for example, a part of 
 ![example](GDD/Game%20Design%20Document/Images/Examples/SpriteStackingExample.gif)
 ## Implementation in Our Project
 In our case, the technique is implemented using custom shaders integrated into the Phaser rendering pipeline.  
-Phaser allows us to attach custom shaders to specific game entities, providing flexibility in controlling the visual style and effects.
+Phaser allows us to attach custom shaders to specific game entities, providing flexibility in controlling the visual style and effects. You may view the `arquitecture.md` for more information.
 # Narrative
 In our game, you will play as Artemis, the daughter of Zeus and Leto. Your objective is to rescue the cow that Leto stole from Zeus. 
 # Manage Quiver
@@ -137,7 +148,7 @@ In our game, you will play as Artemis, the daughter of Zeus and Leto. Your objec
 ## Description
 The player can equip two different types of arrows in the quiver, each with unique properties that affect combat strategy. Arrows are consumable items: when the player shoots, the corresponding arrow is removed from the inventory. 
 
-The player can quickly change arrows in the middle of combat to use both arrows properties using [[Controls|change arrow key]].
+The player can quickly change arrows in the middle of combat to use both arrows properties using [change arrow key](#controls).
 
 Arrows are a limited resource as the player can only have a certain number of arrows in their inventory. Arrows must be picked up after being used, making shooting arrows more than just shooting everywhere. 
 
@@ -148,40 +159,13 @@ Stronger arrows are more limited in quantity, requiring the player to carefully 
 
 ### Fire Arrow
 The *fire arrow* deals `5` every `0.5` seconds during  `5` seconds when impacting an enemy. When combined with other arrow effects, the *fire effect* will, in some way, enhance the damage dealt to the enemy.
-The fire arrow is has a `4` seconds of cool down per shot.
-
-### Slime Arrow
-The *slime arrow* explodes in an area of slime (with `100` diameter) when impacting an enemy , which slows down enemies `50`% for `5` seconds. When combined with other effects, the *slime effect* will add to the duration time of other effects.
-The slime arrow is has a `3` seconds of cool down per shot.
 
 ### Gas Arrow
-The *gas arrow* explodes into a cloud of a poison when impacting an enemy. All enemies inside the cloud receive `2*prev damage` damage every second, the longer the enemies are under the effect of the poison, the more damage it deals.
-The gas arrow has a `7` seconds of cool down per shot.
+The *gas arrow* explodes into a cloud of a poison when impacting an enemy. All enemies inside the cloud receive `1*times damaged` damage every second, the longer the enemies are under the effect of the poison, the more damage it deals.
 
 ### Grass Arrow
-The *grass arrow* immobilizes the enemy hit by the arrow (grass grows and traps the enemy). The enemies will not be able to move for `5` seconds. 
-The grass arrow is has a `7` seconds of cool down per shot.
+The *grass arrow* immobilizes the enemy hit by the arrow (grass grows and traps the enemy). The enemies will not be able to move for `5` seconds.
 
-### Combined effects
-Effect combination can happen in any order, meaning that effects do not need to be applied in an specific order for the special effect to happen.
-
-#### Fire + Slime
-When combining *fire* with *slime*, the fire effect is prolonged for `4` seconds and damage is increased by `50`%.
-
-#### Fire + Gas
-When combining *fire* with *gas*, an explosion occurs, dealing `100` damage to all enemies in the area and setting them on fire.
-
-#### Fire + Grass
-When combining *fire* with *grass*, the fire expands through the grass, setting all enemies on fire.
-
-#### Slime + Grass
-When combining *slime* with *grass*, the grass effect duration is enhanced by `200`% and the grass effect will affect all enemies in the area of effect of the slime.
-
-#### Slime + Gas
-When combining *slime* with *gas*, the gas effect will stick to the enemy even if it is outside the cloud for `3` seconds.
-
-#### Gas + Grass
-Does nothing special, their basic effects combined is already powerful enough. 
 
 ### Arrow parameters
 
@@ -189,7 +173,6 @@ Does nothing special, their basic effects combined is already powerful enough.
 | ---------- | ---------------------------- | ------------ | ------------- | ------------------------------- |
 | Base arrow | 10                           |              | 1             |                                 |
 | Fire       | 10 per second                | 5            | 4             |                                 |
-| Slime      | 10 (base)                    | 5            | 3             | Diameter: 100px, speed red: 50% |
 | Gas        | 2 * prev damage every second | 5            | 7             | Diameter: 200px                 |
 | Grass      | 10 (base)                    | 5            | 7             |                                 |
 
@@ -203,13 +186,13 @@ Modifiers can alter the number of projectiles, their spread, bounce behavior, an
 
 Only one path modifier can be active before [enter the dungeon](#enter-and-exit-the-dungeon), encouraging players to adapt their loadout to different enemy types and environments.
 ## Available Modifiers
-- [[#Hunter’s Bow – Triple Shot]]
-- [[#Falcon Bow – Long Shot]]
-- [[#Rebound Bow – Ricochet]]
-- [[#Piercer Bow – Piercing Shot]]
-- [[#Seeker Bow – Homing Shot]]
-- [[#Graviton Bow – Magnet Shot]]
-- [[#Specter Bow – Phantom Shot]]
+- Hunter’s Bow – Triple Shot
+- Falcon Bow – Long Shot
+- Rebound Bow – Ricochet
+- Piercer Bow – Piercing Shot
+- Seeker Bow – Homing Shot
+- Graviton Bow – Magnet Shot
+- Specter Bow – Phantom Shot
 ### Hunter’s Bow – Triple Shot
 Fires **three arrows** simultaneously in a **spread formation** (angled slightly outward).  
 Each individual arrow deals **reduced damage**, but the total output can be high if all arrows hit the target.  
@@ -255,8 +238,8 @@ However, the **ammo count is reduced**, so player can't just spam all his arrows
 # Shoot
 **Shoot** – a mechanic that allows the player to perform ranged attacks using a bow. It is used for engaging enemies from a distance, applying status effects, and interacting with certain elements of the environment.  
 ## Description
-The player aims [using his input device](#controls) and presses the [shoot button](#controls) to release the [equipped projectile](#manage-quiver) projectile in the [chosen direction](#set-arrow-path-modifier).  
-To control the projectile’s force, the player must **hold** the shoot button for a certain duration. The longer the button is held, the stronger the shot will be.
+The player aims [using his input device](#controls) and releases the [shoot button](#controls) to shoot the [equipped projectile](#manage-quiver) projectile in the [chosen direction](#set-arrow-path-modifier).  
+To control the projectile’s force, the player must **drag** more or less the mouse.
 
 Projectiles (arrows) follow an arched trajectory. The curvature of the arch depends on the force applied by the player. If the player barely charges the shot, the arrow travels in a steep arc with limited distance. If the player charges the shot to maximum, the arrow flies in a near-straight line*, covering more distance and having a flatter trajectory.
 
@@ -278,9 +261,6 @@ Every ability has a cooldown and a duration of its effect, meaning that the play
 ### Dash
 When the player dashes, his speed is increased greatly for a very short amount of time. This allows the player to make quick moves at certain moments in combat, avoiding projectiles or attacks easily.
 
-### Invisibility
-The player becomes invisible for a certain amount of time. Enemies will not be able to see him while the ability is active. This allows the player to quickly disengage combat in dire situations.
-
 ### Force field
 When the player uses force field, all enemies near the player are pushed back with great force in opposite direction. This give the player space whenever he is surrounded by enemies. It also separates the enemies from each other.
 
@@ -289,8 +269,89 @@ When the player uses force field, all enemies near the player are pushed back wi
 | Ability      | Cooldown (s) | Ability duration (s) | coins | Specific parameters               |
 | ------------ | ------------ | -------------------- | ----- | --------------------------------- |
 | Dash         | 2            | 0.5                  | 65    | Speed inc.: 200%                  |
-| Invisibility | 7            | 4                    | 90    |                                   |
 | Force field  | 3            | 0                    | 50    | Speed: 1500, Effect radius: 100px |
+
+# Enemies
+## Enemy Attack
+**Enemy Attack** – a mechanic that allows enemies to perform offensive actions against the player. It is used to challenge the player, creating a direct threat and the risk of losing resources, such as health, forcing the player to react, adapt, and manage their survival during encounters.
+### Description
+Each enemy executes attacks according to its **behavior pattern** and attack logic. Attacks can be only ranged projectiles, or area-of-effect abilities, depending on the enemy type.
+
+The timing, range, and effect of each attack are defined by the enemy’s AI and may vary based on current [[Difficulty|difficulty level]] or environmental conditions. Attacks require the player to dodge to avoid taking damage.
+
+## Enemy types
+### Overview
+
+Enemies differ in both movement and combat behavior. Each enemy type has a specific gameplay role, defining the challenge and threat level it presents to the player.
+#### Movement Logic
+Enemy movement is based on a state-driven system. Every enemy transitions between states using unique rules and triggers, but the logic of the states itself can be repeated for different enemies.
+#### Combat Logic
+Enemy combat behavior varies depending on role. This includes attack type, additional abilities, and effects when receiving damage.
+#### Role Purpose
+Each enemy type introduces a distinct challenge. Roles are expressed through:  
+• Level of pressure on the player  
+• Expected player response (evasion, counterattack, positioning, resource management)  
+• Contribution to encounter variety
+##### Enforcer
+Primary strike unit that advances head-on and applies constant pressure on the player. Designed to force close engagement and prevent disengagement.
+##### Disruptor
+Fragile interference unit that is easy to kill but continuously distracts and interrupts the player. Its purpose is to divide player attention and create openings for enforcers to deal more damage.
+##### Support
+Backline unit that strengthens and heals allies, increasing their time on the battlefield. Focuses on sustaining the frontline rather than dealing direct damage.
+
+This section defines how enemy roles, movement logic, and combat patterns work together to shape overall encounter design.
+### Enemies
+
+**Enforcers**
+- [Elemental](#Elemental)
+- [Golem](#Golem)
+
+**Disruptors**
+- [Slime](#Slime)
+
+**Support**
+- [Dryad](#Dryad)
+
+#### Elemental
+
+| Name            | Elemental                                                                                |
+| --------------- | ---------------------------------------------------------------------------------------- |
+| Role            | Enforcer                                                                           |
+| Description     | Melee pursuer that forces constant movement.                                             |
+| Dynamics        | Applies direct pressure, drives the player to reposition.                                |
+| Movement States | `Idle/Patrol` → `Chase` → `Strafe` → `Chase`                                             |
+| Combat Logic    | Close-range attack with small knockback; switches to strafe when the player draws a bow. |
+| Visual Style    | ![](/GDD/Game%20Design%20Document/Images/Examples/Minotauro.jpg)                                                                       |
+#### Golem
+
+| Name            | Golem                                                                                                                  |
+| --------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| Role            | [[#Enforcer]]                                                                                                          |
+| Description     | Slow tank that reacts to damage taken by allies.                                                                       |
+| Dynamics        | Creates a control anchor, prevents the player from simply wiping the group.                                            |
+| Movement States | `Patrol/Idle` → `Chase` → `Defense` → `Chase or Patrol/Idle`                                                           |
+| Combat Logic    | Attacks with strong knockback. Defense — temporary invulnerability.<br>If player is too far, returns to initial state. |
+| Visual Style    | ![](/GDD/Game%20Design%20Document/Images/Examples/golem-ciclope.jpg)                            |
+#### Slime
+
+| Name            | Slime                                                               |
+| --------------- | ------------------------------------------------------------------- |
+| Role            | Disruptor                                                     |
+| Description     | Hit-and-run nuisance enemy with high mobility.                      |
+| Dynamics        | Provokes player mistakes and forces target tracking.                |
+| Movement States | `Idle/Patrol` → `Chase (Zigzag)` → `Retreat` → `Chase (Zigzag)`     |
+| Combat Logic    | Fast weak strike with short recovery. Attacks disabled during flee. |
+| Visual Style    | ![](/GDD/Game%20Design%20Document/Images/Examples/b117f3342a11b01b989eecedf8a0b538.jpg)                           |
+#### Dryad
+
+| Name            |                                                                |
+| --------------- | -------------------------------------------------------------- |
+| Role            | Suppor                                                   |
+| Description     | Enhances the squad and heals allies.                           |
+| Dynamics        | Forces the player to shift target priorities and adapt focus.  |
+| Movement States | `Follow Ally` → `Retreat (if player is close)` → `Follow Ally` |
+| Combat Logic    | Heals allies on cooldown, triggered by their HP loss.          |
+| Visual Style    | ![](/GDD/Game%20Design%20Document/Images/Examples/driade2.jpg)                                               |
 
 
 # Change Room
@@ -374,24 +435,17 @@ This ensures that the player is rewarded if they are capable of surviving for lo
 The value of items increases in three levels (`I`, `II` and `III`)  with `I` being the lowest and `III` the highest.
 ![](GDD/Game%20Design%20Document/Images/Examples/ItemProgressionExample.png)
 ## Consumable types
-+ + Attack - 
-+ + Health -
-+ + Attack Speed -
-+ + Movement Speed -
-+ + Critical Chance -
-+ + Critical Damage -
-+  Dungeon Escape -
-(Damage based obtained through battle? and life and movement through recolection?)
++ Health flower - Gives health bonus
++ Power rock - Gives damage bonus
++ Speed vase - Gives speed bonus
++ Nabo? - Porqué hay un nabo en el juego? Salió cara ...
 
-| Item type       | Lvl1                    | Lvl2                         | Lvl3                    | Rare                     |
-| --------------- | ----------------------- | ---------------------------- | ----------------------- | ------------------------ |
-| Attack          | +50% atk dmg<br>15  sec | +100% atk dmg <br>20 sec<br> | +200% atk dmg<br>35 sec | + 300% atk dmg<br>60 sec |
-| Health          | + 5 hp                  | +15 hp                       | + 35 hp                 | + 75 hp                  |
-| Atk Speed       | x1,25 atk speed         | x1,5 atk speed               | x2 atk speed            | x3 atk speed             |
-| Movement speed  | x1,10                   | x1,30                        | x1,60                   | x2,5                     |
-| Critical Chance | + 5%                    | +15%                         | +30%                    | +60%                     |
-| Critical Damage | +30%                    | +70%                         | +150%                   | +200%                    |
-Dungeon Escape its a really rare item that allows the player to the outside of the dungeon without having to find an exit area.
+| Item type      | Lvl1                   | Lvl2                        | Lvl3                   | Rare                    |
+| -------------- | ---------------------- | --------------------------- | ---------------------- | ----------------------- |
+| Attack         | +50% atk dmg<br>5  sec | +100% atk dmg <br>5 sec<br> | +200% atk dmg<br>5 sec | + 300% atk dmg<br>5 sec |
+| Health         | + 5 hp<br>5  sec       | +15 hp<br>5  sec            | + 35 hp<br>5  sec      | + 75 hp<br>5  sec       |
+| Movement speed | x1,10<br>5  sec        | x1,30<br>5  sec             | x1,60<br>5  sec        | x2,5<br>5  sec          |
+
 
 # Difficulty
 **Difficulty System** –  This system shows how the game increases in difficulty throughout the playthrough.
@@ -418,58 +472,11 @@ The dungeon could be represented as a graph, with each room being the nodes, and
 Each room is hand-crafted; therefore, its entities are defined in the design. 
 Room entities are persistent. When a room is unloaded, the state of all its entities must be saved. For example, if the player kills all the enemies in a room and then exits, the enemies will still be dead when the player returns. The same applies to consumables and NPC dialogues.
 
-¿El jugador tiene que matar a todos los enemigos para desbloquear los caminos? 
-#TODO
+The player must kill all entities in a room to exit the room. This ensures that the player carefully chooses whether to explore more or not, as after entering a portal, he might encounter a combat that ends his life.
+
 ## Dynamics
 Each room will have a specialized purpose. For example, one room cannot be both a fighting room and an NPC room. This way, we can separate and encapsulate how the player interacts with each room. This allows the player to choose a path based on their desired strategy.
 The player should be encouraged to clear each room before enter another one. This can be achieved by either blocking the paths or rewarding the player with valuable items after clearing the room.
-
-# Enemy
-**Enemy System** –  a system responsible for managing enemy types, behaviors, and interactions with the player.
-## Description
-The Enemy System defines the different types of enemies that populate the game world, including small enemies, mini-bosses, and bosses. It specifies their behavior patterns, attack styles, movement logic, and interactions with the player and the environment. The system ensures that each encounter feels unique and requires players to adapt their strategy according to enemy type and behavior.
-## Enemy types
-
-## GOLEM
-![](GDD/Game%20Design%20Document/Images/Examples/Minotauro.jpg)
-![](GDD/Game%20Design%20Document/Images/Examples/golem-ciclope.jpg)
-The golem approaches the player to attack in close combat. It is a slow character, however it is hard to kill due to its higher health. His attacks are strong so players must try to avoid engaging the in close distance.
-- fire magic attacks
-- low attack range
-- mid attack speed
-
-## SLIME
-![](GDD/Game%20Design%20Document/Images/Examples/b117f3342a11b01b989eecedf8a0b538.jpg)
-The slime stays away from the player trying to shoot from the distance. His attacks aren't specially strong but he can be quite annoying in groups. The player should try to kill them as avoiding their projectiles might be hard while shooting at other enemies. However, they are very weak and easy to kill.
-- slime type attacks
-- high attack range
-- low attack speed
-
-## DRIADE
-![](GDD/Game%20Design%20Document/Images/Examples/driade2.jpg)
-![](GDD/Game%20Design%20Document/Images/Examples/driade%203.jpg)
-The driade stands in a middle ground between the golem and the slime. They aren't especially strong or fast but their attacks can be dangerous if the player isn't careful. They are support golems with gas and plant attacks which will force the player to move constantly to avoid getting damaged greatly.
-- gas and plant attacks
-- medium attack range
-- mid attack speed
-
-## Enemy parameters
-
-| Enemy  | Health | Damage                                                         | Speed(px/s) | Attack speed(s) | Attack range(px) | Effect applied |
-| ------ | ------ | -------------------------------------------------------------- | ----------- | --------------- | ---------------- | -------------- |
-| Golem  | 200    | 25                                                             | 75          | 1               | 50               | Fire           |
-| Driade | 100    | (Gas: 2 times previous damage) (plant attacks don't do damage) | 150         | 1.5             | 150              | Gas/Grass      |
-| Slime  | 50     | 10                                                             | 120         | 1.5             | 300              | Slime          |
-
-## Enemy Attack
-**Enemy Attack** – a mechanic that allows enemies to perform offensive actions against the player. It is used to challenge the player, creating a direct threat and the risk of losing resources, such as health, forcing the player to react, adapt, and manage their survival during encounters.
-## Description
-Each enemy executes attacks according to its **behavior pattern** and attack logic. Attacks can be only ranged projectiles, or area-of-effect abilities, depending on the enemy type.
-
-The timing, range, and effect of each attack are defined by the enemy’s AI and may vary based on current [difficulty level](#difficulty) or environmental conditions. Attacks require the player to dodge to avoid taking damage.
-
-## Dynamics
-Players must observe enemy patterns, react to attacks, and prioritize targets based on behavior and threat level. Variety in enemy types encourages experimentation with combat strategies, positioning, and use of abilities. Environmental interactions, such as traps or cover, further influence enemy behavior and encounter dynamics.
 
 # Health
 **Health System** – a core combat system that manages the player’s remaining vitality and determines how much damage they can take before the run ends.
@@ -511,26 +518,18 @@ All items inside the player's inventory are sold when the player [exits the dung
 # Missions
 **Missions System** – a system that manages mission progression and rewards players upon their completion.
 ## Description
-
-Before entering the dungeon for the first time the player encounters an NPC that will give him a mission: "Enter the dungeon and come back alive".
-
-After completing this first mission the [Shop](#shop) will be unlocked.
-
-From this moment onwards the missions will vary depending on the data gathered from the runs with the objective of making the player try different types of gameplays, for example if the player is focused on recollecting items but not engaging in battle, the npc will give the player missions to subjugate monsters. The missions can go from collecting specific items from the dungeon to killing some type/quantity of enemies.
-
-Completing a mission will grant you benefits in the shop, making upgrades and consumables cheaper, and also will unlock the different types of Arrows.
+NPCs may task player with certain missions to give them a secondary objective in the dungeon. Players who complete the missions are rewarded with items or coins, and therefore increasing their in-game progression faster.
 ## Dynamics
-
 El jugador asocia recompensas positivas al hacer misiones, de esa manera se fomenta hacerlas.
 El jugador es animado con misiones a probar todo lo que puede ofrecer las mecánicas, para que así pueda desarrollar mejores estrategias en la dungeon.
 
 ## Examples
 
-1. "Enter the dungeon and come back alive" - Unlocks Shop.
-2. "Kill 3 enemies of type (?)" - Unlocks Type of Arrow.
-3. "Collect (?) type of Item" - Unlocks Type of Consumable.
-4. "Collect (?) quantity of (?) Item " - Discounts on the shop.
-5. "Unlock (?) different types of areas in the same run" - Unlocks Abilities.
+1. "Enter the dungeon and come back alive"
+2. "Kill 3 enemies of type (?)"
+3. "Collect (?) type of Item"
+4. "Collect (?) quantity of (?) Item "
+5. "Unlock (?) different types of areas in the same run"
 
 # Movement
 **Movement System** – a core system that governs the player’s traversal through the In-game world, including running, dodging, and using abilities.
@@ -551,9 +550,10 @@ The player must feel like his character is completely under his control, with pr
 **Shop System** – a system that manages the game’s economy and how the player can earn and spend coins.
 ## Description
  Before a run, the player can buy the equipment he wishes to use with coins. The stronger the equipment, the more coins needed to buy it.
- The player can buy only 2 types of items for the next run:
+ The player can buy only 3 types of items for the next run:
  - Bows ([Arrows trajectories](#available-modifiers))
- - Arrows (Two types of [arrows with special effect](#arrow-effects))
+ - Arrows ([arrows with special effect](#arrow-effects))
+ - Abilities ([Abilities](#use-ability))
 ### Coins
 Coins are persistent between runs, meaning that they are not lost when the player dies or begins a new run. Coins are obtained by selling [items](#use-item) when [exiting the dungeon](#enter-and-exit-the-dungeon).
 ## Prototype
@@ -567,3 +567,5 @@ The player is confronted with whether it is worth spending more for better or mo
 When the player enters the dungeon, he risks loosing all of his equipment if he dies. Therefore, the player must be careful to buy items which allow him to survive more.
 This also enhances the tension throughout the run, as dying would mean loosing the items bought at the beginning.
 
+# Tutorial
+![](/GDD/Game%20Design%20Document/Images/Tutorial_PVLI.png)
