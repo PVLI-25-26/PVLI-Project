@@ -50,8 +50,8 @@ export class InventoryComponent extends BaseComponent{
         EventBus.on('trajectoryBought', this.onTrajectoryBought, this);
 
         // cheat keybindings
-        this.gameObject.scene.input.keyboard.on('keydown-M', ()=>{this.addGold(50);});
-        this.gameObject.scene.input.keyboard.on('keydown-N', ()=>{this.removeGold(50);});
+        this.gameObject.scene.input.keyboard.on('keydown-N', ()=>{this.addGold(50);});
+        this.gameObject.scene.input.keyboard.on('keydown-B', ()=>{this.removeGold(50);});
     }
 
     update(t, dt){}

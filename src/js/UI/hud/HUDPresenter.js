@@ -35,6 +35,16 @@ export class HudPresenter {
         EventBus.on('hudMissionCompleted', this.onMissionComplete, this);
         EventBus.on('hudMissionRemoved', this.onMissionRemoved, this);
         EventBus.on('missionProgressUpdated', this.onMissionProgressUpdated, this);
+
+        // Minimap
+        this.initializedMinimap();
+        this.view.scene.input.keyboard.on("keydown-M", ()=>{
+            this.view.toggleMinimap();
+        })
+    }
+
+    initializedMinimap(){
+        this.view.createMinimap(this.model.rooms, this.model.paths, this.model.currentRoomID)
     }
 
     onPlayerInitialized() {

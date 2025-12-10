@@ -56,7 +56,7 @@ export default class GameplayScene extends Phaser.Scene {
         this.inputFacade.resetPointerLockCount();
 
         // Create HUD
-        const model = new HudModel();
+        const model = new HudModel(this);
         const view = new HudView(this);
         const presenter = new HudPresenter(view, model);
         
