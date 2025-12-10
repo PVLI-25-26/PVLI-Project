@@ -164,7 +164,14 @@ export class DamageableComponent extends BaseComponent {
         EventBus.emit('entityDied', this.gameObject);
         this.gameObject.emit('entityDied'); // Cheaper and easier to know from within the object if they have died
         EventBus.emit('playSound', this.sounds.death);
-        if (this.gameObject.type !== 'player') this.gameObject.destroy();
+        if (this.gameObject.type !== 'player') {
+            this.gameObject.destroy()
+        }
+        else {
+            this.gameObject.setActive(false);
+            this.gameObject.setVisible(false);
+            this.gameObject.body.enable = false;
+        }
     }
 
     /**

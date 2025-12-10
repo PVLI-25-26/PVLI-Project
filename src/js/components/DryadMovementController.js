@@ -45,10 +45,10 @@ export class DryadMovementControllerComponent extends BaseControllerComponent {
 
 
     onReceiveDamage(data) {
-        if (data.entity.type === 'enemy' && data.entity !== this.gameObject) {
+        if ((data.entity.type === 'enemy' || data.entity.type === 'boss') && data.entity !== this.gameObject) {
             this.target = data.entity;
             this.changeState('chase');
-			this.gameObject.play("dryad_walk",true);
+			this.gameObject.play("dryad_walk", true);
         }
     }
 

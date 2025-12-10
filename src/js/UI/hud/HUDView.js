@@ -9,6 +9,7 @@ export class HudView {
         this.scene = scene;
         // Health Bars
         this.playerHealthBar = null;
+        this.bossHealthBar = null;
         this.enemyHealthBars = new Map();
         
         // Gold
@@ -53,6 +54,15 @@ export class HudView {
         this.playerHealthBar = new Bar(this.scene, x, y, 300, 25, Colors.RedHex);
         this.scene.hudLayer.add(this.playerHealthBar);
         this.playerHealthBar.setScrollFactor(0);
+    }
+
+    createBossHealthBar() {
+        const x = 200;
+        const y = 540;
+
+        this.bossHealthBar = new Bar(this.scene, x, y, 400, 25, Colors.RedHex);
+        this.scene.hudLayer.add(this.bossHealthBar);
+        this.bossHealthBar.setScrollFactor(0);
     }
 
     createEnemyHealthBar(enemy) {

@@ -16,6 +16,7 @@ export class HudModel {
         // Health bars
         EventBus.on('playerHealthInitialized', this.onPlayerHealthInitialized, this);
         EventBus.on('enemyHealthInitialized', this.onEnemyInitialized, this);
+        EventBus.on('bossHealthInitialized', this.onBossInitialized, this);
         EventBus.on('entityMoved', this.onEntityMoved, this);
         EventBus.on('entityDamaged', this.onEntityDamaged, this);
         EventBus.on('entityHealed', this.onEntityHealed, this);
@@ -52,6 +53,12 @@ export class HudModel {
         EventBus.emit('hudEnemyAdded', data.enemy);
     }
 
+    // data = { enemy, maxHP }
+    onBossInitialized(data) {
+        this.enemies.set(data.enemy, { x: data.enemy.x, y: data.enemy.y, maxHP: data.maxHP, currentHP: data.maxHP });
+        EventBus.emit('hudBossAdded', data.enemy);
+    }
+
     // data = Gold amount
     onPlayerGoldInitialized(data){
         this.playerGold = data;
@@ -82,18 +89,17 @@ export class HudModel {
         if (entity.type == 'player') {
             this.setPlayerHealth(this.playerCurrentHP - data.amount);
         }
-        if (entity.type == 'enemy' && this.enemies.has(entity)) {
+        if ((entity.type == 'enemy' || entity.type == 'boss') && this.enemies.has(entity)) {
             this.setEnemyHealth(entity, this.enemies.get(entity).currentHP - data.amount);
         }
     }
 
-    // TODO: still not used anywhere
     onEntityHealed(data) {
         if (data.entity.type == 'player') {
             this.setPlayerHealth(this.playerCurrentHP + data.amount);
             return;
         }
-        if (data.entity.type == 'enemy') {
+        if ((data.entity.type == 'enemy' || data.entity.type == 'boss') && this.enemies.has(data.entity)) {
             this.setEnemyHealth(data.entity, this.enemies.get(data.entity).currentHP + data.amount);
         }
     }
