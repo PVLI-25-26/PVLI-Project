@@ -8,7 +8,6 @@ export default class MainMenuPresenter {
         this.view.setPresenter(this);
         this.subscribeToViewEvents();
         this.setValuesFromModel();
-        console.log('new MainMenuPresenter');
         EventBus.emit('playMusic', 'mainMenuMusic', true);
     }
 

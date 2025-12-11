@@ -137,7 +137,6 @@ export class SoundSceneFacade extends Phaser.Plugins.BasePlugin{
      * @returns {void}
      */
     stopMusic(key, doFade) {
-        console.trace(doFade)
         if(!doFade){
             this.scene.sound.stopByKey(key);
             return;
@@ -150,7 +149,6 @@ export class SoundSceneFacade extends Phaser.Plugins.BasePlugin{
                 ease: Phaser.Math.Easing.Sine.Out,
                 volume: 0.01,
                 onComplete:()=>{
-                    console.log('music fade')
                     music.stop();
                 }
             });

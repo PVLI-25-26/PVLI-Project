@@ -45,8 +45,6 @@ export const poisonedDebuff = {
         // Cant save the object because it causes a circular definition error when saving buff in JSON
         // We save the particles because the effect might be removed before the emitter duration (when exiting the poison cloud or entity dies)
         poisonData.removeParticles = ()=>{particles.remove()};
-        
-        console.log(poisonData);
     },
 
     /**
