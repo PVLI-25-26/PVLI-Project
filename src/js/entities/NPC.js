@@ -35,6 +35,11 @@ export class NPC extends BillBoard{
         this.diagOffsetY = -150;
         /** @type {number} */
         this.diagOffsetX = -80;
+        // Exclamation offset
+        /** @type {number} */
+        this.availableIconOffsetX = 10;
+        /** @type {number} */
+        this.availableIconOffsetY = -20;
         
         this.scene.add.existing(this);
 
@@ -50,7 +55,12 @@ export class NPC extends BillBoard{
             fontFamily: 'MicroChat',
             fontSize: 10
         }).setOrigin(0.5).setVisible(false);
-        this.rotateKeyTip(0, 1, 0);
+        this.availableIcon = this.scene.add.text(this.x, this.y, '!', {
+            color: Colors.Orange,
+            fontFamily: 'MicroChat',
+            fontSize: 12
+        }).setOrigin(0.5).setVisible(config.givesMissions);
+        this.rotateUI(0, 1, 0);
 
         // Key press tip offset when shown
         this.keyTipOffsetX = 20;
@@ -74,7 +84,7 @@ export class NPC extends BillBoard{
         this.interactZone.setCollidesWith(this.scene.playerCategory);
 
         EventBus.on('cameraRotated', (R, cR, sR)=>{
-            this.rotateKeyTip(cR, sR, R);
+            this.rotateUI(cR, sR, R);
         })
 
 
@@ -88,9 +98,12 @@ export class NPC extends BillBoard{
      * @param {number} R - Camera rotation in radians.
      * @private
      */
-    rotateKeyTip(cR, sR, R) {
+    rotateUI(cR, sR, R) {
         this.keyTip.x = this.keyTipOffsetX * cR - this.keyTipOffsetY * sR + this.x;
         this.keyTip.y = this.keyTipOffsetX * sR + this.keyTipOffsetY * cR + this.y;
+        this.availableIcon.x = this.availableIconOffsetX * cR - this.availableIconOffsetY * sR + this.x;
+        this.availableIcon.y = this.availableIconOffsetX * sR + this.availableIconOffsetY * cR + this.y;
+        this.availableIcon.rotation = -R;
         this.keyTip.rotation = -R;
         this.keyTipKey.x = this.keyTip.x;
         this.keyTipKey.y = this.keyTip.y;
@@ -179,7 +192,10 @@ export class NPC extends BillBoard{
         else{
             EventBus.emit("StartDialogue", "noMoreMissions", diagPosX, diagPosY);
         }
-            
+         
+        if(this.hasInteracted){
+            this.availableIcon.setVisible(false);
+        }
     }
 
 }

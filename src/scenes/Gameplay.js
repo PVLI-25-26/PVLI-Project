@@ -139,8 +139,8 @@ export default class GameplayScene extends Phaser.Scene {
             });
         })
         
-        EventBus.on('changeRoom', ()=>{
-            this.scene.restart();
+        EventBus.on('changeRoom', (data)=>{
+            this.scene.restart(data);
         })
     }
 
