@@ -13,6 +13,7 @@ export default class PauseMenuPresenter {
         // Resume
         this.view.resumeButton.on("button-clicked", () => {
             EventBus.emit("playSound", "click");
+            EventBus.emit("playSound", "pauseOff");
             this.view.scene.scene.resume("GameplayScene");
             this.view.scene.scene.stop("PauseMenu");
         });
@@ -23,7 +24,7 @@ export default class PauseMenuPresenter {
 
         // Main Menu 
         this.view.mainMenuButton.on("button-clicked", () => {
-            EventBus.emit("playSound", "click");
+            EventBus.emit("playSound", "return");
             // Notify when the player exits the game (scene onDestroy event is not enough because every room change destroys the previous room scene)
             EventBus.emit("gameExited");
             // Останавливаем паузу и геймплей, переходим в главное меню
@@ -50,7 +51,7 @@ export default class PauseMenuPresenter {
         // Back
         this.view.backButton.on("button-clicked", () => {
              EventBus.emit('stopMusic');
-            EventBus.emit("playSound", "click");
+            EventBus.emit("playSound", "return");
             this.view.toggleSettings();
         });
         this.view.backButton.on("button-hovered", () => {

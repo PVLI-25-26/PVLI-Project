@@ -25,7 +25,7 @@ export const forceFieldBuff = {
      * @returns {void}
      */
     apply: function (forceFieldValues, entity){
-        // Set properties
+        EventBus.emit("playSound", "forcefield");
 
         // Create ability effect zone
         const effectZone = entity.scene.add.zone(entity.x, entity.y);

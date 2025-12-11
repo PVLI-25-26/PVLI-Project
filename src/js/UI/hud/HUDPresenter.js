@@ -39,8 +39,11 @@ export class HudPresenter {
 
         // Minimap
         this.initializedMinimap();
+        this.mapWasOpen = true;
         this.view.scene.input.keyboard.on("keydown-M", ()=>{
             this.view.toggleMinimap();
+            EventBus.emit("playSound", this.mapWasOpen?"closeMap":"openMap");
+            this.mapWasOpen = !this.mapWasOpen;
         })
     }
 

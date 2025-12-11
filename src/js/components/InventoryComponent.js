@@ -74,9 +74,11 @@ export class InventoryComponent extends BaseComponent{
         if(ability.gold <= this.#gold){
                 this.removeGold(ability.gold);
                 EventBus.emit('abilityEquipped', ability);
+                EventBus.emit('playSound', 'coins')
             }
             else{
                 EventBus.emit('notEnoughGold');
+                EventBus.emit("playSound", 'notEnoughMoney');
             }
     }
 
@@ -84,9 +86,11 @@ export class InventoryComponent extends BaseComponent{
         if(arrow.gold <= this.#gold){
             this.removeGold(arrow.gold);
             EventBus.emit('arrowEquipped', arrow);
+            EventBus.emit('playSound', 'coins')
         }
             else {
             EventBus.emit('notEnoughGold');
+            EventBus.emit("playSound", 'notEnoughMoney');
         }
     }
 
@@ -94,9 +98,11 @@ export class InventoryComponent extends BaseComponent{
         if(trajectory.gold <= this.#gold){
             this.removeGold(trajectory.gold);
             EventBus.emit('trajectoryEquipped', trajectory);
+            EventBus.emit('playSound', 'coins')
         }
         else {
             EventBus.emit('notEnoughGold');
+            EventBus.emit("playSound", 'notEnoughMoney');
         } 
     }
 
@@ -118,7 +124,10 @@ export class InventoryComponent extends BaseComponent{
                 for(let item of this.#playerInventory){
                     totalGold += getItemGold(item);
                 }
-                this.addGold(totalGold);
+                if(totalGold > 0){
+                    EventBus.emit('playSound', 'coins')
+                    this.addGold(totalGold);
+                }
                 this.#playerInventory = [];
             }
         }

@@ -116,8 +116,8 @@ export class HudView {
     toggleMinimap(){
         this.scene.tweens.add({
             targets: [this.minimapBG, this.minimapCam, this.minimapTitle, this.minimapKeyTip],
-            x: `${this.isMinimapHidden?'+':'-'}=${this.minimapBG.width*2+25}`,
-            duration: 200,
+            x: `${this.isMinimapHidden?'+':'-'}=${this.minimapBG.width*2+250}`,
+            duration: 300,
             ease: 'Quad'
         })
         this.isMinimapHidden = !this.isMinimapHidden;

@@ -28,6 +28,7 @@ export const dashBuff = {
     apply: function (values, entity){
                 // Only player dashes (currently)
                 EventBus.emit('playerDash', values.speedIncrease);
+                EventBus.emit('playSound', 'dash');
 
                 // Set entity blend mode and tint for dash effect
                 entity.setBlendMode(Phaser.BlendModes.ADD);

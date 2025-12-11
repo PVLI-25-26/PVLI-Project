@@ -50,7 +50,7 @@ window.gabty = function(type){
 
 
 // TOGGLE DEBUG
-window.dbgTog = function(){
+window.dbg = function(){
     EventBus.emit('toggleDebug');
 }
 

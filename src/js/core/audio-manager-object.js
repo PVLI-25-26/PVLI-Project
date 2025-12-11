@@ -14,27 +14,35 @@ export default class AudioManager{
 
 		//TODO: quitar console.log
 		//FIX: la música del hub se inicia mal, se inicia en el main menu y no se inicia al cargar partida en el hub
-		EventBus.on("hubReached",()=>{
-			console.log("hubreached")
-			EventBus.emit("playMusic","HUBMusic");
-			this.onHUB = true;
-		});
-		EventBus.on("hubReset",()=>{
-			console.log("hubreset")
-			EventBus.emit("stopMusic","HUBMusic");
-			this.onHUB = false;
-		})
+		// EventBus.on("hubReached",()=>{
+		// 	console.log("hubreached")
+		// 	EventBus.emit("playMusic","HUBMusic");
+		// 	this.onHUB = true;
+		// });
+		// EventBus.on("hubReset",()=>{
+		// 	console.log("hubreset")
+		// 	EventBus.emit("stopMusic","HUBMusic");
+		// 	this.onHUB = false;
+		// })
 		EventBus.on("PlayCombatMusic",()=>{
 			if (!this.onCombat){
 				this.onCombat = true;
+				EventBus.emit("stopMusic","ForestAmbient");
+                EventBus.emit("stopMusic","lightAmbience");
 				EventBus.emit("playMusic","CombatMusic");
 			}
 		})
 		EventBus.on("roomCleared",()=>{
 			if (!this.onHUB){
-				EventBus.emit("stopMusic","CombatMusic");
+				EventBus.emit("playMusic","ForestAmbient", true);
+                EventBus.emit("playMusic","lightAmbience", true);
+				EventBus.emit("stopMusic","CombatMusic", true);
 				this.onCombat = false;
 			}
+		})
+		EventBus.on("gameExited", ()=>{
+			EventBus.emit("stopMusic","lightAmbience");
+			EventBus.emit("stopMusic","ForestAmbient");
 		})
 		EventBus.on("PlayerWalking",()=>{
 			if (!this.playerWalking){

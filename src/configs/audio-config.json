@@ -1,23 +1,45 @@
 {
   "sounds": [
-    { "key": "hover", "file": "assets/sounds/hover.mp3" },
-    { "key": "click", "file": "assets/sounds/click.wav" },
-    { "key": "bowLoad", "file": "assets/sounds/bowLoading.mp3"},
-    { "key": "arrowLand", "file": "assets/sounds/arrowLand.mp3"},
-    { "key": "arrowSwish", "file": "assets/sounds/arrowSwish.mp3"},
+    { "key": "hover", "file": "assets/sounds/UI/hover.wav" },
+    { "key": "click", "file": "assets/sounds/UI/click.wav" },
+    { "key": "return", "file": "assets/sounds/UI/return.wav" },
+    { "key": "pauseOff", "file": "assets/sounds/UI/pauseMenuOff.wav" },
+    { "key": "pauseOn", "file": "assets/sounds/UI/pauseMenuOn.wav" },
+
+    { "key": "bowLoad", "file": "assets/sounds/BowAndArrow/bowLoading.mp3"},
+    { "key": "arrowLand", "file": "assets/sounds/BowAndArrow/arrowLand.mp3"},
+    { "key": "arrowSwish", "file": "assets/sounds/BowAndArrow/arrowSwish.mp3"},
+    { "key": "switchArrows", "file": "assets/sounds/BowAndArrow/switchArrows.wav"},
+
     { "key": "enemyHurt", "file": "assets/sounds/enemyHurt.mp3"},
     { "key": "enemyDeath", "file": "assets/sounds/enemyDeath.mp3"},
     { "key": "playerHurt", "file": "assets/sounds/playerHurt.mp3"},
-    { "key": "itemCollected", "file": "assets/sounds/itemEquip.mp3"},
-	{ "key": "Steps1", "file": "assets/sounds/Steps/Steps1.wav"},
-	{ "key": "Steps2", "file": "assets/sounds/Steps/Steps2.wav"},
-	{ "key": "Steps3", "file": "assets/sounds/Steps/Steps3.wav"},
-	{ "key": "Steps4", "file": "assets/sounds/Steps/Steps4.wav"}
+
+    { "key": "itemCollected", "file": "assets/sounds/Inventory/itemEquip.mp3"},
+    { "key": "inventoryOpen", "file": "assets/sounds/Inventory/inventoryOpen.wav"},
+    { "key": "inventoryClose", "file": "assets/sounds/Inventory/inventoryClose.wav"},
+    { "key": "notEnoughMoney", "file": "assets/sounds/Inventory/notEnoughMoney.wav"},
+    { "key": "coins", "file": "assets/sounds/Inventory/coins.wav"},
+
+    { "key": "closeMap", "file": "assets/sounds/Map/closeMap.wav"},
+    { "key": "openMap", "file": "assets/sounds/Map/openMap.wav"},
+
+    { "key": "dash", "file": "assets/sounds/Abilities/Dash.mp3"},
+    { "key": "forcefield", "file": "assets/sounds/Abilities/Forcefield.mp3"},
+    
+    { "key": "dialogueText", "file": "assets/sounds/dialogue.mp3"},
+
+    { "key": "Steps1", "file": "assets/sounds/Steps/Steps1.wav"},
+    { "key": "Steps2", "file": "assets/sounds/Steps/Steps2.wav"},
+    { "key": "Steps3", "file": "assets/sounds/Steps/Steps3.wav"},
+    { "key": "Steps4", "file": "assets/sounds/Steps/Steps4.wav"},
+    { "key": "Steps4", "file": "assets/sounds/Steps/Steps4.wav"}
 
   ],
   "music": [
      { "key": "HUBMusic", "file": "assets/sounds/Music/HUB/Magical Vol4 Cryst Falls Main.wav"},
-     { "key": "mainMenuMusic", "file": "assets/sounds/Music/HUB/Magical Vol4 Cryst Falls Main.wav"},
+     { "key": "mainMenuMusic", "file": "assets/music/main_menu.mp3"},
+     { "key": "lightAmbience", "file": "assets/music/lightAmbience.mp3"},
      { "key": "CombatMusic", "file": "assets/sounds/Music/Combat/Magical Vol4 Suncursers Main.wav"},
 	 { "key": "ForestAmbient", "file": "assets/sounds/ambient.wav"}
   ]

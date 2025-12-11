@@ -74,7 +74,11 @@ export default class NPCsDialogueView extends Phaser.GameObjects.Container{
         this.CreatePortrait("PortraitTest")
         this.hideView();
     }
+    StopText(){
+        this.textBox?.stopText();
+    }
     UpdateText(){
+        this.StopText();
         if (this.textBox != null){
             this.textBox.boxText = "";
             this.textBox.text= "";

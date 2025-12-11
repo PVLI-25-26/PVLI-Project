@@ -1,4 +1,5 @@
 import Phaser from "phaser";
+import { EventBus } from "../../core/event-bus";
 
 
 export class TextBox extends Phaser.GameObjects.Text{
@@ -24,10 +25,22 @@ export class TextBox extends Phaser.GameObjects.Text{
             delay: this.speed,
             repeat: this.boxText.length,
             callback: ()=>{
+                EventBus.emit('playSound', "dialogueText");
                 this.appendText(this.boxText[currentChar],false);
                 currentChar ++;
             }
         })
+        this.soundTimer = this.scene.time.addEvent({
+            delay: this.speed*2,
+            repeat: this.boxText.length/2,
+            callback: ()=>{
+                
+            }
+        })
         
+    }
+    stopText(){
+        this.timer?.destroy()
+        this.soundTimer?.destroy()
     }
 }

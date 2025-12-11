@@ -4,6 +4,7 @@ import PauseMenuPresenter from "../js/UI/pause-menu/PauseMenuPresenter.js";
 import { SoundSceneFacade } from "../js/core/sound-facade.js";
 import showLoaderUI from "../js/UI/LoaderUI.js";
 import audioConfig from "../configs/audio-config.json";
+import { EventBus } from "../js/core/event-bus.js";
 
 export default class PauseMenu extends Phaser.Scene {
     constructor() {
@@ -44,11 +45,14 @@ export default class PauseMenu extends Phaser.Scene {
             duration: 300,
             ease: "Sine.easeInOut"
         });
+
+        EventBus.emit("playSound", "pauseOn");
     }
     
     update(){
         super.update()
         if(Phaser.Input.Keyboard.JustDown(this.keyP)){
+            EventBus.emit("playSound", "pauseOff");
             this.scene.resume("GameplayScene");
             this.scene.stop("PauseMenu");
         }

@@ -224,6 +224,7 @@ export class PlayerShootingComponent extends BaseComponent{
         if(Phaser.Input.Keyboard.JustDown(this.playerKeys.switchArrows)){
             this.#isSpecialArrowActive = !this.#isSpecialArrowActive;
             EventBus.emit('playerArrowsSwitched');
+            EventBus.emit('playSound', 'switchArrows');
         }
     }
 

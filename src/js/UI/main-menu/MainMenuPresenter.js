@@ -8,15 +8,14 @@ export default class MainMenuPresenter {
         this.view.setPresenter(this);
         this.subscribeToViewEvents();
         this.setValuesFromModel();
-
-        EventBus.emit('playMusic', 'mainMenuMusic');
+        console.log('new MainMenuPresenter');
+        EventBus.emit('playMusic', 'mainMenuMusic', true);
     }
 
     subscribeToViewEvents() {
 
 
         this.view.playButton.on("button-clicked", () => {
-            EventBus.emit('stopMusic');
             EventBus.emit("playSound", "click");
             
         });
@@ -37,7 +36,6 @@ export default class MainMenuPresenter {
         //Settings
 
         this.view.settingsButton.on("button-clicked", () => {
-            EventBus.emit('stopMusic');
             EventBus.emit("playSound", "click");
         });
         this.view.settingsButton.on("button-hovered", () => {
@@ -46,8 +44,7 @@ export default class MainMenuPresenter {
 
         // Back from settings
         this.view.backButton.on("button-clicked", () => {
-             EventBus.emit('stopMusic');
-            EventBus.emit("playSound", "click");
+            EventBus.emit("playSound", "return");
             this.view.toggleSettings();
         });
         this.view.backButton.on("button-hovered", () => {
@@ -57,8 +54,7 @@ export default class MainMenuPresenter {
         //Back From Load Game
 
          this.view.GoMenuButton.on("button-clicked", () => {
-             EventBus.emit('stopMusic');
-            EventBus.emit("playSound", "click");
+            EventBus.emit("playSound", "return");
             this.view.toggleLoadGame();
         });
         this.view.GoMenuButton.on("button-hovered", () => {
@@ -70,7 +66,7 @@ export default class MainMenuPresenter {
         
         this.view.gameSlot.forEach((element, index) => {
             element.on("button-clicked", () => {
-                EventBus.emit('stopMusic');
+                EventBus.emit('stopMusic', "mainMenuMusic");
                 EventBus.emit("playSound", "click");
                 saveDataManager.changeCurrentSave(index);
                 this.view.scene.scene.start("GameplayScene", {playerSpawn: {x: 0, y:0}});
@@ -88,7 +84,6 @@ export default class MainMenuPresenter {
 
         this.view.deleteGame.forEach((element,index)=>{
             element.on("button-clicked", () => {
-                EventBus.emit('stopMusic');
                 EventBus.emit("playSound", "click");
                 saveDataManager.deleteData(index);
             });
@@ -100,7 +95,6 @@ export default class MainMenuPresenter {
         //Save Game Files
         this.view.saveGame.forEach((element,index)=>{
             element.on("button-clicked", () => {
-                EventBus.emit('stopMusic');
                 EventBus.emit("playSound", "click");
                 saveDataManager.saveDataDocument(index);;
             });
@@ -112,7 +106,6 @@ export default class MainMenuPresenter {
         //Load Game Files
         this.view.loadGameFile.forEach((element,index)=>{
             element.on("button-clicked", () => {
-                EventBus.emit('stopMusic');
                 EventBus.emit("playSound", "click");
                 saveDataManager.loadDataDocument(index);           
             });

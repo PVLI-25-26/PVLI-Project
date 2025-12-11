@@ -78,8 +78,6 @@ export default class GameplayScene extends Phaser.Scene {
         this.logger.log('GAMEPLAY', 1, 'Creating Sound facade...');
         this.plugins.get('soundfacade').initializeSoundFacade(this);
 
-
-		EventBus.emit("playMusic","ForestAmbient");
         // Lock mouse pointer when scene starts and when scene is resumed
         this.inputFacade.lockPointer();
         this.events.on('resume', this.inputFacade.lockPointer, this);

@@ -17,6 +17,7 @@ export default events  = {
 	 * Goes to the next page in the dialogues array
 	 */
     NEXT_PAGE : () =>{
+		EventBus.emit("playSound", "click")
         EventBus.emit('NextPageDialogue');
     },
 	/**

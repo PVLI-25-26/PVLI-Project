@@ -79,14 +79,9 @@ export class SoundSceneFacade extends Phaser.Plugins.BasePlugin{
     subscribeToEvents() {
         this.scene.events.on('destroy', () => this.destroy());
 
-        
-        // audioConfig.sounds.forEach(s => {
-        //     this.sounds[s.key] = this.scene.sound.add(s.key);
-        // });
-
-        // audioConfig.music.forEach(m => {
-        //     this.music[m.key] = this.scene.sound.add(m.key, { loop: m.loop, volume: m.volume });
-        // });
+        EventBus.off("playSound", this.playSound, this);
+        EventBus.off("playMusic", this.playMusic, this);
+        EventBus.off("stopMusic", this.stopMusic, this);
 
         EventBus.on("playSound", this.playSound, this);
         EventBus.on("playMusic", this.playMusic, this);
@@ -104,7 +99,6 @@ export class SoundSceneFacade extends Phaser.Plugins.BasePlugin{
         });
 
         EventBus.on("sfxVolumeChanged", (value) => {
-            // Object.values(this.sounds).forEach((sound) => sound.setVolume(value));
             this.SFXVolume = value;
         });
     }
@@ -115,8 +109,6 @@ export class SoundSceneFacade extends Phaser.Plugins.BasePlugin{
      * @returns {void}
      */
     playSound(key) {
-        // const sound = this.sounds[key];
-        // if (sound) sound.play();
         this.scene.sound.play(key, {volume: this.SFXVolume});
     }
 
@@ -126,10 +118,6 @@ export class SoundSceneFacade extends Phaser.Plugins.BasePlugin{
      * @returns {void}
      */
     stopSound(key) {
-        // const sound = this.sounds[key];
-        // if (sound) {
-        //     sound.stop();
-        // }
         this.scene.sound.stopByKey(key);
     }
 
@@ -139,43 +127,34 @@ export class SoundSceneFacade extends Phaser.Plugins.BasePlugin{
      * @param {string} key - The key of the music track to play
      * @returns {void}
      */
-    playMusic(key) {
-		console.log(key)
-        // const music = this.music[key];
-        // Reproduce nueva musica
-        this.currentMusicKey = key;
-        this.scene.sound.play(key, {volume: 0});
-        const music = this.scene.sound.get(key);
-        var ease_in = this.scene.tweens.add({
-            targets: music,
-            duration: 600,
-            ease: Phaser.Math.Easing.Sine.In,
-            volume: this.MusicVolume
-        })
+    playMusic(key, loop) {
+		console.trace(key)
+        if(!this.scene.sound.isPlaying(key)) this.scene.sound.play(key, {volume: this.MusicVolume, loop: loop});
     }
 
     /**
      * Stops the currently playing music, if any
      * @returns {void}
      */
-    stopMusic(key) {
-        const music = this.scene.sound.get(key?key:this.currentMusicKey);
-
-        if(this.currentMusicKey == key){
-            this.currentMusicKey = null;
+    stopMusic(key, doFade) {
+        console.trace(doFade)
+        if(!doFade){
+            this.scene.sound.stopByKey(key);
+            return;
         }
-
-        if (music != null) {
-			var ease_out = this.scene.tweens.add({
-				targets: music,
-				duration: 600,
-				ease: Phaser.Math.Easing.Sine.Out,
-				volume: 0.01,
-				onComplete:()=>{
- 	    	    	music.stop();
-				}
-			})
-       }
+        const music = this.scene.sound.get(key);
+        if(music){
+            var ease_out = this.scene.tweens.add({
+                targets: music,
+                duration: 600,
+                ease: Phaser.Math.Easing.Sine.Out,
+                volume: 0.01,
+                onComplete:()=>{
+                    console.log('music fade')
+                    music.stop();
+                }
+            });
+        }
     }
 
     /**
