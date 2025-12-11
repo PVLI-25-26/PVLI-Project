@@ -203,7 +203,7 @@ export class Dungeon extends Phaser.Plugins.BasePlugin {
             }
         })
 
-        EventBus.on("changeRoom", this.changeRoom, this);
+        EventBus.on("changeRoom", (data)=>this.changeRoom(data.sceneName), this);
 
         EventBus.on("spawnObstacle", (data)=>createObstacle(scene, data))
         EventBus.on("spawnItem", (data)=>createItem(scene, data, this.roomsExplored.length))

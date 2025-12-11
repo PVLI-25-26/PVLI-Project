@@ -379,6 +379,14 @@ export class PlayerShootingComponent extends BaseComponent{
         this.#damageMultiplier = value;
     }
 
+    isSpecialArrowActive(){
+        return this.#isSpecialArrowActive;
+    }
+
+    setSpecialArrowActive(value){
+        this.#isSpecialArrowActive = value;
+    }
+
     destroy() {
         super.destroy();
         EventBus.off('cameraRotated', this);
