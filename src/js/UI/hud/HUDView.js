@@ -75,6 +75,13 @@ export class HudView {
         this.scene.hudLayer.add(this.minimapTitle);
         this.minimapTitle.setScrollFactor(0);
 
+        this.minimapKeyTip = this.scene.add.text(this.minimapTitle.x + this.minimapTitle.width+10, this.minimapTitle.y, "[M]", {
+                color: Colors.White,
+                fontSize: 10,
+                fontFamily: "MicroChat"
+            }).setOrigin(0,1)
+        this.scene.hudLayer.add(this.minimapKeyTip);
+        this.minimapKeyTip.setScrollFactor(0);
 
         this.minimapBG = this.scene.add.nineslice(minimapX-6, minimapY-6, "UIbackground", 0, (minimapWidth+12)/2, (minimapHeight+12)/2, 3,3,3,3).setScale(2).setOrigin(0);
         this.scene.hudLayer.add(this.minimapBG);
@@ -108,7 +115,7 @@ export class HudView {
 
     toggleMinimap(){
         this.scene.tweens.add({
-            targets: [this.minimapBG, this.minimapCam, this.minimapTitle],
+            targets: [this.minimapBG, this.minimapCam, this.minimapTitle, this.minimapKeyTip],
             x: `${this.isMinimapHidden?'+':'-'}=${this.minimapBG.width*2+25}`,
             duration: 200,
             ease: 'Quad'
@@ -262,6 +269,14 @@ export class HudView {
                 .setScale(2);
             this.scene.hudLayer.add(this.abilityCooldown);
             this.abilityCooldown.setScrollFactor(0);
+
+            const keyTip = this.scene.add.text(x-8, y-25, "[Spacebar]", {
+                color: Colors.White,
+                fontSize: 10,
+                fontFamily: "MicroChat"
+            })
+            this.scene.hudLayer.add(keyTip);
+            keyTip.setScrollFactor(0);
         }
 
         if(this.abilitySprite){
@@ -338,6 +353,15 @@ export class HudView {
             this.specialArrowBackground.setScale(2);
             this.scene.hudLayer.add(this.specialArrowBackground);
             this.specialArrowBackground.setScrollFactor(0);
+
+            // Key tip
+            const keyTip = this.scene.add.text(this.unselectedArrowX + (this.selectedArrowX-this.unselectedArrowX)/2, this.unselectedArrowY + (this.selectedArrowY-this.unselectedArrowY)/2, "[R]", {
+                color: Colors.White,
+                fontSize: 10,
+                fontFamily: "MicroChat"
+            }).setOrigin(0.5, 0.5)
+            this.scene.hudLayer.add(keyTip);
+            keyTip.setScrollFactor(0);
         }
 
         
