@@ -2,6 +2,7 @@ import dungeonConfig from "../../../configs/Dungeon/dungeon.json";
 import { EventBus } from "../../core/event-bus.js";
 import Phaser from "phaser";
 import { getCustomTiledProperty, getTiledMapLayer } from "../../core/tiled-parser.js";
+import saveDataManager from "../../core/save-data-manager.js";
 
 export class HudModel {
     constructor(scene) {
@@ -13,6 +14,7 @@ export class HudModel {
         this.playerGold = 0;
         this.playerEquippedAbility = null;
         this.playerEquippedArrow = null;
+        this.isSpecialArrowEquipped;
         this.activeMissions = [];
         this.completedMissions = [];
         this.enemies = new Map(); // enemy => { x, y, maxHP, currentHP, previousHP }
@@ -35,6 +37,8 @@ export class HudModel {
 
         // Arrows
         EventBus.on('arrowEquipped', this.onPlayerArrowEquipped, this);
+        EventBus.on('playerArrowsSwitched', this.onPlayerArrowsSwitched, this);
+        this.isSpecialArrowEquipped = saveDataManager.getData("isSpecialArrowActive");
 
         // Missions
         EventBus.on('missionsInitialized', this.onMissionsInitialized, this);
@@ -156,6 +160,11 @@ export class HudModel {
     onPlayerArrowEquipped(arrow){
         this.playerEquippedArrow = arrow;
         EventBus.emit('hudPlayerEquippedArrow');
+    }
+
+    onPlayerArrowsSwitched(){
+        this.isSpecialArrowEquipped = !this.isSpecialArrowEquipped;
+        EventBus.emit('hudPlayerArrowsSwitched');
     }
 
     onMissionsInitialized(data){

@@ -4,6 +4,7 @@ import GrassArrow from "../Arrows/grass-arrow.json"
 import GasArrow from "../Arrows/gass-arrow.json"
 import dashAbility from "../Abilities/dash-config.json"
 import forceField from "../Abilities/forcefield-config.json"
+import MediumTrajectory from "../Trajectories/medium-trajectory.json"
 
 
 var events;
@@ -45,6 +46,15 @@ export default events  = {
 	 */
 	BUY_GAS_ARROW : () =>{
 		EventBus.emit("arrowBought", GasArrow);
+		EventBus.emit("StopDialogue");
+	},
+
+	
+	/**
+	 * Tries to buy a medium trajectory and stop the dialogue
+	 */
+	BUY_MEDIUM_TRAJECTORY : () =>{
+		EventBus.emit("trajectoryBought", MediumTrajectory);
 		EventBus.emit("StopDialogue");
 	},
 

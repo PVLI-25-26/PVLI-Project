@@ -329,6 +329,39 @@
 			}
 		]
 	},
+
+    "Medium-Trajectory":{
+		"dialogue" : [
+			{
+				"text": "Improve your bow to shoot arrows with a medium trajectory, allowing you to hit targets at a greater distance.",
+				"options":[2]
+			},
+			{
+				"text": "Do you want to buy a medium trajectory upgrade? Cost: 120 coins",
+				"options":[0, 1]
+			}
+		],
+		"speed" : 1,
+		"npcName" : "Bow Upgrade", "portrait":"bow",
+		"userOptions":[
+			{
+				"label" : "Buy",
+				"event" : "BUY_MEDIUM_TRAJECTORY",
+				"color" : "Green"
+			},
+			{
+				"label" : "Exit",
+				"event" : "END",
+				"color" : "Red"
+			},
+			{
+				"label" : "Next",
+				"event" : "NEXT_PAGE",
+				"color" : "White"
+			}
+		]
+	},
+
 	"Dash-Ability":{
 		"dialogue" : [
 			{

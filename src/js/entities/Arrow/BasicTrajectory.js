@@ -62,9 +62,11 @@ export class BasicTrajectory {
      * @param {number} gravityStrength - Gravity strength to apply to the arrow.
      * @param {Phaser.Scene} scene - Scene reference for time events and logging. 
      */
-    constructor(gravityStrength, scene){
-        this.#gravityStr = gravityStrength;
+    constructor(config, scene){
         this.#scene = scene;
+        this.#gravityStr = config.gravity;
+        this.#airDrag = config.drag;
+        this.#maxAirTime = config.maxFlightTime;
     }
 
     /**

@@ -3,6 +3,7 @@ import { EventBus } from "../core/event-bus";
 import Pool from "../core/pool";
 import { Arrow } from "../entities/Arrow/Arrow";
 import { BasicTrajectory } from "../entities/Arrow/BasicTrajectory";
+import shortTrajectoryConfig from "../../configs/Trajectories/short-trajectory.json";
 import { DepthSortedSprite } from "../entities/DepthSortedSprite";
 import basicArrow from "../../configs/Arrows/basic-arrow.json";
 
@@ -70,7 +71,7 @@ export class PlayerShootingComponent extends BaseComponent{
     /**
      * @type {Trajectory} The currently equipped trajectory
      */
-    #equippedTrajectory = new BasicTrajectory(0.05, this.gameObject.scene);
+    #equippedTrajectory = new BasicTrajectory(shortTrajectoryConfig, this.gameObject.scene);
 
     /**
      * @type {Arrow} The currently equipped arrow
@@ -148,8 +149,9 @@ export class PlayerShootingComponent extends BaseComponent{
             this.#equippedArrow = arrow;
         })
         // Equip trajectory when bought
-        EventBus.on('trajectoryEquipped', (trajectory)=>{
-            this.#equippedTrajectory = trajectory;
+        EventBus.on('trajectoryEquipped', (config)=>{
+            this.#equippedTrajectory = new BasicTrajectory(config, this.gameObject.scene);
+            console.log("Equipped trajectory:", config);
         })
 
         // Move aim with mouse
@@ -377,6 +379,14 @@ export class PlayerShootingComponent extends BaseComponent{
      */
     setDamageMultiplier(value){
         this.#damageMultiplier = value;
+    }
+
+    isSpecialArrowActive(){
+        return this.#isSpecialArrowActive;
+    }
+
+    setSpecialArrowActive(value){
+        this.#isSpecialArrowActive = value;
     }
 
     destroy() {

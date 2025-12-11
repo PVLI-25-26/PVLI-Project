@@ -141,6 +141,23 @@
         },
         "dialogueName": "Gass-Arrow"
     },
+    {
+        "key": "Medium-Trajectory",
+        "billboardConfig":{
+            "texture":"bow",
+            "scale":3
+        },
+        "physicsConfig":{
+            "shape": {
+                "type": "rectangle",
+                "width": 10,
+                "height": 10
+            },
+            "isStatic": true,
+            "isSensor": true
+        },
+        "dialogueName": "Medium-Trajectory"
+    },
 	{
         "key": "Dash-Ability",
         "billboardConfig":{

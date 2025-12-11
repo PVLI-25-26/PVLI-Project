@@ -1,60 +1,31 @@
 ---
 dg-publish: true
 ---
-**Set Arrow Path Modifier** – a mechanic that allows the player to alter the trajectory and behavior of projectiles after they are fired by selecting special type of bow.
+**Set Arrow Path Modifier** – a mechanic that allows the player to alter the trajectory A core mechanic that defines the ballistic properties of all fired projectiles by selecting different bow types with distinct physical characteristics.
+
 ## Description
-The player [[Shop|can equip]] one active arrow path modifier (bow type) before entering the magical realm.
-This modifier changes the flight pattern of all fired projectiles, overriding the default arched trajectory and adding unique behavior.  
-Modifiers can alter the number of projectiles, their spread, bounce behavior, and travel distance. It is used to adjust the area of effect, control coverage, or introduce tactical variety in ranged combat.
+The player [[Shop|can equip]] one bow type before entering the magical realm. This selection determines the fundamental trajectory characteristics of all arrows fired during that expedition. Unlike special ability modifiers, these bows alter the core physics of arrow flight through variations in gravity, air resistance, and maximum range. The system provides a tiered progression from close-range to long-range combat styles, allowing players to adapt their approach to different dungeon layouts and enemy encounters.
+## Available Trajectories
 
-Only one path modifier can be active before [[Enter and exit the dungeon|enter the dungeon]], encouraging players to adapt their loadout to different enemy types and environments.
-## Available Modifiers
-- [[#Hunter’s Bow – Triple Shot]]
-- [[#Falcon Bow – Long Shot]]
-- [[#Rebound Bow – Ricochet]]
-- [[#Piercer Bow – Piercing Shot]]
-- [[#Seeker Bow – Homing Shot]]
-- [[#Graviton Bow – Magnet Shot]]
-- [[#Specter Bow – Phantom Shot]]
-### Hunter’s Bow – Triple Shot
-Fires **three arrows** simultaneously in a **spread formation** (angled slightly outward).  
-Each individual arrow deals **reduced damage**, but the total output can be high if all arrows hit the target.  
-This bow excels in close to mid-range combat, ideal for dealing with groups of enemies.
-![[Pasted image 20251022152142.png]]
+### Short Bow (Starter Equipment)
+**High arc, short range** – The default bow with pronounced gravitational pull and significant air resistance.  
+Arrows follow a **steep parabolic path** ideal for **confined spaces** and **close-quarters combat**. The rapid descent makes it less affected by camera rotation changes, providing consistency in tight dungeon corridors.  
+Perfect for new players learning the basics and for rooms with low ceilings or narrow layouts.
 
-### Falcon Bow – Long Shot
-**Increases the initial velocity** of the arrow and reduces its trajectory curvature, allowing it to travel **much farther** in a **straighter line**.  
-This modifier is best for **long-distance precision**, letting skilled players snipe enemies before they can close in.
-![[Pasted image 20251022152227.png]]
+![[shortTrajectoryExample.png]]
 
-### Rebound Bow – Ricochet
-Arrows gain the ability to **bounce** off surfaces (walls, objects, possibly enemies) **multiple times** before losing momentum.  
-Each bounce slightly reduces velocity and damage.  
-Can be used to hit enemies hiding behind cover or around corners, rewarding players who master geometry and angles.
-![[Pasted image 20251022152458.png]]
+### Medium Bow (Balanced Upgrade)
+**Standard arc, versatile range** – A balanced upgrade offering moderate gravity and air resistance.  
+Arrows travel with a **classic parabolic trajectory** suitable for **most combat situations**. This bow excels in **medium-distance engagements** and provides reliable performance across varied dungeon room designs.  
+Acquired through early-game progression as the first meaningful upgrade to the player's arsenal.
+![[mediumTrajectoryExample.png]]
 
-### Piercer Bow – Piercing Shot
-Arrows **do not stop upon impact** and can pass through multiple enemies in a line.  
-This makes it especially effective against **dense enemy formations** or narrow corridors.  
-Each consecutive hit deals **reduced damage**.  
-Implementation-wise, this can be achieved by temporarily disabling collision for a few frames after the first impact.
-![[Pasted image 20251022152647.png]]
-
-### Seeker Bow – Homing Shot
-After an arrow **loses altitude** and would normally **hit the ground**, it **locks onto the nearest target’s last known position** and performs an additional **dash** toward it before stopping.
-The trade-off is **reduced base damage** due to trajectory correction.  
-![[Pasted image 20251022153003.png]]
-
-### Graviton Bow – Magnet Shot
-After landing, the arrow **generates a magnetic field**, slowly pulling in nearby **enemies, consumables, or dropped arrows**.  
-This allows the player to **control enemy positioning** and simplify item retrieval.  
-Perfect for crowd control or utility builds, offering both offensive and supportive benefits.
-![[Pasted image 20251022153714.png]]
-
-### Specter Bow – Phantom Shot
-Arrows **phase through obstacles**, passing through **one wall or shield** before dissipating.  
-This enables the player to **hit enemies hiding behind cover**, introducing a tactical advantage in complex environments.  
-However, the **ammo count is reduced**, so player can't just spam all his arrows through the walls.
-![[Pasted image 20251022153931.png]]
+### Long Bow (Precision Weapon)
+**Shallow arc, extended range** – An advanced bow with minimal gravitational effect and reduced air resistance.  
+Arrows maintain a **flatter, extended trajectory** that travels **much farther** in a **near-straight line**. This allows for **long-distance precision shots** and effective sniping in open-area encounters.
+![[longTrajectoryExample.png]]
 ## Related Systems
+
 - [[Combat]]
+- [[Shop]]
+- [[Missions]]

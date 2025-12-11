@@ -4,6 +4,9 @@ import grassArrow from "../configs/Arrows/grass-arrow.json";
 import gasArrow from "../configs/Arrows/gass-arrow.json";
 import dashAbility from "../configs/Abilities/dash-config.json";
 import forcefieldAbility from "../configs/Abilities/forcefield-config.json";
+import shortTrajectory from "../configs/Trajectories/short-trajectory.json";
+import mediumTrajectory from "../configs/Trajectories/medium-trajectory.json";
+import largeTrajectory from "../configs/Trajectories/large-trajectory.json";
 import dungeonConfig from "../configs/Dungeon/dungeon.json";
 import { getTiledMapLayer } from "../js/core/tiled-parser.js";
 
@@ -22,8 +25,19 @@ const arrows = {
     grass: grassArrow,
     gas: gasArrow
 }
+
+const trajectories = {
+    short: shortTrajectory,
+    medium: mediumTrajectory,
+    large: largeTrajectory
+}
+
 window.garrw = function(type){
     EventBus.emit('arrowEquipped', arrows[type]);
+}
+
+window.gtrj = function(type){
+    EventBus.emit('trajectoryEquipped', trajectories[type]);
 }
 
 const abilities = {
@@ -48,12 +62,12 @@ dungeon.forEach((room)=>{
     roomNameToID[room.name] = room.id;
 })
 
-window.tp = function(id){
+window.tp = function(id, x, y){
     if(typeof id == "number"){
         EventBus.emit('changeRoom', id);
     }
     else if(typeof id == "string"){
-        EventBus.emit('changeRoom', roomNameToID[id]);
+        EventBus.emit('changeRoom', {sceneName: roomNameToID[id], playerSpawn: {x: x, y: y}});
     }
 }
 

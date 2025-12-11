@@ -1,0 +1,5 @@
+{
+    "gravity": 0.09,
+    "drag": 0.09,
+    "maxFlightTime": 350
+}
