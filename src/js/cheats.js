@@ -63,3 +63,17 @@ window.rooms = function(){
         console.log(`Name: ${room.name} => ${room.id}`);
     })
 }
+
+
+// SPAWN STUFF
+window.obst = function(key, x, y, r){
+    EventBus.emit("spawnObstacle", {type: key, x: x, y: y, rotation: r});
+}
+
+window.item = function(key, x, y){
+    EventBus.emit("spawnItem", {type: key, x: x, y: y});
+}
+
+window.enmy = function(key, x, y){
+    EventBus.emit("spawnEnemy", {type: key, x: x, y: y});
+}

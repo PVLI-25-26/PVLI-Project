@@ -205,6 +205,10 @@ export class Dungeon extends Phaser.Plugins.BasePlugin {
 
         EventBus.on("changeRoom", this.changeRoom, this);
 
+        EventBus.on("spawnObstacle", (data)=>createObstacle(scene, data))
+        EventBus.on("spawnItem", (data)=>createItem(scene, data, this.roomsExplored.length))
+        EventBus.on("spawnEnemy", (data)=>createEnemy(scene, data))
+
         // Get current dungeon room
         const room = this.#rooms.get(this.currentRoomKey);
         // Read JSON object to populate scene
