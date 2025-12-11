@@ -294,12 +294,18 @@ export class HudView {
         })
     }
 
-    createArrowIndicators(specialArrowTexture){
+    createArrowIndicators(specialArrowTexture, isSpecialArrowActive){
+        const normalArrwX = isSpecialArrowActive ? this.unselectedArrowX : this.selectedArrowX
+        const normalArrwY = isSpecialArrowActive ? this.unselectedArrowY : this.selectedArrowY
+        const specialArrwX = isSpecialArrowActive ? this.selectedArrowX : this.unselectedArrowX
+        const specialArrwY = isSpecialArrowActive ? this.selectedArrowY : this.unselectedArrowY
+
+        this.isNormalArrowSelected = !isSpecialArrowActive;
 
         // Create normal arrow background, special arrow background, and normal arrowsprite (these never change)
         if(!this.normalArrowBackground){
             // Normal arrow BG
-            this.normalArrowBackground = new Button(this.scene, this.selectedArrowX, this.selectedArrowY, null, 40, 40, null, {
+            this.normalArrowBackground = new Button(this.scene, normalArrwX, normalArrwY, null, 40, 40, null, {
                 texture: 'UIbackground',
                 frame: 0,
                 leftWidth: 3,
@@ -315,19 +321,20 @@ export class HudView {
             this.normalArrowSprite = this.scene.add.sprite(this.normalArrowBackground.x+this.normalArrowBackground.buttonNineslice.width, this.normalArrowBackground.y+this.normalArrowBackground.buttonNineslice.height, 'arrow', 0)
                 .setAngle(-45)
                 .setOrigin(0.5)
-                .setScale(2);
+                .setScale(2)
+                .setDepth(this.normalArrowBackground.depth + 0.1);
             this.scene.hudLayer.add(this.normalArrowSprite);
             this.normalArrowSprite.setScrollFactor(0);
 
             // Special arrow BG
-            this.specialArrowBackground = new Button(this.scene, this.unselectedArrowX, this.unselectedArrowY, null, 40, 40, null, {
+            this.specialArrowBackground = new Button(this.scene, specialArrwX, specialArrwY, null, 40, 40, null, {
                 texture: 'UIbackground',
                 frame: 0,
                 leftWidth: 3,
                 rightWidth: 3,
                 topHeight: 3,
                 bottomHeight: 3
-            }).setDepth(this.normalArrowBackground.depth-10);
+            }).setDepth(isSpecialArrowActive ? this.normalArrowBackground.depth+10 : this.normalArrowBackground.depth-10);
             this.specialArrowBackground.setScale(2);
             this.scene.hudLayer.add(this.specialArrowBackground);
             this.specialArrowBackground.setScrollFactor(0);
@@ -351,14 +358,12 @@ export class HudView {
         this.isNormalArrowSelected = !this.isNormalArrowSelected;
 
         // Update elements depths
-        if(!this.isNormalArrowSelected){
-            this.specialArrowBackground.depth += 11;
-            if(this.specialArrowSprite) this.specialArrowSprite.depth = this.specialArrowBackground.depth+0.1;
-        }
-        else{
-            this.specialArrowBackground.depth -= 11;
-            if(this.specialArrowSprite) this.specialArrowSprite.depth = this.specialArrowBackground.depth+0.1;
-        }
+        const normalArrowDepth = this.normalArrowBackground.depth;
+        const specialArrowDepth = this.specialArrowBackground.depth;
+        this.specialArrowBackground.depth = normalArrowDepth;
+        if(this.specialArrowSprite) this.specialArrowSprite.depth = this.specialArrowBackground.depth+0.1;
+        this.normalArrowBackground.depth = specialArrowDepth;
+        if(this.normalArrowSprite) this.normalArrowSprite.depth = this.normalArrowBackground.depth+0.1;
 
         // Tween elements
         this.scene.tweens.add({

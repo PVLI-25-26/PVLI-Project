@@ -1,6 +1,7 @@
 import { EventBus } from "../../core/event-bus.js";
 import { worldToScreen } from "../../core/world-screen-space.js";
 import Colors from "../../../configs/colors-config.js";
+import saveDataManager from "../../core/save-data-manager.js";
 
 export class HudPresenter {
     constructor(view, model) {
@@ -27,7 +28,7 @@ export class HudPresenter {
 
         // Arrows
         EventBus.on('hudPlayerEquippedArrow', this.onPlayerEquippedArrow, this);
-        EventBus.on('playerArrowsSwitched', this.onPlayerArrowsSwitched, this);
+        EventBus.on('hudPlayerArrowsSwitched', this.onPlayerArrowsSwitched, this);
 
         // Missions
         EventBus.on('hudMissionsInitialized', this.onMissionsInitialized, this);
@@ -153,7 +154,7 @@ export class HudPresenter {
     }
 
     onPlayerEquippedArrow(){
-        this.view.createArrowIndicators(this.model.playerEquippedArrow?.texture);
+        this.view.createArrowIndicators(this.model.playerEquippedArrow?.texture, this.model.isSpecialArrowEquipped);
     }
 
     onPlayerArrowsSwitched(){

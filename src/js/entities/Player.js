@@ -62,6 +62,7 @@ export class Player extends BillBoard {
             saveDataManager.setData("playerAbility", this.abilityController.getCurrentAbility());
             saveDataManager.setData("playerArrowEffect", this.shootController.getArrowEffect());
             //saveDataManager.setData("playerArrowTrajectory", this.shootController.getArrowTrajectory());
+            saveDataManager.setData("isSpecialArrowActive", this.shootController.isSpecialArrowActive());
             saveDataManager.saveCurrentData()
         });
 
@@ -96,6 +97,7 @@ export class Player extends BillBoard {
         this.shootController = new PlayerShootingComponent(this, this.config.minShootPower, this.config.maxShootPower, this.config.powerIncreaseSpeed); // TODO: Refactor parameters to use separate config object
         this.shootController.setArrowEffect(saveDataManager.getData("playerArrowEffect"));
         this.shootController.setArrowTrajectory(saveDataManager.getData("playerArrowTrajectory"));
+        this.shootController.setSpecialArrowActive(saveDataManager.getData("isSpecialArrowActive"));
 
         // Add DamageableComponent
         const damageable = new DamageableComponent(this, 
