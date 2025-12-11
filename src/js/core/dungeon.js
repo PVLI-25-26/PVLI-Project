@@ -203,6 +203,8 @@ export class Dungeon extends Phaser.Plugins.BasePlugin {
             }
         })
 
+        EventBus.on("changeRoom", this.changeRoom, this);
+
         // Get current dungeon room
         const room = this.#rooms.get(this.currentRoomKey);
         // Read JSON object to populate scene

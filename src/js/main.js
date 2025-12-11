@@ -45,7 +45,3 @@ const config = {
 
 // Make game instance
 new Phaser.Game(config);
-
-
-
-

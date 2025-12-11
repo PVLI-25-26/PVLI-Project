@@ -49,6 +49,8 @@ export default class GameplayScene extends Phaser.Scene {
         // Remove all event listeners in Event Bus (This is a quick fix to not unsubscribing from events on entity destruction, we should have done it the other way)
         EventBus.removeAllListeners();
 
+        EventBus.on("toggleDebug", this.toggleDebug, this);
+
 		var audioManager = new AudioManager();
 
         // Create input facade and lock pointer
@@ -97,11 +99,6 @@ export default class GameplayScene extends Phaser.Scene {
             this.scene.pause();
         });
 
-        // Show debug with [U]
-        this.input.keyboard.on("keydown-U", () => {
-            this.toggleDebug();
-        });
-
         // Create physics categories
         this.obstaclesCategory = 1 << 0;
         this.enemiesCategory = 1 << 1;
@@ -142,7 +139,9 @@ export default class GameplayScene extends Phaser.Scene {
             });
         })
         
-        
+        EventBus.on('changeRoom', ()=>{
+            this.scene.restart();
+        })
     }
 
     /**
