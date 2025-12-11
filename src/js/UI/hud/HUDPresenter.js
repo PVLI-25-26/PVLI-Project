@@ -10,6 +10,7 @@ export class HudPresenter {
         // Health bars
         EventBus.on('hudPlayerInitialized', this.onPlayerInitialized, this);
         EventBus.on('hudEnemyAdded', this.onEnemyAdded, this);
+        EventBus.on('hudBossAdded', this.onBossAdded, this);
         EventBus.on('hudPlayerHealthChanged', this.onPlayerHealthChanged, this);
         EventBus.on('hudEnemyHealthChanged', this.onEnemyHealthChanged, this);
         EventBus.on('hudEnemyPositionUpdated', this.onEnemyPositionUpdated, this);
@@ -34,12 +35,26 @@ export class HudPresenter {
         EventBus.on('hudMissionCompleted', this.onMissionComplete, this);
         EventBus.on('hudMissionRemoved', this.onMissionRemoved, this);
         EventBus.on('missionProgressUpdated', this.onMissionProgressUpdated, this);
+
+        // Minimap
+        this.initializedMinimap();
+        this.view.scene.input.keyboard.on("keydown-M", ()=>{
+            this.view.toggleMinimap();
+        })
+    }
+
+    initializedMinimap(){
+        this.view.createMinimap(this.model.rooms, this.model.paths, this.model.currentRoomID)
     }
 
     onPlayerInitialized() {
         this.view.createPlayerHealthBar();
         
-        this.setInitialHealthBarValue();
+        this.setInitialPlayerHealthBarValue();
+    }
+
+    onBossAdded() {
+        this.view.createBossHealthBar();
     }
 
     onEnemyAdded(enemy) {
@@ -73,13 +88,21 @@ export class HudPresenter {
         this.view.shakeGold();
     }
 
+
     onEnemyHealthChanged(enemy) {
         const normalizedHP = this.model.enemies.get(enemy).currentHP / this.model.enemies.get(enemy).maxHP;
         const previousNormalizedHP = this.model.enemies.get(enemy).previousHP / this.model.enemies.get(enemy).maxHP;
 
         const barColor = normalizedHP < previousNormalizedHP ?
         Colors.RedHex : Colors.GreenHex;
-        this.view.enemyHealthBars.get(enemy).setValue(normalizedHP, barColor);
+        let healthBar = null;
+        if (enemy.type == 'enemy') {
+            healthBar = this.view.enemyHealthBars.get(enemy);
+        }
+        else if (enemy.type == 'boss') {
+            healthBar = this.view.bossHealthBar;
+        }
+        healthBar.setValue(normalizedHP, barColor);
 
         const mainCamera = this.view.scene.cameras.main;
         const screenPos = worldToScreen(enemy.x, enemy.y, mainCamera);
@@ -117,7 +140,7 @@ export class HudPresenter {
         }
     }
 
-    setInitialHealthBarValue() {
+    setInitialPlayerHealthBarValue() {
         this.view.playerHealthBar.setValue(this.model.playerCurrentHP / this.model.playerMaxHP);
     }
 

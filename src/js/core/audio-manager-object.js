@@ -12,12 +12,15 @@ export default class AudioManager{
 		
 		this.steps = ["Steps1", "Steps2", "Steps3", "Steps4"];
 
-
+		//TODO: quitar console.log
+		//FIX: la música del hub se inicia mal, se inicia en el main menu y no se inicia al cargar partida en el hub
 		EventBus.on("hubReached",()=>{
+			console.log("hubreached")
 			EventBus.emit("playMusic","HUBMusic");
 			this.onHUB = true;
 		});
 		EventBus.on("hubReset",()=>{
+			console.log("hubreset")
 			EventBus.emit("stopMusic","HUBMusic");
 			this.onHUB = false;
 		})

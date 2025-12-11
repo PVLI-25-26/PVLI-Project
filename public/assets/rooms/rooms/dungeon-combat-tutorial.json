@@ -1,4 +1,5 @@
-{ "compressionlevel":-1,
+{ "backgroundcolor":"#4f4a45",
+ "compressionlevel":-1,
  "height":20,
  "infinite":true,
  "layers":[
@@ -243,7 +244,7 @@
                 {
                  "height":0,
                  "id":90,
-                 "name":"Golem",
+                 "name":"Boss",
                  "point":true,
                  "properties":[
                         {
@@ -254,19 +255,19 @@
                         {
                          "name":"state",
                          "type":"string",
-                         "value":"patrol"
+                         "value":"idle"
                         }],
                  "rotation":0,
-                 "type":"golem",
+                 "type":"boss",
                  "visible":true,
                  "width":0,
                  "x":141.333333333333,
                  "y":2.66666666666634
-                },
-              {
+                }, 
+                {
                  "height":0,
                  "id":91,
-                 "name":"Slime",
+                 "name":"Dryad",
                  "point":true,
                  "properties":[
                         {
@@ -277,10 +278,10 @@
                         {
                          "name":"state",
                          "type":"string",
-                         "value":"patrol"
+                         "value":"idle"
                         }],
                  "rotation":0,
-                 "type":"slime",
+                 "type":"dryad",
                  "visible":true,
                  "width":0,
                  "x":151.333333333333,

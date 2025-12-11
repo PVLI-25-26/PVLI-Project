@@ -193,7 +193,7 @@ export class Dungeon extends Phaser.Plugins.BasePlugin {
 
         // listen to when an enemy is killed to removeit from room instance data
         EventBus.on('entityDied', (entity)=>{
-            if(entity.type == 'enemy')
+            if(entity.type == 'enemy' || entity.type == 'boss')
             {
                 this.removeEnemyFromCurrentRoom(entity.id)
                 this.#roomEnemiesCounter--;
@@ -202,6 +202,12 @@ export class Dungeon extends Phaser.Plugins.BasePlugin {
                 }
             }
         })
+
+        EventBus.on("changeRoom", this.changeRoom, this);
+
+        EventBus.on("spawnObstacle", (data)=>createObstacle(scene, data))
+        EventBus.on("spawnItem", (data)=>createItem(scene, data, this.roomsExplored.length))
+        EventBus.on("spawnEnemy", (data)=>createEnemy(scene, data))
 
         // Get current dungeon room
         const room = this.#rooms.get(this.currentRoomKey);
@@ -326,9 +332,21 @@ export class Dungeon extends Phaser.Plugins.BasePlugin {
         const types = scatterData.type.split(" ");
         // Generates scattered objects from a rectangle defined in Tiled
         for(let i = 0; i < getCustomTiledProperty(scatterData, "fill"); ++i){
+            let posX;
+            let posY;
+            if(!scatterData.ellipse){
+                posX = Math.random()*scatterData.width+scatterData.x;
+                posY = Math.random()*scatterData.height+scatterData.y;
+            }
+            else{
+                const angle = Math.random()*2*Math.PI;
+                posX = scatterData.x + Math.cos(angle) * scatterData.width*Math.random() + scatterData.width/2;
+                posY = scatterData.y + Math.sin(angle) * scatterData.height*Math.random() + scatterData.height/2;
+            }
+
             const obj = createObstacle(scene, {
-                x: Math.random()*scatterData.width+scatterData.x,
-                y: Math.random()*scatterData.height+scatterData.y,
+                x: posX,
+                y: posY,
                 // Get random type from all specified types
                 type: types[Math.floor(Math.random()*types.length)]
             });

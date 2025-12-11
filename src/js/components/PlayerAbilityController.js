@@ -60,9 +60,6 @@ export class PlayerAbilityControllerComponent extends BaseComponent{
 
         // When an ability is equipped
         EventBus.on('abilityEquipped', this.onAbilityEquipped, this);
-
-        this.gameObject.scene.input.keyboard.on('keydown-K', ()=>{EventBus.emit('abilityEquipped', dashAbility)});
-        this.gameObject.scene.input.keyboard.on('keydown-J', ()=>{EventBus.emit('abilityEquipped', forcefieldAbility)});
     }
 
     /**

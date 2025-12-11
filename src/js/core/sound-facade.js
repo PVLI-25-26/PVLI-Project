@@ -107,10 +107,6 @@ export class SoundSceneFacade extends Phaser.Plugins.BasePlugin{
             // Object.values(this.sounds).forEach((sound) => sound.setVolume(value));
             this.SFXVolume = value;
         });
-		EventBus.on("hubReached",()=>{
-			EventBus.emit("playMusic","HUBMusic");
-			EventBus.emit("playMusic","ForestAmbient");
-		});
     }
 
     /**
@@ -144,6 +140,7 @@ export class SoundSceneFacade extends Phaser.Plugins.BasePlugin{
      * @returns {void}
      */
     playMusic(key) {
+		console.log(key)
         // const music = this.music[key];
         // Reproduce nueva musica
         this.currentMusicKey = key;

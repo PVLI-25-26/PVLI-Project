@@ -113,7 +113,7 @@ export default class Boot extends Phaser.Scene {
         });
 		this.anims.create({
 			key: "animated_portal",
-			frames: this.anims.generateFrameNumbers("Portal_animation",{start:0,end:3}),
+			frames: this.anims.generateFrameNumbers("Portal_animation",{start:3,end:0}),
 			frameRate:8,
 			repeat:-1
 		});

@@ -51,12 +51,15 @@ export default class GameplayScene extends Phaser.Scene {
 
 		var audioManager = new AudioManager(this);
 
+        EventBus.on("toggleDebug", this.toggleDebug, this);
+
+
         // Create input facade and lock pointer
         this.inputFacade = new InputFacade(this);
         this.inputFacade.resetPointerLockCount();
 
         // Create HUD
-        const model = new HudModel();
+        const model = new HudModel(this);
         const view = new HudView(this);
         const presenter = new HudPresenter(view, model);
         
@@ -75,6 +78,8 @@ export default class GameplayScene extends Phaser.Scene {
         this.logger.log('GAMEPLAY', 1, 'Creating Sound facade...');
         this.plugins.get('soundfacade').initializeSoundFacade(this);
 
+
+		EventBus.emit("playMusic","ForestAmbient");
         // Lock mouse pointer when scene starts and when scene is resumed
         this.inputFacade.lockPointer();
         this.events.on('resume', this.inputFacade.lockPointer, this);
@@ -95,11 +100,6 @@ export default class GameplayScene extends Phaser.Scene {
             if (this.scene.isPaused("GameplayScene")) return;
             this.scene.launch("InventoryMenu", this.player);
             this.scene.pause();
-        });
-
-        // Show debug with [U]
-        this.input.keyboard.on("keydown-U", () => {
-            this.toggleDebug();
         });
 
         // Create physics categories
@@ -142,7 +142,9 @@ export default class GameplayScene extends Phaser.Scene {
             });
         })
         
-        
+        EventBus.on('changeRoom', ()=>{
+            this.scene.restart();
+        })
     }
 
     /**

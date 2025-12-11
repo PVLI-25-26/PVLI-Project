@@ -120,6 +120,17 @@
                  "name":"Hub",
                  "properties":[
                         {
+                         "name":"AssetRoom",
+                         "propertytype":"Connection",
+                         "type":"class",
+                         "value":
+                            {
+                             "scene":17,
+                             "x":-200,
+                             "y":250
+                            }
+                        }, 
+                        {
                          "name":"Boss",
                          "propertytype":"Connection",
                          "type":"class",
@@ -303,8 +314,8 @@
                         }],
                  "template":"..\/..\/..\/public\/assets\/rooms\/Templates\/RoomTemplate.tx",
                  "type":"dungeon-combat1-config.json",
-                 "x":23.3395783561759,
-                 "y":45.1711199128211
+                 "x":21.8395783561759,
+                 "y":47.4211199128211
                 }, 
                 {
                  "id":10,
@@ -356,13 +367,14 @@
                          "type":"class",
                          "value":
                             {
-                             "scene":15
+                             "scene":15,
+                             "x":300
                             }
                         }],
                  "template":"..\/..\/..\/public\/assets\/rooms\/Templates\/RoomTemplate.tx",
                  "type":"dungeon-combat2-config.json",
-                 "x":40.8962969948448,
-                 "y":36.7003332075946
+                 "x":37.6462969948448,
+                 "y":18.3253332075946
                 }, 
                 {
                  "id":11,
@@ -376,8 +388,8 @@
                             {
                              "rotation":50,
                              "scene":7,
-                             "spawnX":-200,
-                             "spawnY":500,
+                             "spawnX":-230,
+                             "spawnY":270,
                              "x":260,
                              "y":0
                             }
@@ -392,8 +404,8 @@
                  "name":"BossRoom(12)",
                  "template":"..\/..\/..\/public\/assets\/rooms\/Templates\/RoomTemplate.tx",
                  "type":"dungeon-boss-config.json",
-                 "x":46.8166729536024,
-                 "y":61.0940001676516
+                 "x":46.0666729536024,
+                 "y":68.2190001676516
                 }, 
                 {
                  "id":13,
@@ -408,7 +420,7 @@
                              "scene":14,
                              "spawnX":0,
                              "spawnY":0,
-                             "x":0,
+                             "x":200,
                              "y":50
                             }
                         }],
@@ -428,9 +440,9 @@
                          "value":
                             {
                              "scene":12,
-                             "spawnX":0,
+                             "spawnX":200,
                              "spawnY":-50,
-                             "x":0,
+                             "x":200,
                              "y":0
                             }
                         }, 
@@ -441,7 +453,8 @@
                          "value":
                             {
                              "scene":9,
-                             "spawnY":50
+                             "spawnY":50,
+                             "y":200
                             }
                         }, 
                         {
@@ -454,7 +467,7 @@
                              "spawnX":-50,
                              "spawnY":0,
                              "x":0,
-                             "y":0
+                             "y":-300
                             }
                         }, 
                         {
@@ -466,12 +479,12 @@
                              "scene":16,
                              "spawnX":50,
                              "spawnY":0,
-                             "x":0,
+                             "x":-200,
                              "y":0
                             }
                         }],
                  "template":"..\/..\/..\/public\/assets\/rooms\/Templates\/RoomTemplate.tx",
-                 "type":"dunfeon-peaceful1-config.json",
+                 "type":"dungeon-peaceful1-config.json",
                  "x":11.7256957542227,
                  "y":67.634419925395
                 }, 
@@ -488,12 +501,12 @@
                              "scene":10,
                              "spawnX":0,
                              "spawnY":0,
-                             "x":0,
+                             "x":-200,
                              "y":0
                             }
                         }],
                  "template":"..\/..\/..\/public\/assets\/rooms\/Templates\/RoomTemplate.tx",
-                 "type":"dunfeon-peaceful2-config.json",
+                 "type":"dungeon-peaceful2-config.json",
                  "x":57.1852864747056,
                  "y":32.2121788423656
                 }, 
@@ -509,8 +522,8 @@
                             {
                              "rotation":-45,
                              "scene":14,
-                             "spawnX":430,
-                             "spawnY":-620,
+                             "spawnX":0,
+                             "spawnY":0,
                              "x":220,
                              "y":100
                             }
@@ -533,6 +546,14 @@
                  "type":"dungeon-exit2-config.json",
                  "x":-11.6866538832306,
                  "y":46.4090909090909
+                }, 
+                {
+                 "id":17,
+                 "name":"AssetsVisualizer",
+                 "template":"..\/..\/..\/public\/assets\/rooms\/Templates\/RoomTemplate.tx",
+                 "type":"asset-room-config.json",
+                 "x":-4.56818181818182,
+                 "y":-32.8409090909091
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -541,7 +562,7 @@
          "y":0
         }],
  "nextlayerid":3,
- "nextobjectid":17,
+ "nextobjectid":18,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.11.2",

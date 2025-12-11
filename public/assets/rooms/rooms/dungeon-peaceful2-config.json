@@ -1,4 +1,5 @@
-{ "compressionlevel":-1,
+{ "backgroundcolor":"#4f4a45",
+ "compressionlevel":-1,
  "height":20,
  "infinite":true,
  "layers":[
@@ -17,7 +18,82 @@
          "draworder":"topdown",
          "id":8,
          "name":"Scattering",
-         "objects":[],
+         "objects":[
+                {
+                 "height":1408,
+                 "id":88,
+                 "properties":[
+                        {
+                         "name":"fill",
+                         "type":"int",
+                         "value":300
+                        }],
+                 "template":"..\/Templates\/ScatteringTemplate.tx",
+                 "type":"grass1 grass2 grass3 grass4 flower1 flower2 flower3",
+                 "width":1312,
+                 "x":-633.818181818182,
+                 "y":-705.030303030303
+                }, 
+                {
+                 "height":452,
+                 "id":89,
+                 "properties":[
+                        {
+                         "name":"fill",
+                         "type":"int",
+                         "value":100
+                        }],
+                 "template":"..\/Templates\/ScatteringTemplate.tx",
+                 "type":"tree1 tree2 tree3 tree4",
+                 "width":1568,
+                 "x":-761.818181818182,
+                 "y":-865.030303030303
+                }, 
+                {
+                 "height":384,
+                 "id":90,
+                 "properties":[
+                        {
+                         "name":"fill",
+                         "type":"int",
+                         "value":100
+                        }],
+                 "template":"..\/Templates\/ScatteringTemplate.tx",
+                 "type":"tree1 tree2 tree3 tree4",
+                 "width":1568,
+                 "x":-753.818181818182,
+                 "y":442.969696969697
+                }, 
+                {
+                 "height":864,
+                 "id":91,
+                 "properties":[
+                        {
+                         "name":"fill",
+                         "type":"int",
+                         "value":100
+                        }],
+                 "template":"..\/Templates\/ScatteringTemplate.tx",
+                 "type":"tree1 tree2 tree3 tree4",
+                 "width":352,
+                 "x":-761.818181818182,
+                 "y":-417.030303030303
+                }, 
+                {
+                 "height":864,
+                 "id":92,
+                 "properties":[
+                        {
+                         "name":"fill",
+                         "type":"int",
+                         "value":100
+                        }],
+                 "template":"..\/Templates\/ScatteringTemplate.tx",
+                 "type":"tree1 tree2 tree3 tree4",
+                 "width":352,
+                 "x":454.181818181818,
+                 "y":-417.030303030303
+                }],
          "opacity":1,
          "type":"objectgroup",
          "visible":true,
@@ -50,7 +126,51 @@
          "draworder":"topdown",
          "id":11,
          "name":"World Borders",
-         "objects":[],
+         "objects":[
+                {
+                 "height":120,
+                 "id":93,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":1100,
+                 "x":-510.606060606061,
+                 "y":-525.909090909091
+                }, 
+                {
+                 "height":890,
+                 "id":94,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":102,
+                 "x":-510.606060606061,
+                 "y":-411.909090909091
+                }, 
+                {
+                 "height":88,
+                 "id":95,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":1086,
+                 "x":-510.606060606061,
+                 "y":456.090909090909
+                }, 
+                {
+                 "height":974,
+                 "id":96,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":114,
+                 "x":461.393939393939,
+                 "y":-431.909090909091
+                }],
          "opacity":1,
          "type":"objectgroup",
          "visible":true,
@@ -80,7 +200,7 @@
          "y":0
         }],
  "nextlayerid":12,
- "nextobjectid":88,
+ "nextobjectid":97,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.11.2",

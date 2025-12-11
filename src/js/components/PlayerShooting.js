@@ -4,9 +4,6 @@ import Pool from "../core/pool";
 import { Arrow } from "../entities/Arrow/Arrow";
 import { BasicTrajectory } from "../entities/Arrow/BasicTrajectory";
 import { DepthSortedSprite } from "../entities/DepthSortedSprite";
-import fireArrow from "../../configs/Arrows/fire-arrow.json";
-import grassArrow from "../../configs/Arrows/grass-arrow.json";
-import gassArrow from "../../configs/Arrows/gass-arrow.json";
 import basicArrow from "../../configs/Arrows/basic-arrow.json";
 
 /**
@@ -153,14 +150,6 @@ export class PlayerShootingComponent extends BaseComponent{
         // Equip trajectory when bought
         EventBus.on('trajectoryEquipped', (trajectory)=>{
             this.#equippedTrajectory = trajectory;
-        })
-
-        // Cheat keybindings
-        this.gameObject.scene.input.keyboard.on('keydown-T', ()=>{
-            EventBus.emit('arrowEquipped', fireArrow);
-        })
-        this.gameObject.scene.input.keyboard.on('keydown-G', ()=>{
-            EventBus.emit('arrowEquipped', gassArrow);
         })
 
         // Move aim with mouse

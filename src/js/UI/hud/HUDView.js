@@ -4,11 +4,16 @@ import {Button} from "../elements/button.js";
 import Colors from "../../../configs/colors-config.js";
 import { MissionInfoDisplay } from "../elements/missionInfoDisplay.js";
 
+import dungeonConfig from "../../../configs/Dungeon/dungeon.json";
+import { getTiledMapLayer } from "../../core/tiled-parser.js";
+import { EventBus } from "../../core/event-bus.js";
+
 export class HudView {
     constructor(scene) {
         this.scene = scene;
         // Health Bars
         this.playerHealthBar = null;
+        this.bossHealthBar = null;
         this.enemyHealthBars = new Map();
         
         // Gold
@@ -37,6 +42,12 @@ export class HudView {
         this.missionsTitle = null;
         this.noMissionsText = null;
         this.missionDisplays = [];
+        
+        // Minimap
+        this.minimapCam = null;
+        this.minimapBG = null;
+        this.minimapTitle = null;
+        this.isMinimapHidden = false;
     }
 // To DO:
 /*
@@ -46,6 +57,66 @@ export class HudView {
         this.presenter = presenter;
     }
 
+    createMinimap(rooms, paths, currentRoomID){
+        const margins = 25;
+        const camPosX = -10000;
+        const camPosY = -10000;
+        const mapZoom = 2;
+        const minimapWidth = 200;
+        const minimapHeight = 150;
+        const minimapX = 0 + margins;
+        const minimapY = this.scene.scale.height - minimapHeight - margins;
+
+        this.minimapTitle = this.scene.add.text(minimapX, minimapY-10, 'Map',{
+            fontFamily: 'FableFont',
+            fontSize: 20,
+            color: Colors.Red
+        }).setOrigin(0,1);
+        this.scene.hudLayer.add(this.minimapTitle);
+        this.minimapTitle.setScrollFactor(0);
+
+
+        this.minimapBG = this.scene.add.nineslice(minimapX-6, minimapY-6, "UIbackground", 0, (minimapWidth+12)/2, (minimapHeight+12)/2, 3,3,3,3).setScale(2).setOrigin(0);
+        this.scene.hudLayer.add(this.minimapBG);
+        this.minimapBG.setScrollFactor(0);
+
+        this.minimapCam = this.scene.cameras.add(minimapX, minimapY, minimapWidth, minimapHeight);
+        this.minimapCam.setBackgroundColor(Colors.DarkBrown);
+        this.minimapCam.setScroll(camPosX, camPosY);
+        this.minimapCam.ignore(this.scene.hudLayer);
+
+        paths.forEach((path)=>{
+            const from = rooms.get(path.from);
+            const to = rooms.get(path.to);
+            const line = this.scene.add.line(0, 0, camPosX + from.x*mapZoom, camPosY + from.y*mapZoom, 
+                                                    camPosX + to.x*mapZoom, camPosY + to.y*mapZoom,
+                                            Colors.LightBrownHex, 1).setOrigin(0).setLineWidth(5);
+        })
+        
+        for (const [id, room] of rooms) {
+            const circ = this.scene.add.circle(camPosX + room.x*mapZoom, camPosY + room.y*mapZoom, 4*mapZoom, Colors.WhiteHex);
+            if(id == currentRoomID){
+                this.minimapCam.setScroll(circ.x - this.minimapCam.width/2, circ.y - this.minimapCam.height/2)
+                circ.setFillStyle(Colors.RedHex);
+            }
+        }
+
+        EventBus.on('cameraRotated',(R)=>{
+            this.minimapCam.rotation = R;
+        });
+    }
+
+    toggleMinimap(){
+        this.scene.tweens.add({
+            targets: [this.minimapBG, this.minimapCam, this.minimapTitle],
+            x: `${this.isMinimapHidden?'+':'-'}=${this.minimapBG.width*2+25}`,
+            duration: 200,
+            ease: 'Quad'
+        })
+        this.isMinimapHidden = !this.isMinimapHidden;
+
+    }
+
     createPlayerHealthBar() {
         const x = 50;
         const y = 40;
@@ -53,6 +124,15 @@ export class HudView {
         this.playerHealthBar = new Bar(this.scene, x, y, 300, 25, Colors.RedHex);
         this.scene.hudLayer.add(this.playerHealthBar);
         this.playerHealthBar.setScrollFactor(0);
+    }
+
+    createBossHealthBar() {
+        const x = 200;
+        const y = 540;
+
+        this.bossHealthBar = new Bar(this.scene, x, y, 400, 25, Colors.RedHex);
+        this.scene.hudLayer.add(this.bossHealthBar);
+        this.bossHealthBar.setScrollFactor(0);
     }
 
     createEnemyHealthBar(enemy) {
