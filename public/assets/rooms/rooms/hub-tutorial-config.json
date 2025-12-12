@@ -7,7 +7,91 @@
          "draworder":"topdown",
          "id":5,
          "name":"Obstacles",
-         "objects":[],
+         "objects":[
+                {
+                 "id":98,
+                 "name":"Carpet",
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"shop-carpet",
+                 "x":-45.3635030303031,
+                 "y":39.6819848484848
+                }, 
+                {
+                 "id":99,
+                 "name":"Carpet",
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"shop-carpet",
+                 "x":25.6364969696969,
+                 "y":39.3486848484848
+                }, 
+                {
+                 "id":100,
+                 "name":"Carpet",
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"shop-carpet",
+                 "x":97.6361969696968,
+                 "y":39.3486848484848
+                }, 
+                {
+                 "id":101,
+                 "name":"Fireplace",
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"fireplace",
+                 "x":-148.696803030303,
+                 "y":-226.985015151515
+                }, 
+                {
+                 "id":102,
+                 "name":"SittingLog",
+                 "rotation":270,
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"logSided",
+                 "x":-251.363803030303,
+                 "y":-228.985015151515
+                }, 
+                {
+                 "id":103,
+                 "name":"SittingLog",
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"logSided",
+                 "x":-153.696803030303,
+                 "y":-143.985015151515
+                }, 
+                {
+                 "id":104,
+                 "name":"SittingLog",
+                 "rotation":180,
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"logSided",
+                 "x":-148.363803030303,
+                 "y":-319.985015151515
+                }, 
+                {
+                 "id":105,
+                 "name":"SittingLog",
+                 "rotation":90,
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"logSided",
+                 "x":-39.0301330303032,
+                 "y":-218.651015151515
+                }, 
+                {
+                 "id":106,
+                 "name":"Tent",
+                 "rotation":250,
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"tent",
+                 "x":171.303196969697,
+                 "y":-240.318015151515
+                }, 
+                {
+                 "id":107,
+                 "name":"EnterSign",
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"enterSign",
+                 "x":195.303196969697,
+                 "y":-7.31801515151513
+                }],
          "opacity":1,
          "type":"objectgroup",
          "visible":true,
@@ -35,7 +119,7 @@
                  "y":-455.666666666666
                 }, 
                 {
-                 "height":665.091,
+                 "height":856.000090909091,
                  "id":94,
                  "properties":[
                         {
@@ -46,8 +130,8 @@
                  "template":"..\/Templates\/ScatteringTemplate.tx",
                  "type":"tree1 tree2 tree3 tree4",
                  "width":476.242,
-                 "x":-841.454333333333,
-                 "y":-335.408666666667
+                 "x":-905.090696969697,
+                 "y":-514.196545454546
                 }, 
                 {
                  "height":492.667,
@@ -61,8 +145,8 @@
                  "template":"..\/Templates\/ScatteringTemplate.tx",
                  "type":"tree1 tree2 tree3 tree4",
                  "width":1860.12,
-                 "x":-930.06,
-                 "y":-759.5
+                 "x":-927.029696969697,
+                 "y":-962.530303030303
                 }, 
                 {
                  "height":378.121,
@@ -76,11 +160,11 @@
                  "template":"..\/Templates\/ScatteringTemplate.tx",
                  "type":"tree1 tree2 tree3 tree4",
                  "width":1856.12,
-                 "x":-931.06,
-                 "y":256.045666666667
+                 "x":-928.029696969697,
+                 "y":313.621424242425
                 }, 
                 {
-                 "height":659.394,
+                 "height":801.818242424242,
                  "id":97,
                  "properties":[
                         {
@@ -91,12 +175,12 @@
                  "template":"..\/Templates\/ScatteringTemplate.tx",
                  "type":"tree1 tree2 tree3 tree4",
                  "width":385.333,
-                 "x":406.060333333333,
-                 "y":-336.348666666667
+                 "x":454.545181818182,
+                 "y":-478.772909090909
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":true,
+         "visible":false,
          "x":0,
          "y":0
         }, 
@@ -137,7 +221,7 @@
                  "y":297
                 }, 
                 {
-                 "height":136,
+                 "height":110,
                  "id":91,
                  "name":"",
                  "rotation":0,
@@ -145,10 +229,10 @@
                  "visible":true,
                  "width":1182,
                  "x":-568.6665,
-                 "y":-435
+                 "y":-563
                 }, 
                 {
-                 "height":673.333,
+                 "height":825.333,
                  "id":92,
                  "name":"",
                  "rotation":0,
@@ -156,10 +240,10 @@
                  "visible":true,
                  "width":159.334,
                  "x":-571.3335,
-                 "y":-363
+                 "y":-515
                 }, 
                 {
-                 "height":673.333,
+                 "height":827.333,
                  "id":93,
                  "name":"",
                  "rotation":0,
@@ -167,7 +251,7 @@
                  "visible":true,
                  "width":159.334,
                  "x":452.6665,
-                 "y":-354.334
+                 "y":-508.334
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -209,7 +293,7 @@
          "y":0
         }],
  "nextlayerid":12,
- "nextobjectid":98,
+ "nextobjectid":108,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.11.2",
