@@ -13,6 +13,6 @@
     "offsetX": 0,
     "offsetY": 0,
     "maxHP": 10,
-    "damageSound": "enemyHurt",
-    "deathSound": "enemyDeath"
+    "damageSound": "bossDamage",
+    "deathSound": "bossDeath"
 }

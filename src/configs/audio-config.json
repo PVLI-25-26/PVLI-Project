@@ -21,6 +21,8 @@
     { "key": "golemDeath", "file": "assets/sounds/Entities/golemDeath.wav"},
     { "key": "slimeDamage", "file": "assets/sounds/Entities/slimeDamage.wav"},
     { "key": "slimeDeath", "file": "assets/sounds/Entities/slimeDeath.wav"},
+    {"key": "bossDamage", "file": "assets/sounds/Entities/bossDamage.wav"},
+    { "key": "bossDeath", "file": "assets/sounds/Entities/bossDeath.wav"},
 
     { "key": "itemCollected", "file": "assets/sounds/Inventory/itemEquip.mp3"},
     { "key": "inventoryOpen", "file": "assets/sounds/Inventory/inventoryOpen.wav"},
