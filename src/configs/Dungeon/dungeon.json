@@ -120,29 +120,6 @@
                  "name":"Hub",
                  "properties":[
                         {
-                         "name":"AssetRoom",
-                         "propertytype":"Connection",
-                         "type":"class",
-                         "value":
-                            {
-                             "scene":17,
-                             "x":-200,
-                             "y":250
-                            }
-                        }, 
-                        {
-                         "name":"Boss",
-                         "propertytype":"Connection",
-                         "type":"class",
-                         "value":
-                            {
-                             "scene":12,
-                             "spawnY":-300,
-                             "x":100,
-                             "y":250
-                            }
-                        }, 
-                        {
                          "name":"Connection",
                          "propertytype":"Connection",
                          "type":"class",
@@ -219,8 +196,8 @@
                         }],
                  "template":"..\/..\/..\/public\/assets\/rooms\/Templates\/RoomTemplate.tx",
                  "type":"dungeon-entrance-config.json",
-                 "x":56.577030733568,
-                 "y":-0.0989064291649582
+                 "x":38.7204389179149,
+                 "y":0.407190926775186
                 }, 
                 {
                  "id":8,
@@ -270,8 +247,8 @@
                         }],
                  "template":"..\/..\/..\/public\/assets\/rooms\/Templates\/RoomTemplate.tx",
                  "type":"dungeon-exit1-config.json",
-                 "x":111.068752331688,
-                 "y":-21.0163364434942
+                 "x":67.206550073979,
+                 "y":-2.45475879641079
                 }, 
                 {
                  "id":9,
@@ -315,8 +292,8 @@
                         }],
                  "template":"..\/..\/..\/public\/assets\/rooms\/Templates\/RoomTemplate.tx",
                  "type":"dungeon-combat1-config.json",
-                 "x":30.3984242444015,
-                 "y":51.4234416168606
+                 "x":19.5951819711375,
+                 "y":38.047779064624
                 }, 
                 {
                  "id":10,
@@ -374,8 +351,8 @@
                         }],
                  "template":"..\/..\/..\/public\/assets\/rooms\/Templates\/RoomTemplate.tx",
                  "type":"dungeon-combat2-config.json",
-                 "x":60.7480385209755,
-                 "y":34.9458434567212
+                 "x":41.7676444937422,
+                 "y":26.0097701351255
                 }, 
                 {
                  "id":11,
@@ -397,8 +374,8 @@
                         }],
                  "template":"..\/..\/..\/public\/assets\/rooms\/Templates\/RoomTemplate.tx",
                  "type":"credits-room-config.json",
-                 "x":31.2197670489918,
-                 "y":8.21429157587731
+                 "x":20.1952288905821,
+                 "y":6.48054887887498
                 }, 
                 {
                  "id":12,
@@ -419,8 +396,8 @@
                         }],
                  "template":"..\/..\/..\/public\/assets\/rooms\/Templates\/RoomTemplate.tx",
                  "type":"dungeon-boss-config.json",
-                 "x":59.7774131591402,
-                 "y":87.2682369703449
+                 "x":41.0585364878657,
+                 "y":64.2348460356538
                 }, 
                 {
                  "id":13,
@@ -441,8 +418,8 @@
                         }],
                  "template":"..\/..\/..\/public\/assets\/rooms\/Templates\/RoomTemplate.tx",
                  "type":"dungeon-combat3-config.json",
-                 "x":31.3348780890315,
-                 "y":117.034929902635
+                 "x":20.2793253538175,
+                 "y":85.9814447715899
                 }, 
                 {
                  "id":14,
@@ -455,8 +432,8 @@
                          "value":
                             {
                              "scene":12,
-                             "spawnX":200,
-                             "spawnY":-50,
+                             "spawnX":-900,
+                             "spawnY":100,
                              "x":400,
                              "y":0
                             }
@@ -500,8 +477,8 @@
                         }],
                  "template":"..\/..\/..\/public\/assets\/rooms\/Templates\/RoomTemplate.tx",
                  "type":"dungeon-peaceful1-config.json",
-                 "x":30.7992414852595,
-                 "y":87.7553392205607
+                 "x":19.8880062940548,
+                 "y":64.5907074409806
                 }, 
                 {
                  "id":15,
@@ -522,8 +499,8 @@
                         }],
                  "template":"..\/..\/..\/public\/assets\/rooms\/Templates\/RoomTemplate.tx",
                  "type":"dungeon-peaceful2-config.json",
-                 "x":88.1008030250173,
-                 "y":60.746357149654
+                 "x":61.7507039266795,
+                 "y":44.858804515179
                 }, 
                 {
                  "id":16,
@@ -559,8 +536,8 @@
                         }],
                  "template":"..\/..\/..\/public\/assets\/rooms\/Templates\/RoomTemplate.tx",
                  "type":"dungeon-exit2-config.json",
-                 "x":1.97898387463398,
-                 "y":88.1960669422356
+                 "x":-1.16715690967155,
+                 "y":64.912689091306
                 }, 
                 {
                  "id":17,
@@ -590,8 +567,8 @@
                         }],
                  "template":"..\/..\/..\/public\/assets\/rooms\/Templates\/RoomTemplate.tx",
                  "type":"final-credits-room-config.json",
-                 "x":80,
-                 "y":87.25
+                 "x":55.8325149889757,
+                 "y":64.2215226853861
                 }],
          "opacity":1,
          "type":"objectgroup",

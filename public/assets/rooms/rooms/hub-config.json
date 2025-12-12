@@ -91,24 +91,6 @@
                  "type":"enterSign",
                  "x":228,
                  "y":-91
-                }, 
-                {
-                 "id":141,
-                 "name":"BossSign",
-                 "rotation":180,
-                 "template":"..\/Templates\/SpriteStackTemplate.tx",
-                 "type":"bossSign",
-                 "x":234,
-                 "y":222
-                }, 
-                {
-                 "id":142,
-                 "name":"BossSign",
-                 "rotation":30,
-                 "template":"..\/Templates\/SpriteStackTemplate.tx",
-                 "type":"bossSign",
-                 "x":9,
-                 "y":207
                 }],
          "opacity":1,
          "type":"objectgroup",

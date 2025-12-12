@@ -18,138 +18,142 @@
                  "y":0
                 }, 
                 {
+                 "height":66.2337662337662,
                  "id":117,
                  "template":"..\/Templates\/SpriteStackTemplate.tx",
                  "type":"column",
-                 "x":-342,
-                 "y":218
+                 "width":66.2337662337662,
+                 "x":-453.038961038961,
+                 "y":288.779220779221
                 }, 
                 {
+                 "height":66.2337662337662,
                  "id":118,
                  "name":"Base",
                  "rotation":180,
                  "template":"..\/Templates\/SpriteStackTemplate.tx",
                  "type":"columnBaseBroken",
-                 "x":186,
-                 "y":342
+                 "width":66.2337662337662,
+                 "x":246.38961038961,
+                 "y":453.038961038961
                 }, 
                 {
+                 "height":66.2337662337662,
                  "id":120,
                  "name":"top",
                  "rotation":225,
                  "template":"..\/Templates\/SpriteStackTemplate.tx",
                  "type":"columnTopBroken",
-                 "x":260.393772727273,
-                 "y":400.636346969697
+                 "width":66.2337662337662,
+                 "x":344.937205430933,
+                 "y":530.713082998819
                 }, 
                 {
+                 "height":66.2337662337662,
                  "id":121,
                  "name":"columnEye",
                  "rotation":0,
                  "template":"..\/Templates\/SpriteStackTemplate.tx",
                  "type":"columnEye",
+                 "width":66.2337662337662,
                  "x":0,
-                 "y":-420
+                 "y":-556.363636363636
                 }, 
                 {
+                 "height":66.2337662337662,
                  "id":122,
                  "name":"Eye",
                  "rotation":90,
                  "template":"..\/Templates\/SpriteStackTemplate.tx",
                  "type":"columnEye",
-                 "x":420,
+                 "width":66.2337662337662,
+                 "x":556.363636363636,
                  "y":0
                 }, 
                 {
+                 "height":66.2337662337662,
                  "id":123,
                  "name":"column",
                  "rotation":-180,
                  "template":"..\/Templates\/SpriteStackTemplate.tx",
                  "type":"columnEye",
+                 "width":66.2337662337662,
                  "x":0,
-                 "y":420
+                 "y":556.363636363636
                 }, 
                 {
+                 "height":66.2337662337662,
                  "id":124,
                  "name":"column",
                  "rotation":-90,
                  "template":"..\/Templates\/SpriteStackTemplate.tx",
                  "type":"columnEye",
-                 "x":-420,
+                 "width":66.2337662337662,
+                 "x":-556.363636363636,
                  "y":0
                 }, 
                 {
+                 "height":66.2337662337662,
                  "id":126,
                  "name":"columnSidedBoss",
                  "rotation":30,
                  "template":"..\/Templates\/SpriteStackTemplate.tx",
                  "type":"columnSided",
-                 "x":-158.666666666667,
-                 "y":334
+                 "width":66.2337662337662,
+                 "x":-210.181818181819,
+                 "y":442.441558441558
                 }, 
                 {
+                 "height":66.2337662337662,
                  "id":130,
                  "template":"..\/Templates\/SpriteStackTemplate.tx",
                  "type":"column",
-                 "x":-186,
-                 "y":-332
+                 "width":66.2337662337662,
+                 "x":-246.38961038961,
+                 "y":-439.792207792208
                 }, 
                 {
+                 "height":66.2337662337662,
                  "id":131,
                  "template":"..\/Templates\/SpriteStackTemplate.tx",
                  "type":"column",
-                 "x":342,
-                 "y":-218
+                 "width":66.2337662337662,
+                 "x":453.038961038961,
+                 "y":-288.779220779221
                 }, 
                 {
+                 "height":66.2337662337662,
                  "id":132,
                  "template":"..\/Templates\/SpriteStackTemplate.tx",
                  "type":"column",
-                 "x":-342,
-                 "y":-218
+                 "width":66.2337662337662,
+                 "x":-453.038961038961,
+                 "y":-288.779220779221
                 }, 
                 {
+                 "height":66.2337662337662,
                  "id":133,
                  "template":"..\/Templates\/SpriteStackTemplate.tx",
                  "type":"column",
-                 "x":186,
-                 "y":-342
+                 "width":66.2337662337662,
+                 "x":246.38961038961,
+                 "y":-453.038961038961
                 }, 
                 {
+                 "height":66.2337662337662,
                  "id":142,
                  "template":"..\/Templates\/SpriteStackTemplate.tx",
                  "type":"column",
-                 "x":342,
-                 "y":218
+                 "width":66.2337662337662,
+                 "x":453.038961038961,
+                 "y":288.779220779221
                 }, 
                 {
                  "id":143,
                  "name":"RandomColumn",
                  "template":"..\/Templates\/SpriteStackTemplate.tx",
-                 "type":"column columnTopBroken columnBaseBroken columnSided",
-                 "x":-622,
-                 "y":0
-                }, 
-                {
-                 "id":155,
-                 "template":"..\/Templates\/SpriteStackTemplate.tx",
-                 "type":"column",
-                 "x":0,
-                 "y":-622
-                },
-            
-                {
-                 "id":158,
-                 "template":"..\/Templates\/SpriteStackTemplate.tx",
-                 "type":"column",
-                 "x":0,
-                 "y":574
-                }, 
-                {
-                 "id":152,
-                 "template":"..\/Templates\/SpriteStackTemplate.tx",
-                 "type":"column",
-                 "x":622,
+                 "type":"column columnTopBroken columnBaseBroken columnSided rock",
+                 "x":-800,
                  "y":0
                 }, 
                 {
@@ -158,41 +162,14 @@
                  "type":"column",
                  "x":-1020,
                  "y":0
-                }, 
-                {
-                 "id":157,
-                 "template":"..\/Templates\/SpriteStackTemplate.tx",
-                 "type":"column",
-                 "x":0,
-                 "y":-1020
-                }, 
+                },
+            
                 {
                  "id":160,
                  "template":"..\/Templates\/SpriteStackTemplate.tx",
                  "type":"column",
                  "x":0,
                  "y":1020
-                }, 
-                {
-                 "id":154,
-                 "template":"..\/Templates\/SpriteStackTemplate.tx",
-                 "type":"column",
-                 "x":980.606060606061,
-                 "y":0
-                }, 
-                {
-                 "id":145,
-                 "template":"..\/Templates\/SpriteStackTemplate.tx",
-                 "type":"column",
-                 "x":-820,
-                 "y":0
-                }, 
-                {
-                 "id":156,
-                 "template":"..\/Templates\/SpriteStackTemplate.tx",
-                 "type":"column",
-                 "x":0,
-                 "y":-820
                 }, 
                 {
                  "id":159,
@@ -261,8 +238,7 @@
                  "type":"wall",
                  "x":-150,
                  "y":1074
-                },
-            
+                }, 
                 {
                  "id":211,
                  "name":"Wall",
@@ -325,7 +301,8 @@
                  "type":"wall",
                  "x":-300,
                  "y":-1074
-                }, 
+                },
+            
                 {
                  "id":184,
                  "name":"Wall",
@@ -406,8 +383,7 @@
                  "type":"wall",
                  "x":-450,
                  "y":1074
-                },
-            
+                }, 
                 {
                  "id":215,
                  "name":"Wall",
@@ -470,7 +446,8 @@
                  "type":"wall",
                  "x":-600,
                  "y":-1074
-                }, 
+                },
+            
                 {
                  "id":182,
                  "name":"Wall",
@@ -551,8 +528,7 @@
                  "type":"wall",
                  "x":-1074,
                  "y":-300
-                },
-            
+                }, 
                 {
                  "id":220,
                  "name":"Wall",
@@ -615,7 +591,8 @@
                  "type":"wall",
                  "x":1074,
                  "y":-750
-                }, 
+                },
+            
                 {
                  "id":254,
                  "name":"Wall",
@@ -700,8 +677,7 @@
                  "width":32,
                  "x":-1035,
                  "y":-1041
-                },
-            
+                }, 
                 {
                  "height":28,
                  "id":276,
@@ -734,6 +710,33 @@
                  "y":-955
                 }, 
                 {
+                 "id":310,
+                 "name":"top",
+                 "rotation":225,
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"columnTopBroken",
+                 "x":-1029,
+                 "y":955
+                }, 
+                {
+                 "id":309,
+                 "name":"top",
+                 "rotation":225,
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"columnTopBroken",
+                 "x":1029,
+                 "y":955
+                }, 
+                {
+                 "id":308,
+                 "name":"top",
+                 "rotation":225,
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"columnTopBroken",
+                 "x":-1029,
+                 "y":-955
+                }, 
+                {
                  "id":263,
                  "name":"Base",
                  "rotation":180,
@@ -741,12 +744,22 @@
                  "type":"columnBaseBroken",
                  "x":987,
                  "y":-1033
+                },
+            
+                {
+                 "id":313,
+                 "name":"Base",
+                 "rotation":180,
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"columnBaseBroken",
+                 "x":-987,
+                 "y":1033
                 }, 
                 {
                  "id":264,
                  "name":"RandomColumn",
                  "template":"..\/Templates\/SpriteStackTemplate.tx",
-                 "type":"column columnTopBroken columnBaseBroken columnSided",
+                 "type":"column columnTopBroken columnBaseBroken columnSided rock",
                  "x":-661.363636363636,
                  "y":-694.69696969697
                 }, 
@@ -754,7 +767,7 @@
                  "id":265,
                  "name":"RandomColumn",
                  "template":"..\/Templates\/SpriteStackTemplate.tx",
-                 "type":"column columnTopBroken columnBaseBroken columnSided",
+                 "type":"column columnTopBroken columnBaseBroken columnSided rock",
                  "x":-831.060606060606,
                  "y":-279.545454545455
                 }, 
@@ -762,7 +775,7 @@
                  "id":266,
                  "name":"RandomColumn",
                  "template":"..\/Templates\/SpriteStackTemplate.tx",
-                 "type":"column columnTopBroken columnBaseBroken columnSided",
+                 "type":"column columnTopBroken columnBaseBroken columnSided rock",
                  "x":-261.363636363636,
                  "y":-661.363636363636
                 }, 
@@ -770,7 +783,7 @@
                  "id":267,
                  "name":"RandomColumn",
                  "template":"..\/Templates\/SpriteStackTemplate.tx",
-                 "type":"column columnTopBroken columnBaseBroken columnSided",
+                 "type":"column columnTopBroken columnBaseBroken columnSided rock",
                  "x":671.969696969697,
                  "y":-343.181818181818
                 }, 
@@ -778,7 +791,7 @@
                  "id":268,
                  "name":"RandomColumn",
                  "template":"..\/Templates\/SpriteStackTemplate.tx",
-                 "type":"column columnTopBroken columnBaseBroken columnSided",
+                 "type":"column columnTopBroken columnBaseBroken columnSided rock",
                  "x":302.272727272727,
                  "y":-691.666666666667
                 }, 
@@ -786,7 +799,7 @@
                  "id":269,
                  "name":"RandomColumn",
                  "template":"..\/Templates\/SpriteStackTemplate.tx",
-                 "type":"column columnTopBroken columnBaseBroken columnSided",
+                 "type":"column columnTopBroken columnBaseBroken columnSided rock",
                  "x":784.090909090909,
                  "y":-837.121212121212
                 }, 
@@ -794,7 +807,7 @@
                  "id":270,
                  "name":"RandomColumn",
                  "template":"..\/Templates\/SpriteStackTemplate.tx",
-                 "type":"column columnTopBroken columnBaseBroken columnSided",
+                 "type":"column columnTopBroken columnBaseBroken columnSided rock",
                  "x":635.606060606061,
                  "y":453.787878787879
                 }, 
@@ -802,7 +815,7 @@
                  "id":271,
                  "name":"RandomColumn",
                  "template":"..\/Templates\/SpriteStackTemplate.tx",
-                 "type":"column columnTopBroken columnBaseBroken columnSided",
+                 "type":"column columnTopBroken columnBaseBroken columnSided rock",
                  "x":359.848484848485,
                  "y":687.121212121212
                 }, 
@@ -810,7 +823,7 @@
                  "id":272,
                  "name":"RandomColumn",
                  "template":"..\/Templates\/SpriteStackTemplate.tx",
-                 "type":"column columnTopBroken columnBaseBroken columnSided",
+                 "type":"column columnTopBroken columnBaseBroken columnSided rock",
                  "x":-512.878787878788,
                  "y":699.242424242424
                 }, 
@@ -818,17 +831,112 @@
                  "id":273,
                  "name":"RandomColumn",
                  "template":"..\/Templates\/SpriteStackTemplate.tx",
-                 "type":"column columnTopBroken columnBaseBroken columnSided",
-                 "x":-546.212121212121,
-                 "y":299.242424242424
+                 "type":"column columnTopBroken columnBaseBroken columnSided rock",
+                 "x":0,
+                 "y":-821.969696969697
                 }, 
                 {
                  "id":274,
                  "name":"RandomColumn",
                  "template":"..\/Templates\/SpriteStackTemplate.tx",
-                 "type":"column columnTopBroken columnBaseBroken columnSided",
+                 "type":"column columnTopBroken columnBaseBroken columnSided rock",
                  "x":-843.181818181818,
                  "y":629.545454545455
+                }, 
+                {
+                 "id":299,
+                 "name":"log",
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"log",
+                 "x":-909,
+                 "y":259
+                }, 
+                {
+                 "id":300,
+                 "name":"log",
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"log",
+                 "x":831,
+                 "y":823
+                }, 
+                {
+                 "id":301,
+                 "name":"log",
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"log",
+                 "x":967,
+                 "y":-677
+                }, 
+                {
+                 "id":302,
+                 "name":"log",
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"log",
+                 "x":-461,
+                 "y":-961
+                },
+            
+                {
+                 "id":303,
+                 "name":"Tree",
+                 "template":"..\/Templates\/BillboardTemplate.tx",
+                 "type":"tree3",
+                 "x":328,
+                 "y":-968
+                }, 
+                {
+                 "id":304,
+                 "name":"Tree",
+                 "template":"..\/Templates\/BillboardTemplate.tx",
+                 "type":"tree3",
+                 "x":-776,
+                 "y":-552
+                }, 
+                {
+                 "id":305,
+                 "name":"Tree",
+                 "template":"..\/Templates\/BillboardTemplate.tx",
+                 "type":"tree3",
+                 "x":-276,
+                 "y":848
+                }, 
+                {
+                 "id":306,
+                 "name":"Tree",
+                 "template":"..\/Templates\/BillboardTemplate.tx",
+                 "type":"tree3",
+                 "x":588,
+                 "y":860
+                }, 
+                {
+                 "id":307,
+                 "name":"Tree",
+                 "template":"..\/Templates\/BillboardTemplate.tx",
+                 "type":"tree3",
+                 "x":968,
+                 "y":12
+                }, 
+                {
+                 "height":66.2338,
+                 "id":311,
+                 "name":"columnSidedBoss",
+                 "rotation":45,
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"columnSided",
+                 "width":66.2338,
+                 "x":-951.1169,
+                 "y":-1025.1169
+                }, 
+                {
+                 "height":66.2338,
+                 "id":312,
+                 "name":"columnSidedBoss",
+                 "rotation":45,
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"columnSided",
+                 "width":66.2338,
+                 "x":944.8831,
+                 "y":892.8831
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -852,7 +960,7 @@
                         }],
                  "template":"..\/Templates\/ScatteringTemplate.tx",
                  "type":"grass1 grass2 grass3 grass4 flower1 flower2 flower3",
-                 "width":1057.45454545455,
+                 "width":948.363636363641,
                  "x":-1459.93939393939,
                  "y":-1117.27272727273
                 }, 
@@ -927,8 +1035,8 @@
                         }],
                  "template":"..\/Templates\/ScatteringTemplate.tx",
                  "type":"grass1 grass2 grass3 grass4 flower1 flower2 flower3",
-                 "width":978.667,
-                 "x":419.757409090909,
+                 "width":893.818515151515,
+                 "x":504.605893939394,
                  "y":-1177.08939393939
                 }, 
                 {
@@ -942,12 +1050,12 @@
                         }],
                  "template":"..\/Templates\/ScatteringTemplate.tx",
                  "type":"grass1 grass2 grass3 grass4 flower1 flower2 flower3",
-                 "width":978.667,
-                 "x":-480.242590909091,
-                 "y":-1576.72575757576
+                 "width":1170.667,
+                 "x":-596.242590909091,
+                 "y":-1716.72575757576
                 }, 
                 {
-                 "height":1165.57,
+                 "height":1014.05484848485,
                  "id":148,
                  "properties":[
                         {
@@ -957,9 +1065,9 @@
                         }],
                  "template":"..\/Templates\/ScatteringTemplate.tx",
                  "type":"grass1 grass2 grass3 grass4 flower1 flower2 flower3",
-                 "width":942.303363636364,
-                 "x":-495.394106060606,
-                 "y":447.51803030303
+                 "width":1126.30336363636,
+                 "x":-567.394106060606,
+                 "y":599.033181818182
                 }, 
                 {
                  "height":200.606,
@@ -972,9 +1080,9 @@
                         }],
                  "template":"..\/Templates\/ScatteringTemplate.tx",
                  "type":"grass1 grass2 grass3 grass4 flower1 flower2 flower3",
-                 "width":214.303363636364,
-                 "x":-461.3335,
-                 "y":-431.454515151515
+                 "width":258.303363636364,
+                 "x":-557.3335,
+                 "y":-579.454515151515
                 }, 
                 {
                  "height":227.515090909091,
@@ -988,8 +1096,8 @@
                  "template":"..\/Templates\/ScatteringTemplate.tx",
                  "type":"grass1 grass2 grass3 grass4 flower1 flower2 flower3",
                  "width":235.515484848485,
-                 "x":-452.242590909091,
-                 "y":303.575787878788
+                 "x":-549.212287878788,
+                 "y":446.00003030303
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -1012,10 +1120,115 @@
          "draworder":"topdown",
          "id":10,
          "name":"Enemy Routes",
-         "objects":[],
+         "objects":[
+                {
+                 "height":0,
+                 "id":281,
+                 "name":"",
+                 "polygon":[
+                        {
+                         "x":108.251432202449,
+                         "y":-319.152326376815
+                        }, 
+                        {
+                         "x":-360.839234960583,
+                         "y":-396.894457432601
+                        }, 
+                        {
+                         "x":-1019.36652562064,
+                         "y":-270.051978701931
+                        }, 
+                        {
+                         "x":-1313.47814546721,
+                         "y":462.179333537283
+                        }, 
+                        {
+                         "x":-1339.61147350531,
+                         "y":1088.3922897989
+                        }, 
+                        {
+                         "x":-1061.15925402344,
+                         "y":1684.67757388006
+                        }, 
+                        {
+                         "x":-655.044824803708,
+                         "y":1713.14777413264
+                        }, 
+                        {
+                         "x":-280.930395583975,
+                         "y":1725.61797438523
+                        }, 
+                        {
+                         "x":-338.815966364243,
+                         "y":1394.08817463781
+                        }, 
+                        {
+                         "x":-664.70153714451,
+                         "y":1314.55837489039
+                        }, 
+                        {
+                         "x":-854.587107924777,
+                         "y":979.028575142979
+                        }, 
+                        {
+                         "x":-764.472678705044,
+                         "y":579.498775395563
+                        }, 
+                        {
+                         "x":-486.358249485311,
+                         "y":371.968975648147
+                        }, 
+                        {
+                         "x":-272.243820265579,
+                         "y":288.439175900732
+                        }, 
+                        {
+                         "x":111.344743762448,
+                         "y":429.63657586461
+                        }, 
+                        {
+                         "x":258.933307790475,
+                         "y":842.833975828487
+                        },
+                    
+                        {
+                         "x":152.727589804489,
+                         "y":1137.43267581043
+                        }, 
+                        {
+                         "x":-1.4781281814976,
+                         "y":1344.03137579237
+                        }, 
+                        {
+                         "x":-312.580987174491,
+                         "y":1412.33072578333
+                        }, 
+                        {
+                         "x":-287.683846167484,
+                         "y":1732.6300757743
+                        }, 
+                        {
+                         "x":486.110435846529,
+                         "y":1701.22877575624
+                        }, 
+                        {
+                         "x":870.521821199453,
+                         "y":896.080508826166
+                        }, 
+                        {
+                         "x":681.081927607076,
+                         "y":65.4681667962902
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":286.811478800547,
+                 "y":-872.438842567399
+                }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":true,
+         "visible":false,
          "x":0,
          "y":0
         }, 
@@ -1078,10 +1291,74 @@
          "draworder":"topdown",
          "id":6,
          "name":"Items",
-         "objects":[],
+         "objects":[
+                {
+                 "id":285,
+                 "name":"DamageRock",
+                 "template":"..\/Templates\/ItemTemplate.tx",
+                 "type":"damage-rock",
+                 "x":-700,
+                 "y":-900
+                }, 
+                {
+                 "id":286,
+                 "name":"DamageRock",
+                 "template":"..\/Templates\/ItemTemplate.tx",
+                 "type":"damage-rock",
+                 "x":-804,
+                 "y":-552
+                }, 
+                {
+                 "id":287,
+                 "name":"DamageRock",
+                 "template":"..\/Templates\/ItemTemplate.tx",
+                 "type":"damage-rock",
+                 "x":-472,
+                 "y":-744
+                }, 
+                {
+                 "id":288,
+                 "name":"DamageRock",
+                 "template":"..\/Templates\/ItemTemplate.tx",
+                 "type":"damage-rock",
+                 "x":788,
+                 "y":380
+                }, 
+                {
+                 "id":289,
+                 "name":"DamageRock",
+                 "template":"..\/Templates\/ItemTemplate.tx",
+                 "type":"damage-rock",
+                 "x":920,
+                 "y":800
+                }, 
+                {
+                 "id":290,
+                 "name":"DamageRock",
+                 "template":"..\/Templates\/ItemTemplate.tx",
+                 "type":"damage-rock",
+                 "x":520,
+                 "y":840
+                }, 
+                {
+                 "id":291,
+                 "name":"DamageRock",
+                 "template":"..\/Templates\/ItemTemplate.tx",
+                 "type":"damage-rock",
+                 "x":-332,
+                 "y":784
+                }, 
+                {
+                 "id":292,
+                 "name":"DamageRock",
+                 "template":"..\/Templates\/ItemTemplate.tx",
+                 "type":"damage-rock",
+                 "x":660,
+                 "y":-720
+                }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":true,
+         "visible":false,
          "x":0,
          "y":0
         }, 
@@ -1089,15 +1366,221 @@
          "draworder":"topdown",
          "id":7,
          "name":"Enemies",
-         "objects":[],
+         "objects":[
+                {
+                 "height":0,
+                 "id":279,
+                 "name":"Boss",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"PatrolRoute",
+                         "type":"object",
+                         "value":280
+                        }, 
+                        {
+                         "name":"state",
+                         "type":"string",
+                         "value":"idle"
+                        }],
+                 "rotation":0,
+                 "type":"boss",
+                 "visible":true,
+                 "width":0,
+                 "x":0,
+                 "y":-50
+                }, 
+                {
+                 "height":0,
+                 "id":280,
+                 "name":"Dryad",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"PatrolRoute",
+                         "type":"object",
+                         "value":280
+                        }, 
+                        {
+                         "name":"state",
+                         "type":"string",
+                         "value":"idle"
+                        }],
+                 "rotation":0,
+                 "type":"dryad",
+                 "visible":true,
+                 "width":0,
+                 "x":248.606060606061,
+                 "y":-133.090909090909
+                }, 
+                {
+                 "height":0,
+                 "id":282,
+                 "name":"Dryad",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"PatrolRoute",
+                         "type":"object",
+                         "value":282
+                        }, 
+                        {
+                         "name":"state",
+                         "type":"string",
+                         "value":"idle"
+                        }],
+                 "rotation":0,
+                 "type":"dryad",
+                 "visible":true,
+                 "width":0,
+                 "x":316.606060606061,
+                 "y":90.9090909090909
+                }, 
+                {
+                 "height":0,
+                 "id":283,
+                 "name":"Dryad",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"PatrolRoute",
+                         "type":"object",
+                         "value":283
+                        }, 
+                        {
+                         "name":"state",
+                         "type":"string",
+                         "value":"idle"
+                        }],
+                 "rotation":0,
+                 "type":"dryad",
+                 "visible":true,
+                 "width":0,
+                 "x":152.606060606061,
+                 "y":230.909090909091
+                }, 
+                {
+                 "id":293,
+                 "name":"Slime",
+                 "properties":[
+                        {
+                         "name":"PatrolRoute",
+                         "type":"object",
+                         "value":281
+                        }, 
+                        {
+                         "name":"state",
+                         "type":"string",
+                         "value":"patrol"
+                        }],
+                 "template":"..\/Templates\/EnemyTemplate.tx",
+                 "type":"slime",
+                 "x":264,
+                 "y":-844
+                }, 
+                {
+                 "id":294,
+                 "name":"Slime",
+                 "properties":[
+                        {
+                         "name":"PatrolRoute",
+                         "type":"object",
+                         "value":281
+                        }, 
+                        {
+                         "name":"state",
+                         "type":"string",
+                         "value":"patrol"
+                        }],
+                 "template":"..\/Templates\/EnemyTemplate.tx",
+                 "type":"slime",
+                 "x":-840,
+                 "y":460
+                }, 
+                {
+                 "id":295,
+                 "name":"Slime",
+                 "properties":[
+                        {
+                         "name":"PatrolRoute",
+                         "type":"object",
+                         "value":281
+                        }, 
+                        {
+                         "name":"state",
+                         "type":"string",
+                         "value":"patrol"
+                        }],
+                 "template":"..\/Templates\/EnemyTemplate.tx",
+                 "type":"slime",
+                 "x":-796,
+                 "y":792
+                }, 
+                {
+                 "id":296,
+                 "name":"Slime",
+                 "properties":[
+                        {
+                         "name":"PatrolRoute",
+                         "type":"object",
+                         "value":281
+                        }, 
+                        {
+                         "name":"state",
+                         "type":"string",
+                         "value":"patrol"
+                        }],
+                 "template":"..\/Templates\/EnemyTemplate.tx",
+                 "type":"slime",
+                 "x":780,
+                 "y":552
+                }, 
+                {
+                 "id":297,
+                 "name":"Slime",
+                 "properties":[
+                        {
+                         "name":"PatrolRoute",
+                         "type":"object",
+                         "value":281
+                        }, 
+                        {
+                         "name":"state",
+                         "type":"string",
+                         "value":"patrol"
+                        }],
+                 "template":"..\/Templates\/EnemyTemplate.tx",
+                 "type":"slime",
+                 "x":904,
+                 "y":-652
+                }, 
+                {
+                 "id":298,
+                 "name":"Slime",
+                 "properties":[
+                        {
+                         "name":"PatrolRoute",
+                         "type":"object",
+                         "value":281
+                        }, 
+                        {
+                         "name":"state",
+                         "type":"string",
+                         "value":"patrol"
+                        }],
+                 "template":"..\/Templates\/EnemyTemplate.tx",
+                 "type":"slime",
+                 "x":-888,
+                 "y":-948
+                }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":true,
+         "visible":false,
          "x":0,
          "y":0
         }],
  "nextlayerid":12,
- "nextobjectid":279,
+ "nextobjectid":314,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.11.2",
