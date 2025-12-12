@@ -1098,10 +1098,70 @@
                  "width":235.515484848485,
                  "x":-549.212287878788,
                  "y":446.00003030303
+                }, 
+                {
+                 "height":284.848484848485,
+                 "id":314,
+                 "properties":[
+                        {
+                         "name":"fill",
+                         "type":"int",
+                         "value":7
+                        }],
+                 "template":"..\/Templates\/ScatteringTemplate.tx",
+                 "type":"floorTile1 floorTile2 floorTile3",
+                 "width":687.878787878788,
+                 "x":-326.060606060606,
+                 "y":252.969696969697
+                }, 
+                {
+                 "height":260.848,
+                 "id":315,
+                 "properties":[
+                        {
+                         "name":"fill",
+                         "type":"int",
+                         "value":7
+                        }],
+                 "template":"..\/Templates\/ScatteringTemplate.tx",
+                 "type":"floorTile1 floorTile2 floorTile3",
+                 "width":615.879,
+                 "x":-255.9395,
+                 "y":-422.424
+                }, 
+                {
+                 "height":448.848,
+                 "id":316,
+                 "properties":[
+                        {
+                         "name":"fill",
+                         "type":"int",
+                         "value":7
+                        }],
+                 "template":"..\/Templates\/ScatteringTemplate.tx",
+                 "type":"floorTile1 floorTile2 floorTile3",
+                 "width":227.879,
+                 "x":-467.9395,
+                 "y":-162.424
+                }, 
+                {
+                 "height":524.848,
+                 "id":317,
+                 "properties":[
+                        {
+                         "name":"fill",
+                         "type":"int",
+                         "value":7
+                        }],
+                 "template":"..\/Templates\/ScatteringTemplate.tx",
+                 "type":"floorTile1 floorTile2 floorTile3",
+                 "width":227.879,
+                 "x":246.0605,
+                 "y":-208.424
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":false,
+         "visible":true,
          "x":0,
          "y":0
         }, 
@@ -1127,23 +1187,23 @@
                  "name":"",
                  "polygon":[
                         {
-                         "x":108.251432202449,
-                         "y":-319.152326376815
+                         "x":156.736280687298,
+                         "y":-176.728083952573
                         }, 
                         {
-                         "x":-360.839234960583,
-                         "y":-396.894457432601
+                         "x":-382.051356172704,
+                         "y":-205.985366523511
                         }, 
                         {
-                         "x":-1019.36652562064,
-                         "y":-270.051978701931
+                         "x":-1025.42713168125,
+                         "y":-221.567130217083
                         }, 
                         {
-                         "x":-1313.47814546721,
+                         "x":-1289.47814546721,
                          "y":462.179333537283
                         }, 
                         {
-                         "x":-1339.61147350531,
+                         "x":-1323.61147350531,
                          "y":1088.3922897989
                         }, 
                         {
@@ -1283,7 +1343,7 @@
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":false,
+         "visible":true,
          "x":0,
          "y":0
         }, 
@@ -1580,7 +1640,7 @@
          "y":0
         }],
  "nextlayerid":12,
- "nextobjectid":314,
+ "nextobjectid":318,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.11.2",

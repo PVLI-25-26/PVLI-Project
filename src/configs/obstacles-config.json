@@ -635,6 +635,45 @@
         }
     },
     {
+        "key": "floorTile1",
+        "spriteStackConfig": 
+        {
+            "textures": "floorTile1-spritestack",
+            "frameCount": 2,
+            "verticalOffset": 2,
+            "scale": 9,
+            "offsetX": 0,
+            "offsetY": 0,
+            "alwaysRenderBelow": true
+        } 
+    },
+    {
+        "key": "floorTile2",
+        "spriteStackConfig": 
+        {
+            "textures": "floorTile2-spritestack",
+            "frameCount": 2,
+            "verticalOffset": 2,
+            "scale": 9,
+            "offsetX": 0,
+            "offsetY": 0,
+            "alwaysRenderBelow": true
+        } 
+    },
+    {
+        "key": "floorTile3",
+        "spriteStackConfig": 
+        {
+            "textures": "floorTile3-spritestack",
+            "frameCount": 2,
+            "verticalOffset": 2,
+            "scale": 9,
+            "offsetX": 0,
+            "offsetY": 0,
+            "alwaysRenderBelow": true
+        } 
+    },
+    {
         "key": "door",
         "spriteStackConfig": 
         {

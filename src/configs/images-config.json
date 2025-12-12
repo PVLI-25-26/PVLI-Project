@@ -40,6 +40,9 @@
     {"key": "bossColumnWall-spritestack", "type": "spritesheet", "file": "assets/sprites/SpriteStacks/ColumnWallBoss.png", "settings":{"frameWidth":16, "frameHeight": 55}},
     {"key": "wall-spritestack", "type": "spritesheet", "file": "assets/sprites/SpriteStacks/Wall.png", "settings":{"frameWidth":5, "frameHeight": 50}},
     {"key": "bossWall-spritestack", "type": "spritesheet", "file": "assets/sprites/SpriteStacks/WallBoss.png", "settings":{"frameWidth":5, "frameHeight": 50}},
+    {"key": "floorTile1-spritestack", "type": "spritesheet", "file": "assets/sprites/SpriteStacks/FloorTile.png", "settings":{"frameWidth":5, "frameHeight": 5}},
+    {"key": "floorTile2-spritestack", "type": "spritesheet", "file": "assets/sprites/SpriteStacks/FloorTile2.png", "settings":{"frameWidth":5, "frameHeight": 5}},
+    {"key": "floorTile3-spritestack", "type": "spritesheet", "file": "assets/sprites/SpriteStacks/FloorTile3.png", "settings":{"frameWidth":5, "frameHeight": 5}},
     
     
     {"key": "queso", "type": "image", "file": "assets/sprites/16x16 RPG Item Pack/Item__65.png", "settings":{}},
