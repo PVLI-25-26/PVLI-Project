@@ -1,0 +1,160 @@
+{
+    "automappingRulesFile": "",
+    "commands": [
+    ],
+    "compatibilityVersion": 1100,
+    "extensionsPath": ".",
+    "folders": [
+        ".",
+        "../../../src/configs/Dungeon"
+    ],
+    "properties": [
+    ],
+    "propertyTypes": [
+        {
+            "color": "#ffa0a0a4",
+            "drawFill": true,
+            "id": 7,
+            "members": [
+                {
+                    "name": "rotation",
+                    "type": "int",
+                    "value": 0
+                },
+                {
+                    "name": "scene",
+                    "type": "object",
+                    "value": 0
+                },
+                {
+                    "name": "spawnX",
+                    "type": "int",
+                    "value": 0
+                },
+                {
+                    "name": "spawnY",
+                    "type": "int",
+                    "value": 0
+                },
+                {
+                    "name": "x",
+                    "type": "int",
+                    "value": 0
+                },
+                {
+                    "name": "y",
+                    "type": "int",
+                    "value": 0
+                }
+            ],
+            "name": "Connection",
+            "type": "class",
+            "useAs": [
+                "property",
+                "map",
+                "layer",
+                "object",
+                "tile",
+                "tileset",
+                "wangcolor",
+                "wangset",
+                "project"
+            ]
+        },
+        {
+            "color": "#ffa0a0a4",
+            "drawFill": true,
+            "id": 5,
+            "members": [
+                {
+                    "name": "isUsed",
+                    "type": "bool",
+                    "value": false
+                },
+                {
+                    "name": "wait",
+                    "type": "int",
+                    "value": 0
+                },
+                {
+                    "name": "x",
+                    "type": "int",
+                    "value": 0
+                },
+                {
+                    "name": "y",
+                    "type": "int",
+                    "value": 0
+                }
+            ],
+            "name": "PatrolPoint",
+            "type": "class",
+            "useAs": [
+                "property",
+                "map",
+                "layer",
+                "object",
+                "tile",
+                "tileset",
+                "wangcolor",
+                "wangset",
+                "project"
+            ]
+        },
+        {
+            "color": "#ffa0a0a4",
+            "drawFill": true,
+            "id": 6,
+            "members": [
+                {
+                    "name": "point1",
+                    "propertyType": "PatrolPoint",
+                    "type": "class",
+                    "value": {
+                    }
+                },
+                {
+                    "name": "point2",
+                    "propertyType": "PatrolPoint",
+                    "type": "class",
+                    "value": {
+                    }
+                },
+                {
+                    "name": "point3",
+                    "propertyType": "PatrolPoint",
+                    "type": "class",
+                    "value": {
+                    }
+                },
+                {
+                    "name": "point4",
+                    "propertyType": "PatrolPoint",
+                    "type": "class",
+                    "value": {
+                    }
+                },
+                {
+                    "name": "point5",
+                    "propertyType": "PatrolPoint",
+                    "type": "class",
+                    "value": {
+                    }
+                }
+            ],
+            "name": "PatrolRoute",
+            "type": "class",
+            "useAs": [
+                "property",
+                "map",
+                "layer",
+                "object",
+                "tile",
+                "tileset",
+                "wangcolor",
+                "wangset",
+                "project"
+            ]
+        }
+    ]
+}

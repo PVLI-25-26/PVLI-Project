@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template>
+ <object name="RoomTemplate" type="&lt;path-to-room&gt;">
+  <properties>
+   <property name="Connection" type="class" propertytype="Connection">
+    <properties>
+     <property name="spawnX" type="int" value="0"/>
+     <property name="spawnY" type="int" value="0"/>
+     <property name="x" type="int" value="0"/>
+     <property name="y" type="int" value="0"/>
+    </properties>
+   </property>
+  </properties>
+  <point/>
+ </object>
+</template>

@@ -5,8 +5,11 @@
     <title>Phaser Platformer</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="https://fonts.googleapis.com/css2?family=Sansation:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
-    <link href="style.css" rel="stylesheet">
-    <script type="module" crossorigin src="/PVLI-Project/assets/index-CxHczvml.js"></script>
+    <link href="style.css" rel="stylesheet">
+    <!--Load fonts by using them in the html. This way the browser loads them before the game starts. This had to be done because loading fonts synchronously in the game wasn't possible-->
+    <div style="font-family:FableFont; position:absolute; left:-1000px; visibility: hidden;">.</div>
+    <div style="font-family:MicroChat; position:absolute; left:-1000px; visibility: hidden;">.</div>
+    <script type="module" crossorigin src="/PVLI-Project/assets/index-BTr5aPeD.js"></script>
   </head>
   <body>
     <header>
@@ -15,7 +18,7 @@
       </a>
       <h1>4Quesos</h1>
       <nav>
-        <a href="quienes-somos.html">Quienes somos</a>
+        <a href="quienes-somos.html">Quiénes somos</a>
       </nav>
     </header>
     <article style="flex-grow: 8;">
@@ -48,6 +51,11 @@
       <br>
       <br>
     </div>
+    <!-- Invisible input to acces computer files-->
+    <input 
+        type="file"
+        id="docpicker"
+        accept=".json" />
     <footer>
       <a href="https://x.com/QuatroKesos">Twitter</a>
       <a href="https://github.com/PVLI-25-26/PVLI-Project">Github</a>

@@ -1,0 +1,74 @@
+{
+    "activeFile": "rooms/hub-config.json",
+    "expandedProjectPaths": [
+        "rooms",
+        "."
+    ],
+    "fileStates": {
+        "rooms/begin-tutorial-config.json": {
+            "scale": 8.154166666666667,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 23.97547266223812,
+                "y": 23.975472662238126
+            }
+        },
+        "rooms/credits-room-config.json": {
+            "scale": 0.5,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 24,
+                "y": 23
+            }
+        },
+        "rooms/dungeon-combat-tutorial.json": {
+            "scale": 4,
+            "selectedLayer": 6,
+            "viewCenter": {
+                "x": 24,
+                "y": 23.875
+            }
+        },
+        "rooms/dungeon-combat1-config.json": {
+            "scale": 0.5,
+            "selectedLayer": 5,
+            "viewCenter": {
+                "x": 24,
+                "y": 23
+            }
+        },
+        "rooms/hub-config.json": {
+            "scale": 0.25,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 912,
+                "y": -140
+            }
+        },
+        "rooms/hub-tutorial-config.json": {
+            "scale": 17.654166666666665,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 24.01699315553458,
+                "y": 23.988671229643618
+            }
+        }
+    },
+    "openFiles": [
+        "rooms/begin-tutorial-config.json",
+        "rooms/credits-room-config.json",
+        "rooms/dungeon-combat1-config.json",
+        "rooms/hub-tutorial-config.json",
+        "rooms/dungeon-combat-tutorial.json",
+        "rooms/hub-config.json"
+    ],
+    "project": "MapEditor.tiled-project",
+    "recentFiles": [
+        "rooms/begin-tutorial-config.json",
+        "rooms/credits-room-config.json",
+        "rooms/dungeon-combat1-config.json",
+        "rooms/hub-tutorial-config.json",
+        "rooms/dungeon-combat-tutorial.json",
+        "rooms/hub-config.json"
+    ]
+}

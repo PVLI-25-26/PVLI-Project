@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template>
+ <object width="100" height="100">
+  <properties>
+   <property name="fill" type="int" value="0"/>
+  </properties>
+ </object>
+</template>
