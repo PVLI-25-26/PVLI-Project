@@ -31,6 +31,9 @@ export class BossMovementControllerComponent extends BaseControllerComponent {
         EventBus.on('entityHit', this.onEntityDamaged, this);
         EventBus.on('entityMoved', this.onEntityMoved, this);
 
+
+		this.gameObject.play("boss_walk",true);
+
         this.changeState(initialState);
     }
 
@@ -47,6 +50,10 @@ export class BossMovementControllerComponent extends BaseControllerComponent {
     }
 
     update(time, delta) {
+
+		let velocity = this.gameObject.getVelocity();
+		if (velocity.x != 0) this.gameObject.flipX = velocity.x> 0;
+
         if (!this.enabled || !this.movementComponent || !this.currentState) return;
 
         this.currentState.update(time, delta);

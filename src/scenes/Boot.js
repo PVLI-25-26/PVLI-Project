@@ -139,6 +139,20 @@ export default class Boot extends Phaser.Scene {
 			frames: this.anims.generateFrameNumbers("Golem_animation",{start:23,end:33}),
 			frameRate:12,
 		});
+		this.anims.create({
+			key: "boss_idle",
+			frames: this.anims.generateFrameNumbers("Boss_animation",{start:0,end:5}),
+			frameRate:8,
+			repeat:-1
+		});
+		this.anims.create({
+			key: "boss_walk",
+			frames: this.anims.generateFrameNumbers("Boss_animation",{start:6,end:17}),
+			frameRate:12,
+			repeat:-1
+		});
+	
+	
 	
 		
 		
