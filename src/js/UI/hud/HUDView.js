@@ -134,10 +134,10 @@ export class HudView {
     }
 
     createBossHealthBar() {
-        const x = 200;
+        const x = 260;
         const y = 540;
 
-        this.bossHealthBar = new Bar(this.scene, x, y, 400, 25, Colors.RedHex);
+        this.bossHealthBar = new Bar(this.scene, x, y, 360, 25, Colors.RedHex);
         this.scene.hudLayer.add(this.bossHealthBar);
         this.bossHealthBar.setScrollFactor(0);
     }
