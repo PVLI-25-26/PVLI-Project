@@ -38,7 +38,7 @@
              "options": [1]}
         ],
         "speed" : 1,
-        "npcName" : "Melinoe", "portrait":"Melinoe",
+        "npcName" : "Melinoe", "portrait":"melinoe_portrait",
         "userOptions" : [
             {
                 "label" : "Next",
@@ -72,7 +72,7 @@
              "options": [1]}
         ],
         "speed" : 1,
-        "npcName" : "Melinoe", "portrait":"Melinoe",
+        "npcName" : "Melinoe", "portrait":"melinoe_portrait",
         "userOptions" : [
             {
                 "label" : "Next",
@@ -98,7 +98,7 @@
              "options": [1]}
         ],
         "speed" : 1,
-        "npcName" : "Melinoe", "portrait":"Melinoe",
+        "npcName" : "Melinoe", "portrait":"melinoe_portrait",
         "userOptions" : [
             {
                 "label" : "Next",
@@ -118,7 +118,7 @@
              "options": [1]}
         ],
         "speed" : 1,
-        "npcName" : "Melinoe", "portrait":"Melinoe",
+        "npcName" : "Melinoe", "portrait":"melinoe_portrait",
         "userOptions" : [
             {
                 "label" : "Next",
@@ -441,7 +441,7 @@
 			}
 		],
 		"speed" : 1,
-		"npcName" : "Melinoe", "portrait":"Melinoe",
+		"npcName" : "Melinoe", "portrait":"melinoe_portrait",
 		"userOptions":[
 			{
 				"label" : "Exit",
@@ -459,7 +459,7 @@
 			}
 		],
 		"speed" : 1,
-		"npcName" : "Melinoe", "portrait":"Melinoe",
+		"npcName" : "Melinoe", "portrait":"melinoe_portrait",
 		"userOptions":[
 			{
 				"label" : "Accept",
@@ -481,7 +481,7 @@
 			}
 		],
 		"speed" : 1,
-		"npcName" : "Melinoe", "portrait":"Melinoe",
+		"npcName" : "Melinoe", "portrait":"melinoe_portrait",
 		"userOptions":[
 			{
 				"label" : "Accept",
@@ -507,7 +507,7 @@
 			}
 		],
 		"speed" : 1,
-		"npcName" : "Melinoe", "portrait":"Melinoe",
+		"npcName" : "Melinoe", "portrait":"melinoe_portrait",
 		"userOptions":[
 			{
 				"label" : "Accept",
@@ -534,7 +534,7 @@
 			}
 		],
 		"speed" : 1,
-		"npcName" : "Melinoe", "portrait":"Melinoe",
+		"npcName" : "Melinoe", "portrait":"melinoe_portrait",
 		"userOptions":[
 			{
 				"label" : "Accept",
@@ -563,7 +563,7 @@
 			}
 		],
 		"speed" : 1,
-		"npcName" : "Melinoe", "portrait":"Melinoe",
+		"npcName" : "Melinoe", "portrait":"melinoe_portrait",
 		"userOptions":[
 			{
 				"label" : "Accept",
@@ -590,7 +590,7 @@
 			}
 		],
 		"speed" : 1,
-		"npcName" : "Melinoe", "portrait":"Melinoe",
+		"npcName" : "Melinoe", "portrait":"melinoe_portrait",
 		"userOptions":[
 			{
 				"label" : "Accept",
@@ -617,7 +617,7 @@
 			}
 		],
 		"speed" : 1,
-		"npcName" : "Melinoe", "portrait":"Melinoe",
+		"npcName" : "Melinoe", "portrait":"melinoe_portrait",
 		"userOptions":[
 			{
 				"label" : "Accept",
@@ -644,7 +644,7 @@
 			}
 		],
 		"speed" : 1,
-		"npcName" : "Melinoe", "portrait":"Melinoe",    
+		"npcName" : "Melinoe", "portrait":"melinoe_portrait",    
 		"userOptions":[
 			{
 				"label" : "Accept",
@@ -672,7 +672,7 @@
             }
         ],
         "speed": 1,
-        "npcName": "Melinoe", "portrait":"Melinoe",   
+        "npcName": "Melinoe", "portrait":"melinoe_portrait",   
         "userOptions": [
             { "label": "Accept", "event": "ACCEPT_MISSION", "color": "Green" },
             { "label": "Reject", "event": "REJECT_MISSION", "color": "Red" },
@@ -688,7 +688,7 @@
             }
         ],
         "speed": 1,
-        "npcName": "Melinoe", "portrait":"Melinoe",   
+        "npcName": "Melinoe", "portrait":"melinoe_portrait",   
         "userOptions": [
             { "label": "Accept", "event": "RECIEVE_100COINS", "color": "Green" },
             { "label": "Reject", "event": "END", "color": "Red" }
@@ -707,7 +707,7 @@
             }
         ],
         "speed": 1,
-        "npcName": "Melinoe", "portrait":"Melinoe",   
+        "npcName": "Melinoe", "portrait":"melinoe_portrait",   
         "userOptions": [
             { "label": "Accept", "event": "ACCEPT_MISSION", "color": "Green" },
             { "label": "Reject", "event": "REJECT_MISSION", "color": "Red" },
@@ -723,7 +723,7 @@
             }
         ],
         "speed": 1,
-        "npcName": "Melinoe", "portrait":"Melinoe",   
+        "npcName": "Melinoe", "portrait":"melinoe_portrait",   
         "userOptions": [
             { "label": "Accept", "event": "EQUIP_FORCEFIELD", "color": "Green" },
             { "label": "Reject", "event": "END", "color": "Red" }
@@ -742,7 +742,7 @@
             }
         ],
         "speed": 1,
-        "npcName": "Melinoe", "portrait":"Melinoe",   
+        "npcName": "Melinoe", "portrait":"melinoe_portrait",   
         "userOptions": [
             { "label": "Accept", "event": "ACCEPT_MISSION", "color": "Green" },
             { "label": "Reject", "event": "REJECT_MISSION", "color": "Red" },
@@ -758,7 +758,7 @@
             }
         ],
         "speed": 1,
-        "npcName": "Melinoe", "portrait":"Melinoe",   
+        "npcName": "Melinoe", "portrait":"melinoe_portrait",   
         "userOptions": [
             { "label": "Accept", "event": "EQUIP_DASH", "color": "Green" },
             { "label": "Reject", "event": "END", "color": "Red" }
@@ -779,7 +779,7 @@
             }
         ],
         "speed": 1,
-        "npcName": "Melinoe", "portrait":"Melinoe",   
+        "npcName": "Melinoe", "portrait":"melinoe_portrait",   
         "userOptions": [
             { "label": "Accept", "event": "ACCEPT_MISSION", "color": "Green" },
             { "label": "Reject", "event": "REJECT_MISSION", "color": "Red" },
@@ -795,7 +795,7 @@
             }
         ],
         "speed": 1,
-        "npcName": "Melinoe", "portrait":"Melinoe",   
+        "npcName": "Melinoe", "portrait":"melinoe_portrait",   
         "userOptions": [
             { "label": "Accept", "event": "EQUIP_FIRE_ARROW", "color": "Green" },
             { "label": "Reject", "event": "END", "color": "Red" }
@@ -810,7 +810,7 @@
             }
         ],
         "speed": 1,
-        "npcName": "Melinoe", "portrait":"Melinoe",   
+        "npcName": "Melinoe", "portrait":"melinoe_portrait",   
         "userOptions": [
             { "label": "Accept", "event": "ACCEPT_MISSION", "color": "Green" },
             { "label": "Reject", "event": "REJECT_MISSION", "color": "Red" }
@@ -825,7 +825,7 @@
             }
         ],
         "speed": 1,
-        "npcName": "Melinoe", "portrait":"Melinoe",   
+        "npcName": "Melinoe", "portrait":"melinoe_portrait",   
         "userOptions": [
             { "label": "Accept", "event": "EQUIP_GAS_ARROW", "color": "Green" },
             { "label": "Reject", "event": "END", "color": "Red" }
@@ -844,7 +844,7 @@
             }
         ],
         "speed": 1,
-        "npcName": "Melinoe", "portrait":"Melinoe",   
+        "npcName": "Melinoe", "portrait":"melinoe_portrait",   
         "userOptions": [
             { "label": "Accept", "event": "ACCEPT_MISSION", "color": "Green" },
             { "label": "Reject", "event": "REJECT_MISSION", "color": "Red" },
@@ -860,7 +860,7 @@
             }
         ],
         "speed": 1,
-        "npcName": "Melinoe", "portrait":"Melinoe",   
+        "npcName": "Melinoe", "portrait":"melinoe_portrait",   
         "userOptions": [
             { "label": "Accept", "event": "RECIEVE_100COINS", "color": "Green" },
             { "label": "Reject", "event": "END", "color": "Red" }
