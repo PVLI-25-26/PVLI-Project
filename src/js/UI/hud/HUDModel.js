@@ -57,10 +57,14 @@ export class HudModel {
         const dungeonGenerator = this.scene.plugins.get("dungeon");
         this.currentRoomID = dungeonGenerator.currentRoomKey;
         const dungeonMap = getTiledMapLayer(dungeonConfig, "Dungeon");
+        let hubID;
         dungeonMap.forEach((room)=>{
+            if(room.name == "Hub") hubID = room.id;
             this.rooms.set(room.id, {name: room.name, x: room.x, y: room.y});
             room.properties?.forEach((connection)=>{
-                this.paths.push({from: room.id, to: connection.value.scene});
+                if(connection.value.scene != hubID){
+                    this.paths.push({from: room.id, to: connection.value.scene});
+                }
             })
         })
     }

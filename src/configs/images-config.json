@@ -71,6 +71,7 @@
     {"key": "Fire-Arrow", "type": "image", "file": "assets/arrows/fire-arrow.png", "settings":{}},
     {"key": "Grass-Arrow", "type": "image", "file": "assets/arrows/grass-arrow.png", "settings":{}},
 	{"key": "Gass-Arrow", "type": "image", "file": "assets/arrows/gass-arrow.png", "settings":{}},
+    {"key": "vines", "type": "image", "file": "assets/sprites/vines.png", "settings":{}},
 
 
 	{"key": "Player_animation", "type": "spritesheet", "file": "assets/sprites/Player/PlayerAnimations.png", "settings":{"frameWidth":26, "frameHeight":19}},
@@ -80,7 +81,6 @@
 	{"key": "Melinoe_animation", "type": "spritesheet", "file": "assets/sprites/NPCs/MelinoeAnimations.png", "settings":{"frameWidth":18,"frameHeight":19}},
 	{"key": "Dryad_animation", "type": "spritesheet", "file": "assets/sprites/Enemies/DryadAnimations.png", "settings":{"frameWidth":14, "frameHeight":23}},
 	{"key": "Portal_animation", "type": "spritesheet", "file": "assets/sprites/PortalAnimation.png", "settings":{"frameWidth":35, "frameHeight":31}},
-
 
 
     {"key": "dash", "type": "image", "file": "assets/sprites/Abilities/dash.png", "settings":{}},

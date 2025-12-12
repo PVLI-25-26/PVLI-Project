@@ -62,9 +62,9 @@ dungeon.forEach((room)=>{
     roomNameToID[room.name] = room.id;
 })
 
-window.tp = function(id, x, y){
+window.tp = function(id, x=0, y=0){
     if(typeof id == "number"){
-        EventBus.emit('changeRoom', id);
+        EventBus.emit('changeRoom', {sceneName: id, playerSpawn: {x: x, y: y}});
     }
     else if(typeof id == "string"){
         EventBus.emit('changeRoom', {sceneName: roomNameToID[id], playerSpawn: {x: x, y: y}});
