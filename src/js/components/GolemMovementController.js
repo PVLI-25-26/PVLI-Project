@@ -45,6 +45,7 @@ export class GolemMovementControllerComponent extends BaseControllerComponent {
 			if (!this.onCombat){
 				this.gameObject.play("golem_up",true);
                 this.gameObject.setCollisionCategory(this.gameObject.scene.enemiesCategory);
+                this.gameObject.setStatic(false);
 			}
             this.onCombat = true;
             console.log("Golem entering combat mode.");
@@ -60,6 +61,7 @@ export class GolemMovementControllerComponent extends BaseControllerComponent {
 
         if (!this.onCombat && this.gameObject.body.collisionCategory != this.gameObject.scene.obstaclesCategory) {
             this.gameObject.setCollisionCategory(this.gameObject.scene.obstaclesCategory);
+            this.gameObject.setStatic(true);
         }
     }
 
