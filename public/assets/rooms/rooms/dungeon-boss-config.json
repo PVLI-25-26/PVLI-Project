@@ -881,8 +881,8 @@
                  "name":"Tree",
                  "template":"..\/Templates\/BillboardTemplate.tx",
                  "type":"tree3",
-                 "x":328,
-                 "y":-968
+                 "x":179.515151515152,
+                 "y":-889.212121212121
                 }, 
                 {
                  "id":304,
@@ -976,8 +976,8 @@
                  "template":"..\/Templates\/ScatteringTemplate.tx",
                  "type":"tree1 tree2 tree3 tree4",
                  "width":3008,
-                 "x":-1535.87878787879,
-                 "y":-1497.27272727273
+                 "x":-1541.9393939394,
+                 "y":-1570
                 }, 
                 {
                  "height":384,
@@ -1161,6 +1161,7 @@
                 }],
          "opacity":1,
          "type":"objectgroup",
+         "visible":false,
          "visible":false,
          "x":0,
          "y":0
