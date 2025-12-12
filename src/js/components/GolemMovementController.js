@@ -44,11 +44,10 @@ export class GolemMovementControllerComponent extends BaseControllerComponent {
         if (data.entity.type == 'enemy') {
 			if (!this.onCombat){
 				this.gameObject.play("golem_up",true);
+                this.gameObject.setCollisionCategory(this.gameObject.scene.enemiesCategory);
 			}
             this.onCombat = true;
             console.log("Golem entering combat mode.");
-
-		
         }
     }
 
@@ -58,6 +57,10 @@ export class GolemMovementControllerComponent extends BaseControllerComponent {
 		let velocity = this.gameObject.getVelocity();
 		if (velocity.x!=0) this.gameObject.flipX = velocity.x>0;
         this.currentState.update(time, delta);
+
+        if (!this.onCombat && this.gameObject.body.collisionCategory != this.gameObject.scene.obstaclesCategory) {
+            this.gameObject.setCollisionCategory(this.gameObject.scene.obstaclesCategory);
+        }
     }
 
     checkTargetInChasingRange(target) {

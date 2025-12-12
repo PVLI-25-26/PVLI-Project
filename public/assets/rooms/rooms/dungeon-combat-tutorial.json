@@ -244,7 +244,7 @@
                 {
                  "height":0,
                  "id":90,
-                 "name":"Boss",
+                 "name":"Golem",
                  "point":true,
                  "properties":[
                         {
@@ -258,7 +258,7 @@
                          "value":"idle"
                         }],
                  "rotation":0,
-                 "type":"boss",
+                 "type":"golem",
                  "visible":true,
                  "width":0,
                  "x":141.333333333333,
