@@ -976,8 +976,8 @@
                  "template":"..\/Templates\/ScatteringTemplate.tx",
                  "type":"tree1 tree2 tree3 tree4",
                  "width":3008,
-                 "x":-1535.87878787879,
-                 "y":-1497.27272727273
+                 "x":-1541.9393939394,
+                 "y":-1570
                 }, 
                 {
                  "height":384,
@@ -1535,8 +1535,8 @@
                         }],
                  "template":"..\/Templates\/EnemyTemplate.tx",
                  "type":"slime",
-                 "x":264,
-                 "y":-844
+                 "x":397.333333333333,
+                 "y":-786.424242424242
                 }, 
                 {
                  "id":294,
@@ -1611,8 +1611,8 @@
                         }],
                  "template":"..\/Templates\/EnemyTemplate.tx",
                  "type":"slime",
-                 "x":904,
-                 "y":-652
+                 "x":888.848484848485,
+                 "y":-482.30303030303
                 }, 
                 {
                  "id":298,
@@ -1635,7 +1635,7 @@
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":false,
+         "visible":true,
          "x":0,
          "y":0
         }],
