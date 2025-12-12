@@ -340,7 +340,7 @@
          "objects":[
                 {
                  "id":147,
-                 "name":"Enemy 3",
+                 "name":"Slime 3",
                  "properties":[
                         {
                          "name":"PatrolRoute",
@@ -353,13 +353,13 @@
                          "value":"patrol"
                         }],
                  "template":"..\/Templates\/EnemyTemplate.tx",
-                 "type":"basic",
+                 "type":"slime",
                  "x":-112,
                  "y":172
                 }, 
                 {
                  "id":148,
-                 "name":"Enemy 2",
+                 "name":"Slime2",
                  "properties":[
                         {
                          "name":"PatrolRoute",
@@ -372,13 +372,13 @@
                          "value":"patrol"
                         }],
                  "template":"..\/Templates\/EnemyTemplate.tx",
-                 "type":"basic",
+                 "type":"slime",
                  "x":221.333333333333,
                  "y":-433.333333333333
                 }, 
                 {
                  "id":149,
-                 "name":"Enemy 1",
+                 "name":"Slime1",
                  "properties":[
                         {
                          "name":"PatrolRoute",
@@ -391,7 +391,7 @@
                          "value":"patrol"
                         }],
                  "template":"..\/Templates\/EnemyTemplate.tx",
-                 "type":"basic",
+                 "type":"slime",
                  "x":257.333333333333,
                  "y":-128
                 }],

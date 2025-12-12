@@ -1,17 +1,19 @@
 {
     "billboardConfig": {
         "texture": "Antonio",
-        "scale": 4
+        "scale": 4,
+        "offsetX": 0.5,
+        "offsetY": 0.7
     },
     "physicsConfig":{
         "shape": {
             "type": "circle",
-			"radius": 30
+			"radius": 6
+
         }
     },
     "speed": 4,
-    "offsetX": 0,
-    "offsetY": 0,
+
     "maxHP": 3,
     "damageSound": "enemyHurt",
     "deathSound": "enemyDeath"

@@ -182,7 +182,7 @@
         "physicsConfig":{
             "shape": {
                 "type": "circle",
-				"circle":15
+				"radius":9
             },
             "isStatic": true,
             "isSensor":true
@@ -490,6 +490,146 @@
                 "type": "rectangle",
                 "width": 48,
                 "height": 130
+            },
+            "isStatic": true
+        }
+    },
+    {
+        "key": "columnTopBroken",
+        "spriteStackConfig": 
+        {
+            "textures": "topBrokenColumn-spritestack",
+            "frameCount": 12,
+            "verticalOffset": 3,
+            "scale": 3,
+            "offsetX": 0,
+            "offsetY": 0
+        },
+        "physicsConfig":{
+            "shape": {
+                "type": "rectangle",
+                "width": 48,
+                "height": 48
+            },
+            "isStatic": true
+        }
+    },
+    {
+        "key": "columnBaseBroken",
+        "spriteStackConfig": 
+        {
+            "textures": "baseBrokenColumn-spritestack",
+            "frameCount": 20,
+            "verticalOffset": 3,
+            "scale": 3,
+            "offsetX": 0,
+            "offsetY": 0
+        },
+        "physicsConfig":{
+            "shape": {
+                "type": "rectangle",
+                "width": 48,
+                "height": 48
+            },
+            "isStatic": true
+        }
+    },
+        {
+        "key": "columnEye",
+        "spriteStackConfig": 
+        {
+            "textures": "eyeColumn-spritestack",
+            "frameCount": 48,
+            "verticalOffset": 3,
+            "scale": 3,
+            "offsetX": 0,
+            "offsetY": 0
+        },
+        "physicsConfig":{
+            "shape": {
+                "type": "rectangle",
+                "width": 48,
+                "height": 48
+            },
+            "isStatic": true
+        }
+    },
+    {
+        "key": "columnWallBoss",
+        "spriteStackConfig": 
+        {
+            "textures": "bossColumnWall-spritestack",
+            "frameCount": 28,
+            "verticalOffset": 3,
+            "scale": 3,
+            "offsetX": 0,
+            "offsetY": 0
+        },
+        "physicsConfig":{
+            "shape": {
+                "type": "rectangle",
+                "width": 48,
+                "height": 48
+            },
+            "isStatic": true
+        }
+    },
+    {
+        "key": "columnWall",
+        "spriteStackConfig": 
+        {
+            "textures": "columnWall-spritestack",
+            "frameCount": 28,
+            "verticalOffset": 3,
+            "scale": 3,
+            "offsetX": 0,
+            "offsetY": 0
+        },
+        "physicsConfig":{
+            "shape": {
+                "type": "rectangle",
+                "width": 48,
+                "height": 155
+            },
+            "isStatic": true
+        }
+    },
+    {
+        "key": "wall",
+        "spriteStackConfig": 
+        {
+            "textures": "wall-spritestack",
+            "frameCount": 22,
+            "verticalOffset": 3,
+            "scale": 3,
+            "offsetX": 0,
+            "offsetY": 0
+        },
+        "physicsConfig":{
+            "shape": {
+                "type": "rectangle",
+                "width": 30,
+                "height": 150
+            },
+            "isStatic": true
+        }
+    },
+    {
+        "key": "wallBoss",
+        "spriteStackConfig": 
+        {
+            "textures": "bossWall-spritestack",
+            "frameCount": 22,
+            "verticalOffset": 3,
+            "scale": 3,
+            "offsetX": 0,
+            "offsetY": 0
+        },
+        "physicsConfig":{
+            "shape": {
+                "type": "rectangle",
+                "width": 30,
+                "height": 150
             },
             "isStatic": true
         }

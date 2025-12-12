@@ -9,7 +9,6 @@
     {"key": "slime", "type": "image", "file": "assets/sprites/SlimeSprite.png", "settings":{}},
 
     {"key": "barrel-spritestack", "type": "spritesheet", "file": "assets/sprites/SpriteStackingPlaceholders/MiscProps/Barrel_strip8.png", "settings":{"frameWidth":14}},
-    {"key": "wall-spritestack", "type": "spritesheet", "file": "assets/sprites/SpriteStackingPlaceholders/Walls/WallCornerBrick_strip16.png", "settings":{"frameWidth":16}},
     {"key": "chest-spritestack", "type": "spritesheet", "file": "assets/sprites/SpriteStackingPlaceholders/MiscProps/Chestf0_strip18.png", "settings":{"frameWidth":16, "spacing":6}},
     {"key": "crate-spritestack", "type": "spritesheet", "file": "assets/sprites/SpriteStackingPlaceholders/MiscProps/Crate_strip8.png", "settings":{"frameWidth":16}},
     {"key": "door-spritestack", "type": "spritesheet", "file": "assets/sprites/SpriteStackingPlaceholders/Doors/WoodDoor_strip16.png", "settings":{"frameWidth":16, "frameHeight": 6}},
@@ -34,6 +33,13 @@
     {"key": "bossEyeColumn-spritestack", "type": "spritesheet", "file": "assets/sprites/SpriteStacks/ColumnEyeBoss.png", "settings":{"frameWidth":16, "frameHeight":16}},
     {"key": "bossColumnSided-spritestack", "type": "spritesheet", "file": "assets/sprites/SpriteStacks/ColumnSidedBoss.png", "settings":{"frameWidth":16, "frameHeight":43}},
     {"key": "columnSided-spritestack", "type": "spritesheet", "file": "assets/sprites/SpriteStacks/ColumnSided.png", "settings":{"frameWidth":16, "frameHeight":43}},
+    {"key": "topBrokenColumn-spritestack", "type": "spritesheet", "file": "assets/sprites/SpriteStacks/ColumnTopBroken.png", "settings":{"frameWidth":15, "frameHeight":16}},
+    {"key": "baseBrokenColumn-spritestack", "type": "spritesheet", "file": "assets/sprites/SpriteStacks/ColumnBaseBroken.png", "settings":{"frameWidth":16, "frameHeight":16}},
+    {"key": "eyeColumn-spritestack", "type": "spritesheet", "file": "assets/sprites/SpriteStacks/ColumnEye.png", "settings":{"frameWidth":16, "frameHeight":16}},
+    {"key": "columnWall-spritestack", "type": "spritesheet", "file": "assets/sprites/SpriteStacks/ColumnWall.png", "settings":{"frameWidth":16, "frameHeight": 55}},
+    {"key": "bossColumnWall-spritestack", "type": "spritesheet", "file": "assets/sprites/SpriteStacks/ColumnWallBoss.png", "settings":{"frameWidth":16, "frameHeight": 55}},
+    {"key": "wall-spritestack", "type": "spritesheet", "file": "assets/sprites/SpriteStacks/Wall.png", "settings":{"frameWidth":5, "frameHeight": 50}},
+    {"key": "bossWall-spritestack", "type": "spritesheet", "file": "assets/sprites/SpriteStacks/WallBoss.png", "settings":{"frameWidth":5, "frameHeight": 50}},
     
     
     {"key": "queso", "type": "image", "file": "assets/sprites/16x16 RPG Item Pack/Item__65.png", "settings":{}},

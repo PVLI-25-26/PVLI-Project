@@ -109,6 +109,24 @@
                  "type":"bossSign",
                  "x":9,
                  "y":207
+                }, 
+                {
+                 "id":144,
+                 "name":"Wall",
+                 "rotation":-90,
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"wall",
+                 "x":0,
+                 "y":90
+                }, 
+                {
+                 "id":145,
+                 "name":"Wall",
+                 "rotation":-90,
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"wall",
+                 "x":-150,
+                 "y":90
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -323,7 +341,7 @@
          "y":0
         }],
  "nextlayerid":12,
- "nextobjectid":144,
+ "nextobjectid":146,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.11.2",

@@ -1,4 +1,4 @@
-{ "backgroundcolor":"#5a3c3c",
+{ "backgroundcolor":"#4f4a45",
  "compressionlevel":-1,
  "height":20,
  "infinite":true,
@@ -19,9 +19,8 @@
                 }, 
                 {
                  "id":117,
-                 "name":"",
                  "template":"..\/Templates\/SpriteStackTemplate.tx",
-                 "type":"columnBoss",
+                 "type":"column",
                  "x":-342,
                  "y":218
                 }, 
@@ -30,7 +29,7 @@
                  "name":"Base",
                  "rotation":180,
                  "template":"..\/Templates\/SpriteStackTemplate.tx",
-                 "type":"columnBaseBrokenBoss",
+                 "type":"columnBaseBroken",
                  "x":186,
                  "y":342
                 }, 
@@ -39,7 +38,7 @@
                  "name":"top",
                  "rotation":225,
                  "template":"..\/Templates\/SpriteStackTemplate.tx",
-                 "type":"columnTopBrokenBoss",
+                 "type":"columnTopBroken",
                  "x":260.393772727273,
                  "y":400.636346969697
                 }, 
@@ -48,7 +47,7 @@
                  "name":"columnEye",
                  "rotation":0,
                  "template":"..\/Templates\/SpriteStackTemplate.tx",
-                 "type":"columnEyeBoss",
+                 "type":"columnEye",
                  "x":0,
                  "y":-420
                 }, 
@@ -57,7 +56,7 @@
                  "name":"Eye",
                  "rotation":90,
                  "template":"..\/Templates\/SpriteStackTemplate.tx",
-                 "type":"columnEyeBoss",
+                 "type":"columnEye",
                  "x":420,
                  "y":0
                 }, 
@@ -66,7 +65,7 @@
                  "name":"column",
                  "rotation":-180,
                  "template":"..\/Templates\/SpriteStackTemplate.tx",
-                 "type":"columnEyeBoss",
+                 "type":"columnEye",
                  "x":0,
                  "y":420
                 }, 
@@ -75,7 +74,7 @@
                  "name":"column",
                  "rotation":-90,
                  "template":"..\/Templates\/SpriteStackTemplate.tx",
-                 "type":"columnEyeBoss",
+                 "type":"columnEye",
                  "x":-420,
                  "y":0
                 }, 
@@ -84,60 +83,57 @@
                  "name":"columnSidedBoss",
                  "rotation":30,
                  "template":"..\/Templates\/SpriteStackTemplate.tx",
-                 "type":"columnSidedBoss",
+                 "type":"columnSided",
                  "x":-158.666666666667,
                  "y":334
                 }, 
                 {
                  "id":130,
-                 "name":"",
                  "template":"..\/Templates\/SpriteStackTemplate.tx",
-                 "type":"columnBoss",
+                 "type":"column",
                  "x":-186,
                  "y":-332
                 }, 
                 {
                  "id":131,
-                 "name":"",
                  "template":"..\/Templates\/SpriteStackTemplate.tx",
-                 "type":"columnBoss",
+                 "type":"column",
                  "x":342,
                  "y":-218
                 }, 
                 {
                  "id":132,
-                 "name":"",
                  "template":"..\/Templates\/SpriteStackTemplate.tx",
-                 "type":"columnBoss",
+                 "type":"column",
                  "x":-342,
                  "y":-218
                 }, 
                 {
                  "id":133,
-                 "name":"",
                  "template":"..\/Templates\/SpriteStackTemplate.tx",
-                 "type":"columnBoss",
+                 "type":"column",
                  "x":186,
                  "y":-342
                 }, 
                 {
                  "id":142,
                  "template":"..\/Templates\/SpriteStackTemplate.tx",
-                 "type":"columnBoss",
+                 "type":"column",
                  "x":342,
                  "y":218
                 }, 
                 {
                  "id":143,
+                 "name":"RandomColumn",
                  "template":"..\/Templates\/SpriteStackTemplate.tx",
-                 "type":"columnBoss",
+                 "type":"column columnTopBroken columnBaseBroken columnSided",
                  "x":-622,
                  "y":0
                 }, 
                 {
                  "id":155,
                  "template":"..\/Templates\/SpriteStackTemplate.tx",
-                 "type":"columnBoss",
+                 "type":"column",
                  "x":0,
                  "y":-622
                 },
@@ -145,72 +141,694 @@
                 {
                  "id":158,
                  "template":"..\/Templates\/SpriteStackTemplate.tx",
-                 "type":"columnBoss",
+                 "type":"column",
                  "x":0,
-                 "y":622
+                 "y":574
                 }, 
                 {
                  "id":152,
                  "template":"..\/Templates\/SpriteStackTemplate.tx",
-                 "type":"columnBoss",
+                 "type":"column",
                  "x":622,
                  "y":0
                 }, 
                 {
                  "id":144,
                  "template":"..\/Templates\/SpriteStackTemplate.tx",
-                 "type":"columnBoss",
+                 "type":"column",
                  "x":-1020,
                  "y":0
                 }, 
                 {
                  "id":157,
                  "template":"..\/Templates\/SpriteStackTemplate.tx",
-                 "type":"columnBoss",
+                 "type":"column",
                  "x":0,
                  "y":-1020
                 }, 
                 {
                  "id":160,
                  "template":"..\/Templates\/SpriteStackTemplate.tx",
-                 "type":"columnBoss",
+                 "type":"column",
                  "x":0,
                  "y":1020
                 }, 
                 {
                  "id":154,
                  "template":"..\/Templates\/SpriteStackTemplate.tx",
-                 "type":"columnBoss",
-                 "x":1020,
+                 "type":"column",
+                 "x":980.606060606061,
                  "y":0
                 }, 
                 {
                  "id":145,
                  "template":"..\/Templates\/SpriteStackTemplate.tx",
-                 "type":"columnBoss",
+                 "type":"column",
                  "x":-820,
                  "y":0
                 }, 
                 {
                  "id":156,
                  "template":"..\/Templates\/SpriteStackTemplate.tx",
-                 "type":"columnBoss",
+                 "type":"column",
                  "x":0,
                  "y":-820
                 }, 
                 {
                  "id":159,
                  "template":"..\/Templates\/SpriteStackTemplate.tx",
-                 "type":"columnBoss",
+                 "type":"column",
                  "x":0,
                  "y":820
                 }, 
                 {
                  "id":153,
                  "template":"..\/Templates\/SpriteStackTemplate.tx",
-                 "type":"columnBoss",
+                 "type":"column",
                  "x":820,
                  "y":0
+                }, 
+                {
+                 "id":163,
+                 "name":"Wall",
+                 "rotation":-90,
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"wall",
+                 "x":0,
+                 "y":-1074
+                }, 
+                {
+                 "id":193,
+                 "name":"Wall",
+                 "rotation":-90,
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"wall",
+                 "x":0,
+                 "y":1074
+                }, 
+                {
+                 "id":210,
+                 "name":"Wall",
+                 "rotation":0,
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"wall",
+                 "x":1074,
+                 "y":0
+                }, 
+                {
+                 "id":249,
+                 "name":"Wall",
+                 "rotation":0,
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"wall",
+                 "x":-1074,
+                 "y":0
+                }, 
+                {
+                 "id":164,
+                 "name":"Wall",
+                 "rotation":-90,
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"wall",
+                 "x":-150,
+                 "y":-1074
+                }, 
+                {
+                 "id":192,
+                 "name":"Wall",
+                 "rotation":-90,
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"wall",
+                 "x":-150,
+                 "y":1074
+                },
+            
+                {
+                 "id":211,
+                 "name":"Wall",
+                 "rotation":0,
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"wall",
+                 "x":1074,
+                 "y":150
+                }, 
+                {
+                 "id":248,
+                 "name":"Wall",
+                 "rotation":0,
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"wall",
+                 "x":-1074,
+                 "y":150
+                }, 
+                {
+                 "id":165,
+                 "name":"Wall",
+                 "rotation":-90,
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"wall",
+                 "x":300,
+                 "y":-1074
+                }, 
+                {
+                 "id":191,
+                 "name":"Wall",
+                 "rotation":-90,
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"wall",
+                 "x":300,
+                 "y":1074
+                }, 
+                {
+                 "id":212,
+                 "name":"Wall",
+                 "rotation":0,
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"wall",
+                 "x":1074,
+                 "y":300
+                }, 
+                {
+                 "id":247,
+                 "name":"Wall",
+                 "rotation":0,
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"wall",
+                 "x":-1074,
+                 "y":300
+                }, 
+                {
+                 "id":173,
+                 "name":"Wall",
+                 "rotation":-90,
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"wall",
+                 "x":-300,
+                 "y":-1074
+                }, 
+                {
+                 "id":184,
+                 "name":"Wall",
+                 "rotation":-90,
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"wall",
+                 "x":-300,
+                 "y":1074
+                }, 
+                {
+                 "id":213,
+                 "name":"Wall",
+                 "rotation":0,
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"wall",
+                 "x":1074,
+                 "y":450
+                }, 
+                {
+                 "id":246,
+                 "name":"Wall",
+                 "rotation":0,
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"wall",
+                 "x":-1074,
+                 "y":450
+                }, 
+                {
+                 "id":167,
+                 "name":"Wall",
+                 "rotation":-90,
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"wall",
+                 "x":450,
+                 "y":-1074
+                }, 
+                {
+                 "id":189,
+                 "name":"Wall",
+                 "rotation":-90,
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"wall",
+                 "x":450,
+                 "y":1074
+                }, 
+                {
+                 "id":214,
+                 "name":"Wall",
+                 "rotation":0,
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"wall",
+                 "x":1074,
+                 "y":600
+                }, 
+                {
+                 "id":245,
+                 "name":"Wall",
+                 "rotation":0,
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"wall",
+                 "x":-1074,
+                 "y":600
+                }, 
+                {
+                 "id":174,
+                 "name":"Wall",
+                 "rotation":-90,
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"wall",
+                 "x":-450,
+                 "y":-1074
+                }, 
+                {
+                 "id":183,
+                 "name":"Wall",
+                 "rotation":-90,
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"wall",
+                 "x":-450,
+                 "y":1074
+                },
+            
+                {
+                 "id":215,
+                 "name":"Wall",
+                 "rotation":0,
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"wall",
+                 "x":1074,
+                 "y":750
+                }, 
+                {
+                 "id":244,
+                 "name":"Wall",
+                 "rotation":0,
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"wall",
+                 "x":-1074,
+                 "y":750
+                }, 
+                {
+                 "id":168,
+                 "name":"Wall",
+                 "rotation":-90,
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"wall",
+                 "x":600,
+                 "y":-1074
+                }, 
+                {
+                 "id":188,
+                 "name":"Wall",
+                 "rotation":-90,
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"wall",
+                 "x":600,
+                 "y":1074
+                }, 
+                {
+                 "id":216,
+                 "name":"Wall",
+                 "rotation":0,
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"wall",
+                 "x":1074,
+                 "y":900
+                }, 
+                {
+                 "id":243,
+                 "name":"Wall",
+                 "rotation":0,
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"wall",
+                 "x":-1074,
+                 "y":900
+                }, 
+                {
+                 "id":175,
+                 "name":"Wall",
+                 "rotation":-90,
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"wall",
+                 "x":-600,
+                 "y":-1074
+                }, 
+                {
+                 "id":182,
+                 "name":"Wall",
+                 "rotation":-90,
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"wall",
+                 "x":-600,
+                 "y":1074
+                }, 
+                {
+                 "id":169,
+                 "name":"Wall",
+                 "rotation":-90,
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"wall",
+                 "x":750,
+                 "y":-1074
+                }, 
+                {
+                 "id":187,
+                 "name":"Wall",
+                 "rotation":-90,
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"wall",
+                 "x":750,
+                 "y":1074
+                }, 
+                {
+                 "id":218,
+                 "name":"Wall",
+                 "rotation":0,
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"wall",
+                 "x":1074,
+                 "y":-150
+                }, 
+                {
+                 "id":250,
+                 "name":"Wall",
+                 "rotation":0,
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"wall",
+                 "x":-1074,
+                 "y":-150
+                }, 
+                {
+                 "id":176,
+                 "name":"Wall",
+                 "rotation":-90,
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"wall",
+                 "x":-750,
+                 "y":-1074
+                }, 
+                {
+                 "id":181,
+                 "name":"Wall",
+                 "rotation":-90,
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"wall",
+                 "x":-750,
+                 "y":1074
+                }, 
+                {
+                 "id":219,
+                 "name":"Wall",
+                 "rotation":0,
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"wall",
+                 "x":1074,
+                 "y":-300
+                }, 
+                {
+                 "id":251,
+                 "name":"Wall",
+                 "rotation":0,
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"wall",
+                 "x":-1074,
+                 "y":-300
+                },
+            
+                {
+                 "id":220,
+                 "name":"Wall",
+                 "rotation":0,
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"wall",
+                 "x":1074,
+                 "y":-450
+                }, 
+                {
+                 "id":252,
+                 "name":"Wall",
+                 "rotation":0,
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"wall",
+                 "x":-1074,
+                 "y":-450
+                }, 
+                {
+                 "id":221,
+                 "name":"Wall",
+                 "rotation":0,
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"wall",
+                 "x":1074,
+                 "y":-600
+                }, 
+                {
+                 "id":253,
+                 "name":"Wall",
+                 "rotation":0,
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"wall",
+                 "x":-1074,
+                 "y":-600
+                }, 
+                {
+                 "id":171,
+                 "name":"Wall",
+                 "rotation":-90,
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"wall",
+                 "x":900,
+                 "y":-1074
+                }, 
+                {
+                 "id":185,
+                 "name":"Wall",
+                 "rotation":-90,
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"wall",
+                 "x":900,
+                 "y":1074
+                }, 
+                {
+                 "id":222,
+                 "name":"Wall",
+                 "rotation":0,
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"wall",
+                 "x":1074,
+                 "y":-750
+                }, 
+                {
+                 "id":254,
+                 "name":"Wall",
+                 "rotation":0,
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"wall",
+                 "x":-1074,
+                 "y":-750
+                }, 
+                {
+                 "id":177,
+                 "name":"Wall",
+                 "rotation":-90,
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"wall",
+                 "x":-900,
+                 "y":-1074
+                }, 
+                {
+                 "id":180,
+                 "name":"Wall",
+                 "rotation":-90,
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"wall",
+                 "x":-900,
+                 "y":1074
+                }, 
+                {
+                 "id":223,
+                 "name":"Wall",
+                 "rotation":0,
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"wall",
+                 "x":1074,
+                 "y":-900
+                }, 
+                {
+                 "id":255,
+                 "name":"Wall",
+                 "rotation":0,
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"wall",
+                 "x":-1074,
+                 "y":-900
+                }, 
+                {
+                 "id":166,
+                 "name":"Wall",
+                 "rotation":-90,
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"wall",
+                 "x":150,
+                 "y":-1074
+                }, 
+                {
+                 "id":190,
+                 "name":"Wall",
+                 "rotation":-90,
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"wall",
+                 "x":150,
+                 "y":1074
+                }, 
+                {
+                 "height":28,
+                 "id":257,
+                 "name":"columnEye",
+                 "rotation":45,
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"columnEye",
+                 "width":32,
+                 "x":1035,
+                 "y":-1041
+                }, 
+                {
+                 "height":28,
+                 "id":278,
+                 "name":"columnEye",
+                 "rotation":-45,
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"columnEye",
+                 "width":32,
+                 "x":-1035,
+                 "y":-1041
+                },
+            
+                {
+                 "height":28,
+                 "id":276,
+                 "name":"columnEye",
+                 "rotation":-225,
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"columnEye",
+                 "width":32,
+                 "x":1035,
+                 "y":1041
+                }, 
+                {
+                 "height":28,
+                 "id":277,
+                 "name":"columnEye",
+                 "rotation":225,
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"columnEye",
+                 "width":32,
+                 "x":-1035,
+                 "y":1041
+                }, 
+                {
+                 "id":262,
+                 "name":"top",
+                 "rotation":225,
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"columnTopBroken",
+                 "x":1029,
+                 "y":-955
+                }, 
+                {
+                 "id":263,
+                 "name":"Base",
+                 "rotation":180,
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"columnBaseBroken",
+                 "x":987,
+                 "y":-1033
+                }, 
+                {
+                 "id":264,
+                 "name":"RandomColumn",
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"column columnTopBroken columnBaseBroken columnSided",
+                 "x":-661.363636363636,
+                 "y":-694.69696969697
+                }, 
+                {
+                 "id":265,
+                 "name":"RandomColumn",
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"column columnTopBroken columnBaseBroken columnSided",
+                 "x":-831.060606060606,
+                 "y":-279.545454545455
+                }, 
+                {
+                 "id":266,
+                 "name":"RandomColumn",
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"column columnTopBroken columnBaseBroken columnSided",
+                 "x":-261.363636363636,
+                 "y":-661.363636363636
+                }, 
+                {
+                 "id":267,
+                 "name":"RandomColumn",
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"column columnTopBroken columnBaseBroken columnSided",
+                 "x":671.969696969697,
+                 "y":-343.181818181818
+                }, 
+                {
+                 "id":268,
+                 "name":"RandomColumn",
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"column columnTopBroken columnBaseBroken columnSided",
+                 "x":302.272727272727,
+                 "y":-691.666666666667
+                }, 
+                {
+                 "id":269,
+                 "name":"RandomColumn",
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"column columnTopBroken columnBaseBroken columnSided",
+                 "x":784.090909090909,
+                 "y":-837.121212121212
+                }, 
+                {
+                 "id":270,
+                 "name":"RandomColumn",
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"column columnTopBroken columnBaseBroken columnSided",
+                 "x":635.606060606061,
+                 "y":453.787878787879
+                }, 
+                {
+                 "id":271,
+                 "name":"RandomColumn",
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"column columnTopBroken columnBaseBroken columnSided",
+                 "x":359.848484848485,
+                 "y":687.121212121212
+                }, 
+                {
+                 "id":272,
+                 "name":"RandomColumn",
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"column columnTopBroken columnBaseBroken columnSided",
+                 "x":-512.878787878788,
+                 "y":699.242424242424
+                }, 
+                {
+                 "id":273,
+                 "name":"RandomColumn",
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"column columnTopBroken columnBaseBroken columnSided",
+                 "x":-546.212121212121,
+                 "y":299.242424242424
+                }, 
+                {
+                 "id":274,
+                 "name":"RandomColumn",
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"column columnTopBroken columnBaseBroken columnSided",
+                 "x":-843.181818181818,
+                 "y":629.545454545455
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -375,7 +993,7 @@
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":true,
+         "visible":false,
          "x":0,
          "y":0
         }, 
@@ -413,12 +1031,12 @@
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":1100,
-                 "x":-568.30303030303,
-                 "y":-1133.33333333333
+                 "width":2236.36363636364,
+                 "x":-1086.48484848485,
+                 "y":-1239.39393939394
                 }, 
                 {
-                 "height":936,
+                 "height":2332.9696969697,
                  "id":99,
                  "name":"",
                  "rotation":0,
@@ -426,7 +1044,7 @@
                  "visible":true,
                  "width":102,
                  "x":-1116,
-                 "y":-454
+                 "y":-1226.72727272727
                 }, 
                 {
                  "height":88,
@@ -435,24 +1053,24 @@
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":1086,
-                 "x":-522,
-                 "y":1090
+                 "width":2392.06060606061,
+                 "x":-1115.93939393939,
+                 "y":1060.78787878788
                 }, 
                 {
-                 "height":974,
+                 "height":2304.30303030303,
                  "id":101,
                  "name":"",
                  "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":114,
-                 "x":1090,
-                 "y":-428
+                 "x":1126.36363636364,
+                 "y":-1191.63636363636
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":true,
+         "visible":false,
          "x":0,
          "y":0
         }, 
@@ -479,7 +1097,7 @@
          "y":0
         }],
  "nextlayerid":12,
- "nextobjectid":161,
+ "nextobjectid":279,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.11.2",

@@ -13,8 +13,48 @@
                  "name":"bossSign",
                  "template":"..\/Templates\/SpriteStackTemplate.tx",
                  "type":"bossSign",
-                 "x":120,
-                 "y":-73
+                 "x":312,
+                 "y":-78.3333333333333
+                }, 
+                {
+                 "id":113,
+                 "name":"interrogationSign",
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"interrogationSign",
+                 "x":-125,
+                 "y":0
+                }, 
+                {
+                 "id":114,
+                 "name":"column",
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"column",
+                 "x":100,
+                 "y":100
+                }, 
+                {
+                 "id":115,
+                 "name":"column",
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"column",
+                 "x":-100,
+                 "y":-100
+                }, 
+                {
+                 "id":116,
+                 "name":"column",
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"column",
+                 "x":100,
+                 "y":-100
+                }, 
+                {
+                 "id":117,
+                 "name":"column",
+                 "template":"..\/Templates\/SpriteStackTemplate.tx",
+                 "type":"column",
+                 "x":-100,
+                 "y":100
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -190,7 +230,111 @@
          "draworder":"topdown",
          "id":6,
          "name":"Items",
-         "objects":[],
+         "objects":[
+                {
+                 "id":99,
+                 "name":"Healthflower",
+                 "template":"..\/Templates\/ItemTemplate.tx",
+                 "type":"health-flower",
+                 "x":-32.1818515151515,
+                 "y":-778.060606060606
+                }, 
+                {
+                 "id":100,
+                 "name":"SpeedVase",
+                 "template":"..\/Templates\/ItemTemplate.tx",
+                 "type":"speed-vase",
+                 "x":-141.515184848485,
+                 "y":-768.727606060606
+                }, 
+                {
+                 "id":101,
+                 "name":"DamageRock",
+                 "template":"..\/Templates\/ItemTemplate.tx",
+                 "type":"damage-rock",
+                 "x":106.485148484849,
+                 "y":-766.060606060606
+                }, 
+                {
+                 "id":102,
+                 "name":"Nabo",
+                 "template":"..\/Templates\/ItemTemplate.tx",
+                 "type":"nabo",
+                 "x":2.00000000000001,
+                 "y":9.33333333333331
+                }, 
+                {
+                 "id":103,
+                 "name":"SpeedVase",
+                 "template":"..\/Templates\/ItemTemplate.tx",
+                 "type":"speed-vase",
+                 "x":-306.666666666667,
+                 "y":376
+                }, 
+                {
+                 "id":104,
+                 "name":"Healthflower",
+                 "template":"..\/Templates\/ItemTemplate.tx",
+                 "type":"health-flower",
+                 "x":-244,
+                 "y":-241.333333333333
+                }, 
+                {
+                 "id":105,
+                 "name":"DamageRock",
+                 "template":"..\/Templates\/ItemTemplate.tx",
+                 "type":"damage-rock",
+                 "x":324,
+                 "y":-316
+                }, 
+                {
+                 "id":106,
+                 "name":"DamageRock",
+                 "template":"..\/Templates\/ItemTemplate.tx",
+                 "type":"damage-rock",
+                 "x":404,
+                 "y":-261.333333333333
+                }, 
+                {
+                 "id":107,
+                 "name":"DamageRock",
+                 "template":"..\/Templates\/ItemTemplate.tx",
+                 "type":"damage-rock",
+                 "x":310.666666666667,
+                 "y":-209.333333333333
+                }, 
+                {
+                 "id":108,
+                 "name":"Healthflower",
+                 "template":"..\/Templates\/ItemTemplate.tx",
+                 "type":"health-flower",
+                 "x":-330.666666666667,
+                 "y":-317.333333333333
+                }, 
+                {
+                 "id":109,
+                 "name":"Healthflower",
+                 "template":"..\/Templates\/ItemTemplate.tx",
+                 "type":"health-flower",
+                 "x":-356,
+                 "y":-189.333333333333
+                }, 
+                {
+                 "id":110,
+                 "name":"SpeedVase",
+                 "template":"..\/Templates\/ItemTemplate.tx",
+                 "type":"speed-vase",
+                 "x":-280,
+                 "y":257.333333333333
+                }, 
+                {
+                 "id":111,
+                 "name":"SpeedVase",
+                 "template":"..\/Templates\/ItemTemplate.tx",
+                 "type":"speed-vase",
+                 "x":-176,
+                 "y":408
+                }],
          "opacity":1,
          "type":"objectgroup",
          "visible":true,
@@ -209,7 +353,7 @@
          "y":0
         }],
  "nextlayerid":12,
- "nextobjectid":99,
+ "nextobjectid":118,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.11.2",

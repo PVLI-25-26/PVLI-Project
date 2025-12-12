@@ -102,7 +102,7 @@
                             {
                              "rotation":35,
                              "scene":6,
-                             "spawnX":-200,
+                             "spawnX":-300,
                              "spawnY":0,
                              "x":180,
                              "y":-70
@@ -211,7 +211,7 @@
                          "value":
                             {
                              "scene":11,
-                             "spawnX":190,
+                             "spawnX":100,
                              "spawnY":0,
                              "x":-330,
                              "y":370
@@ -219,8 +219,8 @@
                         }],
                  "template":"..\/..\/..\/public\/assets\/rooms\/Templates\/RoomTemplate.tx",
                  "type":"dungeon-entrance-config.json",
-                 "x":8.60482417536359,
-                 "y":15.6741481202062
+                 "x":56.577030733568,
+                 "y":-0.0989064291649582
                 }, 
                 {
                  "id":8,
@@ -270,8 +270,8 @@
                         }],
                  "template":"..\/..\/..\/public\/assets\/rooms\/Templates\/RoomTemplate.tx",
                  "type":"dungeon-exit1-config.json",
-                 "x":38.069381575087,
-                 "y":-9.92991638375461
+                 "x":111.068752331688,
+                 "y":-21.0163364434942
                 }, 
                 {
                  "id":9,
@@ -309,13 +309,14 @@
                          "type":"class",
                          "value":
                             {
-                             "scene":14
+                             "scene":14,
+                             "spawnY":-300
                             }
                         }],
                  "template":"..\/..\/..\/public\/assets\/rooms\/Templates\/RoomTemplate.tx",
                  "type":"dungeon-combat1-config.json",
-                 "x":21.8395783561759,
-                 "y":47.4211199128211
+                 "x":30.3984242444015,
+                 "y":51.4234416168606
                 }, 
                 {
                  "id":10,
@@ -373,8 +374,8 @@
                         }],
                  "template":"..\/..\/..\/public\/assets\/rooms\/Templates\/RoomTemplate.tx",
                  "type":"dungeon-combat2-config.json",
-                 "x":37.6462969948448,
-                 "y":18.3253332075946
+                 "x":60.7480385209755,
+                 "y":34.9458434567212
                 }, 
                 {
                  "id":11,
@@ -396,16 +397,30 @@
                         }],
                  "template":"..\/..\/..\/public\/assets\/rooms\/Templates\/RoomTemplate.tx",
                  "type":"credits-room-config.json",
-                 "x":3.03559977367031,
-                 "y":26.6020291085125
+                 "x":31.2197670489918,
+                 "y":8.21429157587731
                 }, 
                 {
                  "id":12,
                  "name":"BossRoom(12)",
+                 "properties":[
+                        {
+                         "name":"Connection",
+                         "propertytype":"Connection",
+                         "type":"class",
+                         "value":
+                            {
+                             "scene":18,
+                             "spawnX":0,
+                             "spawnY":0,
+                             "x":0,
+                             "y":0
+                            }
+                        }],
                  "template":"..\/..\/..\/public\/assets\/rooms\/Templates\/RoomTemplate.tx",
                  "type":"dungeon-boss-config.json",
-                 "x":46.0666729536024,
-                 "y":68.2190001676516
+                 "x":59.7774131591402,
+                 "y":87.2682369703449
                 }, 
                 {
                  "id":13,
@@ -426,8 +441,8 @@
                         }],
                  "template":"..\/..\/..\/public\/assets\/rooms\/Templates\/RoomTemplate.tx",
                  "type":"dungeon-combat3-config.json",
-                 "x":6.53259776185087,
-                 "y":44.0777589169705
+                 "x":31.3348780890315,
+                 "y":117.034929902635
                 }, 
                 {
                  "id":14,
@@ -442,7 +457,7 @@
                              "scene":12,
                              "spawnX":200,
                              "spawnY":-50,
-                             "x":200,
+                             "x":400,
                              "y":0
                             }
                         }, 
@@ -454,7 +469,7 @@
                             {
                              "scene":9,
                              "spawnY":50,
-                             "y":200
+                             "y":-400
                             }
                         }, 
                         {
@@ -467,7 +482,7 @@
                              "spawnX":-50,
                              "spawnY":0,
                              "x":0,
-                             "y":-300
+                             "y":400
                             }
                         }, 
                         {
@@ -479,14 +494,14 @@
                              "scene":16,
                              "spawnX":50,
                              "spawnY":0,
-                             "x":-200,
+                             "x":-400,
                              "y":0
                             }
                         }],
                  "template":"..\/..\/..\/public\/assets\/rooms\/Templates\/RoomTemplate.tx",
                  "type":"dungeon-peaceful1-config.json",
-                 "x":11.7256957542227,
-                 "y":67.634419925395
+                 "x":30.7992414852595,
+                 "y":87.7553392205607
                 }, 
                 {
                  "id":15,
@@ -507,8 +522,8 @@
                         }],
                  "template":"..\/..\/..\/public\/assets\/rooms\/Templates\/RoomTemplate.tx",
                  "type":"dungeon-peaceful2-config.json",
-                 "x":57.1852864747056,
-                 "y":32.2121788423656
+                 "x":88.1008030250173,
+                 "y":60.746357149654
                 }, 
                 {
                  "id":16,
@@ -544,8 +559,8 @@
                         }],
                  "template":"..\/..\/..\/public\/assets\/rooms\/Templates\/RoomTemplate.tx",
                  "type":"dungeon-exit2-config.json",
-                 "x":-11.6866538832306,
-                 "y":46.4090909090909
+                 "x":1.97898387463398,
+                 "y":88.1960669422356
                 }, 
                 {
                  "id":17,
@@ -554,6 +569,29 @@
                  "type":"asset-room-config.json",
                  "x":-4.56818181818182,
                  "y":-32.8409090909091
+                },
+            
+                {
+                 "id":18,
+                 "name":"FinalCredits",
+                 "properties":[
+                        {
+                         "name":"Connection",
+                         "propertytype":"Connection",
+                         "type":"class",
+                         "value":
+                            {
+                             "scene":6,
+                             "spawnX":-300,
+                             "spawnY":0,
+                             "x":0,
+                             "y":150
+                            }
+                        }],
+                 "template":"..\/..\/..\/public\/assets\/rooms\/Templates\/RoomTemplate.tx",
+                 "type":"final-credits-room-config.json",
+                 "x":80,
+                 "y":87.25
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -562,7 +600,7 @@
          "y":0
         }],
  "nextlayerid":3,
- "nextobjectid":18,
+ "nextobjectid":19,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.11.2",
