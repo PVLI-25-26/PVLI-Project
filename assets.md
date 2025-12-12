@@ -29,6 +29,12 @@ Los SFX son todos assets externos usados (aunque algunos se han modificado), con
 - UI (SFX)
   - Autor: ["Atelier Magicae || Ririsaurus/Riri Hinasaki"](https://ateliermagicae.itch.io/)
   - Licencia: 
+- SFX varios
+    - Autor : freesound_community
+    - Licencia: Free
+- Música:
+    - Autor : Ovani Sound
+    - Licencia : Royalty free
 
 ## Assets propios
 Assets realizados por el equipo: todo menos SFX y Música.

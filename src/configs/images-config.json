@@ -90,6 +90,8 @@
 {"key": "_animation", "type": "spritesheet", "file": "assets/sprites/PortalAnimation.png", "settings":{"frameWidth":35, "frameHeight":31}},
 	{"key": "Boss_animation", "type": "spritesheet", "file": "assets/sprites/Enemies/BossAnimations.png", "settings":{"frameWidth":62, "frameHeight":73}},
 
+	{"key": "melinoe_portrait", "type": "image", "file": "assets/portraits/melinoe.png", "settings":{}},
+
 
     {"key": "dash", "type": "image", "file": "assets/sprites/Abilities/dash.png", "settings":{}},
     {"key": "forceField", "type": "image", "file": "assets/sprites/Abilities/forcefield.png", "settings":{}},

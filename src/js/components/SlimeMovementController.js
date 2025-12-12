@@ -54,6 +54,7 @@ export class SlimeMovementControllerComponent extends BaseControllerComponent {
                 this.target = data.entity;
             }
 			this.gameObject.play("slime_walk",true);
+			EventBus.emit("playMusic","CombatMusic");
         }
     }
 
