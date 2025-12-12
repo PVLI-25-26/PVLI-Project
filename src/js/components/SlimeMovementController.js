@@ -19,7 +19,7 @@ export class SlimeMovementControllerComponent extends BaseControllerComponent {
         this.target = null;
         this.initialState = initialState;
         this.aggroRange = 300;
-        this.retreatTimer = 300;
+        this.retreatTimer = 150;
 
         this.states = {
             idle: new IdleState(this),
@@ -96,6 +96,9 @@ export class SlimeMovementControllerComponent extends BaseControllerComponent {
     update(time, delta) {
         if (!this.enabled || !this.movementComponent || !this.currentState) return;
 
+        if (this.retreatTimer <= 0 && this.currentState == this.states.retreat) {
+            this.changeState('strafe');
+        }
         if (this.retreatTimer > 0) {
             this.retreatTimer -= delta;
         }
