@@ -40,8 +40,16 @@ export class DryadCombatControllerComponent extends BaseComponent {
             if (this.healTimer <= 0) {
                 const entityDamageable = data.entity.getComponent(DamageableComponent);
                 if (entityDamageable == null) return;
-                entityDamageable.heal(this.healAmount);
-                console.log(`Dryad ${this.gameObject.id} healed ${data.entity.id} for ${this.healAmount} HP.`);
+                if (entityDamageable.currentHP < entityDamageable.maxHP) {
+                    entityDamageable.heal(this.healAmount);
+                }
+                else if (this.damageableComponent.currentHP < this.damageableComponent.maxHP) {
+                    this.damageableComponent.heal(this.healAmount);
+                }
+                else { 
+                    return;
+                }
+                EventBus.emit('playSound', 'dryadHeal');
                 this.healTimer = this.healCooldown;
 				this.gameObject.play("dryad_heal",true);
             }

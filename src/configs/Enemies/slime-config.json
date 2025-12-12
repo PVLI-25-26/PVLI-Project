@@ -15,6 +15,6 @@
     "speed": 4,
 
     "maxHP": 3,
-    "damageSound": "enemyHurt",
-    "deathSound": "enemyDeath"
+    "damageSound": "slimeDamage",
+    "deathSound": "slimeDeath"
 }
