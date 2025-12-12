@@ -23,6 +23,7 @@
   - [Difficulty](#difficulty)
   - [Dungeon Exploration](#dungeon-exploration)
   - [Enemies](#enemy)
+  - [Boss Fight](#boss-fight)
   - [Health](#health)
   - [Interaction](#interaction)
   - [Inventory](#inventory)
@@ -178,61 +179,29 @@ The *grass arrow* immobilizes the enemy hit by the arrow (grass grows and traps 
 
 
 # Set Arrow path modifier
-**Set Arrow Path Modifier** – a mechanic that allows the player to alter the trajectory and behavior of projectiles after they are fired by selecting special type of bow.
+**Set Arrow Path Modifier** – a mechanic that allows the player to alter the trajectory A core mechanic that defines the ballistic properties of all fired projectiles by selecting different bow types with distinct physical characteristics.
+
 ## Description
-The player [can equip](#shop) one active arrow path modifier (bow type) before entering the magical realm.
-This modifier changes the flight pattern of all fired projectiles, overriding the default arched trajectory and adding unique behavior.  
-Modifiers can alter the number of projectiles, their spread, bounce behavior, and travel distance. It is used to adjust the area of effect, control coverage, or introduce tactical variety in ranged combat.
+The player [[Shop|can equip]] one bow type before entering the magical realm. This selection determines the fundamental trajectory characteristics of all arrows fired during that expedition. Unlike special ability modifiers, these bows alter the core physics of arrow flight through variations in gravity, air resistance, and maximum range. The system provides a tiered progression from close-range to long-range combat styles, allowing players to adapt their approach to different dungeon layouts and enemy encounters.
+## Available Trajectories
 
-Only one path modifier can be active before [enter the dungeon](#enter-and-exit-the-dungeon), encouraging players to adapt their loadout to different enemy types and environments.
-## Available Modifiers
-- Hunter’s Bow – Triple Shot
-- Falcon Bow – Long Shot
-- Rebound Bow – Ricochet
-- Piercer Bow – Piercing Shot
-- Seeker Bow – Homing Shot
-- Graviton Bow – Magnet Shot
-- Specter Bow – Phantom Shot
-### Hunter’s Bow – Triple Shot
-Fires **three arrows** simultaneously in a **spread formation** (angled slightly outward).  
-Each individual arrow deals **reduced damage**, but the total output can be high if all arrows hit the target.  
-This bow excels in close to mid-range combat, ideal for dealing with groups of enemies.
-![](GDD/Game%20Design%20Document/Images/Examples/Pasted%20image%2020251022152142.png)
+### Short Bow (Starter Equipment)
+**High arc, short range** – The default bow with pronounced gravitational pull and significant air resistance.  
+Arrows follow a **steep parabolic path** ideal for **confined spaces** and **close-quarters combat**. The rapid descent makes it less affected by camera rotation changes, providing consistency in tight dungeon corridors.  
+Perfect for new players learning the basics and for rooms with low ceilings or narrow layouts.
 
-### Falcon Bow – Long Shot
-**Increases the initial velocity** of the arrow and reduces its trajectory curvature, allowing it to travel **much farther** in a **straighter line**.  
-This modifier is best for **long-distance precision**, letting skilled players snipe enemies before they can close in.
-![](GDD/Game%20Design%20Document/Images/Examples/Pasted%20image%2020251022152227.png)
+![](GDD/Game%20Design%20Document/Images/Examples/shortTrajectoryExample.png)
 
-### Rebound Bow – Ricochet
-Arrows gain the ability to **bounce** off surfaces (walls, objects, possibly enemies) **multiple times** before losing momentum.  
-Each bounce slightly reduces velocity and damage.  
-Can be used to hit enemies hiding behind cover or around corners, rewarding players who master geometry and angles.
-![](GDD/Game%20Design%20Document/Images/Examples/Pasted%20image%2020251022152458.png)
+### Medium Bow (Balanced Upgrade)
+**Standard arc, versatile range** – A balanced upgrade offering moderate gravity and air resistance.  
+Arrows travel with a **classic parabolic trajectory** suitable for **most combat situations**. This bow excels in **medium-distance engagements** and provides reliable performance across varied dungeon room designs.  
+Acquired through early-game progression as the first meaningful upgrade to the player's arsenal.
+![](GDD/Game%20Design%20Document/Images/Examples/mediumTrajectoryExample.png)
 
-### Piercer Bow – Piercing Shot
-Arrows **do not stop upon impact** and can pass through multiple enemies in a line.  
-This makes it especially effective against **dense enemy formations** or narrow corridors.  
-Each consecutive hit deals **reduced damage**.  
-Implementation-wise, this can be achieved by temporarily disabling collision for a few frames after the first impact.
-![](GDD/Game%20Design%20Document/Images/Examples/Pasted%20image%2020251022152647.png)
-
-### Seeker Bow – Homing Shot
-After an arrow **loses altitude** and would normally **hit the ground**, it **locks onto the nearest target’s last known position** and performs an additional **dash** toward it before stopping.
-The trade-off is **reduced base damage** due to trajectory correction.  
-![](GDD/Game%20Design%20Document/Images/Examples/Pasted%20image%2020251022153003.png)
-
-### Graviton Bow – Magnet Shot
-After landing, the arrow **generates a magnetic field**, slowly pulling in nearby **enemies, consumables, or dropped arrows**.  
-This allows the player to **control enemy positioning** and simplify item retrieval.  
-Perfect for crowd control or utility builds, offering both offensive and supportive benefits.
-![](GDD/Game%20Design%20Document/Images/Examples/Pasted%20image%2020251022153714.png)
-
-### Specter Bow – Phantom Shot
-Arrows **phase through obstacles**, passing through **one wall or shield** before dissipating.  
-This enables the player to **hit enemies hiding behind cover**, introducing a tactical advantage in complex environments.  
-However, the **ammo count is reduced**, so player can't just spam all his arrows through the walls.
-![](GDD/Game%20Design%20Document/Images/Examples/Pasted%20image%2020251022153931.png)
+### Long Bow (Precision Weapon)
+**Shallow arc, extended range** – An advanced bow with minimal gravitational effect and reduced air resistance.  
+Arrows maintain a **flatter, extended trajectory** that travels **much farther** in a **near-straight line**. This allows for **long-distance precision shots** and effective sniping in open-area encounters.
+![](GDD/Game%20Design%20Document/Images/Examples/longTrajectoryExample.png)
 
 
 # Shoot
@@ -352,6 +321,31 @@ This section defines how enemy roles, movement logic, and combat patterns work t
 | Movement States | `Follow Ally` → `Retreat (if player is close)` → `Follow Ally` |
 | Combat Logic    | Heals allies on cooldown, triggered by their HP loss.          |
 | Visual Style    | ![](/GDD/Game%20Design%20Document/Images/Examples/driade2.jpg)                                               |
+
+# Boss fight
+**Boss Fight System** – a specialized system that manages encounters with powerful enemies, defining their behavior, attack patterns, and the conditions for victory or defeat. It builds on the core combat mechanics to create high-stakes, strategic challenges for the player.
+## Description
+This system implements a boss mechanic that fully utilizes the behavior of regular enemies, combining them into a two-phase battle that requires player adaptation and tactical shifts.
+## Two-Phase Battle
+The boss's behavior, attacks, and tactics change drastically when its health drops to 50%.
+### Phase 1 (Defensive / Tactical)
+#### Behavior
+The boss acts like a **Golem** – moving heavily but purposefully, attempting to pin the player against walls or corners of the arena.
+#### Primary Goal:
+Positioning. The boss actively **shields weaker support enemies** (e.g., healers or buffers) positioned behind it, who are restoring its health.
+#### Player Tactic
+ The player must maneuver to flank the boss and eliminate the support units first, or the fight risks becoming indefinitely prolonged.
+
+### Phase 2 (Aggressive / Desperate)
+#### Behavior
+when health drops below 50% the boss becomes mobile and aggressive, its movement akin to a [[Enemy Types#Slime|Slime]] – it quickly closes the distance with the player, maneuvering in a **spiral pattern** to make evasion difficult. Every successful attack the boss lands on the player restores a portion of the boss's health. 
+#### Primary Goal
+Survival and damage mitigation. The player's main objective shifts from aggression to careful avoidance of the boss's life-stealing attacks.
+#### Player Tactic
+The player must adopt a defensive playstyle:
+1. Actively use accumulated **healing items** (potions, herbs) to counter the boss's health drain.
+2. Utilize **mobility or crowd-control abilities** to break distance and reposition, disrupting the boss's relentless spiral approach.
+3. Attack opportunistically during safe windows, prioritizing avoiding damage over dealing it.
 
 
 # Change Room
