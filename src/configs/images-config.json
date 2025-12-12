@@ -87,6 +87,8 @@
 	{"key": "Melinoe_animation", "type": "spritesheet", "file": "assets/sprites/NPCs/MelinoeAnimations.png", "settings":{"frameWidth":18,"frameHeight":19}},
 	{"key": "Dryad_animation", "type": "spritesheet", "file": "assets/sprites/Enemies/DryadAnimations.png", "settings":{"frameWidth":14, "frameHeight":23}},
 	{"key": "Portal_animation", "type": "spritesheet", "file": "assets/sprites/PortalAnimation.png", "settings":{"frameWidth":35, "frameHeight":31}},
+{"key": "_animation", "type": "spritesheet", "file": "assets/sprites/PortalAnimation.png", "settings":{"frameWidth":35, "frameHeight":31}},
+	{"key": "Boss_animation", "type": "spritesheet", "file": "assets/sprites/Enemies/BossAnimations.png", "settings":{"frameWidth":62, "frameHeight":73}},
 
 
     {"key": "dash", "type": "image", "file": "assets/sprites/Abilities/dash.png", "settings":{}},
