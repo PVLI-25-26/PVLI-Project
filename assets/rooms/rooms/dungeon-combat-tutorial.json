@@ -96,7 +96,7 @@
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":true,
+         "visible":false,
          "x":0,
          "y":0
         }, 
@@ -242,50 +242,18 @@
          "name":"Enemies",
          "objects":[
                 {
-                 "height":0,
-                 "id":90,
-                 "name":"Golem",
-                 "point":true,
+                 "id":108,
+                 "name":"slime",
                  "properties":[
                         {
                          "name":"PatrolRoute",
                          "type":"object",
                          "value":91
-                        }, 
-                        {
-                         "name":"state",
-                         "type":"string",
-                         "value":"idle"
                         }],
-                 "rotation":0,
-                 "type":"golem",
-                 "visible":true,
-                 "width":0,
-                 "x":141.333333333333,
-                 "y":2.66666666666634
-                }, 
-                {
-                 "height":0,
-                 "id":91,
-                 "name":"Dryad",
-                 "point":true,
-                 "properties":[
-                        {
-                         "name":"PatrolRoute",
-                         "type":"object",
-                         "value":91
-                        }, 
-                        {
-                         "name":"state",
-                         "type":"string",
-                         "value":"idle"
-                        }],
-                 "rotation":0,
-                 "type":"dryad",
-                 "visible":true,
-                 "width":0,
-                 "x":151.333333333333,
-                 "y":2.66666666666634
+                 "template":"..\/Templates\/EnemyTemplate.tx",
+                 "type":"slime",
+                 "x":188,
+                 "y":0
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -294,7 +262,7 @@
          "y":0
         }],
  "nextlayerid":12,
- "nextobjectid":108,
+ "nextobjectid":109,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.11.2",

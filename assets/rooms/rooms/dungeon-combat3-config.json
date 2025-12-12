@@ -273,8 +273,8 @@
                         }],
                  "template":"..\/Templates\/EnemyTemplate.tx",
                  "type":"dryad",
-                 "x":-405.333,
-                 "y":-490.909090909091
+                 "x":-409.333,
+                 "y":-526.909090909091
                 }, 
                 {
                  "id":138,
@@ -294,25 +294,6 @@
                  "type":"slime",
                  "x":-449.696636363636,
                  "y":269.69696969697
-                }, 
-                {
-                 "id":139,
-                 "name":"elemental",
-                 "properties":[
-                        {
-                         "name":"PatrolRoute",
-                         "type":"object",
-                         "value":150
-                        }, 
-                        {
-                         "name":"state",
-                         "type":"string",
-                         "value":"patrol"
-                        }],
-                 "template":"..\/Templates\/EnemyTemplate.tx",
-                 "type":"elemental",
-                 "x":-196.969696969697,
-                 "y":-560.606060606061
                 }, 
                 {
                  "id":140,
@@ -372,25 +353,6 @@
                  "y":15.1515151515152
                 }, 
                 {
-                 "id":143,
-                 "name":"slime",
-                 "properties":[
-                        {
-                         "name":"PatrolRoute",
-                         "type":"object",
-                         "value":151
-                        }, 
-                        {
-                         "name":"state",
-                         "type":"string",
-                         "value":"patrol"
-                        }],
-                 "template":"..\/Templates\/EnemyTemplate.tx",
-                 "type":"slime",
-                 "x":-227.272727272727,
-                 "y":169.69696969697
-                }, 
-                {
                  "id":144,
                  "name":"dryad",
                  "properties":[
@@ -408,6 +370,38 @@
                  "type":"dryad",
                  "x":327.272727272727,
                  "y":-506.060606060606
+                }, 
+                {
+                 "id":159,
+                 "name":"Healthflower",
+                 "template":"..\/Templates\/ItemTemplate.tx",
+                 "type":"health-flower",
+                 "x":284,
+                 "y":322
+                }, 
+                {
+                 "id":160,
+                 "name":"Healthflower",
+                 "template":"..\/Templates\/ItemTemplate.tx",
+                 "type":"health-flower",
+                 "x":-482,
+                 "y":-260
+                }, 
+                {
+                 "id":161,
+                 "name":"Healthflower",
+                 "template":"..\/Templates\/ItemTemplate.tx",
+                 "type":"health-flower",
+                 "x":364,
+                 "y":-270
+                }, 
+                {
+                 "id":162,
+                 "name":"Healthflower",
+                 "template":"..\/Templates\/ItemTemplate.tx",
+                 "type":"health-flower",
+                 "x":-138,
+                 "y":-606
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -546,12 +540,12 @@
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":true,
+         "visible":false,
          "x":0,
          "y":0
         }],
  "nextlayerid":14,
- "nextobjectid":159,
+ "nextobjectid":163,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.11.2",
