@@ -1,17 +1,18 @@
 {
     "billboardConfig": {
         "texture": "Dolores",
-        "scale": 4
+        "scale": 4,    
+        "offsetX": 0.5,
+        "offsetY": 0.8
     },
     "physicsConfig":{
         "shape": {
-            "type": "circle",
-			"radius": 10	
+            "type": "rectangle",
+			"width": 15,
+            "height": 25
         }
     },
     "speed": 3,
-    "offsetX": 0,
-    "offsetY": 0,
     "maxHP": 10,
     "damageSound": "bossDamage",
     "deathSound": "bossDeath"

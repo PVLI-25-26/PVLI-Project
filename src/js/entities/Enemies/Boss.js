@@ -47,12 +47,12 @@ export class Boss extends BillBoard {
 
         this.setFixedRotation();
 
-        if (config.offsetX || config.offsetY) {
-            this.body.position.x += config.offsetX;
-            this.body.position.y += config.offsetY;
-            this.body.positionPrev.x += config.offsetX;
-            this.body.positionPrev.y += config.offsetY;
-        }
+        // if (config.offsetX || config.offsetY) {
+        //     this.body.position.x += config.offsetX;
+        //     this.body.position.y += config.offsetY;
+        //     this.body.positionPrev.x += config.offsetX;
+        //     this.body.positionPrev.y += config.offsetY;
+        // }
 
 
         this.addComponents();
