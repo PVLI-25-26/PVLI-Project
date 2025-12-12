@@ -13,7 +13,7 @@
 
     { "key": "enemyHurt", "file": "assets/sounds/Entities/enemyHurt.mp3"},
     { "key": "enemyDeath", "file": "assets/sounds/Entities/enemyDeath.mp3"},
-    { "key": "playerHurt", "file": "assets/sounds/Entities/playerHurt.mp3"},
+    { "key": "playerHurt", "file": "assets/sounds/Ouch.wav"},
     { "key": "dryadDamage", "file": "assets/sounds/Entities/dryadDamage.wav"},
     { "key": "dryadDeath", "file": "assets/sounds/Entities/dryadDeath.wav"},
     {"key": "dryadHeal", "file": "assets/sounds/Entities/dryadHeal.wav"},
@@ -32,6 +32,11 @@
 
     { "key": "closeMap", "file": "assets/sounds/Map/closeMap.wav"},
     { "key": "openMap", "file": "assets/sounds/Map/openMap.wav"},
+
+    { "key": "enterPortal", "file": "assets/sounds/Portal/EnterPortal.wav"},
+    { "key": "exitPortal", "file": "assets/sounds/Portal/ExitPortal.wav"},
+
+    { "key": "magicHealing", "file": "assets/sounds/healing-magic.mp3"},
 
     { "key": "dash", "file": "assets/sounds/Abilities/Dash.mp3"},
     { "key": "forcefield", "file": "assets/sounds/Abilities/Forcefield.mp3"},

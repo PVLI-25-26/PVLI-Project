@@ -69,6 +69,7 @@ window.tp = function(id, x=0, y=0){
     else if(typeof id == "string"){
         EventBus.emit('changeRoom', {sceneName: roomNameToID[id], playerSpawn: {x: x, y: y}});
     }
+	EventBus.emit("playSound", "exitPortal")
 }
 
 // SHOW ALL ROOM NAMES

@@ -33,6 +33,7 @@ export class BossMovementControllerComponent extends BaseControllerComponent {
 
 
 		this.gameObject.play("boss_walk",true);
+		EventBus.emit("playMusic","CombatMusic");
 
         this.changeState(initialState);
     }

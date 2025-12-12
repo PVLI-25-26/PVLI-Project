@@ -49,7 +49,7 @@ export class DryadCombatControllerComponent extends BaseComponent {
                 else { 
                     return;
                 }
-                EventBus.emit('playSound', 'dryadHeal');
+                EventBus.emit('playSound', 'magicHealing');
                 this.healTimer = this.healCooldown;
 				this.gameObject.play("dryad_heal",true);
             }
