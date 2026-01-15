@@ -25,13 +25,16 @@ export class DamageableComponent extends BaseComponent {
         this.damageEvents = damageEvents;
         this.useInvulnerability = useInvulnerability;
         this.sounds = sounds;
+        this._damageHandlers = {};
 
         this.isInvulnerable = false;
         this._blinkTween = null;
 
         // Subscribe to damage events
         for (const event of damageEvents) {
-            EventBus.on(event, (data) => this.handleDamageEvent(event, data));
+            const handler = (data) => this.handleDamageEvent(event, data);
+            this._damageHandlers[event] = handler;
+            EventBus.on(event, handler);
         }
     }
 
@@ -187,7 +190,7 @@ export class DamageableComponent extends BaseComponent {
     destroy() {
         super.destroy();
         for (const event of this.damageEvents) {
-            EventBus.off(event, (data) => this.handleDamageEvent(event, data));
+            EventBus.off(event, this._damageHandlers[event]);
         }
     }
 }
