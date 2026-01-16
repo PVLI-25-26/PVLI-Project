@@ -1,12 +1,14 @@
+import { BaseState } from "./BaseState.js";
+
 /**
  * IdleState - enemy does nothing.
  */
-export class IdleState {
+export class IdleState extends BaseState {
     /**
      * @param {BasicEnemyController} controller
      */
     constructor(controller) {
-        this.controller = controller;
+        super(controller);
         this.timer = Phaser.Math.Between(2000, 4000);
     }
 

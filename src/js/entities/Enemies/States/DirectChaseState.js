@@ -1,16 +1,16 @@
+import { BaseState } from "./BaseState.js";
+
 /**
  * ChaseState for enemy AI behavior.
  * Enemy directly chases the player.
  */
-export class DirectChaseState {
+export class DirectChaseState extends BaseState {
     constructor(controller, predictOffset = 0) {
-        this.controller = controller;
+        super(controller);
         this.predictOffset = predictOffset;
     }
 
-    enter() {
-        
-    }
+    enter() {}
 
     update(time, delta) {
         const movement = this.controller.movementComponent;

@@ -1,14 +1,16 @@
+import { BaseState } from "./BaseState.js";
+
 /**
  * PatrolState - enemy follows a predefined patrol route with waiting times.
  * The route loops indefinitely.
  */
-export class PatrolState {
+export class PatrolState extends BaseState {
     /**
      * @param {BasicEnemyController} controller
      * @param {{points: {x:number, y:number, wait:number}[]}} patrolRoute
      */
     constructor(controller, patrolRoute) {
-        this.controller = controller;
+        super(controller);
         this.route = {};
         this.route.points = patrolRoute;
         

@@ -1,15 +1,15 @@
+import { BaseState } from "./BaseState.js";
+
 /**
  * RetreatState for enemy AI behavior.
  * Enemy directly retreats from the player.
  */
-export class RetreatState {
+export class RetreatState extends BaseState {
     constructor(controller) {
-        this.controller = controller;
+        super(controller);
     }
 
-    enter() {
-        
-    }
+    enter() {}
 
     update(time, delta) {
         const movement = this.controller.movementComponent;

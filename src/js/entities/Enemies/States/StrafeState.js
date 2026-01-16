@@ -1,10 +1,12 @@
+import { BaseState } from "./BaseState.js";
+
 /**
  * Strafe State for enemy AI behavior.
  * Enemy goes around the player in a circular motion, dodging arrows
  */
-export class StrafeState {
+export class StrafeState extends BaseState {
     constructor(controller, angle = 70, direction = 0) {
-        this.controller = controller;
+        super(controller);
         this.direction = direction;
         this.angle = angle;
     }
